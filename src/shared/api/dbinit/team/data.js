@@ -3031,7 +3031,7 @@ export const initData = async (clientId, nextSeq) => {
       },
     ],
 
-    // 주문
+    /* 주문 */
     order: [
       {
         _id: await nextSeq('order'),
@@ -3229,102 +3229,84 @@ export const initData = async (clientId, nextSeq) => {
       },
     ],
 
-    // 후기
+    /* 후기 */
     review: [
+      // user_id: 8 (정길용)
       {
         _id: await nextSeq('review'),
-        user_id: 4,
-        user: {
-          _id: 4,
-          name: '제이지',
-          image: 'user-jayg.webp',
+        rating: 1,
+        content:
+          '찰옥수수라고 해서 시켰는데, 딱딱해서 씹을 수가 없어요. 물론 제가 안삶아서 그렇긴 한데 이렇게 딱딱할 수 있나요? 어이가 없어서 정말', // 본문
+        extra: {
+          name: '찰옥수수가 아니라 철옥수수네요', // 제목
+          image: [
+            {
+              url: '/',
+            },
+            {
+              url: '/',
+            },
+          ],
         },
-        order_id: 101,
-        product_id: 2,
-        rating: 5,
-        content: '감자가 진짜 크고 좋아요! 삶아서 먹으니 맛있네요.',
         createdAt: getTime(-4, -60 * 60 * 12),
-        extra: {
-          title: '크고 맛있어요!',
-        },
-      },
-      {
-        _id: await nextSeq('review'),
-        user_id: 6,
-        user: {
-          _id: 6,
-          name: '춘식이',
-          image: 'user-chunsik.webp',
-        },
-        order_id: 102,
-        product_id: 2,
-        rating: 4,
-        content: '조금 작은 감자도 있었지만 전체적으로 만족합니다.',
-        createdAt: getTime(-3, -60 * 60 * 9),
-        extra: {
-          title: '전반적으로 만족',
-        },
-      },
-      {
-        _id: await nextSeq('review'),
-        user_id: 7,
-        user: {
-          _id: 7,
-          name: '라이언',
-          image: 'user-ryan.webp',
-        },
-        order_id: 103,
-        product_id: 2,
-        rating: 5,
-        content: '배송 빠르고 포장도 꼼꼼했어요. 부모님도 좋아하셨어요!',
-        createdAt: getTime(-2, -60 * 60 * 7),
-        extra: {
-          title: '부모님 선물로 딱!',
-        },
-      },
-      {
-        _id: await nextSeq('review'),
-        user_id: 8,
+
+        // 주문자 정보
         user: {
           _id: 8,
-          name: '콘',
-          image: 'user-con.png',
+          name: '정길용',
         },
-        order_id: 104,
-        product_id: 2,
-        rating: 3,
-        content: '감자는 괜찮았는데 배송이 하루 늦었어요.',
-        createdAt: getTime(-1, -60 * 60 * 5),
-        extra: {
-          title: '배송만 조금 아쉬워요',
+
+        // 판매자 정보
+        product: {
+          _id: 25,
+          name: '제주농산물',
         },
       },
+      // user_id: 9 (김데레사)
       {
         _id: await nextSeq('review'),
-        user_id: 9,
+        rating: 5,
+        content: '고양이도 맛있게 먹네요. 추천합니다', // 본문
+        extra: {
+          name: '저희 고양이도 좋아해요', // 제목
+          image: [
+            {
+              url: '/',
+            },
+            {
+              url: '/',
+            },
+          ],
+        },
+        createdAt: getTime(-4, -60 * 60 * 12),
+
+        // 주문자 정보
         user: {
           _id: 9,
-          name: '튜브',
-          image: 'user-tube.webp',
+          image: 'user-jayg.webp',
+          name: '김데레사',
         },
-        order_id: 105,
-        product_id: 2,
-        rating: 5,
-        content: '강원도 감자답게 정말 고소하고 맛있네요! 재구매 의사 있습니다.',
-        createdAt: getTime(0, -60 * 60 * 2),
-        extra: {
-          title: '강력 추천합니다!',
+
+        // 판매 상품 정보
+        product: {
+          _id: 21,
+          image: {
+            path: 'files/openmarket/sample-diver.jpg',
+            name: 'sample-diver.jpg',
+            originalname: '헬로카봇.jpg',
+          },
+          name: '햇 괴산 대학찰옥수수 찐옥수수 장작불 가마솥에 삶은 냉동 옥수수',
         },
       },
     ],
 
-    // 장바구니
+    /* 장바구니 */
     cart: [],
 
-    // 즐겨찾기/북마크
+    /* 즐겨찾기/북마크 */
     bookmark: [],
 
-    // QnA, 공지사항 나의 농작물 자랑하기 등의 게시판
+    /* 게시판 : QnA, 공지사항 등 */
     post: [
       {
         _id: await nextSeq('post'),
@@ -3343,8 +3325,8 @@ export const initData = async (clientId, nextSeq) => {
           {
             _id: await nextSeq('reply'),
             user: {
-              _id: 2,
-              name: '네오',
+              _id: 1,
+              name: '관리자',
               image: 'user-neo.png',
             },
             content: '크기는 상품 상세정보에 나와 있습니다.',
