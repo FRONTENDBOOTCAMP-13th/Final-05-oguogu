@@ -4,6 +4,7 @@ import SlideBanner from '@/components/layouts/Banner/SlideBanner';
 import { ImageCategory } from '@/components/layouts/Category/Category';
 import Title from '@/components/elements/CommonTitleItem/Title';
 import ProductLinkItem from '@/components/elements/ProductLink/ProductLink';
+import Link from 'next/link';
 
 // CHECKLIST
 // sticky header 가 고정되지 않는 이슈 해결 필요
@@ -22,7 +23,9 @@ export default async function Home() {
         <ProductLinkItem keywordParams="옥수수" linkTitle="옥수수" />
         {/* <Title title="톡! 터지는 옥수수의 반전 매력" content="7월 제철 채소 옥수수🌽" type="gardening" /> */}
       </main>
-      <footer></footer>
+      <footer>
+        <Link href="/product/crop/veggie/1/detail">상세페이지로 이동하기 (임시)</Link>
+      </footer>
     </div>
   );
 }

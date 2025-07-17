@@ -1,6 +1,4 @@
-import CommonButton from '@/components/elements/CommonButton/CommonButton';
-
-export default function BuyBox() {
+export default function BuyBox({ onOpenModal }: { onOpenModal: () => void }) {
   return (
     <div className="fixed bottom-0 w-[320px] h-[68px] bg-oguogu-white z-999 px-4 py-3 ">
       <div className="flex f items-center justify-between gap-2">
@@ -12,7 +10,15 @@ export default function BuyBox() {
             />
           </svg>
         </button>
-        <CommonButton feature="구매하기" textSize="text-[16px]" width="w-[242px]" height="h-[44px]" />
+        <button
+          className={`flex flex-1 items-center justify-center text-center
+         bg-oguogu-main text-oguogu-white 
+         text-[16px] h-[44px]
+         px-[24px] py-[6px] rounded-[4px]`}
+          onClick={onOpenModal}
+        >
+          구매하기
+        </button>
       </div>
     </div>
   );

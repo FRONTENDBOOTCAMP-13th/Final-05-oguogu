@@ -9,7 +9,7 @@ export default function Title({
 }: {
   title?: string;
   content?: string;
-  type: string;
+  type?: string;
 }) {
   let itemType;
 
@@ -26,6 +26,13 @@ export default function Title({
         <CropItem _id={1} name="쫀득쫀득 대학 미백 찰옥수수 30개입" originPrice="11800" />
         <CropItem _id={1} name="쫀득쫀득 대학 미백 찰옥수수 30개입" originPrice="11800" />
         <CropItem _id={1} name="쫀득쫀득 대학 미백 찰옥수수 30개입" originPrice="11800" />
+      </div>
+    );
+  } else if (type === 'basic') {
+    return (
+      <div>
+        <p className="text-[20px] text-oguogu-black">{title}</p>
+        <p className={`text-[14px] text-oguogu-gray-4`}>{content}</p>
       </div>
     );
   } else if (type === 'experience') {
@@ -46,7 +53,7 @@ export default function Title({
     <article className="flex flex-col justify-center px-4 py-7">
       <div className="pb-6">
         <p className="text-[20px] text-oguogu-black">{title}</p>
-        <p className="text-[14px] text-oguogu-gray-4">{content}</p>
+        <p className={`text-[14px] text-oguogu-gray-4`}>{content}</p>
       </div>
       {itemType}
     </article>

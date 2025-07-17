@@ -2,6 +2,8 @@ import { ProductLinkType } from '@/components/elements/ProductLink/ProductLink.t
 import Link from 'next/link';
 
 export default function ProductLinkItem({ keywordParams, typeParams, linkTitle = '전체 상품' }: ProductLinkType) {
+  console.log(keywordParams, typeParams);
+
   return (
     <div className="flex justify-center border-b-1 border-b-oguogu-gray-2 pt-2 pb-4">
       <Link href={`/search`} className="flex items-center gap-2 text-xs">

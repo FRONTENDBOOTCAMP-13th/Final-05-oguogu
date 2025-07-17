@@ -123,7 +123,7 @@ export default function BuyBoxOption({ name, price, maxQuantity = 1, type }: Buy
                 onClick={minusCount}
               >
                 <svg width="10" height="2" viewBox="0 0 10 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1 0.996094H9" stroke="black" stroke-linecap="round" />
+                  <path d="M1 0.996094H9" stroke="black" strokeLinecap="round" />
                 </svg>
               </button>
               <p className="w-7 h-7 border-t border-b border-oguogu-gray-2 text-center content-center">1</p>
