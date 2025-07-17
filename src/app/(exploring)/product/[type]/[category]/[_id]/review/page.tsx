@@ -17,7 +17,7 @@ export default function ProductReview() {
             <p className="text-oguogu-main pr-1 ">로그인</p> 후 리뷰 작성하기
           </button>
         )}
-        <ProductLinkItem linkTitle="전체 농산물" />
+        <ProductLinkItem linkTitle="회원 가입" type="do" src="/register" />
       </section>
       <section className="px-4 mt-3 flex flex-col gap-4">
         <ReviewItem name="김땡땡" email="abcd@gamil.com" />

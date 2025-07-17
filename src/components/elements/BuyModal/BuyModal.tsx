@@ -37,8 +37,11 @@ export default function BuyModal({ onClose, type }: BuyModalProps) {
 
       {/* 모달 본체 */}
       <div ref={modalRef} className="w-full bg-white rounded-t-2xl  p-4 max-h-[80vh]  animate-slide-up">
-        <BuyBoxOption type={type} name="감자 캐기 체험" price={10000} maxQuantity={4} />
-
+        {type === 'crop' && (
+          <BuyBoxOption type={type} name="쫀득쫀득 대합 미백 찰옥수수 30개입" price={20000} maxQuantity={30} />
+        )}
+        {type === 'experience' && <BuyBoxOption type={type} name="감자 캐기 체험" price={10000} maxQuantity={4} />}
+        {type === 'gardening' && <BuyBoxOption type={type} name="초당옥수수 7월 수확" price={10000} />}
         {/* 확인 버튼 */}
         <button
           className={`flex items-center justify-center text-center

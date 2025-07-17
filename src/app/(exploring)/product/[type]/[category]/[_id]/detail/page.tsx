@@ -14,7 +14,7 @@ import { useState } from 'react';
 
 export default function ProductDetail() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const productType = 'gardening';
+  const productType = 'crop';
   return (
     <div>
       <Image

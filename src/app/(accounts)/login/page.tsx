@@ -65,7 +65,7 @@ export default function Login() {
               <CommonButton feature="로그인" textSize="text-[16px]" width="w-[288px]" height="h-[43px]" />
             </div>
             <div className="mt-[10px]">
-              <ProductLinkItem linkTitle="회원가입" />
+              <ProductLinkItem linkTitle="회원 가입" type="do" src="/register" />
             </div>
           </form>
         </section>

@@ -20,7 +20,7 @@ export default function ExperienceItem() {
           />
           {/* 뱃지 (제철 상품, 인기 상품 등) */}
           <div className="absolute top-0.5 left-1.5">
-            <Badge bgColor="bg-ogugu-blue-light" textColor="text-oguogu-white" content="마감 D-5" />
+            <Badge type="closing" />
           </div>
         </div>
       </Link>

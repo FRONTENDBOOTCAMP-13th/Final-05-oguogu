@@ -1,6 +1,8 @@
+'use client';
 import { ImageCategoryItemType, TextCategoryItemType } from '@/components/elements/CategoryItem/CategoryItem.type';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 /**
  * 카테고리 개별 아이템 컴포넌트 : 이미지형
@@ -23,13 +25,11 @@ export function ImageCategoryItem({ params, title }: ImageCategoryItemType) {
  * @param title : 카테고리명
  * @param isClick : border 컬러 선택 목적의 페이지 선택 여부
  */
-export function TextCategoryItem({ params, subParams, title, isClick = false }: TextCategoryItemType) {
-  let borderColor;
-  if (isClick) {
-    borderColor = 'border-oguogu-main-dark';
-  } else {
-    borderColor = 'border-oguogu-gray-2';
-  }
+export function TextCategoryItem({ params, subParams, title }: TextCategoryItemType) {
+  const pathname = usePathname();
+  const isActive = pathname?.includes(`/${params}/${subParams}`);
+
+  const borderColor = isActive ? 'border-oguogu-main-dark' : 'border-oguogu-gray-2';
 
   return (
     <Link

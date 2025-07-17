@@ -15,8 +15,8 @@ export default function CropItem({ _id, name, originPrice }: CropItemType) {
           <Image src={`/images/crop/crop-001.png`} alt="" width={140} height={186.67} className="rounded-[8px]" />
           {/* 뱃지 (제철 상품, 인기 상품 등) */}
           <div className="absolute top-0.5 left-1.5">
-            <Badge bgColor="bg-oguogu-main-dark" textColor="text-oguogu-white" content="제철 상품" />
-            <Badge bgColor="bg-oguogu-yellow" textColor="text-oguogu-black" content="인기 상품" />
+            <Badge type="seasonal" />
+            <Badge type="popular" />
           </div>
         </div>
       </Link>

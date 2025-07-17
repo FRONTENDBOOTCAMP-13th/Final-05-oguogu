@@ -35,8 +35,8 @@ export default function ProductDetailInfo({ type }: { type: 'crop' | 'experience
             <div className="flex flex-col">
               <span>3,000원</span>
               <div className="">
-                <Badge bgColor="bg-oguogu-yellow" textColor="text-oguogu-black" content="특급배송" />
-                <Badge bgColor="bg-oguogu-main-dark" textColor="text-oguogu-white" content="특급배송" />
+                <Badge type="express" />
+                <Badge type="safe" />
               </div>
             </div>
           </div>
@@ -59,7 +59,7 @@ export default function ProductDetailInfo({ type }: { type: 'crop' | 'experience
             <span>02-123-4567</span>
           </div>
         </section>
-        <ProductLinkItem linkTitle=" 전체 농산물" />
+        <ProductLinkItem linkTitle="판매자 텃밭" type="direct" src="/garden/1" />
       </div>
     );
   } else if (type === 'experience') {
@@ -125,7 +125,7 @@ export default function ProductDetailInfo({ type }: { type: 'crop' | 'experience
             <span>02-2342-4567</span>
           </div>
         </section>
-        <ProductLinkItem linkTitle=" 전체 농산물" />
+        <ProductLinkItem linkTitle="판매자 텃밭" type="direct" src="/garden/1" />
       </div>
     );
   } else if (type === 'gardening') {
@@ -174,8 +174,8 @@ export default function ProductDetailInfo({ type }: { type: 'crop' | 'experience
             <div className="flex flex-col">
               <span>무료</span>
               <div className="">
-                <Badge bgColor="bg-oguogu-yellow" textColor="text-oguogu-black" content="특급배송" />
-                <Badge bgColor="bg-oguogu-main-dark" textColor="text-oguogu-white" content="특급배송" />
+                <Badge type="express" />
+                <Badge type="safe" />
               </div>
             </div>
           </div>
@@ -194,7 +194,7 @@ export default function ProductDetailInfo({ type }: { type: 'crop' | 'experience
             <span>02-2342-4567</span>
           </div>
         </section>
-        <ProductLinkItem linkTitle=" 전체 농산물" />
+        <ProductLinkItem linkTitle="판매자 텃밭" type="direct" src="/garden/1" />
       </div>
     );
   }

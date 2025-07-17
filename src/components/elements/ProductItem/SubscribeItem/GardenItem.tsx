@@ -11,16 +11,18 @@ export default function GardenItem() {
       <Link href={`/product/crop/garden/1`} className="flex">
         {/* 대표 이미지 */}
         {/*이미지를 하드코딩 해둔 상태 추후 동적으로 관리해야 함*/}
-        <Image
-          src={`/images/garden/garden-001.png`}
-          alt=""
-          width={140}
-          height={186.67}
-          className="rounded-[8px] w-[140px] h-[186.67px] object-cover"
-        />
-        {/* 뱃지 (제철 상품, 인기 상품 등) 우선 아이콘 빼고 진행 */}
-        <div className="absolute left-2">
-          <Badge bgColor="bg-ogugu-blue-light" textColor="text-oguogu-white" content="마감 D-5" />
+        <div className="relative">
+          <Image
+            src={`/images/garden/garden-001.png`}
+            alt=""
+            width={140}
+            height={186.67}
+            className="rounded-[8px] w-[140px] h-[186.67px] object-cover"
+          />
+          {/* 뱃지 (제철 상품, 인기 상품 등) 우선 아이콘 빼고 진행 */}
+          <div className="absolute left-2 top-0.5">
+            <Badge type="closing" />
+          </div>
         </div>
       </Link>
       {/* 텍스트 정보 영역 */}
