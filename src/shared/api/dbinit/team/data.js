@@ -12,11 +12,12 @@ export const initData = async (clientId, nextSeq) => {
      * - 관리자
      
      * 2. 판매자 => type: 'seller'
-     * - 흥부네농산물
+     * - 흥부네농산물 
      * - 놀부네농산물
      * - 서울상회
      * - 국제농업
      * - 제주농산물
+     * - 업타운
      
      * 3. 사용자 => type: 'user'
      * - 정길용
@@ -77,7 +78,7 @@ export const initData = async (clientId, nextSeq) => {
             status: 'approved', // 'pending' | 'rejected' | 'approved' : 승인 | 'certified' : 인증
             requestedAt: '2025-07-01T09:30:00Z',
             reviewedAt: '2025-07-03T15:45:00Z',
-            reviewer: 'admin@market.com',
+            reviewer: 'admin@5959.com',
             reason: '서류 이상 없음',
           },
         },
@@ -116,7 +117,7 @@ export const initData = async (clientId, nextSeq) => {
             status: 'approved', // 'pending' | 'rejected' | 'approved' : 승인 | 'certified' : 인증
             requestedAt: '2025-07-01T09:30:00Z',
             reviewedAt: '2025-07-03T15:45:00Z',
-            reviewer: 'admin@market.com',
+            reviewer: 'admin@5959.com',
             reason: '서류 이상 없음',
           },
         },
@@ -155,7 +156,7 @@ export const initData = async (clientId, nextSeq) => {
             status: 'approved', // 'pending' | 'rejected' | 'approved' : 승인 | 'certified' : 인증
             requestedAt: '2025-07-01T09:30:00Z',
             reviewedAt: '2025-07-03T15:45:00Z',
-            reviewer: 'admin@market.com',
+            reviewer: 'admin@5959.com',
             reason: '서류 이상 없음',
           },
         },
@@ -194,7 +195,7 @@ export const initData = async (clientId, nextSeq) => {
             status: 'approved', // 'pending' | 'rejected' | 'approved' : 승인 | 'certified' : 인증
             requestedAt: '2025-07-01T09:30:00Z',
             reviewedAt: '2025-07-03T15:45:00Z',
-            reviewer: 'admin@market.com',
+            reviewer: 'admin@5959.com',
             reason: '서류 이상 없음',
           },
         },
@@ -233,7 +234,46 @@ export const initData = async (clientId, nextSeq) => {
             status: 'approved', // 'pending' | 'rejected' | 'approved' : 승인 | 'certified' : 인증
             requestedAt: '2025-07-01T09:30:00Z',
             reviewedAt: '2025-07-03T15:45:00Z',
-            reviewer: 'admin@market.com',
+            reviewer: 'admin@5959.com',
+            reason: '서류 이상 없음',
+          },
+        },
+      },
+      {
+        _id: await nextSeq('user'),
+        email: 'seller6@5959.com',
+        password: 'seller6',
+        name: '정신나',
+        phone: '01022314884',
+        address: '서울특별시 성동구 왕십리로 125',
+        type: 'seller',
+        loginType: 'email',
+        image: `/files/${clientId}/seller-6-profile.png`,
+        createdAt: getTime(-50),
+        updatedAt: getTime(-30, -60 * 60 * 3),
+        extra: {
+          // 상호명
+          businessName: '업타운',
+
+          // 대표자명
+          representativeName: '정신나',
+
+          // 사업자 번호
+          businessNumber: '221-87-00154',
+
+          // 대표 번호
+          tel: '070-882-4545',
+
+          // 첨부 파일 : 사업자등록증, 통신판매업신고증
+          businessLicenseImage: '/files/201/business-license.jpg',
+          telecomRegistrationImage: '/files/201/telecom-cert.jpg',
+
+          // 인증 상태 정보
+          certification: {
+            status: 'approved', // 'pending' | 'rejected' | 'approved' : 승인 | 'certified' : 인증
+            requestedAt: '2025-07-01T09:30:00Z',
+            reviewedAt: '2025-07-03T15:45:00Z',
+            reviewer: 'admin@5959.com',
             reason: '서류 이상 없음',
           },
         },
@@ -324,11 +364,11 @@ export const initData = async (clientId, nextSeq) => {
      * [x] seller_id: 3 * 5개
      * [x] seller_id: 4 * 5개
      * [x] seller_id: 5 * 5개
-     * [ ] seller_id: 6 * 5개
+     * [x] seller_id: 6 * 5개
 
      * 2. 체험 상품 => extra { productType: 'experience' }
-     * [ ] seller_id: 2 * 2개
-     * [ ] seller_id: 3 * 2개
+     * [x] seller_id: 2 * 2개
+     * [x] seller_id: 7 * 2개
 
      * 3. 텃밭 상품 => extra { productType: 'gardening' }
      * [ ] seller_id: 4 * 3개
@@ -2010,15 +2050,16 @@ export const initData = async (clientId, nextSeq) => {
       },
 
       /* 2. 체험 상품 */
+      // seller_id: 2
       {
         _id: await nextSeq('product'),
         seller_id: 2,
-        name: '강원도 농촌 체험 2박 3일',
-        content: '강원도 농촌 체험 2박 3일 체험하고 힐링하고 재밌어요',
-        price: 49900,
+        name: '강원도 산골마을 찰옥수수 수확체험',
+        content: '1인 20개 수확! 바베큐 중식 제공!',
+        price: 30000,
         shippingFees: 0,
         quantity: 20,
-        buyQuantity: 5,
+        buyQuantity: 12,
         show: true,
         active: true,
         mainImages: [
@@ -2046,50 +2087,298 @@ export const initData = async (clientId, nextSeq) => {
           filter: [],
 
           // 체험 장소 위치
-          region: '강원도 원주',
+          region: '강원도 인제',
 
           // 출발 지역
-          meetingPlace: '강남역 1번출구',
+          meetingPlace: '강원도 인제군 남면 부평정자로 1555',
 
-          // 출발 날짜
-          departureDate: '2025-08-01',
+          // 가는 날짜
+          departureDate: '2025-08-12',
 
-          // 도착 날짜
-          returnDate: '2025-08-03',
+          // 오는 날짜
+          returnDate: '2025-08-12',
 
           // 할인율
           dcRate: 40,
 
           // 최대 예약 가능 인원 수
-          productCnt: 6,
+          productCnt: 4,
 
-          // 포함 상품
-          includedItems: ['왕복 버스', '숙박 2박', '감자캐시 체험', '조식'],
+          // 대표 키워드
+          representitiveKeyword: ['체험', '웰빙', '힐링'],
 
-          // 미포함 상품
-          notIncludedItems: ['중식', '석식'],
+          // 포함 상품 : '식사 제공', '숙소 제공', '픽업 버스 운행', '체험 상품'
+          includedItems: ['식사 제공', '체험 상품'],
 
           // 일정
           schedule: [
-            { day: 1, title: '강원도 도착 및 이장님 인사', details: '이장님의 연설 듣기 딸기 농장 방문하기' },
-            { day: 2, title: '중문 관광', details: '유채꽃밭, 오설록 티뮤지엄 방문' },
+            { day: 1, startTime: '11:00', title: '마을 소개 및 옥수수 재배법 교육' },
+            { day: 1, startTime: '12:00', title: '점심 식사' },
+            { day: 1, startTime: '13:30', title: '찰옥수수 수확' },
+            { day: 1, startTime: '14:30', title: '찰옥수수 시식' },
           ],
-
-          // 여행사 정보
-          travelAgency: {
-            name: '트래블코리아',
-            license: 'T-2024-1234',
-          },
 
           // 가이드 정보
           guideInfo: {
-            name: '김여행',
+            name: '신세경',
+            contact: '010-7677-8123',
+          },
+
+          // 뱃지용
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: null }, // 제철 상품 (농산물 전용)
+            { isBest: true }, // 인기 상품
+            { isLowStock: true }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
+        },
+      },
+      {
+        _id: await nextSeq('product'),
+        seller_id: 2,
+        name: '옥수수 수확 체험',
+        content: '직접 딴 옥수수를 바로 삶아먹어요',
+        price: 10000,
+        shippingFees: 0,
+        quantity: 40,
+        buyQuantity: 18,
+        show: true,
+        active: true,
+        mainImages: [
+          {
+            path: `/files/${clientId}/seller-2-exp2-1.jpg`,
+            name: 'image-1.jpg',
+            originalname: '상품이미지-1.jpg',
+          },
+          {
+            path: `/files/${clientId}/seller-2-exp2-2.jpg`,
+            name: 'image-2.jpg',
+            originalname: '상품이미지-2.jpg',
+          },
+        ],
+        createdAt: getTime(-41, -60 * 60 * 2),
+        updatedAt: getTime(-40, -60 * 15),
+        extra: {
+          // 상품 타입 : 'crop' | 'experience' | 'gardening'
+          productType: 'experience',
+
+          // 2차 카테고리
+          category: [],
+
+          // 3차 카테고리
+          filter: [],
+
+          // 체험 장소 위치
+          region: '경상남도 거창',
+
+          // 출발 지역
+          meetingPlace: '경상남도 거창군 북상면 송계로 738',
+
+          // 가는 날짜
+          departureDate: '2025-08-12',
+
+          // 오는 날짜
+          returnDate: '2025-08-12',
+
+          // 할인율
+          dcRate: 0,
+
+          // 최대 예약 가능 인원 수
+          productCnt: 4,
+
+          // 대표 키워드
+          representitiveKeyword: ['체험'],
+
+          // 포함 상품 : '식사 제공', '숙소 제공', '픽업 버스 운행', '체험 상품'
+          includedItems: ['체험 상품'],
+
+          // 일정
+          schedule: [
+            { day: 1, startTime: '14:00', title: '옥수수 수확' },
+            { day: 1, startTime: '15:00', title: '옥수수 시식' },
+          ],
+
+          // 가이드 정보
+          guideInfo: {
+            name: '전농희',
+            contact: '010-4445-6667',
+          },
+
+          // 뱃지용
+          badge: [
+            { isNew: true }, // 신상품
+            { isInSeason: null }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
+        },
+      },
+      // seller_id: 7
+      {
+        _id: await nextSeq('product'),
+        seller_id: 7,
+        name: '[컨츄리타운] 촌캉스',
+        content: '폭스클럽과 유명연예인도 다녀간 촌캉스!',
+        price: 198000,
+        shippingFees: 0,
+        quantity: 20,
+        buyQuantity: 20,
+        show: true,
+        active: true,
+        mainImages: [
+          {
+            path: `/files/${clientId}/seller-2-exp2-1.jpg`,
+            name: 'image-1.jpg',
+            originalname: '상품이미지-1.jpg',
+          },
+          {
+            path: `/files/${clientId}/seller-2-exp2-2.jpg`,
+            name: 'image-2.jpg',
+            originalname: '상품이미지-2.jpg',
+          },
+        ],
+        createdAt: getTime(-41, -60 * 60 * 2),
+        updatedAt: getTime(-40, -60 * 15),
+        extra: {
+          // 상품 타입 : 'crop' | 'experience' | 'gardening'
+          productType: 'experience',
+
+          // 2차 카테고리
+          category: [],
+
+          // 3차 카테고리
+          filter: [],
+
+          // 체험 장소 위치
+          region: '강원도 홍천',
+
+          // 출발 지역
+          meetingPlace: '홍천터미널 정문 앞',
+
+          // 가는 날짜
+          departureDate: '2025-08-15',
+
+          // 오는 날짜
+          returnDate: '2025-08-16',
+
+          // 할인율
+          dcRate: 30,
+
+          // 최대 예약 가능 인원 수
+          productCnt: 2,
+
+          // 대표 키워드
+          representitiveKeyword: ['낭만', '청춘', '젊음'],
+
+          // 포함 상품 : '식사 제공', '숙소 제공', '픽업 버스 운행', '체험 상품'
+          includedItems: ['식사 제공', '숙소 제공', '픽업 버스 운행', '체험 상품'],
+
+          // 일정
+          schedule: [
+            { day: 1, startTime: '14:00', title: '농촌마을 전입신고' },
+            { day: 1, startTime: '15:00', title: '1부 프로그램' },
+            { day: 1, startTime: '18:00', title: '시골 밥상(저녁)' },
+            { day: 1, startTime: '20:00', title: '2부 프로그램' },
+            { day: 2, startTime: '10:00', title: '정겨운 아침밥(아침)' },
+            { day: 2, startTime: '11:00', title: '퇴소신고' },
+          ],
+
+          // 가이드 정보
+          guideInfo: {
+            name: '김우리',
             contact: '010-1234-5678',
           },
 
           // 뱃지용
           badge: [
             { isNew: false }, // 신상품
+            { isInSeason: null }, // 제철 상품 (농산물 전용)
+            { isBest: true }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: true }, // 품절 상품
+          ],
+        },
+      },
+      {
+        _id: await nextSeq('product'),
+        seller_id: 7,
+        name: '고소한 대화 한 조각, 임실치즈마을 가족소풍',
+        content: '임실 대표 관광지 치즈마을 당일 여행!',
+        price: 92000,
+        shippingFees: 0,
+        quantity: 20,
+        buyQuantity: 4,
+        show: true,
+        active: true,
+        mainImages: [
+          {
+            path: `/files/${clientId}/seller-2-exp2-1.jpg`,
+            name: 'image-1.jpg',
+            originalname: '상품이미지-1.jpg',
+          },
+          {
+            path: `/files/${clientId}/seller-2-exp2-2.jpg`,
+            name: 'image-2.jpg',
+            originalname: '상품이미지-2.jpg',
+          },
+        ],
+        createdAt: getTime(-41, -60 * 60 * 2),
+        updatedAt: getTime(-40, -60 * 15),
+        extra: {
+          // 상품 타입 : 'crop' | 'experience' | 'gardening'
+          productType: 'experience',
+
+          // 2차 카테고리
+          category: [],
+
+          // 3차 카테고리
+          filter: [],
+
+          // 체험 장소 위치
+          region: '전라북도 임실',
+
+          // 출발 지역
+          meetingPlace: '전북특별자치도 임실군 임실읍 치즈마을길 96',
+
+          // 가는 날짜
+          departureDate: '2025-08-09',
+
+          // 오는 날짜
+          returnDate: '2025-08-09',
+
+          // 할인율
+          dcRate: 45,
+
+          // 최대 예약 가능 인원 수
+          productCnt: 4,
+
+          // 대표 키워드
+          representitiveKeyword: ['가족', '대화', '힐링'],
+
+          // 포함 상품 : '식사 제공', '숙소 제공', '픽업 버스 운행', '체험 상품'
+          includedItems: ['식사 제공', '체험 상품'],
+
+          // 일정
+          schedule: [
+            { day: 1, startTime: '13:00', title: '오리엔테이션' },
+            { day: 1, startTime: '13:30', title: '경운기 투어' },
+            { day: 1, startTime: '14:00', title: '임실치즈피자 만들기' },
+            { day: 1, startTime: '15:00', title: '마을 산책 - 농사이야기' },
+            { day: 1, startTime: '15:30', title: '피크닉' },
+            { day: 1, startTime: '17:00', title: '성가리 벽화마을 투어' },
+          ],
+
+          // 가이드 정보
+          guideInfo: {
+            name: '이하나',
+            contact: '010-1234-5678',
+          },
+
+          // 뱃지용
+          badge: [
+            { isNew: true }, // 신상품
             { isInSeason: null }, // 제철 상품 (농산물 전용)
             { isBest: false }, // 인기 상품
             { isLowStock: false }, // 품절 임박 상품
