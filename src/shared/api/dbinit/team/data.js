@@ -396,11 +396,13 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 10,
 
           // 뱃지용
-          isNew: false, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: true, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: true }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       {
@@ -461,11 +463,13 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 10,
 
           // 뱃지용
-          isNew: true, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: false, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: true }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       {
@@ -526,11 +530,13 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 4,
 
           // 뱃지용
-          isNew: false, // 신상품
-          isInSeason: false, // 제철 상품 (농산물 전용)
-          isBest: false, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       {
@@ -591,11 +597,14 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 10,
 
           // 뱃지용
-          isNew: true, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: false, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          // 뱃지용
+          badge: [
+            { isNew: true }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       {
@@ -982,11 +991,13 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 10,
 
           // 뱃지용
-          isNew: false, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: true, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: true }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       // seller_id: 4
@@ -1048,11 +1059,13 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 100,
 
           // 뱃지용
-          isNew: false, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: true, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: true }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       {
@@ -1113,11 +1126,13 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 100,
 
           // 뱃지용
-          isNew: false, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: true, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: true }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       {
@@ -1178,11 +1193,13 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 100,
 
           // 뱃지용
-          isNew: false, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: true, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: true }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       {
@@ -1243,11 +1260,13 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 999,
 
           // 뱃지용
-          isNew: false, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: false, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       {
@@ -1308,11 +1327,13 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 50,
 
           // 뱃지용
-          isNew: false, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: true, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: true }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       // seller_id: 5
@@ -1374,11 +1395,13 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 10,
 
           // 뱃지용
-          isNew: false, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: true, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: true }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       {
@@ -1439,11 +1462,13 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 10,
 
           // 뱃지용
-          isNew: false, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: false, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       {
@@ -1504,11 +1529,13 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 5,
 
           // 뱃지용
-          isNew: false, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: true, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: true, // 품절 상품
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: true }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: true }, // 품절 상품
+          ],
         },
       },
       {
@@ -1520,8 +1547,8 @@ export const initData = async (clientId, nextSeq) => {
         shippingFees: 0,
         quantity: 1000,
         buyQuantity: 899,
-        show: false,
-        active: false,
+        show: true,
+        active: true,
         mainImages: [
           {
             // seller-${seller_id}-${productType}${_id}-${numbering}
@@ -1569,11 +1596,13 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 10,
 
           // 뱃지용
-          isNew: false, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: true, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: true }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       {
@@ -1585,8 +1614,8 @@ export const initData = async (clientId, nextSeq) => {
         shippingFees: 0,
         quantity: 1500,
         buyQuantity: 452,
-        show: false,
-        active: false,
+        show: true,
+        active: true,
         mainImages: [
           {
             // seller-${seller_id}-${productType}${_id}-${numbering}
@@ -1634,14 +1663,351 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 99,
 
           // 뱃지용
-          isNew: false, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: false, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       // seller_id: 6
+      {
+        _id: await nextSeq('product'),
+        seller_id: 6,
+        name: '햇 괴산 대학찰옥수수 찐옥수수 장작불 가마솥에 삶은 냉동 옥수수',
+        content: '나무 장작불로 삶아낸 국도에서 먹던 그맛!',
+        price: 60000,
+        shippingFees: 0,
+        quantity: 10000,
+        buyQuantity: 8142,
+        show: true,
+        active: true,
+        mainImages: [
+          {
+            // seller-${seller_id}-${productType}${_id}-${numbering}
+            path: `/files/${clientId}/seller-2-crop1-1.jpg`,
+            name: 'image-1.jpg',
+            originalname: '상품이미지-1.jpg',
+          },
+          {
+            path: `/files/${clientId}/seller-2-crop2-2.jpg`,
+            name: 'image-2.jpg',
+            originalname: '상품이미지-2.jpg',
+          },
+        ],
+        createdAt: getTime(-41, -60 * 60 * 2),
+        updatedAt: getTime(-40, -60 * 15),
+        extra: {
+          // 상품 타입 : 'crop' | 'experience' | 'gardening'
+          productType: 'crop',
+
+          // 2차 카테고리 : 'veggie', 'fruit', 'grain', 'mushroom'
+          category: 'veggie',
+
+          // 3차 카테고리
+          filter: ['옥수수'],
+
+          // 원산지
+          originPlace: '국산',
+
+          // 생산지
+          productionPlace: '충청북도 괴산',
+
+          // 상품 구성
+          composition: '30개입 * 1개',
+
+          // 배송 관련 추가 정보
+          deliveryInfo: '평일 1~2일 소요',
+
+          // 찜 수
+          likeCount: 31211,
+
+          // 할인율
+          dcRate: 51,
+
+          // 최대 구매 가능 수량
+          productCnt: 99,
+
+          // 뱃지용
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: true }, // 인기 상품
+            { isLowStock: true }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
+        },
+      },
+      {
+        _id: await nextSeq('product'),
+        seller_id: 6,
+        name: '국내산 초당옥수수',
+        content: '돌아온 여름, 온 가족이 즐겨먹는 여름별미!',
+        price: 56000,
+        shippingFees: 0,
+        quantity: 1000,
+        buyQuantity: 50,
+        show: true,
+        active: true,
+        mainImages: [
+          {
+            // seller-${seller_id}-${productType}${_id}-${numbering}
+            path: `/files/${clientId}/seller-2-crop1-1.jpg`,
+            name: 'image-1.jpg',
+            originalname: '상품이미지-1.jpg',
+          },
+          {
+            path: `/files/${clientId}/seller-2-crop2-2.jpg`,
+            name: 'image-2.jpg',
+            originalname: '상품이미지-2.jpg',
+          },
+        ],
+        createdAt: getTime(-41, -60 * 60 * 2),
+        updatedAt: getTime(-40, -60 * 15),
+        extra: {
+          // 상품 타입 : 'crop' | 'experience' | 'gardening'
+          productType: 'crop',
+
+          // 2차 카테고리 : 'veggie', 'fruit', 'grain', 'mushroom'
+          category: 'veggie',
+
+          // 3차 카테고리
+          filter: ['옥수수'],
+
+          // 원산지
+          originPlace: '국산',
+
+          // 생산지
+          productionPlace: '충청북도 괴산',
+
+          // 상품 구성
+          composition: '5개입 * 1개',
+
+          // 배송 관련 추가 정보
+          deliveryInfo: '평일 1~2일 소요',
+
+          // 찜 수
+          likeCount: 122,
+
+          // 할인율
+          dcRate: 79,
+
+          // 최대 구매 가능 수량
+          productCnt: 10,
+
+          // 뱃지용
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
+        },
+      },
+      {
+        _id: await nextSeq('product'),
+        seller_id: 6,
+        name: '초당옥수수 콧털삼촌 농장 3차선별 당일수확 산지직송 옥수수',
+        content: '7년동안의 노하우! 초당옥수수 전문 생산, 유통',
+        price: 34800,
+        shippingFees: 0,
+        quantity: 2000,
+        buyQuantity: 754,
+        show: true,
+        active: true,
+        mainImages: [
+          {
+            // seller-${seller_id}-${productType}${_id}-${numbering}
+            path: `/files/${clientId}/seller-2-crop1-1.jpg`,
+            name: 'image-1.jpg',
+            originalname: '상품이미지-1.jpg',
+          },
+          {
+            path: `/files/${clientId}/seller-2-crop2-2.jpg`,
+            name: 'image-2.jpg',
+            originalname: '상품이미지-2.jpg',
+          },
+        ],
+        createdAt: getTime(-41, -60 * 60 * 2),
+        updatedAt: getTime(-40, -60 * 15),
+        extra: {
+          // 상품 타입 : 'crop' | 'experience' | 'gardening'
+          productType: 'crop',
+
+          // 2차 카테고리 : 'veggie', 'fruit', 'grain', 'mushroom'
+          category: 'veggie',
+
+          // 3차 카테고리
+          filter: ['옥수수'],
+
+          // 원산지
+          originPlace: '국산',
+
+          // 생산지
+          productionPlace: '충청북도 괴산',
+
+          // 상품 구성
+          composition: '5개입 * 1개',
+
+          // 배송 관련 추가 정보
+          deliveryInfo: '평일 1~2일 소요',
+
+          // 찜 수
+          likeCount: 1124,
+
+          // 할인율
+          dcRate: 50,
+
+          // 최대 구매 가능 수량
+          productCnt: 50,
+
+          // 뱃지용
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
+        },
+      },
+      {
+        _id: await nextSeq('product'),
+        seller_id: 6,
+        name: '초당옥수수 고당도 제철 3차선별 옥수수',
+        content: '청정산지에서 생산하는 옥수수',
+        price: 24000,
+        shippingFees: 0,
+        quantity: 1000,
+        buyQuantity: 550,
+        show: true,
+        active: true,
+        mainImages: [
+          {
+            // seller-${seller_id}-${productType}${_id}-${numbering}
+            path: `/files/${clientId}/seller-2-crop1-1.jpg`,
+            name: 'image-1.jpg',
+            originalname: '상품이미지-1.jpg',
+          },
+          {
+            path: `/files/${clientId}/seller-2-crop2-2.jpg`,
+            name: 'image-2.jpg',
+            originalname: '상품이미지-2.jpg',
+          },
+        ],
+        createdAt: getTime(-41, -60 * 60 * 2),
+        updatedAt: getTime(-40, -60 * 15),
+        extra: {
+          // 상품 타입 : 'crop' | 'experience' | 'gardening'
+          productType: 'crop',
+
+          // 2차 카테고리 : 'veggie', 'fruit', 'grain', 'mushroom'
+          category: 'veggie',
+
+          // 3차 카테고리
+          filter: ['옥수수'],
+
+          // 원산지
+          originPlace: '국산',
+
+          // 생산지
+          productionPlace: '경상남도 의령',
+
+          // 상품 구성
+          composition: '5개입 * 1개',
+
+          // 배송 관련 추가 정보
+          deliveryInfo: '평일 1~2일 소요',
+
+          // 찜 수
+          likeCount: 882,
+
+          // 할인율
+          dcRate: 50,
+
+          // 최대 구매 가능 수량
+          productCnt: 30,
+
+          // 뱃지용
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
+        },
+      },
+      {
+        _id: await nextSeq('product'),
+        seller_id: 6,
+        name: '기장찰옥수수 신선하게 삶아낸 냉동 찰옥수수 다양한 맛과 품종',
+        content: '상위2% 전문가가 직접 만든 무첨가 기장찰옥수수',
+        price: 37900,
+        shippingFees: 0,
+        quantity: 3000,
+        buyQuantity: 2412,
+        show: true,
+        active: true,
+        mainImages: [
+          {
+            // seller-${seller_id}-${productType}${_id}-${numbering}
+            path: `/files/${clientId}/seller-2-crop1-1.jpg`,
+            name: 'image-1.jpg',
+            originalname: '상품이미지-1.jpg',
+          },
+          {
+            path: `/files/${clientId}/seller-2-crop2-2.jpg`,
+            name: 'image-2.jpg',
+            originalname: '상품이미지-2.jpg',
+          },
+        ],
+        createdAt: getTime(-41, -60 * 60 * 2),
+        updatedAt: getTime(-40, -60 * 15),
+        extra: {
+          // 상품 타입 : 'crop' | 'experience' | 'gardening'
+          productType: 'crop',
+
+          // 2차 카테고리 : 'veggie', 'fruit', 'grain', 'mushroom'
+          category: 'veggie',
+
+          // 3차 카테고리
+          filter: ['옥수수'],
+
+          // 원산지
+          originPlace: '중국',
+
+          // 생산지
+          productionPlace: '중국',
+
+          // 상품 구성
+          composition: '10개입 * 1개',
+
+          // 배송 관련 추가 정보
+          deliveryInfo: '평일 1~2일 소요',
+
+          // 찜 수
+          likeCount: 882,
+
+          // 할인율
+          dcRate: 73,
+
+          // 최대 구매 가능 수량
+          productCnt: 100,
+
+          // 뱃지용
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
+        },
+      },
 
       /* 2. 체험 상품 */
       {
@@ -1722,11 +2088,13 @@ export const initData = async (clientId, nextSeq) => {
           },
 
           // 뱃지용
-          isNew: true, // 신상품
-          isBest: false, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
-          isClosingSoon: false, // 판매 종료 임박 상품 (체험, 텃밭)
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: null }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
 
@@ -1782,11 +2150,13 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 1,
 
           // 뱃지용
-          isNew: true, // 신상품
-          isBest: false, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
-          isClosingSoon: false, // 판매 종료 임박 상품 (체험, 텃밭)
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: null }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
 
           // 텃밭 구독자 제공 정보 (주기별 상품 상태 메시지)
           period: [
