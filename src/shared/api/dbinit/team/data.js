@@ -371,9 +371,8 @@ export const initData = async (clientId, nextSeq) => {
      * [x] seller_id: 7 * 2개
 
      * 3. 텃밭 상품 => extra { productType: 'gardening' }
-     * [ ] seller_id: 4 * 3개
-     * [ ] seller_id: 5 * 3개
-     * [ ] seller_id: 6 * 3개
+     * [x] seller_id: 3 * 3개
+     * [x] seller_id: 5 * 3개
      * */
     product: [
       /* 1. 농산물 상품 */
@@ -2388,15 +2387,16 @@ export const initData = async (clientId, nextSeq) => {
       },
 
       /* 3. 텃밭 상품 */
+      // seller_id: 3
       {
         _id: await nextSeq('product'),
-        seller_id: 2,
-        name: '김이장님 텃밭',
-        content: '원주시 김이장님의 텃밭을 이용해보세요',
-        price: 22800,
+        seller_id: 3,
+        name: '양배추',
+        content: '양배추에서 조세호가 될 때까지',
+        price: 30000,
         shippingFees: 0,
-        quantity: 20,
-        buyQuantity: 5,
+        quantity: 40,
+        buyQuantity: 32,
         show: true,
         active: true,
         mainImages: [
@@ -2424,16 +2424,257 @@ export const initData = async (clientId, nextSeq) => {
           filter: [],
 
           // 텃밭 위치
-          region: '전북 남원시 금동길 123',
+          region: '경기 여주시 산북면 광여로 1509',
 
           // 판매 마감일
-          deadline: '2025년 4월 15일',
+          deadline: '2025-08-15',
 
           // 수확 예정일
-          harvestExpectedDate: '2025년 7월 중',
+          harvestExpectedDate: '2025년 11월',
+
+          // 예상 수확량
+          harvestExpectedCnt: '5통',
 
           // 할인율
-          dcRate: 40,
+          dcRate: 35,
+
+          // 최대 구매 가능 수량
+          productCnt: 1,
+
+          // 뱃지용
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: null }, // 제철 상품 (농산물 전용)
+            { isBest: true }, // 인기 상품
+            { isLowStock: true }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
+
+          // 텃밭 구독자 제공 정보 (주기별 상품 상태 메시지) : seeding | growing | harvested
+          period: [
+            {
+              date: '2025-08-18',
+              image: 'src',
+              status: 'seeding',
+              content: '양배추 재배, 오늘 시작합니다',
+            },
+            {
+              date: '2025-09-04',
+              image: 'src',
+              status: 'growing',
+              content: '잘 커라 양배추야',
+            },
+            {
+              date: '2025-09-17',
+              image: 'src',
+              status: 'growing',
+              content: '무럭무럭 잘 자라고 있습니다.',
+            },
+            {
+              date: '2025-10-04',
+              image: 'src',
+              status: 'growing',
+              content: '곧 있으면 수확할 수 있겠네요.',
+            },
+            {
+              date: '2025-10-15',
+              image: 'src',
+              status: 'havested',
+              content: '엄청 실하네요ㅎㅎ곧 배송 예정!',
+            },
+          ],
+
+          // 텃밭 판매 현황 (상호작용 UI용)
+          // plots: [
+          //   {
+          //     plotNumber: 1,
+          //     name: 'A-1',
+          //     isAvailable: false,
+          //     ownerUserId: 1002,
+          //     plantedAt: '2025-07-01',
+          //     status: 'seeding', // available | seeding | growing | harvested
+          //   },
+          //   {
+          //     plotNumber: 2,
+          //     name: 'A-2',
+          //     isAvailable: true,
+          //     ownerUserId: null,
+          //     plantedAt: '2025-07-01',
+          //     status: 'seeding', // available | seeding | growing | harvested
+          //   },
+          //   {
+          //     plotNumber: 3,
+          //     name: 'A-3',
+          //     isAvailable: true,
+          //     ownerUserId: null,
+          //     plantedAt: null,
+          //     status: 'available',
+          //   },
+          //   {
+          //     plotNumber: 4,
+          //     name: 'A-4',
+          //     isAvailable: true,
+          //     ownerUserId: null,
+          //     plantedAt: null,
+          //     status: 'available',
+          //   },
+          //   {
+          //     plotNumber: 5,
+          //     name: 'A-5',
+          //     isAvailable: true,
+          //     ownerUserId: null,
+          //     plantedAt: null,
+          //     status: 'available',
+          //   },
+          // ],
+        },
+      },
+      {
+        _id: await nextSeq('product'),
+        seller_id: 3,
+        name: '청경채',
+        content: '청경채의 성장 여정을 함께 해요',
+        price: 15000,
+        shippingFees: 0,
+        quantity: 300,
+        buyQuantity: 112,
+        show: true,
+        active: true,
+        mainImages: [
+          {
+            path: `/files/${clientId}/seller-2-gdn3-1.jpg`,
+            name: 'image-1.jpg',
+            originalname: '상품이미지-1.jpg',
+          },
+          {
+            path: `/files/${clientId}/seller-2-gdn3-2.jpg`,
+            name: 'image-2.jpg',
+            originalname: '상품이미지-2.jpg',
+          },
+        ],
+        createdAt: getTime(-41, -60 * 60 * 2),
+        updatedAt: getTime(-40, -60 * 15),
+        extra: {
+          // 상품 타입 : 'crop' | 'experience' | 'gardening'
+          productType: 'gardening',
+
+          // 2차 카테고리
+          category: [],
+
+          // 3차 카테고리
+          filter: [],
+
+          // 텃밭 위치
+          region: '경기 여주시 산북면 광여로 1509',
+
+          // 판매 마감일
+          deadline: '2025-08-09',
+
+          // 수확 예정일
+          harvestExpectedDate: '2025년 10월 초',
+
+          // 예상 수확량
+          harvestExpectedCnt: '2kg',
+
+          // 할인율
+          dcRate: 25,
+
+          // 최대 구매 가능 수량
+          productCnt: 1,
+
+          // 뱃지용
+          badge: [
+            { isNew: true }, // 신상품
+            { isInSeason: null }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
+
+          // 텃밭 구독자 제공 정보 (주기별 상품 상태 메시지) : seeding | growing | harvested
+          period: [
+            {
+              date: '2025-08-12',
+              image: 'src',
+              status: 'seeding',
+              content: '싹을 심었습니다.',
+            },
+            {
+              date: '2025-08-25',
+              image: 'src',
+              status: 'growing',
+              content: '싹이 자랐습니다.',
+            },
+            {
+              date: '2025-09-16',
+              image: 'src',
+              status: 'growing',
+              content: '잎이 무럭무럭 자라고 있습니다.',
+            },
+            {
+              date: '2025-09-30',
+              image: 'src',
+              status: 'growing',
+              content: '곧 있으면 수확할 수 있겠네요.',
+            },
+            {
+              date: '2025-10-19',
+              image: 'src',
+              status: 'havested',
+              content: '재배를 했습니다.',
+            },
+          ],
+        },
+      },
+      {
+        _id: await nextSeq('product'),
+        seller_id: 3,
+        name: '옥수수',
+        content: '겨울에 수확하는 옥수수? 같이 키워주세요!',
+        price: 27000,
+        shippingFees: 0,
+        quantity: 200,
+        buyQuantity: 41,
+        show: true,
+        active: true,
+        mainImages: [
+          {
+            path: `/files/${clientId}/seller-2-gdn3-1.jpg`,
+            name: 'image-1.jpg',
+            originalname: '상품이미지-1.jpg',
+          },
+          {
+            path: `/files/${clientId}/seller-2-gdn3-2.jpg`,
+            name: 'image-2.jpg',
+            originalname: '상품이미지-2.jpg',
+          },
+        ],
+        createdAt: getTime(-41, -60 * 60 * 2),
+        updatedAt: getTime(-40, -60 * 15),
+        extra: {
+          // 상품 타입 : 'crop' | 'experience' | 'gardening'
+          productType: 'gardening',
+
+          // 2차 카테고리
+          category: [],
+
+          // 3차 카테고리
+          filter: [],
+
+          // 텃밭 위치
+          region: '중국',
+
+          // 판매 마감일
+          deadline: '2025-08-25',
+
+          // 수확 예정일
+          harvestExpectedDate: '2025년 12월',
+
+          // 예상 수확량
+          harvestExpectedCnt: '20개',
+
+          // 할인율
+          dcRate: 59,
 
           // 최대 구매 가능 수량
           productCnt: 1,
@@ -2447,31 +2688,31 @@ export const initData = async (clientId, nextSeq) => {
             { isSold: false }, // 품절 상품
           ],
 
-          // 텃밭 구독자 제공 정보 (주기별 상품 상태 메시지)
+          // 텃밭 구독자 제공 정보 (주기별 상품 상태 메시지) : seeding | growing | harvested
           period: [
             {
-              date: '4월 초',
+              date: '2025-09-02',
               image: 'src',
               status: 'seeding',
-              content: '싹을 심었습니다.',
+              content: '무럭 무럭 자라라',
             },
             {
-              date: '5월 초',
+              date: '2025-09-23',
               image: 'src',
               status: 'growing',
-              content: '싹이 자랐습니다.',
+              content: '체계적인 생산 공정 덕분에 신선하고 건강하게 자라고 있어요',
             },
             {
-              date: '6월 초',
+              date: '2025-10-12',
               image: 'src',
-              status: 'growin',
-              content: '열매가 생겼습니다.',
+              status: 'growing',
+              content: '유전자 조작 아닙니다. 대박이죠?',
             },
             {
-              date: '7월 초',
+              date: '2025-11-02',
               image: 'src',
               status: 'havested',
-              content: '재배를 했습니다.',
+              content: '올해는 조금 늦었습니다. 수확 완료!',
             },
           ],
 
@@ -2516,6 +2757,274 @@ export const initData = async (clientId, nextSeq) => {
               ownerUserId: null,
               plantedAt: null,
               status: 'available',
+            },
+          ],
+        },
+      },
+      // seller_id: 5
+      {
+        _id: await nextSeq('product'),
+        seller_id: 5,
+        name: '배추',
+        content: '배추의 성장 여정을 함께 해요',
+        price: 25000,
+        shippingFees: 0,
+        quantity: 50,
+        buyQuantity: 45,
+        show: true,
+        active: true,
+        mainImages: [
+          {
+            path: `/files/${clientId}/seller-2-gdn3-1.jpg`,
+            name: 'image-1.jpg',
+            originalname: '상품이미지-1.jpg',
+          },
+          {
+            path: `/files/${clientId}/seller-2-gdn3-2.jpg`,
+            name: 'image-2.jpg',
+            originalname: '상품이미지-2.jpg',
+          },
+        ],
+        createdAt: getTime(-41, -60 * 60 * 2),
+        updatedAt: getTime(-40, -60 * 15),
+        extra: {
+          // 상품 타입 : 'crop' | 'experience' | 'gardening'
+          productType: 'gardening',
+
+          // 2차 카테고리
+          category: [],
+
+          // 3차 카테고리
+          filter: [],
+
+          // 텃밭 위치
+          region: '경기 여주시 산북면 광여로 1509',
+
+          // 판매 마감일
+          deadline: '2025-08-10',
+
+          // 수확 예정일
+          harvestExpectedDate: '2025년 10월 ~ 11월',
+
+          // 예상 수확량
+          harvestExpectedCnt: '6포기',
+
+          // 할인율
+          dcRate: 40,
+
+          // 최대 구매 가능 수량
+          productCnt: 1,
+
+          // 뱃지용
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: null }, // 제철 상품 (농산물 전용)
+            { isBest: true }, // 인기 상품
+            { isLowStock: true }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
+
+          // 텃밭 구독자 제공 정보 (주기별 상품 상태 메시지) : seeding | growing | harvested
+          period: [
+            {
+              date: '2025-08-13',
+              image: 'src',
+              status: 'seeding',
+              content: '싹을 심었습니다.',
+            },
+            {
+              date: '2025-08-31',
+              image: 'src',
+              status: 'growing',
+              content: '싹이 자랐습니다.',
+            },
+            {
+              date: '2025-09-14',
+              image: 'src',
+              status: 'growing',
+              content: '잎이 무럭무럭 자라고 있습니다.',
+            },
+            {
+              date: '2025-10-01',
+              image: 'src',
+              status: 'growing',
+              content: '곧 있으면 수확할 수 있겠네요.',
+            },
+            {
+              date: '2025-10-21',
+              image: 'src',
+              status: 'havested',
+              content: '재배를 했습니다.',
+            },
+          ],
+        },
+      },
+      {
+        _id: await nextSeq('product'),
+        seller_id: 5,
+        name: '무',
+        content: '무의 성장 여정을 함께 해요',
+        price: 35000,
+        shippingFees: 0,
+        quantity: 100,
+        buyQuantity: 100,
+        show: true,
+        active: true,
+        mainImages: [
+          {
+            path: `/files/${clientId}/seller-2-gdn3-1.jpg`,
+            name: 'image-1.jpg',
+            originalname: '상품이미지-1.jpg',
+          },
+          {
+            path: `/files/${clientId}/seller-2-gdn3-2.jpg`,
+            name: 'image-2.jpg',
+            originalname: '상품이미지-2.jpg',
+          },
+        ],
+        createdAt: getTime(-41, -60 * 60 * 2),
+        updatedAt: getTime(-40, -60 * 15),
+        extra: {
+          // 상품 타입 : 'crop' | 'experience' | 'gardening'
+          productType: 'gardening',
+
+          // 2차 카테고리
+          category: [],
+
+          // 3차 카테고리
+          filter: [],
+
+          // 텃밭 위치
+          region: '경기도 여주시 가남읍 상활1길 68',
+
+          // 판매 마감일
+          deadline: '2025-08-13',
+
+          // 수확 예정일
+          harvestExpectedDate: '2025년 10월 ~ 11월',
+
+          // 예상 수확량
+          harvestExpectedCnt: '10수',
+
+          // 할인율
+          dcRate: 50,
+
+          // 최대 구매 가능 수량
+          productCnt: 1,
+
+          // 뱃지용
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: null }, // 제철 상품 (농산물 전용)
+            { isBest: true }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: true }, // 품절 상품
+          ],
+
+          // 텃밭 구독자 제공 정보 (주기별 상품 상태 메시지) : seeding | growing | harvested
+          period: [
+            {
+              date: '2025-08-20',
+              image: 'src',
+              status: 'seeding',
+              content: '싹을 심었습니다.',
+            },
+            {
+              date: '2025-09-12',
+              image: 'src',
+              status: 'growing',
+              content: '잎이 넓은게 올해 무는 기대가 됩니다',
+            },
+            {
+              date: '2025-10-04',
+              image: 'src',
+              status: 'havested',
+              content: '알이 실하죠? 곧 배송해드릴게요ㅎㅎ',
+            },
+          ],
+        },
+      },
+      {
+        _id: await nextSeq('product'),
+        seller_id: 5,
+        name: '브로콜리',
+        content: '브로콜리의 성장 여정을 함께 해요',
+        price: 22000,
+        shippingFees: 0,
+        quantity: 300,
+        buyQuantity: 179,
+        show: true,
+        active: true,
+        mainImages: [
+          {
+            path: `/files/${clientId}/seller-2-gdn3-1.jpg`,
+            name: 'image-1.jpg',
+            originalname: '상품이미지-1.jpg',
+          },
+          {
+            path: `/files/${clientId}/seller-2-gdn3-2.jpg`,
+            name: 'image-2.jpg',
+            originalname: '상품이미지-2.jpg',
+          },
+        ],
+        createdAt: getTime(-41, -60 * 60 * 2),
+        updatedAt: getTime(-40, -60 * 15),
+        extra: {
+          // 상품 타입 : 'crop' | 'experience' | 'gardening'
+          productType: 'gardening',
+
+          // 2차 카테고리
+          category: [],
+
+          // 3차 카테고리
+          filter: [],
+
+          // 텃밭 위치
+          region: '경기도 여주시 가남읍 상활1길 68',
+
+          // 판매 마감일
+          deadline: '2025-08-12',
+
+          // 수확 예정일
+          harvestExpectedDate: '2025년 10월 ~ 11월',
+
+          // 예상 수확량
+          harvestExpectedCnt: '2kg',
+
+          // 할인율
+          dcRate: 50,
+
+          // 최대 구매 가능 수량
+          productCnt: 1,
+
+          // 뱃지용
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: null }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
+
+          // 텃밭 구독자 제공 정보 (주기별 상품 상태 메시지) : seeding | growing | harvested
+          period: [
+            {
+              date: '2025-08-14',
+              image: 'src',
+              status: 'seeding',
+              content: '싹을 심었습니다.',
+            },
+            {
+              date: '2025-09-08',
+              image: 'src',
+              status: 'growing',
+              content: '잎이 넓은게 올해 무는 기대가 됩니다',
+            },
+            {
+              date: '2025-10-07',
+              image: 'src',
+              status: 'havested',
+              content: '알이 실하죠? 곧 배송해드릴게요ㅎㅎ',
             },
           ],
         },
