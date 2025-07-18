@@ -1,5 +1,7 @@
+'use client';
+
 import { ImageCategoryItem, TextCategoryItem } from '@/components/elements/CategoryItem/CategoryItem';
-import ProductLink from '@/components/elements/ProductLink/ProductLink';
+import { usePathname } from 'next/navigation';
 
 /**
  * 이미지형 카테고리 컴포넌트
@@ -7,17 +9,14 @@ import ProductLink from '@/components/elements/ProductLink/ProductLink';
  */
 export function ImageCategory() {
   return (
-    <>
-      <section className="flex flex-col items-center pt-4 pb-2">
-        <div className="flex gap-5">
-          <ImageCategoryItem params="veggie" title="채소" />
-          <ImageCategoryItem params="fruit" title="과일" />
-          <ImageCategoryItem params="grain" title="쌀/곡류" />
-          <ImageCategoryItem params="mushroom" title="버섯" />
-        </div>
-      </section>
-      <ProductLink link="/product/crop" linkTitle="전체 농산물" subTxt="보러 가기" />
-    </>
+    <section className="flex flex-col items-center pt-4 pb-2">
+      <div className="flex gap-5">
+        <ImageCategoryItem params="veggie" title="채소" />
+        <ImageCategoryItem params="fruit" title="과일" />
+        <ImageCategoryItem params="grain" title="쌀/곡류" />
+        <ImageCategoryItem params="mushroom" title="버섯" />
+      </div>
+    </section>
   );
 }
 
@@ -27,11 +26,23 @@ export function ImageCategory() {
  * @returns {HTMLElement}
  */
 export function TextCategory() {
+  const pathname = usePathname();
+
   return (
-    <nav className="flex items-center">
-      <TextCategoryItem params="crop" subParams="" title="농산물" isClick={true} />
-      <TextCategoryItem params="experience" subParams="" title="체험" isClick={false} />
-      <TextCategoryItem params="gardening" subParams="" title="텃밭" isClick={false} />
+    <nav className="flex items-center secondHeader">
+      <TextCategoryItem params="crop" subParams="" title="농산물" isClick={pathname.includes('/crop') ? true : false} />
+      <TextCategoryItem
+        params="experience"
+        subParams=""
+        title="체험"
+        isClick={pathname.includes('/experience') ? true : false}
+      />
+      <TextCategoryItem
+        params="gardening"
+        subParams=""
+        title="텃밭"
+        isClick={pathname.includes('/gardening') ? true : false}
+      />
     </nav>
   );
 }
@@ -43,7 +54,7 @@ export function TextCategory() {
  */
 export function FilteredTextCategory() {
   return (
-    <nav className="flex">
+    <nav className="flex thirdHeader">
       <TextCategoryItem params="crop" subParams="veggie" title="채소" isClick={false} />
       <TextCategoryItem params="crop" subParams="fruit" title="과일" isClick={false} />
       <TextCategoryItem params="crop" subParams="grain" title="쌀/곡류" isClick={false} />
