@@ -4,9 +4,7 @@ export default function RegisterFormForSeller() {
   return (
     <>
       <LinkHeader title="판매자 회원가입" />
-      <main className="w-[320px] mx-auto px-4 h-[calc(100vh-48px)] flex items-center overflow-y-hidden">
-        {/* 여기에 내용 작성 */}
-      </main>
+      <main className="w-[320px] mx-auto px-4 h-[calc(100vh-48px)]">{/* 여기에 내용 작성 */}</main>
     </>
   );
 }

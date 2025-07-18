@@ -4,10 +4,12 @@ import ExperienceItem from '@/components/elements/ProductItem/ExperienceItem/Exp
 import GardenItem from '@/components/elements/ProductItem/SubscribeItem/GardenItem';
 import QnaItem from '@/components/elements/QnaItem/QnaItem';
 import ReviewItem from '@/components/elements/ReviewItem/ReviewItem';
+import CategoryHeader from '@/components/layouts/Header/CategoryHeader';
 
 export default function ProductListByType() {
   return (
     <>
+      <CategoryHeader />
       <h1>1차 카테고리 상품 목록 페이지</h1>
       <h2>experience : 체험 상품</h2>
       <h2>gardening : 텃밭 상품</h2>
