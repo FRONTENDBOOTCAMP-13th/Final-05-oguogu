@@ -24,7 +24,7 @@ export default function ProductQna() {
             <p className="text-oguogu-main pr-1 ">로그인</p> 후 문의글 작성하기
           </button>
         )}
-        <ProductLinkItem linkTitle="전체 농산물" />
+        <ProductLinkItem link="/board/reviews" linkTitle="전체 리뷰" subTxt="보러 가기" />
       </section>
 
       <section>
