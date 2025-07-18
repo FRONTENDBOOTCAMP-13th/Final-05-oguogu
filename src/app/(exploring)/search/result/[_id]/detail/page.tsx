@@ -14,10 +14,10 @@ import { useState } from 'react';
 
 export default function ProductDetail() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const productType = 'gardening';
+  const productType = 'crop';
 
   return (
-    <div>
+    <>
       <Image
         className="w-full max-h-[480px] object-cover aspect-square"
         src="/images/crop/crop-001.png"
@@ -36,6 +36,6 @@ export default function ProductDetail() {
       {/* 모달 */}
       {isModalOpen && <BuyModal type={productType} onClose={() => setIsModalOpen(false)} />}
       {!isModalOpen && <BuyBox onOpenModal={() => setIsModalOpen(true)} />}
-    </div>
+    </>
   );
 }

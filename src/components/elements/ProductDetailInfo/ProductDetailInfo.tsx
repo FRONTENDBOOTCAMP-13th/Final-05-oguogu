@@ -9,12 +9,16 @@ export default function ProductDetailInfo({ type }: { type: 'crop' | 'experience
     return (
       <div className="px-4 pt-4 flex flex-col gap-4">
         <section className="flex flex-col gap-4">
+          {/* 경로 */}
           <PathCaseOne title="옥수수" />
+
+          {/* 타이틀 */}
           <Title
             title="쫀득쫀득 대학 미백 찰옥수수 30개입"
             content="올해 수확! 알갱이가 톡톡 터지는 맛있는 찰옥수수"
             type="basic"
           />
+
           {/* 가격 정보 */}
           <div>
             <s className="text-[16px] text-oguogu-gray-2">20,000원</s>
@@ -59,7 +63,7 @@ export default function ProductDetailInfo({ type }: { type: 'crop' | 'experience
             <span>02-123-4567</span>
           </div>
         </section>
-        <ProductLinkItem linkTitle=" 전체 농산물" />
+        <ProductLinkItem link="/garden" linkTitle="판매자 텃밭" subTxt="바로 가기" />
       </div>
     );
   } else if (type === 'experience') {
@@ -125,7 +129,7 @@ export default function ProductDetailInfo({ type }: { type: 'crop' | 'experience
             <span>02-2342-4567</span>
           </div>
         </section>
-        <ProductLinkItem linkTitle=" 전체 농산물" />
+        <ProductLinkItem link="/garden" linkTitle="판매자 텃밭" subTxt="바로 가기" />
       </div>
     );
   } else if (type === 'gardening') {
@@ -194,7 +198,7 @@ export default function ProductDetailInfo({ type }: { type: 'crop' | 'experience
             <span>02-2342-4567</span>
           </div>
         </section>
-        <ProductLinkItem linkTitle=" 전체 농산물" />
+        <ProductLinkItem link="/garden" linkTitle="판매자 텃밭" subTxt="바로 가기" />
       </div>
     );
   }

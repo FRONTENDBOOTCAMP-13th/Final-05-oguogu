@@ -1,6 +1,6 @@
 export default function BuyBox({ onOpenModal }: { onOpenModal: () => void }) {
   return (
-    <div className="fixed bottom-0 w-[320px] h-[68px] bg-oguogu-white z-999 px-4 py-3 ">
+    <div className="fixed bottom-0 w-full min-w-[320px] max-w-[768px] h-[68px] bg-oguogu-white z-999 px-4 py-3 ">
       <div className="flex f items-center justify-between gap-2">
         <button className="flex items-center justify-center border border-oguogu-main bg-oguogu-white w-[46px] h-[44px] rounded-[4px] cursor-pointer">
           <svg xmlns="http://www.w3.org/2000/svg" width="22" height="20" viewBox="0 0 22 20" fill="none">
