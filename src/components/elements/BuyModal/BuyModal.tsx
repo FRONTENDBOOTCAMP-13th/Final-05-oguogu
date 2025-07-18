@@ -1,5 +1,6 @@
 // components/elements/BuyBox/BuyModal.tsx
 'use client';
+
 import BuyBoxOption from '@/components/elements/BuyBoxForMobile/BuyBoxOption';
 import { useEffect, useRef } from 'react';
 

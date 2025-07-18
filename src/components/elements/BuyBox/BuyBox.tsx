@@ -1,3 +1,11 @@
+/**
+ * 상품 상세페이지에서 상호작용할 수 있는 하단 고정형 구매 박스 컴포넌트
+ * '찜' 버튼, '구매하기' 버튼 사용 가능
+ * @component
+ * @param {Object} props - 컴포넌트에 전달되는 props
+ * @param {() => void} props.onOpenModal - '구매하기' 버튼 클릭 시 호출되는 콜백 함수 (ex: 구매 모달 오픈)
+ * @returns {JSX.Element} 하단 구매 박스 JSX 요소
+ */
 export default function BuyBox({ onOpenModal }: { onOpenModal: () => void }) {
   return (
     <div className="fixed bottom-0 w-full min-w-[320px] max-w-[768px] h-[68px] bg-oguogu-white z-999 px-4 py-3 ">
