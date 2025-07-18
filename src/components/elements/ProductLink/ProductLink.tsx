@@ -12,7 +12,7 @@ export default function ProductLinkItem({
 
   return (
     <div className="flex justify-center border-b-1 border-b-oguogu-gray-2 pt-2 pb-4">
-      <Link href={link} className="flex items-center gap-2 text-xs">
+      <Link href={link} className="flex items-center gap-2 text-xs mobile-max:text-base">
         <span className="content-center">
           <span className="text-oguogu-main">{linkTitle}</span>
           &nbsp;{subTxt}
