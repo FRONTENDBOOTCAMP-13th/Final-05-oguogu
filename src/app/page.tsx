@@ -13,7 +13,7 @@ export default async function Home() {
       <Navigation />
       <SlideBanner />
       <ImageCategory />
-      <ProductLinkItem link="/product/crop/veggie" linkTitle="전체 농산물" subTxt="보러 가기" />
+      <ProductLinkItem link="/product/crop" linkTitle="전체 농산물" subTxt="보러 가기" />
       <main className="flex flex-col">
         <Title title="온 가족이 함께 즐기는 텃밭 체험" content="7월 한 달 간 체험 상품 20% 할인!" type="experience" />
         <ProductLinkItem
@@ -24,12 +24,7 @@ export default async function Home() {
           subTxt="보러 가기"
         />
         <Title title="톡! 터지는 옥수수의 반전 매력" content="7월 제철 채소 옥수수🌽" type="crop" />
-        <ProductLinkItem
-          link="/search/result?keyword=옥수수"
-          keywordParams="옥수수"
-          linkTitle="옥수수"
-          subTxt="구매하러 가기"
-        />
+        <ProductLinkItem link="/search/result" keywordParams="옥수수" linkTitle="옥수수" subTxt="구매하러 가기" />
         {/* <Title title="톡! 터지는 옥수수의 반전 매력" content="7월 제철 채소 옥수수🌽" type="gardening" /> */}
       </main>
       <footer>
