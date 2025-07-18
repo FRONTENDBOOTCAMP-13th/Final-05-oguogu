@@ -3,6 +3,7 @@ import { PathCaseOne, PathCaseTwo } from '@/components/elements/Path/Path';
 import Badge from '@/components/elements/ProductItem/Badge/Badge';
 import ProductLinkItem from '@/components/elements/ProductLink/ProductLink';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function ProductDetailInfo({ type }: { type: 'crop' | 'experience' | 'gardening' }) {
   if (type === 'crop') {
@@ -29,9 +30,12 @@ export default function ProductDetailInfo({ type }: { type: 'crop' | 'experience
           </div>
         </section>
         <section>
-          <div className="border-2 py-1 border-oguogu-main-dark rounded-[4px] flex items-center text-center justify-center">
+          <Link
+            href="/register"
+            className="border-1 py-1.5 border-oguogu-main-dark rounded-md flex items-center text-center justify-center cursor-pointer"
+          >
             회원가입 하고 할인가로 구매하기
-          </div>
+          </Link>
         </section>
         <section className="text-[12px] text-oguogu-black flex flex-col gap-3">
           <div className="flex gap-15">

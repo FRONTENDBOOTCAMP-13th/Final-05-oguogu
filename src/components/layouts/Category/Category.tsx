@@ -21,8 +21,7 @@ export function ImageCategory() {
 }
 
 /**
- * 텍스트형 1차 카테고리 컴포넌트
- * @description 상품 타입(type)별 구분
+ * 농산물 | 체험 | 텃밭 컴포넌트
  * @returns {HTMLElement}
  */
 export function TextCategory() {
@@ -53,7 +52,41 @@ export function TextCategory() {
 }
 
 /**
- * 텍스트형 2차 카테고리 컴포넌트
+ * 농산물 | 체험 | 텃밭 컴포넌트
+ * @returns {HTMLElement}
+ */
+export function TextCategoryForDetailPage() {
+  const pathname = usePathname();
+
+  return (
+    <nav className="flex secondHeader">
+      <TextCategoryItem
+        type="search"
+        _id={1}
+        params="detail"
+        title="상품 정보"
+        isClick={pathname.includes('/detail') ? true : false}
+      />
+      <TextCategoryItem
+        type="search"
+        _id={1}
+        params="review"
+        title="리뷰(1,280)"
+        isClick={pathname.includes('/review') ? true : false}
+      />
+      <TextCategoryItem
+        type="search"
+        _id={1}
+        params="qna"
+        title="문의(9,999)"
+        isClick={pathname.includes('/qna') ? true : false}
+      />
+    </nav>
+  );
+}
+
+/**
+ * (미사용) 텍스트형 2차 카테고리 컴포넌트
  * @description 농산물 하위 카테고리(category)별 구분
  * @returns {HTMLElement}
  */

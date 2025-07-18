@@ -28,7 +28,7 @@ export function ProductSortbar() {
 
 export function ReviewSortbar() {
   return (
-    <div className="flex flex-row justify-between items-center w-[320px] h-[48px] p-[16px]">
+    <div className="flex flex-row justify-between items-center h-[48px] p-[16px]">
       <div className="flex flex-row items-center gap-x-[8px]">
         <span>평점</span>
         <div className="flex flex-row gap-x-[2px]">
@@ -49,7 +49,7 @@ export function ReviewSortbar() {
 
 export function QnaSortBar() {
   return (
-    <div className="flex justify-between items-center w-[320px] h-[48px] p-[16px]">
+    <div className="flex justify-between items-center h-[48px] p-[16px]">
       <span>총 15,642개</span>
       <div>
         <CheckButton size={14} gap={2}>
