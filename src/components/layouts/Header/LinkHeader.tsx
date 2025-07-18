@@ -14,7 +14,7 @@ export default function LinkHeader({ title }: { title: string }) {
       </button>
 
       {/* 현재 경로 */}
-      <h1 className="text-2xl">{title}</h1>
+      <h1 className="text-xl">{title}</h1>
 
       {/* 홈 버튼 */}
       <Link href="/">

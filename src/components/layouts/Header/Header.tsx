@@ -17,9 +17,9 @@ export default function Header({ cartItemCount = 0 }: HeaderProps) {
       </Link>
 
       {/* 사이트 이름 */}
-      <h1 className="text-2xl">
-        <Link href="/">오구텃밭</Link>
-      </h1>
+      <Link href="/">
+        <h1 className="text-xl">오구텃밭</h1>
+      </Link>
 
       {/* 검색 */}
       <div className="flex gap-2 items-center">
