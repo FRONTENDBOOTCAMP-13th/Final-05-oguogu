@@ -40,15 +40,16 @@
 
 @layer utilities {
   body {
-    @apply bg-oguogu-white font-baedal-Jua text-oguogu-black;
+    @apply bg-oguogu-main font-baedal-Jua text-oguogu-black;
   }
-}
 
-/* 스크롤 바 숨기기 */
-.no-scrollbar {
-  -ms-overflow-style: none; /* IE, Edge */
-  scrollbar-width: none; /* Firefox */
-}
-.no-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari */
+  /* 스크롤 바 숨기기 */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE, Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
 }
