@@ -3,11 +3,8 @@
 import Link from 'next/link';
 import handleGoBack from '@/components/layouts/Header/utils/handleGoBack';
 import { SearchHeaderProps } from '@/components/layouts/Header/types/Header.type';
-import { usePathname } from 'next/navigation';
 
 export default function CategoryHeader({ cartItemCount = 0 }: SearchHeaderProps) {
-  const pathname = usePathname();
-
   return (
     <header className="header">
       {/* 검색 + 버튼 */}
@@ -19,9 +16,7 @@ export default function CategoryHeader({ cartItemCount = 0 }: SearchHeaderProps)
         </button>
 
         {/* 현재 위치 */}
-        <h1 className="flex-1 h-6 sm:w-48 ml-2 pl-2 text-lg">
-          {pathname.includes('/crop') ? '농산물' : pathname.includes('/experience') ? '체험' : '텃밭'}
-        </h1>
+        <h1 className="flex-1 h-6 sm:w-48 ml-2 pl-2 text-lg">item.name</h1>
 
         {/* 장바구니 아이콘 + 뱃지 */}
         <Link href="/mypage/cart" className="relative">
