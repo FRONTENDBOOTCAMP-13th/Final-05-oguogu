@@ -38,11 +38,11 @@ export default function Title({
   } else if (type === 'experience') {
     itemType = (
       <div className="flex gap-3 overflow-x-scroll cursor-grab select-none no-scrollbar">
-        <ExperienceItem />
-        <ExperienceItem />
-        <ExperienceItem />
-        <ExperienceItem />
-        <ExperienceItem />
+        <ExperienceItem _id={1} />
+        <ExperienceItem _id={1} />
+        <ExperienceItem _id={1} />
+        <ExperienceItem _id={1} />
+        <ExperienceItem _id={1} />
       </div>
     );
   } else {
