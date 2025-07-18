@@ -3,9 +3,8 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import handleGoBack from '@/components/layouts/Header/utils/handleGoBack';
-import { SearchHeaderProps } from '@/components/layouts/Header/types/Header.type';
 
-export default function SearchHeader({ cartItemCount = 0 }: SearchHeaderProps) {
+export default function SearchHeader() {
   const [keyword, setKeyword] = useState('');
 
   const handleSearch = () => {
