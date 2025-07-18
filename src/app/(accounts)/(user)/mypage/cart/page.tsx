@@ -1,3 +1,10 @@
+import LinkHeader from '@/components/layouts/Header/LinkHeader';
+
 export default function UserCartList() {
-  return <h1>사용자 장바구니 페이지</h1>;
+  return (
+    <>
+      <LinkHeader title="장바구니" />
+      <main className="px-4">{/* 여기에 내용 작성 */}</main>
+    </>
+  );
 }

@@ -45,7 +45,7 @@ export default function QnaItem({ state = false, isPrivate = false, viewerRole =
   const isViewerAllowed = !isPrivate || viewerRole === 'owner' || viewerRole === 'seller';
 
   return (
-    <div className={`p-4 bg-oguogu-${stateBgColor} w-[320px] shadow-sm`}>
+    <div className={`p-4 bg-oguogu-${stateBgColor} shadow-sm`}>
       <div onClick={toggleOpen} className="cursor-pointer flex flex-col gap-3">
         <div className="flex justify-between">
           <span className={`text-oguogu-${stateColor} flex items-center gap-1`}>

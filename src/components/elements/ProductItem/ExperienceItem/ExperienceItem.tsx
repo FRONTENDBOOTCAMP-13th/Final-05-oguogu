@@ -3,11 +3,11 @@ import Badge from '@/components/elements/ProductItem/Badge/Badge';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function ExperienceItem() {
+export default function ExperienceItem({ _id }: { _id: number }) {
   return (
     <div className="min-w-[288px] flex flex-col gap-4">
       {/* 상품 이미지 및 뱃지 영역 */}
-      <Link href={`/product/experience/1`} className="flex">
+      <Link href={`/product/experience/${_id}/detail`} className="flex">
         {/* 대표 이미지 */}
         {/*이미지를 하드코딩 해둔 상태 추후 동적으로 관리해야 함*/}
         <div className="relative">

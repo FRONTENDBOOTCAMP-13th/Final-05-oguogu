@@ -1,3 +1,10 @@
+import LinkHeader from '@/components/layouts/Header/LinkHeader';
+
 export default function UserSubscribeList() {
-  return <h1>사용자 구독 정보 페이지</h1>;
+  return (
+    <>
+      <LinkHeader title="나만의 텃밭" />
+      <main className="px-4">{/* 여기에 내용 작성 */}</main>
+    </>
+  );
 }

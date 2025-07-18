@@ -40,15 +40,28 @@
 
 @layer utilities {
   body {
-    @apply bg-oguogu-white font-baedal-Jua text-oguogu-black;
+    @apply bg-oguogu-main font-baedal-Jua text-oguogu-black;
   }
-}
 
-/* 스크롤 바 숨기기 */
-.no-scrollbar {
-  -ms-overflow-style: none; /* IE, Edge */
-  scrollbar-width: none; /* Firefox */
-}
-.no-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari */
+  .header {
+    @apply h-12 sticky top-0 z-50 bg-oguogu-white flex justify-between items-center p-3;
+  }
+
+  .secondHeader {
+    @apply h-12 sticky top-12 z-50 bg-oguogu-white flex justify-between items-center;
+  }
+
+  .thirdHeader {
+    @apply h-12 sticky top-24 z-50 bg-oguogu-white flex justify-between items-center;
+  }
+
+  /* 스크롤 바 숨기기 */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE, Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
 }

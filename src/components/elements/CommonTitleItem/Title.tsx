@@ -38,11 +38,11 @@ export default function Title({
   } else if (type === 'experience') {
     itemType = (
       <div className="flex gap-3 overflow-x-scroll cursor-grab select-none no-scrollbar">
-        <ExperienceItem />
-        <ExperienceItem />
-        <ExperienceItem />
-        <ExperienceItem />
-        <ExperienceItem />
+        <ExperienceItem _id={1} />
+        <ExperienceItem _id={1} />
+        <ExperienceItem _id={1} />
+        <ExperienceItem _id={1} />
+        <ExperienceItem _id={1} />
       </div>
     );
   } else {
@@ -50,10 +50,10 @@ export default function Title({
   }
 
   return (
-    <article className="flex flex-col justify-center px-4 py-7">
-      <div className="pb-6">
-        <p className="text-[20px] text-oguogu-black">{title}</p>
-        <p className={`text-[14px] text-oguogu-gray-4`}>{content}</p>
+    <article className="flex flex-col justify-center px-4 py-7 mobile-max:pt-12">
+      <div className="pb-6 mobile-max:text-center">
+        <p className="text-xl text-oguogu-black mobile-max:text-2xl">{title}</p>
+        <p className="text-sm text-oguogu-gray-4 mobile-max:text-base">{content}</p>
       </div>
       {itemType}
     </article>

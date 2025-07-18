@@ -4,7 +4,10 @@
  * @returns void
  */
 function handleGoBack(): void {
-  if (window.history.length > 2) {
+  if (
+    document.referrer.startsWith('https://final-05-oguogu.vercel.app/') ||
+    document.referrer.startsWith('http://localhost:3000/')
+  ) {
     window.history.back();
   } else {
     window.location.href = '/'; // 홈 또는 원하는 내부 경로

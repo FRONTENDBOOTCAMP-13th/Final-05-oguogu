@@ -1,3 +1,10 @@
+import LinkHeader from '@/components/layouts/Header/LinkHeader';
+
 export default function UserPickList() {
-  return <h1>사용자 찜한 상품 페이지</h1>;
+  return (
+    <>
+      <LinkHeader title="찜한 목록" />
+      <main className="px-4">{/* 여기에 내용 작성 */}</main>
+    </>
+  );
 }

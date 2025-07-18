@@ -11,23 +11,21 @@ export default function Navigation() {
   const { events } = useDraggable(scrollRef as React.RefObject<HTMLElement>);
 
   return (
-    <>
-      <nav
-        ref={scrollRef}
-        {...events}
-        className="h-[48px] overflow-x-scroll cursor-grab px-[10px] py-[11px] text-[14px] select-none no-scrollbar"
-      >
-        <ul className="flex flex-row gap-4 w-max">
-          <NavigationItem type="/" item="홈" isSelected />
-          <NavigationItem type="popular" item="인기" />
-          <NavigationItem type="garden" item="텃밭구독" />
-          <NavigationItem type="gardenExp" item="텃밭체험" />
-          <NavigationItem type="seasonalCalendar" item="제철달력" />
-          <NavigationItem type="uglyFruit" item="못난이" />
-          <NavigationItem type="dummy1" item="더미1" />
-          <NavigationItem type="dummy2" item="더미2" />
-        </ul>
-      </nav>
-    </>
+    <nav
+      ref={scrollRef}
+      {...events}
+      className="h-12 overflow-x-scroll cursor-grab px-2.5 py-3 text-[14px] select-none no-scrollbar mobile-max:flex mobile-max:justify-center"
+    >
+      <ul className="flex flex-row gap-4 w-max">
+        <NavigationItem type="/" item="홈" isSelected />
+        <NavigationItem type="popular" item="인기" />
+        <NavigationItem type="garden" item="텃밭구독" />
+        <NavigationItem type="gardenExp" item="텃밭체험" />
+        <NavigationItem type="seasonalCalendar" item="제철달력" />
+        <NavigationItem type="uglyFruit" item="못난이" />
+        <NavigationItem type="dummy1" item="더미1" />
+        <NavigationItem type="dummy2" item="더미2" />
+      </ul>
+    </nav>
   );
 }
