@@ -13,7 +13,13 @@ export function ProductSortbar() {
     <div className="flex justify-between items-center h-[48px] p-4">
       <span>총 159개</span>
       <div className="flex gap-2">
-        {pathname.includes('/crop') ? <Filter /> : ''}
+        {pathname.includes('/crop') ? (
+          <Filter filteredData="crop" />
+        ) : pathname.includes('/result') ? (
+          <Filter filteredData="result" />
+        ) : (
+          ''
+        )}
         <ProductSort />
       </div>
     </div>
