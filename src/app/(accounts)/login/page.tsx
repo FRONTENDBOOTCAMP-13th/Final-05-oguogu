@@ -15,10 +15,9 @@ export default function Login() {
 
   return (
     <>
-      {/* 스크롤 제거를 위해 h-screen 스타일링 추가(250718 영준) */}
       <LinkHeader title="통합 로그인" />
       <main className="w-[320px] mx-auto px-4 h-[calc(100vh-48px)] flex items-center overflow-y-hidden">
-        <div className="flex flex-col self-center gap-[20px]">
+        <div className="flex flex-col self-center gap-5">
           <h2 className="text-2xl">
             <span className="text-oguogu-main">오구텃밭</span>에 오신것을 <br />
             환영합니다!
