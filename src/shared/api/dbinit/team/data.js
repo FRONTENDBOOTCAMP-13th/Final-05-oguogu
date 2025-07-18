@@ -636,7 +636,6 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 10,
 
           // 뱃지용
-          // 뱃지용
           badge: [
             { isNew: true }, // 신상품
             { isInSeason: true }, // 제철 상품 (농산물 전용)
@@ -704,11 +703,13 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 100,
 
           // 뱃지용
-          isNew: false, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: false, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       // seller_id: 3
@@ -770,11 +771,13 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 100,
 
           // 뱃지용
-          isNew: false, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: false, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       {
@@ -834,12 +837,13 @@ export const initData = async (clientId, nextSeq) => {
           // 최대 구매 가능 수량
           productCnt: 100,
 
-          // 뱃지용
-          isNew: false, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: false, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       {
@@ -964,12 +968,13 @@ export const initData = async (clientId, nextSeq) => {
           // 최대 구매 가능 수량
           productCnt: 10,
 
-          // 뱃지용
-          isNew: true, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: true, // 인기 상품
-          isLowStock: true, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: true }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: true }, // 인기 상품
+            { isLowStock: true }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       {
