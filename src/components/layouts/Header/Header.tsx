@@ -1,10 +1,7 @@
 'use client';
 
+import { HeaderProps } from '@/components/layouts/Header/types/Header.type';
 import Link from 'next/link';
-
-interface HeaderProps {
-  cartItemCount?: number;
-}
 
 export default function Header({ cartItemCount = 0 }: HeaderProps) {
   return (
