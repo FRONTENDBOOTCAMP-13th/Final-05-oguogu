@@ -18,11 +18,11 @@ export default function SearchHeader({ cartItemCount = 0 }: SearchHeaderProps) {
   };
 
   return (
-    <header className="w-full h-12 sticky top-0 z-50 bg-oguogu-white flex justify-between items-center p-3">
+    <header className="header">
       {/* 검색 + 버튼 */}
       <div className="flex gap-1 items-center w-full">
-        <button type="button" onClick={handleGoBack}>
-          <svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <button type="button" onClick={handleGoBack} className="w-6 cursor-pointer">
+          <svg width="18" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M9 0.5L1 9.22973L9 17.5" stroke="black" />
           </svg>
         </button>
@@ -49,7 +49,7 @@ export default function SearchHeader({ cartItemCount = 0 }: SearchHeaderProps) {
               e.preventDefault();
               handleSearch();
             }}
-            className="mx-1 "
+            className="mx-1 cursor-pointer"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path

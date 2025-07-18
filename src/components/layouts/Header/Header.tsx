@@ -8,7 +8,7 @@ interface HeaderProps {
 
 export default function Header({ cartItemCount = 0 }: HeaderProps) {
   return (
-    <header className="h-12 sticky top-0 z-50 bg-oguogu-white flex justify-between items-center p-3">
+    <header className="header">
       {/* 햄버거 메뉴 */}
       <Link href="/login" className="mr-8">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

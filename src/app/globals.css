@@ -43,6 +43,10 @@
     @apply bg-oguogu-main font-baedal-Jua text-oguogu-black;
   }
 
+  .header {
+    @apply h-12 sticky top-0 z-50 bg-oguogu-white flex justify-between items-center p-3;
+  }
+
   /* 스크롤 바 숨기기 */
   .no-scrollbar {
     -ms-overflow-style: none; /* IE, Edge */
