@@ -1,19 +1,25 @@
+'use client';
+
 import CheckButton from '@/components/elements/CheckButton/CheckButton';
 import Filter from '@/components/elements/ProductItem/Filter/Filter';
 import { ProductSort, ReviewSort } from '@/components/elements/ProductItem/Sort/Sort';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 export function ProductSortbar() {
+  const pathname = usePathname();
+
   return (
-    <div className="flex justify-between items-center w-[320px] h-[48px] p-[16px]">
+    <div className="flex justify-between items-center h-[48px] p-4">
       <span>총 159개</span>
-      <div>
+      <div className="flex gap-2">
+        {pathname.includes('/crop') ? <Filter /> : ''}
         <ProductSort />
-        <Filter />
       </div>
     </div>
   );
 }
+
 export function ReviewSortbar() {
   return (
     <div className="flex flex-row justify-between items-center w-[320px] h-[48px] p-[16px]">
