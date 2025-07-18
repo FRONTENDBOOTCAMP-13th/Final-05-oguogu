@@ -1,5 +1,5 @@
 import { TextCategory } from '@/components/layouts/Category/Category';
-import CategoryHeader from '@/components/layouts/Header/CategoryHeader';
+import SearchHeader from '@/components/layouts/Header/SearchHeader';
 import { ProductSortbar } from '@/components/layouts/SortBar/Sortbar';
 
 /**
@@ -12,9 +12,10 @@ import { ProductSortbar } from '@/components/layouts/SortBar/Sortbar';
 export default function ProductListByType() {
   return (
     <>
-      <CategoryHeader />
+      <SearchHeader />
       <TextCategory />
       <ProductSortbar />
+      <main className="px-4">{/* 여기에 내용 작성 */}</main>
     </>
   );
 }
