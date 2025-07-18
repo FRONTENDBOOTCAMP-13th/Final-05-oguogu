@@ -16,7 +16,7 @@ export function ImageCategory() {
           <ImageCategoryItem params="mushroom" title="버섯" />
         </div>
       </section>
-      <ProductLink link="/product" linkTitle="전체 농산물" subTxt="보러 가기" />
+      <ProductLink link="/product/crop" linkTitle="전체 농산물" subTxt="보러 가기" />
     </>
   );
 }
