@@ -9,7 +9,7 @@ import Image from 'next/image';
 
 export default async function Home() {
   return (
-    <div className="relative">
+    <>
       <div className="min-w-[320px] max-w-[768px] mx-auto relative bg-oguogu-white z-50">
         {/* 헤더가 고정되지 않고 흔들리는 이슈 해결 필요 */}
         <Header cartItemCount={100} />
@@ -41,6 +41,6 @@ export default async function Home() {
         alt="ogu"
         className="hidden fixed bottom-2/7 left-1/2 translate-x-[420px] mobile-max:block"
       />
-    </div>
+    </>
   );
 }
