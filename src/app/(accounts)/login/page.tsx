@@ -85,7 +85,7 @@ export default function Login() {
 
             <div className="flex flex-row items-center justify-center gap-2">
               <Image src={`images/iconImage/icon-login-google.svg`} alt="googleIcon" width={36} height={36} />
-              <Image src={`images/iconImage/icon-login-naver.svg`} alt="googleIcon" width={36} height={36} />
+              <Image src={`images/iconImage/icon-login-naver.svg`} alt="naverIcon" width={36} height={36} />
             </div>
           </section>
         </div>
