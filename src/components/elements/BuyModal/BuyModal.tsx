@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'react';
 
 interface BuyModalProps {
   onClose: () => void;
-  type: 'crop' | 'experience' | 'gardening';
+  type: 'crop' | 'experience' | 'gardening' | undefined;
 }
 
 export default function BuyModal({ onClose, type }: BuyModalProps) {

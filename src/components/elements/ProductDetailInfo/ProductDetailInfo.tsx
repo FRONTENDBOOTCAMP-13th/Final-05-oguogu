@@ -2,25 +2,30 @@ import Title from '@/components/elements/CommonTitleItem/Title';
 import { PathCaseOne, PathCaseTwo } from '@/components/elements/Path/Path';
 import Badge from '@/components/elements/ProductItem/Badge/Badge';
 import ProductLinkItem from '@/components/elements/ProductLink/ProductLink';
+import { Item } from '@/shared/types/product';
 import Image from 'next/image';
 
-export default function ProductDetailInfo({ type }: { type: 'crop' | 'experience' | 'gardening' }) {
+export default function ProductDetailInfo({
+  type,
+  item,
+}: {
+  type: 'crop' | 'experience' | 'gardening' | undefined;
+  item: Item;
+}) {
   if (type === 'crop') {
     return (
       <div className="px-4 pt-4 flex flex-col gap-4">
         <section className="flex flex-col gap-4">
-          <PathCaseOne title="옥수수" />
-          <Title
-            title="쫀득쫀득 대학 미백 찰옥수수 30개입"
-            content="올해 수확! 알갱이가 톡톡 터지는 맛있는 찰옥수수"
-            type="basic"
-          />
+          <PathCaseOne title={item.extra.filter[0]} />
+          <Title title={item.name} content={item.content} type="basic" />
           {/* 가격 정보 */}
           <div>
-            <s className="text-[16px] text-oguogu-gray-2">20,000원</s>
+            <s className="text-[16px] text-oguogu-gray-2">{item.price.toLocaleString() + '원'}</s>
             <div>
-              <span className="text-[20px] text-oguogu-main">59%</span>
-              <span className="text-[20px] text-oguogu-black ml-2">11,800원</span>
+              <span className="text-[20px] text-oguogu-main">{item.extra.dcRate}%</span>
+              <span className="text-[20px] text-oguogu-black ml-2">
+                {(item.price * (1 - item.extra.dcRate / 100)).toLocaleString() + '원'}
+              </span>
             </div>
           </div>
         </section>
@@ -33,7 +38,7 @@ export default function ProductDetailInfo({ type }: { type: 'crop' | 'experience
           <div className="flex gap-15">
             <span className="text-oguogu-gray-4">배송</span>
             <div className="flex flex-col">
-              <span>3,000원</span>
+              <span>{item.shippingFees.toLocaleString() + '원'}</span>
               <div className="">
                 <Badge type="express" />
                 <Badge type="safe" />
