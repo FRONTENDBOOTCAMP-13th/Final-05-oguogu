@@ -1,7 +1,7 @@
 export interface ProductLinkType {
   keywordParams?: string;
   typeParams?: string;
+  link: string;
   linkTitle: string;
-  type: 'watch' | 'direct' | 'do' | 'buy';
-  src: string;
+  subTxt: string;
 }

@@ -1,3 +1,10 @@
+import LinkHeader from '@/components/layouts/Header/LinkHeader';
+
 export default function UserOrderList() {
-  return <h1>사용자 주문 정보 페이지</h1>;
+  return (
+    <>
+      <LinkHeader title="주문정보" />
+      <main className="px-4">{/* 여기에 내용 작성 */}</main>
+    </>
+  );
 }

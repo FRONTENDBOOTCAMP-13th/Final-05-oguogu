@@ -4,6 +4,7 @@ import Badge from '@/components/elements/ProductItem/Badge/Badge';
 import ProductLinkItem from '@/components/elements/ProductLink/ProductLink';
 import { Item } from '@/shared/types/product';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function ProductDetailInfo({
   type,
@@ -30,9 +31,12 @@ export default function ProductDetailInfo({
           </div>
         </section>
         <section>
-          <div className="border-2 py-1 border-oguogu-main-dark rounded-[4px] flex items-center text-center justify-center">
+          <Link
+            href="/register"
+            className="border-1 py-1.5 border-oguogu-main-dark rounded-md flex items-center text-center justify-center cursor-pointer"
+          >
             회원가입 하고 할인가로 구매하기
-          </div>
+          </Link>
         </section>
         <section className="text-[12px] text-oguogu-black flex flex-col gap-3">
           <div className="flex gap-15">
@@ -64,7 +68,7 @@ export default function ProductDetailInfo({
             <span>02-123-4567</span>
           </div>
         </section>
-        <ProductLinkItem linkTitle="판매자 텃밭" type="direct" src="/garden/1" />
+        <ProductLinkItem link="/garden" linkTitle="판매자 텃밭" subTxt="바로 가기" />
       </div>
     );
   } else if (type === 'experience') {
@@ -130,7 +134,7 @@ export default function ProductDetailInfo({
             <span>02-2342-4567</span>
           </div>
         </section>
-        <ProductLinkItem linkTitle="판매자 텃밭" type="direct" src="/garden/1" />
+        <ProductLinkItem link="/garden" linkTitle="판매자 텃밭" subTxt="바로 가기" />
       </div>
     );
   } else if (type === 'gardening') {
@@ -199,7 +203,7 @@ export default function ProductDetailInfo({
             <span>02-2342-4567</span>
           </div>
         </section>
-        <ProductLinkItem linkTitle="판매자 텃밭" type="direct" src="/garden/1" />
+        <ProductLinkItem link="/garden" linkTitle="판매자 텃밭" subTxt="바로 가기" />
       </div>
     );
   }

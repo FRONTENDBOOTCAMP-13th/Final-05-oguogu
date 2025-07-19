@@ -6,7 +6,7 @@ export default function NavigationItem({ item, type, isSelected = false }: Navig
     <li>
       <Link href={`/${type}`}>
         {isSelected ? (
-          <span className="text-oguogu-white bg-oguogu-main-dark px-[8px] py-[6px] rounded-2xl">{item}</span>
+          <span className="text-oguogu-white bg-oguogu-main-dark px-2 py-1.5 rounded-2xl">{item}</span>
         ) : (
           item
         )}

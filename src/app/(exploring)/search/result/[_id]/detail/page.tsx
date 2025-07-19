@@ -108,11 +108,11 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
   console.log(productType);
 
   return (
-    <div>
+    <>
       <Image
-        className="w-[320px] h-[320px] object-cover aspect-square"
-        src={item.mainImages[0].path}
-        alt={item.mainImages[0].originalname}
+        className="w-full max-h-[480px] object-cover aspect-square"
+        src="/images/crop/crop-001.png"
+        alt="상품명"
         width={320}
         height={320}
       />
@@ -127,6 +127,6 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
       {/* 모달 */}
       {isModalOpen && <BuyModal type={productType} onClose={() => setIsModalOpen(false)} />}
       {!isModalOpen && <BuyBox onOpenModal={() => setIsModalOpen(true)} />}
-    </div>
+    </>
   );
 }

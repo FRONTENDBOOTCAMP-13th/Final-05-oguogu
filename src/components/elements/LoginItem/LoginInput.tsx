@@ -20,7 +20,7 @@ export default function LoginInput({ type, value, placeholder = '', onChange, op
     };
     return (
       <>
-        <div className="flex items-center gap-x-4 w-[288px] h-[36px] font-normal text-[12px] py-3 border-b-1 text-oguogu-black border-oguogu-gray-2">
+        <div className="flex items-center gap-x-4 h-[36px] font-normal text-[12px] py-3 border-b-1 text-oguogu-black border-oguogu-gray-2 w-full">
           <input
             type="number"
             id={`${id}-part1`}
@@ -28,7 +28,7 @@ export default function LoginInput({ type, value, placeholder = '', onChange, op
             onChange={e => handlePhoneChange('part1', e.target.value.slice(0, 3))}
             placeholder={placeholder}
             maxLength={3}
-            className="placeholder-oguogu-gray-2 w-[70px] text-center"
+            className="placeholder-oguogu-gray-2 text-center"
           />
           <span className="inline-block text-oguogu-black">-</span>
           <input
@@ -38,7 +38,7 @@ export default function LoginInput({ type, value, placeholder = '', onChange, op
             onChange={e => handlePhoneChange('part2', e.target.value.slice(0, 4))}
             placeholder={placeholder}
             maxLength={4}
-            className="placeholder-oguogu-gray-2 w-[70px] text-center"
+            className="placeholder-oguogu-gray-2 text-center"
           />
           <span className="inline-block text-oguogu-black">-</span>
           <input
@@ -48,7 +48,7 @@ export default function LoginInput({ type, value, placeholder = '', onChange, op
             onChange={e => handlePhoneChange('part3', e.target.value.slice(0, 4))}
             placeholder={placeholder}
             maxLength={4}
-            className="placeholder-oguogu-gray-2 w-[70px] text-center"
+            className="placeholder-oguogu-gray-2 text-center"
           />
         </div>
       </>
@@ -61,7 +61,7 @@ export default function LoginInput({ type, value, placeholder = '', onChange, op
     };
 
     return (
-      <div className="flex  items-center w-[288px] h-[36px] font-normal text-[12px] pl-2 py-3 border-b-1 text-oguogu-black border-oguogu-gray-2">
+      <div className="flex  items-center w-full h-[36px] font-normal text-[12px] pl-2 py-3 border-b-1 text-oguogu-black border-oguogu-gray-2">
         <input
           type="text"
           id={id}
@@ -97,7 +97,7 @@ export default function LoginInput({ type, value, placeholder = '', onChange, op
 
   if (type === 'address') {
     return (
-      <div className="flex items-center justify-between w-[288px] h-[36px] font-normal text-[12px] pl-2 pr-3 py-3 border-b-1 text-oguogu-black border-oguogu-gray-2">
+      <div className="flex items-center justify-between w-full h-[36px] font-normal text-[12px] pl-2 pr-3 py-3 border-b-1 text-oguogu-black border-oguogu-gray-2">
         <input
           type="text"
           id={id}
@@ -129,7 +129,7 @@ export default function LoginInput({ type, value, placeholder = '', onChange, op
         placeholder={placeholder}
         value={String(value)}
         onChange={e => onChange(e.target.value)}
-        className={`w-[288px] h-[36px] font-normal text-[12px] pl-2 py-3 border-b border-oguogu-gray-2 placeholder-oguogu-gray-2`}
+        className={`w-full h-[36px] font-normal text-[12px] pl-2 py-3 border-b border-oguogu-gray-2 placeholder-oguogu-gray-2`}
       />
     </>
   );
