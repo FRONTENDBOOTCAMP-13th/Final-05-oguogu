@@ -2,7 +2,7 @@ import CropItem from '@/components/elements/ProductItem/Item/CropItem';
 import ExperienceItem from '@/components/elements/ProductItem/Item/ExperienceItem';
 import GardenItem from '@/components/elements/ProductItem/Item/GardenItem';
 import { TextCategory } from '@/components/layouts/Category/Category';
-import SearchHeader from '@/components/layouts/Header/SearchHeader';
+import CategoryHeader from '@/components/layouts/Header/CategoryHeader';
 import { ProductSortbar } from '@/components/layouts/SortBar/Sortbar';
 
 // INFO DB 반영 시 상품 타입에 사용되는 Props 통일 필요
@@ -17,7 +17,7 @@ import { ProductSortbar } from '@/components/layouts/SortBar/Sortbar';
 export default function ProductListByType() {
   return (
     <>
-      <SearchHeader />
+      <CategoryHeader cartItemCount={100} />
       <TextCategory />
       <ProductSortbar />
 
