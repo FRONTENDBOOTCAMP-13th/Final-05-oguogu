@@ -25,7 +25,7 @@ export default function ReviewItem({ name, email }: { name: string; email: strin
 
   return (
     <>
-      <div className="w-[288px] h-[207px] flex flex-col gap-3">
+      <div className="h-[207px] flex flex-col gap-3">
         <div className="flex justify-between">
           <span>
             <StarRating rating={4} />

@@ -43,7 +43,15 @@ const rawData = [
 ];
 
 /**
- * 상품 상세페이지 구매 버튼 클릭시 팝업되는 모달 컴포넌트 UI
+ * 구매하기 버튼을 클랙했을 때 모달창으로 나타나는 옵션 선택 및 구매 관련 컴포넌트
+ * 상품 유형에 따라 수량 또는 날짜(체험 상품)를 선택할 수 있으며, 최종 수량 및 총 금액을 표시
+ * @component
+ * @param {Object} props - 컴포넌트에 전달되는 props
+ * @param {string} props.name - 상품명
+ * @param {number} props.price - 개당/인당 금액
+ * @param {number} props.maxQuantity - 최대 구매 가능 수량
+ * @param {'crop' | 'experience' | 'gardening'} props.type - 상품 유형
+ * @returns {JSX.Element} 구매 옵션 선택 영역
  */
 export default function BuyBoxOption({ name, price, maxQuantity = 1, type }: BuyBoxOptionType) {
   const [count, setCount] = useState(1);
@@ -83,12 +91,7 @@ export default function BuyBoxOption({ name, price, maxQuantity = 1, type }: Buy
           <div className="flex gap-3 max-w-full overflow-auto hide-scrollbar">
             {/* 선택 가능 & 선택됨 */}
             {data.map(item => {
-              const {
-                _id,
-                quantity,
-                buyQuantity,
-                extra: { departureDate },
-              } = item;
+              const { _id, quantity, buyQuantity } = item;
 
               const formattedDate = format(item.extra.departureDate, 'M월 d일 (eee)', { locale: ko });
               const formattedTime = format(item.extra.departureDate, 'HH:mm');

@@ -3,18 +3,23 @@ import { PathCaseOne, PathCaseTwo } from '@/components/elements/Path/Path';
 import Badge from '@/components/elements/ProductItem/Badge/Badge';
 import ProductLinkItem from '@/components/elements/ProductLink/ProductLink';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function ProductDetailInfo({ type }: { type: 'crop' | 'experience' | 'gardening' }) {
   if (type === 'crop') {
     return (
       <div className="px-4 pt-4 flex flex-col gap-4">
         <section className="flex flex-col gap-4">
+          {/* 경로 */}
           <PathCaseOne title="옥수수" />
+
+          {/* 타이틀 */}
           <Title
             title="쫀득쫀득 대학 미백 찰옥수수 30개입"
             content="올해 수확! 알갱이가 톡톡 터지는 맛있는 찰옥수수"
             type="basic"
           />
+
           {/* 가격 정보 */}
           <div>
             <s className="text-[16px] text-oguogu-gray-2">20,000원</s>
@@ -25,9 +30,12 @@ export default function ProductDetailInfo({ type }: { type: 'crop' | 'experience
           </div>
         </section>
         <section>
-          <div className="border-2 py-1 border-oguogu-main-dark rounded-[4px] flex items-center text-center justify-center">
+          <Link
+            href="/register"
+            className="border-1 py-1.5 border-oguogu-main-dark rounded-md flex items-center text-center justify-center cursor-pointer"
+          >
             회원가입 하고 할인가로 구매하기
-          </div>
+          </Link>
         </section>
         <section className="text-[12px] text-oguogu-black flex flex-col gap-3">
           <div className="flex gap-15">
@@ -59,7 +67,7 @@ export default function ProductDetailInfo({ type }: { type: 'crop' | 'experience
             <span>02-123-4567</span>
           </div>
         </section>
-        <ProductLinkItem linkTitle=" 전체 농산물" />
+        <ProductLinkItem link="/garden" linkTitle="판매자 텃밭" subTxt="바로 가기" />
       </div>
     );
   } else if (type === 'experience') {
@@ -125,7 +133,7 @@ export default function ProductDetailInfo({ type }: { type: 'crop' | 'experience
             <span>02-2342-4567</span>
           </div>
         </section>
-        <ProductLinkItem linkTitle=" 전체 농산물" />
+        <ProductLinkItem link="/garden" linkTitle="판매자 텃밭" subTxt="바로 가기" />
       </div>
     );
   } else if (type === 'gardening') {
@@ -194,7 +202,7 @@ export default function ProductDetailInfo({ type }: { type: 'crop' | 'experience
             <span>02-2342-4567</span>
           </div>
         </section>
-        <ProductLinkItem linkTitle=" 전체 농산물" />
+        <ProductLinkItem link="/garden" linkTitle="판매자 텃밭" subTxt="바로 가기" />
       </div>
     );
   }
