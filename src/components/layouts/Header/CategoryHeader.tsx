@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import handleGoBack from '@/components/layouts/Header/utils/handleGoBack';
+import handleGoBack from '@/utils/handleGoBack/handleGoBack';
 import { SearchHeaderProps } from '@/components/layouts/Header/types/Header.type';
 import { useEffect, useState } from 'react';
 import { getProduct } from '@/shared/data/functions/product';

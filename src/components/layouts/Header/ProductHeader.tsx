@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import handleGoBack from '@/components/layouts/Header/utils/handleGoBack';
+import handleGoBack from '@/utils/handleGoBack/handleGoBack';
 import { EtcHeaderProps } from '@/components/layouts/Header/types/Header.type';
 
 export default function ProductHeader({ title }: EtcHeaderProps) {
