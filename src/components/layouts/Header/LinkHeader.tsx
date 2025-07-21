@@ -1,9 +1,10 @@
 'use client';
 
+import { EtcHeaderProps } from '@/components/layouts/Header/types/Header.type';
 import handleGoBack from '@/components/layouts/Header/utils/handleGoBack';
 import Link from 'next/link';
 
-export default function LinkHeader({ title }: { title: string }) {
+export default function LinkHeader({ title }: EtcHeaderProps) {
   return (
     <header className="header">
       {/* 뒤로가기 버튼 */}
