@@ -1,3 +1,11 @@
+import TopRatedItem from "@/components/elements/TopRatedItem/TopRatedItem";
+import SearchHeader from "@/components/layouts/Header/SearchHeader";
+
 export default function Search() {
-  return <h1>상품 검색 및 검색 결과 페이지</h1>;
+  return (
+    <div>
+      <SearchHeader />
+      <TopRatedItem />
+    </div>
+  )
 }

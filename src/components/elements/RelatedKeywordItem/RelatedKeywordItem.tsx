@@ -8,17 +8,17 @@ import { Search } from 'lucide-react';
  */
 export default function RelatedKeywordItem({ keywords }: RelatedKeywordItemProps) {
   return (
-    <div className="w-full max-w-[320px] mx-auto p-2">
+    <div className="w-full p-2 mx-auto">
       <ul className="space-y-2">
         {/* 키워드가 없을 때 안내 메시지 */}
         {keywords.length === 0 ? (
-          <li className='text-oguogu-gray-4 text-sm px-2 py-1'>관련 키워드가 없습니다.</li>
+          <li className='px-2 py-1 text-sm text-oguogu-gray-4'>관련 키워드가 없습니다.</li>
         ) : (
           keywords.map((keyword, keywordIndex) => (
-            <li key={keywordIndex} className="flex items-center gap-2 text-oguogu-black" tabIndex={0}>
+            <li key={keywordIndex} className="flex items-center gap-2 text-left text-oguogu-black" tabIndex={0}>
               <Search className="w-4 h-4 text-oguogu-gray-3" />
               <span className="text-sm">{keyword}</span>
-          </li>
+            </li>
           ))
         )}
       </ul>

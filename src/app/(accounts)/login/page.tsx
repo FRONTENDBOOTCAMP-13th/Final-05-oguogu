@@ -12,6 +12,7 @@ import { useState } from 'react';
 export default function Login() {
   const [msg, setMsg] = useState('');
   const [password, setPassword] = useState('');
+  const [autoLogin, setAutoLogin] = useState(false);
 
   return (
     <>
@@ -52,7 +53,7 @@ export default function Login() {
 
               {/* 자동 로그인 & 아이디/비밀번호 찾기 */}
               <div className="flex flex-row items-center justify-between mt-2">
-                <CheckButton size={14} gap={2}>
+                <CheckButton size={14} gap={2} checked={autoLogin} onChange={() => setAutoLogin(prev => !prev)}>
                   자동 로그인
                 </CheckButton>
                 <div className="flex flex-row gap-[12px] text-[8px] text-oguogu-gray-3">
