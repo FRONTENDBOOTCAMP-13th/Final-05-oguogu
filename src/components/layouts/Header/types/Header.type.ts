@@ -4,4 +4,5 @@ export interface HeaderProps {
 
 export interface SearchHeaderProps {
   cartItemCount?: number;
+  _id: string;
 }

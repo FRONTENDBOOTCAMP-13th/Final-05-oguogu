@@ -20,6 +20,20 @@ export interface Extra {
   isBest: boolean;
   isLowStock: boolean;
   isSold: boolean;
+
+  region?: string;
+  meetingPlace?: string;
+  departureDate?: string;
+  returnDate?: string;
+  reoresentitiveKeyword?: [];
+  includedItems?: [];
+  schedule?: [];
+  guideInfo?: { name: string; contact: string };
+
+  deadline?: string;
+  harvestExpectedDate: string;
+  harvestExpectedCnt: string;
+  period: periodObject[];
 }
 
 export interface Item {
@@ -37,4 +51,16 @@ export interface Item {
   createdAt: string; // ISO date string
   updatedAt: string; // ISO date string
   extra: Extra;
+}
+
+export interface res {
+  ok: number;
+  item: Item;
+}
+
+export interface periodObject {
+  date: string;
+  image: string;
+  status: string;
+  content: string;
 }

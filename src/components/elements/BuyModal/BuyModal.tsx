@@ -2,15 +2,20 @@
 'use client';
 
 import BuyBoxOption from '@/components/elements/BuyBoxForMobile/BuyBoxOption';
+import { createCart } from '@/shared/data/actions/cart';
+import { useAuthStore } from '@/shared/store/authStore';
+import { res } from '@/shared/types/product';
 import { useEffect, useRef } from 'react';
 
 interface BuyModalProps {
   onClose: () => void;
   type: 'crop' | 'experience' | 'gardening' | undefined;
+  res: res;
 }
 
-export default function BuyModal({ onClose, type }: BuyModalProps) {
+export default function BuyModal({ onClose, type, res }: BuyModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
+  const isLoggedIn: boolean = useAuthStore(state => state.isLoggedIn); //전역 로그인 속성
 
   // 바깥 클릭 시 모달 닫기
   useEffect(() => {
@@ -26,9 +31,16 @@ export default function BuyModal({ onClose, type }: BuyModalProps) {
     };
   }, [onClose]);
 
-  const handleBuy = () => {
-    onClose();
-    alert('장바구니에 담겼습니다.');
+  const handleBuy = async (product_id: number, quantity: number, token: string) => {
+    console.log('구매 핸들러 동작');
+    if (isLoggedIn) {
+      await createCart({ product_id, quantity, token });
+      onClose();
+      alert('장바구니에 담겼습니다.');
+    } else {
+      onClose();
+      alert('장바구니 기능은 로그인이 필요합니다.');
+    }
   };
 
   return (
@@ -39,20 +51,35 @@ export default function BuyModal({ onClose, type }: BuyModalProps) {
       {/* 모달 본체 */}
       <div ref={modalRef} className="w-full bg-white rounded-t-2xl  p-4 max-h-[80vh]  animate-slide-up">
         {type === 'crop' && (
-          <BuyBoxOption type={type} name="쫀득쫀득 대합 미백 찰옥수수 30개입" price={20000} maxQuantity={30} />
+          <BuyBoxOption
+            type={type}
+            name={res.item.name}
+            price={res.item.price * (1 - res.item.extra.dcRate / 100)}
+            maxQuantity={res.item.quantity - res.item.buyQuantity}
+            handleBuy={handleBuy}
+            product_id={res.item._id}
+          />
         )}
-        {type === 'experience' && <BuyBoxOption type={type} name="감자 캐기 체험" price={10000} maxQuantity={4} />}
-        {type === 'gardening' && <BuyBoxOption type={type} name="초당옥수수 7월 수확" price={10000} />}
+        {type === 'experience' && (
+          <BuyBoxOption
+            type={type}
+            name={res.item.name}
+            price={res.item.price * (1 - res.item.extra.dcRate / 100)}
+            maxQuantity={res.item.quantity - res.item.buyQuantity}
+            handleBuy={handleBuy}
+            product_id={res.item._id}
+          />
+        )}
+        {type === 'gardening' && (
+          <BuyBoxOption
+            type={type}
+            name={res.item.name}
+            price={res.item.price * (1 - res.item.extra.dcRate / 100)}
+            handleBuy={handleBuy}
+            product_id={res.item._id}
+          />
+        )}
         {/* 확인 버튼 */}
-        <button
-          className={`flex items-center justify-center text-center
-         bg-oguogu-main text-oguogu-white 
-         text-[16px] h-[44px]
-         px-6 py-1.5 rounded-sm w-full`}
-          onClick={handleBuy}
-        >
-          {type === 'crop' ? '장바구니 담기' : '구매하기'}
-        </button>
       </div>
     </div>
   );

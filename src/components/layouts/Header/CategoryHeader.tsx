@@ -3,8 +3,20 @@
 import Link from 'next/link';
 import handleGoBack from '@/components/layouts/Header/utils/handleGoBack';
 import { SearchHeaderProps } from '@/components/layouts/Header/types/Header.type';
+import { useEffect, useState } from 'react';
+import { getProduct } from '@/shared/data/functions/product';
+import { res } from '@/shared/types/product';
 
-export default function CategoryHeader({ cartItemCount = 0 }: SearchHeaderProps) {
+export default function CategoryHeader({ cartItemCount = 0, _id }: SearchHeaderProps) {
+  const [res, setRes] = useState<res>();
+  useEffect(() => {
+    const getRes = async () => {
+      const res = await getProduct(Number(_id));
+      setRes(res);
+    };
+    getRes();
+  }, []);
+
   return (
     <header className="header">
       {/* 검색 + 버튼 */}
@@ -16,7 +28,7 @@ export default function CategoryHeader({ cartItemCount = 0 }: SearchHeaderProps)
         </button>
 
         {/* 현재 위치 */}
-        <h1 className="flex-1 h-6 sm:w-48 ml-2 pl-2 text-lg">item.name</h1>
+        <h1 className="flex-1 h-6 sm:w-48 ml-2 pl-2 text-lg">{res?.item.name}</h1>
 
         {/* 장바구니 아이콘 + 뱃지 */}
         <Link href="/mypage/cart" className="relative">

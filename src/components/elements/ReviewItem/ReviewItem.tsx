@@ -1,7 +1,9 @@
 import StarRating from '@/components/elements/ReviewItem/StarRating';
+import type { ReviewItem } from '@/shared/types/review';
+
 import Image from 'next/image';
 
-export default function ReviewItem({ name, email }: { name: string; email: string }) {
+export default function ReviewItem({ name, email, res }: { name: string; email: string; res: ReviewItem }) {
   // 이름 마스킹 (첫 글자만 남기고 나머지는 *)
   function maskName(name: string): string {
     if (!name) return '';
@@ -28,9 +30,9 @@ export default function ReviewItem({ name, email }: { name: string; email: strin
       <div className="h-[207px] flex flex-col gap-3">
         <div className="flex justify-between">
           <span>
-            <StarRating rating={4} />
+            <StarRating rating={res.rating} />
           </span>
-          <span className="text-[12px] text-oguogu-gray-4">2025.07.15</span>
+          <span className="text-[12px] text-oguogu-gray-4">{res.createdAt.split(' ')[0]}</span>
         </div>
         <div className="flex gap-2">
           <Image
@@ -56,8 +58,8 @@ export default function ReviewItem({ name, email }: { name: string; email: strin
           />
         </div>
         <div>
-          <p className="text-[16px] text-oguogu-black">리뷰 타이틀</p>
-          <p className="text-[12px] text-oguogu-gray-4">리뷰 상세 텍스트</p>
+          <p className="text-[16px] text-oguogu-black">{res.extra.name}</p>
+          <p className="text-[12px] text-oguogu-gray-4">{res.content}</p>
         </div>
         <div className="flex gap-3">
           <p className="text-[12px] text-oguogu-black">구매자이름 {maskName(name)}</p>

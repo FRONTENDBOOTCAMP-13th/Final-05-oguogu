@@ -5,6 +5,87 @@ function getTime(day = 0, second = 0) {
 }
 
 export const initData = async (clientId, nextSeq) => {
+  // 리뷰 더미 데이터 (총 150개)
+  const review = [];
+
+  const dummyUsers = [
+    { _id: 1, name: '홍길동' },
+    { _id: 2, name: '김철수' },
+    { _id: 3, name: '박영희' },
+    { _id: 4, name: '이민호' },
+    { _id: 5, name: '최지우' },
+    { _id: 6, name: '정수빈' },
+    { _id: 7, name: '한예슬' },
+    { _id: 8, name: '정길용' },
+    { _id: 9, name: '김데레사' },
+    { _id: 10, name: '송하윤' },
+  ];
+
+  const dummyTitles = [
+    '정말 맛있어요!',
+    '좀 아쉬워요',
+    '배송 빨랐어요',
+    '다음에도 구매할게요',
+    '별로였어요',
+    '고양이도 좋아해요',
+    '완전 강추!',
+    '생각보다 별로네요',
+    '기대 이상이에요',
+    '쫀득쫀득 맛있어요',
+  ];
+
+  const dummyContents = [
+    '옥수수가 달고 쫀득해서 너무 맛있어요!',
+    '생각보다 양이 적어요.',
+    '배송이 조금 느렸어요.',
+    '포장 깔끔하고 맛도 좋아요.',
+    '딱딱해서 씹기 힘들었어요.',
+    '저희 강아지도 좋아해요.',
+    '가족들과 함께 맛있게 먹었습니다.',
+    '식감이 별로네요...',
+    '친구한테 선물했는데 만족했대요.',
+    '삶기만 하면 바로 먹을 수 있어서 좋아요.',
+  ];
+
+  for (let product_id = 1; product_id <= 30; product_id++) {
+    for (let i = 0; i < 5; i++) {
+      const user = dummyUsers[Math.floor(Math.random() * dummyUsers.length)];
+      const title = dummyTitles[Math.floor(Math.random() * dummyTitles.length)];
+      const content = dummyContents[Math.floor(Math.random() * dummyContents.length)];
+      const rating = Math.floor(Math.random() * 5) + 1;
+
+      review.push({
+        _id: await nextSeq('review'),
+        rating,
+        content,
+        user_id: user._id,
+        product_id,
+        extra: {
+          name: title,
+          image: [{ url: '/' }, { url: '/' }],
+        },
+        createdAt: getTime(-Math.floor(Math.random() * 30), -60 * 60 * Math.floor(Math.random() * 24)),
+
+        // 주문자 정보
+        user: {
+          _id: user._id,
+          name: user.name,
+          image: `user-${user._id}.webp`,
+        },
+
+        // 판매자 상품 정보
+        product: {
+          _id: product_id,
+          name: `상품명 ${product_id}`,
+          image: {
+            path: `files/openmarket/sample-${product_id}.jpg`,
+            name: `sample-${product_id}.jpg`,
+            originalname: `original-${product_id}.jpg`,
+          },
+        },
+      });
+    }
+  }
   return {
     /**
      ** 회원 관리
@@ -3235,13 +3316,16 @@ export const initData = async (clientId, nextSeq) => {
     ],
 
     /* 후기 */
-    review: [
+    review,
+    /*  review: [
       // user_id: 8 (정길용)
       {
         _id: await nextSeq('review'),
         rating: 1,
         content:
           '찰옥수수라고 해서 시켰는데, 딱딱해서 씹을 수가 없어요. 물론 제가 안삶아서 그렇긴 한데 이렇게 딱딱할 수 있나요? 어이가 없어서 정말', // 본문
+        user_id: 8,
+        product_id: 25,
         extra: {
           name: '찰옥수수가 아니라 철옥수수네요', // 제목
           image: [
@@ -3272,6 +3356,8 @@ export const initData = async (clientId, nextSeq) => {
         _id: await nextSeq('review'),
         rating: 5,
         content: '고양이도 맛있게 먹네요. 추천합니다', // 본문
+        user_id: 9,
+        product_id: 21,
         extra: {
           name: '저희 고양이도 좋아해요', // 제목
           image: [
@@ -3303,7 +3389,7 @@ export const initData = async (clientId, nextSeq) => {
           name: '햇 괴산 대학찰옥수수 찐옥수수 장작불 가마솥에 삶은 냉동 옥수수',
         },
       },
-    ],
+    ], */
 
     /* 장바구니 */
     cart: [],
@@ -3392,6 +3478,127 @@ export const initData = async (clientId, nextSeq) => {
         extra: {
           category: '배송', // 분류: 배송, 결제, 회원, 쿠폰 등
         },
+      },
+
+      {
+        _id: await nextSeq('post'),
+        type: 'qna',
+        product_id: 1,
+        seller_id: 2,
+        views: 5,
+        user: {
+          _id: 1,
+          name: '제이지',
+          image: 'user-jayg.webp',
+        },
+        title: '언제 배달이 되나요??',
+        content: '주문한지 1년이 지났는데 소식이 없어요..',
+        replies: [
+          {
+            _id: await nextSeq('reply'),
+            user: {
+              _id: 1,
+              name: '관리자',
+              image: 'user-neo.png',
+            },
+            content: '오늘 출발했습니다. 죄송합니다.',
+            like: 5,
+            createdAt: getTime(-2, -60 * 60 * 20),
+            updatedAt: getTime(-2, -60 * 60 * 2),
+          },
+        ],
+        createdAt: getTime(-3, -60 * 60 * 2),
+        updatedAt: getTime(-3, -60 * 60 * 2),
+      },
+      {
+        _id: await nextSeq('post'),
+        type: 'qna',
+        product_id: 1,
+        seller_id: 2,
+        views: 5,
+        user: {
+          _id: 1,
+          name: '제이지',
+          image: 'user-jayg.webp',
+        },
+        title: '크기가 얼마만한가요?',
+        content: '아이가 6살인데 가지고 놀기 적당한 크기인가요?',
+        replies: [
+          {
+            _id: await nextSeq('reply'),
+            user: {
+              _id: 1,
+              name: '관리자',
+              image: 'user-neo.png',
+            },
+            content: '크기는 상품 상세정보에 나와 있습니다.',
+            like: 5,
+            createdAt: getTime(-2, -60 * 60 * 20),
+            updatedAt: getTime(-2, -60 * 60 * 2),
+          },
+        ],
+        createdAt: getTime(-3, -60 * 60 * 2),
+        updatedAt: getTime(-3, -60 * 60 * 2),
+      },
+      {
+        _id: await nextSeq('post'),
+        type: 'qna',
+        product_id: 1,
+        seller_id: 2,
+        views: 5,
+        user: {
+          _id: 11,
+          name: '제이지',
+          image: 'user-jayg.webp',
+        },
+        title: '크기가 얼마만한가요?',
+        content: '아이가 6살인데 가지고 놀기 적당한 크기인가요?',
+        replies: [
+          {
+            _id: await nextSeq('reply'),
+            user: {
+              _id: 1,
+              name: '관리자',
+              image: 'user-neo.png',
+            },
+            content: '크기는 상품 상세정보에 나와 있습니다.',
+            like: 5,
+            createdAt: getTime(-2, -60 * 60 * 20),
+            updatedAt: getTime(-2, -60 * 60 * 2),
+          },
+        ],
+        createdAt: getTime(-3, -60 * 60 * 2),
+        updatedAt: getTime(-3, -60 * 60 * 2),
+      },
+      {
+        _id: await nextSeq('post'),
+        type: 'qna',
+        product_id: 1,
+        seller_id: 2,
+        views: 5,
+        user: {
+          _id: 11,
+          name: '제이지',
+          image: 'user-jayg.webp',
+        },
+        title: '크기가 얼마만한가요?',
+        content: '아이가 6살인데 가지고 놀기 적당한 크기인가요?',
+        replies: [
+          {
+            _id: await nextSeq('reply'),
+            user: {
+              _id: 1,
+              name: '관리자',
+              image: 'user-neo.png',
+            },
+            content: '크기는 상품 상세정보에 나와 있습니다.',
+            like: 5,
+            createdAt: getTime(-2, -60 * 60 * 20),
+            updatedAt: getTime(-2, -60 * 60 * 2),
+          },
+        ],
+        createdAt: getTime(-3, -60 * 60 * 2),
+        updatedAt: getTime(-3, -60 * 60 * 2),
       },
     ],
 

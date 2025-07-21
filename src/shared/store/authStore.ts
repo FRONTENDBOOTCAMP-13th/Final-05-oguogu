@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
 // 임시로 _id, 이름, 타입만 전역에서 바로 확인할 수 있도록 설정 (추후 확장 가능)
-interface userInfo {
+export interface userInfo {
   _id: number;
   name: string;
   type: 'user' | 'seller' | 'admin';

@@ -6,13 +6,7 @@ import { Item } from '@/shared/types/product';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function ProductDetailInfo({
-  type,
-  item,
-}: {
-  type: 'crop' | 'experience' | 'gardening' | undefined;
-  item: Item;
-}) {
+export default function ProductDetailInfo({ type, item }: { type: 'crop' | 'experience' | 'gardening'; item: Item }) {
   if (type === 'crop') {
     return (
       <div className="px-4 pt-4 flex flex-col gap-4">
@@ -42,7 +36,7 @@ export default function ProductDetailInfo({
           <div className="flex gap-15">
             <span className="text-oguogu-gray-4">배송</span>
             <div className="flex flex-col">
-              <span>{item.shippingFees.toLocaleString() + '원'}</span>
+              <span>{item.shippingFees === 0 ? '무료' : item.shippingFees.toLocaleString() + '원'}</span>
               <div className="">
                 <Badge type="express" />
                 <Badge type="safe" />
@@ -76,17 +70,15 @@ export default function ProductDetailInfo({
       <div className="px-4 pt-4 flex flex-col gap-4">
         <section className="flex flex-col gap-4">
           <PathCaseTwo title="체험" params="experience" subParams="" />
-          <Title
-            title="강원도 정선 감자 체험 2박 3일 중식, 석식 미포함"
-            content="동글동글 감자를 모여앉아 친구들과 함께 수확해봐요"
-            type="basic"
-          />
+          <Title title={item.name} content={item.content} type="basic" />
           {/* 가격 정보 */}
           <div>
-            <s className="text-[16px] text-oguogu-gray-2">20,000원</s>
+            <s className="text-[16px] text-oguogu-gray-2">{item.price.toLocaleString() + '원'}</s>
             <div>
-              <span className="text-[20px] text-oguogu-main">59%</span>
-              <span className="text-[20px] text-oguogu-black ml-2">11,800원</span>
+              <span className="text-[20px] text-oguogu-main">{item.extra.dcRate}%</span>
+              <span className="text-[20px] text-oguogu-black ml-2">
+                {(item.price * (1 - item.extra.dcRate / 100)).toLocaleString() + '원'}
+              </span>
             </div>
           </div>
         </section>
@@ -98,23 +90,23 @@ export default function ProductDetailInfo({
         <section className="text-[12px] text-oguogu-black flex flex-col gap-2">
           <div className="flex gap-2">
             <span className="text-oguogu-gray-4 w-[80px]">날짜</span>
-            <span>2025년 8월 1일</span>
+            <span>{item.extra.departureDate}</span>
           </div>
           <div className="flex gap-2">
             <span className="text-oguogu-gray-4 w-[80px]">지역</span>
-            <span>강원도 원주</span>
+            <span>{item.extra.region}</span>
           </div>
           <div className="flex gap-2">
             <span className="text-oguogu-gray-4 w-[80px]">출발 지역</span>
-            <span>강남역 1번 출구</span>
+            <span>{item.extra.meetingPlace}</span>
           </div>
           <div className="flex gap-2">
             <span className="text-oguogu-gray-4 w-[80px]">인원</span>
-            <span>20명</span>
+            <span>{item.quantity}명</span>
           </div>
           <div className="flex gap-2">
             <span className="text-oguogu-gray-4 w-[80px]">포함상품</span>
-            <span>왕복 버스, 숙박 2박, 감자캐기 체험, 조식 </span>
+            <span>{item.extra.includedItems?.join(', ')} </span>
           </div>
           <div className="flex gap-2">
             <span className="text-oguogu-gray-4 w-[80px]">미포함</span>
@@ -127,28 +119,41 @@ export default function ProductDetailInfo({
           </div>
           <div className="flex gap-2">
             <span className="text-oguogu-gray-4 w-[80px]">가이드</span>
-            <span>김여행</span>
+            <span>{item.extra.guideInfo?.name}</span>
           </div>
           <div className="flex gap-2">
             <span className="text-oguogu-gray-4 w-[80px]">문의</span>
-            <span>02-2342-4567</span>
+            <span>{item.extra.guideInfo?.contact}</span>
           </div>
         </section>
         <ProductLinkItem link="/garden" linkTitle="판매자 텃밭" subTxt="바로 가기" />
       </div>
     );
   } else if (type === 'gardening') {
+    const deadline = item.extra.deadline;
+    const today = new Date();
+
+    if (!deadline) {
+      return <span>마감일 정보 없음</span>;
+    }
+    const endDate = new Date(deadline);
+
+    // 하루 = 1000ms * 60s * 60min * 24h
+    const diffTime = endDate.getTime() - today.getTime();
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     return (
       <div className="px-4 pt-4 flex flex-col gap-4">
         <section className="flex flex-col gap-4">
           <PathCaseTwo title="텃밭" params="gardening" subParams="" />
-          <Title title="초당옥수수 7월 수확" content="3년 연속 진행 중" type="basic" />
+          <Title title={item.name} content={item.content} type="basic" />
           {/* 가격 정보 */}
           <div>
-            <s className="text-[16px] text-oguogu-gray-2">18,000원</s>
+            <s className="text-[16px] text-oguogu-gray-2">{item.price.toLocaleString() + '원'}</s>
             <div>
-              <span className="text-[20px] text-oguogu-main">30%</span>
-              <span className="text-[20px] text-oguogu-black ml-2">12,600원</span>
+              <span className="text-[20px] text-oguogu-main">{item.extra.dcRate}%</span>
+              <span className="text-[20px] text-oguogu-black ml-2">
+                {(item.price * (1 - item.extra.dcRate / 100)).toLocaleString() + '원'}
+              </span>
             </div>
           </div>
         </section>
@@ -160,18 +165,18 @@ export default function ProductDetailInfo({
         <section className="text-[12px] text-oguogu-black flex flex-col gap-2">
           <div className="flex gap-2">
             <span className="text-oguogu-gray-4 w-[80px]">잔여 텃밭</span>
-            <span>15개</span>
+            <span>{item.quantity - item.buyQuantity}개</span>
           </div>
           <div className="flex gap-2">
             <span className="text-oguogu-gray-4 w-[80px]">판매 마감일</span>
             <div className="flex flex-col">
-              <span>2025년 4월 15일</span>
-              <span className="text-oguogu-gray-3">판매 마감까지 10일 남았습니다.</span>
+              <span>{item.extra.deadline}</span>
+              <span className="text-oguogu-gray-3">판매 마감까지 {diffDays}일 남았습니다.</span>
             </div>
           </div>
           <div className="flex gap-2">
             <span className="text-oguogu-gray-4 w-[80px]">수확 예정일</span>
-            <span>2025년 7월 중</span>
+            <span>{item.extra.harvestExpectedDate}</span>
           </div>
           <div className="flex gap-2">
             <span className="text-oguogu-gray-4 w-[80px]">텃밭 위치</span>
@@ -181,7 +186,7 @@ export default function ProductDetailInfo({
           <div className="flex gap-2">
             <span className="text-oguogu-gray-4 w-[80px]">배송</span>
             <div className="flex flex-col">
-              <span>무료</span>
+              <span>{item.shippingFees === 0 ? '무료' : item.shippingFees.toLocaleString() + '원'}</span>
               <div className="">
                 <Badge type="express" />
                 <Badge type="safe" />
