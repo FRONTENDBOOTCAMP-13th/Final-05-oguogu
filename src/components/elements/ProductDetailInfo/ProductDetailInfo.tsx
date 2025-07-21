@@ -19,7 +19,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
         <Title title={item.name} description={item.content} />
 
         {/* 가격 정보 */}
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-end">
           <div>
             {item.extra.dcRate > 0 ? (
               <>
