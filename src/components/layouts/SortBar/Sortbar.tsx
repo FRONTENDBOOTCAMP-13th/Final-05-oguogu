@@ -7,12 +7,12 @@ import { QnaSortBarType, ReviewSortbarType } from '@/components/layouts/SortBar/
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
-export function ProductSortbar() {
+export function ProductSortbar({ cnt }: { cnt: number }) {
   const pathname = usePathname();
 
   return (
     <div className="flex justify-between items-center h-[48px] p-4">
-      <span>총 159개</span>
+      <span>총 {cnt}개</span>
       <div className="flex gap-2">
         {pathname.includes('/crop') ? (
           <Filter filteredData="crop" />

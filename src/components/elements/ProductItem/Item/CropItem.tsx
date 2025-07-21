@@ -29,7 +29,7 @@ export default function CropItem({ _id, name, price }: ItemType) {
           <p className="text-[10px]">돌쇠네농산물</p>
         </div>
         {/* 상품명 */}
-        <Link href={`/product/crop/veggie/${_id}`} className="text-[14px] tracking-[-0.28px] leading-4">
+        <Link href={`/search/result/${_id}/detail`} className="text-[14px] tracking-[-0.28px] leading-4">
           {name}
         </Link>
         {/* 가격 정보 */}

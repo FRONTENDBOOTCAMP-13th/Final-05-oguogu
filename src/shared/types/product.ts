@@ -57,6 +57,10 @@ export interface productRes {
   ok: number;
   item: Item;
 }
+export interface productsRes {
+  ok: number;
+  item: Item[];
+}
 
 export interface periodObject {
   date: string;
