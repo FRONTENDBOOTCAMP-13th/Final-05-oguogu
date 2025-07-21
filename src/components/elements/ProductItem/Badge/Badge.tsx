@@ -1,6 +1,6 @@
 import BadgeProps from '@/components/elements/ProductItem/Badge/Badge.type';
 
-export default function Badge({ type }: BadgeProps) {
+export default function Badge({ type, size = 8 }: BadgeProps) {
   let bgColor;
   let textColor;
   let content;
@@ -37,7 +37,7 @@ export default function Badge({ type }: BadgeProps) {
     <>
       <span
         className={`${bgColor} ${textColor} 
-        text-[8px] px-[6px] py-[4px] rounded-[8px] mr-1`}
+        text-[${size}px] px-[6px] py-[4px] rounded-[8px] mr-1`}
       >
         {content}
       </span>
