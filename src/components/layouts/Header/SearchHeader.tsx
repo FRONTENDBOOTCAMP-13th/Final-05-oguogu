@@ -3,28 +3,69 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import handleGoBack from '@/components/layouts/Header/utils/handleGoBack';
+import RelatedKeywordItem from '@/components/elements/RelatedKeywordItem/RelatedKeywordItem';
+import { useRouter } from 'next/navigation';
 
-export default function SearchHeader({ cartItemCount }: { cartItemCount: number }) {
+interface SearchHeaderProps {
+  cartItemCount?: number;
+}
+
+// 예시 키워드 데이터 (실제 서비스에서는 API로 대체)
+const allKeywords = [
+  { name: '옥수수', type: 'crop' },
+  { name: '야채도사', type: 'garden' },
+  { name: '오롯유통', type: 'garden' },
+  { name: '양배추', type: 'crop' },
+  { name: '초당옥수수', type: 'crop' },
+  { name: '옥수유통', type: 'garden' },
+];
+
+// 한글 자음 추출 함수
+function getConsonants(str: string) {
+  const CHO = [
+    "ㄱ", "ㄲ", "ㄴ", "ㄷ", "ㄸ", "ㄹ", "ㅁ", "ㅂ", "ㅃ", "ㅅ", "ㅆ",
+    "ㅇ", "ㅈ", "ㅉ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"
+  ];
+  return Array.from(str) // 문자열을 한 글자씩 쪼개기
+    .map(char => {
+      const code = char.charCodeAt(0) - 44032; // 한글 시작점 기준 위치 계산
+      if (code >= 0 && code <= 11171) {
+        return CHO[Math.floor(code / 588)]; // 초성 인덱스 계산
+      }
+      return char; // 한글이 아니면 그대로 반환
+    })
+    .join(""); // 결과 문자열로 합치기
+}
+
+export default function SearchHeader({ cartItemCount = 99 }: SearchHeaderProps) {
   const [keyword, setKeyword] = useState('');
+  const [showDropdown, setShowDropdown] = useState(false);
+  const router = useRouter();
+
+  // 검색어와 자음이 일치하는 키워드만 추출
+  const filteredKeywords = keyword
+    ? allKeywords
+        .map(k => k.name)
+        .filter(name => getConsonants(name).includes(getConsonants(keyword)))
+    : [];
 
   const handleSearch = () => {
     if (keyword.trim()) {
-      console.log('검색:', keyword); // 또는 router.push(`/search?keyword=${keyword}`)
+      router.push(`/(exploring)/search/result?keyword=${encodeURIComponent(keyword)}`);
     }
   };
 
   return (
-    <header className="header">
-      {/* 검색 + 버튼 */}
-      <div className="flex gap-1 items-center w-full">
-        <button type="button" onClick={handleGoBack} className="w-6 cursor-pointer">
-          <svg width="18" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <header className="sticky top-0 z-50 flex items-center justify-between w-full h-12 p-3 bg-oguogu-white">
+      <div className="flex items-center w-full gap-1">
+        {/* 뒤로가기 */}
+        <button type="button" onClick={handleGoBack}>
+          <svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M9 0.5L1 9.22973L9 17.5" stroke="black" />
           </svg>
         </button>
-
         {/* 검색창 */}
-        <form className="contents">
+        <form className="contents" onSubmit={e => { e.preventDefault(); handleSearch(); }}>
           <label htmlFor="searchKeyword" className="sr-only">
             검색
           </label>
@@ -33,19 +74,17 @@ export default function SearchHeader({ cartItemCount }: { cartItemCount: number 
             id="searchKeyword"
             placeholder="7월은 초당옥수수가 제철!"
             value={keyword}
-            onChange={e => setKeyword(e.target.value)}
-            onKeyDown={e => e.key === 'Enter' && handleSearch()}
-            className="flex-1 h-6 sm:w-48 ml-2 pl-2 py-3 text-sm text-oguogu-black placeholder-oguogu-gray-3 outline-none appearance-none focus:ring-oguogu-main"
-          />
-
-          {/* 검색 버튼 */}
-          <button
-            type="button"
-            onClick={e => {
-              e.preventDefault();
-              handleSearch();
+            onChange={e => {
+              setKeyword(e.target.value);
+              setShowDropdown(e.target.value.length > 0);
             }}
-            className="mx-1 cursor-pointer"
+            onKeyDown={e => e.key === 'Enter' && handleSearch()}
+            className="flex-1 h-6 py-3 pl-2 ml-2 text-sm outline-none appearance-none sm:w-48 text-oguogu-black placeholder-oguogu-gray-3"
+            autoComplete="off"
+          />
+          <button
+            type="submit"
+            className="mx-1"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -57,6 +96,13 @@ export default function SearchHeader({ cartItemCount }: { cartItemCount: number 
             </svg>
           </button>
         </form>
+
+        {/* 드롭다운: 검색어 입력 시 자음 일치 키워드 노출 */}
+        {showDropdown && (
+          <div className="absolute left-0 right-0 z-10 mt-1 bg-white rounded shadow top-full">
+            <RelatedKeywordItem keywords={filteredKeywords} />
+          </div>
+        )}
 
         {/* 장바구니 아이콘 + 뱃지 */}
         <div>
