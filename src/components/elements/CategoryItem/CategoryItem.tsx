@@ -38,7 +38,7 @@ export function TextCategoryItem({ type, _id, params, title, isClick = false }: 
   return (
     <Link
       href={`${type === 'search' ? '/search/result' : type === 'product' ? '/product' : ''}${_id ? '/' + _id : ''}/${params}`}
-      className={`font-[14px] h-12 flex justify-center border-b-2 ${borderColor} py-2 w-full`}
+      className={`h-12 flex justify-center items-center border-b-2 ${borderColor} w-full`}
     >
       {title}
     </Link>
