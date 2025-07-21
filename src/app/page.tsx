@@ -39,7 +39,7 @@ export default function Home() {
       <SlideBanner />
 
       {/* 보조 네비게이션(aside) */}
-      <aside className="flex flex-col gap-y-4 pt-6 mobile-max:gap-y-6 mobile-max:pt-8 ">
+      <aside className="flex flex-col gap-y-2 pt-6 mobile-max:gap-y-4 mobile-max:pt-8 ">
         <ImageCategory />
         <ProductLinkItem link="/product/crop" linkTitle="전체 농산물" subTxt="보러 가기" />
       </aside>
