@@ -7,8 +7,12 @@ import { ProductSortbar } from '@/components/layouts/SortBar/Sortbar';
 export default function SearchResult() {
   return (
     <>
+      {/* 헤더 */}
       <SearchHeader cartItemCount={99} />
+
+      {/* 정렬 */}
       <ProductSortbar />
+
       {/* 농산물(crop) 상품 */}
       <main className="grid grid-cols-[repeat(auto-fit,minmax(140px,1fr))] gap-x-2 gap-y-8 px-4">
         <CropItem _id={1} name="쫀득쫀득 대학 미백 찰옥수수 30개입" originPrice={11800} />
