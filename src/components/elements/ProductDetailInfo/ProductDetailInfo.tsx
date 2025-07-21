@@ -12,7 +12,7 @@ export default function ProductDetailInfo({ type, item }: { type: 'crop' | 'expe
       <div className="px-4 pt-4 flex flex-col gap-4">
         <section className="flex flex-col gap-4">
           <PathCaseOne title={item.extra.filter[0]} />
-          <Title title={item.name} content={item.content} type="basic" />
+          <Title title={item.name} description={item.content} />
           {/* 가격 정보 */}
           <div>
             <s className="text-[16px] text-oguogu-gray-2">{item.price.toLocaleString() + '원'}</s>
@@ -70,7 +70,7 @@ export default function ProductDetailInfo({ type, item }: { type: 'crop' | 'expe
       <div className="px-4 pt-4 flex flex-col gap-4">
         <section className="flex flex-col gap-4">
           <PathCaseTwo title="체험" params="experience" subParams="" />
-          <Title title={item.name} content={item.content} type="basic" />
+          <Title title={item.name} description={item.content} />
           {/* 가격 정보 */}
           <div>
             <s className="text-[16px] text-oguogu-gray-2">{item.price.toLocaleString() + '원'}</s>
@@ -145,7 +145,7 @@ export default function ProductDetailInfo({ type, item }: { type: 'crop' | 'expe
       <div className="px-4 pt-4 flex flex-col gap-4">
         <section className="flex flex-col gap-4">
           <PathCaseTwo title="텃밭" params="gardening" subParams="" />
-          <Title title={item.name} content={item.content} type="basic" />
+          <Title title={item.name} description={item.content} />
           {/* 가격 정보 */}
           <div>
             <s className="text-[16px] text-oguogu-gray-2">{item.price.toLocaleString() + '원'}</s>

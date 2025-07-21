@@ -50,13 +50,13 @@ export default function SlideBanner() {
 
   return (
     <div className="flex flex-col items-center gap-3 overflow-hidden pt-2">
-      <div className="relative w-full h-[280px] overflow-hidden">
-        <ul className="flex items-center justify-center transition-transform duration-500 gap-[10px]">
+      <div className="relative w-full h-[300px] overflow-hidden">
+        <ul className="flex items-center justify-center transition-transform duration-500">
           {/* 이전 슬라이드 */}
           <li className="w-[210px] shrink-0">
             <SlideBannerItem
               {...bannerItems[prevIndex]}
-              className="transition-transform duration-500 scale-x-95 scale-y-85 opacity-70"
+              className="transition-transform duration-500 scale-85 opacity-70"
             />
           </li>
 
@@ -64,7 +64,7 @@ export default function SlideBanner() {
           <li className="w-[210px] shrink-0">
             <SlideBannerItem
               {...bannerItems[currentIndex]}
-              className="transition-transform duration-500 scale-100 shadow-xl"
+              className="transition-transform duration-500 scale-100 shadow-lg shadow-oguogu-gray-2 border-3 border-oguogu-main"
             />
           </li>
 
@@ -72,13 +72,13 @@ export default function SlideBanner() {
           <li className="w-[210px] shrink-0">
             <SlideBannerItem
               {...bannerItems[nextIndex]}
-              className="transition-transform duration-500 scale-x-95 scale-y-85 opacity-70"
+              className="transition-transform duration-500 scale-85 opacity-70"
             />
           </li>
         </ul>
       </div>
 
-      <div className="flex justify-center gap-2 mt-2">
+      <div className="flex justify-center gap-2">
         {bannerItems.map((_item, index) => (
           <button
             key={index}

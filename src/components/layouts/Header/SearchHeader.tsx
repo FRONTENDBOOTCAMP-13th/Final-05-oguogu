@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import handleGoBack from '@/components/layouts/Header/utils/handleGoBack';
+import handleGoBack from '@/utils/handleGoBack/handleGoBack';
 import { getConsonants } from '@/components/layouts/Header/utils/getConsonants';
 import RelatedKeywordItem from '@/components/elements/RelatedKeywordItem/RelatedKeywordItem';
 import { useRouter } from 'next/navigation';
@@ -52,7 +52,13 @@ export default function SearchHeader({ cartItemCount = 99 }: SearchHeaderProps) 
           </svg>
         </button>
         {/* 검색창 */}
-        <form className="contents" onSubmit={e => { e.preventDefault(); handleSearch(); }}>
+        <form
+          className="contents"
+          onSubmit={e => {
+            e.preventDefault();
+            handleSearch();
+          }}
+        >
           <label htmlFor="searchKeyword" className="sr-only">
             검색
           </label>
