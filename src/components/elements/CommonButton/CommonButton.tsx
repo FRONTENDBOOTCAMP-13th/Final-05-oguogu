@@ -10,9 +10,11 @@ export default function CommonButton({
   bgColor = 'bg-oguogu-main',
   cursorPointer,
   type,
+  onClick,
 }: CommonButtonProps) {
   return (
     <button
+      onClick={() => onClick}
       type={type}
       className={`relative flex flex-1 items-center justify-center text-center 
          ${textSize} ${height} ${width} ${bgColor} ${textColor}  ${cursorPointer ? 'cursor-pointer' : ''} 

@@ -4,20 +4,54 @@ import CheckButton from '@/components/elements/CheckButton/CheckButton';
 import CommonButton from '@/components/elements/CommonButton/CommonButton';
 import LoginInput from '@/components/elements/LoginItem/LoginInput';
 import ProductLinkItem from '@/components/elements/ProductLink/ProductLink';
+import { loginUser } from '@/shared/data/actions/user';
+import { useAuthStore, userInfo } from '@/shared/store/authStore';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 export default function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [autoLogin, setAutoLogin] = useState(false);
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const router = useRouter();
+
+  const { setToken, setUserInfo } = useAuthStore.getState();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // 서버 요청 로직
-    console.log('폼 확인용');
+    try {
+      const loginRes = await loginUser({ email, password });
+      console.log(loginRes);
+
+      if (loginRes?.item?.token?.accessToken) {
+        // Zustand에 토큰 저장
+        setToken(loginRes.item.token.accessToken);
+
+        // Zustand에 유저 정보 저장
+        const userInfo: userInfo = {
+          _id: loginRes.item._id,
+          name: loginRes.item.name,
+          type: loginRes.item.type,
+        };
+        setUserInfo(userInfo);
+
+        alert('로그인에 성공했습니다 ~~');
+        router.push('/');
+      } else {
+        router.refresh();
+        alert('로그인 정보가 일치하지 않습니다.');
+        setEmail('');
+        setPassword('');
+      }
+    } catch (error) {
+      console.error('로그인 중 오류:', error);
+      alert('오류가 생겼습니다. 서버를 확인해주세요');
+    }
   };
+
   return (
     <section>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
@@ -63,6 +97,7 @@ export default function LoginForm() {
 
         {/* 로그인 버튼 */}
         <CommonButton
+          onClick={handleSubmit}
           feature="로그인"
           textSize="text-[16px]"
           width="w-[288px]"
