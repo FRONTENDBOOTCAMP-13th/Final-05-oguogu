@@ -1,15 +1,15 @@
-export interface CropItemExtraType {
+export interface ItemExtraType {
   likeCount: string;
   isBest: boolean;
   isNew: boolean;
 }
 
-export interface CropItemType {
+export interface ItemType {
   _id: number;
+  name: string;
+  originPrice: number;
   seller_id?: string;
-  originPrice: string;
   dcRate?: string;
   finPrice?: string;
-  name: string;
   extra?: CropItemExtraType;
 }

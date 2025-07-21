@@ -1,18 +1,19 @@
 import InteractionButton from '@/components/elements/InteractionButton/InteractionButton';
 import Badge from '@/components/elements/ProductItem/Badge/Badge';
-import { CropItemType } from '@/components/elements/ProductItem/CropItem/CropItem.type';
+import { ItemType } from '@/components/elements/ProductItem/Item/Item.type';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function CropItem({ _id, name, originPrice }: CropItemType) {
+export default function CropItem({ _id, name, originPrice }: ItemType) {
   return (
-    <div className="flex flex-col gap-4 min-w-[140px] h-[332px] ">
+    <div className="flex flex-col gap-4 min-w-[140px]">
       {/* 상품 이미지 및 뱃지 영역 */}
-      <Link href={`/product/crop/veggie/${_id}/detail`} className="flex">
+      <Link href={`/search/result/${_id}/detail`}>
         <div className="relative">
           {/* 대표 이미지 */}
-          {/*이미지를 하드코딩 해둔 상태 추후 동적으로 관리해야 함*/}
-          <Image src={`/images/crop/crop-001.png`} alt="" width={140} height={186.67} className="rounded-[8px]" />
+          {/* 이미지를 하드코딩 해둔 상태 추후 동적으로 관리해야 함 */}
+          <div className="bg-[url('/images/crop/crop-001.png')] min-w-[140px] min-h-[186.67px] bg-center bg-cover aspect-[3/4] rounded-lg"></div>
+          {/* <Image src={`/images/crop/crop-001.png`} alt="" width={140} height={186.67} className="rounded-[8px]" /> */}
           {/* 뱃지 (제철 상품, 인기 상품 등) */}
           <div className="absolute top-0.5 left-1.5">
             <Badge bgColor="bg-oguogu-main-dark" textColor="text-oguogu-white" content="제철 상품" />
@@ -34,7 +35,7 @@ export default function CropItem({ _id, name, originPrice }: CropItemType) {
         {/* 가격 정보 */}
         <div className="text-[12px] flex gap-1">
           <span className="text-oguogu-main">59%</span>
-          <span>{originPrice}원</span>
+          <span>{originPrice.toLocaleString()}원</span>
         </div>
         {/* 좋아요 & 별점 */}
         <div className="text-[8px] flex gap-2 text-oguogu-gray-3">
