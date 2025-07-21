@@ -9,4 +9,5 @@ export default interface CommonButtonProps {
   icon?: ReactNode;
   textColor?: string;
   cursorPointer?: boolean;
+  type?: 'submit' | 'button' | 'reset';
 }

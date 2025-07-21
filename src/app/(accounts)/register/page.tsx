@@ -11,7 +11,7 @@ export default function Register() {
         <div className="flex flex-col self-center gap-3">
           <RegisterCardItem type="seller" />
           <RegisterCardItem type="user" />
-          <ProductLinkItem link="/register" subTxt="이미 가입하셨나요?" linkTitle="로그인" mode="login" />
+          <ProductLinkItem link="/login" subTxt="이미 가입하셨나요?" linkTitle="로그인" mode="login" />
         </div>
       </main>
     </>
