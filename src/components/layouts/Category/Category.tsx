@@ -9,7 +9,7 @@ import { usePathname } from 'next/navigation';
  */
 export function ImageCategory() {
   return (
-    <section className="flex flex-col items-center pt-4 pb-2">
+    <section className="flex flex-col items-center">
       <div className="flex gap-5">
         <ImageCategoryItem params="veggie" title="채소" />
         <ImageCategoryItem params="fruit" title="과일" />
