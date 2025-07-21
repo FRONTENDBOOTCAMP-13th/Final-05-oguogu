@@ -8,7 +8,7 @@ export default function SearchResult() {
   return (
     <>
       {/* 헤더 */}
-      <SearchHeader cartItemCount={99} />
+      <SearchHeader _id="1" cartItemCount={99} />
 
       {/* 정렬 */}
       <ProductSortbar />
