@@ -1,5 +1,6 @@
 'use client';
 import { ImageCategoryItemType, TextCategoryItemType } from '@/components/elements/CategoryItem/CategoryItem.type';
+import Image from 'next/image';
 import Link from 'next/link';
 
 /**
@@ -10,9 +11,7 @@ import Link from 'next/link';
 export function ImageCategoryItem({ params, title }: ImageCategoryItemType) {
   return (
     <Link href={`/product/crop?category=${params}`} className="flex flex-col items-center gap-2">
-      <div
-        className={`bg-[url('/images/category-${params}.webp')] w-12 h-12 aspect-square bg-cover bg-center mobile-max:w-14 mobile-max:h-14`}
-      ></div>
+      <Image src={`/images/category-${params}.webp`} alt={title} width={48} height={48} />
       <h3 className="text-xs">{title}</h3>
     </Link>
   );
