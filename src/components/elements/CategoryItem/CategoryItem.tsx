@@ -12,7 +12,7 @@ export function ImageCategoryItem({ params, title }: ImageCategoryItemType) {
   return (
     <Link href={`/product/crop?category=${params}`} className="flex flex-col items-center gap-2">
       <Image src={`/images/category-${params}.webp`} alt={title} width={48} height={48} />
-      <h3 className="text-xs">{title}</h3>
+      <p className="text-xs">{title}</p>
     </Link>
   );
 }
