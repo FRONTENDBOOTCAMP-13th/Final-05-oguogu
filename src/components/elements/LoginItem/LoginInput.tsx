@@ -11,6 +11,54 @@ export default function LoginInput({ type, value, placeholder = '', onChange, op
     part3: value.toString().slice(7, 11),
   });
 
+  const [birthParts, setBirthParts] = useState({
+    part1: value.toString().slice(0, 4),
+    part2: value.toString().slice(4, 6),
+    part3: value.toString().slice(6, 8),
+  });
+
+  if (type === 'birth') {
+    const handleBirthChange = (key: 'part1' | 'part2' | 'part3', val: string) => {
+      const updated = { ...birthParts, [key]: val };
+      setBirthParts(updated);
+      onChange(`${updated.part1}${updated.part2}${updated.part3}`);
+    };
+
+    return (
+      <div className="flex items-center gap-x-4 w-[288px] h-[36px] font-normal text-[12px] py-3 border-b-1 text-oguogu-black border-oguogu-gray-2 justify-center">
+        <input
+          type="number"
+          id={`${id}-birth-part1`}
+          value={birthParts.part1}
+          onChange={e => handleBirthChange('part1', e.target.value.slice(0, 4))}
+          placeholder="YYYY"
+          maxLength={4}
+          className="placeholder-oguogu-gray-2 w-[60px] text-center ml-1 "
+        />
+        <span className="inline-block text-oguogu-black text-[16px]">/</span>
+        <input
+          type="number"
+          id={`${id}-birth-part2`}
+          value={birthParts.part2}
+          onChange={e => handleBirthChange('part2', e.target.value.slice(0, 2))}
+          placeholder="MM"
+          maxLength={2}
+          className="placeholder-oguogu-gray-2 w-[60px] text-center pl-2"
+        />
+        <span className="inline-block text-oguogu-black text-[16px]">/</span>
+        <input
+          type="number"
+          id={`${id}-birth-part3`}
+          value={birthParts.part3}
+          onChange={e => handleBirthChange('part3', e.target.value.slice(0, 2))}
+          placeholder="DD"
+          maxLength={2}
+          className="placeholder-oguogu-gray-2 w-[60px] text-center pl-5"
+        />
+      </div>
+    );
+  }
+
   // 3-4-4 형식의 전화번호 스타일
   if (type === 'phone') {
     const handlePhoneChange = (key: 'part1' | 'part2' | 'part3', val: string) => {
@@ -20,7 +68,7 @@ export default function LoginInput({ type, value, placeholder = '', onChange, op
     };
     return (
       <>
-        <div className="flex items-center gap-x-4 h-[36px] font-normal text-[12px] py-3 border-b-1 text-oguogu-black border-oguogu-gray-2 w-full">
+        <div className="flex items-center gap-x-4 w-[288px] h-[36px] font-normal text-[12px] py-3 border-b-1 text-oguogu-black border-oguogu-gray-2 justify-center">
           <input
             type="number"
             id={`${id}-part1`}
@@ -28,9 +76,9 @@ export default function LoginInput({ type, value, placeholder = '', onChange, op
             onChange={e => handlePhoneChange('part1', e.target.value.slice(0, 3))}
             placeholder={placeholder}
             maxLength={3}
-            className="placeholder-oguogu-gray-2 text-center"
+            className="placeholder-oguogu-gray-2 w-[60px] text-center pl-2"
           />
-          <span className="inline-block text-oguogu-black">-</span>
+          <span className="inline-block text-oguogu-black text-[16px] ">-</span>
           <input
             type="number"
             id={`${id}-part2`}
@@ -38,9 +86,9 @@ export default function LoginInput({ type, value, placeholder = '', onChange, op
             onChange={e => handlePhoneChange('part2', e.target.value.slice(0, 4))}
             placeholder={placeholder}
             maxLength={4}
-            className="placeholder-oguogu-gray-2 text-center"
+            className="placeholder-oguogu-gray-2 w-[60px] text-center pl-2"
           />
-          <span className="inline-block text-oguogu-black">-</span>
+          <span className="inline-block text-oguogu-black text-[16px] ">-</span>
           <input
             type="number"
             id={`${id}-part3`}
@@ -48,7 +96,7 @@ export default function LoginInput({ type, value, placeholder = '', onChange, op
             onChange={e => handlePhoneChange('part3', e.target.value.slice(0, 4))}
             placeholder={placeholder}
             maxLength={4}
-            className="placeholder-oguogu-gray-2 text-center"
+            className="placeholder-oguogu-gray-2 w-[60px] text-center pl-4"
           />
         </div>
       </>
@@ -61,7 +109,7 @@ export default function LoginInput({ type, value, placeholder = '', onChange, op
     };
 
     return (
-      <div className="flex  items-center w-full h-[36px] font-normal text-[12px] pl-2 py-3 border-b-1 text-oguogu-black border-oguogu-gray-2">
+      <div className="flex  items-center w-[288px] h-[36px] font-normal text-[12px] pl-2 py-3 border-b-1 text-oguogu-black border-oguogu-gray-2">
         <input
           type="text"
           id={id}
@@ -71,8 +119,9 @@ export default function LoginInput({ type, value, placeholder = '', onChange, op
             setEmailId(e.target.value);
             handleEmailChange(e.target.value, emailDomain);
           }}
-          className={`placeholder-oguogu-gray-2 w-[120px] ${value ? 'text-center' : 'text-left'}`}
+          className={`placeholder-oguogu-gray-2 w-[120px] ${emailId ? 'text-center' : 'text-left'}`}
         />
+
         <div className="flex gap-1">
           <span className="text-oguogu-black inline-block">@</span>
           <select
@@ -97,7 +146,7 @@ export default function LoginInput({ type, value, placeholder = '', onChange, op
 
   if (type === 'address') {
     return (
-      <div className="flex items-center justify-between w-full h-[36px] font-normal text-[12px] pl-2 pr-3 py-3 border-b-1 text-oguogu-black border-oguogu-gray-2">
+      <div className="flex items-center justify-between w-[288px] h-[36px] font-normal text-[12px] pl-2 pr-3 py-3 border-b-1 text-oguogu-black border-oguogu-gray-2">
         <input
           type="text"
           id={id}
@@ -129,7 +178,7 @@ export default function LoginInput({ type, value, placeholder = '', onChange, op
         placeholder={placeholder}
         value={String(value)}
         onChange={e => onChange(e.target.value)}
-        className={`w-full h-[36px] font-normal text-[12px] pl-2 py-3 border-b border-oguogu-gray-2 placeholder-oguogu-gray-2`}
+        className={`w-[288px] h-[36px] font-normal text-[12px] pl-2 py-3 border-b border-oguogu-gray-2 placeholder-oguogu-gray-2`}
       />
     </>
   );
