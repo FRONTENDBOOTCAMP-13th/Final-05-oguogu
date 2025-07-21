@@ -1,4 +1,5 @@
 import Title from '@/components/elements/CommonTitleItem/Title';
+import { Path } from '@/components/elements/Path/Path';
 import { ProductDetailInfoType } from '@/components/elements/ProductDetailInfo/ProductDetailInfo.type';
 import Badge from '@/components/elements/ProductItem/Badge/Badge';
 import ProductLinkItem from '@/components/elements/ProductLink/ProductLink';
@@ -10,7 +11,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
     return (
       <div className="px-4 pt-4 flex flex-col gap-4">
         <section className="flex flex-col gap-4">
-          {/* <PathCaseOne title={item.extra.filter[0]} /> */}
+          <Path title={item.extra.filter[0]} />
           <Title title={item.name} description={item.content} />
           {/* 가격 정보 */}
           <div>
@@ -68,7 +69,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
     return (
       <div className="px-4 pt-4 flex flex-col gap-4">
         <section className="flex flex-col gap-4">
-          {/* <PathCaseTwo title="체험" params="experience" subParams="" /> */}
+          <Path title={item.extra.filter[0]} />
           <Title title={item.name} description={item.content} />
           {/* 가격 정보 */}
           <div>
@@ -143,7 +144,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
     return (
       <div className="px-4 pt-4 flex flex-col gap-4">
         <section className="flex flex-col gap-4">
-          {/* <PathCaseTwo title="텃밭" params="gardening" subParams="" /> */}
+          <Path title={item.extra.filter[0]} />
           <Title title={item.name} description={item.content} />
           {/* 가격 정보 */}
           <div>
