@@ -68,4 +68,8 @@
   .titleWithProductItem {
     @apply flex flex-col justify-center gap-y-4 px-4;
   }
+
+  .textElipsis {
+    @apply whitespace-nowrap overflow-hidden text-ellipsis;
+  }
 }
