@@ -1,38 +1,46 @@
 import Title from '@/components/elements/CommonTitleItem/Title';
+import LinkIcon from '@/components/elements/LinkIcon/LinkIcon';
 import { Path } from '@/components/elements/Path/Path';
 import { ProductDetailInfoType } from '@/components/elements/ProductDetailInfo/ProductDetailInfo.type';
 import Badge from '@/components/elements/ProductItem/Badge/Badge';
 import ProductLinkItem from '@/components/elements/ProductLink/ProductLink';
+import getDiffDays from '@/utils/getDiffDays/getDiffDays';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function ProductDetailInfo({ type, item }: ProductDetailInfoType) {
-  if (type === 'crop') {
-    return (
-      <div className="px-4 pt-4 flex flex-col gap-4">
-        <section className="flex flex-col gap-4">
-          <Path title={item.extra.filter[0]} />
-          <Title title={item.name} description={item.content} />
-          {/* 가격 정보 */}
+  return (
+    <div className="px-4 pt-4 flex flex-col gap-4">
+      {/* 경로 및 상품명 */}
+      <section className="flex flex-col gap-4">
+        <Path title={item.extra.filter[0]} />
+        <Title title={item.name} description={item.content} />
+        {/* 가격 정보 */}
+        <div className="flex justify-between items-center">
           <div>
-            <s className="text-[16px] text-oguogu-gray-2">{item.price.toLocaleString() + '원'}</s>
-            <div>
-              <span className="text-[20px] text-oguogu-main">{item.extra.dcRate}%</span>
-              <span className="text-[20px] text-oguogu-black ml-2">
+            <s className="text-oguogu-gray-2 mobile-max:text-lg">{item.price.toLocaleString() + '원'}</s>
+            <div className="flex gap-1">
+              <span className="text-xl text-oguogu-main mobile-max:text-2xl">{item.extra.dcRate}%</span>
+              <span className="text-xl ml-2 mobile-max:text-2xl">
                 {(item.price * (1 - item.extra.dcRate / 100)).toLocaleString() + '원'}
               </span>
             </div>
           </div>
-        </section>
-        <section>
-          <Link
-            href="/register"
-            className="border-1 py-1.5 border-oguogu-main-dark rounded-md flex items-center text-center justify-center cursor-pointer"
-          >
-            회원가입 하고 할인가로 구매하기
-          </Link>
-        </section>
-        <section className="text-[12px] text-oguogu-black flex flex-col gap-3">
+          <LinkIcon type="share" />
+        </div>
+      </section>
+
+      {/* 회원가입 버튼 */}
+      <Link
+        href="/register"
+        className="border-1 py-1.5 border-oguogu-main-dark rounded-md flex items-center text-center justify-center cursor-pointer"
+      >
+        회원가입 하고 할인가로 구매하기
+      </Link>
+
+      {/* 상품 정보 */}
+      {type === 'crop' ? (
+        <section className="text-xs text-oguogu-black flex flex-col gap-3">
           <div className="flex gap-15">
             <span className="text-oguogu-gray-4">배송</span>
             <div className="flex flex-col">
@@ -62,31 +70,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
             <span>02-123-4567</span>
           </div>
         </section>
-        <ProductLinkItem link="/garden" linkTitle="판매자 텃밭" subTxt="바로 가기" />
-      </div>
-    );
-  } else if (type === 'experience') {
-    return (
-      <div className="px-4 pt-4 flex flex-col gap-4">
-        <section className="flex flex-col gap-4">
-          <Path title={item.extra.filter[0]} />
-          <Title title={item.name} description={item.content} />
-          {/* 가격 정보 */}
-          <div>
-            <s className="text-[16px] text-oguogu-gray-2">{item.price.toLocaleString() + '원'}</s>
-            <div>
-              <span className="text-[20px] text-oguogu-main">{item.extra.dcRate}%</span>
-              <span className="text-[20px] text-oguogu-black ml-2">
-                {(item.price * (1 - item.extra.dcRate / 100)).toLocaleString() + '원'}
-              </span>
-            </div>
-          </div>
-        </section>
-        <section>
-          <div className="border-2 py-1 border-oguogu-main-dark rounded-[4px] flex items-center text-center justify-center">
-            회원가입 하고 할인가로 구매하기
-          </div>
-        </section>
+      ) : type === 'experience' ? (
         <section className="text-[12px] text-oguogu-black flex flex-col gap-2">
           <div className="flex gap-2">
             <span className="text-oguogu-gray-4 w-[80px]">날짜</span>
@@ -126,42 +110,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
             <span>{item.extra.guideInfo?.contact}</span>
           </div>
         </section>
-        <ProductLinkItem link="/garden" linkTitle="판매자 텃밭" subTxt="바로 가기" />
-      </div>
-    );
-  } else if (type === 'gardening') {
-    const deadline = item.extra.deadline;
-    const today = new Date();
-
-    if (!deadline) {
-      return <span>마감일 정보 없음</span>;
-    }
-    const endDate = new Date(deadline);
-
-    // 하루 = 1000ms * 60s * 60min * 24h
-    const diffTime = endDate.getTime() - today.getTime();
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    return (
-      <div className="px-4 pt-4 flex flex-col gap-4">
-        <section className="flex flex-col gap-4">
-          <Path title={item.extra.filter[0]} />
-          <Title title={item.name} description={item.content} />
-          {/* 가격 정보 */}
-          <div>
-            <s className="text-[16px] text-oguogu-gray-2">{item.price.toLocaleString() + '원'}</s>
-            <div>
-              <span className="text-[20px] text-oguogu-main">{item.extra.dcRate}%</span>
-              <span className="text-[20px] text-oguogu-black ml-2">
-                {(item.price * (1 - item.extra.dcRate / 100)).toLocaleString() + '원'}
-              </span>
-            </div>
-          </div>
-        </section>
-        <section>
-          <div className="border-2 py-1 border-oguogu-main-dark rounded-[4px] flex items-center text-center justify-center">
-            회원가입 하고 할인가로 구매하기
-          </div>
-        </section>
+      ) : type === 'gardening' ? (
         <section className="text-[12px] text-oguogu-black flex flex-col gap-2">
           <div className="flex gap-2">
             <span className="text-oguogu-gray-4 w-[80px]">잔여 텃밭</span>
@@ -171,7 +120,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
             <span className="text-oguogu-gray-4 w-[80px]">판매 마감일</span>
             <div className="flex flex-col">
               <span>{item.extra.deadline}</span>
-              <span className="text-oguogu-gray-3">판매 마감까지 {diffDays}일 남았습니다.</span>
+              <span className="text-oguogu-gray-3">판매 마감까지 {getDiffDays(item)}일 남았습니다.</span>
             </div>
           </div>
           <div className="flex gap-2">
@@ -208,9 +157,10 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
             <span>02-2342-4567</span>
           </div>
         </section>
-        <ProductLinkItem link="/garden" linkTitle="판매자 텃밭" subTxt="바로 가기" />
-      </div>
-    );
-  }
-  return <></>;
+      ) : (
+        ''
+      )}
+      <ProductLinkItem link="/garden" linkTitle="판매자 텃밭" subTxt="바로 가기" />
+    </div>
+  );
 }
