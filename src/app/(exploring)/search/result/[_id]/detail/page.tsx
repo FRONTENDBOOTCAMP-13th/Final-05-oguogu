@@ -29,7 +29,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
       setRes(res);
     };
     getRes();
-  }, []);
+  }, [_id]);
 
   if (!res) {
     return <div>상품 정보를 불러오는 중입니다...</div>;

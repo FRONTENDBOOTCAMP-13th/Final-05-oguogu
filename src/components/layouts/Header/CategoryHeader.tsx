@@ -15,7 +15,7 @@ export default function CategoryHeader({ cartItemCount = 0, _id }: SearchHeaderP
       setRes(res);
     };
     getRes();
-  }, []);
+  }, [_id]);
 
   return (
     <header className="header">

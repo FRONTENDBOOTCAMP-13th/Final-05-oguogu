@@ -24,7 +24,7 @@ export default function ProductReview({ params }: ProductDetailPageProps) {
       setRes(res);
     };
     getRes();
-  }, []);
+  }, [_id]);
 
   console.log('res', res);
 
