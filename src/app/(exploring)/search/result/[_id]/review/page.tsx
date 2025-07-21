@@ -4,6 +4,7 @@ import ReviewClientControl from '@/features/reviewClientControl/reviewClientCont
 import { ProductDetailPageProps } from '@/features/types/productDetail';
 import { getProductReplies } from '@/shared/data/functions/replies';
 import { ReviewRes } from '@/shared/types/review';
+import { Metadata } from 'next';
 
 /**
  * 특정 상품의 리뷰 목록을 렌더링하는 서버 컴포넌트입니다.
@@ -13,6 +14,12 @@ import { ReviewRes } from '@/shared/types/review';
  * @param {{ _id: string }} props.params - 동적 라우트에서 전달된 상품 ID
  * @returns  리뷰 목록 UI
  */
+
+export const metadata: Metadata = {
+  title: '상품 리뷰 | OguOgu',
+  description: '상품에 대한 실제 구매자들의 리뷰를 확인하고 평가할 수 있는 리뷰 페이지입니다.',
+  keywords: ['상품', '리뷰', '평점', '고객 후기', 'OguOgu'],
+};
 
 export default async function ProductReview({ params }: ProductDetailPageProps) {
   const { _id } = await params;

@@ -4,6 +4,7 @@ import { QnaSortBar } from '@/components/layouts/SortBar/Sortbar';
 import QnaClientControls from '@/features/qnaClientControl/qnaClientControl';
 import { QnaRes } from '@/shared/types/qna';
 import { ProductDetailPageProps } from '@/features/types/productDetail';
+import { Metadata } from 'next';
 
 /**
  * 특정 상품의 Q&A 목록을 표시하는 서버 컴포넌트입니다.
@@ -13,6 +14,12 @@ import { ProductDetailPageProps } from '@/features/types/productDetail';
  * @param {{ _id: string }} props.params - URL에서 전달된 상품 ID
  * @returns  Q&A 목록 UI
  */
+
+export const metadata: Metadata = {
+  title: '상품 Q&A | OguOgu',
+  description: '상품에 대한 고객 문의 및 답변을 확인하고 작성할 수 있는 Q&A 페이지입니다.',
+  keywords: ['상품', 'Q&A', '문의', '고객지원', 'OguOgu'],
+};
 
 export default async function ProductQna({ params }: ProductDetailPageProps) {
   const { _id } = await params;

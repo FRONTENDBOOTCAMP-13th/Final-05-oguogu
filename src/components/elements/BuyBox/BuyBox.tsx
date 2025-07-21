@@ -1,8 +1,8 @@
 'use client';
 
+import { BuyBoxType } from '@/components/elements/BuyBox/ButBox.type';
 import { createBookmark } from '@/shared/data/actions/bookmarks';
 import { useAuthStore } from '@/shared/store/authStore';
-import { productRes } from '@/shared/types/product';
 
 /**
  * 하단 고정형 구매 박스 컴포넌트
@@ -15,7 +15,7 @@ import { productRes } from '@/shared/types/product';
  * @param {productRes} props.res - 상품 상세 데이터 객체
  * @returns 구매 박스 UI JSX
  */
-export default function BuyBox({ onOpenModal, res }: { onOpenModal: () => void; res: productRes }) {
+export default function BuyBox({ onOpenModal, res }: BuyBoxType) {
   const token = useAuthStore(state => state.token);
 
   /**
