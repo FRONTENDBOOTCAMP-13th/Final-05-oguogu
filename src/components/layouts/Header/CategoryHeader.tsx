@@ -16,7 +16,7 @@ export default function CategoryHeader({ cartItemCount = 0 }: SearchHeaderProps)
         </button>
 
         {/* 현재 위치 */}
-        <h1 className="flex-1 h-6 sm:w-48 ml-2 pl-2 text-lg">item.name</h1>
+        <h1 className="flex-1 h-6 sm:w-48 ml-2 pl-2 text-lg">현재 경로 또는 상품명</h1>
 
         {/* 장바구니 아이콘 + 뱃지 */}
         <Link href="/mypage/cart" className="relative">
