@@ -53,7 +53,7 @@ export interface Item {
   extra: Extra;
 }
 
-export interface res {
+export interface productRes {
   ok: number;
   item: Item;
 }

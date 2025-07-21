@@ -1,45 +1,66 @@
-'use client';
-
-import BuyBox from '@/components/elements/BuyBox/BuyBox';
-import BuyModal from '@/components/elements/BuyModal/BuyModal';
 import ProductDetailInfo from '@/components/elements/ProductDetailInfo/ProductDetailInfo';
+import BuyModalAction from '@/features/buyModal/buyModalAction';
+import { ProductDetailPageProps } from '@/features/types/productDetail';
 import { getProduct } from '@/shared/data/functions/product';
-import { res } from '@/shared/types/product';
+import { Metadata } from 'next';
 import Image from 'next/image';
-import { use, useEffect, useState } from 'react';
 
-interface ProductDetailPageProps {
-  params: Promise<{
-    _id: string;
-  }>;
+// SEO 최적화를 위한 메타데이터 동적 생성 (임시)
+export async function generateMetadata({ params }: ProductDetailPageProps): Promise<Metadata> {
+  const { _id } = await params;
+  const product = await getProduct(Number(_id));
+
+  if (!product) {
+    return {
+      title: '상품 정보를 찾을 수 없습니다 | 오구오구',
+      description: '존재하지 않는 상품이거나, 정보를 불러오는 중입니다.',
+    };
+  }
+
+  const { name, content, image_url } = product.item;
+
+  return {
+    title: `${name} | 오구오구`,
+    description: content || `${name} 상품의 자세한 정보를 확인해보세요.`,
+    openGraph: {
+      title: `${name} | 오구오구`,
+      description: content || `${name} 상품의 자세한 정보를 확인해보세요.`,
+      images: [
+        {
+          url: image_url || '/images/default-og-image.png', // 이미지 경로 수정 필요
+          width: 800,
+          height: 600,
+          alt: `${name} 이미지`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${name} | 오구오구`,
+      description: content || `${name} 상품의 자세한 정보를 확인해보세요.`,
+      images: [image_url || '/images/default-og-image.png'], //이미지 경로 수정 필요
+    },
+  };
 }
 
-export default function ProductDetailPage({ params }: ProductDetailPageProps) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [res, setRes] = useState<res>();
+/**
+ * 상품 상세 페이지 컴포넌트입니다.
+ * 서버 사이드에서 데이터를 불러와 상품 정보를 렌더링합니다.
+ *
+ * @param {Object} props
+ * @param {{ _id: string }} props.params - URL에서 추출된 상품 ID
+ * @returns 상품 상세 페이지 요소
+ */
 
-  /*   // 전역관리 테스트
-  const { setToken, setUserInfo } = useAuthStore.getState(); */
-
-  const { _id } = use(params);
-
-  useEffect(() => {
-    const getRes = async () => {
-      const res = await getProduct(Number(_id));
-      setRes(res);
-    };
-    getRes();
-  }, [_id]);
+export default async function ProductDetailPage({ params }: ProductDetailPageProps) {
+  const { _id } = await params;
+  const res = await getProduct(Number(_id));
 
   if (!res) {
     return <div>상품 정보를 불러오는 중입니다...</div>;
   }
 
-  const product = res;
-  const productType = res.item.extra.productType;
-  console.log('product', product);
-  console.log('product.extra.type', res.item.extra.productType);
-  console.log('product.name', res.item.name);
+  const productType = await res.item.extra.productType;
 
   return (
     <>
@@ -56,11 +77,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
       <div className="flex items-center justify-center h-[1500px] bg-oguogu-gray-1">상품 상세 이미지</div>
 
       {/* 블러 및 오버레이 */}
-      {isModalOpen && <div className="fixed inset-0 bg-black/80 z-40" onClick={() => setIsModalOpen(false)} />}
-
-      {/* 모달 */}
-      {isModalOpen && <BuyModal type={productType} onClose={() => setIsModalOpen(false)} res={res} />}
-      {!isModalOpen && <BuyBox onOpenModal={() => setIsModalOpen(true)} />}
+      <BuyModalAction res={res} />
     </>
   );
 }

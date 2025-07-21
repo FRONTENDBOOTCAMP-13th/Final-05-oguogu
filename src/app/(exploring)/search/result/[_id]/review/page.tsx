@@ -1,30 +1,22 @@
-'use client';
 import ReviewItem from '@/components/elements/ReviewItem/ReviewItem';
 import { ReviewSortbar } from '@/components/layouts/SortBar/Sortbar';
+import ReviewClientControl from '@/features/reviewClientControl/reviewClientControl';
+import { ProductDetailPageProps } from '@/features/types/productDetail';
 import { getProductReplies } from '@/shared/data/functions/replies';
-import { useAuthStore } from '@/shared/store/authStore';
 import { ReviewRes } from '@/shared/types/review';
-import Link from 'next/link';
-import { use, useEffect, useState } from 'react';
 
-interface ProductDetailPageProps {
-  params: Promise<{
-    _id: string;
-  }>;
-}
+/**
+ * 특정 상품의 리뷰 목록을 렌더링하는 서버 컴포넌트입니다.
+ * 상품 ID를 기준으로 해당 리뷰 데이터를 불러오고, 리스트로 출력합니다.
+ *
+ * @param {Object} props
+ * @param {{ _id: string }} props.params - 동적 라우트에서 전달된 상품 ID
+ * @returns  리뷰 목록 UI
+ */
 
-export default function ProductReview({ params }: ProductDetailPageProps) {
-  const isLoggedIn: boolean = useAuthStore(state => state.isLoggedIn);
-  const { _id } = use(params);
-  const [res, setRes] = useState<ReviewRes>();
-
-  useEffect(() => {
-    const getRes = async () => {
-      const res = await getProductReplies(Number(_id));
-      setRes(res);
-    };
-    getRes();
-  }, [_id]);
+export default async function ProductReview({ params }: ProductDetailPageProps) {
+  const { _id } = await params;
+  const res: ReviewRes = await getProductReplies(Number(_id));
 
   console.log('res', res);
 
@@ -35,18 +27,7 @@ export default function ProductReview({ params }: ProductDetailPageProps) {
     <div>
       <ReviewSortbar />
       <div className="px-4 flex flex-col gap-4 mb-6">
-        {isLoggedIn ? (
-          <button className="border-1 py-1.5 border-oguogu-main-dark rounded-md flex items-center text-center justify-center">
-            리뷰 작성하기
-          </button>
-        ) : (
-          <Link
-            href="/login"
-            className="border-1 py-1.5 border-oguogu-main-dark rounded-md flex items-center text-center justify-center cursor-pointer"
-          >
-            <p className="text-oguogu-main pr-1 ">로그인</p> 후 리뷰 작성하기
-          </Link>
-        )}
+        <ReviewClientControl />
       </div>
 
       <section className="px-4 flex flex-col gap-8">{ReviewList}</section>

@@ -1,16 +1,9 @@
+import { TitleType } from '@/components/elements/CommonTitleItem/Title.type';
 import CropItem from '@/components/elements/ProductItem/Item/CropItem';
 import ExperienceItem from '@/components/elements/ProductItem/Item/ExperienceItem';
 import GardenItem from '@/components/elements/ProductItem/Item/GardenItem';
 
-export default function Title({
-  title = '제목',
-  content = '부제목',
-  type,
-}: {
-  title?: string;
-  content?: string;
-  type?: string;
-}) {
+export default function Title({ title = '제목', content = '부제목', type }: TitleType) {
   let itemType;
 
   if (type === 'crop') {
