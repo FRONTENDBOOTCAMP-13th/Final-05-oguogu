@@ -24,7 +24,7 @@ export default function SlideBannerItem({ order, size, productName, farmName, cl
           alt={`${productName}${farmName}`}
           width={210}
           height={280}
-          className="w-full h-full object-cover scale-105"
+          className="w-full h-full object-cover scale-100"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
         <figcaption className="absolute bottom-0 left-0 w-full text-oguogu-white text-center py-2">
