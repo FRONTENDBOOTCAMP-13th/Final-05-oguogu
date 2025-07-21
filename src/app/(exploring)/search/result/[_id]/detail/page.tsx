@@ -3,18 +3,43 @@
 import BuyBox from '@/components/elements/BuyBox/BuyBox';
 import BuyModal from '@/components/elements/BuyModal/BuyModal';
 import ProductDetailInfo from '@/components/elements/ProductDetailInfo/ProductDetailInfo';
+import { getProduct } from '@/shared/data/functions/product';
+import { res } from '@/shared/types/product';
 import Image from 'next/image';
-import { useState } from 'react';
+import { use, useEffect, useState } from 'react';
 
-{
-  /* 
-      <BuyBoxOption type="experience" name="감자 캐기 체험" price={10000} maxQuantity={4} />
-      <BuyBoxOption type="gardening" name="초당옥수수 7월 수확" price={10000} /> */
+interface ProductDetailPageProps {
+  params: Promise<{
+    _id: string;
+  }>;
 }
 
-export default function ProductDetail() {
+export default function ProductDetailPage({ params }: ProductDetailPageProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const productType = 'crop';
+  const [res, setRes] = useState<res>();
+
+  /*   // 전역관리 테스트
+  const { setToken, setUserInfo } = useAuthStore.getState(); */
+
+  const { _id } = use(params);
+
+  useEffect(() => {
+    const getRes = async () => {
+      const res = await getProduct(Number(_id));
+      setRes(res);
+    };
+    getRes();
+  }, []);
+
+  if (!res) {
+    return <div>상품 정보를 불러오는 중입니다...</div>;
+  }
+
+  const product = res;
+  const productType = res.item.extra.productType;
+  console.log('product', product);
+  console.log('product.extra.type', res.item.extra.productType);
+  console.log('product.name', res.item.name);
 
   return (
     <>
@@ -26,7 +51,7 @@ export default function ProductDetail() {
         height={320}
       />
       <section id="userInfo">
-        <ProductDetailInfo type={productType} />
+        <ProductDetailInfo type={productType} item={res.item} />
       </section>
       <div className="flex items-center justify-center h-[1500px] bg-oguogu-gray-1">상품 상세 이미지</div>
 
@@ -34,7 +59,7 @@ export default function ProductDetail() {
       {isModalOpen && <div className="fixed inset-0 bg-black/80 z-40" onClick={() => setIsModalOpen(false)} />}
 
       {/* 모달 */}
-      {isModalOpen && <BuyModal type={productType} onClose={() => setIsModalOpen(false)} />}
+      {isModalOpen && <BuyModal type={productType} onClose={() => setIsModalOpen(false)} res={res} />}
       {!isModalOpen && <BuyBox onOpenModal={() => setIsModalOpen(true)} />}
     </>
   );

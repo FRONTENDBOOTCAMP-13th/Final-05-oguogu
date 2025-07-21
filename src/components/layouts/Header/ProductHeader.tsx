@@ -1,35 +1,21 @@
 'use client';
-
 import Link from 'next/link';
 import handleGoBack from '@/components/layouts/Header/utils/handleGoBack';
-import { SearchHeaderProps } from '@/components/layouts/Header/types/Header.type';
-import { useEffect, useState } from 'react';
-import { getProduct } from '@/shared/data/functions/product';
-import { res } from '@/shared/types/product';
 
-export default function CategoryHeader({ cartItemCount = 0, _id }: SearchHeaderProps) {
-  const [res, setRes] = useState<res>();
-  useEffect(() => {
-    const getRes = async () => {
-      const res = await getProduct(Number(_id));
-      setRes(res);
-    };
-    getRes();
-  }, []);
-
+export default function ProductHeader({ title }: { title: string }) {
+  const cartItemCount = 3;
   return (
-    <header className="header">
+    <header className="w-full h-12 sticky top-0 z-50 bg-oguogu-white flex justify-between items-center p-3">
       {/* 검색 + 버튼 */}
       <div className="flex gap-1 items-center w-full">
-        <button type="button" onClick={handleGoBack} className="w-6 cursor-pointer">
-          <svg width="18" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <button type="button" onClick={handleGoBack}>
+          <svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M9 0.5L1 9.22973L9 17.5" stroke="black" />
           </svg>
         </button>
 
-        {/* 현재 위치 */}
-        <h1 className="flex-1 h-6 sm:w-48 ml-2 pl-2 text-lg">{res?.item.name}</h1>
-
+        {/* 상단 텍스트 */}
+        <p className="text-[16px] w-full text-center">{title}</p>
         {/* 장바구니 아이콘 + 뱃지 */}
         <Link href="/mypage/cart" className="relative">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

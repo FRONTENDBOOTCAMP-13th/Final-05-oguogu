@@ -1,3 +1,4 @@
+'use client';
 import { ImageCategoryItemType, TextCategoryItemType } from '@/components/elements/CategoryItem/CategoryItem.type';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -19,6 +20,13 @@ export function ImageCategoryItem({ params, title }: ImageCategoryItemType) {
 /**
  * 카테고리 개별 아이템 컴포넌트 : 텍스트형
  */
+
+/* 
+  const pathname = usePathname();
+  const isActive = pathname?.includes(`/${params}/${subParams}`);
+
+  const borderColor = isActive ? 'border-oguogu-main-dark' : 'border-oguogu-gray-2';
+   */
 export function TextCategoryItem({ type, _id, params, title, isClick = false }: TextCategoryItemType) {
   let borderColor;
   if (isClick) {

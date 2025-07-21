@@ -17,7 +17,8 @@ import { ProductSortbar } from '@/components/layouts/SortBar/Sortbar';
 export default function ProductListByType() {
   return (
     <>
-      <CategoryHeader cartItemCount={100} />
+      {/*  */}
+      <CategoryHeader cartItemCount={100} _id="1" />
       <TextCategory />
       <ProductSortbar />
 

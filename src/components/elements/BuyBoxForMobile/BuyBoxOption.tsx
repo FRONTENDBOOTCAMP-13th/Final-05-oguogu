@@ -5,6 +5,7 @@ import { BuyBoxOptionType } from '@/components/elements/BuyBoxForMobile/BuyBoxOp
 import BuyBoxOptionExtraItem from '@/components/elements/BuyBoxForMobile/BuyBoxOptionExtraItem';
 import { format } from 'date-fns';
 import { ko } from 'date-fns/locale';
+import { useAuthStore } from '@/shared/store/authStore';
 
 // 체험 상품 더미 데이터
 const rawData = [
@@ -53,9 +54,10 @@ const rawData = [
  * @param {'crop' | 'experience' | 'gardening'} props.type - 상품 유형
  * @returns {JSX.Element} 구매 옵션 선택 영역
  */
-export default function BuyBoxOption({ name, price, maxQuantity = 1, type }: BuyBoxOptionType) {
+export default function BuyBoxOption({ name, price, maxQuantity = 1, type, handleBuy, product_id }: BuyBoxOptionType) {
   const [count, setCount] = useState(1);
   const [totalPrice, setTotalPrice] = useState(price);
+  const TOKEN = useAuthStore(state => state.token); //전역 관리중인 사용자 토큰
 
   const minusCount = () => {
     if (count > 1) {
@@ -85,6 +87,7 @@ export default function BuyBoxOption({ name, price, maxQuantity = 1, type }: Buy
       </div>
 
       {/* 날짜 선택 : 체험 상품 전용 */}
+
       {type === 'experience' ? (
         <div className="flex flex-col gap-2">
           <span className="text-xs text-oguogu-gray-4">날짜 선택</span>
@@ -129,7 +132,7 @@ export default function BuyBoxOption({ name, price, maxQuantity = 1, type }: Buy
                   <path d="M1 0.996094H9" stroke="black" strokeLinecap="round" />
                 </svg>
               </button>
-              <p className="w-7 h-7 border-t border-b border-oguogu-gray-2 text-center content-center">1</p>
+              <p className="w-7 h-7 border-t border-b border-oguogu-gray-2 text-center content-center">{count}</p>
               <button
                 type="button"
                 className="w-7 h-7 border border-oguogu-gray-2 flex justify-center items-center cursor-pointer"
@@ -177,6 +180,23 @@ export default function BuyBoxOption({ name, price, maxQuantity = 1, type }: Buy
           <span>원</span>
         </div>
       </div>
+      <button
+        className={`flex items-center justify-center text-center
+         bg-oguogu-main text-oguogu-white 
+         text-[16px] h-[44px]
+         px-6 py-1.5 rounded-sm w-full`}
+        onClick={() => {
+          console.log('버튼 클릭됨');
+          console.log('TOKEN:', TOKEN);
+          if (!TOKEN) {
+            alert('로그인이 필요합니다.');
+            return;
+          }
+          handleBuy(product_id, count, TOKEN);
+        }}
+      >
+        {type === 'crop' ? '장바구니 담기' : '구매하기'}
+      </button>
     </div>
   );
 }

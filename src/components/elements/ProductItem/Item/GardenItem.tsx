@@ -20,10 +20,10 @@ export default function GardenItem({ _id, name, originPrice }: ItemType) {
             width={140}
             height={186.67}
             className="rounded-[8px] w-[140px] h-[186.67px] object-cover"
-          /> */}
+          />
           {/* 뱃지 (제철 상품, 인기 상품 등) 우선 아이콘 빼고 진행 */}
           <div className="absolute top-0.5 left-1.5">
-            <Badge bgColor="bg-ogugu-blue-light" textColor="text-oguogu-white" content="마감 D-5" />
+            <Badge type="closing" />
           </div>
         </div>
       </Link>
