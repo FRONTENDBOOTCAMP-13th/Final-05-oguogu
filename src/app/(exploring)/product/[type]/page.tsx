@@ -17,9 +17,13 @@ import { ProductSortbar } from '@/components/layouts/SortBar/Sortbar';
 export default function ProductListByType() {
   return (
     <>
-      {/*  */}
+      {/* 헤더 */}
       <CategoryHeader cartItemCount={100} _id="1" />
+
+      {/* 네비게이션 */}
       <TextCategory />
+
+      {/* 정렬 */}
       <ProductSortbar />
 
       {/* 농산물(crop) 상품 */}

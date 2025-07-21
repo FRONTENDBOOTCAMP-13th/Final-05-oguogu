@@ -83,7 +83,7 @@ export default function BuyBoxOption({ name, price, maxQuantity = 1, type, handl
       {/* 상품명 */}
       <div className="flex flex-col gap-2">
         <span className="text-xs text-oguogu-gray-4">상품명</span>
-        <h3 className="text-xl max-w-full whitespace-nowrap overflow-hidden text-ellipsis">{name}</h3>
+        <h3 className="text-xl max-w-full textElipsis">{name}</h3>
       </div>
 
       {/* 날짜 선택 : 체험 상품 전용 */}

@@ -65,7 +65,18 @@
     display: none; /* Chrome, Safari */
   }
 
+  /* 메인 페이지에서 추천 카테고리에 사용되는 공통 스타일 */
   .titleWithProductItem {
     @apply flex flex-col justify-center gap-y-4 px-4;
+  }
+
+  /* 텍스트가 한 줄에서 벗어났을 때, ... 으로 표기되는 공통 스타일 */
+  .textElipsis {
+    @apply whitespace-nowrap overflow-hidden text-ellipsis;
+  }
+
+  /* 상품 검색 결과 및 탐색 목록 페이지에서 개별 아이템들이 목록으로 정렬할 때의 기본 스타일, grid-cols-[...] 속성만 별도 정의 필요 */
+  .itemGrid {
+    @apply grid gap-x-2 gap-y-8 px-4;
   }
 }

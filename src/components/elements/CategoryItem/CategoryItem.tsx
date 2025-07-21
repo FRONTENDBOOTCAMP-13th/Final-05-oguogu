@@ -12,7 +12,7 @@ export function ImageCategoryItem({ params, title }: ImageCategoryItemType) {
   return (
     <Link href={`/product/crop?category=${params}`} className="flex flex-col items-center gap-2">
       <Image src={`/images/category-${params}.webp`} alt={title} width={48} height={48} />
-      <h3 className="text-xs">{title}</h3>
+      <p className="text-xs">{title}</p>
     </Link>
   );
 }
@@ -38,9 +38,9 @@ export function TextCategoryItem({ type, _id, params, title, isClick = false }: 
   return (
     <Link
       href={`${type === 'search' ? '/search/result' : type === 'product' ? '/product' : ''}${_id ? '/' + _id : ''}/${params}`}
-      className={`font-[14px] h-12 flex justify-center border-b-2 ${borderColor} py-2 w-full`}
+      className={`h-12 flex justify-center items-center border-b-2 ${borderColor} w-full`}
     >
-      {title}
+      <h2>{title}</h2>
     </Link>
   );
 }
