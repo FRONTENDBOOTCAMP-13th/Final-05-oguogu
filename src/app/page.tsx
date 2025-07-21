@@ -32,12 +32,16 @@ export default function Home() {
       <Header cartItemCount={100} />
       <Navigation />
       <SlideBanner />
-      <ImageCategory />
-      <ProductLinkItem link="/product/crop" linkTitle="전체 농산물" subTxt="보러 가기" />
-      <main className="flex flex-col gap-y-8 py-8 mobile-max:gap-y-12 ">
+      <aside className="flex flex-col gap-y-4 pt-6 mobile-max:gap-y-6 mobile-max:pt-8 ">
+        <ImageCategory />
+        <ProductLinkItem link="/product/crop" linkTitle="전체 농산물" subTxt="보러 가기" />
+      </aside>
+      <main className="flex flex-col gap-y-8 pt-8 mobile-max:gap-y-12 mobile-max:pt-12 ">
         <article className="titleWithProductItem">
-          <Title title="온 가족이 함께 즐기는 텃밭 체험" description="7월 한 달 간 체험 상품 20% 할인!" />
-          <ProductItemList type="experience" />
+          <div className="flex flex-col gap-y-8">
+            <Title title="온 가족이 함께 즐기는 텃밭 체험" description="7월 한 달 간 체험 상품 20% 할인!" />
+            <ProductItemList type="experience" />
+          </div>
           <ProductLinkItem
             keywordParams=""
             typeParams=""
@@ -47,14 +51,18 @@ export default function Home() {
           />
         </article>
         <article className="titleWithProductItem">
-          <Title title="톡! 터지는 옥수수의 반전 매력" description="7월 제철 채소 옥수수🌽" />
-          <ProductItemList type="crop" />
+          <div className="flex flex-col gap-y-8">
+            <Title title="톡! 터지는 옥수수의 반전 매력" description="7월 제철 채소 옥수수🌽" />
+            <ProductItemList type="crop" />
+          </div>
           <ProductLinkItem link="/search/result" linkTitle="옥수수" subTxt="구매하러 가기" />
         </article>
 
         <article className="titleWithProductItem">
-          <Title title="마감 임박! 텃밭 상품 BEST 10" description="같이 심고, 같이 키우고, 같이 수확해요!" />
-          <ProductItemList type="gardening" />
+          <div className="flex flex-col gap-y-8">
+            <Title title="마감 임박! 텃밭 상품 BEST 10" description="같이 심고, 같이 키우고, 같이 수확해요!" />
+            <ProductItemList type="gardening" />
+          </div>
           <ProductLinkItem link="/search/result" linkTitle="텃밭 상품" subTxt="구경하러 가기" />
         </article>
       </main>
@@ -67,20 +75,6 @@ export default function Home() {
           로그아웃 버튼(테스트용)
         </button>
       </footer>
-      {/* <Image
-        src="/images/image.png"
-        width={180}
-        height={180}
-        alt="ogu"
-        className="hidden fixed bottom-[30px] left-1/2 translate-x-[420px] mobile-max:block"
-      />
-      <Image
-        src="/images/qr.png"
-        width={180}
-        height={180}
-        alt="ogu"
-        className="hidden fixed bottom-2/7 left-1/2 translate-x-[420px] mobile-max:block"
-      /> */}
     </>
   );
 }
