@@ -5,10 +5,10 @@ import handleGoBack from '@/utils/handleGoBack/handleGoBack';
 import { SearchHeaderProps } from '@/components/layouts/Header/types/Header.type';
 import { useEffect, useState } from 'react';
 import { getProduct } from '@/shared/data/functions/product';
-import { res } from '@/shared/types/product';
+import { productRes } from '@/shared/types/product';
 
 export default function CategoryHeader({ cartItemCount = 0, _id }: SearchHeaderProps) {
-  const [res, setRes] = useState<res>();
+  const [res, setRes] = useState<productRes>();
   useEffect(() => {
     const getRes = async () => {
       const res = await getProduct(Number(_id));
