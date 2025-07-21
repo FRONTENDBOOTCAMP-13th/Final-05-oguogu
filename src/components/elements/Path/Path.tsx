@@ -10,14 +10,23 @@ export function Path({ title }: { title: string }) {
         홈
       </Link>
 
-      <Image src="/svgs/arrow-right.svg" alt="arrowIcon" width={6} height={10} className="mb-[1px]" />
-      <Link href="/search" className="text-oguogu-gray-4">
-        검색
-      </Link>
-      <span className="text-oguogu-gray-4">&</span>
-      <Link href="/product/crop" className="text-oguogu-gray-4">
-        탐색
-      </Link>
+      {document.referrer.includes('/product') ? (
+        <>
+          <Image src="/svgs/arrow-right.svg" alt="arrowIcon" width={6} height={10} className="mb-[1px]" />
+          <Link href="/search" className="text-oguogu-gray-4">
+            검색
+          </Link>
+        </>
+      ) : document.referrer.includes('/search') ? (
+        <>
+          <Image src="/svgs/arrow-right.svg" alt="arrowIcon" width={6} height={10} className="mb-[1px]" />
+          <Link href="/product/crop" className="text-oguogu-gray-4">
+            탐색
+          </Link>
+        </>
+      ) : (
+        ''
+      )}
 
       {title ? (
         <>
