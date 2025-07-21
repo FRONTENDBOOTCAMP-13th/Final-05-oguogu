@@ -11,5 +11,5 @@ export interface ItemType {
   seller_id?: string;
   dcRate?: string;
   finPrice?: string;
-  extra?: CropItemExtraType;
+  extra?: ItemExtraType;
 }

@@ -31,7 +31,7 @@ export default function ProductQna({ params }: ProductDetailPageProps) {
       setRes(res);
     };
     getRes();
-  }, []);
+  }, [_id]);
 
   // id는 사용자 인지 검증할때 사용하기 위함. zustand에 저장한 _id 값이랑 비교 하는 과정이 필요합니다. 비밀글 때문에
   console.log(_id, res);
