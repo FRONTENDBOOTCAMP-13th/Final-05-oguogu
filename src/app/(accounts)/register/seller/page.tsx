@@ -17,6 +17,7 @@ export default function RegisterFormForSeller() {
   const [sellerConfirmPassword, setSellerConfirmPassword] = useState('');
   const [sellerEmail, setSellerEmail] = useState('');
 
+  // 체크 박스
   const [sellerAgreeTerms, setSellerAgreeTerms] = useState(true);
   const [sellerFinTerms, setSellerFinTerms] = useState(true);
   const [sellerAgreePrivacy, setSellerAgreePrivacy] = useState(true);
@@ -26,6 +27,7 @@ export default function RegisterFormForSeller() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // 서버 요청 로직
+    console.log('폼 확인용');
   };
   return (
     <>
