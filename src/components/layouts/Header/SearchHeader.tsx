@@ -3,28 +3,69 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import handleGoBack from '@/components/layouts/Header/utils/handleGoBack';
+import RelatedKeywordItem from '@/components/elements/RelatedKeywordItem/RelatedKeywordItem';
+import { useRouter } from 'next/navigation';
 
-export default function SearchHeader() {
+interface SearchHeaderProps {
+  cartItemCount?: number;
+}
+
+// 예시 키워드 데이터 (실제 서비스에서는 API로 대체)
+const allKeywords = [
+  { name: '옥수수', type: 'crop' },
+  { name: '야채도사', type: 'garden' },
+  { name: '오롯유통', type: 'garden' },
+  { name: '양배추', type: 'crop' },
+  { name: '초당옥수수', type: 'crop' },
+  { name: '옥수유통', type: 'garden' },
+];
+
+// 한글 자음 추출 함수
+function getConsonants(str: string) {
+  const CHO = [
+    "ㄱ", "ㄲ", "ㄴ", "ㄷ", "ㄸ", "ㄹ", "ㅁ", "ㅂ", "ㅃ", "ㅅ", "ㅆ",
+    "ㅇ", "ㅈ", "ㅉ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"
+  ];
+  return Array.from(str) // 문자열을 한 글자씩 쪼개기
+    .map(char => {
+      const code = char.charCodeAt(0) - 44032; // 한글 시작점 기준 위치 계산
+      if (code >= 0 && code <= 11171) {
+        return CHO[Math.floor(code / 588)]; // 초성 인덱스 계산
+      }
+      return char; // 한글이 아니면 그대로 반환
+    })
+    .join(""); // 결과 문자열로 합치기
+}
+
+export default function SearchHeader({ cartItemCount = 99 }: SearchHeaderProps) {
   const [keyword, setKeyword] = useState('');
+  const [showDropdown, setShowDropdown] = useState(false);
+  const router = useRouter();
+
+  // 검색어와 자음이 일치하는 키워드만 추출
+  const filteredKeywords = keyword
+    ? allKeywords
+        .map(k => k.name)
+        .filter(name => getConsonants(name).includes(getConsonants(keyword)))
+    : [];
 
   const handleSearch = () => {
     if (keyword.trim()) {
-      console.log('검색:', keyword); // 또는 router.push(`/search?keyword=${keyword}`)
+      router.push(`/(exploring)/search/result?keyword=${encodeURIComponent(keyword)}`);
     }
   };
 
   return (
-    <header className="header">
-      {/* 검색 + 버튼 */}
-      <div className="flex gap-1 items-center w-full">
-        <button type="button" onClick={handleGoBack} className="w-6 cursor-pointer">
-          <svg width="18" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <header className="sticky top-0 z-50 flex items-center justify-between w-full h-12 p-3 bg-oguogu-white">
+      <div className="flex items-center w-full gap-1">
+        {/* 뒤로가기 */}
+        <button type="button" onClick={handleGoBack}>
+          <svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M9 0.5L1 9.22973L9 17.5" stroke="black" />
           </svg>
         </button>
-
         {/* 검색창 */}
-        <form className="contents">
+        <form className="contents" onSubmit={e => { e.preventDefault(); handleSearch(); }}>
           <label htmlFor="searchKeyword" className="sr-only">
             검색
           </label>
@@ -33,19 +74,17 @@ export default function SearchHeader() {
             id="searchKeyword"
             placeholder="7월은 초당옥수수가 제철!"
             value={keyword}
-            onChange={e => setKeyword(e.target.value)}
-            onKeyDown={e => e.key === 'Enter' && handleSearch()}
-            className="flex-1 h-6 sm:w-48 ml-2 pl-2 py-3 text-sm text-oguogu-black placeholder-oguogu-gray-3 outline-none appearance-none focus:ring-oguogu-main"
-          />
-
-          {/* 검색 버튼 */}
-          <button
-            type="button"
-            onClick={e => {
-              e.preventDefault();
-              handleSearch();
+            onChange={e => {
+              setKeyword(e.target.value);
+              setShowDropdown(e.target.value.length > 0);
             }}
-            className="mx-1 cursor-pointer"
+            onKeyDown={e => e.key === 'Enter' && handleSearch()}
+            className="flex-1 h-6 py-3 pl-2 ml-2 text-sm outline-none appearance-none sm:w-48 text-oguogu-black placeholder-oguogu-gray-3"
+            autoComplete="off"
+          />
+          <button
+            type="submit"
+            className="mx-1"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -58,16 +97,30 @@ export default function SearchHeader() {
           </button>
         </form>
 
-        {/* 홈 버튼 */}
-        <Link href="/">
+        {/* 드롭다운: 검색어 입력 시 자음 일치 키워드 노출 */}
+        {showDropdown && (
+          <div className="absolute left-0 right-0 z-10 mt-1 bg-white rounded shadow top-full">
+            <RelatedKeywordItem keywords={filteredKeywords} />
+          </div>
+        )}
+
+        {/* 장바구니 아이콘 + 뱃지 */}
+        <Link href="/mypage/cart" className="relative">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
-              d="M15 21V13C15 12.7348 14.8946 12.4804 14.7071 12.2929C14.5196 12.1053 14.2652 12 14 12H10C9.73478 12 9.48043 12.1053 9.29289 12.2929C9.10536 12.4804 9 12.7348 9 13V21M3 9.99997C2.99993 9.70904 3.06333 9.42159 3.18579 9.15768C3.30824 8.89378 3.4868 8.65976 3.709 8.47197L10.709 2.47297C11.07 2.16788 11.5274 2.00049 12 2.00049C12.4726 2.00049 12.93 2.16788 13.291 2.47297L20.291 8.47197C20.5132 8.65976 20.6918 8.89378 20.8142 9.15768C20.9367 9.42159 21.0001 9.70904 21 9.99997V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V9.99997Z"
+              d="M15 11L14 20M19 11L15 4M2 11H22M3.5 11L5.1 18.4C5.1935 18.8586 5.44485 19.2698 5.81028 19.5621C6.17572 19.8545 6.63211 20.0094 7.1 20H16.9C17.3679 20.0094 17.8243 19.8545 18.1897 19.5621C18.5552 19.2698 18.8065 18.8586 18.9 18.4L20.6 11M4.5 15.5H19.5M5 11L9 4M9 11L10 20"
               stroke="black"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
+          {cartItemCount > 0 ? (
+            <span className="absolute bottom-0 right-0 bg-oguogu-main text-oguogu-white text-[8px] w-3 h-3 flex items-center justify-center rounded-full">
+              {cartItemCount > 99 ? '99' : cartItemCount}
+            </span>
+          ) : (
+            ''
+          )}
         </Link>
       </div>
     </header>
