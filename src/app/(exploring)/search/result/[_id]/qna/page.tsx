@@ -1,65 +1,38 @@
-'use client';
-
+import { getPosts } from '@/shared/data/functions/post';
 import QnaItem from '@/components/elements/QnaItem/QnaItem';
 import { QnaSortBar } from '@/components/layouts/SortBar/Sortbar';
-import { getPosts } from '@/shared/data/functions/post';
-import { useAuthStore } from '@/shared/store/authStore';
+import QnaClientControls from '@/features/qnaClientControl/qnaClientControl';
 import { QnaRes } from '@/shared/types/qna';
-import Link from 'next/link';
-import { use, useEffect, useState } from 'react';
+import { ProductDetailPageProps } from '@/features/types/productDetail';
+import { Metadata } from 'next';
 
-{
-  /* <BuyBoxOption type="crop" name="쫀득쫀득 대학 미백 찰옥수수 30개입" price={11800} maxQuantity={10} />
-      <BuyBoxOption type="experience" name="감자 캐기 체험" price={10000} maxQuantity={4} />
-      <BuyBoxOption type="gardening" name="초당옥수수 7월 수확" price={10000} /> */
-}
+/**
+ * 특정 상품의 Q&A 목록을 표시하는 서버 컴포넌트입니다.
+ * 상품 ID를 기반으로 Q&A 데이터를 필터링하여 렌더링합니다.
+ *
+ * @param {Object} props
+ * @param {{ _id: string }} props.params - URL에서 전달된 상품 ID
+ * @returns  Q&A 목록 UI
+ */
 
-interface ProductDetailPageProps {
-  params: Promise<{
-    _id: string;
-  }>;
-}
+export const metadata: Metadata = {
+  title: '상품 Q&A | OguOgu',
+  description: '상품에 대한 고객 문의 및 답변을 확인하고 작성할 수 있는 Q&A 페이지입니다.',
+  keywords: ['상품', 'Q&A', '문의', '고객지원', 'OguOgu'],
+};
 
-export default function ProductQna({ params }: ProductDetailPageProps) {
-  const isLoggedIn: boolean = useAuthStore(state => state.isLoggedIn);
-  const { _id } = use(params);
-  const [res, setRes] = useState<QnaRes>();
+export default async function ProductQna({ params }: ProductDetailPageProps) {
+  const { _id } = await params;
+  const res: QnaRes = await getPosts('qna');
 
-  useEffect(() => {
-    const getRes = async () => {
-      const res = await getPosts('qna');
-      setRes(res);
-    };
-    getRes();
-  }, [_id]);
+  const qnaList = res?.item
+    .filter(item => item.product_id === Number(_id))
+    .map(item => <QnaItem key={item._id} state={true} isPrivate={false} viewerRole="other" res={item} />);
 
-  // id는 사용자 인지 검증할때 사용하기 위함. zustand에 저장한 _id 값이랑 비교 하는 과정이 필요합니다. 비밀글 때문에
-  console.log(_id, res);
-
-  const qnaList = res?.item.map(
-    item =>
-      item.product_id === Number(_id) && (
-        <QnaItem key={item._id} state={true} isPrivate={false} viewerRole="other" res={item} />
-      ),
-  );
   return (
     <div className="flex flex-col">
-      <QnaSortBar />
-      <div className="px-4 flex flex-col gap-4 mb-6">
-        {isLoggedIn ? (
-          <button className="border-1 py-1.5 border-oguogu-main-dark rounded-md flex items-center text-center justify-center cursor-pointer">
-            문의글 작성하기
-          </button>
-        ) : (
-          <Link
-            href="/login"
-            className="border-1 py-1.5 border-oguogu-main-dark rounded-md flex items-center text-center justify-center cursor-pointer"
-          >
-            <p className="text-oguogu-main-dark pr-1 ">로그인</p> 후 문의글 작성하기
-          </Link>
-        )}
-      </div>
-
+      <QnaSortBar qnaCnt={qnaList.length} />
+      <QnaClientControls />
       <section>{qnaList}</section>
     </div>
   );
