@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import handleGoBack from '@/components/layouts/Header/utils/handleGoBack';
+import handleGoBack from '@/utils/handleGoBack/handleGoBack';
 import RelatedKeywordItem from '@/components/elements/RelatedKeywordItem/RelatedKeywordItem';
 import { useRouter } from 'next/navigation';
 
@@ -23,8 +23,25 @@ const allKeywords = [
 // 한글 자음 추출 함수
 function getConsonants(str: string) {
   const CHO = [
-    "ㄱ", "ㄲ", "ㄴ", "ㄷ", "ㄸ", "ㄹ", "ㅁ", "ㅂ", "ㅃ", "ㅅ", "ㅆ",
-    "ㅇ", "ㅈ", "ㅉ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"
+    'ㄱ',
+    'ㄲ',
+    'ㄴ',
+    'ㄷ',
+    'ㄸ',
+    'ㄹ',
+    'ㅁ',
+    'ㅂ',
+    'ㅃ',
+    'ㅅ',
+    'ㅆ',
+    'ㅇ',
+    'ㅈ',
+    'ㅉ',
+    'ㅊ',
+    'ㅋ',
+    'ㅌ',
+    'ㅍ',
+    'ㅎ',
   ];
   return Array.from(str) // 문자열을 한 글자씩 쪼개기
     .map(char => {
@@ -34,7 +51,7 @@ function getConsonants(str: string) {
       }
       return char; // 한글이 아니면 그대로 반환
     })
-    .join(""); // 결과 문자열로 합치기
+    .join(''); // 결과 문자열로 합치기
 }
 
 export default function SearchHeader({ cartItemCount = 99 }: SearchHeaderProps) {
@@ -44,9 +61,7 @@ export default function SearchHeader({ cartItemCount = 99 }: SearchHeaderProps) 
 
   // 검색어와 자음이 일치하는 키워드만 추출
   const filteredKeywords = keyword
-    ? allKeywords
-        .map(k => k.name)
-        .filter(name => getConsonants(name).includes(getConsonants(keyword)))
+    ? allKeywords.map(k => k.name).filter(name => getConsonants(name).includes(getConsonants(keyword)))
     : [];
 
   const handleSearch = () => {
@@ -65,7 +80,13 @@ export default function SearchHeader({ cartItemCount = 99 }: SearchHeaderProps) 
           </svg>
         </button>
         {/* 검색창 */}
-        <form className="contents" onSubmit={e => { e.preventDefault(); handleSearch(); }}>
+        <form
+          className="contents"
+          onSubmit={e => {
+            e.preventDefault();
+            handleSearch();
+          }}
+        >
           <label htmlFor="searchKeyword" className="sr-only">
             검색
           </label>
@@ -82,10 +103,7 @@ export default function SearchHeader({ cartItemCount = 99 }: SearchHeaderProps) 
             className="flex-1 h-6 py-3 pl-2 ml-2 text-sm outline-none appearance-none sm:w-48 text-oguogu-black placeholder-oguogu-gray-3"
             autoComplete="off"
           />
-          <button
-            type="submit"
-            className="mx-1"
-          >
+          <button type="submit" className="mx-1">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M21 21L16.66 16.66M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"

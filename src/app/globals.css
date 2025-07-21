@@ -64,4 +64,8 @@
   .no-scrollbar::-webkit-scrollbar {
     display: none; /* Chrome, Safari */
   }
+
+  .titleWithProductItem {
+    @apply flex flex-col justify-center gap-y-4 px-4;
+  }
 }
