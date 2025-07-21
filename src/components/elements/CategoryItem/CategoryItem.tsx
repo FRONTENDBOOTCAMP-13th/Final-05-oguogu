@@ -40,7 +40,7 @@ export function TextCategoryItem({ type, _id, params, title, isClick = false }: 
       href={`${type === 'search' ? '/search/result' : type === 'product' ? '/product' : ''}${_id ? '/' + _id : ''}/${params}`}
       className={`h-12 flex justify-center items-center border-b-2 ${borderColor} w-full`}
     >
-      {title}
+      <h2>{title}</h2>
     </Link>
   );
 }
