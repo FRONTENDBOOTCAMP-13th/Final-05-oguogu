@@ -21,17 +21,19 @@ export default function RegisterFormForUser() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // 서버 요청 로직
+    console.log('폼 확인용');
   };
 
   return (
     <>
+      {/* 헤더 */}
       <LinkHeader title="회원가입" />
+      {/* 일반 회원가입 폼 */}
       <main className="w-[320px] mx-auto px-4  gap-2">
-        {/* 여기에 내용 작성 */}
         <form action="" onSubmit={handleSubmit} className="py-4">
           <fieldset className="flex flex-col gap-6">
             <legend className="sr-only">회원가입</legend>
+            {/* 이메일 작성 */}
             <div>
               <label htmlFor="signUpUserEmail">
                 이메일<sup className="text-[10px] ">*</sup>
@@ -49,6 +51,7 @@ export default function RegisterFormForUser() {
               />
             </div>
 
+            {/* 이름 작성  */}
             <div>
               <label htmlFor="signUpUserName">
                 이름
@@ -63,6 +66,7 @@ export default function RegisterFormForUser() {
               />
             </div>
 
+            {/* 비밀번호 작성  */}
             <div>
               <label htmlFor="signUpUserPassword">
                 비밀번호
@@ -76,6 +80,7 @@ export default function RegisterFormForUser() {
                 value={password}
               />
             </div>
+            {/* 비밀번호 확인 작성  */}
             <div>
               <label htmlFor="signUpUserConfirmPassword">
                 비밀번호 확인
@@ -89,6 +94,7 @@ export default function RegisterFormForUser() {
                 value={confirmPassword}
               />
             </div>
+            {/* 연락처 작성 */}
             <div>
               <label htmlFor="signUpUserPhoneNumber">
                 연락처
@@ -103,6 +109,7 @@ export default function RegisterFormForUser() {
               />
             </div>
 
+            {/* 주소 작성 */}
             <div>
               <label htmlFor="signUpUserAddress">
                 주소
@@ -121,7 +128,9 @@ export default function RegisterFormForUser() {
               <LoginInput id="signUpUserBirth" type="birth" onChange={setBirth} value={birth} />
             </div>
 
+            {/* 체크박스 */}
             <div className="w-full flex flex-col items-start justify-start my-[16px]">
+              {/* 이용약관 동의 */}
               <CheckButton
                 size={14}
                 gap={2}
@@ -131,6 +140,7 @@ export default function RegisterFormForUser() {
               >
                 이용약관 동의
               </CheckButton>
+              {/* 개인 수집 이용 동의 */}
               <CheckButton
                 size={14}
                 gap={2}
@@ -140,6 +150,7 @@ export default function RegisterFormForUser() {
               >
                 개인정보 수집 이용 동의
               </CheckButton>
+              {/* 14세 이상 확인 */}
               <CheckButton
                 size={14}
                 gap={2}
@@ -149,6 +160,7 @@ export default function RegisterFormForUser() {
               >
                 본인은 만14세 이상입니다.
               </CheckButton>
+              {/* 14세 이상 확인 */}
               <CheckButton
                 size={14}
                 gap={2}
@@ -159,6 +171,7 @@ export default function RegisterFormForUser() {
                 마케팅 광고 활용을 위한 수집 및 이용 동의
               </CheckButton>
             </div>
+            {/* 가입 완료 버튼 ( 폼 전달 ) */}
             <div>
               <CommonButton
                 feature="가입 완료하기"
