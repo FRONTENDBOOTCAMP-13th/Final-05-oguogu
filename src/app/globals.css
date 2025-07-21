@@ -66,6 +66,6 @@
   }
 
   .titleWithProductItem {
-    @apply flex flex-col justify-center gap-y-6 px-4 mobile-max:gap-y-8;
+    @apply flex flex-col justify-center gap-y-4 px-4 mobile-max:gap-y-6;
   }
 }
