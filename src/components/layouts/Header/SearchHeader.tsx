@@ -3,56 +3,22 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import handleGoBack from '@/utils/handleGoBack/handleGoBack';
+import { getConsonants } from '@/components/layouts/Header/utils/getConsonants';
 import RelatedKeywordItem from '@/components/elements/RelatedKeywordItem/RelatedKeywordItem';
 import { useRouter } from 'next/navigation';
+import { SearchHeaderProps } from '@/components/layouts/Header/types/Header.type';
+import { Keyword } from '@/components/elements/RelatedKeywordItem/RelatedKeywordItem.type';
 
-interface SearchHeaderProps {
-  cartItemCount?: number;
-}
 
-// 예시 키워드 데이터 (실제 서비스에서는 API로 대체)
+// 예시 키워드 데이터
 const allKeywords = [
-  { name: '옥수수', type: 'crop' },
+  { name: '옥수수', type: 'crop' },  
   { name: '야채도사', type: 'garden' },
   { name: '오롯유통', type: 'garden' },
   { name: '양배추', type: 'crop' },
   { name: '초당옥수수', type: 'crop' },
   { name: '옥수유통', type: 'garden' },
 ];
-
-// 한글 자음 추출 함수
-function getConsonants(str: string) {
-  const CHO = [
-    'ㄱ',
-    'ㄲ',
-    'ㄴ',
-    'ㄷ',
-    'ㄸ',
-    'ㄹ',
-    'ㅁ',
-    'ㅂ',
-    'ㅃ',
-    'ㅅ',
-    'ㅆ',
-    'ㅇ',
-    'ㅈ',
-    'ㅉ',
-    'ㅊ',
-    'ㅋ',
-    'ㅌ',
-    'ㅍ',
-    'ㅎ',
-  ];
-  return Array.from(str) // 문자열을 한 글자씩 쪼개기
-    .map(char => {
-      const code = char.charCodeAt(0) - 44032; // 한글 시작점 기준 위치 계산
-      if (code >= 0 && code <= 11171) {
-        return CHO[Math.floor(code / 588)]; // 초성 인덱스 계산
-      }
-      return char; // 한글이 아니면 그대로 반환
-    })
-    .join(''); // 결과 문자열로 합치기
-}
 
 export default function SearchHeader({ cartItemCount = 99 }: SearchHeaderProps) {
   const [keyword, setKeyword] = useState('');
@@ -61,13 +27,19 @@ export default function SearchHeader({ cartItemCount = 99 }: SearchHeaderProps) 
 
   // 검색어와 자음이 일치하는 키워드만 추출
   const filteredKeywords = keyword
-    ? allKeywords.map(k => k.name).filter(name => getConsonants(name).includes(getConsonants(keyword)))
+    ? allKeywords.filter(k => getConsonants(k.name).includes(getConsonants(keyword)))
     : [];
+ 
 
   const handleSearch = () => {
     if (keyword.trim()) {
       router.push(`/(exploring)/search/result?keyword=${encodeURIComponent(keyword)}`);
     }
+  };
+
+  // 클릭 시 동작할 함수
+  const handleKeywordClick = (keyword: Keyword) => {
+    router.push(`/search/result?keyword=${encodeURIComponent(keyword.name)}`);
   };
 
   return (
@@ -103,7 +75,11 @@ export default function SearchHeader({ cartItemCount = 99 }: SearchHeaderProps) 
             className="flex-1 h-6 py-3 pl-2 ml-2 text-sm outline-none appearance-none sm:w-48 text-oguogu-black placeholder-oguogu-gray-3"
             autoComplete="off"
           />
-          <button type="submit" className="mx-1">
+          <button
+            type="submit"
+            className="mx-1"
+            onClick={handleSearch}
+          >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M21 21L16.66 16.66M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
@@ -118,7 +94,10 @@ export default function SearchHeader({ cartItemCount = 99 }: SearchHeaderProps) 
         {/* 드롭다운: 검색어 입력 시 자음 일치 키워드 노출 */}
         {showDropdown && (
           <div className="absolute left-0 right-0 z-10 mt-1 bg-white rounded shadow top-full">
-            <RelatedKeywordItem keywords={filteredKeywords} />
+            <RelatedKeywordItem
+              keywords={filteredKeywords}
+              onKeywordClick={handleKeywordClick}
+            />
           </div>
         )}
 
@@ -137,9 +116,7 @@ export default function SearchHeader({ cartItemCount = 99 }: SearchHeaderProps) 
               <span className="absolute bottom-0 right-0 bg-oguogu-main text-oguogu-white text-[8px] w-3 h-3 flex items-center justify-center rounded-full">
                 {cartItemCount > 99 ? '99' : cartItemCount}
               </span>
-            ) : (
-              ''
-            )}
+            ) : ('')}
           </Link>
         </div>
       </div>
