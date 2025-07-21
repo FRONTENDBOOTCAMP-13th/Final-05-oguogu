@@ -1,3 +1,5 @@
+'use client';
+
 import CheckButton from '@/components/elements/CheckButton/CheckButton';
 import CommonButton from '@/components/elements/CommonButton/CommonButton';
 import LoginInput from '@/components/elements/LoginItem/LoginInput';
