@@ -1,3 +1,5 @@
-export interface ProductListByTypeProps {
-  params: { type: 'crop' | 'experience' | 'gardening' };
-}
+export type ProductType = 'crop' | 'experience' | 'gardening';
+
+// export interface ProductListByTypeProps {
+//   params: { type: ProductType };
+// }

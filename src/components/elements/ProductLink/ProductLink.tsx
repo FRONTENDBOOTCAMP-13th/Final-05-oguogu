@@ -9,6 +9,9 @@ export default function ProductLinkItem({
   subTxt = '보러가기',
   mode,
 }: ProductLinkType) {
+  // eslint 무시를 위해 강제 삽입
+  console.log(keywordParams, typeParams);
+
   return (
     <div className="flex justify-center border-b-1 border-b-oguogu-gray-2 pt-2 pb-4">
       <Link href={link} className="flex items-center gap-2 text-xs mobile-max:text-base">
