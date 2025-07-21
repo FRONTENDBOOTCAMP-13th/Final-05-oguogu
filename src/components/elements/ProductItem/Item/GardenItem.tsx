@@ -5,7 +5,7 @@ import { ItemType } from '@/components/elements/ProductItem/Item/Item.type';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function GardenItem({ _id, name, originPrice }: ItemType) {
+export default function GardenItem({ _id, name, price }: ItemType) {
   return (
     <div className="flex flex-col gap-4 min-w-[140px] ">
       {/* 상품 이미지 및 뱃지 영역 */}
@@ -56,7 +56,7 @@ export default function GardenItem({ _id, name, originPrice }: ItemType) {
         {/* 가격 정보 */}
         <div className="text-[12px] flex gap-1">
           <span className="text-oguogu-main">30%</span>
-          <span>{originPrice.toLocaleString()}원</span>
+          <span>{price.toLocaleString()}원</span>
         </div>
       </div>
       {/*상품 등록 버튼 */}

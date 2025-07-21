@@ -4,7 +4,7 @@ import { ItemType } from '@/components/elements/ProductItem/Item/Item.type';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function ExperienceItem({ _id, name, originPrice }: ItemType) {
+export default function ExperienceItem({ _id, name, price }: ItemType) {
   return (
     <div className="min-w-[288px] flex flex-col gap-4">
       {/* 상품 이미지 및 뱃지 영역 */}
@@ -43,7 +43,7 @@ export default function ExperienceItem({ _id, name, originPrice }: ItemType) {
         {/* 가격 정보 */}
         <div className="text-[12px] flex gap-1 items-end">
           <span className="text-oguogu-main hidden">59%</span>
-          <span>{originPrice.toLocaleString()}원</span>
+          <span>{price.toLocaleString()}원</span>
           <span className="text-[10px]">/ 1인</span>
         </div>
 

@@ -7,7 +7,7 @@ export interface ItemExtraType {
 export interface ItemType {
   _id: number;
   name: string;
-  originPrice: number;
+  price: number;
   seller_id?: string;
   dcRate?: string;
   finPrice?: string;
