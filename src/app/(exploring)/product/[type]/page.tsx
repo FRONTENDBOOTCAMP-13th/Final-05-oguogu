@@ -6,7 +6,6 @@ import { TextCategory } from '@/components/layouts/Category/Category';
 import CategoryHeader from '@/components/layouts/Header/CategoryHeader';
 import { ProductSortbar } from '@/components/layouts/SortBar/Sortbar';
 import { notFound } from 'next/navigation';
-import React from 'react';
 
 /**
  * product 상품 타입별 정적 페이지 생성
