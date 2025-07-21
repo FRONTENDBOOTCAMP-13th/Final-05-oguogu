@@ -24,7 +24,7 @@ export default async function ProductQna({ params }: ProductDetailPageProps) {
 
   return (
     <div className="flex flex-col">
-      <QnaSortBar />
+      <QnaSortBar qnaCnt={qnaList.length} />
       <QnaClientControls />
       <section>{qnaList}</section>
     </div>

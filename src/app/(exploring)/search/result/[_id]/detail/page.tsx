@@ -76,7 +76,6 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
       </section>
       <div className="flex items-center justify-center h-[1500px] bg-oguogu-gray-1">상품 상세 이미지</div>
 
-      {/* 블러 및 오버레이 */}
       <BuyModalAction res={res} />
     </>
   );

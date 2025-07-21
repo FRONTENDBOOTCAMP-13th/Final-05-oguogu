@@ -18,14 +18,19 @@ export default async function ProductReview({ params }: ProductDetailPageProps) 
   const { _id } = await params;
   const res: ReviewRes = await getProductReplies(Number(_id));
 
-  console.log('res', res);
-
+  // 리뷰 리스트
   const ReviewList = res?.item.map(review => (
     <ReviewItem key={review._id} name={review.user.name} email="abcd@gamil.com" res={review} />
   ));
+
+  // 리뷰 평점 계산
+  const ratings = res.item.map(item => item.rating); // 평점만 추출 → [5, 4, 3, ...]
+  const total = ratings.reduce((acc, cur) => acc + cur, 0); // 전체 합산
+  const average = ratings.length > 0 ? total / ratings.length : 0;
+
   return (
     <div>
-      <ReviewSortbar />
+      <ReviewSortbar reviewAvg={average} />
       <div className="px-4 flex flex-col gap-4 mb-6">
         <ReviewClientControl />
       </div>

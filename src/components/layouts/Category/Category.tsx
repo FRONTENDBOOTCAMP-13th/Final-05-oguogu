@@ -55,7 +55,15 @@ export function TextCategory() {
  * 농산물 | 체험 | 텃밭 컴포넌트
  * @returns {HTMLElement}
  */
-export function TextCategoryForDetailPage({ _id }: { _id: number }) {
+export function TextCategoryForDetailPage({
+  _id,
+  qnaCnt,
+  reviewCnt,
+}: {
+  _id: number;
+  qnaCnt: number;
+  reviewCnt: number;
+}) {
   const pathname = usePathname();
 
   return (
@@ -71,14 +79,14 @@ export function TextCategoryForDetailPage({ _id }: { _id: number }) {
         type="search"
         _id={_id}
         params="review"
-        title="리뷰(1,280)"
+        title={`리뷰(${reviewCnt.toLocaleString()})`}
         isClick={pathname.includes('/review') ? true : false}
       />
       <TextCategoryItem
         type="search"
         _id={_id}
         params="qna"
-        title="문의(9,999)"
+        title={`문의(${qnaCnt.toLocaleString()})`}
         isClick={pathname.includes('/qna') ? true : false}
       />
     </nav>

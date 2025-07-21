@@ -13,7 +13,7 @@ export default function BuyModalAction({ res }: { res: productRes }) {
     <>
       {isModalOpen && <div className="fixed inset-0 bg-black/80 z-40" onClick={() => setIsModalOpen(false)} />}
       {isModalOpen && <BuyModal type={productType} onClose={() => setIsModalOpen(false)} res={res} />}
-      {!isModalOpen && <BuyBox onOpenModal={() => setIsModalOpen(true)} />}
+      {!isModalOpen && <BuyBox onOpenModal={() => setIsModalOpen(true)} res={res} />}
     </>
   );
 }
