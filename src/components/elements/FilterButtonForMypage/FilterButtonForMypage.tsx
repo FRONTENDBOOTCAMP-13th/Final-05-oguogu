@@ -23,7 +23,7 @@ export default function FilterButtonForMypage({ name, type, title, isChecked }: 
       />
       <label
         htmlFor={type}
-        className="text-xs px-3.5 py-1 border border-oguogu-gray-2 rounded-sm peer-checked:border-oguogu-main-dark"
+        className="text-xs px-3.5 py-1 border border-oguogu-gray-2 rounded-sm peer-checked:border-oguogu-main-dark cursor-pointer"
       >
         {title}
       </label>
