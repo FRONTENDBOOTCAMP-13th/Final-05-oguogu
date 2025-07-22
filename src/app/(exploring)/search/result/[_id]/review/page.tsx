@@ -1,8 +1,13 @@
 import ReviewItem from '@/components/elements/ReviewItem/ReviewItem';
+import { TextCategoryForDetailPage } from '@/components/layouts/Category/Category';
+import CategoryHeader from '@/components/layouts/Header/CategoryHeader';
 import { ReviewSortbar } from '@/components/layouts/SortBar/Sortbar';
 import ReviewClientControl from '@/features/reviewClientControl/reviewClientControl';
 import { ProductDetailPageProps } from '@/features/types/productDetail';
+import { getPosts } from '@/shared/data/functions/post';
+import { getProduct } from '@/shared/data/functions/product';
 import { getProductReplies } from '@/shared/data/functions/replies';
+import { QnaRes } from '@/shared/types/qna';
 import { ReviewRes } from '@/shared/types/review';
 import { Metadata } from 'next';
 
@@ -35,8 +40,22 @@ export default async function ProductReview({ params }: ProductDetailPageProps) 
   const total = ratings.reduce((acc, cur) => acc + cur, 0); // 전체 합산
   const average = ratings.length > 0 ? total / ratings.length : 0;
 
+  const productRes = await getProduct(Number(_id));
+  const productName = await productRes.item.name;
+
+  // QnA 데이터 요청
+  const qnaRes: QnaRes = await getPosts('qna');
+
+  // 해당 상품의 QnA 개수 계산
+  const qnaCnt = (qnaRes?.item || []).filter(item => item.product_id === Number(_id)).length;
+
+  // 리뷰 개수
+  const reviewCnt = res.item.length;
+
   return (
     <div>
+      <CategoryHeader title={productName} />
+      <TextCategoryForDetailPage _id={Number(_id)} reviewCnt={reviewCnt} qnaCnt={qnaCnt} />
       <ReviewSortbar reviewAvg={average} />
       <div className="px-4 flex flex-col gap-4 mb-6">
         <ReviewClientControl />

@@ -5,6 +5,11 @@ import QnaClientControls from '@/features/qnaClientControl/qnaClientControl';
 import { QnaRes } from '@/shared/types/qna';
 import { ProductDetailPageProps } from '@/features/types/productDetail';
 import { Metadata } from 'next';
+import CategoryHeader from '@/components/layouts/Header/CategoryHeader';
+import { getProduct } from '@/shared/data/functions/product';
+import { TextCategoryForDetailPage } from '@/components/layouts/Category/Category';
+import { getProductReplies } from '@/shared/data/functions/replies';
+import { ReviewRes } from '@/shared/types/review';
 
 /**
  * 특정 상품의 Q&A 목록을 표시하는 서버 컴포넌트입니다.
@@ -24,6 +29,17 @@ export const metadata: Metadata = {
 export default async function ProductQna({ params }: ProductDetailPageProps) {
   const { _id } = await params;
   const res: QnaRes = await getPosts('qna');
+  const productRes = await getProduct(Number(_id));
+  const productName = await productRes.item.name;
+
+  // 리뷰 데이터 요청
+  const reviewRes: ReviewRes = await getProductReplies(Number(_id));
+
+  // 해당 상품의 QnA 개수 계산
+  const qnaCnt = (res?.item || []).filter(item => item.product_id === Number(_id)).length;
+
+  // 리뷰 개수
+  const reviewCnt = reviewRes.item.length;
 
   const qnaList = res?.item
     .filter(item => item.product_id === Number(_id))
@@ -31,6 +47,8 @@ export default async function ProductQna({ params }: ProductDetailPageProps) {
 
   return (
     <div className="flex flex-col">
+      <CategoryHeader title={productName} />
+      <TextCategoryForDetailPage _id={Number(_id)} reviewCnt={reviewCnt} qnaCnt={qnaCnt} />
       <QnaSortBar qnaCnt={qnaList.length} />
       <QnaClientControls />
       <section>{qnaList}</section>
