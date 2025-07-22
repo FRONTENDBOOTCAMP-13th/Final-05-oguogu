@@ -72,7 +72,7 @@ export default function ExperienceItem({ _id, name, price, item }: ItemType) {
 
       {/*상품 등록 버튼 */}
       {/*Link 경로가 홈으로 해둔 상태 파일 경로 만들어지면 수정 필요 */}
-      <InteractionButton type="experience" />
+      <InteractionButton _id={_id} />
     </div>
   );
 }

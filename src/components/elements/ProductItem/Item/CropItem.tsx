@@ -64,7 +64,7 @@ export default function CropItem({ _id, name, price, rating, replies, bookmark, 
         </div>
       </div>
       {/*상품 등록 버튼 */}
-      <InteractionButton type="crop" />
+      <InteractionButton _id={_id} />
     </div>
   );
 }

@@ -65,7 +65,7 @@ export default function GardenItem({ _id, name, price, item }: ItemType) {
         </div>
       </div>
       {/*상품 등록 버튼 */}
-      <InteractionButton type="garden" />
+      <InteractionButton _id={_id} />
     </div>
   );
 }
