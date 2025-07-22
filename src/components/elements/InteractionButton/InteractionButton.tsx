@@ -1,3 +1,5 @@
+'use client';
+
 import CommonButton from '@/components/elements/CommonButton/CommonButton';
 import Link from 'next/link';
 
