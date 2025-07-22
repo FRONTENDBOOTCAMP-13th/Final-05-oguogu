@@ -1,4 +1,4 @@
-export interface FilterButtonForMypageType {
+export interface InputButtonForMypageType {
   name: string;
   type: string;
   title: string;
