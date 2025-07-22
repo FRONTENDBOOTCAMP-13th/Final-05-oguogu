@@ -1,6 +1,10 @@
 import { useAuthStore } from '@/shared/store/authStore';
 import Link from 'next/link';
 
+/**
+ * 햄버거 아이콘 컴포넌트
+ * @description 로그인 여부에 따라 '/mypage' 또는 '/login'으로 이동
+ */
 export default function HamburgerIcon() {
   // useAuthStore 의 로컬 스토리지 상태 검증 코드 사용
   const isLoggedIn = useAuthStore(state => state.isLoggedIn);
