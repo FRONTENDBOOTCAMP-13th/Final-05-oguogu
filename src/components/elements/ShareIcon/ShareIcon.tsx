@@ -1,9 +1,9 @@
 'use client';
 
-import { LinkIconType } from '@/components/elements/LinkIcon/LinkIcon.type';
+import { ShareIconType } from '@/components/elements/ShareIcon/ShareIcon.type';
 import { handleCopyUrl } from '@/utils/handleCopyCurrentUrl/handleCopyCurrentUrl';
 
-export default function LinkIcon({ type }: LinkIconType) {
+export default function ShareIcon({ type }: ShareIconType) {
   return (
     <>
       {type === 'share' ? (
