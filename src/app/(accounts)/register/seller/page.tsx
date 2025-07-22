@@ -5,6 +5,8 @@ import CommonButton from '@/components/elements/CommonButton/CommonButton';
 import LoginInput from '@/components/elements/LoginItem/LoginInput';
 import LinkHeader from '@/components/layouts/Header/LinkHeader';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { createUser } from '@/shared/data/actions/user';
 
 export default function RegisterFormForSeller() {
   const [companyName, setCompanyName] = useState('');
@@ -24,22 +26,84 @@ export default function RegisterFormForSeller() {
   const [sellerProvidePrivacy, setSellerProvidePrivacy] = useState(true);
   const [sellerAgreeMarketing, setSellerAgreeMarketing] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const router = useRouter();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // 서버 요청 로직
-    console.log('폼 확인용');
+
+    if (
+      !companyName ||
+      !ownerName ||
+      !sellerBusinessTel ||
+      !sellerTel ||
+      !sellerRegisNum ||
+      !sellerAddress ||
+      !sellerEmail ||
+      !sellerPassword ||
+      !sellerConfirmPassword
+    ) {
+      alert('입력하지 않은 부분이 있습니다 모두 입력해주세요.');
+      return;
+    }
+
+    if (sellerPassword !== sellerConfirmPassword) {
+      alert('비밀번호가 일치하지 않습니다.');
+      return;
+    }
+
+    if (!sellerAgreeTerms || !sellerFinTerms || !sellerAgreePrivacy || !sellerProvidePrivacy) {
+      alert('필수 약관에 모두 동의해주세요.');
+      return;
+    }
+
+    try {
+      const res = await createUser({
+        email: sellerEmail,
+        password: sellerPassword,
+        name: ownerName,
+        phone: sellerTel,
+        address: sellerAddress,
+        type: 'seller',
+        extra: {
+          businessInfo: {
+            companyName,
+            ownerName,
+            businessTel: sellerBusinessTel,
+            businessNumber: sellerRegisNum,
+          },
+          agreement: {
+            sellerAgreeTerms,
+            sellerFinTerms,
+            sellerAgreePrivacy,
+            sellerProvidePrivacy,
+            sellerAgreeMarketing,
+          },
+        },
+      });
+
+      if (res.ok === 1) {
+        alert('회원가입 완료');
+        router.push('/login');
+      } else {
+        alert(res.message || '회원가입 실패');
+      }
+    } catch (err) {
+      console.error('회원가입 오류:', err);
+      alert('회원가입중 오류가 발생했습니다 오구 텃밭으로 전화주세요');
+    }
   };
+
   return (
     <>
       <LinkHeader title="판매자 회원가입" />
-      <main className="w-[320px] mx-auto px-4  overflow-y-auto gap-2">
-        <form action="" onSubmit={handleSubmit} className="py-4">
+      <main className="w-[320px] mx-auto px-4 overflow-y-auto gap-2">
+        <form onSubmit={handleSubmit} className="py-4">
           <fieldset className="flex flex-col gap-6">
             <legend className="sr-only">판매자 회원가입</legend>
+
             <div>
               <label htmlFor="signUpCompanyName">
-                상호명
-                <sup className="text-[10px]">*</sup>
+                상호명<sup className="text-[10px]">*</sup>
               </label>
               <LoginInput
                 id="signUpCompanyName"
@@ -49,10 +113,10 @@ export default function RegisterFormForSeller() {
                 value={companyName}
               />
             </div>
+
             <div>
               <label htmlFor="signUpOwnerName">
-                대표자명
-                <sup className="text-[10px]">*</sup>
+                대표자명<sup className="text-[10px]">*</sup>
               </label>
               <LoginInput
                 id="signUpOwnerName"
@@ -65,8 +129,7 @@ export default function RegisterFormForSeller() {
 
             <div>
               <label htmlFor="signUpSellerTel">
-                연락처
-                <sup className="text-[10px] m-[2px]">*</sup>
+                연락처<sup className="text-[10px] m-[2px]">*</sup>
               </label>
               <LoginInput
                 id="signUpSellerTel"
@@ -76,10 +139,10 @@ export default function RegisterFormForSeller() {
                 placeholder="숫자"
               />
             </div>
+
             <div>
               <label htmlFor="signUpSellerBusinessTel">
-                사업자 대표 전화
-                <sup className="text-[10px] m-[2px]">*</sup>
+                사업자 대표 전화<sup className="text-[10px] m-[2px]">*</sup>
               </label>
               <LoginInput
                 id="signUpSellerBusinessTel"
@@ -89,10 +152,10 @@ export default function RegisterFormForSeller() {
                 placeholder="숫자"
               />
             </div>
+
             <div>
               <label htmlFor="signSellerAddress">
-                사업장 소재지
-                <sup className="text-[10px] m-[2px]">*</sup>
+                사업장 소재지<sup className="text-[10px] m-[2px]">*</sup>
               </label>
               <LoginInput
                 id="signSellerAddress"
@@ -102,10 +165,10 @@ export default function RegisterFormForSeller() {
                 placeholder="도로명, 지번, 건물명 검색"
               />
             </div>
+
             <div>
               <label htmlFor="signUpSellerRegisNum">
-                사업자 등록 번호
-                <sup className="text-[10px] m-[2px]">*</sup>
+                사업자 등록 번호<sup className="text-[10px] m-[2px]">*</sup>
               </label>
               <LoginInput
                 id="signUpSellerRegisNum"
@@ -118,7 +181,7 @@ export default function RegisterFormForSeller() {
 
             <div>
               <label htmlFor="signUpSellerEmail">
-                이메일<sup className="text-[10px] ">*</sup>
+                이메일<sup className="text-[10px]">*</sup>
               </label>
               <LoginInput
                 id="signUpSellerEmail"
@@ -135,21 +198,20 @@ export default function RegisterFormForSeller() {
 
             <div>
               <label htmlFor="signUpSellerPassword">
-                비밀번호
-                <sup className="text-[10px] ">*</sup>
+                비밀번호<sup className="text-[10px]">*</sup>
               </label>
               <LoginInput
-                id="signUpUserPassword"
+                id="signUpSellerPassword"
                 type="password"
                 placeholder="영문 + 숫자 + 특수문자"
                 onChange={setSellerPassword}
                 value={sellerPassword}
               />
             </div>
+
             <div>
               <label htmlFor="signUpSellerConfirmPassword">
-                비밀번호 확인
-                <sup className="text-[10px] m-[2px]">*</sup>
+                비밀번호 확인<sup className="text-[10px] m-[2px]">*</sup>
               </label>
               <LoginInput
                 id="signUpSellerConfirmPassword"
@@ -160,6 +222,7 @@ export default function RegisterFormForSeller() {
               />
             </div>
 
+            {/* 체크박스 약관 */}
             <div className="w-full flex flex-col items-start justify-start gap-[5px] my-[16px]">
               <CheckButton
                 size={14}
@@ -207,6 +270,7 @@ export default function RegisterFormForSeller() {
                 마케팅 광고 활용을 위한 수집 및 이용 동의
               </CheckButton>
             </div>
+
             <div>
               <CommonButton
                 feature="가입 완료하기"
