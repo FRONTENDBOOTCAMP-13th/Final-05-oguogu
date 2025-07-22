@@ -36,6 +36,29 @@ export interface Extra {
   period: periodObject[];
 }
 
+export interface Seller {
+  address: string;
+  email: string;
+  name: string;
+  phone: string;
+  _id: number;
+  extra: {
+    businessLicenseImage: string;
+    businessName: string;
+    businessNumber: string;
+    certification: {
+      status: string;
+      requestedAt: string;
+      reviewedAt: string;
+      reviewer: string;
+      reason: string;
+    };
+    representativeName: string;
+    tel: string;
+    telecomRegistrationImage: string;
+  };
+}
+
 export interface Item {
   _id: number;
   seller_id: number;
@@ -51,6 +74,10 @@ export interface Item {
   createdAt: string; // ISO date string
   updatedAt: string; // ISO date string
   extra: Extra;
+  rating: number;
+  replies: number;
+  bookmarks: number;
+  seller: Seller;
 }
 
 export interface productRes {

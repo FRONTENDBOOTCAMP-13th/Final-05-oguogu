@@ -4,7 +4,7 @@ import { ItemType } from '@/components/elements/ProductItem/Item/Item.type';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function ExperienceItem({ _id, name, price }: ItemType) {
+export default function ExperienceItem({ _id, name, price, item }: ItemType) {
   return (
     <div className="min-w-[288px] flex flex-col gap-4">
       {/* 상품 이미지 및 뱃지 영역 */}
@@ -32,23 +32,23 @@ export default function ExperienceItem({ _id, name, price }: ItemType) {
         {/* 판매자 정보 */}
         <div className="flex gap-1 items-center">
           <Image src="/images/product-hatIcon.svg" alt="농사꾼 모자 아이콘" width={16} height={16} />
-          <p className="text-[10px]">돌쇠네농산물</p>
+          <p className="text-[10px]">{item?.seller.extra.businessName}</p>
         </div>
         {/* 상품명 */}
         <Link href={`/search/result/${_id}/detail`} className="text-[14px] tracking-[-0.28px] leading-4">
           {name}
         </Link>
         {/* 추가 상품 내용 설명 */}
-        <p className="text-[10px] text-oguogu-gray-4">동글동글 감자를 모여앉아 친구들과 함께 수확해봐요.</p>
+        <p className="text-[10px] text-oguogu-gray-4">{item?.content}</p>
         {/* 가격 정보 */}
         <div className="text-[12px] flex gap-1 items-end">
-          <span className="text-oguogu-main hidden">59%</span>
+          <span className="text-oguogu-main hidden">{item?.extra.dcRate}%</span>
           <span>{price.toLocaleString()}원</span>
           <span className="text-[10px]">/ 1인</span>
         </div>
 
         {/* 좋아요 & 별점 */}
-        {/* <div className="text-[8px] flex gap-2 text-oguogu-gray-3">
+        <div className="text-[8px] flex gap-2 text-oguogu-gray-3">
           <div className="flex gap-[2px]">
             <svg xmlns="http://www.w3.org/2000/svg" width="9" height="9" viewBox="0 0 9 9" fill="none">
               <path
@@ -56,7 +56,7 @@ export default function ExperienceItem({ _id, name, price }: ItemType) {
                 fill="#969696"
               />
             </svg>
-            <span>9,999</span>
+            <span>{item?.bookmarks}</span>
           </div>
           <div className="flex gap-[2px]">
             <svg xmlns="http://www.w3.org/2000/svg" width="8" height="9" viewBox="0 0 8 9" fill="none">
@@ -65,9 +65,9 @@ export default function ExperienceItem({ _id, name, price }: ItemType) {
                 fill="#969696"
               />
             </svg>
-            <span>4.8 (1,280)</span>
+            <span>{`${item?.rating} (${item?.replies})`}</span>
           </div>
-        </div> */}
+        </div>
       </div>
 
       {/*상품 등록 버튼 */}

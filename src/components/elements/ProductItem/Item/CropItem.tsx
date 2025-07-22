@@ -1,33 +1,11 @@
-'use client';
-
 import InteractionButton from '@/components/elements/InteractionButton/InteractionButton';
 import Badge from '@/components/elements/ProductItem/Badge/Badge';
 import { ItemType } from '@/components/elements/ProductItem/Item/Item.type';
-import { getProductReplies } from '@/shared/data/functions/replies';
-import { ReviewRes } from '@/shared/types/review';
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
 
-export default function CropItem({ _id, name, price }: ItemType) {
-  // 여기서 아래 코드 쓰니까 갑자기 무한루프로 api 불러와짐...ㅠㅠ
-  const [average, setAverage] = useState(0);
-  const [reviewCount, setReviewCount] = useState(0);
-
-  useEffect(() => {
-    async function fetchReviews() {
-      const reviewRes: ReviewRes = await getProductReplies(Number(_id));
-      const ratings = reviewRes.item.map(item => item.rating);
-      const total = ratings.reduce((acc, cur) => acc + cur, 0);
-      const avg = ratings.length > 0 ? total / ratings.length : 0;
-      setAverage(avg);
-      setReviewCount(ratings.length);
-    }
-
-    fetchReviews();
-  }, [_id]);
-
+export default function CropItem({ _id, name, price, rating, replies, bookmark, dcRate, item }: ItemType) {
   return (
     <div className="flex flex-col gap-4 min-w-[140px]">
       {/* 상품 이미지 및 뱃지 영역 */}
@@ -49,7 +27,7 @@ export default function CropItem({ _id, name, price }: ItemType) {
         {/* 판매자 정보 */}
         <div className="flex gap-1 items-center">
           <Image src="/images/product-hatIcon.svg" alt="농사꾼 모자 아이콘" width={16} height={16} />
-          <p className="text-[10px]">돌쇠네농산물</p>
+          <p className="text-[10px]">{item?.seller.extra.businessName}</p>
         </div>
         {/* 상품명 */}
         <Link
@@ -60,7 +38,7 @@ export default function CropItem({ _id, name, price }: ItemType) {
         </Link>
         {/* 가격 정보 */}
         <div className="text-[12px] flex gap-1">
-          <span className="text-oguogu-main">{/* productItemRes.item.extra.dcRate */}%</span>
+          <span className="text-oguogu-main">{dcRate}%</span>
           <span>{price.toLocaleString()}원</span>
         </div>
         {/* 좋아요 & 별점 */}
@@ -72,7 +50,7 @@ export default function CropItem({ _id, name, price }: ItemType) {
                 fill="#969696"
               />
             </svg>
-            <span>9,999</span>
+            <span>{bookmark}</span>
           </div>
           <div className="flex gap-[2px]">
             <svg xmlns="http://www.w3.org/2000/svg" width="8" height="9" viewBox="0 0 8 9" fill="none">
@@ -81,10 +59,7 @@ export default function CropItem({ _id, name, price }: ItemType) {
                 fill="#969696"
               />
             </svg>
-            <span>
-              {average}
-              {reviewCount}
-            </span>
+            <span>{`${rating} (${replies})`}</span>
           </div>
         </div>
       </div>

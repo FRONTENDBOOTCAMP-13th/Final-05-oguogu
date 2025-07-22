@@ -53,6 +53,11 @@ export default async function ProductListByType({ params }: ProductListByTypePro
               _id={item._id}
               name={item.name}
               price={item.price * (1 - item.extra.dcRate / 100)}
+              rating={item.rating}
+              replies={item.replies}
+              dcRate={item.extra.dcRate}
+              bookmark={item.bookmarks}
+              item={item}
             />
           ))}
         </main>
@@ -64,6 +69,7 @@ export default async function ProductListByType({ params }: ProductListByTypePro
               _id={item._id}
               name={item.name}
               price={item.price * (1 - item.extra.dcRate / 100)}
+              item={item}
             />
           ))}
         </main>
@@ -75,6 +81,7 @@ export default async function ProductListByType({ params }: ProductListByTypePro
               _id={item._id}
               name={item.name}
               price={item.price * (1 - item.extra.dcRate / 100)}
+              item={item}
             />
           ))}
         </main>

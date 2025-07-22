@@ -1,3 +1,5 @@
+import { Item } from '@/shared/types/product';
+
 export interface ItemExtraType {
   likeCount: string;
   isBest: boolean;
@@ -9,7 +11,11 @@ export interface ItemType {
   name: string;
   price: number;
   seller_id?: string;
-  dcRate?: string;
+  dcRate?: number;
   finPrice?: string;
   extra?: ItemExtraType;
+  rating?: number;
+  replies?: number;
+  bookmark?: number;
+  item?: Item;
 }
