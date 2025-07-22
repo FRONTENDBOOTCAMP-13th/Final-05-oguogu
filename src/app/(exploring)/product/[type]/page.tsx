@@ -1,4 +1,4 @@
-import { ProductListByTypeProps } from '@/app/(exploring)/product/[type]/ProductListByType.type';
+import { ProductType } from '@/app/(exploring)/product/[type]/ProductListByType.type';
 import CropItem from '@/components/elements/ProductItem/Item/CropItem';
 import ExperienceItem from '@/components/elements/ProductItem/Item/ExperienceItem';
 import GardenItem from '@/components/elements/ProductItem/Item/GardenItem';
@@ -12,9 +12,9 @@ import { notFound } from 'next/navigation';
 /**
  * product 상품 타입별 정적 페이지 생성
  */
-export function generateStaticParams() {
-  const producdtParams = [{ type: 'crop' }, { type: 'experience' }, { type: 'gardening' }];
-  return producdtParams;
+export async function generateStaticParams() {
+  const productParams = [{ type: 'crop' }, { type: 'experience' }, { type: 'gardening' }];
+  return productParams;
 }
 
 /**
@@ -23,7 +23,7 @@ export function generateStaticParams() {
  * @example /product/experience
  * @example /product/gardening
  */
-export default async function ProductListByType({ params }: ProductListByTypeProps) {
+export default async function ProductListByType({ params }: { params: Promise<{ type: ProductType }> }) {
   const { type } = await params;
   const productsRes: productsRes = await getProducts();
   console.log('products', productsRes);
@@ -34,7 +34,7 @@ export default async function ProductListByType({ params }: ProductListByTypePro
   return (
     <>
       {/* 헤더 */}
-      <CategoryHeader cartItemCount={100} _id="1" />
+      <CategoryHeader cartItemCount={100} />
 
       {/* 네비게이션 */}
       <TextCategory />

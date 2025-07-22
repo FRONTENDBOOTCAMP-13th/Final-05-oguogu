@@ -3,19 +3,14 @@
 import Link from 'next/link';
 import handleGoBack from '@/utils/handleGoBack/handleGoBack';
 import { SearchHeaderProps } from '@/components/layouts/Header/types/Header.type';
-import { useEffect, useState } from 'react';
-import { getProduct } from '@/shared/data/functions/product';
-import { productRes } from '@/shared/types/product';
+import { usePathname, useSearchParams } from 'next/navigation';
 
-export default function CategoryHeader({ cartItemCount = 0, _id }: SearchHeaderProps) {
-  const [res, setRes] = useState<productRes>();
-  useEffect(() => {
-    const getRes = async () => {
-      const res = await getProduct(Number(_id));
-      setRes(res);
-    };
-    getRes();
-  }, [_id]);
+export default function CategoryHeader({ cartItemCount = 0, title }: SearchHeaderProps) {
+  const pathname = usePathname();
+
+  const queryParameterName = useSearchParams();
+  const categoryName = queryParameterName.get('category');
+  console.log(categoryName);
 
   return (
     <header className="header">
@@ -27,8 +22,18 @@ export default function CategoryHeader({ cartItemCount = 0, _id }: SearchHeaderP
           </svg>
         </button>
 
-        {/* 현재 위치 */}
-        <h1 className="textElipsis flex-1 h-6 sm:w-48 ml-2 pl-2 text-lg">{res?.item.name}</h1>
+        {/* 쿼리스트링 존재 여부 검증 및 현재 위치(pathname) 기반 텍스트 동적 변경 */}
+        <h1 className="textElipsis flex-1 h-6 sm:w-48 ml-2 pl-2 text-lg">
+          {categoryName
+            ? categoryName
+            : pathname.includes('/product/crop')
+              ? '농산물'
+              : pathname.includes('/product/experience')
+                ? '체험'
+                : pathname.includes('/product/gardening')
+                  ? '텃밭'
+                  : title}
+        </h1>
 
         {/* 장바구니 아이콘 + 뱃지 */}
         <Link href="/mypage/cart" className="relative">

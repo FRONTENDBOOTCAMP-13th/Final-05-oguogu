@@ -1,3 +1,5 @@
+'use client';
+
 import InteractionButton from '@/components/elements/InteractionButton/InteractionButton';
 import Badge from '@/components/elements/ProductItem/Badge/Badge';
 import { ItemType } from '@/components/elements/ProductItem/Item/Item.type';

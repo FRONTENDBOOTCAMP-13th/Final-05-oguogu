@@ -1,13 +1,5 @@
-import { TextCategoryForDetailPage } from '@/components/layouts/Category/Category';
-import CategoryHeader from '@/components/layouts/Header/CategoryHeader';
-import { getPosts } from '@/shared/data/functions/post';
-import { getProductReplies } from '@/shared/data/functions/replies';
-import { QnaRes } from '@/shared/types/qna';
-import { ReviewRes } from '@/shared/types/review';
-
 interface LayoutProps {
   children: React.ReactNode;
-  params: Promise<{ _id: string }>;
 }
 
 /**
@@ -21,26 +13,6 @@ interface LayoutProps {
  * @param {React.ReactNode} props.children - 내부 콘텐츠
  */
 
-export default async function RootLayout({ children, params }: LayoutProps) {
-  const { _id } = await params;
-
-  // QnA 데이터 요청
-  const qnaRes: QnaRes = await getPosts('qna');
-
-  // 리뷰 데이터 요청
-  const reviewRes: ReviewRes = await getProductReplies(Number(_id));
-
-  // 해당 상품의 QnA 개수 계산
-  const qnaCnt = (qnaRes?.item || []).filter(item => item.product_id === Number(_id)).length;
-
-  // 리뷰 개수
-  const reviewCnt = reviewRes.item.length;
-
-  return (
-    <div className="min-w-[320px] max-w-[768px] mx-auto relative bg-oguogu-white z-50">
-      <CategoryHeader _id={_id} />
-      <TextCategoryForDetailPage _id={Number(_id)} reviewCnt={reviewCnt} qnaCnt={qnaCnt} />
-      {children}
-    </div>
-  );
+export default function RootLayout({ children }: LayoutProps) {
+  return <div className="min-w-[320px] max-w-[768px] mx-auto relative bg-oguogu-white z-50">{children}</div>;
 }
