@@ -1,6 +1,6 @@
 'use client';
 
-import FilterButtonForMypage from '@/components/elements/FilterButtonForMypage/FilterButtonForMypage';
+import FilterButtonForMypage from '@/components/elements/InputButtonForMypage/InputButtonForMypage';
 import IsEmptyMessage from '@/components/elements/IsEmptyMessage/IsEmptyMessage';
 
 export default function UserPickList() {
