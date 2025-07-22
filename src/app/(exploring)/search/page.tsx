@@ -4,7 +4,7 @@ import SearchHeader from '@/components/layouts/Header/SearchHeader';
 export default function Search() {
   return (
     <div>
-      <SearchHeader _id="1" />
+      <SearchHeader />
       <TopRatedItem />
     </div>
   );

@@ -27,7 +27,7 @@ export default async function ProductListByType({ params }: { params: Promise<{ 
   return (
     <>
       {/* 헤더 */}
-      <CategoryHeader cartItemCount={100} _id="1" />
+      <CategoryHeader cartItemCount={100} />
 
       {/* 네비게이션 */}
       <TextCategory />

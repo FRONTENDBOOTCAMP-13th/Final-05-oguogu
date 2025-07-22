@@ -3,7 +3,7 @@ export interface HeaderProps {
 }
 
 export interface SearchHeaderProps extends HeaderProps {
-  title: string;
+  title?: string;
 }
 
 export interface EtcHeaderProps {
