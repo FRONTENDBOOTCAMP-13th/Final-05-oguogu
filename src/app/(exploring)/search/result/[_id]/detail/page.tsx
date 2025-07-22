@@ -74,7 +74,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
       <section id="userInfo">
         <ProductDetailInfo type={productType} item={res.item} />
       </section>
-      <div className="flex items-center justify-center h-[1500px] bg-oguogu-gray-1">상품 상세 이미지</div>
+      <main className="flex items-center justify-center h-[1500px] bg-oguogu-gray-1">상품 상세 이미지</main>
 
       <BuyModalAction res={res} />
     </>
