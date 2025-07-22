@@ -5,11 +5,8 @@ import GardenItem from '@/components/elements/ProductItem/Item/GardenItem';
 import { TextCategory } from '@/components/layouts/Category/Category';
 import CategoryHeader from '@/components/layouts/Header/CategoryHeader';
 import { ProductSortbar } from '@/components/layouts/SortBar/Sortbar';
-
 import { getProducts } from '@/shared/data/functions/product';
-
 import { productsRes } from '@/shared/types/product';
-
 import { notFound } from 'next/navigation';
 
 /**

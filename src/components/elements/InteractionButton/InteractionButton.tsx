@@ -1,24 +1,31 @@
 'use client';
 import CommonButton from '@/components/elements/CommonButton/CommonButton';
+
 import Link from 'next/link';
 import { useState } from 'react';
 
 export default function InteractionButton({ _id }: { _id: number }) {
-  const [bookmarked, setBookmarked] = useState(false);
+  /* const { bookmarkedIds, toggleBookmark, fetchBookmarks } = useBookmarkStore();
 
-  const toggleBookmark = () => {
-    setBookmarked(!bookmarked);
+  // 페이지 진입 시 북마크 목록 불러오기
+  useEffect(() => {
+    fetchBookmarks();
+  }, []); */
+
+  const [bookmark, setBookmark] = useState(false);
+
+  const toggle = () => {
+    setBookmark(!bookmark);
   };
-
   return (
     <>
       <div className="w-full flex basis-full gap-2">
         <button
-          onClick={toggleBookmark}
+          onClick={toggle}
           className="flex items-center justify-center border-1 rounded-[4px] border-oguogu-main bg-oguogu-white w-[30px] h-[22px] cursor-pointer"
         >
           {/* 해당 버튼이 클릭되었을 때, 즉 찜 버튼을 클릭했을 때 해당 상태를 기반으로 fill 값이 변경되는 로직 필요 */}
-          {bookmarked ? (
+          {bookmark ? (
             <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
               <path
                 d="M7.975 0.666992C7.018 0.666992 6.0995 1.10841 5.5 1.80051C4.9005 1.10841 3.982 0.666992 3.025 0.666992C1.331 0.666992 0 1.98034 0 3.66427C0 5.71876 1.87 7.40269 4.7025 9.94765L5.5 10.667L6.2975 9.94765C9.13 7.40269 11 5.71876 11 3.66427C11 1.98034 9.669 0.666992 7.975 0.666992Z"
