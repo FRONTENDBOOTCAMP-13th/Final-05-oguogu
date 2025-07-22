@@ -28,7 +28,7 @@ export default function LinkHeader({ title }: HeaderExtraProps) {
               : pathname.includes('/account')
                 ? '개인정보 수정'
                 : pathname.includes('/mypage')
-                  ? '나의 텃밭'
+                  ? '마이페이지'
                   : title}
       </h1>
 
