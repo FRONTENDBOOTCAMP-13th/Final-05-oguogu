@@ -157,12 +157,12 @@ export default function LoginInput({ type, value, placeholder = '', onChange, op
   }
 
   if (type === 'password') {
-    const passwordInputStyle = !showPassword
+    /* const passwordInputStyle = !showPassword
       ? {
           fontFamily:
             '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
         }
-      : {};
+      : {}; */
 
     return (
       <div className="relative w-[288px] h-[36px]">
