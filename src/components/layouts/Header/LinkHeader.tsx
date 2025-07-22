@@ -1,6 +1,6 @@
 'use client';
 
-import { EtcHeaderProps } from '@/components/layouts/Header/types/Header.type';
+import { EtcHeaderProps } from '@/shared/types/Header';
 import handleGoBack from '@/utils/handleGoBack/handleGoBack';
 import Link from 'next/link';
 

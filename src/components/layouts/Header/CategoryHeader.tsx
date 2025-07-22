@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import handleGoBack from '@/utils/handleGoBack/handleGoBack';
-import { SearchHeaderProps } from '@/components/layouts/Header/types/Header.type';
+import { SearchHeaderProps } from '@/shared/types/Header';
 import { useEffect, useState } from 'react';
 import { getProduct } from '@/shared/data/functions/product';
 import { productRes } from '@/shared/types/product';

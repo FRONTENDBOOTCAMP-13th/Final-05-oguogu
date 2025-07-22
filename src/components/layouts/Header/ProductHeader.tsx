@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import handleGoBack from '@/utils/handleGoBack/handleGoBack';
-import { EtcHeaderProps } from '@/components/layouts/Header/types/Header.type';
+import { EtcHeaderProps } from '@/shared/types/Header';
 
 export default function ProductHeader({ title }: EtcHeaderProps) {
   const cartItemCount = 3;

@@ -1,5 +1,5 @@
 // 한글 자음 추출 함수
-export function getConsonants(str: string) {
+export default function getConsonants(str: string) {
   const CHO = [
     "ㄱ", "ㄲ", "ㄴ", "ㄷ", "ㄸ", "ㄹ", "ㅁ", "ㅂ", "ㅃ", "ㅅ", "ㅆ",
     "ㅇ", "ㅈ", "ㅉ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ"

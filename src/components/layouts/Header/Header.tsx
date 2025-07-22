@@ -1,6 +1,6 @@
 'use client';
 
-import { HeaderProps } from '@/components/layouts/Header/types/Header.type';
+import { HeaderProps } from '@/shared/types/Header';
 import Link from 'next/link';
 
 export default function Header({ cartItemCount = 0 }: HeaderProps) {
