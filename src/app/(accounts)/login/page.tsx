@@ -1,5 +1,3 @@
-'use client';
-
 import LinkHeader from '@/components/layouts/Header/LinkHeader';
 import LoginForm from '@/components/layouts/Login/LoginForm';
 
