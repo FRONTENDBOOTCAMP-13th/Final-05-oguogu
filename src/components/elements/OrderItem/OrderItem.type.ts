@@ -1,3 +1,5 @@
+import { Order } from '@/shared/types/order';
+
 export type OrderStatus =
   | 'paymentCompleted'
   | 'preparingShipment'
@@ -5,8 +7,11 @@ export type OrderStatus =
   | 'delivered'
   | 'purchaseCompleted'
   | 'refundInProgress'
-  | 'refundCompleted';
+  | 'refundCompleted'
+  | 'OS020';
 
 export interface OrderItemType {
-  orderState: OrderStatus;
+  orderState: string;
+  item: Order;
+  updateOrderStatus: (order_id: number, newState: string) => void;
 }

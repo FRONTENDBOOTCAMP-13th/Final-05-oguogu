@@ -2,20 +2,20 @@ const API_URL = 'https://fesp-api.koyeb.app/market';
 const CLIENT_ID = 'febc13-final05-emjf';
 
 // 일반 유저 (2번) 인증 토큰
-const TOKEN =
+/* const TOKEN =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOjIsInR5cGUiOiJzZWxsZXIiLCJuYW1lIjoi64Sk7JikIiwiZW1haWwiOiJzMUBtYXJrZXQuY29tIiwiaW1hZ2UiOiIvZmlsZXMvZmViYzEzLWZpbmFsMDUtZW1qZi91c2VyLW5lby5wbmciLCJsb2dpblR5cGUiOiJlbWFpbCIsImlhdCI6MTc1MjE5NzI0OCwiZXhwIjoxNzUyMjgzNjQ4LCJpc3MiOiJGRUJDIn0.9LIJV9KkT_099ySlrNebTDe4QoS-yXvqRZskBVMpyns';
-
+ */
 // CHECKLIST
 // [x] 구매 목록 조회
 // [x] 구매 목록의 상태값 조회
 // [x] 구매 상세 조회
 
 // 1. 구매 목록 조회
-export async function getOrders() {
+export async function getOrders(token: string) {
   try {
     const res = await fetch(`${API_URL}/orders`, {
       headers: {
-        Authorization: `Bearer ${TOKEN}`,
+        Authorization: `Bearer ${token}`,
         'Client-Id': CLIENT_ID,
       },
     });
@@ -28,11 +28,11 @@ export async function getOrders() {
 }
 
 // 2. 구매 목록의 상태값 조회
-export async function getOrderState() {
+export async function getOrderState({ token }: { token: string }) {
   try {
     const res = await fetch(`${API_URL}/orders/state`, {
       headers: {
-        Authorization: `Bearer ${TOKEN}`,
+        Authorization: `Bearer ${token}`,
         'Client-Id': CLIENT_ID,
       },
     });
@@ -45,11 +45,11 @@ export async function getOrderState() {
 }
 
 // 3. 구매 상세 조회
-export async function getOrder(_id: number) {
+export async function getOrder(_id: number, token: string) {
   try {
     const res = await fetch(`${API_URL}/orders/${_id}`, {
       headers: {
-        Authorization: `Bearer ${TOKEN}`,
+        Authorization: `Bearer ${token}`,
         'Client-Id': CLIENT_ID,
       },
     });
