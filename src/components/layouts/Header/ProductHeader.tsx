@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import handleGoBack from '@/utils/handleGoBack/handleGoBack';
-import { HeaderExtraProps } from '@/components/layouts/Header/types/Header.type';
+import { HeaderExtraProps } from '@/shared/types/Header';
 
 export default function ProductHeader({ title }: HeaderExtraProps) {
   const cartItemCount = 3;

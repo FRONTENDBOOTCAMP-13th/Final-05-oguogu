@@ -1,13 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import handleGoBack from '@/utils/handleGoBack/handleGoBack';
 import getConsonants from '@/utils/getConsonants/getConsonants';
 import RelatedKeywordItem from '@/components/elements/RelatedKeywordItem/RelatedKeywordItem';
 import { useRouter } from 'next/navigation';
-import { HeaderExtraProps } from '@/components/layouts/Header/types/Header.type';
 import { Keyword } from '@/components/elements/RelatedKeywordItem/RelatedKeywordItem.type';
+import { HeaderExtraProps } from '@/shared/types/Header';
 
 // 예시 키워드 데이터
 const allKeywords = [

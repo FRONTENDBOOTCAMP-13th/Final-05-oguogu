@@ -2,8 +2,8 @@
 
 import Link from 'next/link';
 import handleGoBack from '@/utils/handleGoBack/handleGoBack';
-import { HeaderExtraProps } from '@/components/layouts/Header/types/Header.type';
 import { usePathname, useSearchParams } from 'next/navigation';
+import { HeaderExtraProps } from '@/shared/types/Header';
 
 export default function CategoryHeader({ cartItemCount = 0, title }: HeaderExtraProps) {
   const pathname = usePathname();

@@ -1,6 +1,6 @@
 'use client';
 
-import { HeaderExtraProps } from '@/components/layouts/Header/types/Header.type';
+import { HeaderExtraProps } from '@/shared/types/Header';
 import handleGoBack from '@/utils/handleGoBack/handleGoBack';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
