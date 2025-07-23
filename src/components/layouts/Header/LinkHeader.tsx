@@ -1,10 +1,13 @@
 'use client';
 
-import { EtcHeaderProps } from '@/components/layouts/Header/types/Header.type';
+import { HeaderExtraProps } from '@/components/layouts/Header/types/Header.type';
 import handleGoBack from '@/utils/handleGoBack/handleGoBack';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
-export default function LinkHeader({ title }: EtcHeaderProps) {
+export default function LinkHeader({ title }: HeaderExtraProps) {
+  const pathname = usePathname();
+
   return (
     <header className="header">
       {/* 뒤로가기 버튼 */}
@@ -15,7 +18,19 @@ export default function LinkHeader({ title }: EtcHeaderProps) {
       </button>
 
       {/* 현재 경로 */}
-      <h1 className="text-xl">{title}</h1>
+      <h1 className="text-xl">
+        {pathname.includes('/order')
+          ? '주문/배송 내역'
+          : pathname.includes('/cart')
+            ? '장바구니'
+            : pathname.includes('/pick')
+              ? '찜한 상품'
+              : pathname.includes('/account')
+                ? '개인정보 수정'
+                : pathname.includes('/mypage')
+                  ? '마이페이지'
+                  : title}
+      </h1>
 
       {/* 홈 버튼 */}
       <Link href="/">

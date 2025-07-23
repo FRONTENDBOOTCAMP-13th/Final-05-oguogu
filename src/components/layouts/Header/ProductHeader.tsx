@@ -1,9 +1,9 @@
 'use client';
 import Link from 'next/link';
 import handleGoBack from '@/utils/handleGoBack/handleGoBack';
-import { EtcHeaderProps } from '@/components/layouts/Header/types/Header.type';
+import { HeaderExtraProps } from '@/components/layouts/Header/types/Header.type';
 
-export default function ProductHeader({ title }: EtcHeaderProps) {
+export default function ProductHeader({ title }: HeaderExtraProps) {
   const cartItemCount = 3;
   return (
     <header className="w-full h-12 sticky top-0 z-50 bg-oguogu-white flex justify-between items-center p-3">
