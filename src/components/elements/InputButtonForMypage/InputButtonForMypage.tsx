@@ -60,12 +60,12 @@ export function CheckButtonForMypage({ name, type, title, isChecked }: InputButt
           </svg>
         ) : (
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10 8.25L7.2 11.75L6 10.3475" stroke="black" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M10 8.25L7.2 11.75L6 10.3475" stroke="black" strokeLinecap="round" strokeLinejoin="round" />
             <path
               d="M5 5.5V4.5C5 3.70435 5.31607 2.94129 5.87868 2.37868C6.44129 1.81607 7.20435 1.5 8 1.5C8.79565 1.5 9.55871 1.81607 10.1213 2.37868C10.6839 2.94129 11 3.70435 11 4.5V5.5M2.5 5.5C2.36739 5.5 2.24021 5.55268 2.14645 5.64645C2.05268 5.74021 2 5.86739 2 6V12.75C2 13.695 2.805 14.5 3.75 14.5H12.25C13.195 14.5 14 13.7341 14 12.7891V6C14 5.86739 13.9473 5.74021 13.8536 5.64645C13.7598 5.55268 13.6326 5.5 13.5 5.5H2.5Z"
               stroke="black"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             />
           </svg>
         )}
