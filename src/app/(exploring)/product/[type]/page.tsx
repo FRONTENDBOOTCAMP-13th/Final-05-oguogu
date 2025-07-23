@@ -5,6 +5,8 @@ import GardenItem from '@/components/elements/ProductItem/Item/GardenItem';
 import { TextCategory } from '@/components/layouts/Category/Category';
 import CategoryHeader from '@/components/layouts/Header/CategoryHeader';
 import { ProductSortbar } from '@/components/layouts/SortBar/Sortbar';
+import { getProducts } from '@/shared/data/functions/product';
+import { productsRes } from '@/shared/types/product';
 import { notFound } from 'next/navigation';
 
 /**
@@ -23,40 +25,62 @@ export async function generateStaticParams() {
  */
 export default async function ProductListByType({ params }: { params: Promise<{ type: ProductType }> }) {
   const { type } = await params;
+  const productsRes: productsRes = await getProducts();
+  // console.log('products', productsRes);
+
+  const productList = productsRes.item.filter(item => item.extra.productType === type);
+  const productCnt: number = productList.length;
 
   return (
     <>
       {/* 헤더 */}
-      <CategoryHeader cartItemCount={100} _id="1" />
+      <CategoryHeader cartItemCount={100} />
 
       {/* 네비게이션 */}
       <TextCategory />
 
       {/* 정렬 */}
-      <ProductSortbar />
+      <ProductSortbar cnt={productCnt} />
 
       {type === 'crop' ? (
         <main className="itemGrid grid-cols-[repeat(auto-fit,minmax(140px,1fr))]">
-          <CropItem _id={1} name="쫀득쫀득 대학 미백 찰옥수수 30개입" originPrice={11800} />
-          <CropItem _id={1} name="쫀득쫀득 대학 미백 찰옥수수 30개입" originPrice={11800} />
-          <CropItem _id={1} name="쫀득쫀득 대학 미백 찰옥수수 30개입" originPrice={11800} />
-          <CropItem _id={1} name="쫀득쫀득 대학 미백 찰옥수수 30개입" originPrice={11800} />
-          <CropItem _id={1} name="쫀득쫀득 대학 미백 찰옥수수 30개입" originPrice={11800} />
-          <CropItem _id={1} name="쫀득쫀득 대학 미백 찰옥수수 30개입" originPrice={11800} />
+          {productList.map(item => (
+            <CropItem
+              key={item._id}
+              _id={item._id}
+              name={item.name}
+              price={item.price * (1 - item.extra.dcRate / 100)}
+              rating={item.rating}
+              replies={item.replies}
+              dcRate={item.extra.dcRate}
+              bookmark={item.bookmarks}
+              item={item}
+            />
+          ))}
         </main>
       ) : type === 'experience' ? (
         <main className="itemGrid grid-cols-[repeat(auto-fit,minmax(288px,1fr))]">
-          <ExperienceItem _id={1} name="[7/25] 감자캐기 체험" originPrice={10000} />
-          <ExperienceItem _id={1} name="[7/25] 감자캐기 체험" originPrice={10000} />
-          <ExperienceItem _id={1} name="[7/25] 감자캐기 체험" originPrice={10000} />
+          {productList.map(item => (
+            <ExperienceItem
+              key={item._id}
+              _id={item._id}
+              name={item.name}
+              price={item.price * (1 - item.extra.dcRate / 100)}
+              item={item}
+            />
+          ))}
         </main>
       ) : type === 'gardening' ? (
         <main className="itemGrid grid-cols-[repeat(auto-fit,minmax(140px,1fr))]">
-          <GardenItem _id={1} name="초당옥수수 7월 수확" originPrice={10000} />
-          <GardenItem _id={1} name="초당옥수수 7월 수확" originPrice={10000} />
-          <GardenItem _id={1} name="초당옥수수 7월 수확" originPrice={10000} />
-          <GardenItem _id={1} name="초당옥수수 7월 수확" originPrice={10000} />
-          <GardenItem _id={1} name="초당옥수수 7월 수확" originPrice={10000} />
+          {productList.map(item => (
+            <GardenItem
+              key={item._id}
+              _id={item._id}
+              name={item.name}
+              price={item.price * (1 - item.extra.dcRate / 100)}
+              item={item}
+            />
+          ))}
         </main>
       ) : (
         notFound()

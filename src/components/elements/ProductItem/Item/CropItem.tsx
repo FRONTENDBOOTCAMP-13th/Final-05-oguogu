@@ -1,10 +1,13 @@
+'use client';
+
 import InteractionButton from '@/components/elements/InteractionButton/InteractionButton';
 import Badge from '@/components/elements/ProductItem/Badge/Badge';
 import { ItemType } from '@/components/elements/ProductItem/Item/Item.type';
+
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function CropItem({ _id, name, originPrice }: ItemType) {
+export default function CropItem({ _id, name, price, rating, replies, bookmark, dcRate, item }: ItemType) {
   return (
     <div className="flex flex-col gap-4 min-w-[140px]">
       {/* 상품 이미지 및 뱃지 영역 */}
@@ -26,16 +29,19 @@ export default function CropItem({ _id, name, originPrice }: ItemType) {
         {/* 판매자 정보 */}
         <div className="flex gap-1 items-center">
           <Image src="/images/product-hatIcon.svg" alt="농사꾼 모자 아이콘" width={16} height={16} />
-          <p className="text-[10px]">돌쇠네농산물</p>
+          <p className="text-[10px]">{item?.seller.extra.businessName}</p>
         </div>
         {/* 상품명 */}
-        <Link href={`/product/crop/veggie/${_id}`} className="text-[14px] tracking-[-0.28px] leading-4">
+        <Link
+          href={`/search/result/${_id}/detail`}
+          className="text-[14px] tracking-[-0.28px] leading-5 line-clamp-2 min-h-[40px]"
+        >
           {name}
         </Link>
         {/* 가격 정보 */}
         <div className="text-[12px] flex gap-1">
-          <span className="text-oguogu-main">59%</span>
-          <span>{originPrice.toLocaleString()}원</span>
+          <span className="text-oguogu-main">{dcRate}%</span>
+          <span>{price.toLocaleString()}원</span>
         </div>
         {/* 좋아요 & 별점 */}
         <div className="text-[8px] flex gap-2 text-oguogu-gray-3">
@@ -46,7 +52,7 @@ export default function CropItem({ _id, name, originPrice }: ItemType) {
                 fill="#969696"
               />
             </svg>
-            <span>9,999</span>
+            <span>{bookmark}</span>
           </div>
           <div className="flex gap-[2px]">
             <svg xmlns="http://www.w3.org/2000/svg" width="8" height="9" viewBox="0 0 8 9" fill="none">
@@ -55,12 +61,12 @@ export default function CropItem({ _id, name, originPrice }: ItemType) {
                 fill="#969696"
               />
             </svg>
-            <span>4.8 (1,280)</span>
+            <span>{`${rating} (${replies})`}</span>
           </div>
         </div>
       </div>
       {/*상품 등록 버튼 */}
-      <InteractionButton type="crop" />
+      <InteractionButton _id={_id} />
     </div>
   );
 }
