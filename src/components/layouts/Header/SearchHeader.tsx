@@ -6,7 +6,7 @@ import handleGoBack from '@/utils/handleGoBack/handleGoBack';
 import { getConsonants } from '@/components/layouts/Header/utils/getConsonants';
 import RelatedKeywordItem from '@/components/elements/RelatedKeywordItem/RelatedKeywordItem';
 import { useRouter } from 'next/navigation';
-import { SearchHeaderProps } from '@/components/layouts/Header/types/Header.type';
+import { HeaderExtraProps } from '@/components/layouts/Header/types/Header.type';
 import { Keyword } from '@/components/elements/RelatedKeywordItem/RelatedKeywordItem.type';
 
 // 예시 키워드 데이터
@@ -19,7 +19,7 @@ const allKeywords = [
   { name: '옥수유통', type: 'garden' },
 ];
 
-export default function SearchHeader({ cartItemCount = 99 }: SearchHeaderProps) {
+export default function SearchHeader({ cartItemCount = 99 }: HeaderExtraProps) {
   const [keyword, setKeyword] = useState('');
   const [showDropdown, setShowDropdown] = useState(false);
   const router = useRouter();

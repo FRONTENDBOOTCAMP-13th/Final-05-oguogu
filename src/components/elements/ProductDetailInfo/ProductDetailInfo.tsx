@@ -1,8 +1,8 @@
 import Title from '@/components/elements/CommonTitleItem/Title';
-import LinkIcon from '@/components/elements/LinkIcon/LinkIcon';
 import { ProductDetailInfoType } from '@/components/elements/ProductDetailInfo/ProductDetailInfo.type';
 import Badge from '@/components/elements/ProductItem/Badge/Badge';
 import ProductLinkItem from '@/components/elements/ProductLink/ProductLink';
+import ShareIcon from '@/components/elements/ShareIcon/ShareIcon';
 import getDiffDays from '@/utils/getDiffDays/getDiffDays';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -37,7 +37,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
               </div>
             )}
           </div>
-          <LinkIcon type="share" />
+          <ShareIcon type="share" />
         </div>
       </section>
 
