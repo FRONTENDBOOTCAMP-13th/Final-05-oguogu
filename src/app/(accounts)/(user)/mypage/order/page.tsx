@@ -1,9 +1,12 @@
 import FilterButtonForMypage from '@/components/elements/InputButtonForMypage/InputButtonForMypage';
 import IsEmptyMessage from '@/components/elements/IsEmptyMessage/IsEmptyMessage';
+import CardItem from '@/components/elements/cardItem/cardItem';
+import LinkHeader from '@/components/layouts/Header/LinkHeader';
 
 export default function UserOrderList() {
   return (
     <>
+      <LinkHeader title="주문정보" />
       <main className="px-4 py-4 flex flex-col gap-2 min-h-[calc(100vh-48px)]">
         {/* 필터링 버튼 */}
         <div className="flex gap-1">
@@ -22,6 +25,7 @@ export default function UserOrderList() {
           />
 
           {/* 데이터가 있는 경우 */}
+          <CardItem />
         </div>
       </main>
     </>
