@@ -1,45 +1,56 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import handleGoBack from '@/utils/handleGoBack/handleGoBack';
-import { getConsonants } from '@/components/layouts/Header/utils/getConsonants';
+import getConsonants from '@/utils/getConsonants/getConsonants';
 import RelatedKeywordItem from '@/components/elements/RelatedKeywordItem/RelatedKeywordItem';
 import { useRouter } from 'next/navigation';
-import { SearchHeaderProps } from '@/components/layouts/Header/types/Header.type';
+import { SearchHeaderProps } from '@/shared/types/Header';
 import { Keyword } from '@/components/elements/RelatedKeywordItem/RelatedKeywordItem.type';
 
 
 // 예시 키워드 데이터
 const allKeywords = [
-  { name: '옥수수', type: 'crop' },  
+  { name: '옥수수', type: 'crop' },
   { name: '야채도사', type: 'garden' },
   { name: '오롯유통', type: 'garden' },
-  { name: '양배추', type: 'crop' },
+  { name: '양배추', type: 'crop' }, 
   { name: '초당옥수수', type: 'crop' },
   { name: '옥수유통', type: 'garden' },
 ];
 
-export default function SearchHeader({ cartItemCount = 99 }: SearchHeaderProps) {
+export default function SearchHeader({ cartItemCount = 99, _id }: SearchHeaderProps) {
   const [keyword, setKeyword] = useState('');
   const [showDropdown, setShowDropdown] = useState(false);
   const router = useRouter();
+  // const [res, setRes] = useState<productRes>();
+
+  // useEffect(() => {
+  //   const getRes = async () => {
+  //     const res = await getProduct(Number(_id));
+  //     setRes(res);
+  //   };
+  //   getRes();
+  // }, [_id]);
 
   // 검색어와 자음이 일치하는 키워드만 추출
   const filteredKeywords = keyword
     ? allKeywords.filter(k => getConsonants(k.name).includes(getConsonants(keyword)))
     : [];
- 
 
-  const handleSearch = () => {
+  // 검색 버튼 클릭 시 동작할 함수
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    alert(`${keyword} 검색 실행!`);
     if (keyword.trim()) {
       router.push(`/(exploring)/search/result?keyword=${encodeURIComponent(keyword)}`);
     }
   };
 
-  // 클릭 시 동작할 함수
+  // 키워드 클릭 시 검색 결과 페이지로 이동
   const handleKeywordClick = (keyword: Keyword) => {
-    router.push(`/search/result?keyword=${encodeURIComponent(keyword.name)}`);
+    router.push(`/(exploring)/search/result?keyword=${encodeURIComponent(keyword.name)}`);
   };
 
   return (
@@ -54,16 +65,13 @@ export default function SearchHeader({ cartItemCount = 99 }: SearchHeaderProps) 
         {/* 검색창 */}
         <form
           className="contents"
-          onSubmit={e => {
-            e.preventDefault();
-            handleSearch();
-          }}
+          onSubmit={ handleSearch }
         >
           <label htmlFor="searchKeyword" className="sr-only">
             검색
           </label>
           <input
-            type="search"
+            type="text"
             id="searchKeyword"
             placeholder="7월은 초당옥수수가 제철!"
             value={keyword}
@@ -71,7 +79,11 @@ export default function SearchHeader({ cartItemCount = 99 }: SearchHeaderProps) 
               setKeyword(e.target.value);
               setShowDropdown(e.target.value.length > 0);
             }}
-            onKeyDown={e => e.key === 'Enter' && handleSearch()}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                handleSearch(e);
+              }
+            }}            
             className="flex-1 h-6 py-3 pl-2 ml-2 text-sm outline-none appearance-none sm:w-48 text-oguogu-black placeholder-oguogu-gray-3"
             autoComplete="off"
           />
