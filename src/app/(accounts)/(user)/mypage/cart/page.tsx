@@ -1,3 +1,4 @@
+import CardItem from '@/components/elements/cardItem/cardItem';
 import DeleteButton from '@/components/elements/DeleteButton/DeleteButton';
 import { CheckButtonForMypage } from '@/components/elements/InputButtonForMypage/InputButtonForMypage';
 import IsEmptyMessage from '@/components/elements/IsEmptyMessage/IsEmptyMessage';
@@ -22,6 +23,7 @@ export default function UserCartList() {
           />
 
           {/* 데이터가 있는 경우 */}
+          <CardItem />
         </div>
       </main>
     </>
