@@ -1,5 +1,6 @@
 import { OrderItemType } from '@/components/elements/OrderItem/OrderItem.type';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function OrderItem({ orderState, item, updateOrderStatus }: OrderItemType) {
   let refundState: boolean = false;
@@ -62,7 +63,9 @@ export default function OrderItem({ orderState, item, updateOrderStatus }: Order
               <Image src="/images/product-hatIcon.svg" alt="농사꾼 모자 아이콘" width={16} height={16} />
               <div className="text-[10px]">돌쇠네농산물</div>
             </div>
-            <div className="text-[14px] truncate">{item.products[0].name}</div>
+            <Link href={`/search/result/${item.products[0]._id}/detail`}>
+              <div className="text-[14px] truncate">{item.products[0].name}</div>
+            </Link>
             <div className="text-[12px] flex gap-3">
               <span>{item.cost.total.toLocaleString()}원</span>
               <span> {item.products[0].quantity}개</span>
