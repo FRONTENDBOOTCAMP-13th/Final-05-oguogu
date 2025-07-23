@@ -40,14 +40,14 @@ export async function updateCart(
   _id: number,
   data: {
     quantity: number;
-    token: string;
   },
+  token: string,
 ) {
   try {
     const res = await fetch(`${API_URL}/carts/${_id}`, {
       method: 'PATCH',
       headers: {
-        Authorization: `Bearer ${data.token}`,
+        Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
         'Client-Id': CLIENT_ID,
       },
