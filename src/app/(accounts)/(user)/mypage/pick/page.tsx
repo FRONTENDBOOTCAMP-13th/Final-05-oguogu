@@ -1,4 +1,4 @@
-import PickList from '@/app/(accounts)/(user)/mypage/pick/picklist';
+import PickList from '@/features/pickList/pickList';
 
 export default function UserPickList() {
   return (
