@@ -31,7 +31,7 @@ export default function CropItem({ _id, name, price, rating, replies, bookmarks,
         {/* 판매자 정보 */}
         <div className="flex gap-1 items-center">
           <Image src="/images/product-hatIcon.svg" alt="농사꾼 모자 아이콘" width={16} height={16} />
-          <p className="text-[10px]">{seller.extra.businessName}</p>
+          <p className="text-[10px]">{seller!.extra.businessName}</p>
         </div>
 
         {/* 상품명 */}
@@ -44,7 +44,7 @@ export default function CropItem({ _id, name, price, rating, replies, bookmarks,
 
         {/* 가격 정보 */}
         <div className="text-[12px] flex gap-1">
-          <span className="text-oguogu-main">{extra.dcRate}%</span>
+          <span className="text-oguogu-main">{extra!.dcRate}%</span>
           <span>{price.toLocaleString()}원</span>
         </div>
         {/* 좋아요 & 별점 */}
