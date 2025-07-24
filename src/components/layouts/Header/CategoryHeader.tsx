@@ -3,12 +3,12 @@
 import Link from 'next/link';
 import handleGoBack from '@/utils/handleGoBack/handleGoBack';
 import { HeaderExtraProps } from '@/components/layouts/Header/types/Header.type';
-import { usePathname } from 'next/navigation';
+import { usePathname /* useSearchParams */ } from 'next/navigation';
 
 export default function CategoryHeader({ cartItemCount = 0, title }: HeaderExtraProps) {
   const pathname = usePathname();
 
-  /*   const queryParameterName = useSearchParams();
+  /* const queryParameterName = useSearchParams();
   const categoryName = queryParameterName.get('category');
   console.log(categoryName); */
 
