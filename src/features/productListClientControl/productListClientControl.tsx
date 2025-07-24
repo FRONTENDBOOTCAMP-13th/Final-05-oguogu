@@ -88,7 +88,6 @@ export default function ProductListClientControl({ productList, productCnt, type
         <>
           {/* 헤더 */}
           <CategoryHeader
-            cartItemCount={100}
             title={
               type === 'crop' ? '농산물' : type === 'experience' ? '체험' : type === 'gardening' ? '텃밭' : '오구텃밭'
             }

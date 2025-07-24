@@ -6,16 +6,18 @@ import { ProductSortbar } from '@/components/layouts/SortBar/Sortbar';
 import { getProducts } from '@/shared/data/functions/product';
 import type { Item } from '@/shared/types/product';
 
-export default async function SearchResult({ searchParams }: { searchParams: { keyword?: string } }) {
+export default async function SearchResult(/*{searchParams }: { searchParams: { keyword?: string }}*/) {
   // 쿼리 파라미터에서 keyword 추출 (null, 공백 처리)
-  const keyword = searchParams.keyword?.trim() ?? '';
+  // const keyword = searchParams.keyword?.trim() ?? '';
+  const keyword = '농장'; // 임시로 검색어 설정 (나중에 searchParams로 변경 예정)
 
   // 서버에서 전체 상품 목록 가져오기
   const res = await getProducts();
   const allItems = res.item;
 
   // 검색어 없으면 빈 배열, 있으면 필터링 후 상위 10개
-  const filtered = keyword === '' ? [] : allItems.filter((item: Item) => item.name.includes(keyword)).slice(0, 10);
+  // const filtered = keyword === '' ? [] : allItems.filter((item: Item) => item.name.includes(keyword)).slice(0, 10);
+  const filtered = allItems.filter((item: Item) => item.name.includes(keyword)).slice(0, 10);
 
   // 타입별로 분리
   const cropItems = filtered.filter((item: Item) => item.extra!.productType === 'crop');

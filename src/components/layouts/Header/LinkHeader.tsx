@@ -1,10 +1,9 @@
 'use client';
 
-import { HeaderExtraProps } from '@/components/layouts/Header/types/Header.type';
 import GoBackIcon from '@/features/goBackIcon/goBackIcon';
 import Link from 'next/link';
 
-export default function LinkHeader({ title }: HeaderExtraProps) {
+export default function LinkHeader({ title }: { title: string }) {
   return (
     <header className="header">
       {/* 뒤로가기 버튼 */}

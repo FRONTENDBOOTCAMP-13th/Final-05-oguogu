@@ -1,10 +1,9 @@
 'use client';
 
-import { HeaderExtraProps } from '@/components/layouts/Header/types/Header.type';
 import GoBackIcon from '@/features/goBackIcon/goBackIcon';
 import CartItemCountIcon from '@/features/cartItemCountIcon/CartItemCountIcon';
 
-export default function ProductHeader({ title }: HeaderExtraProps) {
+export default function ProductHeader({ title }: { title: string }) {
   return (
     <header className="sticky top-0 z-50 flex items-center justify-between w-full h-12 p-3 bg-oguogu-white">
       {/* 검색 + 버튼 */}
