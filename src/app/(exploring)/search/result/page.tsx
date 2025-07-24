@@ -34,7 +34,17 @@ export default async function SearchResult({ searchParams }: { searchParams: { k
       {cropItems.length > 0 && (
         <main className="itemGrid grid-cols-[repeat(auto-fit,minmax(140px,1fr))]">
           {cropItems.map((item: Item) => (
-            <CropItem key={item._id} _id={item._id} name={item.name} price={item.price} />
+            <CropItem
+              key={item._id}
+              _id={item._id}
+              name={item.name}
+              price={item.price}
+              rating={item.rating}
+              bookmarks={item.bookmarks}
+              extra={item.extra}
+              seller={item.seller}
+              replies={item.replies}
+            />
           ))}
         </main>
       )}
@@ -43,7 +53,17 @@ export default async function SearchResult({ searchParams }: { searchParams: { k
       {experienceItems.length > 0 && (
         <main className="itemGrid grid-cols-[repeat(auto-fit,minmax(288px,1fr))]">
           {experienceItems.map((item: Item) => (
-            <ExperienceItem key={item._id} _id={item._id} name={item.name} price={item.price} />
+            <ExperienceItem
+              key={item._id}
+              _id={item._id}
+              name={item.name}
+              price={item.price}
+              rating={item.rating}
+              bookmarks={item.bookmarks}
+              extra={item.extra}
+              seller={item.seller}
+              replies={item.replies}
+            />
           ))}
         </main>
       )}
@@ -52,7 +72,19 @@ export default async function SearchResult({ searchParams }: { searchParams: { k
       {gardenItems.length > 0 && (
         <main className="itemGrid grid-cols-[repeat(auto-fit,minmax(140px,1fr))]">
           {gardenItems.map((item: Item) => (
-            <GardenItem key={item._id} _id={item._id} name={item.name} price={item.price} />
+            <GardenItem
+              key={item._id}
+              _id={item._id}
+              name={item.name}
+              price={item.price}
+              rating={item.rating}
+              bookmarks={item.bookmarks}
+              extra={item.extra}
+              seller={item.seller}
+              replies={item.replies}
+              quantity={item.quantity}
+              buyQuantity={item.buyQuantity}
+            />
           ))}
         </main>
       )}
