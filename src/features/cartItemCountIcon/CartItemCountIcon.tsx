@@ -1,7 +1,7 @@
 'use client';
 
 import { useCartStore } from '@/shared/store/cartStore';
-import { Link } from 'lucide-react';
+import Link from 'next/link';
 
 export default function CartItemCountIcon() {
   const { items } = useCartStore();
