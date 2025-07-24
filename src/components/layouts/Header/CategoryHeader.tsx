@@ -2,36 +2,17 @@
 
 import Link from 'next/link';
 import { HeaderExtraProps } from '@/components/layouts/Header/types/Header.type';
-import { usePathname /* useSearchParams */ } from 'next/navigation';
 import GoBackIcon from '@/features/goBackIcon/goBackIcon';
 
 export default function CategoryHeader({ cartItemCount = 0, title }: HeaderExtraProps) {
-  const pathname = usePathname();
-
-  /* const queryParameterName = useSearchParams();
-  const categoryName = queryParameterName.get('category');
-  console.log(categoryName); */
-
   return (
     <header className="header">
       {/* 검색 + 버튼 */}
       <div className="flex gap-1 items-center w-full">
         <GoBackIcon />
 
-        {/* 쿼리스트링 존재 여부 검증 및 현재 위치(pathname) 기반 텍스트 동적 변경 */}
-        <h1 className="textElipsis flex-1 h-6 sm:w-48 ml-2 pl-2 text-lg">
-          {
-            /* categoryName
-            ? categoryName
-            : */ pathname.includes('/product/crop')
-              ? '농산물'
-              : pathname.includes('/product/experience')
-                ? '체험'
-                : pathname.includes('/product/gardening')
-                  ? '텃밭'
-                  : title
-          }
-        </h1>
+        {/* INFO 쿼리스트링 존재 여부 검증 및 현재 위치(pathname) 기반 텍스트 동적 변경 필요 */}
+        <h1 className="textElipsis flex-1 h-6 sm:w-48 ml-2 pl-2 text-lg">{title}</h1>
 
         {/* 장바구니 아이콘 + 뱃지 */}
         <Link href="/mypage/cart" className="relative">
