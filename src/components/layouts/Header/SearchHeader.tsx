@@ -5,7 +5,6 @@ import GoBackIcon from '@/features/goBackIcon/goBackIcon';
 import SearchForm from '@/components/elements/SearchForm/SearchForm';
 import { HeaderExtraProps } from '@/components/layouts/Header/Header.type';
 
-
 export default function SearchHeader({ cartItemCount = 99 }: HeaderExtraProps) {
   return (
     <header className="sticky top-0 z-50 flex items-center justify-between w-full h-12 p-3 bg-oguogu-white">
