@@ -4,6 +4,53 @@ export interface MainImage {
   originalname: string;
 }
 
+export interface Seller {
+  address: string;
+  email: string;
+  name: string;
+  phone: string;
+  _id: number;
+  extra: {
+    businessLicenseImage: string;
+    businessName: string;
+    businessNumber: string;
+    certification: {
+      status: string;
+      requestedAt: string;
+      reviewedAt: string;
+      reviewer: string;
+      reason: string;
+    };
+    representativeName: string;
+    tel: string;
+    telecomRegistrationImage: string;
+  };
+}
+
+export interface Item {
+  /* 기본 */
+  _id: number;
+  name: string;
+  price: number;
+
+  /* 선택 */
+  seller_id?: number;
+  content?: string;
+  shippingFees?: number;
+  quantity?: number;
+  buyQuantity?: number;
+  show?: boolean;
+  active?: boolean;
+  mainImages?: MainImage[];
+  createdAt?: string; // ISO date string
+  updatedAt?: string; // ISO date string
+  extra?: Extra;
+  rating?: number;
+  replies?: number;
+  bookmarks?: number;
+  seller?: Seller;
+}
+
 export interface Extra {
   productType: 'crop' | 'experience' | 'gardening';
   category: 'veggie' | 'fruit' | 'grain' | 'mushroom';
@@ -34,50 +81,6 @@ export interface Extra {
   harvestExpectedDate: string;
   harvestExpectedCnt: string;
   period: periodObject[];
-}
-
-export interface Seller {
-  address: string;
-  email: string;
-  name: string;
-  phone: string;
-  _id: number;
-  extra: {
-    businessLicenseImage: string;
-    businessName: string;
-    businessNumber: string;
-    certification: {
-      status: string;
-      requestedAt: string;
-      reviewedAt: string;
-      reviewer: string;
-      reason: string;
-    };
-    representativeName: string;
-    tel: string;
-    telecomRegistrationImage: string;
-  };
-}
-
-export interface Item {
-  _id: number;
-  seller_id: number;
-  name: string;
-  content: string;
-  price: number;
-  shippingFees: number;
-  quantity: number;
-  buyQuantity: number;
-  show: boolean;
-  active: boolean;
-  mainImages: MainImage[];
-  createdAt: string; // ISO date string
-  updatedAt: string; // ISO date string
-  extra: Extra;
-  rating: number;
-  replies: number;
-  bookmarks: number;
-  seller: Seller;
 }
 
 export interface productRes {
