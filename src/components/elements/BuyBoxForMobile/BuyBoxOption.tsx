@@ -186,13 +186,11 @@ export default function BuyBoxOption({ name, price, maxQuantity = 1, type, handl
          text-[16px] h-[44px]
          px-6 py-1.5 rounded-sm w-full`}
         onClick={() => {
-          console.log('버튼 클릭됨');
-          console.log('TOKEN:', TOKEN);
           if (!TOKEN) {
             alert('로그인이 필요합니다.');
             return;
           }
-          handleBuy(product_id, count, TOKEN);
+          handleBuy(product_id, count);
         }}
       >
         {type === 'crop' ? '장바구니 담기' : '구매하기'}
