@@ -1,7 +1,7 @@
 'use client';
 
 import { HeaderExtraProps } from '@/components/layouts/Header/types/Header.type';
-import handleGoBack from '@/utils/handleGoBack/handleGoBack';
+import GoBackIcon from '@/features/goBackIcon/goBackIcon';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -11,11 +11,7 @@ export default function LinkHeader({ title }: HeaderExtraProps) {
   return (
     <header className="header">
       {/* 뒤로가기 버튼 */}
-      <button type="button" onClick={handleGoBack} className="w-6 cursor-pointer">
-        <svg width="18" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M9 0.5L1 9.22973L9 17.5" stroke="black" />
-        </svg>
-      </button>
+      <GoBackIcon />
 
       {/* 현재 경로 */}
       <h1 className="text-xl">
