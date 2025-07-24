@@ -16,8 +16,8 @@ export default function CropItem({
   bookmark,
   dcRate,
   item,
-  togglebookmark,
-  isbookmarked,
+  togglebookmark = () => {},
+  isbookmarked = false,
 }: ItemType) {
   return (
     <div className="flex flex-col gap-4 min-w-[140px]">

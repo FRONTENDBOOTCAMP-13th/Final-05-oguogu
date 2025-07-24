@@ -5,12 +5,12 @@ import Link from 'next/link';
 
 export default function InteractionButton({
   _id,
-  isbookmarked,
-  togglebookmarked,
+  isbookmarked = false,
+  togglebookmarked = () => {},
 }: {
   _id: number;
-  isbookmarked: boolean;
-  togglebookmarked: () => void;
+  isbookmarked?: boolean;
+  togglebookmarked?: () => void;
 }) {
   return (
     <>

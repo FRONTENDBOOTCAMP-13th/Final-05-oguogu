@@ -16,9 +16,9 @@ export default function CuteLoading() {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center h-40 gap-2 text-center animate-fade-in">
-      <div className="text-5xl transition-all duration-300">{veggieIcons[index]}</div>
-      <p className="text-sm text-oguogu-gray animate-pulse">신선한 농산물을 준비 중이에요...</p>
+    <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white">
+      <div className="text-6xl animate-fade-in">{veggieIcons[index]}</div>
+      <p className="mt-4 text-sm text-oguogu-gray animate-pulse">신선한 농산물을 준비 중이에요...</p>
     </div>
   );
 }
