@@ -27,7 +27,7 @@ export default function CategoryHeader({ cartItemCount = 0, title }: HeaderExtra
           {
             /* categoryName
             ? categoryName
-            :  */ pathname.includes('/product/crop')
+            : */ pathname.includes('/product/crop')
               ? '농산물'
               : pathname.includes('/product/experience')
                 ? '체험'
