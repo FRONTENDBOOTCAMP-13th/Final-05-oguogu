@@ -1,9 +1,9 @@
-export interface Keyword {
+export interface RelatedKeyword {
   name: string;
-  type: string;
+  type?: 'garden' | 'normal'; // '텃밭' 키워드 식별용
 }
 
 export default interface RelatedKeywordItemProps {
-  keywords: Keyword[];
-  onKeywordClick?: (keyword: Keyword) => void;
+  keywords: RelatedKeyword[];
+  onKeywordClick?: (keyword: RelatedKeyword) => void;
 }
