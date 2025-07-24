@@ -6,40 +6,69 @@ import { TextCategory } from '@/components/layouts/Category/Category';
 import CategoryHeader from '@/components/layouts/Header/CategoryHeader';
 import { ProductSortbar } from '@/components/layouts/SortBar/Sortbar';
 import { productListCientControlType } from '@/features/productListClientControl/productListClientControl.type';
+import { createBookmark, deleteBookmark } from '@/shared/data/actions/bookmarks';
 import { getBookmarks } from '@/shared/data/functions/bookmarks';
 import { useAuthStore } from '@/shared/store/authStore';
-import { BookmarkResponse } from '@/shared/types/bookmarkt';
+import { BookmarkPostResponse, BookmarkResponse } from '@/shared/types/bookmarkt';
 import { useEffect, useState } from 'react';
 
 export default function ProductListClientControl({ productList, productCnt, type }: productListCientControlType) {
-  const [bookmarked, setBookmarked] = useState<number[]>([]);
+  const [bookmarkedMap, setBookmarkedMap] = useState<Map<number, number>>(new Map()); //상품 id, 북마크 id 쌍
 
-  /* const isBookmarked = (_id: number) => bookmarked.includes(_id); */
+  const isBookmarked = (_id: number) => bookmarkedMap.has(_id);
 
   const token = useAuthStore(state => state.token);
 
-  /* const toggleBookmark = (_id: number) => {
-    setBookmarked(prev => prev.includes(_id) ? prev.filter(id => id!==_id) : [...prev, _id])
+  const toggleBookmark = async (_id: number) => {
+    if (!token) return;
+
+    const isBookmarked = bookmarkedMap.has(_id);
+
+    const updateMap = new Map(bookmarkedMap);
+
+    try {
+      if (isBookmarked) {
+        const bookmarkId = bookmarkedMap.get(_id);
+        if (!bookmarkId) return;
+
+        await deleteBookmark(bookmarkId, { target_id: 'any' }, token);
+        updateMap.delete(_id);
+      } else {
+        const newBookmark: BookmarkPostResponse = await createBookmark({ target_id: _id }, token);
+
+        if (newBookmark.ok) {
+          updateMap.set(newBookmark.item.target_id, newBookmark.item._id);
+        }
+      }
+      setBookmarkedMap(updateMap);
+    } catch (error) {
+      console.error('북마크 토글 실패', error);
+      alert('북마크 처리에 실패했습니다.');
+    }
   };
- */
+
   useEffect(() => {
     if (!token) return;
     const fetchBookmark = async () => {
       const data: BookmarkResponse = await getBookmarks('product', token);
 
       if (data.ok) {
-        const bookmarkArray = Object.values(data)
-          .filter(item => typeof item === 'object')
-          .map(item => item.product._id);
+        // Map 생성: product_id → bookmark_id
+        const map = new Map<number, number>();
+        Object.values(data).forEach(entry => {
+          if (typeof entry === 'object') {
+            map.set(entry.product._id, entry._id); // ex: map.set(25, 12)
+          }
+        });
 
-        setBookmarked(bookmarkArray);
+        setBookmarkedMap(map);
       }
     };
 
     fetchBookmark();
   }, [token]);
 
-  console.log(bookmarked);
+  console.log(bookmarkedMap);
 
   return (
     <>
@@ -62,6 +91,8 @@ export default function ProductListClientControl({ productList, productCnt, type
               dcRate={item.extra.dcRate}
               bookmark={item.bookmarks}
               item={item}
+              isbookmarked={isBookmarked(item._id)}
+              togglebookmark={() => toggleBookmark(item._id)}
             />
           ))}
         </main>
@@ -75,6 +106,8 @@ export default function ProductListClientControl({ productList, productCnt, type
               name={item.name}
               price={item.price * (1 - item.extra.dcRate / 100)}
               item={item}
+              isbookmarked={isBookmarked(item._id)}
+              togglebookmark={() => toggleBookmark(item._id)}
             />
           ))}
         </main>
@@ -88,6 +121,8 @@ export default function ProductListClientControl({ productList, productCnt, type
               name={item.name}
               price={item.price * (1 - item.extra.dcRate / 100)}
               item={item}
+              isbookmarked={isBookmarked(item._id)}
+              togglebookmark={() => toggleBookmark(item._id)}
             />
           ))}
         </main>

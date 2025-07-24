@@ -4,7 +4,7 @@ import { ItemType } from '@/components/elements/ProductItem/Item/Item.type';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function ExperienceItem({ _id, name, price, item }: ItemType) {
+export default function ExperienceItem({ _id, name, price, item, isbookmarked, togglebookmark }: ItemType) {
   return (
     <div className="min-w-[288px] flex flex-col gap-4">
       {/* 상품 이미지 및 뱃지 영역 */}
@@ -72,7 +72,7 @@ export default function ExperienceItem({ _id, name, price, item }: ItemType) {
 
       {/*상품 등록 버튼 */}
       {/*Link 경로가 홈으로 해둔 상태 파일 경로 만들어지면 수정 필요 */}
-      <InteractionButton _id={_id} />
+      <InteractionButton _id={_id} isbookmarked={isbookmarked} togglebookmarked={togglebookmark} />
     </div>
   );
 }

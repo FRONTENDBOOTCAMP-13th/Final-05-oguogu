@@ -5,7 +5,7 @@ import { ItemType } from '@/components/elements/ProductItem/Item/Item.type';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function GardenItem({ _id, name, price, item }: ItemType) {
+export default function GardenItem({ _id, name, price, item, isbookmarked, togglebookmark }: ItemType) {
   let remain: number = 0;
   if (item?.quantity && item.buyQuantity) {
     remain = item?.quantity - item?.buyQuantity;
@@ -65,7 +65,7 @@ export default function GardenItem({ _id, name, price, item }: ItemType) {
         </div>
       </div>
       {/*상품 등록 버튼 */}
-      <InteractionButton _id={_id} />
+      <InteractionButton _id={_id} isbookmarked={isbookmarked} togglebookmarked={togglebookmark} />
     </div>
   );
 }

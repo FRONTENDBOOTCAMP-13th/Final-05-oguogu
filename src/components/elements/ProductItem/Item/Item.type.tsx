@@ -18,4 +18,6 @@ export interface ItemType {
   replies?: number;
   bookmark?: number;
   item?: Item;
+  isbookmarked: boolean;
+  togglebookmark: () => void;
 }
