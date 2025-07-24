@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import handleGoBack from '@/utils/handleGoBack/handleGoBack';
 import { HeaderExtraProps } from '@/components/layouts/Header/types/Header.type';
 import { usePathname /* useSearchParams */ } from 'next/navigation';
 import GoBackIcon from '@/features/goBackIcon/goBackIcon';
