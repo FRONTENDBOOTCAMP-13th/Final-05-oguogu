@@ -5,3 +5,11 @@ export interface InputButtonForMypageType {
   isChecked?: boolean;
   onClick?: () => void;
 }
+
+export interface CheckButtonForMypageType {
+  name: string;
+  type: string;
+  title: string;
+  isChecked?: boolean;
+  selectAll: () => void;
+}
