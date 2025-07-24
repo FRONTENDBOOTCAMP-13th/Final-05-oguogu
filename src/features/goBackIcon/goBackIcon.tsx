@@ -5,7 +5,14 @@ import { useRouter } from 'next/navigation';
 export default function GoBackIcon() {
   const router = useRouter();
   const handleGoBack = () => {
-    router.back();
+    if (
+      document.referrer.includes('https://final-05-oguogu.vercel.app/') ||
+      document.referrer.includes('http://localhost')
+    ) {
+      router.back();
+    } else {
+      router.push('/');
+    }
   };
 
   return (
