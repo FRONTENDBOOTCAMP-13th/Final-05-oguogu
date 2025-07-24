@@ -28,7 +28,7 @@ export default async function ProductListByType({ params }: { params: Promise<{ 
   const productsRes: productsRes = await getProducts();
   // console.log('products', productsRes);
 
-  const productList = productsRes.item.filter(item => item.extra.productType === type);
+  const productList = productsRes.item.filter(item => item.extra!.productType === type);
   const productCnt: number = productList.length;
 
   return (
@@ -52,12 +52,12 @@ export default async function ProductListByType({ params }: { params: Promise<{ 
               key={item._id}
               _id={item._id}
               name={item.name}
-              price={item.price * (1 - item.extra.dcRate / 100)}
+              price={item.price * (1 - item.extra!.dcRate / 100)}
               rating={item.rating}
               replies={item.replies}
-              dcRate={item.extra.dcRate}
-              bookmark={item.bookmarks}
-              item={item}
+              extra={item.extra}
+              seller={item.seller}
+              bookmarks={item.bookmarks}
             />
           ))}
         </main>
@@ -68,7 +68,7 @@ export default async function ProductListByType({ params }: { params: Promise<{ 
               key={item._id}
               _id={item._id}
               name={item.name}
-              price={item.price * (1 - item.extra.dcRate / 100)}
+              price={item.price * (1 - item.extra!.dcRate / 100)}
               item={item}
             />
           ))}
@@ -80,7 +80,7 @@ export default async function ProductListByType({ params }: { params: Promise<{ 
               key={item._id}
               _id={item._id}
               name={item.name}
-              price={item.price * (1 - item.extra.dcRate / 100)}
+              price={item.price * (1 - item.extra!.dcRate / 100)}
               item={item}
             />
           ))}
