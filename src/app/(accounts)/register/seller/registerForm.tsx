@@ -19,10 +19,10 @@ export default function SellerRegisterForm() {
   const [sellerEmail, setSellerEmail] = useState('');
 
   // 체크 박스
-  const [sellerAgreeTerms, setSellerAgreeTerms] = useState(true);
-  const [sellerFinTerms, setSellerFinTerms] = useState(true);
-  const [sellerAgreePrivacy, setSellerAgreePrivacy] = useState(true);
-  const [sellerProvidePrivacy, setSellerProvidePrivacy] = useState(true);
+  const [sellerAgreeTerms, setSellerAgreeTerms] = useState(false);
+  const [sellerFinTerms, setSellerFinTerms] = useState(false);
+  const [sellerAgreePrivacy, setSellerAgreePrivacy] = useState(false);
+  const [sellerProvidePrivacy, setSellerProvidePrivacy] = useState(false);
   const [sellerAgreeMarketing, setSellerAgreeMarketing] = useState(false);
 
   const router = useRouter();
@@ -41,17 +41,17 @@ export default function SellerRegisterForm() {
       !sellerPassword ||
       !sellerConfirmPassword
     ) {
-      alert('입력하지 않은 부분이 있습니다 모두 입력해주세요.');
+      alert('입력하지 않은 부분이 있습니다 모두 입력해주세요');
       return;
     }
 
     if (sellerPassword !== sellerConfirmPassword) {
-      alert('비밀번호가 일치하지 않습니다.');
+      alert('비밀번호가 일치하지 않습니다');
       return;
     }
 
     if (!sellerAgreeTerms || !sellerFinTerms || !sellerAgreePrivacy || !sellerProvidePrivacy) {
-      alert('필수 약관에 모두 동의해주세요.');
+      alert('필수 약관에 모두 동의해주세요');
       return;
     }
 

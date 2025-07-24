@@ -114,7 +114,7 @@ export default function LoginInput({ type, value, placeholder = '', onChange, op
           placeholder={placeholder}
           value={emailId}
           onChange={e => handleEmailChange(e.target.value, emailDomain)}
-          className={`placeholder-oguogu-gray-2 w-[120px] text-left`}
+          className="placeholder-oguogu-gray-2 w-[120px] text-left"
         />
         <div className="flex gap-1">
           <span className="text-oguogu-black">@</span>
@@ -142,7 +142,7 @@ export default function LoginInput({ type, value, placeholder = '', onChange, op
           onChange={e => onChange(e.target.value)}
           className="placeholder-oguogu-gray-2"
         />
-        <button type="submit" className="cursor-pointer">
+        <button type="button" className="cursor-pointer">
           <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
             <path
               d="M10.5 10.5L8.33 8.33M9.5 5.5C9.5 7.70914 7.70914 9.5 5.5 9.5C3.29086 9.5 1.5 7.70914 1.5 5.5C1.5 3.29086 3.29086 1.5 5.5 1.5C7.70914 1.5 9.5 3.29086 9.5 5.5Z"
@@ -157,13 +157,6 @@ export default function LoginInput({ type, value, placeholder = '', onChange, op
   }
 
   if (type === 'password') {
-    /* const passwordInputStyle = !showPassword
-      ? {
-          fontFamily:
-            '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif',
-        }
-      : {}; */
-
     return (
       <div className="relative w-[288px] h-[36px]">
         <input
@@ -183,13 +176,15 @@ export default function LoginInput({ type, value, placeholder = '', onChange, op
                 : 'var(--font-baedal-Jua)',
           }}
         />
-        <button
-          type="button"
-          onClick={() => setShowPassword(!showPassword)}
-          className="absolute right-2 top-1/2 -translate-y-1/2 text-sm text-ogugu-blue-light cursor-pointer"
-        >
-          {showPassword ? '숨기기' : '보기'}
-        </button>
+        {value && (
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute right-2 top-1/2 -translate-y-1/2 text-sm text-ogugu-blue-light cursor-pointer"
+          >
+            {showPassword ? '숨기기' : '보기'}
+          </button>
+        )}
       </div>
     );
   }
