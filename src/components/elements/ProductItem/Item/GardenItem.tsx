@@ -5,7 +5,17 @@ import { Item } from '@/shared/types/product';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function GardenItem({ _id, name, price, quantity, buyQuantity, extra, seller }: Item) {
+export default function GardenItem({
+  _id,
+  name,
+  price,
+  quantity,
+  buyQuantity,
+  extra,
+  seller,
+  isbookmarked,
+  togglebookmark,
+}: Item) {
   return (
     <div className="flex flex-col gap-4 min-w-[140px] ">
       {/* 상품 이미지 및 뱃지 영역 */}
@@ -63,7 +73,7 @@ export default function GardenItem({ _id, name, price, quantity, buyQuantity, ex
         </div>
       </div>
       {/*상품 등록 버튼 */}
-      <InteractionButton _id={_id} />
+      <InteractionButton _id={_id} isbookmarked={isbookmarked} togglebookmarked={togglebookmark} />
     </div>
   );
 }

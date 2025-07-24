@@ -7,7 +7,18 @@ import { Item } from '@/shared/types/product';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function CropItem({ _id, name, price, rating, replies, bookmarks, extra, seller }: Item) {
+export default function CropItem({
+  _id,
+  name,
+  price,
+  rating,
+  replies,
+  bookmarks,
+  extra,
+  seller,
+  togglebookmark = () => {},
+  isbookmarked = false,
+}: Item) {
   return (
     <div className="flex flex-col gap-4 min-w-[140px]">
       {/* 상품 이미지 및 뱃지 영역 */}
@@ -70,7 +81,7 @@ export default function CropItem({ _id, name, price, rating, replies, bookmarks,
         </div>
       </div>
       {/*상품 등록 버튼 */}
-      <InteractionButton _id={_id} />
+      <InteractionButton _id={_id} isbookmarked={isbookmarked} togglebookmarked={togglebookmark} />
     </div>
   );
 }

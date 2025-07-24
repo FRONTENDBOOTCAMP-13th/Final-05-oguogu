@@ -4,7 +4,19 @@ import { Item } from '@/shared/types/product';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function ExperienceItem({ _id, name, content, price, rating, replies, bookmarks, extra, seller }: Item) {
+export default function ExperienceItem({
+  _id,
+  name,
+  content,
+  price,
+  rating,
+  replies,
+  bookmarks,
+  extra,
+  seller,
+  isbookmarked,
+  togglebookmark,
+}: Item) {
   return (
     <div className="min-w-[288px] flex flex-col gap-4">
       {/* 상품 이미지 및 뱃지 영역 */}
@@ -32,7 +44,7 @@ export default function ExperienceItem({ _id, name, content, price, rating, repl
         {/* 판매자 정보 */}
         <div className="flex gap-1 items-center">
           <Image src="/images/product-hatIcon.svg" alt="농사꾼 모자 아이콘" width={16} height={16} />
-          <p className="text-[10px]">{seller!.extra.businessName}</p>
+          <p className="text-[10px]">{seller!.extra!.businessName}</p>
         </div>
         {/* 상품명 */}
         <Link href={`/search/result/${_id}/detail`} className="text-[14px] tracking-[-0.28px] leading-4">
@@ -72,7 +84,7 @@ export default function ExperienceItem({ _id, name, content, price, rating, repl
 
       {/*상품 등록 버튼 */}
       {/*Link 경로가 홈으로 해둔 상태 파일 경로 만들어지면 수정 필요 */}
-      <InteractionButton _id={_id} />
+      <InteractionButton _id={_id} isbookmarked={isbookmarked} togglebookmarked={togglebookmark} />
     </div>
   );
 }

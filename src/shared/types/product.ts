@@ -49,6 +49,8 @@ export interface Item {
   replies?: number;
   bookmarks?: number;
   seller?: Seller;
+  togglebookmark?: () => void;
+  isbookmarked?: boolean;
 }
 
 export interface Extra {
