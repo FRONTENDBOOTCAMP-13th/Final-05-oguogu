@@ -10,7 +10,7 @@ import { useState } from 'react';
  * @param {string} props.title - 라벨에 표시될 텍스트
  * @param {boolean} props.isChecked - 기본 선택 여부
  */
-export default function FilterButtonForMypage({ name, type, title, isChecked }: InputButtonForMypageType) {
+export default function FilterButtonForMypage({ name, type, title, isChecked, onClick }: InputButtonForMypageType) {
   return (
     <div>
       <input
@@ -19,6 +19,7 @@ export default function FilterButtonForMypage({ name, type, title, isChecked }: 
         id={type}
         hidden
         className="peer"
+        onClick={onClick}
         onChange={() => {
           console.log(`${type} 선택됨`);
         }}
