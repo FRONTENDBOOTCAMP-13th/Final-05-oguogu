@@ -19,10 +19,10 @@ export default function SellerRegisterForm() {
   const [sellerEmail, setSellerEmail] = useState('');
 
   // 체크 박스
-  const [sellerAgreeTerms, setSellerAgreeTerms] = useState(true);
-  const [sellerFinTerms, setSellerFinTerms] = useState(true);
-  const [sellerAgreePrivacy, setSellerAgreePrivacy] = useState(true);
-  const [sellerProvidePrivacy, setSellerProvidePrivacy] = useState(true);
+  const [sellerAgreeTerms, setSellerAgreeTerms] = useState(false);
+  const [sellerFinTerms, setSellerFinTerms] = useState(false);
+  const [sellerAgreePrivacy, setSellerAgreePrivacy] = useState(false);
+  const [sellerProvidePrivacy, setSellerProvidePrivacy] = useState(false);
   const [sellerAgreeMarketing, setSellerAgreeMarketing] = useState(false);
 
   const router = useRouter();

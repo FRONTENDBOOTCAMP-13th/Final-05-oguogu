@@ -16,9 +16,9 @@ export default function UserRegisterForm() {
   const [phoneNum, setPhoneNum] = useState('');
   const [birth, setBirth] = useState('');
 
-  const [agreeTerms, setAgreeTerms] = useState(true);
-  const [agreePrivacy, setAgreePrivacy] = useState(true);
-  const [isAdult, setIsAdult] = useState(true);
+  const [agreeTerms, setAgreeTerms] = useState(false);
+  const [agreePrivacy, setAgreePrivacy] = useState(false);
+  const [isAdult, setIsAdult] = useState(false);
   const [agreeMarketing, setAgreeMarketing] = useState(false);
 
   const router = useRouter();
