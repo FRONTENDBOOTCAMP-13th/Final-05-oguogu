@@ -142,7 +142,7 @@ export default function LoginInput({ type, value, placeholder = '', onChange, op
           onChange={e => onChange(e.target.value)}
           className="placeholder-oguogu-gray-2"
         />
-        <button type="submit" className="cursor-pointer">
+        <button type="button" className="cursor-pointer">
           <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
             <path
               d="M10.5 10.5L8.33 8.33M9.5 5.5C9.5 7.70914 7.70914 9.5 5.5 9.5C3.29086 9.5 1.5 7.70914 1.5 5.5C1.5 3.29086 3.29086 1.5 5.5 1.5C7.70914 1.5 9.5 3.29086 9.5 5.5Z"
