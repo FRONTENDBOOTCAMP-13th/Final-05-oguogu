@@ -14,7 +14,7 @@ export default function SearchHeader({ cartItemCount = 99 }: HeaderExtraProps) {
 
         {/* 검색창 */}
         <SearchForm />
-        
+
         {/* 장바구니 아이콘 + 뱃지 */}
         <div>
           <Link href="/mypage/cart" className="relative">

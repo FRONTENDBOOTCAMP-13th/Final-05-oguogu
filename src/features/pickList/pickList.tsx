@@ -28,7 +28,7 @@ export default function PickList() {
   }, [fetchBookmarks]);
 
   const filteredBookmarkedProducts = allProducts.filter(
-    item => bookmarkedIds.includes(item._id) && item.extra.productType === checkedType,
+    item => bookmarkedIds.includes(item._id) && item.extra!.productType === checkedType,
   );
   return (
     <>
@@ -71,12 +71,12 @@ export default function PickList() {
                     key={item._id}
                     _id={item._id}
                     name={item.name}
-                    price={item.price * (1 - item.extra.dcRate / 100)}
+                    price={item.price * (1 - item.extra!.dcRate / 100)}
                     rating={item.rating}
                     replies={item.replies}
-                    dcRate={item.extra.dcRate}
-                    bookmark={item.bookmarks}
-                    item={item}
+                    extra={item.extra}
+                    seller={item.seller}
+                    bookmarks={item.bookmarks}
                   />
                 ))}
               </div>
@@ -88,8 +88,9 @@ export default function PickList() {
                     key={item._id}
                     _id={item._id}
                     name={item.name}
-                    price={item.price * (1 - item.extra.dcRate / 100)}
-                    item={item}
+                    price={item.price * (1 - item.extra!.dcRate / 100)}
+                    seller={item.seller}
+                    extra={item.extra}
                   />
                 ))}
               </div>
@@ -101,8 +102,9 @@ export default function PickList() {
                     key={item._id}
                     _id={item._id}
                     name={item.name}
-                    price={item.price * (1 - item.extra.dcRate / 100)}
-                    item={item}
+                    price={item.price * (1 - item.extra!.dcRate / 100)}
+                    seller={item.seller}
+                    extra={item.extra}
                   />
                 ))}
               </div>

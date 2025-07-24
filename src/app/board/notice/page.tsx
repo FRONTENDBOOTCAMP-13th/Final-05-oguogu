@@ -1,3 +1,10 @@
+import LinkHeader from '@/components/layouts/Header/LinkHeader';
+
 export default function Notice() {
-  return <h1>공지사항 페이지</h1>;
+  return (
+    <>
+      <LinkHeader title="공지사항" />
+      <main className="px-4 py-4 min-h-[calc(100vh-48px)]">{/* 여기에 내용 작성 */}</main>
+    </>
+  );
 }

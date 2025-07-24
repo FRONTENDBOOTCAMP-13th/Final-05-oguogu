@@ -5,7 +5,7 @@ import { Item } from '@/shared/types/product';
  * @returns {number}
  */
 export default function getDiffDays(item: Item) {
-  const deadline = item.extra.deadline;
+  const deadline = item.extra!.deadline;
   const today = new Date();
 
   if (!deadline) {

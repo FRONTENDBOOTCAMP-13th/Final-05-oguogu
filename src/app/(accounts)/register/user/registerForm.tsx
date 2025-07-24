@@ -16,9 +16,9 @@ export default function UserRegisterForm() {
   const [phoneNum, setPhoneNum] = useState('');
   const [birth, setBirth] = useState('');
 
-  const [agreeTerms, setAgreeTerms] = useState(true);
-  const [agreePrivacy, setAgreePrivacy] = useState(true);
-  const [isAdult, setIsAdult] = useState(true);
+  const [agreeTerms, setAgreeTerms] = useState(false);
+  const [agreePrivacy, setAgreePrivacy] = useState(false);
+  const [isAdult, setIsAdult] = useState(false);
   const [agreeMarketing, setAgreeMarketing] = useState(false);
 
   const router = useRouter();
@@ -28,13 +28,13 @@ export default function UserRegisterForm() {
 
     // 필수값 검증
     if (!email || !password || !confirmPassword || !name || !phoneNum || !address) {
-      alert('입력하지 않은 부분이 있습니다 모두 입력해주세요.');
+      alert('입력하지 않은 부분이 있습니다 모두 입력해주세요');
       return;
     }
 
     // 비밀번호 확인
     if (password !== confirmPassword) {
-      alert('비밀번호가 일치하지 않습니다.');
+      alert('비밀번호가 일치하지 않습니다');
       return;
     }
 
@@ -71,7 +71,7 @@ export default function UserRegisterForm() {
       }
     } catch (error) {
       console.error('회원가입 오류 : ', error);
-      alert('회원가입중 오류가 발생했습니다 오구 텃밭으로 전화주세요 ');
+      alert('회원가입중 오류가 발생했습니다 오구 텃밭으로 전화주세요');
     }
   };
 
@@ -210,7 +210,7 @@ export default function UserRegisterForm() {
               checked={isAdult}
               onChange={() => setIsAdult(prev => !prev)}
             >
-              본인은 만14세 이상입니다.
+              본인은 만14세 이상입니다
             </CheckButton>
             <CheckButton
               size={14}
