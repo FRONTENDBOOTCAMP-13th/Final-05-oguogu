@@ -3,4 +3,5 @@ export interface InputButtonForMypageType {
   type: string;
   title: string;
   isChecked?: boolean;
+  onClick?: () => void;
 }
