@@ -87,7 +87,12 @@ export default function ProductListClientControl({ productList, productCnt, type
       ) : (
         <>
           {/* 헤더 */}
-          <CategoryHeader cartItemCount={100} />
+          <CategoryHeader
+            cartItemCount={100}
+            title={
+              type === 'crop' ? '농산물' : type === 'experience' ? '체험' : type === 'gardening' ? '텃밭' : '오구텃밭'
+            }
+          />
           {/* 네비게이션 */}
           <TextCategory />
           {/* 정렬 */}
@@ -102,9 +107,9 @@ export default function ProductListClientControl({ productList, productCnt, type
                   price={item.price * (1 - item.extra!.dcRate / 100)}
                   rating={item.rating}
                   replies={item.replies}
-                  dcRate={item.extra!.dcRate}
-                  bookmark={item.bookmarks}
-                  item={item}
+                  extra={item.extra}
+                  bookmarks={item.bookmarks}
+                  seller={item.seller}
                   isbookmarked={isBookmarked(item._id)}
                   togglebookmark={() => toggleBookmark(item._id)}
                 />
@@ -119,7 +124,8 @@ export default function ProductListClientControl({ productList, productCnt, type
                   _id={item._id}
                   name={item.name}
                   price={item.price * (1 - item.extra!.dcRate / 100)}
-                  item={item}
+                  extra={item.extra}
+                  seller={item.seller}
                   isbookmarked={isBookmarked(item._id)}
                   togglebookmark={() => toggleBookmark(item._id)}
                 />
@@ -134,9 +140,10 @@ export default function ProductListClientControl({ productList, productCnt, type
                   _id={item._id}
                   name={item.name}
                   price={item.price * (1 - item.extra!.dcRate / 100)}
-                  item={item}
                   isbookmarked={isBookmarked(item._id)}
                   togglebookmark={() => toggleBookmark(item._id)}
+                  extra={item.extra}
+                  seller={item.seller}
                 />
               ))}
             </main>

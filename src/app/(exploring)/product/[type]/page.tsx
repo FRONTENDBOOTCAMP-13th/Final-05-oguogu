@@ -1,7 +1,7 @@
 import { ProductType } from '@/app/(exploring)/product/[type]/ProductListByType.type';
 import ProductListClientControl from '@/features/productListClientControl/productListClientControl';
 import { getProducts } from '@/shared/data/functions/product';
-import { productsRes } from '@/shared/types/product';
+import { Item, productsRes } from '@/shared/types/product';
 import { notFound } from 'next/navigation';
 
 /**
@@ -24,7 +24,7 @@ export default async function ProductListByType({ params }: { params: Promise<{ 
   const productsRes: productsRes = await getProducts();
   // console.log('products', productsRes);
 
-  const productList = productsRes.item.filter(item => item.extra!.productType === type);
+  const productList = productsRes.item.filter((item: Item) => item.extra!.productType === type);
   const productCnt: number = productList.length;
 
   if (!['crop', 'experience', 'gardening'].includes(type)) {
