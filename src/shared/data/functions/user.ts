@@ -11,7 +11,7 @@ const CLIENT_ID = 'febc13-final05-emjf';
 // 1. 전체 회원 목록 조회
 export async function getUsers() {
   try {
-    const res = await fetch(`${API_URL}/users/}`, {
+    const res = await fetch(`${API_URL}/users`, {
       headers: {
         'Client-Id': CLIENT_ID,
       },

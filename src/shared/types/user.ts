@@ -38,6 +38,7 @@ export interface UserSeller {
   image?: string; // 프로필 이미지
   createdAt: string; // 생성일
   updatedAt: string; // 수정일
+  postViews: number; // 상품 본 수
   extra: {
     businessName: string; // 사업체명
     representativeName: string; // 대표자 이름

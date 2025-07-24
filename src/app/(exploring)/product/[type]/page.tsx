@@ -1,24 +1,39 @@
-import Title from '@/components/elements/CommonTitleItem/Title';
-import CropItem from '@/components/elements/ProductItem/CropItem/CropItem';
-import ExperienceItem from '@/components/elements/ProductItem/ExperienceItem/ExperienceItem';
-import GardenItem from '@/components/elements/ProductItem/SubscribeItem/GardenItem';
-import QnaItem from '@/components/elements/QnaItem/QnaItem';
-import ReviewItem from '@/components/elements/ReviewItem/ReviewItem';
+import { ProductType } from '@/app/(exploring)/product/[type]/ProductListByType.type';
+import ProductListClientControl from '@/features/productListClientControl/productListClientControl';
+import { getProducts } from '@/shared/data/functions/product';
+import { Item, productsRes } from '@/shared/types/product';
+import { notFound } from 'next/navigation';
 
-export default function ProductListByType() {
+/**
+ * product 상품 타입별 정적 페이지 생성
+ */
+/* export async function generateStaticParams() {
+  const productParams = [{ type: 'crop' }, { type: 'experience' }, { type: 'gardening' }];
+  return productParams;
+}
+ */
+
+/**
+ * 1차 카테고리 분류 항목으로 구성된 상품 탐색 목록 페이지
+ * @example /product/crop
+ * @example /product/experience
+ * @example /product/gardening
+ */
+export default async function ProductListByType({ params }: { params: Promise<{ type: ProductType }> }) {
+  const { type } = await params;
+  const productsRes: productsRes = await getProducts();
+  // console.log('products', productsRes);
+
+  const productList = productsRes.item.filter((item: Item) => item.extra!.productType === type);
+  const productCnt: number = productList.length;
+
+  if (!['crop', 'experience', 'gardening'].includes(type)) {
+    return notFound();
+  }
+
   return (
     <>
-      <h1>1차 카테고리 상품 목록 페이지</h1>
-      <h2>experience : 체험 상품</h2>
-      <h2>gardening : 텃밭 상품</h2>
-      <h2>crop : 농산물 상품</h2>
-      <Title title="온 가족이 함께 즐기는 텃밭 체험" content="7월 한 달 간 체험 상품 20% 할인!" />
-      <QnaItem state={true} isPrivate={true} viewerRole="other" />
-      {/* 예시로 이름이랑 이메일 넘겼습니다. 사용할때는 api에서 이름 이메일 뽑아서 props로 전달하면 됩니다. */}
-      <ReviewItem name="김재현" email="1234@gamil.com" />
-      <CropItem _id={1} name="쫀득쫀든 대학 미백 찰옥수수 30개입" originPrice="11,800" />
-      <GardenItem />
-      <ExperienceItem />
+      <ProductListClientControl productList={productList} productCnt={productCnt} type={type} />
     </>
   );
 }

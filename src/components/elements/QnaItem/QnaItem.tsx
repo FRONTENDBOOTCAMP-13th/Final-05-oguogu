@@ -1,4 +1,5 @@
 'use client';
+import type { QnaItem } from '@/shared/types/qna';
 import { useState } from 'react';
 
 interface QnaItemProps {
@@ -13,9 +14,10 @@ interface QnaItemProps {
        둘 다 아니면 'other'
    */
   viewerRole: 'owner' | 'seller' | 'other';
+  res: QnaItem;
 }
 
-export default function QnaItem({ state = false, isPrivate = false, viewerRole = 'other' }: QnaItemProps) {
+export default function QnaItem({ state = false, isPrivate = false, viewerRole = 'other', res }: QnaItemProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleOpen = () => {
@@ -45,7 +47,7 @@ export default function QnaItem({ state = false, isPrivate = false, viewerRole =
   const isViewerAllowed = !isPrivate || viewerRole === 'owner' || viewerRole === 'seller';
 
   return (
-    <div className={`p-4 bg-oguogu-${stateBgColor} w-[320px] shadow-sm`}>
+    <div className={`p-4 bg-oguogu-${stateBgColor} shadow-sm`}>
       <div onClick={toggleOpen} className="cursor-pointer flex flex-col gap-3">
         <div className="flex justify-between">
           <span className={`text-oguogu-${stateColor} flex items-center gap-1`}>
@@ -67,20 +69,20 @@ export default function QnaItem({ state = false, isPrivate = false, viewerRole =
             {state ? '답변 완료' : '답변 대기 중'}
             {/* 잠금 표시 */}
           </span>
-          <span className="text-[12px] text-oguogu-gray-4">2025.07.15</span>
+          <span className="text-[12px] text-oguogu-gray-4">{res.createdAt.split(' ')[0]}</span>
         </div>
 
         {isViewerAllowed ? (
           <div>
-            <p className="text-[16px] text-oguogu-black">[배송] 언제 배송오나요?</p>
-            <p className="text-[12px] text-oguogu-gray-4">오늘 시켰는데 내일까지 도착하나요?</p>
+            <p className="text-[16px] text-oguogu-black">[배송] {res.title}</p>
+            <p className="text-[12px] text-oguogu-gray-4">{res.content}</p>
           </div>
         ) : (
           <div className="text-[16px] text-oguogu-gray-3">[배송] 비밀글입니다.</div>
         )}
 
         <div className="flex gap-3">
-          <p className="text-[12px] text-oguogu-black">구매자이름 {maskName('김재현')}</p>
+          <p className="text-[12px] text-oguogu-black">구매자이름 {maskName(res.user.name)}</p>
           <p className="text-[12px] text-oguogu-black">이메일 앞부분 {maskEmail('qwer@gamil.com')}</p>
         </div>
       </div>
@@ -96,12 +98,12 @@ export default function QnaItem({ state = false, isPrivate = false, viewerRole =
             .split('.')
             .filter(Boolean)
             .map((line, i) => (
-              <>
-                <p key={i} className="whitespace-pre-wrap break-words text-[12px] leading-[100%] text-oguogu-gray-4">
+              <div key={i}>
+                <p className="whitespace-pre-wrap break-words text-[12px] leading-[100%] text-oguogu-gray-4">
                   {line.trim()}.
                 </p>
                 <br />
-              </>
+              </div>
             ))}
         </div>
       )}

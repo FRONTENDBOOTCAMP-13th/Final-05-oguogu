@@ -1,3 +1,11 @@
+import LinkHeader from '@/components/layouts/Header/LinkHeader';
+import OrderClientControl from '@/features/orderClientControl/orderClientControl';
+
 export default function UserOrderList() {
-  return <h1>사용자 주문 정보 페이지</h1>;
+  return (
+    <>
+      <LinkHeader title="주문/배송 내역" />
+      <OrderClientControl />
+    </>
+  );
 }

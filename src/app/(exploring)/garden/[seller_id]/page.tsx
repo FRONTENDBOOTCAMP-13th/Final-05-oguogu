@@ -1,3 +1,9 @@
+import LinkHeader from '@/components/layouts/Header/LinkHeader';
+
 export default function Garden() {
-  return <h1>판매자 채널 페이지</h1>;
+  return (
+    <>
+      <LinkHeader title="판매자 텃밭" />
+    </>
+  );
 }

@@ -1,3 +1,13 @@
+import UserRegisterForm from '@/app/(accounts)/register/user/registerForm';
+import LinkHeader from '@/components/layouts/Header/LinkHeader';
+
 export default function RegisterFormForUser() {
-  return <h1>사용자 회원가입 페이지</h1>;
+  return (
+    <>
+      <LinkHeader title="회원가입" />
+      <main className="w-[320px] mx-auto px-4 gap-2">
+        <UserRegisterForm />
+      </main>
+    </>
+  );
 }

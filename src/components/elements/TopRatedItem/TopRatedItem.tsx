@@ -1,93 +1,70 @@
-import { TopItem, TopRatedItemProps } from '@/components/elements/TopRatedItem/TopRatedItem.type';
-
-// 인기 텃밭 TOP 10의 기본 데이터
-const defaultTopItems: TopItem[] = [
-  { id: '1', name: '돌쇠네농산물', rank: 1 },
-  { id: '2', name: '중앙청과', rank: 2 },
-  { id: '3', name: '홍자매농원', rank: 3 },
-  { id: '4', name: '프레델', rank: 4 },
-  { id: '5', name: '야채도사', rank: 5 },
-  { id: '6', name: '프룻대디', rank: 6 },
-  { id: '7', name: '마르쉐', rank: 7 },
-  { id: '8', name: '오롯유통', rank: 8 },
-  { id: '9', name: '투지팜', rank: 9 },
-  { id: '10', name: '큰고을농원', rank: 10 },
-];
-
-// 랭크별 아이콘 반환 함수
-const getRankIcon = (rank: number): string => {
-  switch (rank) {
-    case 1: return '🥇';
-    case 2: return '🥈';
-    case 3: return '🥉';
-    default: return '';
-  }
-};
+import { getUsers } from '@/shared/data/functions/user';
+import { UserSeller } from '@/shared/types/user';
+import Link from 'next/link';
 
 /**
  * 인기 텃밭 TOP 10 컴포넌트
- * @param items - 표시할 텃밭 리스트
- * @param title - 컴포넌트 제목
- * @param maxItems - 최대 표시 항목 수
  */
-export default function TopRatedItem({
-  items = defaultTopItems,
-  title = '인기 텃밭 TOP 10',
-  maxItems = 10,
-}: TopRatedItemProps) {
-  // 최대 maxItems 만큼만 표시
-  const totalItems = items.slice(0, maxItems);
+export default async function TopRatedItem() {
+  const res = await getUsers();
 
-  // 리스트를 좌/우로 분할
-  const midPoint = Math.ceil(totalItems.length / 2);
-  const leftItems = totalItems.slice(0, midPoint);
-  const rightItems = totalItems.slice(midPoint);
+  /* 판매자 데이터를 추출, postViews 속성을 기준으로 정렬하여 인덱스 0 ~ 9 까지 총 10개를 추출 */
+  const sellerList = res.item
+    .filter((data: UserSeller) => data.type === 'seller')
+    .sort((a: UserSeller, b: UserSeller) => b.postViews - a.postViews)
+    .slice(0, 10);
+
+  const sellerListTop5 = sellerList.slice(0, 5);
+  const sellerListRest5 = sellerList.slice(5, 10);
 
   return (
-    <div className="w-full max-w-[320px] mx-auto p-2">
-      <h2 className="text-lg mb-4 font-medium">{title}</h2>
+    <div className="w-full p-4 min-h-[calc(100vh-48px)]">
+      <p className="mb-4 text-lg font-medium">인기 텃밭 순위 TOP10</p>
       <div className="grid grid-cols-2 gap-2" role="list" aria-label="인기 텃밭 순위">
-        {/* 왼쪽 리스트 */}
-        <ul className="space-y-2">
-          {leftItems.map((item: TopItem) => (
-            <TopRatedListItem key={item.id} item={item} />
-          ))}
+        {/* Top 1~5 */}
+        <ul className="flex flex-col gap-2">
+          {sellerListTop5.map((item: UserSeller, index: number) => {
+            return (
+              <li
+                key={item._id}
+                className="flex items-center gap-2 p-3 transition-all shadow-sm cursor-pointer bg-oguogu-white rounded-xl hover:bg-gray-50 hover:shadow-md"
+                role="listitem"
+                tabIndex={0}
+                // onClick={handleClick}
+              >
+                <span className="ml-1.5 font-medium text-md text-oguogu-main">
+                  {index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : index + 1}
+                </span>
+                {/* 해당 아이템의 _id 와 매칭하는 판매자 채널로 경로 설정 */}
+                <Link href={`/gardening/${item._id}`} className="flex items-center h-6">
+                  {item.extra.businessName}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
-        {/* 오른쪽 리스트 */}
-        <ul className="space-y-2">
-          {rightItems.map((item: TopItem) => (
-            <TopRatedListItem key={item.id} item={item} />
-          ))}
+
+        {/* Top 6~10 */}
+        <ul className="flex flex-col gap-2">
+          {sellerListRest5.map((item: UserSeller, index: number) => {
+            // if (item.extra.businessName) {
+            return (
+              <li
+                key={item._id}
+                className="flex items-center gap-2 p-3 transition-all shadow-sm cursor-pointer bg-oguogu-white rounded-xl hover:bg-gray-50 hover:shadow-md"
+                role="listitem"
+                tabIndex={0}
+                // onClick={handleClick}
+              >
+                <span className="ml-1.5 font-medium text-md text-oguogu-main">{index + 6}</span>
+                <Link href={`/gardening/${item._id}`} className="flex items-center h-6">
+                  {item.extra.businessName}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </div>
-  );
-}
-
-/**
- * 개별 텃밭 항목 렌더링 컴포넌트
- * @param item - 텃밭 정보
- */
-export function TopRatedListItem({ item }: { item: TopItem }) {
-  const handleClick = () => {
-    console.log(`클릭된 텃밭: ${item.name}`);
-    // 필요시 여기서 상세 페이지 이동 등 추가 작업 가능
-  };
-
-  return (
-    <li
-      className="flex items-center gap-2 p-3 bg-oguogu-white rounded-xl shadow-sm hover:bg-gray-50 hover:shadow-md transition-all cursor-pointer"
-      role="listitem"
-      tabIndex={0}
-      onClick={handleClick}
-    >
-      <span className="flex items-center gap-1 min-w-[2rem]">
-        <span className="text-md font-medium text-oguogu-main" aria-label={`${item.rank}위`}>
-          {item.rank}
-        </span>
-        <span className="text-sm">{getRankIcon(item.rank)}</span>
-      </span>
-      <span className="text-xs truncate">{item.name}</span>
-    </li>
   );
 }

@@ -1,15 +1,38 @@
+import { ReviewItemType } from '@/components/elements/ReviewItem/ReviewItem.type';
 import StarRating from '@/components/elements/ReviewItem/StarRating';
+import type { ReviewItem } from '@/shared/types/review';
+
 import Image from 'next/image';
 
-export default function ReviewItem({ name, email }: { name: string; email: string }) {
-  // 이름 마스킹 (첫 글자만 남기고 나머지는 *)
+/**
+ * 상품 리뷰 한 건을 렌더링하는 컴포넌트입니다.
+ * 별점, 작성일, 상품 이미지, 상품명, 리뷰 내용, 작성자 정보를 표시합니다.
+ *
+ * @component
+ * @param {ReviewItemType} props - 리뷰 정보 및 작성자 이름/이메일
+ */
+
+export default function ReviewItem({ name, email, res }: ReviewItemType) {
+  /**
+   * 이름 마스킹 처리 함수
+   * 예: 홍길동 → 홍**
+   *
+   * @param {string} name - 원본 이름
+   * @returns {string} 마스킹된 이름
+   */
   function maskName(name: string): string {
     if (!name) return '';
     const first = name[0];
     return first + '*'.repeat(name.length - 1);
   }
 
-  // 이메일 마스킹 (앞 3글자 + *)
+  /**
+   * 이메일 마스킹 처리 함수
+   * 예: abcdef@gmail.com → abc***
+   *
+   * @param {string} email - 원본 이메일
+   * @returns {string} 마스킹된 이메일 접두사
+   */
   function maskEmail(email: string): string {
     if (!email) return '';
 
@@ -25,12 +48,12 @@ export default function ReviewItem({ name, email }: { name: string; email: strin
 
   return (
     <>
-      <div className="w-[288px] h-[207px] flex flex-col gap-3">
+      <div className="h-[207px] flex flex-col gap-3">
         <div className="flex justify-between">
           <span>
-            <StarRating rating={4} />
+            <StarRating rating={res.rating} />
           </span>
-          <span className="text-[12px] text-oguogu-gray-4">2025.07.15</span>
+          <span className="text-[12px] text-oguogu-gray-4">{res.createdAt.split(' ')[0]}</span>
         </div>
         <div className="flex gap-2">
           <Image
@@ -56,8 +79,8 @@ export default function ReviewItem({ name, email }: { name: string; email: strin
           />
         </div>
         <div>
-          <p className="text-[16px] text-oguogu-black">리뷰 타이틀</p>
-          <p className="text-[12px] text-oguogu-gray-4">리뷰 상세 텍스트</p>
+          <p className="text-[16px] text-oguogu-black">{res.extra.name}</p>
+          <p className="text-[12px] text-oguogu-gray-4">{res.content}</p>
         </div>
         <div className="flex gap-3">
           <p className="text-[12px] text-oguogu-black">구매자이름 {maskName(name)}</p>

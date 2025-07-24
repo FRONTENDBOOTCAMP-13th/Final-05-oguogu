@@ -1,14 +1,33 @@
 import { ProductLinkType } from '@/components/elements/ProductLink/ProductLink.type';
 import Link from 'next/link';
 
-export default function ProductLinkItem({ keywordParams, typeParams, linkTitle = '전체 상품' }: ProductLinkType) {
+export default function ProductLinkItem({
+  keywordParams,
+  typeParams,
+  link = '/',
+  linkTitle = '전체 상품',
+  subTxt = '보러가기',
+  mode,
+}: ProductLinkType) {
+  // eslint 무시를 위해 강제 삽입
   console.log(keywordParams, typeParams);
 
   return (
     <div className="flex justify-center border-b-1 border-b-oguogu-gray-2 pt-2 pb-4">
-      <Link href={`/search`} className="flex items-center gap-2 text-xs">
+      <Link href={link} className="flex items-center gap-2 text-xs mobile-max:text-base">
         <span className="content-center">
-          <span className="text-oguogu-main">{linkTitle}</span> 보러 가기
+          {mode === 'login' ? (
+            <>
+              <span>{subTxt}</span>
+              <span className="text-oguogu-main">&nbsp;{linkTitle}</span>
+              <span>&nbsp;하기</span>
+            </>
+          ) : (
+            <>
+              <span className="text-oguogu-main">{linkTitle}</span>
+              &nbsp;{subTxt}
+            </>
+          )}
         </span>
         <svg
           width="5"

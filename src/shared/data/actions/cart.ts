@@ -2,8 +2,8 @@ const API_URL = 'https://fesp-api.koyeb.app/market';
 const CLIENT_ID = 'febc13-final05-emjf';
 
 // 수정 혹은 삭제를 할때 user_id를 인증하는 토큰이 필요함 (현재 2번 유저 토큰으로 테스트 중)
-const token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOjIsInR5cGUiOiJzZWxsZXIiLCJuYW1lIjoi64Sk7JikIiwiZW1haWwiOiJzMUBtYXJrZXQuY29tIiwiaW1hZ2UiOiIvZmlsZXMvZmViYzEzLWZpbmFsMDUtZW1qZi91c2VyLW5lby5wbmciLCJsb2dpblR5cGUiOiJlbWFpbCIsImlhdCI6MTc1MjEzNzE5OCwiZXhwIjoxNzUyMjIzNTk4LCJpc3MiOiJGRUJDIn0.BddWCFVqtTtBPD9bKZw3KelLPJG3BZkn8FG3JU960us';
+// const token =
+//   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOjIsInR5cGUiOiJzZWxsZXIiLCJuYW1lIjoi64Sk7JikIiwiZW1haWwiOiJzMUBtYXJrZXQuY29tIiwiaW1hZ2UiOiIvZmlsZXMvZmViYzEzLWZpbmFsMDUtZW1qZi91c2VyLW5lby5wbmciLCJsb2dpblR5cGUiOiJlbWFpbCIsImlhdCI6MTc1MjEzNzE5OCwiZXhwIjoxNzUyMjIzNTk4LCJpc3MiOiJGRUJDIn0.BddWCFVqtTtBPD9bKZw3KelLPJG3BZkn8FG3JU960us';
 
 // CHECKLIST
 // [x] 장바구니에 상품 추가
@@ -15,7 +15,7 @@ const token =
 // [] 장바구니 상품 전체 교체 => 성공 리턴은 오는데 변화가 없음
 
 // 1. 장바구니에 상품 추가
-export async function createCart(data: { product_id: number; quantity: number }) {
+export async function createCart(data: { product_id: number; quantity: number }, token: string) {
   try {
     const res = await fetch(`${API_URL}/carts`, {
       method: 'POST',
@@ -41,6 +41,7 @@ export async function updateCart(
   data: {
     quantity: number;
   },
+  token: string,
 ) {
   try {
     const res = await fetch(`${API_URL}/carts/${_id}`, {
@@ -62,7 +63,7 @@ export async function updateCart(
 }
 
 // 3. 장바구니에 상품 한건 삭제
-export async function deleteCart(_id: number) {
+export async function deleteCart(_id: number, token: string) {
   try {
     const res = await fetch(`${API_URL}/carts/${_id}`, {
       method: 'DELETE',
@@ -82,7 +83,7 @@ export async function deleteCart(_id: number) {
 }
 
 // 3. 장바구니에 상품 여러건 삭제
-export async function deleteSelectCart(carts: number[]) {
+export async function deleteSelectCart(carts: number[], token: string) {
   try {
     const res = await fetch(`${API_URL}/carts`, {
       method: 'DELETE',
@@ -103,7 +104,7 @@ export async function deleteSelectCart(carts: number[]) {
 }
 
 // 4. 장바구니 비우기
-export async function cleanupCart() {
+export async function cleanupCart(token: string) {
   try {
     const res = await fetch(`${API_URL}/carts/cleanup`, {
       method: 'DELETE',
@@ -128,6 +129,7 @@ export async function addCart(
     _id: number;
     quantity: number;
   }[],
+  token: string,
 ) {
   try {
     const res = await fetch(`${API_URL}/carts`, {
@@ -154,6 +156,7 @@ export async function replaceCart(
     _id: number;
     quantity: number;
   }[],
+  token: string,
 ) {
   try {
     const res = await fetch(`${API_URL}/carts`, {

@@ -40,15 +40,58 @@
 
 @layer utilities {
   body {
-    @apply bg-oguogu-white font-baedal-Jua text-oguogu-black;
+    @apply bg-oguogu-main font-baedal-Jua text-oguogu-black;
   }
-}
 
-/* 스크롤 바 숨기기 */
-.no-scrollbar {
-  -ms-overflow-style: none; /* IE, Edge */
-  scrollbar-width: none; /* Firefox */
-}
-.no-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari */
+  .header {
+    @apply h-12 sticky top-0 z-50 bg-oguogu-white flex justify-between items-center p-3;
+  }
+
+  .secondHeader {
+    @apply h-12 sticky top-12 z-50 bg-oguogu-white flex justify-between items-center;
+  }
+
+  .thirdHeader {
+    @apply h-12 sticky top-24 z-50 bg-oguogu-white flex justify-between items-center;
+  }
+
+  /* 스크롤 바 숨기기 */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE, Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
+
+  /* 메인 페이지에서 추천 카테고리에 사용되는 공통 스타일 */
+  .titleWithProductItem {
+    @apply flex flex-col justify-center gap-y-4 px-4;
+  }
+
+  /* 텍스트가 한 줄에서 벗어났을 때, ... 으로 표기되는 공통 스타일 */
+  .textElipsis {
+    @apply whitespace-nowrap overflow-hidden text-ellipsis;
+  }
+
+  /* 상품 검색 결과 및 탐색 목록 페이지에서 개별 아이템들이 목록으로 정렬할 때의 기본 스타일, grid-cols-[...] 속성만 별도 정의 필요 */
+  .itemGrid {
+    @apply grid gap-x-2 gap-y-8 px-4;
+  }
+
+  /* 상품 상세 페이지 상품 정보 배치 */
+  .itemDataList {
+    @apply text-sm mobile-max:text-base flex flex-col gap-3;
+  }
+
+  /* 상품 상세 페이지 개별 상품 정보 */
+  .itemData {
+    @apply text-oguogu-gray-4 min-w-[96px] mobile-max:w-[120px];
+  }
+
+  /* itemData 항목이 두 줄로 작성된 경우의 스타일링 */
+  .itemDataExtra {
+    @apply flex flex-col gap-1;
+  }
 }

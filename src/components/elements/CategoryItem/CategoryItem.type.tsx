@@ -4,8 +4,9 @@ export interface ImageCategoryItemType {
 }
 
 export interface TextCategoryItemType {
+  type: 'search' | 'product';
+  _id?: number;
   params: string;
-  subParams?: string;
   title: string;
   isClick: boolean;
 }

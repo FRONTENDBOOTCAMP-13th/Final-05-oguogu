@@ -5,6 +5,87 @@ function getTime(day = 0, second = 0) {
 }
 
 export const initData = async (clientId, nextSeq) => {
+  // 리뷰 더미 데이터 (총 150개)
+  const review = [];
+
+  const dummyUsers = [
+    { _id: 1, name: '홍길동' },
+    { _id: 2, name: '김철수' },
+    { _id: 3, name: '박영희' },
+    { _id: 4, name: '이민호' },
+    { _id: 5, name: '최지우' },
+    { _id: 6, name: '정수빈' },
+    { _id: 7, name: '한예슬' },
+    { _id: 8, name: '정길용' },
+    { _id: 9, name: '김데레사' },
+    { _id: 10, name: '송하윤' },
+  ];
+
+  const dummyTitles = [
+    '정말 맛있어요!',
+    '좀 아쉬워요',
+    '배송 빨랐어요',
+    '다음에도 구매할게요',
+    '별로였어요',
+    '고양이도 좋아해요',
+    '완전 강추!',
+    '생각보다 별로네요',
+    '기대 이상이에요',
+    '쫀득쫀득 맛있어요',
+  ];
+
+  const dummyContents = [
+    '옥수수가 달고 쫀득해서 너무 맛있어요!',
+    '생각보다 양이 적어요.',
+    '배송이 조금 느렸어요.',
+    '포장 깔끔하고 맛도 좋아요.',
+    '딱딱해서 씹기 힘들었어요.',
+    '저희 강아지도 좋아해요.',
+    '가족들과 함께 맛있게 먹었습니다.',
+    '식감이 별로네요...',
+    '친구한테 선물했는데 만족했대요.',
+    '삶기만 하면 바로 먹을 수 있어서 좋아요.',
+  ];
+
+  for (let product_id = 1; product_id <= 30; product_id++) {
+    for (let i = 0; i < 5; i++) {
+      const user = dummyUsers[Math.floor(Math.random() * dummyUsers.length)];
+      const title = dummyTitles[Math.floor(Math.random() * dummyTitles.length)];
+      const content = dummyContents[Math.floor(Math.random() * dummyContents.length)];
+      const rating = Math.floor(Math.random() * 5) + 1;
+
+      review.push({
+        _id: await nextSeq('review'),
+        rating,
+        content,
+        user_id: user._id,
+        product_id,
+        extra: {
+          name: title,
+          image: [{ url: '/' }, { url: '/' }],
+        },
+        createdAt: getTime(-Math.floor(Math.random() * 30), -60 * 60 * Math.floor(Math.random() * 24)),
+
+        // 주문자 정보
+        user: {
+          _id: user._id,
+          name: user.name,
+          image: `user-${user._id}.webp`,
+        },
+
+        // 판매자 상품 정보
+        product: {
+          _id: product_id,
+          name: `상품명 ${product_id}`,
+          image: {
+            path: `files/openmarket/sample-${product_id}.jpg`,
+            name: `sample-${product_id}.jpg`,
+            originalname: `original-${product_id}.jpg`,
+          },
+        },
+      });
+    }
+  }
   return {
     /**
      ** 회원 관리
@@ -12,11 +93,12 @@ export const initData = async (clientId, nextSeq) => {
      * - 관리자
      
      * 2. 판매자 => type: 'seller'
-     * - 흥부네농산물
+     * - 흥부네농산물 
      * - 놀부네농산물
      * - 서울상회
      * - 국제농업
      * - 제주농산물
+     * - 업타운
      
      * 3. 사용자 => type: 'user'
      * - 정길용
@@ -77,7 +159,7 @@ export const initData = async (clientId, nextSeq) => {
             status: 'approved', // 'pending' | 'rejected' | 'approved' : 승인 | 'certified' : 인증
             requestedAt: '2025-07-01T09:30:00Z',
             reviewedAt: '2025-07-03T15:45:00Z',
-            reviewer: 'admin@market.com',
+            reviewer: 'admin@5959.com',
             reason: '서류 이상 없음',
           },
         },
@@ -116,7 +198,7 @@ export const initData = async (clientId, nextSeq) => {
             status: 'approved', // 'pending' | 'rejected' | 'approved' : 승인 | 'certified' : 인증
             requestedAt: '2025-07-01T09:30:00Z',
             reviewedAt: '2025-07-03T15:45:00Z',
-            reviewer: 'admin@market.com',
+            reviewer: 'admin@5959.com',
             reason: '서류 이상 없음',
           },
         },
@@ -155,7 +237,7 @@ export const initData = async (clientId, nextSeq) => {
             status: 'approved', // 'pending' | 'rejected' | 'approved' : 승인 | 'certified' : 인증
             requestedAt: '2025-07-01T09:30:00Z',
             reviewedAt: '2025-07-03T15:45:00Z',
-            reviewer: 'admin@market.com',
+            reviewer: 'admin@5959.com',
             reason: '서류 이상 없음',
           },
         },
@@ -194,7 +276,7 @@ export const initData = async (clientId, nextSeq) => {
             status: 'approved', // 'pending' | 'rejected' | 'approved' : 승인 | 'certified' : 인증
             requestedAt: '2025-07-01T09:30:00Z',
             reviewedAt: '2025-07-03T15:45:00Z',
-            reviewer: 'admin@market.com',
+            reviewer: 'admin@5959.com',
             reason: '서류 이상 없음',
           },
         },
@@ -233,7 +315,46 @@ export const initData = async (clientId, nextSeq) => {
             status: 'approved', // 'pending' | 'rejected' | 'approved' : 승인 | 'certified' : 인증
             requestedAt: '2025-07-01T09:30:00Z',
             reviewedAt: '2025-07-03T15:45:00Z',
-            reviewer: 'admin@market.com',
+            reviewer: 'admin@5959.com',
+            reason: '서류 이상 없음',
+          },
+        },
+      },
+      {
+        _id: await nextSeq('user'),
+        email: 'seller6@5959.com',
+        password: 'seller6',
+        name: '정신나',
+        phone: '01022314884',
+        address: '서울특별시 성동구 왕십리로 125',
+        type: 'seller',
+        loginType: 'email',
+        image: `/files/${clientId}/seller-6-profile.png`,
+        createdAt: getTime(-50),
+        updatedAt: getTime(-30, -60 * 60 * 3),
+        extra: {
+          // 상호명
+          businessName: '업타운',
+
+          // 대표자명
+          representativeName: '정신나',
+
+          // 사업자 번호
+          businessNumber: '221-87-00154',
+
+          // 대표 번호
+          tel: '070-882-4545',
+
+          // 첨부 파일 : 사업자등록증, 통신판매업신고증
+          businessLicenseImage: '/files/201/business-license.jpg',
+          telecomRegistrationImage: '/files/201/telecom-cert.jpg',
+
+          // 인증 상태 정보
+          certification: {
+            status: 'approved', // 'pending' | 'rejected' | 'approved' : 승인 | 'certified' : 인증
+            requestedAt: '2025-07-01T09:30:00Z',
+            reviewedAt: '2025-07-03T15:45:00Z',
+            reviewer: 'admin@5959.com',
             reason: '서류 이상 없음',
           },
         },
@@ -324,16 +445,15 @@ export const initData = async (clientId, nextSeq) => {
      * [x] seller_id: 3 * 5개
      * [x] seller_id: 4 * 5개
      * [x] seller_id: 5 * 5개
-     * [ ] seller_id: 6 * 5개
+     * [x] seller_id: 6 * 5개
 
      * 2. 체험 상품 => extra { productType: 'experience' }
-     * [ ] seller_id: 2 * 2개
-     * [ ] seller_id: 3 * 2개
+     * [x] seller_id: 2 * 2개
+     * [x] seller_id: 7 * 2개
 
      * 3. 텃밭 상품 => extra { productType: 'gardening' }
-     * [ ] seller_id: 4 * 3개
-     * [ ] seller_id: 5 * 3개
-     * [ ] seller_id: 6 * 3개
+     * [x] seller_id: 3 * 3개
+     * [x] seller_id: 5 * 3개
      * */
     product: [
       /* 1. 농산물 상품 */
@@ -396,11 +516,13 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 10,
 
           // 뱃지용
-          isNew: false, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: true, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: true }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       {
@@ -461,11 +583,13 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 10,
 
           // 뱃지용
-          isNew: true, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: false, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: true }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       {
@@ -526,11 +650,13 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 4,
 
           // 뱃지용
-          isNew: false, // 신상품
-          isInSeason: false, // 제철 상품 (농산물 전용)
-          isBest: false, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       {
@@ -591,11 +717,13 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 10,
 
           // 뱃지용
-          isNew: true, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: false, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: true }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       {
@@ -656,11 +784,13 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 100,
 
           // 뱃지용
-          isNew: false, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: false, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       // seller_id: 3
@@ -722,11 +852,13 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 100,
 
           // 뱃지용
-          isNew: false, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: false, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       {
@@ -786,12 +918,13 @@ export const initData = async (clientId, nextSeq) => {
           // 최대 구매 가능 수량
           productCnt: 100,
 
-          // 뱃지용
-          isNew: false, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: false, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       {
@@ -916,12 +1049,13 @@ export const initData = async (clientId, nextSeq) => {
           // 최대 구매 가능 수량
           productCnt: 10,
 
-          // 뱃지용
-          isNew: true, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: true, // 인기 상품
-          isLowStock: true, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: true }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: true }, // 인기 상품
+            { isLowStock: true }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       {
@@ -982,11 +1116,13 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 10,
 
           // 뱃지용
-          isNew: false, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: true, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: true }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       // seller_id: 4
@@ -1048,11 +1184,13 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 100,
 
           // 뱃지용
-          isNew: false, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: true, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: true }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       {
@@ -1113,11 +1251,13 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 100,
 
           // 뱃지용
-          isNew: false, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: true, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: true }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       {
@@ -1178,11 +1318,13 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 100,
 
           // 뱃지용
-          isNew: false, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: true, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: true }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       {
@@ -1243,11 +1385,13 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 999,
 
           // 뱃지용
-          isNew: false, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: false, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       {
@@ -1308,11 +1452,13 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 50,
 
           // 뱃지용
-          isNew: false, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: true, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: true }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       // seller_id: 5
@@ -1374,11 +1520,13 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 10,
 
           // 뱃지용
-          isNew: false, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: true, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: true }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       {
@@ -1439,11 +1587,13 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 10,
 
           // 뱃지용
-          isNew: false, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: false, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       {
@@ -1504,11 +1654,13 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 5,
 
           // 뱃지용
-          isNew: false, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: true, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: true, // 품절 상품
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: true }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: true }, // 품절 상품
+          ],
         },
       },
       {
@@ -1520,8 +1672,8 @@ export const initData = async (clientId, nextSeq) => {
         shippingFees: 0,
         quantity: 1000,
         buyQuantity: 899,
-        show: false,
-        active: false,
+        show: true,
+        active: true,
         mainImages: [
           {
             // seller-${seller_id}-${productType}${_id}-${numbering}
@@ -1569,11 +1721,13 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 10,
 
           // 뱃지용
-          isNew: false, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: true, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: true }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       {
@@ -1585,8 +1739,8 @@ export const initData = async (clientId, nextSeq) => {
         shippingFees: 0,
         quantity: 1500,
         buyQuantity: 452,
-        show: false,
-        active: false,
+        show: true,
+        active: true,
         mainImages: [
           {
             // seller-${seller_id}-${productType}${_id}-${numbering}
@@ -1634,25 +1788,363 @@ export const initData = async (clientId, nextSeq) => {
           productCnt: 99,
 
           // 뱃지용
-          isNew: false, // 신상품
-          isInSeason: true, // 제철 상품 (농산물 전용)
-          isBest: false, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
       // seller_id: 6
+      {
+        _id: await nextSeq('product'),
+        seller_id: 6,
+        name: '햇 괴산 대학찰옥수수 찐옥수수 장작불 가마솥에 삶은 냉동 옥수수',
+        content: '나무 장작불로 삶아낸 국도에서 먹던 그맛!',
+        price: 60000,
+        shippingFees: 0,
+        quantity: 10000,
+        buyQuantity: 8142,
+        show: true,
+        active: true,
+        mainImages: [
+          {
+            // seller-${seller_id}-${productType}${_id}-${numbering}
+            path: `/files/${clientId}/seller-2-crop1-1.jpg`,
+            name: 'image-1.jpg',
+            originalname: '상품이미지-1.jpg',
+          },
+          {
+            path: `/files/${clientId}/seller-2-crop2-2.jpg`,
+            name: 'image-2.jpg',
+            originalname: '상품이미지-2.jpg',
+          },
+        ],
+        createdAt: getTime(-41, -60 * 60 * 2),
+        updatedAt: getTime(-40, -60 * 15),
+        extra: {
+          // 상품 타입 : 'crop' | 'experience' | 'gardening'
+          productType: 'crop',
+
+          // 2차 카테고리 : 'veggie', 'fruit', 'grain', 'mushroom'
+          category: 'veggie',
+
+          // 3차 카테고리
+          filter: ['옥수수'],
+
+          // 원산지
+          originPlace: '국산',
+
+          // 생산지
+          productionPlace: '충청북도 괴산',
+
+          // 상품 구성
+          composition: '30개입 * 1개',
+
+          // 배송 관련 추가 정보
+          deliveryInfo: '평일 1~2일 소요',
+
+          // 찜 수
+          likeCount: 31211,
+
+          // 할인율
+          dcRate: 51,
+
+          // 최대 구매 가능 수량
+          productCnt: 99,
+
+          // 뱃지용
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: true }, // 인기 상품
+            { isLowStock: true }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
+        },
+      },
+      {
+        _id: await nextSeq('product'),
+        seller_id: 6,
+        name: '국내산 초당옥수수',
+        content: '돌아온 여름, 온 가족이 즐겨먹는 여름별미!',
+        price: 56000,
+        shippingFees: 0,
+        quantity: 1000,
+        buyQuantity: 50,
+        show: true,
+        active: true,
+        mainImages: [
+          {
+            // seller-${seller_id}-${productType}${_id}-${numbering}
+            path: `/files/${clientId}/seller-2-crop1-1.jpg`,
+            name: 'image-1.jpg',
+            originalname: '상품이미지-1.jpg',
+          },
+          {
+            path: `/files/${clientId}/seller-2-crop2-2.jpg`,
+            name: 'image-2.jpg',
+            originalname: '상품이미지-2.jpg',
+          },
+        ],
+        createdAt: getTime(-41, -60 * 60 * 2),
+        updatedAt: getTime(-40, -60 * 15),
+        extra: {
+          // 상품 타입 : 'crop' | 'experience' | 'gardening'
+          productType: 'crop',
+
+          // 2차 카테고리 : 'veggie', 'fruit', 'grain', 'mushroom'
+          category: 'veggie',
+
+          // 3차 카테고리
+          filter: ['옥수수'],
+
+          // 원산지
+          originPlace: '국산',
+
+          // 생산지
+          productionPlace: '충청북도 괴산',
+
+          // 상품 구성
+          composition: '5개입 * 1개',
+
+          // 배송 관련 추가 정보
+          deliveryInfo: '평일 1~2일 소요',
+
+          // 찜 수
+          likeCount: 122,
+
+          // 할인율
+          dcRate: 79,
+
+          // 최대 구매 가능 수량
+          productCnt: 10,
+
+          // 뱃지용
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
+        },
+      },
+      {
+        _id: await nextSeq('product'),
+        seller_id: 6,
+        name: '초당옥수수 콧털삼촌 농장 3차선별 당일수확 산지직송 옥수수',
+        content: '7년동안의 노하우! 초당옥수수 전문 생산, 유통',
+        price: 34800,
+        shippingFees: 0,
+        quantity: 2000,
+        buyQuantity: 754,
+        show: true,
+        active: true,
+        mainImages: [
+          {
+            // seller-${seller_id}-${productType}${_id}-${numbering}
+            path: `/files/${clientId}/seller-2-crop1-1.jpg`,
+            name: 'image-1.jpg',
+            originalname: '상품이미지-1.jpg',
+          },
+          {
+            path: `/files/${clientId}/seller-2-crop2-2.jpg`,
+            name: 'image-2.jpg',
+            originalname: '상품이미지-2.jpg',
+          },
+        ],
+        createdAt: getTime(-41, -60 * 60 * 2),
+        updatedAt: getTime(-40, -60 * 15),
+        extra: {
+          // 상품 타입 : 'crop' | 'experience' | 'gardening'
+          productType: 'crop',
+
+          // 2차 카테고리 : 'veggie', 'fruit', 'grain', 'mushroom'
+          category: 'veggie',
+
+          // 3차 카테고리
+          filter: ['옥수수'],
+
+          // 원산지
+          originPlace: '국산',
+
+          // 생산지
+          productionPlace: '충청북도 괴산',
+
+          // 상품 구성
+          composition: '5개입 * 1개',
+
+          // 배송 관련 추가 정보
+          deliveryInfo: '평일 1~2일 소요',
+
+          // 찜 수
+          likeCount: 1124,
+
+          // 할인율
+          dcRate: 50,
+
+          // 최대 구매 가능 수량
+          productCnt: 50,
+
+          // 뱃지용
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
+        },
+      },
+      {
+        _id: await nextSeq('product'),
+        seller_id: 6,
+        name: '초당옥수수 고당도 제철 3차선별 옥수수',
+        content: '청정산지에서 생산하는 옥수수',
+        price: 24000,
+        shippingFees: 0,
+        quantity: 1000,
+        buyQuantity: 550,
+        show: true,
+        active: true,
+        mainImages: [
+          {
+            // seller-${seller_id}-${productType}${_id}-${numbering}
+            path: `/files/${clientId}/seller-2-crop1-1.jpg`,
+            name: 'image-1.jpg',
+            originalname: '상품이미지-1.jpg',
+          },
+          {
+            path: `/files/${clientId}/seller-2-crop2-2.jpg`,
+            name: 'image-2.jpg',
+            originalname: '상품이미지-2.jpg',
+          },
+        ],
+        createdAt: getTime(-41, -60 * 60 * 2),
+        updatedAt: getTime(-40, -60 * 15),
+        extra: {
+          // 상품 타입 : 'crop' | 'experience' | 'gardening'
+          productType: 'crop',
+
+          // 2차 카테고리 : 'veggie', 'fruit', 'grain', 'mushroom'
+          category: 'veggie',
+
+          // 3차 카테고리
+          filter: ['옥수수'],
+
+          // 원산지
+          originPlace: '국산',
+
+          // 생산지
+          productionPlace: '경상남도 의령',
+
+          // 상품 구성
+          composition: '5개입 * 1개',
+
+          // 배송 관련 추가 정보
+          deliveryInfo: '평일 1~2일 소요',
+
+          // 찜 수
+          likeCount: 882,
+
+          // 할인율
+          dcRate: 50,
+
+          // 최대 구매 가능 수량
+          productCnt: 30,
+
+          // 뱃지용
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
+        },
+      },
+      {
+        _id: await nextSeq('product'),
+        seller_id: 6,
+        name: '기장찰옥수수 신선하게 삶아낸 냉동 찰옥수수 다양한 맛과 품종',
+        content: '상위2% 전문가가 직접 만든 무첨가 기장찰옥수수',
+        price: 37900,
+        shippingFees: 0,
+        quantity: 3000,
+        buyQuantity: 2412,
+        show: true,
+        active: true,
+        mainImages: [
+          {
+            // seller-${seller_id}-${productType}${_id}-${numbering}
+            path: `/files/${clientId}/seller-2-crop1-1.jpg`,
+            name: 'image-1.jpg',
+            originalname: '상품이미지-1.jpg',
+          },
+          {
+            path: `/files/${clientId}/seller-2-crop2-2.jpg`,
+            name: 'image-2.jpg',
+            originalname: '상품이미지-2.jpg',
+          },
+        ],
+        createdAt: getTime(-41, -60 * 60 * 2),
+        updatedAt: getTime(-40, -60 * 15),
+        extra: {
+          // 상품 타입 : 'crop' | 'experience' | 'gardening'
+          productType: 'crop',
+
+          // 2차 카테고리 : 'veggie', 'fruit', 'grain', 'mushroom'
+          category: 'veggie',
+
+          // 3차 카테고리
+          filter: ['옥수수'],
+
+          // 원산지
+          originPlace: '중국',
+
+          // 생산지
+          productionPlace: '중국',
+
+          // 상품 구성
+          composition: '10개입 * 1개',
+
+          // 배송 관련 추가 정보
+          deliveryInfo: '평일 1~2일 소요',
+
+          // 찜 수
+          likeCount: 882,
+
+          // 할인율
+          dcRate: 73,
+
+          // 최대 구매 가능 수량
+          productCnt: 100,
+
+          // 뱃지용
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: true }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
+        },
+      },
 
       /* 2. 체험 상품 */
+      // seller_id: 2
       {
         _id: await nextSeq('product'),
         seller_id: 2,
-        name: '강원도 농촌 체험 2박 3일',
-        content: '강원도 농촌 체험 2박 3일 체험하고 힐링하고 재밌어요',
-        price: 49900,
+        name: '강원도 산골마을 찰옥수수 수확체험',
+        content: '1인 20개 수확! 바베큐 중식 제공!',
+        price: 30000,
         shippingFees: 0,
         quantity: 20,
-        buyQuantity: 5,
+        buyQuantity: 12,
         show: true,
         active: true,
         mainImages: [
@@ -1680,66 +2172,317 @@ export const initData = async (clientId, nextSeq) => {
           filter: [],
 
           // 체험 장소 위치
-          region: '강원도 원주',
+          region: '강원도 인제',
 
           // 출발 지역
-          meetingPlace: '강남역 1번출구',
+          meetingPlace: '강원도 인제군 남면 부평정자로 1555',
 
-          // 출발 날짜
-          departureDate: '2025-08-01',
+          // 가는 날짜
+          departureDate: '2025-08-12',
 
-          // 도착 날짜
-          returnDate: '2025-08-03',
+          // 오는 날짜
+          returnDate: '2025-08-12',
 
           // 할인율
           dcRate: 40,
 
           // 최대 예약 가능 인원 수
-          productCnt: 6,
+          productCnt: 4,
 
-          // 포함 상품
-          includedItems: ['왕복 버스', '숙박 2박', '감자캐시 체험', '조식'],
+          // 대표 키워드
+          representitiveKeyword: ['체험', '웰빙', '힐링'],
 
-          // 미포함 상품
-          notIncludedItems: ['중식', '석식'],
+          // 포함 상품 : '식사 제공', '숙소 제공', '픽업 버스 운행', '체험 상품'
+          includedItems: ['식사 제공', '체험 상품'],
 
           // 일정
           schedule: [
-            { day: 1, title: '강원도 도착 및 이장님 인사', details: '이장님의 연설 듣기 딸기 농장 방문하기' },
-            { day: 2, title: '중문 관광', details: '유채꽃밭, 오설록 티뮤지엄 방문' },
+            { day: 1, startTime: '11:00', title: '마을 소개 및 옥수수 재배법 교육' },
+            { day: 1, startTime: '12:00', title: '점심 식사' },
+            { day: 1, startTime: '13:30', title: '찰옥수수 수확' },
+            { day: 1, startTime: '14:30', title: '찰옥수수 시식' },
           ],
-
-          // 여행사 정보
-          travelAgency: {
-            name: '트래블코리아',
-            license: 'T-2024-1234',
-          },
 
           // 가이드 정보
           guideInfo: {
-            name: '김여행',
+            name: '신세경',
+            contact: '010-7677-8123',
+          },
+
+          // 뱃지용
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: null }, // 제철 상품 (농산물 전용)
+            { isBest: true }, // 인기 상품
+            { isLowStock: true }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
+        },
+      },
+      {
+        _id: await nextSeq('product'),
+        seller_id: 2,
+        name: '옥수수 수확 체험',
+        content: '직접 딴 옥수수를 바로 삶아먹어요',
+        price: 10000,
+        shippingFees: 0,
+        quantity: 40,
+        buyQuantity: 18,
+        show: true,
+        active: true,
+        mainImages: [
+          {
+            path: `/files/${clientId}/seller-2-exp2-1.jpg`,
+            name: 'image-1.jpg',
+            originalname: '상품이미지-1.jpg',
+          },
+          {
+            path: `/files/${clientId}/seller-2-exp2-2.jpg`,
+            name: 'image-2.jpg',
+            originalname: '상품이미지-2.jpg',
+          },
+        ],
+        createdAt: getTime(-41, -60 * 60 * 2),
+        updatedAt: getTime(-40, -60 * 15),
+        extra: {
+          // 상품 타입 : 'crop' | 'experience' | 'gardening'
+          productType: 'experience',
+
+          // 2차 카테고리
+          category: [],
+
+          // 3차 카테고리
+          filter: [],
+
+          // 체험 장소 위치
+          region: '경상남도 거창',
+
+          // 출발 지역
+          meetingPlace: '경상남도 거창군 북상면 송계로 738',
+
+          // 가는 날짜
+          departureDate: '2025-08-12',
+
+          // 오는 날짜
+          returnDate: '2025-08-12',
+
+          // 할인율
+          dcRate: 0,
+
+          // 최대 예약 가능 인원 수
+          productCnt: 4,
+
+          // 대표 키워드
+          representitiveKeyword: ['체험'],
+
+          // 포함 상품 : '식사 제공', '숙소 제공', '픽업 버스 운행', '체험 상품'
+          includedItems: ['체험 상품'],
+
+          // 일정
+          schedule: [
+            { day: 1, startTime: '14:00', title: '옥수수 수확' },
+            { day: 1, startTime: '15:00', title: '옥수수 시식' },
+          ],
+
+          // 가이드 정보
+          guideInfo: {
+            name: '전농희',
+            contact: '010-4445-6667',
+          },
+
+          // 뱃지용
+          badge: [
+            { isNew: true }, // 신상품
+            { isInSeason: null }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
+        },
+      },
+      // seller_id: 7
+      {
+        _id: await nextSeq('product'),
+        seller_id: 7,
+        name: '[컨츄리타운] 촌캉스',
+        content: '폭스클럽과 유명연예인도 다녀간 촌캉스!',
+        price: 198000,
+        shippingFees: 0,
+        quantity: 20,
+        buyQuantity: 20,
+        show: true,
+        active: true,
+        mainImages: [
+          {
+            path: `/files/${clientId}/seller-2-exp2-1.jpg`,
+            name: 'image-1.jpg',
+            originalname: '상품이미지-1.jpg',
+          },
+          {
+            path: `/files/${clientId}/seller-2-exp2-2.jpg`,
+            name: 'image-2.jpg',
+            originalname: '상품이미지-2.jpg',
+          },
+        ],
+        createdAt: getTime(-41, -60 * 60 * 2),
+        updatedAt: getTime(-40, -60 * 15),
+        extra: {
+          // 상품 타입 : 'crop' | 'experience' | 'gardening'
+          productType: 'experience',
+
+          // 2차 카테고리
+          category: [],
+
+          // 3차 카테고리
+          filter: [],
+
+          // 체험 장소 위치
+          region: '강원도 홍천',
+
+          // 출발 지역
+          meetingPlace: '홍천터미널 정문 앞',
+
+          // 가는 날짜
+          departureDate: '2025-08-15',
+
+          // 오는 날짜
+          returnDate: '2025-08-16',
+
+          // 할인율
+          dcRate: 30,
+
+          // 최대 예약 가능 인원 수
+          productCnt: 2,
+
+          // 대표 키워드
+          representitiveKeyword: ['낭만', '청춘', '젊음'],
+
+          // 포함 상품 : '식사 제공', '숙소 제공', '픽업 버스 운행', '체험 상품'
+          includedItems: ['식사 제공', '숙소 제공', '픽업 버스 운행', '체험 상품'],
+
+          // 일정
+          schedule: [
+            { day: 1, startTime: '14:00', title: '농촌마을 전입신고' },
+            { day: 1, startTime: '15:00', title: '1부 프로그램' },
+            { day: 1, startTime: '18:00', title: '시골 밥상(저녁)' },
+            { day: 1, startTime: '20:00', title: '2부 프로그램' },
+            { day: 2, startTime: '10:00', title: '정겨운 아침밥(아침)' },
+            { day: 2, startTime: '11:00', title: '퇴소신고' },
+          ],
+
+          // 가이드 정보
+          guideInfo: {
+            name: '김우리',
             contact: '010-1234-5678',
           },
 
           // 뱃지용
-          isNew: true, // 신상품
-          isBest: false, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
-          isClosingSoon: false, // 판매 종료 임박 상품 (체험, 텃밭)
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: null }, // 제철 상품 (농산물 전용)
+            { isBest: true }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: true }, // 품절 상품
+          ],
+        },
+      },
+      {
+        _id: await nextSeq('product'),
+        seller_id: 7,
+        name: '고소한 대화 한 조각, 임실치즈마을 가족소풍',
+        content: '임실 대표 관광지 치즈마을 당일 여행!',
+        price: 92000,
+        shippingFees: 0,
+        quantity: 20,
+        buyQuantity: 4,
+        show: true,
+        active: true,
+        mainImages: [
+          {
+            path: `/files/${clientId}/seller-2-exp2-1.jpg`,
+            name: 'image-1.jpg',
+            originalname: '상품이미지-1.jpg',
+          },
+          {
+            path: `/files/${clientId}/seller-2-exp2-2.jpg`,
+            name: 'image-2.jpg',
+            originalname: '상품이미지-2.jpg',
+          },
+        ],
+        createdAt: getTime(-41, -60 * 60 * 2),
+        updatedAt: getTime(-40, -60 * 15),
+        extra: {
+          // 상품 타입 : 'crop' | 'experience' | 'gardening'
+          productType: 'experience',
+
+          // 2차 카테고리
+          category: [],
+
+          // 3차 카테고리
+          filter: [],
+
+          // 체험 장소 위치
+          region: '전라북도 임실',
+
+          // 출발 지역
+          meetingPlace: '전북특별자치도 임실군 임실읍 치즈마을길 96',
+
+          // 가는 날짜
+          departureDate: '2025-08-09',
+
+          // 오는 날짜
+          returnDate: '2025-08-09',
+
+          // 할인율
+          dcRate: 45,
+
+          // 최대 예약 가능 인원 수
+          productCnt: 4,
+
+          // 대표 키워드
+          representitiveKeyword: ['가족', '대화', '힐링'],
+
+          // 포함 상품 : '식사 제공', '숙소 제공', '픽업 버스 운행', '체험 상품'
+          includedItems: ['식사 제공', '체험 상품'],
+
+          // 일정
+          schedule: [
+            { day: 1, startTime: '13:00', title: '오리엔테이션' },
+            { day: 1, startTime: '13:30', title: '경운기 투어' },
+            { day: 1, startTime: '14:00', title: '임실치즈피자 만들기' },
+            { day: 1, startTime: '15:00', title: '마을 산책 - 농사이야기' },
+            { day: 1, startTime: '15:30', title: '피크닉' },
+            { day: 1, startTime: '17:00', title: '성가리 벽화마을 투어' },
+          ],
+
+          // 가이드 정보
+          guideInfo: {
+            name: '이하나',
+            contact: '010-1234-5678',
+          },
+
+          // 뱃지용
+          badge: [
+            { isNew: true }, // 신상품
+            { isInSeason: null }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
         },
       },
 
       /* 3. 텃밭 상품 */
+      // seller_id: 3
       {
         _id: await nextSeq('product'),
-        seller_id: 2,
-        name: '김이장님 텃밭',
-        content: '원주시 김이장님의 텃밭을 이용해보세요',
-        price: 22800,
+        seller_id: 3,
+        name: '양배추',
+        content: '양배추에서 조세호가 될 때까지',
+        price: 30000,
         shippingFees: 0,
-        quantity: 20,
-        buyQuantity: 5,
+        quantity: 40,
+        buyQuantity: 32,
         show: true,
         active: true,
         mainImages: [
@@ -1767,52 +2510,295 @@ export const initData = async (clientId, nextSeq) => {
           filter: [],
 
           // 텃밭 위치
-          region: '전북 남원시 금동길 123',
+          region: '경기 여주시 산북면 광여로 1509',
 
           // 판매 마감일
-          deadline: '2025년 4월 15일',
+          deadline: '2025-08-15',
 
           // 수확 예정일
-          harvestExpectedDate: '2025년 7월 중',
+          harvestExpectedDate: '2025년 11월',
+
+          // 예상 수확량
+          harvestExpectedCnt: '5통',
 
           // 할인율
-          dcRate: 40,
+          dcRate: 35,
 
           // 최대 구매 가능 수량
           productCnt: 1,
 
           // 뱃지용
-          isNew: true, // 신상품
-          isBest: false, // 인기 상품
-          isLowStock: false, // 품절 임박 상품
-          isSold: false, // 품절 상품
-          isClosingSoon: false, // 판매 종료 임박 상품 (체험, 텃밭)
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: null }, // 제철 상품 (농산물 전용)
+            { isBest: true }, // 인기 상품
+            { isLowStock: true }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
 
-          // 텃밭 구독자 제공 정보 (주기별 상품 상태 메시지)
+          // 텃밭 구독자 제공 정보 (주기별 상품 상태 메시지) : seeding | growing | harvested
           period: [
             {
-              date: '4월 초',
+              date: '2025-08-18',
+              image: 'src',
+              status: 'seeding',
+              content: '양배추 재배, 오늘 시작합니다',
+            },
+            {
+              date: '2025-09-04',
+              image: 'src',
+              status: 'growing',
+              content: '잘 커라 양배추야',
+            },
+            {
+              date: '2025-09-17',
+              image: 'src',
+              status: 'growing',
+              content: '무럭무럭 잘 자라고 있습니다.',
+            },
+            {
+              date: '2025-10-04',
+              image: 'src',
+              status: 'growing',
+              content: '곧 있으면 수확할 수 있겠네요.',
+            },
+            {
+              date: '2025-10-15',
+              image: 'src',
+              status: 'havested',
+              content: '엄청 실하네요ㅎㅎ곧 배송 예정!',
+            },
+          ],
+
+          // 텃밭 판매 현황 (상호작용 UI용)
+          // plots: [
+          //   {
+          //     plotNumber: 1,
+          //     name: 'A-1',
+          //     isAvailable: false,
+          //     ownerUserId: 1002,
+          //     plantedAt: '2025-07-01',
+          //     status: 'seeding', // available | seeding | growing | harvested
+          //   },
+          //   {
+          //     plotNumber: 2,
+          //     name: 'A-2',
+          //     isAvailable: true,
+          //     ownerUserId: null,
+          //     plantedAt: '2025-07-01',
+          //     status: 'seeding', // available | seeding | growing | harvested
+          //   },
+          //   {
+          //     plotNumber: 3,
+          //     name: 'A-3',
+          //     isAvailable: true,
+          //     ownerUserId: null,
+          //     plantedAt: null,
+          //     status: 'available',
+          //   },
+          //   {
+          //     plotNumber: 4,
+          //     name: 'A-4',
+          //     isAvailable: true,
+          //     ownerUserId: null,
+          //     plantedAt: null,
+          //     status: 'available',
+          //   },
+          //   {
+          //     plotNumber: 5,
+          //     name: 'A-5',
+          //     isAvailable: true,
+          //     ownerUserId: null,
+          //     plantedAt: null,
+          //     status: 'available',
+          //   },
+          // ],
+        },
+      },
+      {
+        _id: await nextSeq('product'),
+        seller_id: 3,
+        name: '청경채',
+        content: '청경채의 성장 여정을 함께 해요',
+        price: 15000,
+        shippingFees: 0,
+        quantity: 300,
+        buyQuantity: 112,
+        show: true,
+        active: true,
+        mainImages: [
+          {
+            path: `/files/${clientId}/seller-2-gdn3-1.jpg`,
+            name: 'image-1.jpg',
+            originalname: '상품이미지-1.jpg',
+          },
+          {
+            path: `/files/${clientId}/seller-2-gdn3-2.jpg`,
+            name: 'image-2.jpg',
+            originalname: '상품이미지-2.jpg',
+          },
+        ],
+        createdAt: getTime(-41, -60 * 60 * 2),
+        updatedAt: getTime(-40, -60 * 15),
+        extra: {
+          // 상품 타입 : 'crop' | 'experience' | 'gardening'
+          productType: 'gardening',
+
+          // 2차 카테고리
+          category: [],
+
+          // 3차 카테고리
+          filter: [],
+
+          // 텃밭 위치
+          region: '경기 여주시 산북면 광여로 1509',
+
+          // 판매 마감일
+          deadline: '2025-08-09',
+
+          // 수확 예정일
+          harvestExpectedDate: '2025년 10월 초',
+
+          // 예상 수확량
+          harvestExpectedCnt: '2kg',
+
+          // 할인율
+          dcRate: 25,
+
+          // 최대 구매 가능 수량
+          productCnt: 1,
+
+          // 뱃지용
+          badge: [
+            { isNew: true }, // 신상품
+            { isInSeason: null }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
+
+          // 텃밭 구독자 제공 정보 (주기별 상품 상태 메시지) : seeding | growing | harvested
+          period: [
+            {
+              date: '2025-08-12',
               image: 'src',
               status: 'seeding',
               content: '싹을 심었습니다.',
             },
             {
-              date: '5월 초',
+              date: '2025-08-25',
               image: 'src',
               status: 'growing',
               content: '싹이 자랐습니다.',
             },
             {
-              date: '6월 초',
+              date: '2025-09-16',
               image: 'src',
-              status: 'growin',
-              content: '열매가 생겼습니다.',
+              status: 'growing',
+              content: '잎이 무럭무럭 자라고 있습니다.',
             },
             {
-              date: '7월 초',
+              date: '2025-09-30',
+              image: 'src',
+              status: 'growing',
+              content: '곧 있으면 수확할 수 있겠네요.',
+            },
+            {
+              date: '2025-10-19',
               image: 'src',
               status: 'havested',
               content: '재배를 했습니다.',
+            },
+          ],
+        },
+      },
+      {
+        _id: await nextSeq('product'),
+        seller_id: 3,
+        name: '옥수수',
+        content: '겨울에 수확하는 옥수수? 같이 키워주세요!',
+        price: 27000,
+        shippingFees: 0,
+        quantity: 200,
+        buyQuantity: 41,
+        show: true,
+        active: true,
+        mainImages: [
+          {
+            path: `/files/${clientId}/seller-2-gdn3-1.jpg`,
+            name: 'image-1.jpg',
+            originalname: '상품이미지-1.jpg',
+          },
+          {
+            path: `/files/${clientId}/seller-2-gdn3-2.jpg`,
+            name: 'image-2.jpg',
+            originalname: '상품이미지-2.jpg',
+          },
+        ],
+        createdAt: getTime(-41, -60 * 60 * 2),
+        updatedAt: getTime(-40, -60 * 15),
+        extra: {
+          // 상품 타입 : 'crop' | 'experience' | 'gardening'
+          productType: 'gardening',
+
+          // 2차 카테고리
+          category: [],
+
+          // 3차 카테고리
+          filter: [],
+
+          // 텃밭 위치
+          region: '중국',
+
+          // 판매 마감일
+          deadline: '2025-08-25',
+
+          // 수확 예정일
+          harvestExpectedDate: '2025년 12월',
+
+          // 예상 수확량
+          harvestExpectedCnt: '20개',
+
+          // 할인율
+          dcRate: 59,
+
+          // 최대 구매 가능 수량
+          productCnt: 1,
+
+          // 뱃지용
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: null }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
+
+          // 텃밭 구독자 제공 정보 (주기별 상품 상태 메시지) : seeding | growing | harvested
+          period: [
+            {
+              date: '2025-09-02',
+              image: 'src',
+              status: 'seeding',
+              content: '무럭 무럭 자라라',
+            },
+            {
+              date: '2025-09-23',
+              image: 'src',
+              status: 'growing',
+              content: '체계적인 생산 공정 덕분에 신선하고 건강하게 자라고 있어요',
+            },
+            {
+              date: '2025-10-12',
+              image: 'src',
+              status: 'growing',
+              content: '유전자 조작 아닙니다. 대박이죠?',
+            },
+            {
+              date: '2025-11-02',
+              image: 'src',
+              status: 'havested',
+              content: '올해는 조금 늦었습니다. 수확 완료!',
             },
           ],
 
@@ -1861,9 +2847,277 @@ export const initData = async (clientId, nextSeq) => {
           ],
         },
       },
+      // seller_id: 5
+      {
+        _id: await nextSeq('product'),
+        seller_id: 5,
+        name: '배추',
+        content: '배추의 성장 여정을 함께 해요',
+        price: 25000,
+        shippingFees: 0,
+        quantity: 50,
+        buyQuantity: 45,
+        show: true,
+        active: true,
+        mainImages: [
+          {
+            path: `/files/${clientId}/seller-2-gdn3-1.jpg`,
+            name: 'image-1.jpg',
+            originalname: '상품이미지-1.jpg',
+          },
+          {
+            path: `/files/${clientId}/seller-2-gdn3-2.jpg`,
+            name: 'image-2.jpg',
+            originalname: '상품이미지-2.jpg',
+          },
+        ],
+        createdAt: getTime(-41, -60 * 60 * 2),
+        updatedAt: getTime(-40, -60 * 15),
+        extra: {
+          // 상품 타입 : 'crop' | 'experience' | 'gardening'
+          productType: 'gardening',
+
+          // 2차 카테고리
+          category: [],
+
+          // 3차 카테고리
+          filter: [],
+
+          // 텃밭 위치
+          region: '경기 여주시 산북면 광여로 1509',
+
+          // 판매 마감일
+          deadline: '2025-08-10',
+
+          // 수확 예정일
+          harvestExpectedDate: '2025년 10월 ~ 11월',
+
+          // 예상 수확량
+          harvestExpectedCnt: '6포기',
+
+          // 할인율
+          dcRate: 40,
+
+          // 최대 구매 가능 수량
+          productCnt: 1,
+
+          // 뱃지용
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: null }, // 제철 상품 (농산물 전용)
+            { isBest: true }, // 인기 상품
+            { isLowStock: true }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
+
+          // 텃밭 구독자 제공 정보 (주기별 상품 상태 메시지) : seeding | growing | harvested
+          period: [
+            {
+              date: '2025-08-13',
+              image: 'src',
+              status: 'seeding',
+              content: '싹을 심었습니다.',
+            },
+            {
+              date: '2025-08-31',
+              image: 'src',
+              status: 'growing',
+              content: '싹이 자랐습니다.',
+            },
+            {
+              date: '2025-09-14',
+              image: 'src',
+              status: 'growing',
+              content: '잎이 무럭무럭 자라고 있습니다.',
+            },
+            {
+              date: '2025-10-01',
+              image: 'src',
+              status: 'growing',
+              content: '곧 있으면 수확할 수 있겠네요.',
+            },
+            {
+              date: '2025-10-21',
+              image: 'src',
+              status: 'havested',
+              content: '재배를 했습니다.',
+            },
+          ],
+        },
+      },
+      {
+        _id: await nextSeq('product'),
+        seller_id: 5,
+        name: '무',
+        content: '무의 성장 여정을 함께 해요',
+        price: 35000,
+        shippingFees: 0,
+        quantity: 100,
+        buyQuantity: 100,
+        show: true,
+        active: true,
+        mainImages: [
+          {
+            path: `/files/${clientId}/seller-2-gdn3-1.jpg`,
+            name: 'image-1.jpg',
+            originalname: '상품이미지-1.jpg',
+          },
+          {
+            path: `/files/${clientId}/seller-2-gdn3-2.jpg`,
+            name: 'image-2.jpg',
+            originalname: '상품이미지-2.jpg',
+          },
+        ],
+        createdAt: getTime(-41, -60 * 60 * 2),
+        updatedAt: getTime(-40, -60 * 15),
+        extra: {
+          // 상품 타입 : 'crop' | 'experience' | 'gardening'
+          productType: 'gardening',
+
+          // 2차 카테고리
+          category: [],
+
+          // 3차 카테고리
+          filter: [],
+
+          // 텃밭 위치
+          region: '경기도 여주시 가남읍 상활1길 68',
+
+          // 판매 마감일
+          deadline: '2025-08-13',
+
+          // 수확 예정일
+          harvestExpectedDate: '2025년 10월 ~ 11월',
+
+          // 예상 수확량
+          harvestExpectedCnt: '10수',
+
+          // 할인율
+          dcRate: 50,
+
+          // 최대 구매 가능 수량
+          productCnt: 1,
+
+          // 뱃지용
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: null }, // 제철 상품 (농산물 전용)
+            { isBest: true }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: true }, // 품절 상품
+          ],
+
+          // 텃밭 구독자 제공 정보 (주기별 상품 상태 메시지) : seeding | growing | harvested
+          period: [
+            {
+              date: '2025-08-20',
+              image: 'src',
+              status: 'seeding',
+              content: '싹을 심었습니다.',
+            },
+            {
+              date: '2025-09-12',
+              image: 'src',
+              status: 'growing',
+              content: '잎이 넓은게 올해 무는 기대가 됩니다',
+            },
+            {
+              date: '2025-10-04',
+              image: 'src',
+              status: 'havested',
+              content: '알이 실하죠? 곧 배송해드릴게요ㅎㅎ',
+            },
+          ],
+        },
+      },
+      {
+        _id: await nextSeq('product'),
+        seller_id: 5,
+        name: '브로콜리',
+        content: '브로콜리의 성장 여정을 함께 해요',
+        price: 22000,
+        shippingFees: 0,
+        quantity: 300,
+        buyQuantity: 179,
+        show: true,
+        active: true,
+        mainImages: [
+          {
+            path: `/files/${clientId}/seller-2-gdn3-1.jpg`,
+            name: 'image-1.jpg',
+            originalname: '상품이미지-1.jpg',
+          },
+          {
+            path: `/files/${clientId}/seller-2-gdn3-2.jpg`,
+            name: 'image-2.jpg',
+            originalname: '상품이미지-2.jpg',
+          },
+        ],
+        createdAt: getTime(-41, -60 * 60 * 2),
+        updatedAt: getTime(-40, -60 * 15),
+        extra: {
+          // 상품 타입 : 'crop' | 'experience' | 'gardening'
+          productType: 'gardening',
+
+          // 2차 카테고리
+          category: [],
+
+          // 3차 카테고리
+          filter: [],
+
+          // 텃밭 위치
+          region: '경기도 여주시 가남읍 상활1길 68',
+
+          // 판매 마감일
+          deadline: '2025-08-12',
+
+          // 수확 예정일
+          harvestExpectedDate: '2025년 10월 ~ 11월',
+
+          // 예상 수확량
+          harvestExpectedCnt: '2kg',
+
+          // 할인율
+          dcRate: 50,
+
+          // 최대 구매 가능 수량
+          productCnt: 1,
+
+          // 뱃지용
+          badge: [
+            { isNew: false }, // 신상품
+            { isInSeason: null }, // 제철 상품 (농산물 전용)
+            { isBest: false }, // 인기 상품
+            { isLowStock: false }, // 품절 임박 상품
+            { isSold: false }, // 품절 상품
+          ],
+
+          // 텃밭 구독자 제공 정보 (주기별 상품 상태 메시지) : seeding | growing | harvested
+          period: [
+            {
+              date: '2025-08-14',
+              image: 'src',
+              status: 'seeding',
+              content: '싹을 심었습니다.',
+            },
+            {
+              date: '2025-09-08',
+              image: 'src',
+              status: 'growing',
+              content: '잎이 넓은게 올해 무는 기대가 됩니다',
+            },
+            {
+              date: '2025-10-07',
+              image: 'src',
+              status: 'havested',
+              content: '알이 실하죠? 곧 배송해드릴게요ㅎㅎ',
+            },
+          ],
+        },
+      },
     ],
 
-    // 주문
+    /* 주문 */
     order: [
       {
         _id: await nextSeq('order'),
@@ -2061,102 +3315,89 @@ export const initData = async (clientId, nextSeq) => {
       },
     ],
 
-    // 후기
-    review: [
+    /* 후기 */
+    review,
+    /*  review: [
+      // user_id: 8 (정길용)
       {
         _id: await nextSeq('review'),
-        user_id: 4,
-        user: {
-          _id: 4,
-          name: '제이지',
-          image: 'user-jayg.webp',
-        },
-        order_id: 101,
-        product_id: 2,
-        rating: 5,
-        content: '감자가 진짜 크고 좋아요! 삶아서 먹으니 맛있네요.',
-        createdAt: getTime(-4, -60 * 60 * 12),
-        extra: {
-          title: '크고 맛있어요!',
-        },
-      },
-      {
-        _id: await nextSeq('review'),
-        user_id: 6,
-        user: {
-          _id: 6,
-          name: '춘식이',
-          image: 'user-chunsik.webp',
-        },
-        order_id: 102,
-        product_id: 2,
-        rating: 4,
-        content: '조금 작은 감자도 있었지만 전체적으로 만족합니다.',
-        createdAt: getTime(-3, -60 * 60 * 9),
-        extra: {
-          title: '전반적으로 만족',
-        },
-      },
-      {
-        _id: await nextSeq('review'),
-        user_id: 7,
-        user: {
-          _id: 7,
-          name: '라이언',
-          image: 'user-ryan.webp',
-        },
-        order_id: 103,
-        product_id: 2,
-        rating: 5,
-        content: '배송 빠르고 포장도 꼼꼼했어요. 부모님도 좋아하셨어요!',
-        createdAt: getTime(-2, -60 * 60 * 7),
-        extra: {
-          title: '부모님 선물로 딱!',
-        },
-      },
-      {
-        _id: await nextSeq('review'),
+        rating: 1,
+        content:
+          '찰옥수수라고 해서 시켰는데, 딱딱해서 씹을 수가 없어요. 물론 제가 안삶아서 그렇긴 한데 이렇게 딱딱할 수 있나요? 어이가 없어서 정말', // 본문
         user_id: 8,
+        product_id: 25,
+        extra: {
+          name: '찰옥수수가 아니라 철옥수수네요', // 제목
+          image: [
+            {
+              url: '/',
+            },
+            {
+              url: '/',
+            },
+          ],
+        },
+        createdAt: getTime(-4, -60 * 60 * 12),
+
+        // 주문자 정보
         user: {
           _id: 8,
-          name: '콘',
-          image: 'user-con.png',
+          name: '정길용',
         },
-        order_id: 104,
-        product_id: 2,
-        rating: 3,
-        content: '감자는 괜찮았는데 배송이 하루 늦었어요.',
-        createdAt: getTime(-1, -60 * 60 * 5),
-        extra: {
-          title: '배송만 조금 아쉬워요',
+
+        // 판매자 정보
+        product: {
+          _id: 25,
+          name: '제주농산물',
         },
       },
+      // user_id: 9 (김데레사)
       {
         _id: await nextSeq('review'),
+        rating: 5,
+        content: '고양이도 맛있게 먹네요. 추천합니다', // 본문
         user_id: 9,
+        product_id: 21,
+        extra: {
+          name: '저희 고양이도 좋아해요', // 제목
+          image: [
+            {
+              url: '/',
+            },
+            {
+              url: '/',
+            },
+          ],
+        },
+        createdAt: getTime(-4, -60 * 60 * 12),
+
+        // 주문자 정보
         user: {
           _id: 9,
-          name: '튜브',
-          image: 'user-tube.webp',
+          image: 'user-jayg.webp',
+          name: '김데레사',
         },
-        order_id: 105,
-        product_id: 2,
-        rating: 5,
-        content: '강원도 감자답게 정말 고소하고 맛있네요! 재구매 의사 있습니다.',
-        createdAt: getTime(0, -60 * 60 * 2),
-        extra: {
-          title: '강력 추천합니다!',
+
+        // 판매 상품 정보
+        product: {
+          _id: 21,
+          image: {
+            path: 'files/openmarket/sample-diver.jpg',
+            name: 'sample-diver.jpg',
+            originalname: '헬로카봇.jpg',
+          },
+          name: '햇 괴산 대학찰옥수수 찐옥수수 장작불 가마솥에 삶은 냉동 옥수수',
         },
       },
-    ],
+    ], */
 
-    // 장바구니
+    /* 장바구니 */
     cart: [],
 
-    // 즐겨찾기/북마크
+    /* 즐겨찾기/북마크 */
     bookmark: [],
 
-    // QnA, 공지사항 나의 농작물 자랑하기 등의 게시판
+    /* 게시판 : QnA, 공지사항 등 */
     post: [
       {
         _id: await nextSeq('post'),
@@ -2175,8 +3416,8 @@ export const initData = async (clientId, nextSeq) => {
           {
             _id: await nextSeq('reply'),
             user: {
-              _id: 2,
-              name: '네오',
+              _id: 1,
+              name: '관리자',
               image: 'user-neo.png',
             },
             content: '크기는 상품 상세정보에 나와 있습니다.',
@@ -2237,6 +3478,127 @@ export const initData = async (clientId, nextSeq) => {
         extra: {
           category: '배송', // 분류: 배송, 결제, 회원, 쿠폰 등
         },
+      },
+
+      {
+        _id: await nextSeq('post'),
+        type: 'qna',
+        product_id: 1,
+        seller_id: 2,
+        views: 5,
+        user: {
+          _id: 1,
+          name: '제이지',
+          image: 'user-jayg.webp',
+        },
+        title: '언제 배달이 되나요??',
+        content: '주문한지 1년이 지났는데 소식이 없어요..',
+        replies: [
+          {
+            _id: await nextSeq('reply'),
+            user: {
+              _id: 1,
+              name: '관리자',
+              image: 'user-neo.png',
+            },
+            content: '오늘 출발했습니다. 죄송합니다.',
+            like: 5,
+            createdAt: getTime(-2, -60 * 60 * 20),
+            updatedAt: getTime(-2, -60 * 60 * 2),
+          },
+        ],
+        createdAt: getTime(-3, -60 * 60 * 2),
+        updatedAt: getTime(-3, -60 * 60 * 2),
+      },
+      {
+        _id: await nextSeq('post'),
+        type: 'qna',
+        product_id: 1,
+        seller_id: 2,
+        views: 5,
+        user: {
+          _id: 1,
+          name: '제이지',
+          image: 'user-jayg.webp',
+        },
+        title: '크기가 얼마만한가요?',
+        content: '아이가 6살인데 가지고 놀기 적당한 크기인가요?',
+        replies: [
+          {
+            _id: await nextSeq('reply'),
+            user: {
+              _id: 1,
+              name: '관리자',
+              image: 'user-neo.png',
+            },
+            content: '크기는 상품 상세정보에 나와 있습니다.',
+            like: 5,
+            createdAt: getTime(-2, -60 * 60 * 20),
+            updatedAt: getTime(-2, -60 * 60 * 2),
+          },
+        ],
+        createdAt: getTime(-3, -60 * 60 * 2),
+        updatedAt: getTime(-3, -60 * 60 * 2),
+      },
+      {
+        _id: await nextSeq('post'),
+        type: 'qna',
+        product_id: 1,
+        seller_id: 2,
+        views: 5,
+        user: {
+          _id: 11,
+          name: '제이지',
+          image: 'user-jayg.webp',
+        },
+        title: '크기가 얼마만한가요?',
+        content: '아이가 6살인데 가지고 놀기 적당한 크기인가요?',
+        replies: [
+          {
+            _id: await nextSeq('reply'),
+            user: {
+              _id: 1,
+              name: '관리자',
+              image: 'user-neo.png',
+            },
+            content: '크기는 상품 상세정보에 나와 있습니다.',
+            like: 5,
+            createdAt: getTime(-2, -60 * 60 * 20),
+            updatedAt: getTime(-2, -60 * 60 * 2),
+          },
+        ],
+        createdAt: getTime(-3, -60 * 60 * 2),
+        updatedAt: getTime(-3, -60 * 60 * 2),
+      },
+      {
+        _id: await nextSeq('post'),
+        type: 'qna',
+        product_id: 1,
+        seller_id: 2,
+        views: 5,
+        user: {
+          _id: 11,
+          name: '제이지',
+          image: 'user-jayg.webp',
+        },
+        title: '크기가 얼마만한가요?',
+        content: '아이가 6살인데 가지고 놀기 적당한 크기인가요?',
+        replies: [
+          {
+            _id: await nextSeq('reply'),
+            user: {
+              _id: 1,
+              name: '관리자',
+              image: 'user-neo.png',
+            },
+            content: '크기는 상품 상세정보에 나와 있습니다.',
+            like: 5,
+            createdAt: getTime(-2, -60 * 60 * 20),
+            updatedAt: getTime(-2, -60 * 60 * 2),
+          },
+        ],
+        createdAt: getTime(-3, -60 * 60 * 2),
+        updatedAt: getTime(-3, -60 * 60 * 2),
       },
     ],
 
