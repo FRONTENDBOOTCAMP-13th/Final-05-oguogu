@@ -1,23 +1,40 @@
 'use client';
 import { CartItem } from '@/shared/types/cart';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-export default function CardItem({ item }: { item?: CartItem }) {
-  console.log(item);
+export default function CardItem({
+  item,
+  checked,
+  onCheck,
+  quantity,
+  updateQuantity,
+  handleDelete,
+}: {
+  item: CartItem;
+  checked: boolean;
+  onCheck: () => void;
+  quantity: number;
+  updateQuantity: (_id: number, quantity: number) => void;
+  handleDelete: (_id: number) => void;
+}) {
+  const [count, setCount] = useState(quantity);
 
-  const [count, setCount] = useState(1);
-  const [checked, setChecked] = useState(false);
+  useEffect(() => {
+    setCount(quantity);
+  }, [quantity]);
 
   const shippingFee: boolean = true; //배송비가 0원인지 아닌지 검증하는 로직이 필요합니다.
 
-  // useEffect로 초기 렌더링시 장바구니에 담은 수만큼 count를 초기화 해주는 코드가 필요합니다.
-
   const countUp = () => {
-    setCount(count + 1);
+    const newCount = count + 1;
+    setCount(newCount);
+    updateQuantity(item._id, newCount);
   };
   const countDown = () => {
     if (count != 1) {
-      setCount(count - 1);
+      const newCount = count - 1;
+      setCount(newCount);
+      updateQuantity(item._id, newCount);
     }
   };
 
@@ -27,7 +44,7 @@ export default function CardItem({ item }: { item?: CartItem }) {
         <div className="flex items-center justify-between">
           <div className="flex gap-2 items-center text-center">
             <label className="relative top-[-2px]">
-              <input type="checkbox" checked={checked} onChange={() => setChecked(!checked)} className="hidden" />
+              <input type="checkbox" checked={checked} onChange={onCheck} className="hidden" />
               {checked ? (
                 // 체크된 상태 SVG
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -50,9 +67,12 @@ export default function CardItem({ item }: { item?: CartItem }) {
               )}
             </label>
 
-            <p className="text-[12px] text-oguogu-black leading-none">쫀득쫀득 대학 미백 찰옥수수 30개입 </p>
+            <p className="text-[12px] w-[180px] text-oguogu-black leading-none truncate">{item?.product.name} </p>
           </div>
-          <button className="flex items-center gap-[4px] px-[8px] h-[20px] text-[10px] leading-none border border-oguogu-gray-2 rounded-[4px]">
+          <button
+            onClick={() => handleDelete(item._id)}
+            className="flex items-center gap-[4px] px-[8px] h-[20px] text-[10px] leading-none border border-oguogu-gray-2 rounded-[4px]"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="7"
@@ -89,7 +109,9 @@ export default function CardItem({ item }: { item?: CartItem }) {
 
           <div className="w-[216px] flex flex-col justify-between">
             <div className="flex items-center gap-2">
-              <span className="text-[16px] text-oguogu-black leading-[16px]">11,800원</span>
+              <span className="text-[16px] text-oguogu-black leading-[16px]">
+                {item?.product.price.toLocaleString()}원
+              </span>
               <p className="text-[12px] text-oguogu-gray-4">{shippingFee ? '배송비 무료' : '배송비 포함(3,000원)'}</p>
             </div>
             <div className="text-[10px] flex">

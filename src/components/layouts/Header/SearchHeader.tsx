@@ -2,14 +2,13 @@
 
 import React, { useRef, useState } from 'react';
 import Link from 'next/link';
-import handleGoBack from '@/utils/handleGoBack/handleGoBack';
 import { useRouter } from 'next/navigation';
 import { HeaderExtraProps } from '@/components/layouts/Header/types/Header.type';
 import { useSearchKeywordStore } from '@/shared/store/keywordStore';
 import RelatedKeywordItem from '@/components/elements/RelatedKeywordItem/RelatedKeywordItem';
 import { getConsonants } from '@/components/layouts/Header/utils/getConsonants';
 import { Keyword } from '@/components/elements/RelatedKeywordItem/RelatedKeywordItem.type';
-import { HeaderExtraProps } from '@/shared/types/Header';
+import GoBackIcon from '@/features/goBackIcon/goBackIcon';
 
 // 예시 키워드 데이터
 const allKeywords = [
@@ -91,11 +90,7 @@ export default function SearchHeader({ cartItemCount = 99 }: HeaderExtraProps) {
     <header className="sticky top-0 z-50 flex items-center justify-between w-full h-12 p-3 bg-oguogu-white">
       <div className="flex items-center w-full gap-1">
         {/* 뒤로가기 */}
-        <button type="button" onClick={handleGoBack}>
-          <svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M9 0.5L1 9.22973L9 17.5" stroke="black" />
-          </svg>
-        </button>
+        <GoBackIcon />
 
         {/* 검색창 */}
         <form className="contents" onSubmit={handleSearch}>

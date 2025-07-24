@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
-import handleGoBack from '@/utils/handleGoBack/handleGoBack';
-import { HeaderExtraProps } from '@/shared/types/Header';
+import { HeaderExtraProps } from '@/components/layouts/Header/types/Header.type';
+import GoBackIcon from '@/features/goBackIcon/goBackIcon';
 
 export default function ProductHeader({ title }: HeaderExtraProps) {
   const cartItemCount = 3;
@@ -9,11 +9,7 @@ export default function ProductHeader({ title }: HeaderExtraProps) {
     <header className="sticky top-0 z-50 flex items-center justify-between w-full h-12 p-3 bg-oguogu-white">
       {/* 검색 + 버튼 */}
       <div className="flex items-center w-full gap-1">
-        <button type="button" onClick={handleGoBack}>
-          <svg width="10" height="18" viewBox="0 0 10 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M9 0.5L1 9.22973L9 17.5" stroke="black" />
-          </svg>
-        </button>
+        <GoBackIcon />
 
         {/* 상단 텍스트 */}
         <p className="text-[16px] w-full text-center">{title}</p>

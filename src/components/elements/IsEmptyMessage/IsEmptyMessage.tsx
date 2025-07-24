@@ -8,7 +8,7 @@ import Link from 'next/link';
  * @param {string} props.LinkTxt - 버튼에 표시할 텍스트 (예: "쇼핑 계속하기 🥕")
  * @param {IsEmptyMessageType} props - 컴포넌트에 전달되는 props
  */
-export default function IsEmptyMessage({ title, subTxt, LinkTxt }: IsEmptyMessageType) {
+export default function IsEmptyMessage({ title, subTxt, LinkTxt, link = '/product/crop' }: IsEmptyMessageType) {
   return (
     <>
       <div className="flex flex-col gap-4 items-center justify-center mt-12">
@@ -17,7 +17,7 @@ export default function IsEmptyMessage({ title, subTxt, LinkTxt }: IsEmptyMessag
           <p className="text-xs mobile-max:text-sm text-oguogu-gray-4">{subTxt}</p>
         </div>
         <Link
-          href="/product/crop"
+          href={link}
           className="text-xs py-1 px-8 mobile-max:text-sm border border-oguogu-main rounded-sm bg-oguogu-white"
         >
           {LinkTxt}
