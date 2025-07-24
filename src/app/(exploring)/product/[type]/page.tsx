@@ -7,10 +7,11 @@ import { notFound } from 'next/navigation';
 /**
  * product 상품 타입별 정적 페이지 생성
  */
-export async function generateStaticParams() {
+/* export async function generateStaticParams() {
   const productParams = [{ type: 'crop' }, { type: 'experience' }, { type: 'gardening' }];
   return productParams;
 }
+ */
 
 /**
  * 1차 카테고리 분류 항목으로 구성된 상품 탐색 목록 페이지
@@ -23,7 +24,7 @@ export default async function ProductListByType({ params }: { params: Promise<{ 
   const productsRes: productsRes = await getProducts();
   // console.log('products', productsRes);
 
-  const productList = productsRes.item.filter(item => item.extra.productType === type);
+  const productList = productsRes.item.filter(item => item.extra!.productType === type);
   const productCnt: number = productList.length;
 
   if (!['crop', 'experience', 'gardening'].includes(type)) {

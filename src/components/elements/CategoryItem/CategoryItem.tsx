@@ -1,4 +1,3 @@
-'use client';
 import { ImageCategoryItemType, TextCategoryItemType } from '@/components/elements/CategoryItem/CategoryItem.type';
 import Image from 'next/image';
 import Link from 'next/link';
