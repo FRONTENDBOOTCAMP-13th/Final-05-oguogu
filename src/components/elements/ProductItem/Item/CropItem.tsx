@@ -2,12 +2,12 @@
 
 import InteractionButton from '@/components/elements/InteractionButton/InteractionButton';
 import Badge from '@/components/elements/ProductItem/Badge/Badge';
-import { ItemType } from '@/components/elements/ProductItem/Item/Item.type';
+import { Item } from '@/shared/types/product';
 
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function CropItem({ _id, name, price, rating, replies, bookmark, dcRate, item }: ItemType) {
+export default function CropItem({ _id, name, price, rating, replies, bookmarks, extra, seller }: Item) {
   return (
     <div className="flex flex-col gap-4 min-w-[140px]">
       {/* 상품 이미지 및 뱃지 영역 */}
@@ -17,6 +17,7 @@ export default function CropItem({ _id, name, price, rating, replies, bookmark, 
           {/* 이미지를 하드코딩 해둔 상태 추후 동적으로 관리해야 함 */}
           <div className="bg-[url('/images/crop/crop-001.png')] min-w-[140px] min-h-[186.67px] bg-center bg-cover aspect-[3/4] rounded-lg"></div>
           {/* <Image src={`/images/crop/crop-001.png`} alt="" width={140} height={186.67} className="rounded-[8px]" /> */}
+
           {/* 뱃지 (제철 상품, 인기 상품 등) */}
           <div className="absolute top-0.5 left-1.5">
             <Badge type="seasonal" />
@@ -24,13 +25,15 @@ export default function CropItem({ _id, name, price, rating, replies, bookmark, 
           </div>
         </div>
       </Link>
+
       {/* 텍스트 정보 영역 */}
       <div className="flex flex-col gap-1">
         {/* 판매자 정보 */}
         <div className="flex gap-1 items-center">
           <Image src="/images/product-hatIcon.svg" alt="농사꾼 모자 아이콘" width={16} height={16} />
-          <p className="text-[10px]">{item?.seller.extra.businessName}</p>
+          <p className="text-[10px]">{seller.extra.businessName}</p>
         </div>
+
         {/* 상품명 */}
         <Link
           href={`/search/result/${_id}/detail`}
@@ -38,9 +41,10 @@ export default function CropItem({ _id, name, price, rating, replies, bookmark, 
         >
           {name}
         </Link>
+
         {/* 가격 정보 */}
         <div className="text-[12px] flex gap-1">
-          <span className="text-oguogu-main">{dcRate}%</span>
+          <span className="text-oguogu-main">{extra.dcRate}%</span>
           <span>{price.toLocaleString()}원</span>
         </div>
         {/* 좋아요 & 별점 */}
@@ -52,7 +56,7 @@ export default function CropItem({ _id, name, price, rating, replies, bookmark, 
                 fill="#969696"
               />
             </svg>
-            <span>{bookmark}</span>
+            <span>{bookmarks}</span>
           </div>
           <div className="flex gap-[2px]">
             <svg xmlns="http://www.w3.org/2000/svg" width="8" height="9" viewBox="0 0 8 9" fill="none">
