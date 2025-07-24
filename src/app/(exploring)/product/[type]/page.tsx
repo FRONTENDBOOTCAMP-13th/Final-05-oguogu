@@ -34,7 +34,10 @@ export default async function ProductListByType({ params }: { params: Promise<{ 
   return (
     <>
       {/* 헤더 */}
-      <CategoryHeader cartItemCount={100} />
+      <CategoryHeader
+        cartItemCount={100}
+        title={type === 'crop' ? '농산물' : type === 'experience' ? '체험' : type === 'gardening' ? '텃밭' : '오구텃밭'}
+      />
 
       {/* 네비게이션 */}
       <TextCategory />
