@@ -1,6 +1,3 @@
-import CropItem from '@/components/elements/ProductItem/Item/CropItem';
-import ExperienceItem from '@/components/elements/ProductItem/Item/ExperienceItem';
-import GardenItem from '@/components/elements/ProductItem/Item/GardenItem';
 import SearchHeader from '@/components/layouts/Header/SearchHeader';
 import { ProductSortbar } from '@/components/layouts/SortBar/Sortbar';
 import { getProducts } from '@/shared/data/functions/product';

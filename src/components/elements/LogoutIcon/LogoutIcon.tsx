@@ -8,7 +8,7 @@ export default function LogOutIcon() {
   const router = useRouter();
 
   const handeLogout = () => {
-    alert('로그아웃 하시겠습니까?');
+    alert('로그아웃 되었습니다.');
     logout();
     router.push('/');
   };

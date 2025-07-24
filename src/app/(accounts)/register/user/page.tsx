@@ -6,7 +6,7 @@ export default function RegisterFormForUser() {
     <>
       <LinkHeader title="회원가입" />
       <main className="w-[320px] mx-auto px-4 gap-2">
-        <UserRegisterForm />;
+        <UserRegisterForm />
       </main>
     </>
   );
