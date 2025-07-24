@@ -16,7 +16,7 @@ export default function MyPageSectionDependsOnLoginStatus() {
           <div>
             {/* 타이틀 & 서브타이틀 */}
             <div className="px-4 flex flex-col gap-1">
-              <div className="flex justify-between items-center">
+              <div className="flex justify-between items-center text-2xl">
                 <p>
                   <span className="text-oguogu-main">반가워요! </span>
                   <GetLoggedInUserData type="name" />님
@@ -29,7 +29,6 @@ export default function MyPageSectionDependsOnLoginStatus() {
               </p>
             </div>
           </div>
-
           {/* 배너 이미지 */}
           <a href="https://github.com/FRONTENDBOOTCAMP-13th/Final-13-13tachi" target="_blank" rel="noopener noreferrer">
             <Image
@@ -42,6 +41,7 @@ export default function MyPageSectionDependsOnLoginStatus() {
             />
           </a>
 
+          {/* INFO 별도 컴포넌트로 분리하여 DB 반영 작업 필요 */}
           {/* 주문 상태 */}
           <div className="px-4 flex flex-col gap-4">
             <p className="text-base">주문/배송</p>
@@ -49,7 +49,7 @@ export default function MyPageSectionDependsOnLoginStatus() {
               {/* 결제 완료 */}
               <div className={`flex flex-col items-center gap-2`}>
                 <span className="text-2xl">1</span>
-                <span className="text-xs">결제 완료</span>
+                <span className="text-sm">결제 완료</span>
               </div>
 
               <Image src="/svgs/arrow.svg" alt="다음 순서" width={6} height={9} className="rotate-180" />
@@ -57,7 +57,7 @@ export default function MyPageSectionDependsOnLoginStatus() {
               {/* 배송 준비 중 */}
               <div className={`flex flex-col items-center gap-2 text-oguogu-gray-2`}>
                 <span className="text-2xl">0</span>
-                <span className="text-xs">배송 준비 중</span>
+                <span className="text-sm">배송 준비 중</span>
               </div>
 
               <Image src="/svgs/arrow.svg" alt="다음 순서" width={6} height={9} className="rotate-180" />
@@ -65,7 +65,7 @@ export default function MyPageSectionDependsOnLoginStatus() {
               {/* 배송 중 */}
               <div className={`flex flex-col items-center gap-2 text-oguogu-gray-2`}>
                 <span className="text-2xl">0</span>
-                <span className="text-xs">배송 중</span>
+                <span className="text-sm">배송 중</span>
               </div>
 
               <Image src="/svgs/arrow.svg" alt="다음 순서" width={6} height={9} className="rotate-180" />
@@ -73,7 +73,7 @@ export default function MyPageSectionDependsOnLoginStatus() {
               {/* 배송 완료 */}
               <div className={`flex flex-col items-center gap-2`}>
                 <span className="text-2xl">1</span>
-                <span className="text-xs">배송 완료</span>
+                <span className="text-sm">배송 완료</span>
               </div>
             </div>
           </div>
@@ -82,7 +82,7 @@ export default function MyPageSectionDependsOnLoginStatus() {
         <section className="px-4 flex flex-col gap-6 pb-6 border-b-4 border-b-oguogu-gray-1">
           {/* 타이틀 & 서브타이틀 */}
           <div className="flex flex-col gap-1">
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center text-2xl ">
               <span className="text-oguogu-main">안녕하세요!</span>
             </div>
             <p className="text-xs text-oguogu-gray-4">로그인하고 더 많은 서비스를 이용해 보세요</p>
