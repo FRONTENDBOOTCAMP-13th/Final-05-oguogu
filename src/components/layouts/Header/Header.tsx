@@ -16,7 +16,7 @@ export default function Header() {
       </Link>
 
       {/* 검색 */}
-      <div className="flex gap-2 items-center">
+      <div className="flex items-center gap-2">
         <Link href="/search">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path

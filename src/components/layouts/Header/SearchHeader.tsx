@@ -9,15 +9,6 @@ import { Keyword } from '@/components/elements/RelatedKeywordItem/RelatedKeyword
 import GoBackIcon from '@/features/goBackIcon/goBackIcon';
 import CartItemCountIcon from '@/features/cartItemCountIcon/CartItemCountIcon';
 
-// 예시 키워드 데이터
-const allKeywords = [
-  { name: '옥수수', type: 'crop' },
-  { name: '야채도사', type: 'garden' },
-  { name: '오롯유통', type: 'garden' },
-  { name: '양배추', type: 'crop' },
-  { name: '초당옥수수', type: 'crop' },
-  { name: '옥수유통', type: 'garden' },
-];
 
 export default function SearchHeader() {
   const [keyword, setKeyword] = useState('');
@@ -73,44 +64,8 @@ export default function SearchHeader() {
         <GoBackIcon />
 
         {/* 검색창 */}
-        <form className="contents" onSubmit={handleSearch}>
-          <label htmlFor="searchKeyword" className="sr-only">
-            검색
-          </label>
-          <input
-            type="search"
-            id="searchKeyword"
-            placeholder="7월은 초당옥수수가 제철!"
-            value={keyword}
-            onChange={e => {
-              setKeyword(e.target.value);
-              setShowDropdown(e.target.value.length > 0);
-            }}
-            /* onKeyDown={e => e.key === 'Enter' && handleSearch()} */
-            className="flex-1 h-6 py-3 pl-2 ml-2 text-sm outline-none appearance-none sm:w-48 text-oguogu-black placeholder-oguogu-gray-3"
-            autoComplete="on"
-            ref={inputRef}
-            onFocus={handleFocus}
-          />
-          <button type="submit" className="mx-1" onClick={handleSearch}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M21 21L16.66 16.66M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
-                stroke="black"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </button>
-        </form>
-
-        {/* 드롭다운: 검색어 입력 시 자음 일치 키워드 노출 */}
-        {showDropdown && (
-          <div className="absolute left-0 right-0 z-10 mt-1 bg-white rounded shadow top-full">
-            <RelatedKeywordItem keywords={filteredKeywords} onKeywordClick={handleKeywordClick} />
-          </div>
-        )}
-
+        <SearchForm />
+        
         {/* 장바구니 아이콘 + 뱃지 */}
         <CartItemCountIcon />
       </div>

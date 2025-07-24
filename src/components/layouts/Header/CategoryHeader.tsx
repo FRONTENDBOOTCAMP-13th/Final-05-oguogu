@@ -8,7 +8,7 @@ export default function CategoryHeader({ title }: HeaderExtraProps) {
   return (
     <header className="header">
       {/* 검색 + 버튼 */}
-      <div className="flex gap-1 items-center w-full">
+      <div className="flex items-center w-full gap-1">
         <GoBackIcon />
 
         {/* INFO 쿼리스트링 존재 여부 검증 및 현재 위치(pathname) 기반 텍스트 동적 변경 필요 */}

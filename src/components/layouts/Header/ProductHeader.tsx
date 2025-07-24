@@ -6,9 +6,9 @@ import CartItemCountIcon from '@/features/cartItemCountIcon/CartItemCountIcon';
 
 export default function ProductHeader({ title }: HeaderExtraProps) {
   return (
-    <header className="w-full h-12 sticky top-0 z-50 bg-oguogu-white flex justify-between items-center p-3">
+    <header className="sticky top-0 z-50 flex items-center justify-between w-full h-12 p-3 bg-oguogu-white">
       {/* 검색 + 버튼 */}
-      <div className="flex gap-1 items-center w-full">
+      <div className="flex items-center w-full gap-1">
         <GoBackIcon />
 
         {/* 상단 텍스트 */}
