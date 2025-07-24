@@ -1,9 +1,7 @@
 'use client';
 
 import React, { useRef, useState } from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { HeaderExtraProps } from '@/components/layouts/Header/types/Header.type';
 import { useSearchKeywordStore } from '@/shared/store/keywordStore';
 import RelatedKeywordItem from '@/components/elements/RelatedKeywordItem/RelatedKeywordItem';
 import { getConsonants } from '@/components/layouts/Header/utils/getConsonants';
@@ -21,7 +19,7 @@ const allKeywords = [
   { name: '옥수유통', type: 'garden' },
 ];
 
-export default function SearchHeader({ cartItemCount = 99 }: HeaderExtraProps) {
+export default function SearchHeader() {
   const [keyword, setKeyword] = useState('');
   const [showDropdown, setShowDropdown] = useState(false);
 

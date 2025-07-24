@@ -159,7 +159,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           <div className="flex gap-2">
             <span className="itemData">판매 마감일</span>
             <div className="flex flex-col">
-              <span>{item.extra.deadline}</span>
+              <span>{item.extra!.deadline}</span>
               <span className="text-oguogu-gray-3">판매 마감까지 {getDiffDays(item)}일 남았습니다.</span>
             </div>
           </div>

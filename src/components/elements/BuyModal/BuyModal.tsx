@@ -66,8 +66,8 @@ export default function BuyModal({ onClose, type, res }: BuyModalProps) {
           <BuyBoxOption
             type={type}
             name={res.item.name}
-            price={res.item.price * (1 - res.item.extra.dcRate / 100)}
-            maxQuantity={res.item.quantity - res.item.buyQuantity}
+            price={res.item.price * (1 - res.item.extra!.dcRate / 100)}
+            maxQuantity={res.item.quantity! - res.item.buyQuantity!}
             handleBuy={handleBuy}
             product_id={res.item._id}
           />
@@ -76,8 +76,8 @@ export default function BuyModal({ onClose, type, res }: BuyModalProps) {
           <BuyBoxOption
             type={type}
             name={res.item.name}
-            price={res.item.price * (1 - res.item.extra.dcRate / 100)}
-            maxQuantity={res.item.quantity - res.item.buyQuantity}
+            price={res.item.price * (1 - res.item.extra!.dcRate / 100)}
+            maxQuantity={res.item.quantity! - res.item.buyQuantity!}
             handleBuy={handleBuy}
             product_id={res.item._id}
           />
@@ -86,7 +86,7 @@ export default function BuyModal({ onClose, type, res }: BuyModalProps) {
           <BuyBoxOption
             type={type}
             name={res.item.name}
-            price={res.item.price * (1 - res.item.extra.dcRate / 100)}
+            price={res.item.price * (1 - res.item.extra!.dcRate / 100)}
             handleBuy={handleBuy}
             product_id={res.item._id}
           />

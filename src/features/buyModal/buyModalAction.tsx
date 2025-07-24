@@ -7,7 +7,7 @@ import { productRes } from '@/shared/types/product';
 
 export default function BuyModalAction({ res }: { res: productRes }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const productType = res.item.extra.productType;
+  const productType = res.item.extra!.productType;
 
   return (
     <>

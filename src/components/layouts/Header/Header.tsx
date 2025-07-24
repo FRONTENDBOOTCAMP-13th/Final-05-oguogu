@@ -1,11 +1,10 @@
 'use client';
 
 import HamburgerIcon from '@/components/elements/HamburgerIcon/HamburgerIcon';
-import { HeaderProps } from '@/components/layouts/Header/types/Header.type';
 import CartItemCountIcon from '@/features/cartItemCountIcon/CartItemCountIcon';
 import Link from 'next/link';
 
-export default function Header({ cartItemCount = 0 }: HeaderProps) {
+export default function Header() {
   return (
     <header className="header">
       {/* 햄버거 메뉴 */}

@@ -89,7 +89,8 @@ export default function PickList() {
                     _id={item._id}
                     name={item.name}
                     price={item.price * (1 - item.extra!.dcRate / 100)}
-                    item={item}
+                    seller={item.seller}
+                    extra={item.extra}
                   />
                 ))}
               </div>
@@ -102,7 +103,8 @@ export default function PickList() {
                     _id={item._id}
                     name={item.name}
                     price={item.price * (1 - item.extra!.dcRate / 100)}
-                    item={item}
+                    seller={item.seller}
+                    extra={item.extra}
                   />
                 ))}
               </div>

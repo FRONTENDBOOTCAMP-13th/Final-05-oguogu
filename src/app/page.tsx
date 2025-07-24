@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <>
       {/* 헤더 */}
-      <Header cartItemCount={100} />
+      <Header />
 
       {/* 네비게이션 */}
       <Navigation />
