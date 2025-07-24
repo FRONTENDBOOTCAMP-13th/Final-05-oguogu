@@ -16,18 +16,18 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           <Badge type="popular" size={12} />
           <Badge type="seasonal" size={12} />
         </div>
-        <Title title={item.name} description={item.content} />
+        <Title title={item.name} description={item.content!} />
 
         {/* 가격 정보 */}
         <div className="flex justify-between items-end">
           <div>
-            {item.extra.dcRate > 0 ? (
+            {item.extra!.dcRate > 0 ? (
               <>
                 <s className="text-oguogu-gray-2 mobile-max:text-lg">{item.price.toLocaleString() + '원'}</s>
                 <div className="flex gap-1">
-                  <span className="text-xl text-oguogu-main mobile-max:text-2xl">{item.extra.dcRate}%</span>
+                  <span className="text-xl text-oguogu-main mobile-max:text-2xl">{item.extra!.dcRate}%</span>
                   <span className="text-xl ml-2 mobile-max:text-2xl">
-                    {(item.price * (1 - item.extra.dcRate / 100)).toLocaleString()}원
+                    {(item.price * (1 - item.extra!.dcRate / 100)).toLocaleString()}원
                   </span>
                 </div>
               </>
@@ -56,7 +56,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           <div className="flex">
             <span className="itemData">배송</span>
             <div className="itemDataExtra">
-              <span>{item.shippingFees === 0 ? '무료' : item.shippingFees.toLocaleString() + '원'}</span>
+              <span>{item.shippingFees === 0 ? '무료' : item.shippingFees!.toLocaleString() + '원'}</span>
               <div className="">
                 <Badge type="express" />
                 <Badge type="safe" />
@@ -93,19 +93,19 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           {/* 출발 날짜 */}
           <div className="flex">
             <span className="itemData">날짜</span>
-            <span>{item.extra.departureDate}</span>
+            <span>{item.extra!.departureDate}</span>
           </div>
 
           {/* 여행 지역 */}
           <div className="flex">
             <span className="itemData">지역</span>
-            <span>{item.extra.region}</span>
+            <span>{item.extra!.region}</span>
           </div>
 
           {/* 출발 지역 */}
           <div className="flex">
             <span className="itemData">출발 지역</span>
-            <span>{item.extra.meetingPlace}</span>
+            <span>{item.extra!.meetingPlace}</span>
           </div>
 
           {/* 인원 */}
@@ -117,7 +117,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           {/* 포함 상품 */}
           <div className="flex">
             <span className="itemData">포함상품</span>
-            <span>{item.extra.includedItems?.join(', ')} </span>
+            <span>{item.extra!.includedItems?.join(', ')} </span>
           </div>
 
           {/* 미포함 상품 */}
@@ -138,13 +138,13 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           {/* 가이드 정보 */}
           <div className="flex">
             <span className="itemData">가이드</span>
-            <span>{item.extra.guideInfo?.name}</span>
+            <span>{item.extra!.guideInfo?.name}</span>
           </div>
 
           {/* 문의 */}
           <div className="flex">
             <span className="itemData">문의</span>
-            <span>{item.extra.guideInfo?.contact}</span>
+            <span>{item.extra!.guideInfo?.contact}</span>
           </div>
         </section>
       ) : type === 'gardening' ? (
@@ -152,7 +152,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           {/* 잔여 텃밭(남은 수량) */}
           <div className="flex gap-2">
             <span className="itemData">잔여 텃밭</span>
-            <span>{item.quantity - item.buyQuantity}개</span>
+            <span>{item.quantity! - item.buyQuantity!}개</span>
           </div>
 
           {/* 판매 마감일 */}
@@ -167,7 +167,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           {/* 수확 예정일 */}
           <div className="flex gap-2">
             <span className="itemData">수확 예정일</span>
-            <span>{item.extra.harvestExpectedDate}</span>
+            <span>{item.extra!.harvestExpectedDate}</span>
           </div>
 
           {/* 판매자 주소 */}
@@ -183,7 +183,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           <div className="flex gap-2">
             <span className="itemData">배송</span>
             <div className="flex flex-col">
-              <span>{item.shippingFees === 0 ? '무료' : item.shippingFees.toLocaleString() + '원'}</span>
+              <span>{item.shippingFees === 0 ? '무료' : item.shippingFees!.toLocaleString() + '원'}</span>
               <div className="">
                 <Badge type="express" />
                 <Badge type="safe" />
