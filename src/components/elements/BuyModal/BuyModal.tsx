@@ -49,7 +49,7 @@ export default function BuyModal({ onClose, type, res }: BuyModalProps) {
   const handleBuy = async (product_id: number, quantity: number, token: string) => {
     console.log('구매 핸들러 동작');
     if (isLoggedIn) {
-      await createCart({ product_id, quantity, token });
+      await createCart({ product_id, quantity }, token);
       onClose();
       alert('장바구니에 담겼습니다.');
     } else {

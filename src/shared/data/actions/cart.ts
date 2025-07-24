@@ -15,12 +15,12 @@ const CLIENT_ID = 'febc13-final05-emjf';
 // [] 장바구니 상품 전체 교체 => 성공 리턴은 오는데 변화가 없음
 
 // 1. 장바구니에 상품 추가
-export async function createCart(data: { product_id: number; quantity: number; token: string }) {
+export async function createCart(data: { product_id: number; quantity: number }, token: string) {
   try {
     const res = await fetch(`${API_URL}/carts`, {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ${data.token}`,
+        Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
         'Client-Id': CLIENT_ID,
       },

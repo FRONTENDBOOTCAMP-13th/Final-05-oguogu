@@ -1,6 +1,9 @@
 'use client';
 
-import { InputButtonForMypageType } from '@/components/elements/InputButtonForMypage/InputButtonForMypage.type';
+import {
+  CheckButtonForMypageType,
+  InputButtonForMypageType,
+} from '@/components/elements/InputButtonForMypage/InputButtonForMypage.type';
 
 /**
  * 마이페이지 필터용 라디오 버튼 컴포넌트
@@ -33,7 +36,7 @@ export default function FilterButtonForMypage({ name, type, title, isChecked }: 
   );
 }
 
-export function CheckButtonForMypage({ name, type, title, isChecked, selectAll }: InputButtonForMypageType) {
+export function CheckButtonForMypage({ name, type, title, isChecked, selectAll }: CheckButtonForMypageType) {
   return (
     <>
       <input

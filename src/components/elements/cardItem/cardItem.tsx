@@ -8,12 +8,14 @@ export default function CardItem({
   onCheck,
   quantity,
   updateQuantity,
+  handleDelete,
 }: {
   item: CartItem;
   checked: boolean;
   onCheck: () => void;
   quantity: number;
   updateQuantity: (_id: number, quantity: number) => void;
+  handleDelete: (_id: number) => void;
 }) {
   const [count, setCount] = useState(quantity);
 
@@ -67,7 +69,10 @@ export default function CardItem({
 
             <p className="text-[12px] w-[180px] text-oguogu-black leading-none truncate">{item?.product.name} </p>
           </div>
-          <button className="flex items-center gap-[4px] px-[8px] h-[20px] text-[10px] leading-none border border-oguogu-gray-2 rounded-[4px]">
+          <button
+            onClick={() => handleDelete(item._id)}
+            className="flex items-center gap-[4px] px-[8px] h-[20px] text-[10px] leading-none border border-oguogu-gray-2 rounded-[4px]"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="7"
