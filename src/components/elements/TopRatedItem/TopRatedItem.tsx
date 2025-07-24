@@ -28,6 +28,9 @@ export default async function TopRatedItem() {
               <li
                 key={item._id}
                 className="flex items-center gap-2 p-3 transition-all shadow-sm cursor-pointer bg-oguogu-white rounded-xl hover:bg-gray-50 hover:shadow-md"
+                role="listitem"
+                tabIndex={0}
+                // onClick={handleClick}
               >
                 <span className="ml-1.5 font-medium text-md text-oguogu-main">
                   {index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : index + 1}
@@ -49,6 +52,9 @@ export default async function TopRatedItem() {
               <li
                 key={item._id}
                 className="flex items-center gap-2 p-3 transition-all shadow-sm cursor-pointer bg-oguogu-white rounded-xl hover:bg-gray-50 hover:shadow-md"
+                role="listitem"
+                tabIndex={0}
+                // onClick={handleClick}
               >
                 <span className="ml-1.5 font-medium text-md text-oguogu-main">{index + 6}</span>
                 <Link href={`/gardening/${item._id}`} className="flex items-center h-6">
