@@ -1,9 +1,11 @@
+'use client';
 import Title from '@/components/elements/CommonTitleItem/Title';
 import { ProductDetailInfoType } from '@/components/elements/ProductDetailInfo/ProductDetailInfo.type';
 import Badge from '@/components/elements/ProductItem/Badge/Badge';
 import { BadgeTextProps } from '@/components/elements/ProductItem/Badge/Badge.type';
 import ProductLinkItem from '@/components/elements/ProductLink/ProductLink';
 import ShareIcon from '@/components/elements/ShareIcon/ShareIcon';
+import { useAuthStore } from '@/shared/store/authStore';
 import getDiffDays from '@/utils/getDiffDays/getDiffDays';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -17,6 +19,9 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
 
   const badgeList = [isSold, isBest, isInSeason, isNew, isLowStock].filter(Boolean).slice(0, 2) as BadgeTextProps[];
 
+  const isloggedin = useAuthStore(state => state.isLoggedIn);
+  const remain = item.quantity! - item.buyQuantity!;
+  
   return (
     <div className="px-4 pt-4 flex flex-col gap-4">
       {/* 상품 뱃지 및 상품명 */}
@@ -50,14 +55,21 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           <ShareIcon type="share" />
         </div>
       </section>
-
       {/* 회원가입 버튼 */}
-      <Link
-        href="/register"
-        className="border-1 py-1.5 border-oguogu-main-dark rounded-md flex items-center text-center justify-center cursor-pointer"
-      >
-        회원가입 하고 할인가로 구매하기
-      </Link>
+      {isloggedin ? (
+        <div className="bg-oguogu-main-light border border-oguogu-main-dark rounded-lg px-1 py-2 flex items-center justify-center  transition cursor-pointer">
+          <span className="text-oguogu-main-dark  flex items-center gap-2">
+            🥕지금 바로<span className="text-oguogu-main">할인된 가격</span>으로 주문해 보세요
+          </span>
+        </div>
+      ) : (
+        <Link
+          href="/register"
+          className="border border-oguogu-main-dark rounded-md px-4 py-3 flex items-center justify-center text-center cursor-pointer hover:bg-oguogu-main-light transition"
+        >
+          회원가입 하고 할인가로 구매하기
+        </Link>
+      )}
 
       {/* 상품 정보 */}
       {type === 'crop' ? (
@@ -162,7 +174,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           {/* 잔여 텃밭(남은 수량) */}
           <div className="flex gap-2">
             <span className="itemData">잔여 텃밭</span>
-            <span>{item.quantity! - item.buyQuantity!}개</span>
+            <span>{remain}칸</span>
           </div>
 
           {/* 판매 마감일 */}

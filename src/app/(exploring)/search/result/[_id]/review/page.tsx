@@ -53,7 +53,7 @@ export default async function ProductReview({ params }: ProductDetailPageProps) 
   const reviewCnt = res.item.length;
 
   return (
-    <div>
+    <div className="min-h-screen bg-oguogu-white flex flex-col">
       <CategoryHeader title={productName} />
       <TextCategoryForDetailPage _id={Number(_id)} reviewCnt={reviewCnt} qnaCnt={qnaCnt} />
       <ReviewSortbar reviewAvg={average} />
@@ -61,7 +61,16 @@ export default async function ProductReview({ params }: ProductDetailPageProps) 
         <ReviewClientControl />
       </div>
 
-      <section className="px-4 flex flex-col gap-8">{ReviewList}</section>
+      <section className="px-4 flex flex-col gap-8">
+        {ReviewList.length ? (
+          ReviewList
+        ) : (
+          <div className="flex flex-col items-center justify-center h-full py-20 text-oguogu-gray-3">
+            <p className="text-lg mb-2">아직 작성된 리뷰가 없습니다.</p>
+            <p className="text-sm">상품을 사용해 보신 후 리뷰를 남겨주세요!</p>
+          </div>
+        )}
+      </section>
     </div>
   );
 }
