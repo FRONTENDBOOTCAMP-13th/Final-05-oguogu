@@ -38,6 +38,8 @@ export default function CardItem({
     }
   };
 
+  const DCprice = (item.product.price * (1 - item.product.extra.dcRate / 100)).toLocaleString();
+
   return (
     <>
       <div className="w-[288px] flex flex-col gap-4">
@@ -110,7 +112,8 @@ export default function CardItem({
           <div className="w-[216px] flex flex-col justify-between">
             <div className="flex items-center gap-2">
               <span className="text-[16px] text-oguogu-black leading-[16px]">
-                {item?.product.price.toLocaleString()}원
+                {/* {(item.price * (1 - item.extra!.dcRate / 100)).toLocaleString()}원 */}
+                {DCprice}원
               </span>
               <p className="text-[12px] text-oguogu-gray-4">{shippingFee ? '배송비 무료' : '배송비 포함(3,000원)'}</p>
             </div>

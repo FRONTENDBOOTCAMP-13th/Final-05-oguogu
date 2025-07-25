@@ -42,7 +42,7 @@ export default function CartClientControl() {
   // 담은 총 가격
   const totalPrice = cartItems
     .filter(item => selectedItems.includes(item._id))
-    .reduce((sum, item) => sum + item.product.price * item.quantity, 0);
+    .reduce((sum, item) => sum + item.product.price * (1 - item.product.extra.dcRate / 100) * item.quantity, 0);
 
   // 주문 버튼 클릭시 보낼 주문 객체
   const orderItems = cartItems
