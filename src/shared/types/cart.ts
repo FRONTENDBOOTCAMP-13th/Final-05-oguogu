@@ -22,6 +22,7 @@ export interface CartItem {
       isBest: boolean;
       category: string[];
       sort: number;
+      dcRate: number;
     };
   };
 }

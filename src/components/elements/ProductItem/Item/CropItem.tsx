@@ -56,7 +56,7 @@ export default function CropItem({
         {/* 가격 정보 */}
         <div className="text-[12px] flex gap-1">
           <span className="text-oguogu-main">{extra!.dcRate}%</span>
-          <span>{price.toLocaleString()}원</span>
+          <span>{(price * (1 - extra!.dcRate / 100)).toLocaleString()}원</span>
         </div>
         {/* 좋아요 & 별점 */}
         <div className="text-[8px] flex gap-2 text-oguogu-gray-3">
@@ -76,7 +76,7 @@ export default function CropItem({
                 fill="#969696"
               />
             </svg>
-            <span>{`${rating} (${replies})`}</span>
+            <span>{`${rating?.toFixed(1)} (${replies})`}</span>
           </div>
         </div>
       </div>

@@ -46,12 +46,21 @@ export default async function ProductQna({ params }: ProductDetailPageProps) {
     .map(item => <QnaItem key={item._id} state={true} isPrivate={false} viewerRole="other" res={item} />);
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col min-h-screen bg-oguogu-white">
       <CategoryHeader title={productName} />
       <TextCategoryForDetailPage _id={Number(_id)} reviewCnt={reviewCnt} qnaCnt={qnaCnt} />
       <QnaSortBar qnaCnt={qnaList.length} />
       <QnaClientControls />
-      <section>{qnaList}</section>
+      <section>
+        {qnaList.length ? (
+          qnaList
+        ) : (
+          <div className="flex flex-col items-center justify-center h-full text-oguogu-gray-3 py-20">
+            <p className="text-lg mb-2">아직 등록된 문의가 없습니다.</p>
+            <p className="text-sm">상품에 대해 궁금한 점을 문의해보세요!</p>
+          </div>
+        )}
+      </section>
     </div>
   );
 }

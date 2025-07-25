@@ -60,7 +60,7 @@ export default function OrderItem({ orderState, item, updateOrderStatus }: Order
             <div className="w-[216px]">
               <div className="text-[12px] truncate">{product.name}</div>
               <div className="text-[12px] text-oguogu-gray-4">
-                {product.quantity}개 · {product.price.toLocaleString()}원
+                {product.quantity}개 · {(product.price * (1 - product.extra.dcRate / 100)).toLocaleString()}원
               </div>
             </div>
           </div>
