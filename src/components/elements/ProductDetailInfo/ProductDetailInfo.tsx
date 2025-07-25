@@ -1,6 +1,7 @@
 import Title from '@/components/elements/CommonTitleItem/Title';
 import { ProductDetailInfoType } from '@/components/elements/ProductDetailInfo/ProductDetailInfo.type';
 import Badge from '@/components/elements/ProductItem/Badge/Badge';
+import { BadgeTextProps } from '@/components/elements/ProductItem/Badge/Badge.type';
 import ProductLinkItem from '@/components/elements/ProductLink/ProductLink';
 import ShareIcon from '@/components/elements/ShareIcon/ShareIcon';
 import getDiffDays from '@/utils/getDiffDays/getDiffDays';
@@ -8,13 +9,22 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function ProductDetailInfo({ type, item }: ProductDetailInfoType) {
+  const isSold = item.extra!.badge?.isSold && 'sold';
+  const isBest = item.extra!.badge?.isBest && 'best';
+  const isInSeason = item.extra!.badge?.isInSeason && 'inseason';
+  const isNew = item.extra!.badge?.isNew && 'new';
+  const isLowStock = item.extra!.badge?.isLowStock && 'lowstock';
+
+  const badgeList = [isSold, isBest, isInSeason, isNew, isLowStock].filter(Boolean).slice(0, 2) as BadgeTextProps[];
+
   return (
     <div className="px-4 pt-4 flex flex-col gap-4">
       {/* 상품 뱃지 및 상품명 */}
       <section className="flex flex-col gap-4">
         <div>
-          <Badge type="popular" size={12} />
-          <Badge type="seasonal" size={12} />
+          {badgeList.map((item, index) => (
+            <Badge key={index} type={item} size={12} />
+          ))}
         </div>
         <Title title={item.name} description={item.content!} />
 
