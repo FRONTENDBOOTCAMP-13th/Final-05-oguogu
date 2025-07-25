@@ -4,14 +4,51 @@ import { useRouter } from 'next/navigation';
 import { useState, useRef, useEffect } from 'react';
 import RelatedKeywordItem from '@/components/elements/RelatedKeywordItem/RelatedKeywordItem';
 import { RelatedKeyword } from '@/components/elements/RelatedKeywordItem/RelatedKeywordItem.type';
+import getConsonants from '@/utils/getConsonants/getConsonants';
+import { getProducts } from '@/shared/data/functions/product';
 
 export default function SearchForm() {
   const router = useRouter();
   const [input, setInput] = useState('');
-  const [filtered] = useState<RelatedKeyword[]>([]);
+  const [filtered, setFiltered] = useState<RelatedKeyword[]>([]);
   const [showDropdown, setShowDropdown] = useState(false);
   const wrapperRef = useRef<HTMLFormElement>(null);
+  const [allKeywords, setAllKeywords] = useState<RelatedKeyword[]>([]);
 
+  
+  // 전체 키워드 초기 로딩
+  useEffect(() => {
+    async function fetchAllKeywords() {
+      const res = await getProducts();
+      console.log(res);
+      const keywords = res.item.map(item => ({
+        name: item.name,
+        type: item.extra?.productType || 'general',
+      }));
+      setAllKeywords(keywords);
+    }
+    fetchAllKeywords();
+  }, []);
+
+  // 입력값 변경 시 관련 키워드 필터링
+  useEffect(() => {
+    if (!input.trim()) {
+      setFiltered([]);
+      setShowDropdown(false);
+      return;
+    }
+
+    const chosung = getConsonants(input.trim());
+    const matched = allKeywords.filter(k =>
+      getConsonants(k.name).includes(chosung)
+    );
+    setFiltered(matched);
+    setShowDropdown(true);
+  }, [input]);
+
+
+
+  // 제출 처리
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim()) return;
@@ -53,7 +90,7 @@ export default function SearchForm() {
         <div className="absolute left-0 right-0 z-10 mt-1 bg-white rounded shadow top-full">
           <RelatedKeywordItem
             keywords={filtered}
-            onKeywordClick={(keyword) => {
+            onKeywordClick={keyword => {
               setInput(keyword.name);
               router.push(`/search/result?keyword=${encodeURIComponent(keyword.name)}`);
               setShowDropdown(false);
