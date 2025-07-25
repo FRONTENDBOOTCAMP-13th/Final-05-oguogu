@@ -10,10 +10,11 @@ const CLIENT_ID = 'febc13-final05-emjf';
 // [ ] 판매자의 상품에 등록괸 게시글 목록
 
 // 1. 타입별 게시글 조회 ex : getPosts('notice')
-export async function getPosts(type: string) {
+export async function getPosts(type: string, token?: string) {
   try {
     const res = await fetch(`${API_URL}/posts?type=${type}`, {
       headers: {
+        Authorization: `Bearer ${token}`,
         'Client-Id': CLIENT_ID,
       },
     });

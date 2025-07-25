@@ -1,6 +1,8 @@
 export interface QnaUser {
   _id: number;
+  type?: string;
   name: string;
+  email?: string;
   image: string;
 }
 
@@ -15,12 +17,22 @@ export interface QnaReply {
   }; // 답변한 판매자 정보 (선택적)
 }
 
+export interface ProductItem {
+  name: string;
+  image: {
+    path: string;
+    name: string;
+    originalname: string;
+  };
+}
+
 export interface QnaItem {
   _id: number;
   type: 'qna';
   product_id: number;
   seller_id: number;
   views: number;
+  private?: boolean;
 
   user: QnaUser;
 
@@ -29,6 +41,11 @@ export interface QnaItem {
 
   createdAt: string;
   updatedAt: string;
+
+  product: ProductItem;
+
+  bookmarks: number;
+  repliesCount: number;
 
   replies: QnaReply[];
 }
