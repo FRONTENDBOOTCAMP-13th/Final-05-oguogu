@@ -28,7 +28,7 @@ export default function CropItem({
   const badgeList = [isSold, isBest, isInSeason, isNew, isLowStock].filter(Boolean).slice(0, 2) as BadgeTextProps[];
 
   return (
-    <div className="flex flex-col gap-4 min-w-[140px]">
+    <div className="flex flex-col gap-4 min-w-[140px] max-w-[220px]">
       {/* 상품 이미지 및 뱃지 영역 */}
       <Link href={`/search/result/${_id}/detail`}>
         <div className="relative">
