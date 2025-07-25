@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function CartItemCountIcon() {
   const { items } = useCartStore();
-  console.log(items.length);
+  // console.log(items.length);
 
   return (
     <>

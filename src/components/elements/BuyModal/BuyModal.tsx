@@ -20,9 +20,10 @@ import { useEffect, useRef } from 'react';
  * @returns 구매 모달 UI
  */
 
-export default function BuyModal({ onClose, type, res }: BuyModalProps) {
+export default function BuyModal({ onClose, type, res, onSuccess }: BuyModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
   const isLoggedIn: boolean = useAuthStore(state => state.isLoggedIn); //전역 로그인 속성
+  const token = useAuthStore(state => state.token);
 
   // 바깥 클릭 시 모달 닫기
   useEffect(() => {
@@ -46,18 +47,20 @@ export default function BuyModal({ onClose, type, res }: BuyModalProps) {
    * @param {number} quantity - 수량
    * @param {string} token - 사용자 인증 토큰
    */
-  const handleBuy = async (product_id: number, quantity: number, token: string) => {
-    console.log('구매 핸들러 동작');
-    if (isLoggedIn) {
+  const handleBuy = async (product_id: number, quantity: number) => {
+    if (!isLoggedIn || !token) {
+      alert('로그인이 필요합니다!');
+      onClose();
+      return;
+    }
+
+    try {
       await createCart({ product_id, quantity }, token);
-      onClose();
-      alert('장바구니에 담겼습니다.');
-    } else {
-      onClose();
-      alert('장바구니 기능은 로그인이 필요합니다.');
+      onSuccess(); // <-- 성공 시 상위에 알림 요청
+    } catch (e) {
+      console.error('장바구니 담기 실패', e);
     }
   };
-
   return (
     <div className="fixed inset-0 z-50 left-1/2 translate-x-[-50%] flex items-end min-w-[320px] max-w-[768px] w-full ">
       {/* 모달 본체 */}

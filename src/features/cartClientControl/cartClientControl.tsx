@@ -1,5 +1,6 @@
 'use client';
 import CardItem from '@/components/elements/cardItem/cardItem';
+import CuteLoading from '@/components/elements/CuteLoading/CuteLoading';
 import DeleteButton from '@/components/elements/DeleteButton/DeleteButton';
 import { CheckButtonForMypage } from '@/components/elements/InputButtonForMypage/InputButtonForMypage';
 import IsEmptyMessage from '@/components/elements/IsEmptyMessage/IsEmptyMessage';
@@ -13,8 +14,11 @@ import { useEffect, useState } from 'react';
 export default function CartClientControl() {
   const token = useAuthStore(state => state.token);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
+
+  const isLoggedIn = useAuthStore(state => state.isLoggedIn);
 
   const allIds = cartItems.map(item => item._id);
 
@@ -112,12 +116,19 @@ export default function CartClientControl() {
   };
 
   useEffect(() => {
-    if (!token) return;
-
     const fetchCart = async () => {
-      const data: CartResponse = await getCart(token);
-      setCartItems(data.item);
-      console.log('data', data);
+      if (!token) {
+        setIsLoading(false);
+        return;
+      }
+
+      try {
+        const data: CartResponse = await getCart(token);
+        setCartItems(data.item);
+        console.log('data', data);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     fetchCart();
@@ -136,6 +147,22 @@ export default function CartClientControl() {
       handleDelete={handleDelete}
     />
   ));
+
+  if (isLoading) {
+    return <CuteLoading />;
+  }
+
+  if (!isLoggedIn) {
+    return (
+      <IsEmptyMessage
+        title="로그인이 필요합니다."
+        subTxt="장바구니를 보려면 먼저 로그인해주세요!"
+        LinkTxt="로그인 하러 가기 🥕"
+        link="/login"
+      />
+    );
+  }
+
   return (
     <>
       {/* 전체선택 및 삭제 버튼 */}
