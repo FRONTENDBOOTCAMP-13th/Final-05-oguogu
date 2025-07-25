@@ -144,7 +144,7 @@ export default function CartClientControl() {
           name="cartGroup"
           type="selectAll"
           title="전체 선택"
-          isChecked={selectedItems.length === allIds.length}
+          isChecked={selectedItems.length === allIds.length && allIds.length !== 0}
           selectAll={handleSelectAll}
         />
         <DeleteButton deleteAll={handleDeleteAll} />
