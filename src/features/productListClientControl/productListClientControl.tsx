@@ -107,7 +107,7 @@ export default function ProductListClientControl({ productList, productCnt, type
                   key={item._id}
                   _id={item._id}
                   name={item.name}
-                  price={item.price * (1 - item.extra!.dcRate / 100)}
+                  price={item.price}
                   rating={item.rating}
                   replies={item.replies}
                   extra={item.extra}
@@ -126,7 +126,7 @@ export default function ProductListClientControl({ productList, productCnt, type
                   key={item._id}
                   _id={item._id}
                   name={item.name}
-                  price={item.price * (1 - item.extra!.dcRate / 100)}
+                  price={item.price}
                   extra={item.extra}
                   seller={item.seller}
                   isbookmarked={isBookmarked(item._id)}
@@ -145,7 +145,7 @@ export default function ProductListClientControl({ productList, productCnt, type
                   key={item._id}
                   _id={item._id}
                   name={item.name}
-                  price={item.price * (1 - item.extra!.dcRate / 100)}
+                  price={item.price}
                   isbookmarked={isBookmarked(item._id)}
                   togglebookmark={() => toggleBookmark(item._id)}
                   extra={item.extra}
