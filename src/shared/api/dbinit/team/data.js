@@ -1,4 +1,4 @@
-import { tr } from 'date-fns/locale';
+// import { tr } from 'date-fns/locale';
 import dayjs from 'dayjs';
 
 function getTime(day = 0, second = 0) {
