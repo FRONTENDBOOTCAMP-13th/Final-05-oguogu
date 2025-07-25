@@ -83,7 +83,6 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
   // 상품명
   const productName = await res.item.name;
-  console.log(productName);
 
   return (
     <>
