@@ -65,7 +65,7 @@ export default function ExperienceItem({
         <p className="text-[10px] text-oguogu-gray-4">{content}</p>
         {/* 가격 정보 */}
         <div className="text-[12px] flex gap-1 items-end">
-          <span className="text-oguogu-main hidden">{extra!.dcRate}%</span>
+          {extra!.dcRate > 0 ? <span className="text-oguogu-main hidden">{extra!.dcRate}%</span> : ''}
           <span>{price.toLocaleString()}원</span>
           <span className="text-[10px]">/ 1인</span>
         </div>

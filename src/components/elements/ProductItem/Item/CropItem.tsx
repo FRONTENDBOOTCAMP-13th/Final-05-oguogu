@@ -64,7 +64,7 @@ export default function CropItem({
 
         {/* 가격 정보 */}
         <div className="text-[12px] flex gap-1">
-          <span className="text-oguogu-main">{extra!.dcRate}%</span>
+          {extra!.dcRate > 0 ? <span className="text-oguogu-main">{extra!.dcRate}%</span> : ''}
           <span>{price.toLocaleString()}원</span>
         </div>
         {/* 좋아요 & 별점 */}

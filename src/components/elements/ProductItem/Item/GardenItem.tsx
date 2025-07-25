@@ -78,9 +78,10 @@ export default function GardenItem({
             <p>수확 : {extra!.harvestExpectedDate}</p>
           </div>
         </div>
+
         {/* 가격 정보 */}
         <div className="text-[12px] flex gap-1">
-          <span className="text-oguogu-main">{extra!.dcRate}%</span>
+          {extra!.dcRate > 0 ? <span className="text-oguogu-main">{extra!.dcRate}%</span> : ''}
           <span>{price.toLocaleString()}원</span>
         </div>
       </div>
