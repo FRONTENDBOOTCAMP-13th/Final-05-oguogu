@@ -86,32 +86,42 @@ export default function BuyBoxOption({ name, price, maxQuantity = 1, type, handl
         <h3 className="text-xl max-w-full textElipsis">{name}</h3>
       </div>
 
+      {/* 남은 수량 */}
+      <div className="flex flex-col gap-2">
+        <span className="text-xs text-oguogu-gray-4">구매 가능한 수량</span>
+        <h3 className="text-xl max-w-full textElipsis">{maxQuantity} 개</h3>
+      </div>
+
       {/* 날짜 선택 : 체험 상품 전용 */}
+      {/* 일단 코드 사용 막아두었습니다. 나중에 백업시 사용하시면 됩니다. */}
+      {false && (
+        <>
+          {type === 'experience' ? (
+            <div className="flex flex-col gap-2">
+              <span className="text-xs text-oguogu-gray-4">날짜 선택</span>
+              <div className="flex gap-3 max-w-full overflow-auto hide-scrollbar">
+                {/* 선택 가능 & 선택됨 */}
+                {data.map(item => {
+                  const { _id, quantity, buyQuantity } = item;
 
-      {type === 'experience' ? (
-        <div className="flex flex-col gap-2">
-          <span className="text-xs text-oguogu-gray-4">날짜 선택</span>
-          <div className="flex gap-3 max-w-full overflow-auto hide-scrollbar">
-            {/* 선택 가능 & 선택됨 */}
-            {data.map(item => {
-              const { _id, quantity, buyQuantity } = item;
+                  const formattedDate = format(item.extra.departureDate, 'M월 d일 (eee)', { locale: ko });
+                  const formattedTime = format(item.extra.departureDate, 'HH:mm');
 
-              const formattedDate = format(item.extra.departureDate, 'M월 d일 (eee)', { locale: ko });
-              const formattedTime = format(item.extra.departureDate, 'HH:mm');
-
-              return (
-                <BuyBoxOptionExtraItem
-                  key={_id}
-                  date={formattedDate}
-                  time={formattedTime}
-                  count={quantity - buyQuantity}
-                />
-              );
-            })}
-          </div>
-        </div>
-      ) : (
-        ''
+                  return (
+                    <BuyBoxOptionExtraItem
+                      key={_id}
+                      date={formattedDate}
+                      time={formattedTime}
+                      count={quantity - buyQuantity}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+          ) : (
+            ''
+          )}
+        </>
       )}
 
       {/* 수량 선택 */}
