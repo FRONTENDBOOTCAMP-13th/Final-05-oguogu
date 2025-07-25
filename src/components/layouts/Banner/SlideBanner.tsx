@@ -86,7 +86,7 @@ export default function SlideBanner() {
             onMouseUp={handleRelease}
             onTouchEnd={handleRelease}
             onTouchStart={() => handlePress(index)}
-            className={`w-2 h-2 rounded-full border ${
+            className={`w-2 h-2 rounded-full border cursor-pointer ${
               currentIndex === index
                 ? 'bg-oguogu-white border-[var(--color-oguogu-gray-3)]'
                 : 'bg-oguogu-gray-2 border-none'
