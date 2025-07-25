@@ -1,5 +1,6 @@
 import InteractionButton from '@/components/elements/InteractionButton/InteractionButton';
 import Badge from '@/components/elements/ProductItem/Badge/Badge';
+import { BadgeTextProps } from '@/components/elements/ProductItem/Badge/Badge.type';
 import GardenItemIcon from '@/components/elements/ProductItem/Item/GardenItemIcon';
 import { Item } from '@/shared/types/product';
 import Image from 'next/image';
@@ -16,6 +17,14 @@ export default function GardenItem({
   isbookmarked,
   togglebookmark,
 }: Item) {
+  const isSold = extra!.badge?.isSold && 'sold';
+  const isBest = extra!.badge?.isBest && 'best';
+  const isInSeason = extra!.badge?.isInSeason && 'inseason';
+  const isNew = extra!.badge?.isNew && 'new';
+  const isLowStock = extra!.badge?.isLowStock && 'lowstock';
+
+  const badgeList = [isSold, isBest, isInSeason, isNew, isLowStock].filter(Boolean).slice(0, 2) as BadgeTextProps[];
+
   return (
     <div className="flex flex-col gap-4 min-w-[140px] ">
       {/* 상품 이미지 및 뱃지 영역 */}
@@ -31,9 +40,12 @@ export default function GardenItem({
             height={186.67}
             className="rounded-[8px] w-[140px] h-[186.67px] object-cover"
           />
+          
           {/* 뱃지 (제철 상품, 인기 상품 등) 우선 아이콘 빼고 진행 */}
           <div className="absolute top-0.5 left-1.5">
-            <Badge type="closing" />
+            {badgeList.map((item, index) => (
+              <Badge key={index} type={item} />
+            ))}
           </div>
         </div>
       </Link>
