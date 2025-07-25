@@ -2,7 +2,7 @@
 
 import InteractionButton from '@/components/elements/InteractionButton/InteractionButton';
 import Badge from '@/components/elements/ProductItem/Badge/Badge';
-import BadgeProps, { BadgeTextProps } from '@/components/elements/ProductItem/Badge/Badge.type';
+import { BadgeTextProps } from '@/components/elements/ProductItem/Badge/Badge.type';
 import { Item } from '@/shared/types/product';
 import Image from 'next/image';
 import Link from 'next/link';
