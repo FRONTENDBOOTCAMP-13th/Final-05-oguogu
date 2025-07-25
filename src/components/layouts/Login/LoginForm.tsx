@@ -57,17 +57,13 @@ export default function LoginForm() {
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <fieldset className="flex flex-col gap-2">
           <legend className="sr-only">로그인 정보</legend>
+          <div>
+            <label htmlFor="email" className="sr-only">
+              이메일
+            </label>
+          </div>
           {/* 이메일 */}
-          <LoginInput
-            type="email"
-            placeholder="예: ogugarden"
-            value={email}
-            onChange={setEmail}
-            options={[
-              { label: 'naver.com', value: 'naver.com' },
-              { label: 'gmail.com', value: 'gmail.com' },
-            ]}
-          />
+          <LoginInput type="text" placeholder="이메일" value={email} onChange={setEmail} />
 
           {/* 비밀번호 */}
           <div>
