@@ -133,6 +133,9 @@ export default function ProductListClientControl({ productList, productCnt, type
                   seller={item.seller}
                   isbookmarked={isBookmarked(item._id)}
                   togglebookmark={() => toggleBookmark(item._id)}
+                  bookmarks={item.bookmarks}
+                  rating={item.rating}
+                  replies={item.replies}
                 />
               ))}
             </main>
