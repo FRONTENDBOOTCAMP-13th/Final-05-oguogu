@@ -76,7 +76,7 @@ export default function CropItem({
                 fill="#969696"
               />
             </svg>
-            <span>{`${rating} (${replies})`}</span>
+            <span>{`${rating?.toFixed(1)} (${replies})`}</span>
           </div>
         </div>
       </div>
