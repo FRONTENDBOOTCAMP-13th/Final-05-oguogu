@@ -10,6 +10,7 @@ import { getCart } from '@/shared/data/functions/cart';
 import { useAuthStore } from '@/shared/store/authStore';
 import { CartItem, CartResponse } from '@/shared/types/cart';
 import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 export default function CartClientControl() {
   const token = useAuthStore(state => state.token);
@@ -163,6 +164,19 @@ export default function CartClientControl() {
     );
   }
 
+  const handleLogin = () => {
+    // 로그인 로직 ...
+    toast.success('클릭했습니다.');
+  };
+  const handlerror = () => {
+    // 로그인 로직 ...
+    toast.error('클릭했습니다.');
+  };
+  const handleloading = () => {
+    // 로그인 로직 ...
+    toast.loading('클릭했습니다.');
+  };
+
   return (
     <>
       {/* 전체선택 및 삭제 버튼 */}
@@ -204,6 +218,10 @@ export default function CartClientControl() {
               : `${selectedItems.length}개 총 ${totalPrice.toLocaleString()}원 구매하기`}
           </button>
         </div>
+
+        <button onClick={handleLogin}>클릭해보세요</button>
+        <button onClick={handlerror}>클릭해보세요</button>
+        <button onClick={handleloading}>클릭해보세요</button>
       </div>
     </>
   );
