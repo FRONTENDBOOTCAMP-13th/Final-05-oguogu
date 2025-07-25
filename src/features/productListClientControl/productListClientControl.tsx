@@ -22,7 +22,10 @@ export default function ProductListClientControl({ productList, productCnt, type
   const token = useAuthStore(state => state.token);
 
   const toggleBookmark = async (_id: number) => {
-    if (!token) return;
+    if (!token) {
+      setIsLoading(false);
+      return;
+    }
 
     const isBookmarked = bookmarkedMap.has(_id);
 
@@ -52,7 +55,10 @@ export default function ProductListClientControl({ productList, productCnt, type
   };
 
   useEffect(() => {
-    if (!token) return;
+    if (!token) {
+      setIsLoading(false);
+      return;
+    }
 
     const fetchBookmark = async () => {
       try {
