@@ -8,6 +8,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function ProductDetailInfo({ type, item }: ProductDetailInfoType) {
+  const remain = item.quantity! - item.buyQuantity!;
   return (
     <div className="px-4 pt-4 flex flex-col gap-4">
       {/* 상품 뱃지 및 상품명 */}
@@ -152,7 +153,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           {/* 잔여 텃밭(남은 수량) */}
           <div className="flex gap-2">
             <span className="itemData">잔여 텃밭</span>
-            <span>{item.quantity! - item.buyQuantity!}개</span>
+            <span>{remain}칸</span>
           </div>
 
           {/* 판매 마감일 */}
