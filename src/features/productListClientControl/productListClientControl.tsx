@@ -84,8 +84,6 @@ export default function ProductListClientControl({ productList, productCnt, type
     fetchBookmark();
   }, [token]);
 
-  console.log(bookmarkedMap);
-
   return (
     <>
       {isLoading ? (

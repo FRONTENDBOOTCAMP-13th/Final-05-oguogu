@@ -1,5 +1,6 @@
 import InteractionButton from '@/components/elements/InteractionButton/InteractionButton';
 import Badge from '@/components/elements/ProductItem/Badge/Badge';
+import { BadgeTextProps } from '@/components/elements/ProductItem/Badge/Badge.type';
 import { Item } from '@/shared/types/product';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -17,6 +18,14 @@ export default function ExperienceItem({
   isbookmarked,
   togglebookmark,
 }: Item) {
+  const isSold = extra!.badge?.isSold && 'sold';
+  const isBest = extra!.badge?.isBest && 'best';
+  const isInSeason = extra!.badge?.isInSeason && 'inseason';
+  const isNew = extra!.badge?.isNew && 'new';
+  const isLowStock = extra!.badge?.isLowStock && 'lowstock';
+
+  const badgeList = [isSold, isBest, isInSeason, isNew, isLowStock].filter(Boolean).slice(0, 2) as BadgeTextProps[];
+
   return (
     <div className="min-w-[288px] flex flex-col gap-4">
       {/* 상품 이미지 및 뱃지 영역 */}
@@ -34,7 +43,9 @@ export default function ExperienceItem({
           /> */}
           {/* 뱃지 (제철 상품, 인기 상품 등) */}
           <div className="absolute top-0.5 left-1.5">
-            <Badge type="closing" />
+            {badgeList.map((item, index) => (
+              <Badge key={index} type={item} />
+            ))}
           </div>
         </div>
       </Link>
@@ -54,7 +65,7 @@ export default function ExperienceItem({
         <p className="text-[10px] text-oguogu-gray-4">{content}</p>
         {/* 가격 정보 */}
         <div className="text-[12px] flex gap-1 items-end">
-          <span className="text-oguogu-main hidden">{extra!.dcRate}%</span>
+          {extra!.dcRate > 0 ? <span className="text-oguogu-main hidden">{extra!.dcRate}%</span> : ''}
           <span>{(price * (1 - extra!.dcRate / 100)).toLocaleString()}원</span>
           <span className="text-[10px]">/ 1인</span>
         </div>

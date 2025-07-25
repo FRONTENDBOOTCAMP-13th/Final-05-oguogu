@@ -83,6 +83,16 @@ export interface Extra {
   harvestExpectedDate: string;
   harvestExpectedCnt: string;
   period: periodObject[];
+
+  badge?: badge;
+}
+
+export interface badge {
+  isNew: boolean | null;
+  isInSeason: boolean | null;
+  isBest: boolean | null;
+  isLowStock: boolean | null;
+  isSold: boolean | null;
 }
 
 export interface productRes {

@@ -24,6 +24,7 @@ export default function Home() {
         <ImageCategory />
         <ProductLinkItem link="/product/crop" linkTitle="전체 농산물" subTxt="보러 가기" />
       </aside>
+
       {/* 메인 */}
       <main className="flex flex-col gap-y-8 pt-8 mobile-max:gap-y-12 mobile-max:pt-12 ">
         {/* 추천 카테고리 1 */}

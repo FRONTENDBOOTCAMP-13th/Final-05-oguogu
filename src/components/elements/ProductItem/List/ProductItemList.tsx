@@ -27,7 +27,7 @@ export default async function ProductItemList({ type }: ProductItemListType) {
   return (
     <>
       {type === 'crop' ? (
-        <div className="flex gap-3 overflow-x-scroll cursor-grab select-none no-scrollbar">
+        <div className="flex gap-3 cursor-grab overflow-auto hide-scrollbar">
           {cropData
             .map((item: Item) => (
               <CropItem
@@ -45,7 +45,7 @@ export default async function ProductItemList({ type }: ProductItemListType) {
             .slice(0, 10)}
         </div>
       ) : type === 'experience' ? (
-        <div className="flex gap-3 overflow-x-scroll cursor-grab select-none no-scrollbar">
+        <div className="flex gap-3  cursor-grab overflow-auto hide-scrollbar">
           {expData.map((item: Item) => (
             <ExperienceItem
               key={item._id}
@@ -61,7 +61,7 @@ export default async function ProductItemList({ type }: ProductItemListType) {
           ))}
         </div>
       ) : type === 'gardening' ? (
-        <div className="flex gap-3 overflow-x-scroll cursor-grab select-none no-scrollbar">
+        <div className="flex gap-3 cursor-grab overflow-auto hide-scrollbar">
           {gardeningData.map((item: Item) => (
             <GardenItem
               key={item._id}

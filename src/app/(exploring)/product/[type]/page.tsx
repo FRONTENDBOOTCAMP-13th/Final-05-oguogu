@@ -22,7 +22,6 @@ import { notFound } from 'next/navigation';
 export default async function ProductListByType({ params }: { params: Promise<{ type: ProductType }> }) {
   const { type } = await params;
   const productsRes: productsRes = await getProducts();
-  // console.log('products', productsRes);
 
   const productList = productsRes.item.filter((item: Item) => item.extra!.productType === type);
   const productCnt: number = productList.length;
