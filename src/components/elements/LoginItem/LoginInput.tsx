@@ -100,6 +100,7 @@ export default function LoginInput({ type, value, placeholder = '', onChange, op
     const emailValue = typeof value === 'string' && value.includes('@') ? value.split('@') : [value, ''];
     const emailId = emailValue[0] || '';
     const emailDomain = emailValue[1] || '';
+    const isCustom = !['naver.com', 'gmail.com'].includes(emailDomain);
 
     const handleEmailChange = (idPart: string, domainPart: string) => {
       const newEmail = domainPart ? `${idPart}@${domainPart}` : idPart;
@@ -107,26 +108,48 @@ export default function LoginInput({ type, value, placeholder = '', onChange, op
     };
 
     return (
-      <div className="flex items-center w-[288px] h-[36px] font-normal text-[12px] pl-2 py-3 border-b-1 text-oguogu-black border-oguogu-gray-2">
+      <div className="flex items-center w-[288px] h-[36px] border-b border-oguogu-gray-2 text-[12px]">
+        {/* 아이디 입력 */}
         <input
           type="text"
-          id={id}
           placeholder={placeholder}
           value={emailId}
           onChange={e => handleEmailChange(e.target.value, emailDomain)}
-          className="placeholder-oguogu-gray-2 w-[120px] text-left"
+          className="w-1/3 pl-2 text-left placeholder-oguogu-gray-2"
         />
-        <div className="flex gap-1">
-          <span className="text-oguogu-black">@</span>
-          <select value={emailDomain} onChange={e => handleEmailChange(emailId, e.target.value)} className="w-[140px]">
-            <option value="">선택하기</option>
-            {options?.map(opt => (
-              <option key={opt.value} value={opt.value}>
-                {opt.label}
-              </option>
-            ))}
-          </select>
-        </div>
+
+        <span className=" text-oguogu-black">@</span>
+
+        {/* 직접 입력하기 */}
+        {isCustom ? (
+          <input
+            type="text"
+            placeholder="직접 입력하기"
+            value={emailDomain}
+            onChange={e => handleEmailChange(emailId, e.target.value)}
+            className="w-1/3 pl-2 text-left placeholder-oguogu-gray-2"
+          />
+        ) : (
+          <div className="w-1/3 flex items-center pl-2 text-oguogu-black">{emailDomain}</div>
+        )}
+
+        {/* 도메인 , 직접 입력하기 옵션 */}
+        <select
+          value={isCustom ? 'custom' : emailDomain}
+          onChange={e => {
+            const selected = e.target.value;
+            if (selected === 'custom') {
+              handleEmailChange(emailId, '');
+            } else {
+              handleEmailChange(emailId, selected);
+            }
+          }}
+          className="w-1/3 pl-1 text-left bg-white"
+        >
+          <option value="custom">직접 입력하기</option>
+          <option value="naver.com">naver.com</option>
+          <option value="gmail.com">gmail.com</option>
+        </select>
       </div>
     );
   }
