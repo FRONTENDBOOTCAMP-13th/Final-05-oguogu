@@ -41,9 +41,13 @@ export default async function ProductQna({ params }: ProductDetailPageProps) {
   // 리뷰 개수
   const reviewCnt = reviewRes.item.length;
 
+  console.log(res);
+
   const qnaList = res?.item
     .filter(item => item.product_id === Number(_id))
-    .map(item => <QnaItem key={item._id} state={true} isPrivate={false} viewerRole="other" res={item} />);
+    .map(item => (
+      <QnaItem key={item._id} state={item.repliesCount !== 0} isPrivate={false} viewerRole="other" res={item} />
+    ));
 
   return (
     <div className="flex flex-col min-h-screen bg-oguogu-white">

@@ -27,7 +27,9 @@ export default function QnaItem({ state = false, isPrivate = false, viewerRole =
   // 이름 *표로 변환해주는 함수
   function maskName(name: string): string {
     if (!name) return '';
-    return name[0] + '*'.repeat(name.length - 1);
+    if (name.length <= 2) return name; // 두 글자 이하면 마스킹 생략
+
+    return name[0] + '*'.repeat(name.length - 2) + name[name.length - 1];
   }
 
   // 이메일 *표로 변환해주는 함수
@@ -83,7 +85,7 @@ export default function QnaItem({ state = false, isPrivate = false, viewerRole =
 
         <div className="flex gap-3">
           <p className="text-[12px] text-oguogu-black">구매자이름 {maskName(res.user.name)}</p>
-          <p className="text-[12px] text-oguogu-black">이메일 앞부분 {maskEmail('qwer@gamil.com')}</p>
+          <p className="text-[12px] text-oguogu-black">이메일 앞부분 {maskEmail(res.user.email || '')}</p>
         </div>
       </div>
 
@@ -105,6 +107,12 @@ export default function QnaItem({ state = false, isPrivate = false, viewerRole =
                 <br />
               </div>
             ))}
+        </div>
+      )}
+
+      {!state && isOpen && isViewerAllowed && (
+        <div className="mt-4 pt-4 border-t-1 border-oguogu-gray-4">
+          <p className="text-[12px] text-oguogu-gray-3">이 질문은 아직 답변을 기다리는 중입니다.</p>
         </div>
       )}
 
