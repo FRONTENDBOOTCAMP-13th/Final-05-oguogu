@@ -50,7 +50,7 @@ export default async function ProductQna({ params }: ProductDetailPageProps) {
       <CategoryHeader title={productName} />
       <TextCategoryForDetailPage _id={Number(_id)} reviewCnt={reviewCnt} qnaCnt={qnaCnt} />
       <QnaSortBar qnaCnt={qnaList.length} />
-      <QnaClientControls />
+      <QnaClientControls _id={_id} />
       <section>
         {qnaList.length ? (
           qnaList

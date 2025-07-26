@@ -14,17 +14,22 @@ const token =
 // [x] 댓글 삭제
 
 // 1. 게시글 등록
-export async function createPost(data: {
-  type: 'qna' | 'notice' | 'farm' | 'faq';
-  title?: string;
-  content?: string;
-  image?: string;
-  extra?: object;
-}) {
+export async function createPost(
+  data: {
+    type: 'qna' | 'notice' | 'farm' | 'faq';
+    title?: string;
+    content?: string;
+    product_id?: number;
+    image?: string;
+    extra?: object;
+  },
+  token?: string,
+) {
   try {
     const res = await fetch(`${API_URL}/posts`, {
       method: 'POST',
       headers: {
+        Authorization: `Bearer ${token}`,
         'Content-Type': 'application/json',
         'Client-Id': CLIENT_ID,
       },

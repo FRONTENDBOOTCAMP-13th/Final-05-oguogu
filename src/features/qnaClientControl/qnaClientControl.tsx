@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useAuthStore } from '@/shared/store/authStore';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
+import { createPost } from '@/shared/data/actions/post';
 
 /**
  * QnA 페이지에서 로그인 여부에 따라
@@ -13,10 +14,9 @@ import toast from 'react-hot-toast';
  * @returns 로그인 상태에 따른 QnA 작성 컨트롤 UI
  */
 
-export default function QnaClientControls() {
+export default function QnaClientControls({ _id }: { _id: string }) {
   const isLoggedIn = useAuthStore(state => state.isLoggedIn);
   const token = useAuthStore(state => state.token);
-  console.log(token);
 
   const [isOpen, setIsOpen] = useState(false);
   const [title, setTitle] = useState('');
@@ -33,7 +33,9 @@ export default function QnaClientControls() {
     setContent('');
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    if (!token) return;
+
     if (!title || !content) {
       toast.error('제목과 내용을 입력해주세요.');
       return;
@@ -41,9 +43,16 @@ export default function QnaClientControls() {
 
     setIsLoading(true);
 
-    toast.success('등록버튼이 클릭되었습니다.');
+    const res = await createPost({ type: 'qna', title, content, product_id: Number(_id) }, token);
+
     setIsLoading(false);
-    closeModal();
+
+    if (res.ok) {
+      toast.success('게시글이 등록되었습니다.');
+      closeModal();
+    } else {
+      toast.error(res.message || '등록에 실패했습니다.');
+    }
   };
 
   return (
