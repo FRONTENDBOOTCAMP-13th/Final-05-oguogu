@@ -3,7 +3,7 @@
 import { LoginInputProps } from '@/components/elements/LoginItem/LoginInput.type';
 import { useState } from 'react';
 
-export default function LoginInput({ type, value, placeholder = '', onChange, options, id }: LoginInputProps) {
+export default function LoginInput({ type, value, placeholder = '', onChange, id }: LoginInputProps) {
   const [showPassword, setShowPassword] = useState(false);
 
   const [phoneParts, setPhoneParts] = useState({
