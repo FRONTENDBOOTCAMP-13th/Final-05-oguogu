@@ -1,13 +1,12 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useState, useRef, useEffect } from 'react';
 import RelatedKeywordItem from '@/components/elements/RelatedKeywordItem/RelatedKeywordItem';
 import { RelatedKeyword } from '@/components/elements/RelatedKeywordItem/RelatedKeywordItem.type';
 import getConsonants from '@/utils/getConsonants/getConsonants';
 import { getProducts } from '@/shared/data/functions/product';
 import { Item } from '@/shared/types/product';
-import { useSearchKeywordStore } from '@/shared/store/keywordStore';
 
 export default function SearchForm() {
   const router = useRouter();
@@ -17,8 +16,9 @@ export default function SearchForm() {
   const wrapperRef = useRef<HTMLFormElement>(null);
   const [allKeywords, setAllKeywords] = useState<RelatedKeyword[]>([]);
 
-  /* Zustand 를 사용하여 검색 키워드를 상태로 저장  */
-  const saveKeyword = useSearchKeywordStore(state => state.saveKeyword);
+  /* input 의 defaultValue 를 설정하기 위해 URL 쿼리스트링에서 키워드 값을 추출 */
+  const keywordParam = useSearchParams();
+  const keyword = keywordParam.get('keyword');
 
   // 전체 키워드 초기 로딩
   useEffect(() => {
@@ -55,7 +55,7 @@ export default function SearchForm() {
     e.preventDefault();
     if (!input.trim()) return;
 
-    saveKeyword(input.trim());
+    /* 해당 키워드를 쿼리스트링으로 사용, 검색 결과 페이지로 이동 */
     router.push(`/search/result?keyword=${encodeURIComponent(input.trim())}`);
     setShowDropdown(false);
   };

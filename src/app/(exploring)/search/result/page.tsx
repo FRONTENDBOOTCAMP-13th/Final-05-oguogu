@@ -1,10 +1,9 @@
 import SearchHeader from '@/components/layouts/Header/SearchHeader';
 import ProductListFilteredKeyword from '@/features/productListFilteredKeyword/productListFilteredKeyword';
 import { getProducts } from '@/shared/data/functions/product';
-import { Item } from '@/shared/types/product';
 
 export default async function SearchResult() {
-  const res: Item = await getProducts();
+  const res = await getProducts();
 
   return (
     <>
