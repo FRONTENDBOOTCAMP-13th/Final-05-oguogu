@@ -110,7 +110,7 @@ export default function OrderItem({ orderState, item, updateOrderStatus, handleS
           </button>
         </section>
       )}
-      {isOpen && <ReviewClientControl isOpen={isOpen} setIsOpen={setIsOpen} handleSubmit={handleSubmit} />}
+      {isOpen && <ReviewClientControl isOpen={isOpen} setIsOpen={setIsOpen} handleSubmit={handleSubmit} item={item} />}
     </div>
   );
 }

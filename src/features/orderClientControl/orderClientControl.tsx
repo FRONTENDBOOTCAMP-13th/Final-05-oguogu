@@ -4,6 +4,7 @@ import FilterButtonForMypage from '@/components/elements/InputButtonForMypage/In
 import IsEmptyMessage from '@/components/elements/IsEmptyMessage/IsEmptyMessage';
 import OrderItem from '@/components/elements/OrderItem/OrderItem';
 import { updateOrder } from '@/shared/data/actions/order';
+import { createReplie } from '@/shared/data/actions/replies';
 import { getOrders } from '@/shared/data/functions/order';
 import { useAuthStore } from '@/shared/store/authStore';
 import { OrderListResponse } from '@/shared/types/order';
@@ -22,6 +23,9 @@ export interface handleSubmitType {
   setIsOpen: (state: boolean) => void;
   setSelectedFileName: (str: string) => void;
   setIsLoading: (state: boolean) => void;
+  order_id: number;
+  product_id: number;
+  token: string;
 }
 
 export default function OrderClientControl() {
@@ -71,7 +75,7 @@ export default function OrderClientControl() {
     }
   };
 
-  const handleSubmit = ({
+  const handleSubmit = async ({
     title,
     content,
     rating,
@@ -83,16 +87,23 @@ export default function OrderClientControl() {
     setIsOpen,
     setSelectedFileName,
     setIsLoading,
+    order_id,
+    product_id,
+    token,
   }: handleSubmitType) => {
     if (!title || !content || rating === 0) {
       toast.error('제목, 내용, 별점을 모두 입력해주세요.');
       return;
     }
 
+    console.log(order_id, product_id);
+
     setIsLoading(true);
 
     // TODO: API 전송 처리
-    setTimeout(() => {
+    const res = await createReplie({ order_id, product_id, rating, content, extra: { title: title } }, token);
+
+    if (res.ok) {
       toast.success('리뷰가 등록되었습니다!');
       setTitle('');
       setContent('');
@@ -102,7 +113,18 @@ export default function OrderClientControl() {
       setIsLoading(false);
       setIsOpen(false); // 폼 닫기
       setSelectedFileName('');
-    }, 1000);
+    } else {
+      setTitle('');
+      setContent('');
+      setRating(0);
+      setImageFile(null);
+      setImagePreview(null);
+      setIsLoading(false);
+      setIsOpen(false); // 폼 닫기
+      setSelectedFileName('');
+      toast.error(res.message || '등록이 실패했습니다. 다시 시도해주세요');
+      console.error(res.message);
+    }
   };
 
   const orderList = orders?.item.map(item => (

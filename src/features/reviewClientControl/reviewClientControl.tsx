@@ -5,15 +5,18 @@ import { useAuthStore } from '@/shared/store/authStore';
 import { useRef, useState } from 'react';
 import Image from 'next/image';
 import { handleSubmitType } from '@/features/orderClientControl/orderClientControl';
+import { Order } from '@/shared/types/order';
 
 export interface ReviewClientControlType {
   isOpen: boolean;
   setIsOpen: (state: boolean) => void;
   handleSubmit: (params: handleSubmitType) => void;
+  item: Order;
 }
 
-export default function ReviewClientControl({ isOpen, setIsOpen, handleSubmit }: ReviewClientControlType) {
+export default function ReviewClientControl({ isOpen, setIsOpen, handleSubmit, item }: ReviewClientControlType) {
   const isLoggedIn = useAuthStore(state => state.isLoggedIn);
+  const token: string | null = useAuthStore(state => state.token);
 
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
@@ -50,8 +53,12 @@ export default function ReviewClientControl({ isOpen, setIsOpen, handleSubmit }:
       fileInputRef.current.value = '';
     }
   };
+  const order_id = item._id;
+  const product_id = item.products[0]._id;
 
   const clickHandleSubmit = () => {
+    if (!token) return;
+
     handleSubmit({
       title,
       content,
@@ -64,6 +71,9 @@ export default function ReviewClientControl({ isOpen, setIsOpen, handleSubmit }:
       setIsOpen,
       setSelectedFileName,
       setIsLoading,
+      order_id,
+      product_id,
+      token,
     });
   };
 
