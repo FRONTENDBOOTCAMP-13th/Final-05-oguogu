@@ -31,6 +31,7 @@ export interface OrderedProduct {
   image: MainImage;
   price: number;
   extra: OrderedProductExtra;
+  review_id: number;
 }
 
 export interface OrderedProductExtra {

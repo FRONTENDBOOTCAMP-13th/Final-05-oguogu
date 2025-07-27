@@ -3,10 +3,12 @@ import CuteLoading from '@/components/elements/CuteLoading/CuteLoading';
 import FilterButtonForMypage from '@/components/elements/InputButtonForMypage/InputButtonForMypage';
 import IsEmptyMessage from '@/components/elements/IsEmptyMessage/IsEmptyMessage';
 import OrderItem from '@/components/elements/OrderItem/OrderItem';
+import { uploadFile } from '@/shared/data/actions/file';
 import { updateOrder } from '@/shared/data/actions/order';
 import { createReplie } from '@/shared/data/actions/replies';
 import { getOrders } from '@/shared/data/functions/order';
 import { useAuthStore } from '@/shared/store/authStore';
+import { fileResponse } from '@/shared/types/file';
 import { OrderListResponse } from '@/shared/types/order';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
@@ -15,6 +17,7 @@ export interface handleSubmitType {
   title: string;
   content: string;
   rating: number;
+  imageFile: File;
   setTitle: (str: string) => void;
   setContent: (str: string) => void;
   setRating: (num: number) => void;
@@ -79,6 +82,7 @@ export default function OrderClientControl() {
     title,
     content,
     rating,
+    imageFile,
     setTitle,
     setContent,
     setRating,
@@ -96,12 +100,21 @@ export default function OrderClientControl() {
       return;
     }
 
-    console.log(order_id, product_id);
-
     setIsLoading(true);
 
+    const formData = new FormData();
+    formData.append('attach', imageFile);
+
     // TODO: API 전송 처리
-    const res = await createReplie({ order_id, product_id, rating, content, extra: { title: title } }, token);
+    const fileRes: fileResponse = await uploadFile(formData);
+    console.log(fileRes);
+    if (!fileRes.ok) {
+      console.error(fileRes.message);
+    }
+    const res = await createReplie(
+      { order_id, product_id, rating, content, extra: { title: title, imagePath: fileRes.item[0].path } },
+      token,
+    );
 
     if (res.ok) {
       toast.success('리뷰가 등록되었습니다!');

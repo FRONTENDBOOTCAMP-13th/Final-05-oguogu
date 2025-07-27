@@ -1,4 +1,3 @@
-import { getPosts } from '@/shared/data/functions/post';
 import QnaItem from '@/components/elements/QnaItem/QnaItem';
 import { QnaSortBar } from '@/components/layouts/SortBar/Sortbar';
 import QnaClientControls from '@/features/qnaClientControl/qnaClientControl';
@@ -10,6 +9,7 @@ import { getProduct } from '@/shared/data/functions/product';
 import { TextCategoryForDetailPage } from '@/components/layouts/Category/Category';
 import { getProductReplies } from '@/shared/data/functions/replies';
 import { ReviewRes } from '@/shared/types/review';
+import { getPosts } from '@/shared/data/functions/post';
 
 /**
  * 특정 상품의 Q&A 목록을 표시하는 서버 컴포넌트입니다.

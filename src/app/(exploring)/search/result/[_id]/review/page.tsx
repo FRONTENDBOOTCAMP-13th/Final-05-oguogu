@@ -56,7 +56,7 @@ export default async function ProductReview({ params }: ProductDetailPageProps) 
     <div className="min-h-screen bg-oguogu-white flex flex-col">
       <CategoryHeader title={productName} />
       <TextCategoryForDetailPage _id={Number(_id)} reviewCnt={reviewCnt} qnaCnt={qnaCnt} />
-      <ReviewSortbar reviewAvg={average} />
+      <ReviewSortbar reviewAvg={average.toFixed(1)} />
       <div className="px-4 flex flex-col gap-4 mb-6">{/* <ReviewClientControl /> */}</div>
 
       <section className="px-4 flex flex-col gap-8">

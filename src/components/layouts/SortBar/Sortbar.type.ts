@@ -3,5 +3,5 @@ export interface QnaSortBarType {
 }
 
 export interface ReviewSortbarType {
-  reviewAvg: number;
+  reviewAvg: string;
 }

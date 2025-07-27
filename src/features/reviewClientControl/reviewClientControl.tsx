@@ -1,11 +1,11 @@
 'use client';
 
-import Link from 'next/link';
 import { useAuthStore } from '@/shared/store/authStore';
 import { useRef, useState } from 'react';
 import Image from 'next/image';
 import { handleSubmitType } from '@/features/orderClientControl/orderClientControl';
 import { Order } from '@/shared/types/order';
+import toast from 'react-hot-toast';
 
 export interface ReviewClientControlType {
   isOpen: boolean;
@@ -15,7 +15,6 @@ export interface ReviewClientControlType {
 }
 
 export default function ReviewClientControl({ isOpen, setIsOpen, handleSubmit, item }: ReviewClientControlType) {
-  const isLoggedIn = useAuthStore(state => state.isLoggedIn);
   const token: string | null = useAuthStore(state => state.token);
 
   const [title, setTitle] = useState('');
@@ -27,8 +26,6 @@ export default function ReviewClientControl({ isOpen, setIsOpen, handleSubmit, i
   const [isLoading, setIsLoading] = useState(false);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [selectedFileName, setSelectedFileName] = useState<string>('');
-
-  console.log(imageFile);
 
   const handleRatingClick = (score: number) => {
     setRating(score);
@@ -44,6 +41,7 @@ export default function ReviewClientControl({ isOpen, setIsOpen, handleSubmit, i
       const previewUrl = URL.createObjectURL(file);
       setImagePreview(previewUrl);
       setSelectedFileName(file.name);
+      setImageFile(file);
     }
   };
 
@@ -59,10 +57,17 @@ export default function ReviewClientControl({ isOpen, setIsOpen, handleSubmit, i
   const clickHandleSubmit = () => {
     if (!token) return;
 
+    // 2) 이미지 선택 검증 (필수라면)
+    if (!imageFile) {
+      toast.error('이미지를 선택해주세요.');
+      return;
+    }
+
     handleSubmit({
       title,
       content,
       rating,
+      imageFile,
       setTitle,
       setContent,
       setRating,
@@ -77,28 +82,6 @@ export default function ReviewClientControl({ isOpen, setIsOpen, handleSubmit, i
     });
   };
 
-  /* const handleSubmit = () => {
-    if (!title || !content || rating === 0) {
-      toast.error('제목, 내용, 별점을 모두 입력해주세요.');
-      return;
-    }
-
-    setIsLoading(true);
-
-    // TODO: API 전송 처리
-    setTimeout(() => {
-      toast.success('리뷰가 등록되었습니다!');
-      setTitle('');
-      setContent('');
-      setRating(0);
-      setImageFile(null);
-      setImagePreview(null);
-      setIsLoading(false);
-      setIsOpen(false); // 폼 닫기
-      setSelectedFileName('');
-    }, 1000);
-  }; */
-
   const handleCancelModal = () => {
     setTitle('');
     setContent('');
@@ -110,23 +93,7 @@ export default function ReviewClientControl({ isOpen, setIsOpen, handleSubmit, i
   };
 
   return (
-    <div className="px-4 flex flex-col gap-4 mb-6">
-      {isLoggedIn ? (
-        <button
-          onClick={() => setIsOpen(true)}
-          className="border-1 py-1.5 border-oguogu-main-dark rounded-md flex items-center text-center justify-center"
-        >
-          리뷰 작성하기
-        </button>
-      ) : (
-        <Link
-          href="/login"
-          className="border-1 py-1.5 border-oguogu-main-dark rounded-md flex items-center text-center justify-center cursor-pointer"
-        >
-          <p className="text-oguogu-main pr-1">로그인</p> 후 리뷰 작성하기
-        </Link>
-      )}
-
+    <div className=" flex flex-col gap-4 mb-6">
       {isOpen && (
         <div className="p-4 border-1 border-oguogu-main-dark rounded-[8px] shadow-xl flex flex-col gap-4">
           <h2 className="text-[14px]">리뷰 작성</h2>
