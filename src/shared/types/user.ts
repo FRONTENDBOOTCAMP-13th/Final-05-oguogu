@@ -55,6 +55,12 @@ export interface UserSeller {
       reviewer?: string; // 검토자 이메일 또는 ID
       reason?: string; // 검토 사유 또는 비고
     };
+    businessInfo: {
+      businessNumber: string;
+      businessTel: string;
+      companyName: string;
+      ownerName: string;
+    };
   };
 }
 
