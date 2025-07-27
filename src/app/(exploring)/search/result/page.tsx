@@ -1,19 +1,18 @@
 import SearchHeader from '@/components/layouts/Header/SearchHeader';
 import ProductListFilteredKeyword from '@/features/productListFilteredKeyword/productListFilteredKeyword';
+import { getProducts } from '@/shared/data/functions/product';
+import { Item } from '@/shared/types/product';
 
-export default function SearchResult() {
+export default async function SearchResult() {
+  const res: Item = await getProducts();
+
   return (
     <>
       {/* 헤더 */}
       <SearchHeader />
 
-      {/* 정렬바 */}
-      {/* <ProductSortbar cnt={filtered.length} /> */}
-
-      {/* 상품 목록 */}
-      <main className="itemGrid grid-cols-[repeat(auto-fit,minmax(140px,1fr))]">
-        <ProductListFilteredKeyword />
-      </main>
+      {/* 정렬 기능 및 상품 목록 */}
+      <ProductListFilteredKeyword data={res} />
     </>
   );
 }
