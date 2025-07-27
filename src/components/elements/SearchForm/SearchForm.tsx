@@ -7,6 +7,7 @@ import { RelatedKeyword } from '@/components/elements/RelatedKeywordItem/Related
 import getConsonants from '@/utils/getConsonants/getConsonants';
 import { getProducts } from '@/shared/data/functions/product';
 import { Item } from '@/shared/types/product';
+import { useSearchKeywordStore } from '@/shared/store/keywordStore';
 
 export default function SearchForm() {
   const router = useRouter();
@@ -15,6 +16,9 @@ export default function SearchForm() {
   const [showDropdown, setShowDropdown] = useState(false);
   const wrapperRef = useRef<HTMLFormElement>(null);
   const [allKeywords, setAllKeywords] = useState<RelatedKeyword[]>([]);
+
+  /* Zustand 를 사용하여 검색 키워드를 상태로 저장  */
+  const saveKeyword = useSearchKeywordStore(state => state.saveKeyword);
 
   // 전체 키워드 초기 로딩
   useEffect(() => {
@@ -51,6 +55,7 @@ export default function SearchForm() {
     e.preventDefault();
     if (!input.trim()) return;
 
+    saveKeyword(input.trim());
     router.push(`/search/result?keyword=${encodeURIComponent(input.trim())}`);
     setShowDropdown(false);
   };
