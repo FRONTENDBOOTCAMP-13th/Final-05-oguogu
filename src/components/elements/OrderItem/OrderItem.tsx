@@ -1,4 +1,5 @@
 import { OrderItemType } from '@/components/elements/OrderItem/OrderItem.type';
+import toast from 'react-hot-toast';
 
 export default function OrderItem({ orderState, item, updateOrderStatus }: OrderItemType) {
   let refundState = false;
@@ -33,6 +34,9 @@ export default function OrderItem({ orderState, item, updateOrderStatus }: Order
   const requestRefund = () => updateOrderStatus(item._id, 'refundInProgress');
   const confirmPurchase = () => updateOrderStatus(item._id, 'purchaseCompleted');
   const cancelRefundRequest = () => updateOrderStatus(item._id, 'preparingShipment');
+  const handleWriteReview = () => {
+    toast.success('후기 쓰기 완료');
+  };
 
   return (
     <div className="flex flex-col gap-4 justify-between w-[288px]">
@@ -95,6 +99,17 @@ export default function OrderItem({ orderState, item, updateOrderStatus }: Order
             </button>
           </section>
         ))}
+
+      {orderState === 'purchaseCompleted' && (
+        <section>
+          <button
+            onClick={handleWriteReview}
+            className="text-[12px] w-full py-2 leading-none border border-oguogu-main rounded-[4px]"
+          >
+            구매 후기 작성하기
+          </button>
+        </section>
+      )}
     </div>
   );
 }
