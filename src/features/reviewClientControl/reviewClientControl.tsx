@@ -3,13 +3,18 @@
 import Link from 'next/link';
 import { useAuthStore } from '@/shared/store/authStore';
 import { useRef, useState } from 'react';
-import toast from 'react-hot-toast';
 import Image from 'next/image';
+import { handleSubmitType } from '@/features/orderClientControl/orderClientControl';
 
-export default function ReviewClientControl() {
+export interface ReviewClientControlType {
+  isOpen: boolean;
+  setIsOpen: (state: boolean) => void;
+  handleSubmit: (params: handleSubmitType) => void;
+}
+
+export default function ReviewClientControl({ isOpen, setIsOpen, handleSubmit }: ReviewClientControlType) {
   const isLoggedIn = useAuthStore(state => state.isLoggedIn);
 
-  const [isOpen, setIsOpen] = useState(false);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [rating, setRating] = useState(0);
@@ -46,7 +51,23 @@ export default function ReviewClientControl() {
     }
   };
 
-  const handleSubmit = () => {
+  const clickHandleSubmit = () => {
+    handleSubmit({
+      title,
+      content,
+      rating,
+      setTitle,
+      setContent,
+      setRating,
+      setImageFile,
+      setImagePreview,
+      setIsOpen,
+      setSelectedFileName,
+      setIsLoading,
+    });
+  };
+
+  /* const handleSubmit = () => {
     if (!title || !content || rating === 0) {
       toast.error('제목, 내용, 별점을 모두 입력해주세요.');
       return;
@@ -66,7 +87,7 @@ export default function ReviewClientControl() {
       setIsOpen(false); // 폼 닫기
       setSelectedFileName('');
     }, 1000);
-  };
+  }; */
 
   const handleCancelModal = () => {
     setTitle('');
@@ -184,7 +205,7 @@ export default function ReviewClientControl() {
               취소
             </button>
             <button
-              onClick={handleSubmit}
+              onClick={clickHandleSubmit}
               disabled={isLoading}
               className=" rounded border border-oguogu-main-dark px-3 py-2 leading-3 w-[138px] "
             >

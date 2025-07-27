@@ -8,6 +8,21 @@ import { getOrders } from '@/shared/data/functions/order';
 import { useAuthStore } from '@/shared/store/authStore';
 import { OrderListResponse } from '@/shared/types/order';
 import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
+
+export interface handleSubmitType {
+  title: string;
+  content: string;
+  rating: number;
+  setTitle: (str: string) => void;
+  setContent: (str: string) => void;
+  setRating: (num: number) => void;
+  setImageFile: (file: File | null) => void;
+  setImagePreview: (str: string | null) => void;
+  setIsOpen: (state: boolean) => void;
+  setSelectedFileName: (str: string) => void;
+  setIsLoading: (state: boolean) => void;
+}
 
 export default function OrderClientControl() {
   const [orders, setOrders] = useState<OrderListResponse>();
@@ -56,9 +71,50 @@ export default function OrderClientControl() {
     }
   };
 
+  const handleSubmit = ({
+    title,
+    content,
+    rating,
+    setTitle,
+    setContent,
+    setRating,
+    setImageFile,
+    setImagePreview,
+    setIsOpen,
+    setSelectedFileName,
+    setIsLoading,
+  }: handleSubmitType) => {
+    if (!title || !content || rating === 0) {
+      toast.error('제목, 내용, 별점을 모두 입력해주세요.');
+      return;
+    }
+
+    setIsLoading(true);
+
+    // TODO: API 전송 처리
+    setTimeout(() => {
+      toast.success('리뷰가 등록되었습니다!');
+      setTitle('');
+      setContent('');
+      setRating(0);
+      setImageFile(null);
+      setImagePreview(null);
+      setIsLoading(false);
+      setIsOpen(false); // 폼 닫기
+      setSelectedFileName('');
+    }, 1000);
+  };
+
   const orderList = orders?.item.map(item => (
-    <OrderItem key={item._id} orderState={item.state} item={item} updateOrderStatus={updateOrderStatus} />
+    <OrderItem
+      key={item._id}
+      orderState={item.state}
+      item={item}
+      updateOrderStatus={updateOrderStatus}
+      handleSubmit={handleSubmit}
+    />
   ));
+
   return (
     <>
       <main className="px-4 py-4 flex flex-col gap-2 min-h-[calc(100vh-48px)]">
