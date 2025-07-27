@@ -6,6 +6,7 @@ import RelatedKeywordItem from '@/components/elements/RelatedKeywordItem/Related
 import { RelatedKeyword } from '@/components/elements/RelatedKeywordItem/RelatedKeywordItem.type';
 import getConsonants from '@/utils/getConsonants/getConsonants';
 import { getProducts } from '@/shared/data/functions/product';
+import { Item } from '@/shared/types/product';
 
 export default function SearchForm() {
   const router = useRouter();
@@ -15,18 +16,18 @@ export default function SearchForm() {
   const wrapperRef = useRef<HTMLFormElement>(null);
   const [allKeywords, setAllKeywords] = useState<RelatedKeyword[]>([]);
 
-  
   // 전체 키워드 초기 로딩
   useEffect(() => {
     async function fetchAllKeywords() {
       const res = await getProducts();
-      console.log(res);
-      const keywords = res.item.map(item => ({
+      const keywords = res.item.map((item: Item) => ({
+        _id: item._id,
         name: item.name,
         type: item.extra?.productType || 'general',
       }));
       setAllKeywords(keywords);
     }
+
     fetchAllKeywords();
   }, []);
 
@@ -39,19 +40,17 @@ export default function SearchForm() {
     }
 
     const chosung = getConsonants(input.trim());
-    const matched = allKeywords.filter(k =>
-      getConsonants(k.name).includes(chosung)
-    );
+    const matched = allKeywords.filter(k => getConsonants(k.name).includes(chosung)).slice(0, 10);
+
     setFiltered(matched);
     setShowDropdown(true);
   }, [input]);
-
-
 
   // 제출 처리
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim()) return;
+
     router.push(`/search/result?keyword=${encodeURIComponent(input.trim())}`);
     setShowDropdown(false);
   };
@@ -92,7 +91,8 @@ export default function SearchForm() {
             keywords={filtered}
             onKeywordClick={keyword => {
               setInput(keyword.name);
-              router.push(`/search/result?keyword=${encodeURIComponent(keyword.name)}`);
+              console.log(keyword);
+              router.push(`/search/result/${keyword._id}/detail`);
               setShowDropdown(false);
             }}
           />
