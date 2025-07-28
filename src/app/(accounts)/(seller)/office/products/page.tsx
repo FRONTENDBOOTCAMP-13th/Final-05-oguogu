@@ -1,3 +1,5 @@
+import LinkHeader from '@/components/layouts/Header/LinkHeader';
+
 export default function ProductsForSeller() {
-  return <h1>판매자 상품 관리 페이지</h1>;
+  return <LinkHeader title="상품 관리" />;
 }

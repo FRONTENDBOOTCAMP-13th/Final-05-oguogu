@@ -1,9 +1,10 @@
 import OrderItemForSeller from '@/components/elements/OrderItem/OrderItemForSeller';
+import LinkHeader from '@/components/layouts/Header/LinkHeader';
 
 export default function OrdersForSeller() {
   return (
     <>
-      <h1>판매자 주문내역 페이지</h1>
+      <LinkHeader title="주문내역" />
       <OrderItemForSeller orderState="OS020" />
       <OrderItemForSeller orderState="preparingShipment" />
       <OrderItemForSeller orderState="inTransit" />
