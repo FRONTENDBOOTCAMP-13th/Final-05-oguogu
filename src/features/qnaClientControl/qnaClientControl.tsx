@@ -5,6 +5,7 @@ import { useAuthStore } from '@/shared/store/authStore';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { createPost } from '@/shared/data/actions/post';
+import { useRouter } from 'next/navigation';
 
 /**
  * QnA 페이지에서 로그인 여부에 따라
@@ -22,6 +23,8 @@ export default function QnaClientControls({ _id }: { _id: string }) {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+
+  const router = useRouter();
 
   const openModal = () => {
     setIsOpen(true);
@@ -50,6 +53,7 @@ export default function QnaClientControls({ _id }: { _id: string }) {
     if (res.ok) {
       toast.success('게시글이 등록되었습니다.');
       closeModal();
+      router.refresh();
     } else {
       toast.error(res.message || '등록에 실패했습니다.');
     }
