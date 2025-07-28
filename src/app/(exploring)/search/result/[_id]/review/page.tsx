@@ -4,6 +4,7 @@ import CategoryHeader from '@/components/layouts/Header/CategoryHeader';
 import { ReviewSortbar } from '@/components/layouts/SortBar/Sortbar';
 // import ReviewClientControl from '@/features/reviewClientControl/reviewClientControl';
 import { ProductDetailPageProps } from '@/features/types/productDetail';
+
 import { getPosts } from '@/shared/data/functions/post';
 import { getProduct } from '@/shared/data/functions/product';
 import { getProductReplies } from '@/shared/data/functions/replies';
@@ -30,10 +31,14 @@ export default async function ProductReview({ params }: ProductDetailPageProps) 
   const { _id } = await params;
   const res: ReviewRes = await getProductReplies(Number(_id));
 
+  console.log(res);
   // 리뷰 리스트
   const ReviewList = res?.item.map(review => (
     <ReviewItem key={review._id} name={review.user.name} email="abcd@gamil.com" res={review} />
   ));
+
+  /*  // 이미지 바이너리 소스 요청하기
+  const imageResponse = getfileName(); */
 
   // 리뷰 평점 계산
   const ratings = res.item.map(item => item.rating); // 평점만 추출 → [5, 4, 3, ...]

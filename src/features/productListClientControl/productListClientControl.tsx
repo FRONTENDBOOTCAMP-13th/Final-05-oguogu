@@ -67,9 +67,29 @@ export default function ProductListClientControl({ productList, type }: productL
 
         if (data.ok) {
           const map = new Map<number, number>();
-          Object.values(data).forEach(entry => {
-            if (typeof entry === 'object') {
-              map.set(entry.product._id, entry._id);
+
+          // 더 안전한 방식으로 데이터 처리
+          Object.entries(data).forEach(([key, value]) => {
+            // 'ok' 키는 제외하고 처리
+            if (key === 'ok') return;
+
+            // value가 올바른 구조인지 체크
+            if (
+              value &&
+              typeof value === 'object' &&
+              'product' in value &&
+              '_id' in value &&
+              value.product &&
+              typeof value.product === 'object' &&
+              '_id' in value.product
+            ) {
+              const productId = value.product._id;
+              const bookmarkId = value._id;
+
+              // 숫자 타입인지 확인
+              if (typeof productId === 'number' && typeof bookmarkId === 'number') {
+                map.set(productId, bookmarkId);
+              }
             }
           });
 
@@ -78,7 +98,7 @@ export default function ProductListClientControl({ productList, type }: productL
       } catch (e) {
         console.error('북마크 가져오기 실패:', e);
       } finally {
-        setIsLoading(false); // ✅ 여기!
+        setIsLoading(false);
       }
     };
 

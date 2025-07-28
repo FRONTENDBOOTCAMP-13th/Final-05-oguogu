@@ -17,7 +17,7 @@ export interface handleSubmitType {
   title: string;
   content: string;
   rating: number;
-  imageFile: File;
+  imageFile: File | null;
   setTitle: (str: string) => void;
   setContent: (str: string) => void;
   setRating: (num: number) => void;
@@ -102,17 +102,36 @@ export default function OrderClientControl() {
 
     setIsLoading(true);
 
-    const formData = new FormData();
-    formData.append('attach', imageFile);
+    let fileRes: fileResponse | null = null;
 
-    // TODO: API 전송 처리
-    const fileRes: fileResponse = await uploadFile(formData);
-    console.log(fileRes);
-    if (!fileRes.ok) {
-      console.error(fileRes.message);
+    // 이미지가 있을 때만 파일 업로드 처리
+    if (imageFile) {
+      const formData = new FormData();
+      formData.append('attach', imageFile);
+
+      fileRes = await uploadFile(formData);
+      console.log(fileRes);
+
+      if (!fileRes?.ok) {
+        console.error(fileRes?.message);
+        toast.error('이미지 업로드에 실패했습니다.');
+        setIsLoading(false);
+        return;
+      }
     }
+
+    // 리뷰 생성 - 이미지 경로는 조건부로 설정
     const res = await createReplie(
-      { order_id, product_id, rating, content, extra: { title: title, imagePath: fileRes.item[0].path } },
+      {
+        order_id,
+        product_id,
+        rating,
+        content,
+        extra: {
+          name: title,
+          imagePath: fileRes?.item[0]?.path || null, // 이미지가 없으면 null
+        },
+      },
       token,
     );
 
