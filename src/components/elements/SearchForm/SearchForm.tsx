@@ -48,7 +48,7 @@ export default function SearchForm() {
 
     setFiltered(matched);
     setShowDropdown(true);
-  }, [input]);
+  }, [input, allKeywords]);
 
   // 제출 처리
   const handleSubmit = (e: React.FormEvent) => {
@@ -82,7 +82,7 @@ export default function SearchForm() {
       <input
         type="text"
         id="searchKeyword"
-        value={input}
+        defaultValue={keyword ?? input}
         onChange={e => setInput(e.target.value)}
         onFocus={() => input && setShowDropdown(true)}
         placeholder="7월은 초당옥수수가 제철!"
