@@ -10,15 +10,19 @@ import { Item } from '@/shared/types/product';
 
 export default function SearchForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const keywordFromURL = searchParams.get('keyword');
+
   const [input, setInput] = useState('');
   const [filtered, setFiltered] = useState<RelatedKeyword[]>([]);
   const [showDropdown, setShowDropdown] = useState(false);
-  const wrapperRef = useRef<HTMLFormElement>(null);
   const [allKeywords, setAllKeywords] = useState<RelatedKeyword[]>([]);
+  const wrapperRef = useRef<HTMLFormElement>(null);
 
-  /* input 의 defaultValue 를 설정하기 위해 URL 쿼리스트링에서 키워드 값을 추출 */
-  const keywordParam = useSearchParams();
-  const keyword = keywordParam.get('keyword');
+  // URL에서 쿼리(keyword)로 넘어온 값이 있을 경우 input 초기값으로 설정
+  useEffect(() => {
+    if (keywordFromURL) setInput(keywordFromURL);
+  }, [keywordFromURL]);
 
   // 전체 키워드 초기 로딩
   useEffect(() => {
@@ -43,19 +47,32 @@ export default function SearchForm() {
       return;
     }
 
-    const chosung = getConsonants(input.trim());
-    const matched = allKeywords.filter(k => getConsonants(k.name).includes(chosung)).slice(0, 10);
+    const keywordInput = input.trim();
+    const inputChosung = getConsonants(input.trim());
+
+    const matched = allKeywords
+      .filter(k => {
+        const name = k.name;
+        const nameChosung = getConsonants(name);
+
+        return (
+          // 일반 문자열로 앞에서부터 일치
+          name.startsWith(keywordInput) ||
+          // 초성 기준으로 앞에서부터 일치
+          nameChosung.startsWith(inputChosung)
+        );
+      })
+      .slice(0, 10);
 
     setFiltered(matched);
     setShowDropdown(true);
-  }, [input]);
+  }, [input, allKeywords]);
 
-  // 제출 처리
+  // 제출 처리 (검색 결과 페이지로 이동)
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim()) return;
 
-    /* 해당 키워드를 쿼리스트링으로 사용, 검색 결과 페이지로 이동 */
     router.push(`/search/result?keyword=${encodeURIComponent(input.trim())}`);
     setShowDropdown(false);
   };
@@ -78,6 +95,7 @@ export default function SearchForm() {
       <label htmlFor="searchKeyword" className="sr-only">
         검색
       </label>
+
       {/* 검색어 입력창 */}
       <input
         type="text"
@@ -104,7 +122,7 @@ export default function SearchForm() {
         </div>
       )}
       {/* 검색 버튼 */}
-      <button type="submit" className="mx-1" onClick={handleSubmit}>
+      <button type="submit" className="mx-1">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path
             d="M21 21L16.66 16.66M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z"
