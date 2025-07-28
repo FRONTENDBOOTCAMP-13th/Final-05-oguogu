@@ -64,6 +64,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
   if (!res) {
     return <div>상품 정보를 불러오는 중입니다...</div>;
+    // notFound();
   }
 
   // QnA 데이터 요청

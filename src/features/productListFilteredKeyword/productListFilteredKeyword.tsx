@@ -60,7 +60,8 @@ export default function ProductListFilteredKeyword({ data }: { data: productsRes
         </div>
       </div>
 
-      {searchDataFromKeyword ?? (
+      {/* 검색 결과 없을 때 메시지 */}
+      {searchDataFromKeyword.length === 0 && (
         <main className="min-h-[calc(100vh-48px)]">
           <p className="text-center text-gray-500">검색 결과가 없습니다.</p>
         </main>
