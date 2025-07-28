@@ -17,7 +17,7 @@ export default function LoginForm() {
   const [autoLogin, setAutoLogin] = useState(false);
   const router = useRouter();
 
-  const { setToken, setUserInfo, userInfo } = useAuthStore();
+  const { setToken, setUserInfo } = useAuthStore();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -44,6 +44,7 @@ export default function LoginForm() {
         useAuthStore.getState().setStorageType(autoLogin);
 
         // 로그인 성공 후 페이지를 강제로 새로고침하여 InitAuthStore의 useEffect가 다시 실행되도록
+        // INFO type 이 seller 인 경우, 홈으로 이동하지 않고 백오피스로 이동하도록 수정
         if (userInfo.type === 'seller') {
           router.push('/office');
         } else {
