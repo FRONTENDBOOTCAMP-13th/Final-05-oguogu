@@ -1,15 +1,18 @@
 'use client';
 
+import CuteLoading from '@/components/elements/CuteLoading/CuteLoading';
 import CropItem from '@/components/elements/ProductItem/Item/CropItem';
 import ExperienceItem from '@/components/elements/ProductItem/Item/ExperienceItem';
 import GardenItem from '@/components/elements/ProductItem/Item/GardenItem';
 import { ProductSort } from '@/components/elements/ProductItem/Sort/Sort';
+import { getProducts } from '@/shared/data/functions/product';
 import { Item, productsRes } from '@/shared/types/product';
 import { useSearchParams } from 'next/navigation';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-export default function ProductListFilteredKeyword({ data }: { data: productsRes }) {
-  const searchData = data;
+export default function ProductListFilteredKeyword() {
+  const [data, setData] = useState<productsRes | null>(null);
+
   /* 필터링 기능 구현을 위한 별도 상태 관리 */
   const [selectedType, setSelectedType] = useState('crop');
 
@@ -17,8 +20,20 @@ export default function ProductListFilteredKeyword({ data }: { data: productsRes
   const keywordParam = useSearchParams();
   const keyword = keywordParam.get('keyword');
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await getProducts();
+      setData(res);
+    };
+    fetchData();
+  }, []);
+
+  if (data == null) {
+    return <CuteLoading />;
+  }
+
   /* 전체 DB 에서 해당 키워드가 상품명에 포함된 DB 를 필터링 */
-  const searchDataFromKeyword = searchData.item.filter((item: Item) => item.name.includes(keyword ?? ''));
+  const searchDataFromKeyword = data.item.filter((item: Item) => item.name.includes(keyword ?? ''));
 
   /* 타입별 데이터 추출 */
   const cropDataFromKeyword = searchDataFromKeyword.filter((item: Item) => item.extra?.productType === 'crop');
@@ -60,62 +75,74 @@ export default function ProductListFilteredKeyword({ data }: { data: productsRes
         </div>
       </div>
 
-      {searchDataFromKeyword ?? (
-        <main className="min-h-[calc(100vh-48px)]">
-          <p className="text-center text-gray-500">검색 결과가 없습니다.</p>
-        </main>
-      )}
-
       {selectedType === 'crop' ? (
-        <main className="itemGrid grid-cols-[repeat(auto-fit,minmax(140px,1fr))] min-h-[calc(100vh-96px)]">
-          {cropDataFromKeyword.map((item: Item) => (
-            <CropItem
-              key={item._id}
-              _id={item._id}
-              name={item.name}
-              price={item.price}
-              rating={item.rating}
-              replies={item.replies}
-              bookmarks={item.bookmarks}
-              extra={item.extra}
-              seller={item.seller}
-            />
-          ))}
-        </main>
+        cropDataFromKeyword.length > 0 ? (
+          <main className="itemGrid grid-cols-[repeat(auto-fit,minmax(140px,1fr))] min-h-[calc(100vh-96px)]">
+            {cropDataFromKeyword.map((item: Item) => (
+              <CropItem
+                key={item._id}
+                _id={item._id}
+                name={item.name}
+                price={item.price}
+                rating={item.rating}
+                replies={item.replies}
+                bookmarks={item.bookmarks}
+                extra={item.extra}
+                seller={item.seller}
+              />
+            ))}
+          </main>
+        ) : (
+          <main className="pt-12 min-h-[calc(100vh-96px)]">
+            <p className="text-center text-gray-500 text-xl">검색 결과가 없습니다.</p>
+          </main>
+        )
       ) : selectedType === 'experience' ? (
-        <main className="itemGrid grid-cols-[repeat(auto-fit,minmax(288px,1fr))] min-h-[calc(100vh-96px)]">
-          {experienceDataFromKeyword.map((item: Item) => (
-            <ExperienceItem
-              key={item._id}
-              _id={item._id}
-              name={item.name}
-              price={item.price}
-              rating={item.rating}
-              replies={item.replies}
-              bookmarks={item.bookmarks}
-              extra={item.extra}
-              seller={item.seller}
-            />
-          ))}
-        </main>
+        experienceDataFromKeyword.length > 0 ? (
+          <main className="itemGrid grid-cols-[repeat(auto-fit,minmax(288px,1fr))] min-h-[calc(100vh-96px)]">
+            {experienceDataFromKeyword.map((item: Item) => (
+              <ExperienceItem
+                key={item._id}
+                _id={item._id}
+                name={item.name}
+                price={item.price}
+                rating={item.rating}
+                replies={item.replies}
+                bookmarks={item.bookmarks}
+                extra={item.extra}
+                seller={item.seller}
+              />
+            ))}
+          </main>
+        ) : (
+          <main className="pt-12 min-h-[calc(100vh-96px)]">
+            <p className="text-center text-gray-500 text-xl">검색 결과가 없습니다.</p>
+          </main>
+        )
       ) : selectedType === 'gardening' ? (
-        <main className="itemGrid grid-cols-[repeat(auto-fit,minmax(140px,1fr))] min-h-[calc(100vh-96px)]">
-          {gardeningDataFromKeyword.map((item: Item) => (
-            <GardenItem
-              key={item._id}
-              _id={item._id}
-              name={item.name}
-              price={item.price}
-              rating={item.rating}
-              replies={item.replies}
-              bookmarks={item.bookmarks}
-              quantity={item.quantity}
-              buyQuantity={item.buyQuantity}
-              extra={item.extra}
-              seller={item.seller}
-            />
-          ))}
-        </main>
+        gardeningDataFromKeyword.length > 0 ? (
+          <main className="itemGrid grid-cols-[repeat(auto-fit,minmax(140px,1fr))] min-h-[calc(100vh-96px)]">
+            {gardeningDataFromKeyword.map((item: Item) => (
+              <GardenItem
+                key={item._id}
+                _id={item._id}
+                name={item.name}
+                price={item.price}
+                rating={item.rating}
+                replies={item.replies}
+                bookmarks={item.bookmarks}
+                quantity={item.quantity}
+                buyQuantity={item.buyQuantity}
+                extra={item.extra}
+                seller={item.seller}
+              />
+            ))}
+          </main>
+        ) : (
+          <main className="pt-12 min-h-[calc(100vh-96px)]">
+            <p className="text-center text-gray-500 text-xl">검색 결과가 없습니다.</p>
+          </main>
+        )
       ) : (
         ''
       )}
