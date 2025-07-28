@@ -2,7 +2,7 @@ import ReviewItem from '@/components/elements/ReviewItem/ReviewItem';
 import { TextCategoryForDetailPage } from '@/components/layouts/Category/Category';
 import CategoryHeader from '@/components/layouts/Header/CategoryHeader';
 import { ReviewSortbar } from '@/components/layouts/SortBar/Sortbar';
-import ReviewClientControl from '@/features/reviewClientControl/reviewClientControl';
+// import ReviewClientControl from '@/features/reviewClientControl/reviewClientControl';
 import { ProductDetailPageProps } from '@/features/types/productDetail';
 import { getPosts } from '@/shared/data/functions/post';
 import { getProduct } from '@/shared/data/functions/product';
@@ -56,10 +56,8 @@ export default async function ProductReview({ params }: ProductDetailPageProps) 
     <div className="min-h-screen bg-oguogu-white flex flex-col">
       <CategoryHeader title={productName} />
       <TextCategoryForDetailPage _id={Number(_id)} reviewCnt={reviewCnt} qnaCnt={qnaCnt} />
-      <ReviewSortbar reviewAvg={average} />
-      <div className="px-4 flex flex-col gap-4 mb-6">
-        <ReviewClientControl />
-      </div>
+      <ReviewSortbar reviewAvg={average.toFixed(1)} />
+      <div className="px-4 flex flex-col gap-4 mb-6">{/* <ReviewClientControl /> */}</div>
 
       <section className="px-4 flex flex-col gap-8">
         {ReviewList.length ? (

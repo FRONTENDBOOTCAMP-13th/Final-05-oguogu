@@ -1,8 +1,17 @@
 import { OrderItemType } from '@/components/elements/OrderItem/OrderItem.type';
+import ReviewClientControl from '@/features/reviewClientControl/reviewClientControl';
+import Link from 'next/link';
+import { useState } from 'react';
 
-export default function OrderItem({ orderState, item, updateOrderStatus }: OrderItemType) {
+export default function OrderItem({ orderState, item, updateOrderStatus, handleSubmit }: OrderItemType) {
   let refundState = false;
   let infoText = '결제완료';
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const reviewState = item.products[0].review_id;
+
+  console.log(item);
 
   switch (orderState) {
     case 'OS020':
@@ -95,6 +104,25 @@ export default function OrderItem({ orderState, item, updateOrderStatus }: Order
             </button>
           </section>
         ))}
+
+      {orderState === 'purchaseCompleted' &&
+        (reviewState ? (
+          <Link href={`/search/result/${item.products[0]._id}/review`}>
+            <button className="text-[12px] w-full py-2 leading-none border border-oguogu-main rounded-[4px]">
+              작성한 후기 보러가기
+            </button>
+          </Link>
+        ) : (
+          <section>
+            <button
+              onClick={() => setIsOpen(true)}
+              className="text-[12px] w-full py-2 leading-none border border-oguogu-main rounded-[4px]"
+            >
+              구매 후기 작성하기
+            </button>
+          </section>
+        ))}
+      {isOpen && <ReviewClientControl isOpen={isOpen} setIsOpen={setIsOpen} handleSubmit={handleSubmit} item={item} />}
     </div>
   );
 }

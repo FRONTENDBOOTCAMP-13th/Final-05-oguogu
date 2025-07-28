@@ -1,4 +1,3 @@
-import { getPosts } from '@/shared/data/functions/post';
 import QnaItem from '@/components/elements/QnaItem/QnaItem';
 import { QnaSortBar } from '@/components/layouts/SortBar/Sortbar';
 import QnaClientControls from '@/features/qnaClientControl/qnaClientControl';
@@ -10,6 +9,7 @@ import { getProduct } from '@/shared/data/functions/product';
 import { TextCategoryForDetailPage } from '@/components/layouts/Category/Category';
 import { getProductReplies } from '@/shared/data/functions/replies';
 import { ReviewRes } from '@/shared/types/review';
+import { getPosts } from '@/shared/data/functions/post';
 
 /**
  * 특정 상품의 Q&A 목록을 표시하는 서버 컴포넌트입니다.
@@ -41,16 +41,20 @@ export default async function ProductQna({ params }: ProductDetailPageProps) {
   // 리뷰 개수
   const reviewCnt = reviewRes.item.length;
 
+  console.log(res);
+
   const qnaList = res?.item
     .filter(item => item.product_id === Number(_id))
-    .map(item => <QnaItem key={item._id} state={true} isPrivate={false} viewerRole="other" res={item} />);
+    .map(item => (
+      <QnaItem key={item._id} state={item.repliesCount !== 0} isPrivate={false} viewerRole="other" res={item} />
+    ));
 
   return (
     <div className="flex flex-col min-h-screen bg-oguogu-white">
       <CategoryHeader title={productName} />
       <TextCategoryForDetailPage _id={Number(_id)} reviewCnt={reviewCnt} qnaCnt={qnaCnt} />
       <QnaSortBar qnaCnt={qnaList.length} />
-      <QnaClientControls />
+      <QnaClientControls _id={_id} />
       <section>
         {qnaList.length ? (
           qnaList
