@@ -129,7 +129,7 @@ export default function SearchForm() {
       <input
         type="text"
         id="searchKeyword"
-        defaultValue={keyword ?? input}
+        value={input}
         onChange={e => setInput(e.target.value)}
         onFocus={() => {
           setIsFocused(true);
