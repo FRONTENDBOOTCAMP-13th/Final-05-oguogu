@@ -51,7 +51,7 @@ export default function ProductListFilteredKeyword() {
 
   return (
     <>
-      {/* 정렬바 */}
+      {/* INFO 정렬바 : 기존 SortBar 구조가 PropDrilling 때문에 복잡성이 높아져서, 별도 하드코딩된 SortBar 코드를 삽입했습니다! */}
       <div className="flex justify-between items-center h-[48px] p-4">
         <span>
           총&nbsp;
@@ -75,6 +75,7 @@ export default function ProductListFilteredKeyword() {
         </div>
       </div>
 
+      {/* DB 렌더링 */}
       {selectedType === 'crop' ? (
         cropDataFromKeyword.length > 0 ? (
           <main className="itemGrid grid-cols-[repeat(auto-fit,minmax(140px,1fr))] min-h-[calc(100vh-96px)]">
