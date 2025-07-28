@@ -17,7 +17,7 @@ export async function createReplie(
     product_id: number;
     rating?: number;
     content: string;
-    extra?: { name: string; imagePath?: string };
+    extra?: { name: string; imagePath?: string | null };
   },
   token: string,
 ) {

@@ -5,7 +5,6 @@ import { useRef, useState } from 'react';
 import Image from 'next/image';
 import { handleSubmitType } from '@/features/orderClientControl/orderClientControl';
 import { Order } from '@/shared/types/order';
-import toast from 'react-hot-toast';
 
 export interface ReviewClientControlType {
   isOpen: boolean;
@@ -57,12 +56,12 @@ export default function ReviewClientControl({ isOpen, setIsOpen, handleSubmit, i
   const clickHandleSubmit = () => {
     if (!token) return;
 
-    // 2) 이미지 선택 검증 (필수라면)
+    /* // 2) 이미지 선택 검증)
     if (!imageFile) {
       toast.error('이미지를 선택해주세요.');
       return;
     }
-
+ */
     handleSubmit({
       title,
       content,
