@@ -15,28 +15,30 @@ export default function SearchForm() {
 
   const [input, setInput] = useState('');
   const [filtered, setFiltered] = useState<RelatedKeyword[]>([]);
-  const [showDropdown, setShowDropdown] = useState(false);
   const [allKeywords, setAllKeywords] = useState<RelatedKeyword[]>([]);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+  const [highlightedIndex, setHighlightedIndex] = useState(-1);
   const wrapperRef = useRef<HTMLFormElement>(null);
 
-  // URL에서 쿼리(keyword)로 넘어온 값이 있을 경우 input 초기값으로 설정
+  // URL 쿼리에서 키워드 가져와 초기 input 값 설정
   useEffect(() => {
     if (keywordFromURL) setInput(keywordFromURL);
   }, [keywordFromURL]);
 
   // 전체 키워드 초기 로딩
   useEffect(() => {
-    async function fetchAllKeywords() {
+    async function fetchKeywords() {
       const res = await getProducts();
       const keywords = res.item.map((item: Item) => ({
         _id: item._id,
         name: item.name,
         type: item.extra?.productType || 'general',
       }));
+      // console.log('전체 키워드 목록:', keywords); // 확인용
       setAllKeywords(keywords);
     }
-
-    fetchAllKeywords();
+    fetchKeywords();
   }, []);
 
   // 입력값 변경 시 관련 키워드 필터링
@@ -48,7 +50,7 @@ export default function SearchForm() {
     }
 
     const keywordInput = input.trim();
-    const inputChosung = getConsonants(input.trim());
+    const inputChosung = getConsonants(keywordInput); // 초성 필터링
 
     const matched = allKeywords
       .filter(k => {
@@ -66,9 +68,10 @@ export default function SearchForm() {
 
     setFiltered(matched);
     setShowDropdown(true);
+    setHighlightedIndex(-1); // 입력 변경 시 초기화
   }, [input, allKeywords]);
 
-  // 제출 처리 (검색 결과 페이지로 이동)
+  // 검색 제출 처리 (검색 결과 페이지로 이동)
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim()) return;
@@ -77,11 +80,12 @@ export default function SearchForm() {
     setShowDropdown(false);
   };
 
-  // 드롭다운 외부 클릭 시 닫기
+  // 외부 클릭 시 드롭다운 닫기
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (wrapperRef.current && !wrapperRef.current.contains(e.target as Node)) {
         setShowDropdown(false);
+        setIsFocused(false);
       }
     };
     document.addEventListener('mousedown', handleClickOutside);
@@ -90,31 +94,60 @@ export default function SearchForm() {
     };
   }, []);
 
+  // 키보드 이벤트 처리 (방향키 탐색 + 선택)
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (!showDropdown || filtered.length === 0) return;
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setHighlightedIndex(prev => (prev + 1) % filtered.length);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setHighlightedIndex(prev => (prev - 1 + filtered.length) % filtered.length);
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+
+      if (highlightedIndex >= 0 && highlightedIndex < filtered.length) {
+        // 드롭다운에서 항목 선택
+        const selected = filtered[highlightedIndex];
+        setInput(selected.name);
+        router.push(`/search/result/${selected._id}/detail`);
+        setShowDropdown(false);
+      } else {
+        // 일반 검색
+        handleSubmit(e);
+      }
+    }
+  };
+
   return (
     <form onSubmit={handleSubmit} className="contents" ref={wrapperRef}>
       <label htmlFor="searchKeyword" className="sr-only">
         검색
       </label>
-
       {/* 검색어 입력창 */}
       <input
         type="text"
         id="searchKeyword"
         value={input}
         onChange={e => setInput(e.target.value)}
-        onFocus={() => input && setShowDropdown(true)}
+        onFocus={() => {
+          setIsFocused(true);
+          if (input.trim()) setShowDropdown(true);
+        }}
+        onBlur={() => setTimeout(() => setIsFocused(false), 100)}
+        onKeyDown={handleKeyDown}
         placeholder="7월은 초당옥수수가 제철!"
         className="flex-1 h-6 py-3 pl-2 ml-2 text-sm outline-none appearance-none sm:w-48 text-oguogu-black placeholder-oguogu-gray-3"
       />
 
-      {/* 드롭다운: 검색어가 있을 경우 관련 키워드 리스트 노출 */}
-      {showDropdown && (
-        <div className="absolute left-0 right-0 z-10 mt-1 bg-white rounded shadow top-full">
+      {showDropdown && isFocused && (
+        <div className="absolute left-0 right-0 z-10 bg-white rounded shadow top-full">
           <RelatedKeywordItem
             keywords={filtered}
+            highlightedIndex={highlightedIndex}
             onKeywordClick={keyword => {
               setInput(keyword.name);
-              console.log(keyword);
               router.push(`/search/result/${keyword._id}/detail`);
               setShowDropdown(false);
             }}
