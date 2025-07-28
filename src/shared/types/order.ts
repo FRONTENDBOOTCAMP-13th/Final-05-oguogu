@@ -4,6 +4,7 @@ export interface OrderListResponse {
   ok: number;
   item: Order[];
   pagination: Pagination;
+  message: string;
 }
 
 export interface Pagination {

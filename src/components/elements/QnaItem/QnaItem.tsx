@@ -23,6 +23,7 @@ export default function QnaItem({ state = false, isPrivate = false, viewerRole =
   const [isOpen, setIsOpen] = useState(false);
   const [content, setContent] = useState('');
   const [fetched, setFetched] = useState(false);
+  const [date, setDate] = useState('');
 
   const handleContent = async () => {
     if (fetched || !state) return; // 답변 없으면 호출 안 함
@@ -30,6 +31,7 @@ export default function QnaItem({ state = false, isPrivate = false, viewerRole =
 
     if (data.ok) {
       setContent(data.item[0].content);
+      setDate(data.item[0].createdAt);
       setFetched(true);
     } else {
       console.error(data.message);
@@ -112,7 +114,7 @@ export default function QnaItem({ state = false, isPrivate = false, viewerRole =
         <div className="mt-4 pt-4 border-t-1 border-oguogu-gray-4">
           <div className="flex justify-between mb-2">
             <span className="text-[12px] text-oguogu-black">상품 담당자</span>
-            <span className="text-[12px] text-oguogu-gray-4">2025.07.15</span>
+            <span className="text-[12px] text-oguogu-gray-4">{date.split(' ')[0]}</span>
           </div>
           {content
             .split('.')

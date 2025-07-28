@@ -42,7 +42,7 @@ export default function CardItem({
 
   return (
     <>
-      <div className="w-[288px] flex flex-col gap-4">
+      <div className="w-full flex flex-col gap-4">
         <div className="flex items-center justify-between">
           <div className="flex gap-2 items-center text-center">
             <label className="relative top-[-2px]">
@@ -106,7 +106,7 @@ export default function CardItem({
           </button>
         </div>
 
-        <div className="flex justify-between">
+        <div className="flex gap-10">
           <div className="w-[48px] h-[48px] bg-[url('/images/crop/crop-001.png')] bg-cover bg-center bg-no-repeat rounded-[4px]" />
 
           <div className="w-[216px] flex flex-col justify-between">

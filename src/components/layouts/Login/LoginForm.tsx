@@ -17,7 +17,7 @@ export default function LoginForm() {
   const [autoLogin, setAutoLogin] = useState(false);
   const router = useRouter();
 
-  const { setToken, setUserInfo } = useAuthStore.getState();
+  const { setToken, setUserInfo } = useAuthStore();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -38,7 +38,12 @@ export default function LoginForm() {
         };
         setUserInfo(userInfo);
 
+        // 자동 로그인 체크 여부에 따라 스토리지 타입 설정
+        useAuthStore.getState().setStorageType(autoLogin);
+
         alert('로그인에 성공했습니다 ~~');
+        // 로그인 성공 후 페이지를 강제로 새로고침하여 InitAuthStore의 useEffect가 다시 실행되도록
+        router.refresh();
         router.push('/');
       } else {
         router.refresh();
@@ -61,9 +66,9 @@ export default function LoginForm() {
             <label htmlFor="email" className="sr-only">
               이메일
             </label>
+            {/* 이메일 */}
+            <LoginInput type="text" placeholder="이메일" value={email} onChange={setEmail} id="email" />
           </div>
-          {/* 이메일 */}
-          <LoginInput type="text" placeholder="이메일" value={email} onChange={setEmail} />
 
           {/* 비밀번호 */}
           <div>
@@ -93,7 +98,6 @@ export default function LoginForm() {
 
         {/* 로그인 버튼 */}
         <CommonButton
-          onClick={handleSubmit}
           feature="로그인"
           textSize="text-[16px]"
           width="w-[288px]"
