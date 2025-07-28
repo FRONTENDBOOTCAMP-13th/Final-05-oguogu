@@ -65,8 +65,8 @@ export default function SellerRegisterForm() {
         type: 'seller',
         extra: {
           businessInfo: {
-            companyName,
-            ownerName,
+            companyName: companyName,
+            ownerName: ownerName,
             businessTel: sellerBusinessTel,
             businessNumber: sellerRegisNum,
           },
