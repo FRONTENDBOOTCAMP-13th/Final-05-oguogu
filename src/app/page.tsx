@@ -5,7 +5,6 @@ import { ImageCategory } from '@/components/layouts/Category/Category';
 import Title from '@/components/elements/CommonTitleItem/Title';
 import ProductLinkItem from '@/components/elements/ProductLink/ProductLink';
 import ProductItemList from '@/components/elements/ProductItem/List/ProductItemList';
-import Link from 'next/link';
 
 export default function Home() {
   return (
