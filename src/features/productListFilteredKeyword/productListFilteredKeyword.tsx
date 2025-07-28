@@ -12,14 +12,20 @@ import React, { useEffect, useState } from 'react';
 
 export default function ProductListFilteredKeyword() {
   const [data, setData] = useState<productsRes | null>(null);
+  const [keyword, setKeyword] = useState('');
 
   /* 필터링 기능 구현을 위한 별도 상태 관리 */
   const [selectedType, setSelectedType] = useState('crop');
 
-  /* URL 의 'keyword' 쿼리스트링 값을 추출 */
-  const keywordParam = useSearchParams();
-  const keyword = keywordParam.get('keyword');
+  /* URL 의 keyword QueryString 값을 가져와 상태로 저장  */
+  const param = useSearchParams();
+  const keywordParam = param.get('keyword') ?? '';
 
+  useEffect(() => {
+    if (keywordParam) setKeyword(keywordParam);
+  }, [keywordParam]);
+
+  /* 클라이언트 함수에서 useEffect 로 DB 를 마운트 시점 이후에 가져옴 */
   useEffect(() => {
     const fetchData = async () => {
       const res = await getProducts();
