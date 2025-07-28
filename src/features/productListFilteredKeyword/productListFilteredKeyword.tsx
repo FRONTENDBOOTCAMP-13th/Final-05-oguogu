@@ -78,9 +78,9 @@ export default function ProductListFilteredKeyword() {
       /* 인기순 : buyQuantity(판매 수량) 기준 */
       case 'popular':
         return item.sort((a: Item, b: Item) => b.buyQuantity! - a.buyQuantity!);
-      /* 낮은 가격순 : price(가격) 기준 */
-      case 'lowPrice':
-        return item.sort((a, b) => a.price - b.price);
+      /* 할인 높은순 : price(가격) 기준 */
+      case 'dcRate':
+        return item.sort((a, b) => b.extra!.dcRate! - a.extra!.dcRate!);
       /* 리뷰 많은순 : replies(리뷰) 기준 */
       case 'review':
         return item.sort((a, b) => b.replies! - a.replies!);
@@ -119,7 +119,7 @@ export default function ProductListFilteredKeyword() {
           </label>
           <select id="sorting" name="sorting" value={sort} onChange={handleSelectSort} className="text-right">
             <option value="popular">인기순</option>
-            <option value="lowPrice">낮은 가격순</option>
+            <option value="dcRate">할인 높은순</option>
             <option value="review">리뷰 많은순</option>
             <option value="rating">별점순</option>
           </select>
