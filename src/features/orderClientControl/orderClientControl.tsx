@@ -112,7 +112,7 @@ export default function OrderClientControl() {
       console.error(fileRes.message);
     }
     const res = await createReplie(
-      { order_id, product_id, rating, content, extra: { title: title, imagePath: fileRes.item[0].path } },
+      { order_id, product_id, rating, content, extra: { name: title, imagePath: fileRes.item[0].path } },
       token,
     );
 
