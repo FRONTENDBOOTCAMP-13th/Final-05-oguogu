@@ -10,7 +10,7 @@ export default function LogOutIcon() {
   const handeLogout = () => {
     alert('로그아웃 되었습니다.');
     logout();
-    router.push('/');
+    router.refresh();
   };
 
   return (
