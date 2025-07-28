@@ -83,6 +83,7 @@ export default function SearchForm() {
         type="text"
         id="searchKeyword"
         value={input}
+        defaultValue={keyword ?? input}
         onChange={e => setInput(e.target.value)}
         onFocus={() => input && setShowDropdown(true)}
         placeholder="7월은 초당옥수수가 제철!"
