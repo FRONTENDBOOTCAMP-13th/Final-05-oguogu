@@ -50,6 +50,13 @@ export default function ProductListFilteredKeyword() {
     (item: Item) => item.extra?.productType === 'gardening',
   );
 
+  /* 매칭된 키워드의 데이터가 없을 때 */
+  const emptyData = (
+    <main className="pt-12 min-h-[calc(100vh-96px)]">
+      <p className="text-center text-gray-500 text-xl">검색 결과가 없습니다.</p>
+    </main>
+  );
+
   /* 정렬 및 필터링 기능 */
   const handleSelectType = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedType(e.target.value);
@@ -100,9 +107,7 @@ export default function ProductListFilteredKeyword() {
             ))}
           </main>
         ) : (
-          <main className="pt-12 min-h-[calc(100vh-96px)]">
-            <p className="text-center text-gray-500 text-xl">검색 결과가 없습니다.</p>
-          </main>
+          emptyData
         )
       ) : selectedType === 'experience' ? (
         experienceDataFromKeyword.length > 0 ? (
@@ -122,9 +127,7 @@ export default function ProductListFilteredKeyword() {
             ))}
           </main>
         ) : (
-          <main className="pt-12 min-h-[calc(100vh-96px)]">
-            <p className="text-center text-gray-500 text-xl">검색 결과가 없습니다.</p>
-          </main>
+          emptyData
         )
       ) : selectedType === 'gardening' ? (
         gardeningDataFromKeyword.length > 0 ? (
@@ -146,9 +149,7 @@ export default function ProductListFilteredKeyword() {
             ))}
           </main>
         ) : (
-          <main className="pt-12 min-h-[calc(100vh-96px)]">
-            <p className="text-center text-gray-500 text-xl">검색 결과가 없습니다.</p>
-          </main>
+          emptyData
         )
       ) : (
         ''
