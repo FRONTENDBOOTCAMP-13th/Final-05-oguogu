@@ -17,7 +17,7 @@ export default function HamburgerIcon() {
         {loginData.isLoggedIn ? (
           ''
         ) : (
-          <span className="absolute top-[-5px] right-[-30px] text-[8px] bg-[#fff000] px-1.5 py-0.5 rounded-4xl">
+          <span className="absolute top-[-5px] right-[-30px] text-[8px] bg-[#fff000] px-1.5 py-0.5 rounded-4xl animate-[floatUpDown_1.5s_ease-in-out_infinite]">
             로그인
           </span>
         )}

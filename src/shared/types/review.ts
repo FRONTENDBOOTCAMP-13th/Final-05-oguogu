@@ -4,7 +4,7 @@ export interface ReviewImage {
 
 export interface ReviewExtra {
   name: string; // 제목
-  image: ReviewImage[]; // 이미지 배열
+  imagePath: string; // 이미지 배열
 }
 
 export interface ReviewUser {

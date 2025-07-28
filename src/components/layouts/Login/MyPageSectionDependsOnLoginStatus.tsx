@@ -2,12 +2,54 @@
 
 import LogOutIcon from '@/components/elements/LogoutIcon/LogoutIcon';
 import GetLoggedInUserData from '@/features/getLoggedInUserData/getLoggedInUserData';
+import { getOrders } from '@/shared/data/functions/order';
 import { useAuthStore } from '@/shared/store/authStore';
+import { Order, OrderListResponse } from '@/shared/types/order';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 export default function MyPageSectionDependsOnLoginStatus() {
   const isLoggedIn = useAuthStore(state => state.isLoggedIn);
+  const token = useAuthStore(state => state.token);
+
+  const [orderInfo, setOrderInfo] = useState<Order[]>([]);
+  const [payedCnt, setPayedCnt] = useState<number>(0);
+  const [preparingCnt, setPreparingCnt] = useState(0);
+  const [transitCnt, setTransitCnt] = useState(0);
+  const [delivered, setDelivered] = useState(0);
+
+  useEffect(() => {
+    if (!token) {
+      return;
+    }
+
+    const fetch = async () => {
+      const data: OrderListResponse = await getOrders(token);
+
+      if (data.ok) {
+        setOrderInfo(data.item);
+      } else {
+        console.error(data.message || '데이터 로드 오류 발생');
+      }
+    };
+
+    fetch();
+  }, [token]);
+
+  useEffect(() => {
+    if (orderInfo.length > 0) {
+      const payedCount = orderInfo.filter(item => item.state === 'OS020').length;
+      const preparingCount = orderInfo.filter(item => item.state === 'preparingShipment').length;
+      const transitCount = orderInfo.filter(item => item.state === 'inTransit').length;
+      const deliveredCount = orderInfo.filter(item => item.state === 'purchaseCompleted').length;
+
+      setPayedCnt(payedCount);
+      setPreparingCnt(preparingCount);
+      setTransitCnt(transitCount);
+      setDelivered(deliveredCount);
+    }
+  }, [orderInfo]);
 
   return (
     <>
@@ -48,7 +90,7 @@ export default function MyPageSectionDependsOnLoginStatus() {
             <div className="flex justify-around gap-2">
               {/* 결제 완료 */}
               <div className={`flex flex-col items-center gap-2`}>
-                <span className="text-2xl">1</span>
+                <span className="text-2xl">{payedCnt}</span>
                 <span className="text-sm">결제 완료</span>
               </div>
 
@@ -56,7 +98,7 @@ export default function MyPageSectionDependsOnLoginStatus() {
 
               {/* 배송 준비 중 */}
               <div className={`flex flex-col items-center gap-2 text-oguogu-gray-2`}>
-                <span className="text-2xl">0</span>
+                <span className="text-2xl">{preparingCnt}</span>
                 <span className="text-sm">배송 준비 중</span>
               </div>
 
@@ -64,7 +106,7 @@ export default function MyPageSectionDependsOnLoginStatus() {
 
               {/* 배송 중 */}
               <div className={`flex flex-col items-center gap-2 text-oguogu-gray-2`}>
-                <span className="text-2xl">0</span>
+                <span className="text-2xl">{transitCnt}</span>
                 <span className="text-sm">배송 중</span>
               </div>
 
@@ -72,7 +114,7 @@ export default function MyPageSectionDependsOnLoginStatus() {
 
               {/* 배송 완료 */}
               <div className={`flex flex-col items-center gap-2`}>
-                <span className="text-2xl">1</span>
+                <span className="text-2xl">{delivered}</span>
                 <span className="text-sm">배송 완료</span>
               </div>
             </div>

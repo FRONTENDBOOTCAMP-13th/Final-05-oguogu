@@ -1,5 +1,5 @@
 export interface keywordState {
-  originKeyword: string | null;
+  originKeyword: string[];
 
   saveKeyword: (keyword: string) => void;
   clearKeyword: () => void;

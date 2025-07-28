@@ -7,7 +7,11 @@ import { Search } from 'lucide-react';
  * @param keywords - 자동완성으로 보여줄 키워드 배열 (객체 배열: { name, type })
  * @description type이 'garden'이면 텃밭 뱃지 표시
  */
-export default function RelatedKeywordItem({ keywords, onKeywordClick }: RelatedKeywordItemProps) {
+export default function RelatedKeywordItem({
+  keywords,
+  highlightedIndex,
+  onKeywordClick,
+}: RelatedKeywordItemProps & { highlightedIndex?: number }) {
   return (
     <div className="w-full p-2 mx-auto">
       <ul className="space-y-2">
@@ -15,10 +19,12 @@ export default function RelatedKeywordItem({ keywords, onKeywordClick }: Related
         {keywords.length === 0 ? (
           <li className="px-2 py-1 text-sm text-oguogu-gray-4">관련 키워드가 없습니다.</li>
         ) : (
-          keywords.map((keyword) => (
+          keywords.map((keyword, index) => (
             <li
               key={keyword.name}
-              className="flex items-center gap-2 px-2 py-1 text-left transition rounded cursor-pointer text-oguogu-black hover:bg-oguogu-gray-1 focus:bg-oguogu-gray-1 focus:outline-none"
+              className={`flex items-center gap-2 px-2 py-1 text-left transition rounded cursor-pointer text-oguogu-black hover:bg-oguogu-gray-1 focus:outline-none ${
+                highlightedIndex === index ? 'bg-oguogu-gray-1' : ''
+              }`}
               tabIndex={0}
               onClick={() => onKeywordClick?.(keyword)}
               onKeyDown={e => {
