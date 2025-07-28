@@ -191,7 +191,13 @@ export default function ProductListClientControl({ productList, type }: productL
                   <label htmlFor="typeFiltering" className="sr-only">
                     타입 필터링
                   </label>
-                  <select id="typeFiltering" name="type" value={selectedCategory} onChange={handleSelectType}>
+                  <select
+                    id="typeFiltering"
+                    name="type"
+                    value={selectedCategory}
+                    onChange={handleSelectType}
+                    className="text-right pr-2"
+                  >
                     <option value="veggie">채소</option>
                     <option value="fruit">과일</option>
                     <option value="grain">쌀/곡류</option>
@@ -202,7 +208,7 @@ export default function ProductListClientControl({ productList, type }: productL
               <label htmlFor="sorting" className="sr-only">
                 정렬
               </label>
-              <select id="sorting" name="sorting" value={sort} onChange={handleSelectSort} className="text-right">
+              <select id="sorting" name="sorting" value={sort} onChange={handleSelectSort} className="text-right pr-2">
                 <option value="popular">인기순</option>
                 <option value="dcRate">할인 높은순</option>
                 <option value="review">리뷰 많은순</option>
@@ -213,7 +219,7 @@ export default function ProductListClientControl({ productList, type }: productL
 
           {/* 타입별 컴포넌트 렌더링 */}
           {type === 'crop' && (
-            <main className="itemGrid grid-cols-[repeat(auto-fit,minmax(140px,1fr))]">
+            <main className="itemGrid grid-cols-[repeat(auto-fit,minmax(140px,1fr))] min-h-[calc(100vh-144px)]">
               {sortItems(filteredCropData(productList)).map((item: Item) => (
                 <CropItem
                   key={item._id}
@@ -232,7 +238,7 @@ export default function ProductListClientControl({ productList, type }: productL
             </main>
           )}
           {type === 'experience' && (
-            <main className="itemGrid grid-cols-[repeat(auto-fit,minmax(288px,1fr))]">
+            <main className="itemGrid grid-cols-[repeat(auto-fit,minmax(288px,1fr))] min-h-[calc(100vh-144px)]">
               {sortItems(productList).map(item => (
                 <ExperienceItem
                   key={item._id}
@@ -251,7 +257,7 @@ export default function ProductListClientControl({ productList, type }: productL
             </main>
           )}
           {type === 'gardening' && (
-            <main className="itemGrid grid-cols-[repeat(auto-fit,minmax(140px,1fr))]">
+            <main className="itemGrid grid-cols-[repeat(auto-fit,minmax(140px,1fr))] min-h-[calc(100vh-144px)]">
               {sortItems(productList).map(item => (
                 <GardenItem
                   key={item._id}

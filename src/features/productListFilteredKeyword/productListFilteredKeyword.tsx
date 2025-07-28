@@ -109,7 +109,13 @@ export default function ProductListFilteredKeyword() {
           <label htmlFor="typeFiltering" className="sr-only">
             타입 필터링
           </label>
-          <select id="typeFiltering" name="type" value={selectedType} onChange={handleSelectType}>
+          <select
+            id="typeFiltering"
+            name="type"
+            value={selectedType}
+            onChange={handleSelectType}
+            className="text-right pr-2"
+          >
             <option value="crop">농산물</option>
             <option value="experience">체험</option>
             <option value="gardening">텃밭</option>
@@ -117,7 +123,7 @@ export default function ProductListFilteredKeyword() {
           <label htmlFor="sorting" className="sr-only">
             정렬
           </label>
-          <select id="sorting" name="sorting" value={sort} onChange={handleSelectSort} className="text-right">
+          <select id="sorting" name="sorting" value={sort} onChange={handleSelectSort} className="text-right pr-2">
             <option value="popular">인기순</option>
             <option value="dcRate">할인 높은순</option>
             <option value="review">리뷰 많은순</option>
