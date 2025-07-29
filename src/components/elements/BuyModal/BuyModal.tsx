@@ -1,4 +1,3 @@
-// components/elements/BuyBox/BuyModal.tsx
 'use client';
 
 import BuyBoxOption from '@/components/elements/BuyBoxForMobile/BuyBoxOption';
@@ -73,6 +72,7 @@ export default function BuyModal({ onClose, type, res, onSuccess }: BuyModalProp
             maxQuantity={res.item.quantity! - res.item.buyQuantity!}
             handleBuy={handleBuy}
             product_id={res.item._id}
+            res={res}
           />
         )}
         {type === 'experience' && (
@@ -83,6 +83,7 @@ export default function BuyModal({ onClose, type, res, onSuccess }: BuyModalProp
             maxQuantity={res.item.quantity! - res.item.buyQuantity!}
             handleBuy={handleBuy}
             product_id={res.item._id}
+            res={res}
           />
         )}
         {type === 'gardening' && (
@@ -92,6 +93,7 @@ export default function BuyModal({ onClose, type, res, onSuccess }: BuyModalProp
             price={res.item.price * (1 - res.item.extra!.dcRate / 100)}
             handleBuy={handleBuy}
             product_id={res.item._id}
+            res={res}
           />
         )}
         {/* 확인 버튼 */}
