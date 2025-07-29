@@ -1,4 +1,8 @@
-import { ImageCategoryItemType, TextCategoryItemType } from '@/components/elements/CategoryItem/CategoryItem.type';
+import {
+  ImageCategoryItemType,
+  SelectProductItemType,
+  TextCategoryItemType,
+} from '@/components/elements/CategoryItem/CategoryItem.type';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -41,5 +45,16 @@ export function TextCategoryItem({ type, _id, params, title, isClick = false }: 
     >
       <h2>{title}</h2>
     </Link>
+  );
+}
+
+export function SelectProductItem({ params, title }: SelectProductItemType) {
+  return (
+    <div className="bg-oguogu-main-light w-full p-4 rounded-xl border border-oguogu-gray-2">
+      <Link href={`/office/products/select/editor/${params}`} className="flex flex-col items-center gap-2">
+        <Image src={`/images/category-seller-${params}.png`} alt={title} width={60} height={60} />
+        <p className="text-xl">{title}</p>
+      </Link>
+    </div>
   );
 }
