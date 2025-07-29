@@ -13,7 +13,7 @@ export default function GoBackIcon() {
       router.push('/');
     } else if (segments.length === 2) {
       /* 공지사항 기본 페이지가 없는 경우, 뒤로 가기로 로직 변경 */
-      if (segments[0] === 'board') {
+      if (segments[0] === 'board' || segments[0] === 'product' || segments[0] === 'garden') {
         router.back();
       }
 
