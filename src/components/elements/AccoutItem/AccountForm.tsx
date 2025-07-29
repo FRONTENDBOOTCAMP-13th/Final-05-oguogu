@@ -9,7 +9,7 @@ export default function AccountForm() {
   const [accountNumber, setAccountNumber] = useState('');
 
   return (
-    <div className="flex items-center justify-center p-4">
+    <div className="flex items-center justify-center">
       <div className="min-w-[320px] w-full p-4 space-y-4 bg-white border border-oguogu-gray-2 rounded-lg drop-shadow">
         {/* 은행 선택 */}
         <div className="flex flex-col">

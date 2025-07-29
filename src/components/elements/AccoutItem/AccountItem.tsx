@@ -8,8 +8,9 @@ export default function AccountItem() {
   ];
 
   return (
-    <div className="flex flex-col justify-start min-h-screen gap-2 p-4">
-      <div className="p-4">
+    <div className="flex flex-col justify-start min-h-screen gap-6 p-4">
+      {/* 정산 금액 + 정보 */}
+      <div>
         {/* 정산 금액 */}
         <section className="flex flex-col items-center gap-2 p-4 pb-8 text-base">
           <p>흥부네농산물님의 7월 정산 예정 금액은</p>
@@ -18,7 +19,6 @@ export default function AccountItem() {
             <span className="text-2xl text-oguogu-black">원 입니다.</span>
           </p>
         </section>
-
         {/* 정산 정보 */}
         <section className="flex flex-col gap-2 pt-4 pb-4 text-xs border-t border-b border-oguogu-gray-2">
           {settlementInfo.map(({ label, value }) => (
