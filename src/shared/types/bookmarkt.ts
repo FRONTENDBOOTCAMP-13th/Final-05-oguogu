@@ -2,7 +2,7 @@ import { Item } from '@/shared/types/product';
 
 export interface BookmarkItem {
   _id: number; // 북마크 ID
-  memo?: string;
+  user_id: number;
   extra?: {
     type: string;
   };
@@ -12,7 +12,7 @@ export interface BookmarkItem {
 
 // API 전체 응답
 export interface BookmarkResponse {
-  [key: string]: BookmarkItem | number; // 숫자 key 또는 "ok" key
+  item: BookmarkItem[];
   ok: number;
 }
 
