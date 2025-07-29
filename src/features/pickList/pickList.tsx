@@ -40,8 +40,6 @@ export default function PickList() {
     getAllBookmarks();
   }, [fetchBookmarks, token, userInfo]);
 
-  const hasCropBookmarkItem = bookmarkItem?.filter(item => item.product.extra?.productType === 'crop');
-
   return (
     <>
       {/* 필터링 버튼 */}
@@ -73,10 +71,10 @@ export default function PickList() {
       <div className="border-t border-t-oguogu-black pt-4 flex flex-col justify-start items-center gap-8">
         <>
           {checkedType === 'crop' &&
-            (bookmarkItem ? (
+            (bookmarkItem?.filter(item => item.product.extra?.productType === checkedType).length !== 0 ? (
               <div className="itemGrid grid-cols-[repeat(auto-fit,minmax(140px,1fr))]">
                 {bookmarkItem
-                  .filter(item => item.product.extra?.productType === checkedType)
+                  ?.filter((item: BookmarkItem) => item.product.extra?.productType === checkedType)
                   .map(item => (
                     <CropItem
                       key={item.product._id}
@@ -99,10 +97,10 @@ export default function PickList() {
               />
             ))}
           {checkedType === 'experience' &&
-            (bookmarkItem ? (
+            (bookmarkItem?.filter(item => item.product.extra?.productType === checkedType).length !== 0 ? (
               <div className="itemGrid grid-cols-[repeat(auto-fit,minmax(288px,1fr))]">
                 {bookmarkItem
-                  .filter(item => item.product.extra?.productType === checkedType)
+                  ?.filter(item => item.product.extra?.productType === checkedType)
                   .map(item => (
                     <ExperienceItem
                       key={item.product._id}
@@ -122,10 +120,10 @@ export default function PickList() {
               />
             ))}
           {checkedType === 'gardening' &&
-            (bookmarkItem ? (
+            (bookmarkItem?.filter(item => item.product.extra?.productType === checkedType).length !== 0 ? (
               <div className="itemGrid grid-cols-[repeat(auto-fit,minmax(140px,1fr))]">
                 {bookmarkItem
-                  .filter(item => item.product.extra?.productType === checkedType)
+                  ?.filter(item => item.product.extra?.productType === checkedType)
                   .map(item => (
                     <GardenItem
                       key={item.product._id}
