@@ -9,6 +9,7 @@ const CLIENT_ID = 'febc13-final05-emjf';
 // [x] 상품 구매
 // [x] 주문별 주문 상태 수정
 // [x] 상품별 주문 상태 수정
+// [x] 주문별 주문 상태 수정 (판매자)
 
 // 1. 상품 구매
 export async function createOrder(
@@ -125,3 +126,30 @@ export async function updateOrderProduct(
   })
   console.log(res); 
 */
+
+// 4. 주문별 주문 상태 수정 (판매자)
+export async function updateOrderSeller(
+  _id: number,
+  update: {
+    state: string; //코드명으로 설정해야함 ex OS110
+  },
+  token: string,
+) {
+  try {
+    const res = await fetch(`${API_URL}/seller/orders/${_id}`, {
+      method: 'PATCH',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        'Client-Id': CLIENT_ID,
+      },
+      body: JSON.stringify(update),
+    });
+
+    return await res.json();
+  } catch (error) {
+    // 네트워크 오류 처리
+    console.error(error);
+    return { ok: 0, message: '주문 상태 수정에 실패했습니다.' };
+  }
+}
