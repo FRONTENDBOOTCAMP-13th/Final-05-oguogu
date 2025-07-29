@@ -94,6 +94,11 @@
   .itemDataExtra {
     @apply flex flex-col gap-1;
   }
+
+  /* 애니메이션 */
+  .animate-wave {
+    animation: floatUp 2s ease-in-out infinite;
+  }
 }
 
 @keyframes floatUpDown {
@@ -103,5 +108,15 @@
   }
   50% {
     transform: translateY(-3px);
+  }
+}
+
+@keyframes floatUp {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-25px);
   }
 }
