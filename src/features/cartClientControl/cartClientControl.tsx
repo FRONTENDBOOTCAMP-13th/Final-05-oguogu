@@ -178,7 +178,7 @@ export default function CartClientControl() {
       </div>
 
       {/* 주문 상세 내역: div 하위에 삼항연산자로 코드 작성 */}
-      <div className="border-t border-t-oguogu-black pt-4 pb-[84px] flex flex-col justify-start items-center gap-8">
+      <div className="border-t border-t-oguogu-black pt-4 pb-[84px] flex flex-col justify-start items-center gap-5 w-full">
         {/* 아무런 데이터가 없는 경우 */}
         {cartItems.length === 0 && (
           <IsEmptyMessage
