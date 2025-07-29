@@ -5,7 +5,6 @@ import { ImageCategory } from '@/components/layouts/Category/Category';
 import Title from '@/components/elements/CommonTitleItem/Title';
 import ProductLinkItem from '@/components/elements/ProductLink/ProductLink';
 import ProductItemList from '@/components/elements/ProductItem/List/ProductItemList';
-import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -62,9 +61,6 @@ export default function Home() {
       </main>
       {/* 푸터 */}
       <footer className="w-full h-[320px] bg-oguogu-gray-2">
-        <Link href="/search/result/1/detail">상세페이지로 이동하기 (임시)</Link>
-        <br />
-        <Link href="/office/payments">판매자 정산페이지 (임시)</Link>
         <p>푸터</p>
       </footer>
     </>

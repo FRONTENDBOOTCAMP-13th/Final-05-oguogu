@@ -7,6 +7,7 @@ import { RelatedKeyword } from '@/components/elements/RelatedKeywordItem/Related
 import getConsonants from '@/utils/getConsonants/getConsonants';
 import { getProducts } from '@/shared/data/functions/product';
 import { Item } from '@/shared/types/product';
+import { useSearchKeywordStore } from '@/shared/store/keywordStore';
 
 export default function SearchForm() {
   const router = useRouter();
@@ -71,11 +72,15 @@ export default function SearchForm() {
     setHighlightedIndex(-1); // 입력 변경 시 초기화
   }, [input, allKeywords]);
 
+  // Zustand 로 키워드 상태 저장하기
+  const keywordStorage = useSearchKeywordStore();
+
   // 검색 제출 처리 (검색 결과 페이지로 이동)
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim()) return;
 
+    keywordStorage.saveKeyword(input);
     router.push(`/search/result?keyword=${encodeURIComponent(input.trim())}`);
     setShowDropdown(false);
   };

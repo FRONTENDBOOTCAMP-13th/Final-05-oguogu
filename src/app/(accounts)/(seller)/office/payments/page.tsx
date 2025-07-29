@@ -1,9 +1,10 @@
-import AccountForm from "@/components/elements/AccoutItem/AccountItem";
+import AccountForm from '@/components/elements/AccoutItem/AccountItem';
+import LinkHeader from '@/components/layouts/Header/LinkHeader';
 
 export default function PaymentsForSeller() {
   return (
     <>
-      <h1>판매자 정산 페이지</h1>
+      <LinkHeader title="정산" />
       <AccountForm />
     </>
   );

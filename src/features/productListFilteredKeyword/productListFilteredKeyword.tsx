@@ -4,17 +4,22 @@ import CuteLoading from '@/components/elements/CuteLoading/CuteLoading';
 import CropItem from '@/components/elements/ProductItem/Item/CropItem';
 import ExperienceItem from '@/components/elements/ProductItem/Item/ExperienceItem';
 import GardenItem from '@/components/elements/ProductItem/Item/GardenItem';
-import { ProductSort } from '@/components/elements/ProductItem/Sort/Sort';
 import { getProducts } from '@/shared/data/functions/product';
 import { Item, productsRes } from '@/shared/types/product';
 import { useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
 export default function ProductListFilteredKeyword() {
+  /* MongoDB 데이터 상태 관리 */
   const [data, setData] = useState<productsRes | null>(null);
+
+  /* 정렬 기능 상태 관리 */
+  const [sort, setSort] = useState('popular');
+
+  /* 쿼리스트링 텍스트 상태 관리 */
   const [keyword, setKeyword] = useState('');
 
-  /* 필터링 기능 구현을 위한 별도 상태 관리 */
+  /* 필터링 기능 상태 관리 */
   const [selectedType, setSelectedType] = useState('crop');
 
   /* URL 의 keyword QueryString 값을 가져와 상태로 저장  */
@@ -34,6 +39,7 @@ export default function ProductListFilteredKeyword() {
     fetchData();
   }, []);
 
+  /* 데이터을 로딩 중인 경우, 대체 로딩창 렌더링 */
   if (data == null) {
     return <CuteLoading />;
   }
@@ -57,9 +63,33 @@ export default function ProductListFilteredKeyword() {
     </main>
   );
 
-  /* 정렬 및 필터링 기능 */
+  /* 필터링 기능 */
   const handleSelectType = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedType(e.target.value);
+  };
+
+  /* 정렬 기능 */
+  const handleSelectSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSort(e.target.value);
+  };
+
+  const sortItems = (item: Item[]) => {
+    switch (sort) {
+      /* 인기순 : buyQuantity(판매 수량) 기준 */
+      case 'popular':
+        return item.sort((a: Item, b: Item) => b.buyQuantity! - a.buyQuantity!);
+      /* 할인 높은순 : price(가격) 기준 */
+      case 'dcRate':
+        return item.sort((a, b) => b.extra!.dcRate! - a.extra!.dcRate!);
+      /* 리뷰 많은순 : replies(리뷰) 기준 */
+      case 'review':
+        return item.sort((a, b) => b.replies! - a.replies!);
+      /* 별점순 : rating(별점) 기준 */
+      case 'rating':
+        return item.sort((a, b) => b.rating! - a.rating!);
+      default:
+        return item;
+    }
   };
 
   return (
@@ -79,12 +109,26 @@ export default function ProductListFilteredKeyword() {
           <label htmlFor="typeFiltering" className="sr-only">
             타입 필터링
           </label>
-          <select id="typeFiltering" name="type" value={selectedType} onChange={handleSelectType}>
+          <select
+            id="typeFiltering"
+            name="type"
+            value={selectedType}
+            onChange={handleSelectType}
+            className="text-right pr-2"
+          >
             <option value="crop">농산물</option>
             <option value="experience">체험</option>
             <option value="gardening">텃밭</option>
           </select>
-          <ProductSort />
+          <label htmlFor="sorting" className="sr-only">
+            정렬
+          </label>
+          <select id="sorting" name="sorting" value={sort} onChange={handleSelectSort} className="text-right pr-2">
+            <option value="popular">인기순</option>
+            <option value="dcRate">할인 높은순</option>
+            <option value="review">리뷰 많은순</option>
+            <option value="rating">별점순</option>
+          </select>
         </div>
       </div>
 
@@ -92,7 +136,7 @@ export default function ProductListFilteredKeyword() {
       {selectedType === 'crop' ? (
         cropDataFromKeyword.length > 0 ? (
           <main className="itemGrid grid-cols-[repeat(auto-fit,minmax(140px,1fr))] min-h-[calc(100vh-96px)]">
-            {cropDataFromKeyword.map((item: Item) => (
+            {sortItems(cropDataFromKeyword).map((item: Item) => (
               <CropItem
                 key={item._id}
                 _id={item._id}
@@ -112,7 +156,7 @@ export default function ProductListFilteredKeyword() {
       ) : selectedType === 'experience' ? (
         experienceDataFromKeyword.length > 0 ? (
           <main className="itemGrid grid-cols-[repeat(auto-fit,minmax(288px,1fr))] min-h-[calc(100vh-96px)]">
-            {experienceDataFromKeyword.map((item: Item) => (
+            {sortItems(experienceDataFromKeyword).map((item: Item) => (
               <ExperienceItem
                 key={item._id}
                 _id={item._id}
@@ -132,7 +176,7 @@ export default function ProductListFilteredKeyword() {
       ) : selectedType === 'gardening' ? (
         gardeningDataFromKeyword.length > 0 ? (
           <main className="itemGrid grid-cols-[repeat(auto-fit,minmax(140px,1fr))] min-h-[calc(100vh-96px)]">
-            {gardeningDataFromKeyword.map((item: Item) => (
+            {sortItems(gardeningDataFromKeyword).map((item: Item) => (
               <GardenItem
                 key={item._id}
                 _id={item._id}

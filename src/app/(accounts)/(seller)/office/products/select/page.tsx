@@ -1,3 +1,5 @@
-export default function SelectNewProductType() {
-  return <h1>상품 등록 - 타입 선택</h1>;
+import LinkHeader from '@/components/layouts/Header/LinkHeader';
+
+export default function SelectProductType() {
+  return <LinkHeader title="상품 선택" />;
 }
