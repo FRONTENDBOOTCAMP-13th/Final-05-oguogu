@@ -1,6 +1,7 @@
 'use client';
 
 import { useAuthStore } from '@/shared/store/authStore';
+import { useRouter } from 'next/navigation';
 
 export default function LogOutIcon() {
   const { logout, userInfo } = useAuthStore();
@@ -12,7 +13,7 @@ export default function LogOutIcon() {
 
     if (userInfo?.type === 'seller') {
       router.push('/mypage');
-}
+    }
   };
 
   return (
