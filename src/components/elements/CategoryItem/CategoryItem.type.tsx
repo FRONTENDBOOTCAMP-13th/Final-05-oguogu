@@ -10,3 +10,8 @@ export interface TextCategoryItemType {
   title: string;
   isClick: boolean;
 }
+
+export interface SelectProductItemType {
+  params: 'crop' | 'experience' | 'gardening';
+  title: string;
+}

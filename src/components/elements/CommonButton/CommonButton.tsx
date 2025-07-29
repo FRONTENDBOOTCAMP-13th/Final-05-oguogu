@@ -16,7 +16,7 @@ export default function CommonButton({
 }: CommonButtonProps) {
   return (
     <button
-      onClick={() => onClick}
+      onClick={e => onClick?.(e)}
       type={type}
       className={`relative flex flex-1 items-center justify-center text-center 
          ${textSize} ${height} ${width} ${bgColor} ${textColor} ${border} ${borderColor} ${cursorPointer ? 'cursor-pointer' : ''} 
