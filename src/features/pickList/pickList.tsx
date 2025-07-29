@@ -2,15 +2,13 @@
 
 import FilterButtonForMypage from '@/components/elements/InputButtonForMypage/InputButtonForMypage';
 import IsEmptyMessage from '@/components/elements/IsEmptyMessage/IsEmptyMessage';
-import CropItem from '@/components/elements/ProductItem/Item/CropItem';
-import ExperienceItem from '@/components/elements/ProductItem/Item/ExperienceItem';
-import GardenItem from '@/components/elements/ProductItem/Item/GardenItem';
 import { useEffect, useState } from 'react';
 import { useBookmarkStore } from '@/shared/store/bookmarkStore';
 import { ProductType } from '@/app/(exploring)/product/[type]/ProductListByType.type';
 import { useAuthStore } from '@/shared/store/authStore';
 import { BookmarkItem, BookmarkResponse } from '@/shared/types/bookmarkt';
 import { getBookmarks } from '@/shared/data/functions/bookmarks';
+import PickListItem from '@/components/elements/PickListItem/PickListItem';
 
 export default function PickList() {
   const { fetchBookmarks } = useBookmarkStore();
@@ -39,6 +37,10 @@ export default function PickList() {
 
     getAllBookmarks();
   }, [fetchBookmarks, token, userInfo]);
+
+  /* 장바구니 추가 버튼 */
+
+  /* 찜하기 삭제 버튼 */
 
   return (
     <>
@@ -72,21 +74,11 @@ export default function PickList() {
         <>
           {checkedType === 'crop' &&
             (bookmarkItem?.filter(item => item.product.extra?.productType === checkedType).length !== 0 ? (
-              <div className="itemGrid grid-cols-[repeat(auto-fit,minmax(140px,1fr))]">
+              <div className="flex flex-col w-full gap-5">
                 {bookmarkItem
                   ?.filter((item: BookmarkItem) => item.product.extra?.productType === checkedType)
                   .map(item => (
-                    <CropItem
-                      key={item.product._id}
-                      _id={item.product._id}
-                      name={item.product.name}
-                      price={item.product.price * (1 - item.product.extra!.dcRate / 100)}
-                      rating={item.product.rating}
-                      replies={item.product.replies}
-                      extra={item.product!.extra}
-                      seller={item.product!.seller}
-                      bookmarks={item.product!.bookmarks}
-                    />
+                    <PickListItem key={item.product._id} item={item} />
                   ))}
               </div>
             ) : (
@@ -98,18 +90,11 @@ export default function PickList() {
             ))}
           {checkedType === 'experience' &&
             (bookmarkItem?.filter(item => item.product.extra?.productType === checkedType).length !== 0 ? (
-              <div className="itemGrid grid-cols-[repeat(auto-fit,minmax(288px,1fr))]">
+              <div className="flex flex-col w-full gap-5">
                 {bookmarkItem
                   ?.filter(item => item.product.extra?.productType === checkedType)
                   .map(item => (
-                    <ExperienceItem
-                      key={item.product._id}
-                      _id={item.product._id}
-                      name={item.product.name}
-                      price={item.product.price * (1 - item.product.extra!.dcRate / 100)}
-                      seller={item.product.seller}
-                      extra={item.product.extra}
-                    />
+                    <PickListItem key={item.product._id} item={item} />
                   ))}
               </div>
             ) : (
@@ -121,18 +106,11 @@ export default function PickList() {
             ))}
           {checkedType === 'gardening' &&
             (bookmarkItem?.filter(item => item.product.extra?.productType === checkedType).length !== 0 ? (
-              <div className="itemGrid grid-cols-[repeat(auto-fit,minmax(140px,1fr))]">
+              <div className="flex flex-col w-full gap-5">
                 {bookmarkItem
                   ?.filter(item => item.product.extra?.productType === checkedType)
                   .map(item => (
-                    <GardenItem
-                      key={item.product._id}
-                      _id={item.product._id}
-                      name={item.product.name}
-                      price={item.product.price * (1 - item.product.extra!.dcRate / 100)}
-                      seller={item.product.seller}
-                      extra={item.product.extra}
-                    />
+                    <PickListItem key={item.product._id} item={item} />
                   ))}
               </div>
             ) : (
