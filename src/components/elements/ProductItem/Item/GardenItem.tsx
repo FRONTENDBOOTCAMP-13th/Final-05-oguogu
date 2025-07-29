@@ -80,7 +80,7 @@ export default function GardenItem({
         </div>
 
         {/* 가격 정보 */}
-        <div className="text-[12px] flex gap-1">
+        <div className="text-base flex gap-1">
           {extra!.dcRate > 0 ? <span className="text-oguogu-main">{extra!.dcRate}%</span> : ''}
           <span>{(price * (1 - extra!.dcRate / 100)).toLocaleString()}원</span>
         </div>
