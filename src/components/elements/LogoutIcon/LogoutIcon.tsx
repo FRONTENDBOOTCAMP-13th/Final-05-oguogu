@@ -1,11 +1,9 @@
 'use client';
 
 import { useAuthStore } from '@/shared/store/authStore';
-import { useRouter } from 'next/navigation';
 
 export default function LogOutIcon() {
   const { logout } = useAuthStore();
-  const router = useRouter();
 
   const handeLogout = () => {
     alert('로그아웃 되었습니다.');
