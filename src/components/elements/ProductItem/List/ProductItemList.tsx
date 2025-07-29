@@ -99,7 +99,7 @@ export default function ProductItemList({ type }: ProductItemListType) {
     };
 
     fetch();
-  }, [type]);
+  }, [setLoading, type]);
 
   const cropData = res?.item
     .filter((item: Item) => item.name.includes('옥수수'))
