@@ -99,3 +99,55 @@ export default function ExperienceItem({
     </div>
   );
 }
+
+export function ExperienceItemSkeleton() {
+  return (
+    <div className="min-w-[288px] flex flex-col gap-4 animate-pulse">
+      {/* 이미지 및 뱃지 */}
+      <div className="relative">
+        <div className="bg-oguogu-gray-1 min-w-[288px] min-h-[216px] bg-center bg-cover aspect-[4/3] rounded-lg" />
+        <div className="absolute top-1 left-1 flex gap-1">
+          <div className="w-10 h-4 rounded-full bg-oguogu-gray-2" />
+          <div className="w-10 h-4 rounded-full bg-oguogu-gray-2" />
+        </div>
+      </div>
+
+      {/* 텍스트 정보 */}
+      <div className="flex flex-col gap-1">
+        {/* 판매자 정보 */}
+        <div className="flex gap-1 items-center">
+          <div className="w-4 h-4 rounded-full bg-oguogu-gray-2" />
+          <div className="w-20 h-2 rounded bg-oguogu-gray-2" />
+        </div>
+
+        {/* 상품명 */}
+        <div className="w-40 h-4 rounded bg-oguogu-gray-2" />
+
+        {/* 상품 설명 */}
+        <div className="w-28 h-2 rounded bg-oguogu-gray-2" />
+
+        {/* 가격 정보 */}
+        <div className="flex gap-1 items-end">
+          <div className="w-8 h-4 rounded bg-oguogu-gray-2" />
+          <div className="w-16 h-4 rounded bg-oguogu-gray-2" />
+          <div className="w-10 h-3 rounded bg-oguogu-gray-2" />
+        </div>
+
+        {/* 좋아요 & 별점 */}
+        <div className="flex gap-2 text-oguogu-gray-3 text-[8px]">
+          <div className="flex items-center gap-[2px]">
+            <div className="w-4 h-4 rounded-full bg-oguogu-gray-2" />
+            <div className="w-6 h-2 rounded bg-oguogu-gray-2" />
+          </div>
+          <div className="flex items-center gap-[2px]">
+            <div className="w-4 h-4 rounded-full bg-oguogu-gray-2" />
+            <div className="w-12 h-2 rounded bg-oguogu-gray-2" />
+          </div>
+        </div>
+      </div>
+
+      {/* 인터랙션 버튼 */}
+      <div className="w-full h-9 rounded-lg bg-oguogu-gray-2" />
+    </div>
+  );
+}

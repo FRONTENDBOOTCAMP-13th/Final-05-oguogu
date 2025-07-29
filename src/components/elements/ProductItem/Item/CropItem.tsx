@@ -94,3 +94,52 @@ export default function CropItem({
     </div>
   );
 }
+
+export function CropItemSkeleton() {
+  return (
+    <div className="flex flex-col gap-4 min-w-[140px] max-w-[220px] animate-pulse">
+      {/* 이미지 박스 */}
+      <div className="relative">
+        <div className="min-w-[140px] min-h-[186.67px] bg-gray-200 rounded-lg aspect-[3/4]" />
+        <div className="absolute top-1 left-1 flex gap-1">
+          <div className="w-8 h-4 bg-gray-300 rounded" />
+          <div className="w-8 h-4 bg-gray-300 rounded" />
+        </div>
+      </div>
+
+      {/* 텍스트 영역 */}
+      <div className="flex flex-col gap-1">
+        {/* 판매자 */}
+        <div className="flex items-center gap-1">
+          <div className="w-4 h-4 bg-gray-300 rounded-full" />
+          <div className="w-16 h-2 bg-gray-300 rounded" />
+        </div>
+
+        {/* 상품명 */}
+        <div className="w-full h-3 bg-gray-300 rounded" />
+        <div className="w-3/4 h-3 bg-gray-300 rounded" />
+
+        {/* 가격 */}
+        <div className="flex gap-1">
+          <div className="w-6 h-2 bg-gray-300 rounded" />
+          <div className="w-12 h-2 bg-gray-300 rounded" />
+        </div>
+
+        {/* 좋아요, 평점 */}
+        <div className="flex gap-2 text-xs text-gray-400">
+          <div className="flex gap-1">
+            <div className="w-3 h-3 bg-gray-300 rounded" />
+            <div className="w-4 h-2 bg-gray-300 rounded" />
+          </div>
+          <div className="flex gap-1">
+            <div className="w-3 h-3 bg-gray-300 rounded" />
+            <div className="w-8 h-2 bg-gray-300 rounded" />
+          </div>
+        </div>
+      </div>
+
+      {/* 하단 버튼 */}
+      <div className="w-full h-6 bg-gray-300 rounded-md mt-2" />
+    </div>
+  );
+}
