@@ -1,4 +1,5 @@
 import AccountForm from '@/components/elements/AccoutItem/AccountForm';
+import GetLoggedInUserData from '@/features/getLoggedInUserData/getLoggedInUserData';
 
 export default function AccountItem() {
   const settlementInfo = [
@@ -13,7 +14,9 @@ export default function AccountItem() {
       <div>
         {/* 정산 금액 */}
         <section className="flex flex-col items-center gap-2 p-4 pb-8 text-base">
-          <p>흥부네농산물님의 7월 정산 예정 금액은</p>
+          <p>
+            <GetLoggedInUserData type="name" />님의 7월 정산 예정 금액은
+          </p>
           <p>
             <span className="text-2xl font-bold text-oguogu-main">8,354,980</span>
             <span className="text-2xl text-oguogu-black">원 입니다.</span>

@@ -10,8 +10,8 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
       <section className="flex flex-col gap-4">
         <div>
           {/* 타이틀 & 서브타이틀 */}
-          <div className="px-4 flex flex-col gap-1">
-            <div className="flex justify-between items-center text-2xl">
+          <div className="flex flex-col gap-1 px-4">
+            <div className="flex items-center justify-between text-2xl">
               <p>
                 <span className="text-oguogu-main">환영해요! </span>
                 <GetLoggedInUserData type="name" />님
@@ -26,7 +26,7 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
         </div>
 
         {/* 최신 공지사항 게시물 */}
-        <div className="mx-4 px-3 py-2 flex justify-between items-center border border-oguogu-gray-2 rounded-sm">
+        <div className="flex items-center justify-between px-3 py-2 mx-4 border rounded-sm border-oguogu-gray-2">
           <div className="flex gap-2">
             <HotMarkIcon title="신규" animate={false} />
             <Link href="/board/notice" className="text-xs textElipsis">
@@ -38,17 +38,17 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
 
         <div className="flex flex-col gap-3">
           {/* 판매 수익 */}
-          <div className="px-4 pt-4 flex flex-col gap-3">
+          <div className="flex flex-col gap-3 px-4 pt-4">
             <p className="text-xl">판매 수익</p>
-            <div className="flex justify-center items-center gap-2">
-              <span className="text-[28px]">8354980</span>
+            <div className="flex items-center justify-center gap-2">
+              <span className="text-[28px]">8,354,980</span>
               <span>원</span>
             </div>
           </div>
           <ProductLinkItem link="/office/payments" linkTitle="정산 정보" subTxt="확인 하기" />
 
           {/* 주문 내역 */}
-          <div className="px-4 pt-4 flex flex-col gap-3">
+          <div className="flex flex-col gap-3 px-4 pt-4">
             <p className="text-xl">주문 내역</p>
             <div className="flex justify-around gap-2">
               {/* 결제 완료 */}
@@ -79,7 +79,7 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
           <ProductLinkItem link="/office/orders" linkTitle="상세 주문 내역" subTxt="확인 하기" />
 
           {/* 판매 중인 상품 */}
-          <div className="px-4 pt-4 flex flex-col gap-3">
+          <div className="flex flex-col gap-3 px-4 pt-4">
             <p className="text-xl">판매 중인 상품</p>
             <div className="flex justify-around gap-2">
               {/* 농산물 */}
