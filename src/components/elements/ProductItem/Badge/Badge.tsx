@@ -47,7 +47,7 @@ export default function Badge({ type, size = 8 }: BadgeProps) {
     <>
       <span
         className={`${bgColor} ${textColor} 
-        text-[${size}px] px-[6px] py-[4px] rounded-[8px] mr-1 shadow-sm shadow-oguogu-black/25`}
+        text-[${size}px] px-[6px] py-[4px] rounded-[8px] mr-1 shadow-sm shadow-oguogu-black/15`}
       >
         {content}
       </span>
