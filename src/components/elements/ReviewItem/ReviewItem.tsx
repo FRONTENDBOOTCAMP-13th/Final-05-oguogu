@@ -84,7 +84,7 @@ export default function ReviewItem({ name, email, res }: ReviewItemType) {
 
   return (
     <>
-      <div className=" flex flex-col gap-3">
+      <div className=" flex flex-col gap-5 py-5 border-t border-oguogu-gray-1">
         <div className="flex justify-between">
           <span>
             <StarRating rating={res.rating} />
