@@ -37,27 +37,12 @@ export default function BuyBox({ onOpenModal, res }: BuyBoxType) {
         const data: BookmarkResponse = await getBookmarks('product', token);
 
         if (data.ok === 1) {
-          // ✅ Object.entries()를 사용하여 안전하게 처리
-          Object.entries(data).forEach(([key, value]) => {
-            // 'ok' 키는 제외하고 처리
-            if (key === 'ok') return;
-
-            // value가 올바른 구조인지 체크
-            if (
-              value &&
-              typeof value === 'object' &&
-              'product' in value &&
-              '_id' in value &&
-              value.product &&
-              typeof value.product === 'object' &&
-              '_id' in value.product
-            ) {
-              // 현재 상품에 해당하는 북마크인지 확인
-              if (value.product._id === product_id) {
-                setBookmarkId(value._id); // 현재 상품에 해당하는 북마크 ID 저장
-              }
-            }
-          });
+          const found = data.item.find(item => item.product._id === product_id);
+          if (found) {
+            setBookmarkId(found._id);
+          } else {
+            setBookmarkId(null);
+          }
         }
       } catch (error) {
         console.error('북마크 불러오기 실패:', error);
