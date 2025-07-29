@@ -26,10 +26,9 @@ export default function PickList() {
       try {
         const res: BookmarkResponse = await getBookmarks('product', token);
         const myBookmarks: BookmarkItem[] = res.item;
-        console.log(myBookmarks);
 
         setBookmarkItem(myBookmarks);
-        console.log(myBookmarks);
+        console.log('현재 북마크 리스트 :', myBookmarks);
       } catch (err) {
         console.log('pickList 에서 에러 발생', err);
       }
@@ -38,9 +37,10 @@ export default function PickList() {
     getAllBookmarks();
   }, [fetchBookmarks, token, userInfo]);
 
-  /* 장바구니 추가 버튼 */
-
   /* 찜하기 삭제 버튼 */
+  const handleDeleteBookmark = (deletedId: number) => {
+    setBookmarkItem(prev => (prev ? prev.filter(item => item._id !== deletedId) : prev));
+  };
 
   return (
     <>
@@ -78,7 +78,7 @@ export default function PickList() {
                 {bookmarkItem
                   ?.filter((item: BookmarkItem) => item.product.extra?.productType === checkedType)
                   .map(item => (
-                    <PickListItem key={item.product._id} item={item} />
+                    <PickListItem key={item.product._id} item={item} token={token!} onDeleted={handleDeleteBookmark} />
                   ))}
               </div>
             ) : (
@@ -94,7 +94,7 @@ export default function PickList() {
                 {bookmarkItem
                   ?.filter(item => item.product.extra?.productType === checkedType)
                   .map(item => (
-                    <PickListItem key={item.product._id} item={item} />
+                    <PickListItem key={item.product._id} item={item} token={token!} onDeleted={handleDeleteBookmark} />
                   ))}
               </div>
             ) : (
@@ -110,7 +110,7 @@ export default function PickList() {
                 {bookmarkItem
                   ?.filter(item => item.product.extra?.productType === checkedType)
                   .map(item => (
-                    <PickListItem key={item.product._id} item={item} />
+                    <PickListItem key={item.product._id} item={item} token={token!} onDeleted={handleDeleteBookmark} />
                   ))}
               </div>
             ) : (
