@@ -1,3 +1,5 @@
+import LinkHeader from '@/components/layouts/Header/LinkHeader';
+
 export default function PaymentsForSeller() {
-  return <h1>판매자 정산 페이지</h1>;
+  return <LinkHeader title="정산" />;
 }

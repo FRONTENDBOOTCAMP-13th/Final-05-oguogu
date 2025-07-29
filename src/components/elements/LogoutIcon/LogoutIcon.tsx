@@ -3,11 +3,16 @@
 import { useAuthStore } from '@/shared/store/authStore';
 
 export default function LogOutIcon() {
-  const { logout } = useAuthStore();
+  const { logout, userInfo } = useAuthStore();
+  const router = useRouter();
 
   const handeLogout = () => {
     alert('로그아웃 되었습니다.');
     logout();
+
+    if (userInfo?.type === 'seller') {
+      router.push('/mypage');
+}
   };
 
   return (
