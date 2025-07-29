@@ -10,6 +10,7 @@ import { TextCategoryForDetailPage } from '@/components/layouts/Category/Categor
 import { getProductReplies } from '@/shared/data/functions/replies';
 import { ReviewRes } from '@/shared/types/review';
 import { getPosts } from '@/shared/data/functions/post';
+import QnaItemList from '@/components/elements/QnaItem/QnaItemList';
 
 /**
  * 특정 상품의 Q&A 목록을 표시하는 서버 컴포넌트입니다.
@@ -41,30 +42,12 @@ export default async function ProductQna({ params }: ProductDetailPageProps) {
   // 리뷰 개수
   const reviewCnt = reviewRes.item.length;
 
-  console.log(res);
-
-  const qnaList = res?.item
-    .filter(item => item.product_id === Number(_id))
-    .map(item => (
-      <QnaItem key={item._id} state={item.repliesCount !== 0} isPrivate={false} viewerRole="other" res={item} />
-    ));
-
   return (
     <div className="flex flex-col min-h-screen bg-oguogu-white">
       <CategoryHeader title={productName} />
       <TextCategoryForDetailPage _id={Number(_id)} reviewCnt={reviewCnt} qnaCnt={qnaCnt} />
-      <QnaSortBar qnaCnt={qnaList.length} />
       <QnaClientControls _id={_id} />
-      <section>
-        {qnaList.length ? (
-          qnaList
-        ) : (
-          <div className="flex flex-col items-center justify-center h-full text-oguogu-gray-3 py-20">
-            <p className="text-lg mb-2">아직 등록된 문의가 없습니다.</p>
-            <p className="text-sm">상품에 대해 궁금한 점을 문의해보세요!</p>
-          </div>
-        )}
-      </section>
+      <QnaItemList res={res} _id={_id} />
     </div>
   );
 }
