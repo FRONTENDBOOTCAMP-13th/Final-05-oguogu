@@ -2,6 +2,7 @@
 
 import QnaItem from '@/components/elements/QnaItem/QnaItem';
 import { QnaSortBar } from '@/components/layouts/SortBar/Sortbar';
+import QnaClientControls from '@/features/qnaClientControl/qnaClientControl';
 import { useAuthStore } from '@/shared/store/authStore';
 import { QnaRes } from '@/shared/types/qna';
 import { useState } from 'react';
@@ -22,7 +23,8 @@ export default function QnaItemList({ res, _id }: { res: QnaRes; _id: string }) 
   return (
     <>
       <QnaSortBar qnaCnt={isMyPost ? myQna.length : qnaList.length} isMyPost={isMyPost} setIsMyPost={setIsMyPost} />
-      <section>
+      <QnaClientControls _id={_id} />
+      <section className="mt-5">
         {qnaList.length ? (
           isMyPost ? (
             myQna.map(item => (

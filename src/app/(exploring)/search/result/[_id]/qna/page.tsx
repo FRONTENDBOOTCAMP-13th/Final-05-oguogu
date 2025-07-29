@@ -1,6 +1,3 @@
-import QnaItem from '@/components/elements/QnaItem/QnaItem';
-import { QnaSortBar } from '@/components/layouts/SortBar/Sortbar';
-import QnaClientControls from '@/features/qnaClientControl/qnaClientControl';
 import { QnaRes } from '@/shared/types/qna';
 import { ProductDetailPageProps } from '@/features/types/productDetail';
 import { Metadata } from 'next';
@@ -46,7 +43,6 @@ export default async function ProductQna({ params }: ProductDetailPageProps) {
     <div className="flex flex-col min-h-screen bg-oguogu-white">
       <CategoryHeader title={productName} />
       <TextCategoryForDetailPage _id={Number(_id)} reviewCnt={reviewCnt} qnaCnt={qnaCnt} />
-      <QnaClientControls _id={_id} />
       <QnaItemList res={res} _id={_id} />
     </div>
   );
