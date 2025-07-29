@@ -10,7 +10,7 @@ export default function AccountForm() {
 
   return (
     <div className="flex items-center justify-center min-h-screen">
-      <div className="max-w-[288px] w-full p-4 space-y-4 bg-white border border-oguogu-gray-2 rounded-lg drop-shadow">
+      <div className="max-w-[320px] w-full p-4 space-y-4 bg-white border border-oguogu-gray-2 rounded-lg drop-shadow">
         {/* 은행 선택 */}
         <div className="flex flex-col">
           <label htmlFor="bank">
