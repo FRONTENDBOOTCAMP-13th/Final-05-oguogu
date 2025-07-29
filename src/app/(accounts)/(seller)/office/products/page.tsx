@@ -9,6 +9,12 @@ export default function ProductsForSeller() {
       <main className="px-4 py-4 flex flex-col gap-2 min-h-[calc(100vh-48px)]">
         <SellerProductClientControl />
         <h1 className="sr-only">판매자 상품 관리 페이지</h1>
+        <div className="flex justify-between gap-2 border-b pb-1 mb-2 text-[12px] text-oguogu-gray-4">
+          <div className="flex-shrink-0 w-[40px] ">구분</div>
+          <div className="truncate min-w-0 flex-1 ">상품명</div>
+          <div className="flex-shrink-0 w-[58px] ">가격</div>
+          <div className="flex-shrink-0 w-[35px] ">관리</div>
+        </div>
         <ProductItemListForSeller
           title="쫀득쫀득 대학 미백 찰옥수수 옥수수 옥수수 옥수수"
           category="농산물"
