@@ -56,13 +56,10 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           <ShareIcon type="share" />
         </div>
       </section>
+
       {/* 회원가입 버튼 */}
       {isloggedin ? (
-        <div className="bg-oguogu-main-light border border-oguogu-main-dark rounded-lg px-1 py-2 flex items-center justify-center  transition cursor-pointer">
-          <span className="text-oguogu-main-dark  flex items-center gap-2">
-            🥕지금 바로<span className="text-oguogu-main">할인된 가격</span>으로 주문해 보세요
-          </span>
-        </div>
+        <div className="w-full h-px my-2 bg-oguogu-gray-2"></div>
       ) : (
         <Link
           href="/register"
