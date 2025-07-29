@@ -67,7 +67,7 @@
 
   /* 메인 페이지에서 추천 카테고리에 사용되는 공통 스타일 */
   .titleWithProductItem {
-    @apply flex flex-col justify-center gap-y-4 px-4;
+    @apply flex flex-col justify-center gap-y-4;
   }
 
   /* 텍스트가 한 줄에서 벗어났을 때, ... 으로 표기되는 공통 스타일 */
