@@ -2,7 +2,15 @@
 
 import { useState } from 'react';
 
-export default function ProductItemListForSeller() {
+export default function ProductItemListForSeller({
+  category,
+  title,
+  price,
+}: {
+  category: string;
+  title: string;
+  price: string;
+}) {
   const [visible, setVisible] = useState(true);
 
   const toggleVisible = () => {
@@ -12,9 +20,22 @@ export default function ProductItemListForSeller() {
   return (
     <>
       <div className="flex justify-between gap-2 text-[12px] text-oguogu-black">
-        <div className="flex-shrink-0 w-[40px]">농산물</div>
-        <div className="truncate min-w-0 flex-1 ">쫀득쫀득 대학 미백 찰옥수수 옥수수 옥수수 옥수수</div>
-        <div className="flex-shrink-0 w-[56px]">14,800원</div>
+        {visible ? (
+          <>
+            <div className="flex-shrink-0 w-[40px]">{category}</div>
+            <div className="truncate min-w-0 flex-1 ">{title}</div>
+            <div className="flex-shrink-0 w-[56px]">{price}</div>
+          </>
+        ) : (
+          <>
+            <div className="flex-shrink-0 w-[40px] text-oguogu-gray-3">{category}</div>
+            <div className="truncate min-w-0 flex-1 text-oguogu-gray-3 ">{title}</div>
+            <div className="flex-shrink-0 w-[56px] text-oguogu-gray-3">{price}</div>
+          </>
+        )}
+        {/* // <div className="flex-shrink-0 w-[40px]">{category}</div>
+        // <div className="truncate min-w-0 flex-1 ">{title}</div>
+        // <div className="flex-shrink-0 w-[56px]">{price}</div> */}
         <div className="flex gap-[2px] flex-shrink-0">
           <button
             onClick={toggleVisible}
