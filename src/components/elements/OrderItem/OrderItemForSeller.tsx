@@ -41,7 +41,7 @@ export default function OrderItemForSeller({ orderState }: { orderState: string 
   const cancelRefundRequest = () => updateOrderStatus(item._id, 'preparingShipment'); */
 
   return (
-    <div className="flex flex-col gap-4 justify-between w-[288px]">
+    <div className="flex flex-col gap-4 justify-between w-full max-w-[400px]">
       {/* 상단 상태 및 날짜 */}
       <section className="flex justify-between text-[12px] pb-2 border-b border-oguogu-gray-2">
         <span
@@ -92,12 +92,8 @@ export default function OrderItemForSeller({ orderState }: { orderState: string 
       orderState === 'inTransit' ||
       orderState === 'refundInProgress' ? (
         <section className="flex justify-center items-center gap-2 text-[12px]">
-          <button className="w-[140px] py-2 leading-none border border-oguogu-gray-2 rounded-[4px]">
-            주문 정보 확인
-          </button>
-          <button className="w-[140px] py-2 leading-none border border-oguogu-main rounded-[4px]">
-            {nextText} 전환
-          </button>
+          <button className="w-full py-2 leading-none border border-oguogu-gray-2 rounded-[4px]">주문 정보 확인</button>
+          <button className="w-full py-2 leading-none border border-oguogu-main rounded-[4px]">{nextText} 전환</button>
         </section>
       ) : (
         <section>
