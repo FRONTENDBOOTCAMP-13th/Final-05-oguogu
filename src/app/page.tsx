@@ -5,6 +5,7 @@ import { ImageCategory } from '@/components/layouts/Category/Category';
 import Title from '@/components/elements/CommonTitleItem/Title';
 import ProductLinkItem from '@/components/elements/ProductLink/ProductLink';
 import ProductItemList from '@/components/elements/ProductItem/List/ProductItemList';
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -19,13 +20,13 @@ export default function Home() {
       <SlideBanner />
 
       {/* 보조 네비게이션(aside) */}
-      <aside className="flex flex-col gap-y-2 pt-6 mobile-max:gap-y-4 mobile-max:pt-8 ">
+      <aside className="flex flex-col pt-6 gap-y-2 mobile-max:gap-y-4 mobile-max:pt-8 ">
         <ImageCategory />
         <ProductLinkItem link="/product/crop" linkTitle="전체 농산물" subTxt="보러 가기" />
       </aside>
 
       {/* 메인 */}
-      <main className="flex flex-col gap-y-8 pt-8 mobile-max:gap-y-12 mobile-max:pt-12 ">
+      <main className="flex flex-col pt-8 gap-y-8 mobile-max:gap-y-12 mobile-max:pt-12 ">
         {/* 추천 카테고리 1 */}
         <article className="titleWithProductItem">
           <div className="flex flex-col gap-y-8">
@@ -61,6 +62,7 @@ export default function Home() {
       </main>
       {/* 푸터 */}
       <footer className="w-full h-[320px] bg-oguogu-gray-2">
+        <Link href="/office/payments">판매자 정산페이지 임시</Link>
         <p>푸터</p>
       </footer>
     </>
