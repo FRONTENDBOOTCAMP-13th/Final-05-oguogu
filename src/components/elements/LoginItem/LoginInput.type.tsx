@@ -4,10 +4,11 @@ export interface Option {
 }
 
 export interface LoginInputProps {
-  type: 'text' | 'number' | 'email' | 'password' | 'address' | 'phone' | 'birth';
+  type: 'text' | 'number' | 'email' | 'password' | 'address' | 'phone' | 'birth' | 'business';
   value: string;
   placeholder?: string;
   onChange: (value: string) => void;
   options?: Option[]; //이메일 select용
   id?: string;
+  triggerValidation?: boolean;
 }
