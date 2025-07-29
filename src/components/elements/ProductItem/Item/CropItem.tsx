@@ -51,7 +51,7 @@ export default function CropItem({
         {/* 판매자 정보 */}
         <div className="flex gap-1 items-center">
           <Image src="/images/product-hatIcon.svg" alt="농사꾼 모자 아이콘" width={16} height={16} />
-          <p className="text-[10px]">{seller!.extra.businessName}</p>
+          <p className="text-[10px]">{seller?.extra?.businessName ?? '오구텃밭'}</p>
         </div>
 
         {/* 상품명 */}

@@ -55,7 +55,7 @@ export default function ExperienceItem({
         {/* 판매자 정보 */}
         <div className="flex gap-1 items-center">
           <Image src="/images/product-hatIcon.svg" alt="농사꾼 모자 아이콘" width={16} height={16} />
-          <p className="text-[10px]">{seller!.extra!.businessName}</p>
+          <p className="text-[10px]">{seller?.extra?.businessName ?? '오구텃밭'}</p>
         </div>
         {/* 상품명 */}
         <Link href={`/search/result/${_id}/detail`} className="text-[14px] tracking-[-0.28px] leading-4">
