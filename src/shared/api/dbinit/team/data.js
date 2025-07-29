@@ -461,7 +461,7 @@ export const initData = async (clientId, nextSeq) => {
       // seller_id: 2
       {
         _id: await nextSeq('product'),
-        seller_id: 2,
+        seller_id: 11,
         name: "남다른 쫀득함! 신품종 전남 해남 25년 '햇' 오색촬옥수수",
         content: '씹으면 씹을수록 느껴지는 달짝지근함과 쫀득쫀득한 찰진 식감',
         price: 29900,
@@ -528,7 +528,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq('product'),
-        seller_id: 2,
+        seller_id: 11,
         name: '쫀득함이 남다른 의령 햇 미백 찰옥수수',
         content: '쫀득함과 구수한 맛이 일품인 건강한 미백 찰옥수수',
         price: 18500,
@@ -595,7 +595,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq('product'),
-        seller_id: 2,
+        seller_id: 11,
         name: '은은하게 퍼지는 고소함과 달큰함이 좋은 유기농 냉동 찰옥수수',
         content: '이른 봄 씨앗을 파종해 직접 재배한 100% 국내산 냉동 찐 찰옥수수',
         price: 41900,
@@ -662,7 +662,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq('product'),
-        seller_id: 2,
+        seller_id: 11,
         name: "남다른 쫀득함! 신품종 전남 해남 25년 '햇' 오색촬옥수수",
         content: '재배 농가가 많지 않은 귀한 품종',
         price: 29900,
@@ -729,7 +729,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq('product'),
-        seller_id: 2,
+        seller_id: 11,
         name: '유기농 홍천 찰옥수수 3입',
         content: '간편하게 누리는 찰진 고소함',
         price: 10900,
@@ -797,7 +797,7 @@ export const initData = async (clientId, nextSeq) => {
       // seller_id: 3
       {
         _id: await nextSeq('product'),
-        seller_id: 3,
+        seller_id: 11,
         name: '괴산 대학🌽찰 옥수수🌽30개✨달콤하고 쫀득함이 일품✨',
         content: '달콤하고 쫀득한 여름 대표 간식',
         price: 29800,
@@ -864,7 +864,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq('product'),
-        seller_id: 3,
+        seller_id: 11,
         name: '❗특대 사이즈 찰옥수수 10개 ❗꿀맛 보장!! 부담없는 가격에 득템!!',
         content: '지금이 제일 맛있는 특대 사이즈 찰옥수수',
         price: 11900,
@@ -931,7 +931,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq('product'),
-        seller_id: 3,
+        seller_id: 11,
         name: '미백 찰옥수수 10송이 11-15cm 내외',
         content: '고랭지에서 재배해 더 쫀득한 미백 찰옥수수',
         price: 11900,
@@ -998,7 +998,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq('product'),
-        seller_id: 3,
+        seller_id: 12,
         name: '쫀득 구수한~흑찰 옥수수 10개 20개 30개',
         content: '칼슘 흑찰옥수수! 우리 아이들이 좋아하는 흑찰옥수수',
         price: 19900,
@@ -1065,7 +1065,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq('product'),
-        seller_id: 3,
+        seller_id: 12,
         name: '경남 고성 찰옥수수 10개 미백찰 미흑찰 제철 생 옥수수',
         content: '고성바다의 시원한 바람결로 알알이 영근 찰옥수수를 만나보세요',
         price: 28000,
@@ -1133,7 +1133,7 @@ export const initData = async (clientId, nextSeq) => {
       // seller_id: 4
       {
         _id: await nextSeq('product'),
-        seller_id: 4,
+        seller_id: 12,
         name: '찰옥수수 더 쫀득하고 연한 강원도 햇 옥수수',
         content: '충분한 퇴비, 두둑 간격을 넓혀 품질 향상',
         price: 15000,
@@ -1200,7 +1200,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq('product'),
-        seller_id: 4,
+        seller_id: 12,
         name: '특품 사이즈 찰옥수수 햇 옥수수 생 제철',
         content: '일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수',
         price: 16000,
@@ -1267,7 +1267,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq('product'),
-        seller_id: 4,
+        seller_id: 12,
         name: '초당옥수수 특품사이즈 옥수수 당도보장',
         content: '16cm 이상 특품만 선별!',
         price: 26000,
@@ -1334,7 +1334,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq('product'),
-        seller_id: 4,
+        seller_id: 12,
         name: '갓 삶아 냉동한 찰옥수수 20개 홍찰 백찰 알록이 황찰 반반 절단 진공 옥수수',
         content: '올해 수확 햇옥수수 특품 선별 가공',
         price: 20000,
@@ -1401,7 +1401,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq('product'),
-        seller_id: 4,
+        seller_id: 12,
         name: '2025년 잘영근 햇 괴산대학 찰옥수수',
         content: '찰지도 단맛이 강한 연농 1호 찰옥수수',
         price: 25900,
@@ -1469,7 +1469,7 @@ export const initData = async (clientId, nextSeq) => {
       // seller_id: 5
       {
         _id: await nextSeq('product'),
-        seller_id: 5,
+        seller_id: 12,
         name: '쫀득톡톡 괴산 대학찰옥수수 30개입 대학찰 미백찰',
         content: '한 대씩 키운 품질 좋은 대학찰옥수수',
         price: 27000,
@@ -1536,7 +1536,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq('product'),
-        seller_id: 5,
+        seller_id: 11,
         name: '강원도 찰옥수수 미백 흑 찰옥수수 홍천 햇 생옥수수 ',
         content: '인증 받은 비료만 사용! 건강하고 싱싱한 옥수수',
         price: 7900,
@@ -1603,7 +1603,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq('product'),
-        seller_id: 5,
+        seller_id: 11,
         name: '초당옥수수 괴산대학찰옥수수 10개',
         content: '진~짜 쫀득 탱글한 대학찰옥수수',
         price: 30000,
@@ -1670,7 +1670,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq('product'),
-        seller_id: 5,
+        seller_id: 11,
         name: '강원도 정선 흑찰 생옥수수 냉동 찐 삶은',
         content: '700고지 구름밭에서 자란 달콤한 흑찰옥수수',
         price: 38000,
@@ -1737,7 +1737,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq('product'),
-        seller_id: 5,
+        seller_id: 11,
         name: '25년 곡성 햇 생 흑찰 옥수수 특품',
         content: '700고지 구름밭에서 자란 달콤한 흑찰옥수수',
         price: 16900,
@@ -1805,7 +1805,7 @@ export const initData = async (clientId, nextSeq) => {
       // seller_id: 6
       {
         _id: await nextSeq('product'),
-        seller_id: 6,
+        seller_id: 11,
         name: '햇 괴산 대학찰옥수수 찐옥수수 장작불 가마솥에 삶은 냉동 옥수수',
         content: '나무 장작불로 삶아낸 국도에서 먹던 그맛!',
         price: 60000,
@@ -1872,7 +1872,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq('product'),
-        seller_id: 6,
+        seller_id: 12,
         name: '국내산 초당옥수수',
         content: '돌아온 여름, 온 가족이 즐겨먹는 여름별미!',
         price: 56000,
@@ -1939,7 +1939,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq('product'),
-        seller_id: 6,
+        seller_id: 12,
         name: '초당옥수수 콧털삼촌 농장 3차선별 당일수확 산지직송 옥수수',
         content: '7년동안의 노하우! 초당옥수수 전문 생산, 유통',
         price: 34800,
@@ -2006,7 +2006,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq('product'),
-        seller_id: 6,
+        seller_id: 11,
         name: '초당옥수수 고당도 제철 3차선별 옥수수',
         content: '청정산지에서 생산하는 옥수수',
         price: 24000,
@@ -2073,7 +2073,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq('product'),
-        seller_id: 6,
+        seller_id: 12,
         name: '기장찰옥수수 신선하게 삶아낸 냉동 찰옥수수 다양한 맛과 품종',
         content: '상위2% 전문가가 직접 만든 무첨가 기장찰옥수수',
         price: 37900,
@@ -2143,7 +2143,7 @@ export const initData = async (clientId, nextSeq) => {
       // seller_id: 2
       {
         _id: await nextSeq('product'),
-        seller_id: 2,
+        seller_id: 11,
         name: '강원도 산골마을 찰옥수수 수확체험',
         content: '1인 20개 수확! 바베큐 중식 제공!',
         price: 30000,
@@ -2226,7 +2226,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq('product'),
-        seller_id: 2,
+        seller_id: 11,
         name: '옥수수 수확 체험',
         content: '직접 딴 옥수수를 바로 삶아먹어요',
         price: 10000,
@@ -2308,7 +2308,7 @@ export const initData = async (clientId, nextSeq) => {
       // seller_id: 7
       {
         _id: await nextSeq('product'),
-        seller_id: 7,
+        seller_id: 12,
         name: '[컨츄리타운] 촌캉스',
         content: '폭스클럽과 유명연예인도 다녀간 촌캉스!',
         price: 198000,
@@ -2393,7 +2393,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq('product'),
-        seller_id: 7,
+        seller_id: 12,
         name: '고소한 대화 한 조각, 임실치즈마을 가족소풍',
         content: '임실 대표 관광지 치즈마을 당일 여행!',
         price: 92000,
@@ -2481,7 +2481,7 @@ export const initData = async (clientId, nextSeq) => {
       // seller_id: 3
       {
         _id: await nextSeq('product'),
-        seller_id: 3,
+        seller_id: 11,
         name: '양배추',
         content: '양배추에서 조세호가 될 때까지',
         price: 30000,
@@ -2622,7 +2622,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq('product'),
-        seller_id: 3,
+        seller_id: 11,
         name: '청경채',
         content: '청경채의 성장 여정을 함께 해요',
         price: 15000,
@@ -2719,7 +2719,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq('product'),
-        seller_id: 3,
+        seller_id: 11,
         name: '옥수수',
         content: '겨울에 수확하는 옥수수? 같이 키워주세요!',
         price: 27000,
@@ -2855,7 +2855,7 @@ export const initData = async (clientId, nextSeq) => {
       // seller_id: 5
       {
         _id: await nextSeq('product'),
-        seller_id: 5,
+        seller_id: 12,
         name: '배추',
         content: '배추의 성장 여정을 함께 해요',
         price: 25000,
@@ -2952,7 +2952,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq('product'),
-        seller_id: 5,
+        seller_id: 12,
         name: '무',
         content: '무의 성장 여정을 함께 해요',
         price: 35000,
@@ -3037,7 +3037,7 @@ export const initData = async (clientId, nextSeq) => {
       },
       {
         _id: await nextSeq('product'),
-        seller_id: 5,
+        seller_id: 11,
         name: '브로콜리',
         content: '브로콜리의 성장 여정을 함께 해요',
         price: 22000,
