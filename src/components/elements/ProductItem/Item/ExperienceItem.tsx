@@ -44,7 +44,7 @@ export default function ExperienceItem({
           {/* 뱃지 (제철 상품, 인기 상품 등) */}
           <div className="absolute top-0.5 left-1.5">
             {badgeList.map((item, index) => (
-              <Badge key={index} type={item} />
+              <Badge key={index} type={item} size={10} />
             ))}
           </div>
         </div>
