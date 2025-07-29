@@ -27,6 +27,8 @@ export default function LoginForm() {
       console.log(loginRes);
 
       if (loginRes?.item?.token?.accessToken) {
+        alert('로그인에 성공했습니다 ~~');
+
         // Zustand에 토큰 저장
         setToken(loginRes.item.token.accessToken);
 
@@ -41,10 +43,13 @@ export default function LoginForm() {
         // 자동 로그인 체크 여부에 따라 스토리지 타입 설정
         useAuthStore.getState().setStorageType(autoLogin);
 
-        alert('로그인에 성공했습니다 ~~');
         // 로그인 성공 후 페이지를 강제로 새로고침하여 InitAuthStore의 useEffect가 다시 실행되도록
-        router.refresh();
-        router.push('/');
+        // INFO type 이 seller 인 경우, 홈으로 이동하지 않고 백오피스로 이동하도록 수정
+        if (userInfo.type === 'seller') {
+          router.push('/office');
+        } else {
+          router.push('/');
+        }
       } else {
         router.refresh();
         alert('로그인 정보가 일치하지 않습니다.');
