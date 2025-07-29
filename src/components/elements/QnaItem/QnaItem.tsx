@@ -104,8 +104,8 @@ export default function QnaItem({ state = false, isPrivate = false, viewerRole =
         )}
 
         <div className="flex gap-3">
-          <p className="text-[12px] text-oguogu-black">구매자이름 {maskName(res.user.name)}</p>
-          <p className="text-[12px] text-oguogu-black">이메일 앞부분 {maskEmail(res.user.email || '')}</p>
+          <p className="text-[12px] text-oguogu-black">{maskName(res.user.name)}</p>
+          <p className="text-[12px] text-oguogu-black">({maskEmail(res.user.email || '')})</p>
         </div>
       </div>
 
