@@ -2,6 +2,7 @@
 
 import LoginInput from '@/components/elements/LoginItem/LoginInput';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 interface AccountFormProps {
   setRegisteredAccount: (account: string) => void;
@@ -16,13 +17,13 @@ export default function AccountForm({ setRegisteredAccount, onCancel }: AccountF
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!bank || !owner || !accountNumber) {
-      alert('모든 항목을 입력해 주세요.');
+      toast.error('모든 항목을 입력해 주세요.');
       return;
     }
 
     const fullAccount = `${bank} ${accountNumber}`;
     setRegisteredAccount(fullAccount);
-    alert('계좌가 등록되었습니다!');
+    toast.success('계좌가 등록되었습니다!');
   };
 
   return (
