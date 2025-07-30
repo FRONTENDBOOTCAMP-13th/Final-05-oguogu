@@ -60,7 +60,7 @@ export default function QnaClientControls({ _id }: { _id: string }) {
   };
 
   return (
-    <div className="px-4 flex flex-col gap-4 mb-6">
+    <div className="px-4 flex flex-col gap-4">
       {isLoggedIn ? (
         <button
           onClick={openModal}

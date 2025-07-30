@@ -1,13 +1,14 @@
 'use client';
 
-import CropItem from '@/components/elements/ProductItem/Item/CropItem';
-import ExperienceItem from '@/components/elements/ProductItem/Item/ExperienceItem';
-import GardenItem from '@/components/elements/ProductItem/Item/GardenItem';
+import CropItem, { CropItemSkeleton } from '@/components/elements/ProductItem/Item/CropItem';
+import ExperienceItem, { ExperienceItemSkeleton } from '@/components/elements/ProductItem/Item/ExperienceItem';
+import GardenItem, { GardenItemSkeleton } from '@/components/elements/ProductItem/Item/GardenItem';
 import { ProductItemListType } from '@/components/elements/ProductItem/List/ProductItem.type';
 import { createBookmark, deleteBookmark } from '@/shared/data/actions/bookmarks';
 import { getBookmarks } from '@/shared/data/functions/bookmarks';
 import { getProducts } from '@/shared/data/functions/product';
 import { useAuthStore } from '@/shared/store/authStore';
+import { useLoadingStore } from '@/shared/store/loadingStore';
 import { BookmarkPostResponse, BookmarkResponse } from '@/shared/types/bookmarkt';
 import { Item, productsRes } from '@/shared/types/product';
 import { useEffect, useState } from 'react';
@@ -16,8 +17,12 @@ export default function ProductItemList({ type }: ProductItemListType) {
   const [res, setRes] = useState<productsRes>();
   const [bookmarkedMap, setBookmarkedMap] = useState<Map<number, number>>(new Map()); //상품 id, 북마크 id 쌍
 
+  /* Zustand 에서 스켈레톤 UI 작업을 위한 상태 가져오기 */
+  const { isLoading, setLoading } = useLoadingStore();
+
   const isBookmarked = (_id: number) => bookmarkedMap.has(_id);
 
+  /* Zustand 에서 토큰 정보 가져오기 */
   const token = useAuthStore(state => state.token);
   const toggleBookmark = async (_id: number) => {
     if (!token) {
@@ -25,7 +30,6 @@ export default function ProductItemList({ type }: ProductItemListType) {
     }
 
     const isBookmarked = bookmarkedMap.has(_id);
-
     const updateMap = new Map(bookmarkedMap);
 
     try {
@@ -78,15 +82,24 @@ export default function ProductItemList({ type }: ProductItemListType) {
   // 데이터를 초기에 불러오는 useEffect
   useEffect(() => {
     const fetch = async () => {
-      const data: productsRes = await getProducts();
+      /* 스켈레톤 UI on*/
+      setLoading(true);
+      try {
+        const data: productsRes = await getProducts();
 
-      if (data.ok) {
-        setRes(data);
+        if (data.ok) {
+          setRes(data);
+        }
+      } catch (err) {
+        console.log('ProductItemList 에러', err);
+      } finally {
+        /* 스켈레톤 UI off */
+        setLoading(false);
       }
     };
 
     fetch();
-  }, [type]);
+  }, [setLoading, type]);
 
   const cropData = res?.item
     .filter((item: Item) => item.name.includes('옥수수'))
@@ -104,11 +117,50 @@ export default function ProductItemList({ type }: ProductItemListType) {
   return (
     <>
       {type === 'crop' ? (
-        <div className="flex gap-3 cursor-grab overflow-auto hide-scrollbar">
-          {cropData &&
-            cropData
-              .map((item: Item) => (
-                <CropItem
+        isLoading ? (
+          <div className="flex gap-3 cursor-grab overflow-auto hide-scrollbar">
+            <CropItemSkeleton />
+            <CropItemSkeleton />
+            <CropItemSkeleton />
+            <CropItemSkeleton />
+            <CropItemSkeleton />
+          </div>
+        ) : (
+          <div className="flex gap-3 cursor-grab overflow-auto hide-scrollbar">
+            {cropData &&
+              cropData
+                .map((item: Item) => (
+                  <CropItem
+                    key={item._id}
+                    _id={item._id}
+                    name={item.name}
+                    price={item.price}
+                    rating={item.rating}
+                    bookmarks={item.bookmarks}
+                    extra={item.extra}
+                    seller={item.seller}
+                    replies={item.replies}
+                    isbookmarked={isBookmarked(item._id)}
+                    togglebookmark={() => toggleBookmark(item._id)}
+                  />
+                ))
+                .slice(0, 10)}
+          </div>
+        )
+      ) : type === 'experience' ? (
+        isLoading ? (
+          <div className="flex gap-3 cursor-grab overflow-auto hide-scrollbar">
+            <ExperienceItemSkeleton />
+            <ExperienceItemSkeleton />
+            <ExperienceItemSkeleton />
+            <ExperienceItemSkeleton />
+            <ExperienceItemSkeleton />
+          </div>
+        ) : (
+          <div className="flex gap-3  cursor-grab overflow-auto hide-scrollbar">
+            {expData &&
+              expData.map((item: Item) => (
+                <ExperienceItem
                   key={item._id}
                   _id={item._id}
                   name={item.name}
@@ -121,49 +173,40 @@ export default function ProductItemList({ type }: ProductItemListType) {
                   isbookmarked={isBookmarked(item._id)}
                   togglebookmark={() => toggleBookmark(item._id)}
                 />
-              ))
-              .slice(0, 10)}
-        </div>
-      ) : type === 'experience' ? (
-        <div className="flex gap-3  cursor-grab overflow-auto hide-scrollbar">
-          {expData &&
-            expData.map((item: Item) => (
-              <ExperienceItem
-                key={item._id}
-                _id={item._id}
-                name={item.name}
-                price={item.price}
-                rating={item.rating}
-                bookmarks={item.bookmarks}
-                extra={item.extra}
-                seller={item.seller}
-                replies={item.replies}
-                isbookmarked={isBookmarked(item._id)}
-                togglebookmark={() => toggleBookmark(item._id)}
-              />
-            ))}
-        </div>
+              ))}
+          </div>
+        )
       ) : type === 'gardening' ? (
-        <div className="flex gap-3 cursor-grab overflow-auto hide-scrollbar">
-          {gardeningData &&
-            gardeningData.map((item: Item) => (
-              <GardenItem
-                key={item._id}
-                _id={item._id}
-                name={item.name}
-                price={item.price}
-                rating={item.rating}
-                bookmarks={item.bookmarks}
-                extra={item.extra}
-                seller={item.seller}
-                replies={item.replies}
-                quantity={item.quantity}
-                buyQuantity={item.buyQuantity}
-                isbookmarked={isBookmarked(item._id)}
-                togglebookmark={() => toggleBookmark(item._id)}
-              />
-            ))}
-        </div>
+        isLoading ? (
+          <div className="flex gap-3 cursor-grab overflow-auto hide-scrollbar">
+            <GardenItemSkeleton />
+            <GardenItemSkeleton />
+            <GardenItemSkeleton />
+            <GardenItemSkeleton />
+            <GardenItemSkeleton />
+          </div>
+        ) : (
+          <div className="flex gap-3 cursor-grab overflow-auto hide-scrollbar">
+            {gardeningData &&
+              gardeningData.map((item: Item) => (
+                <GardenItem
+                  key={item._id}
+                  _id={item._id}
+                  name={item.name}
+                  price={item.price}
+                  rating={item.rating}
+                  bookmarks={item.bookmarks}
+                  extra={item.extra}
+                  seller={item.seller}
+                  replies={item.replies}
+                  quantity={item.quantity}
+                  buyQuantity={item.buyQuantity}
+                  isbookmarked={isBookmarked(item._id)}
+                  togglebookmark={() => toggleBookmark(item._id)}
+                />
+              ))}
+          </div>
+        )
       ) : (
         ''
       )}

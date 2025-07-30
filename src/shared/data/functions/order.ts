@@ -9,6 +9,7 @@ const CLIENT_ID = 'febc13-final05-emjf';
 // [x] 구매 목록 조회
 // [x] 구매 목록의 상태값 조회
 // [x] 구매 상세 조회
+// [x] 주문 목록 조회 (판매자)
 
 // 1. 구매 목록 조회
 export async function getOrders(token: string) {
@@ -48,6 +49,23 @@ export async function getOrderState({ token }: { token: string }) {
 export async function getOrder(_id: number, token: string) {
   try {
     const res = await fetch(`${API_URL}/orders/${_id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Client-Id': CLIENT_ID,
+      },
+    });
+    return res.json();
+  } catch (error) {
+    // 네트워크 오류 처리
+    console.error(error);
+    return { ok: 0, message: '일시적인 네트워크 문제로 로드에 실패했습니다.' };
+  }
+}
+
+// 4. 주문 목록 조회 (판매자)
+export async function getOrdersSeller(token: string) {
+  try {
+    const res = await fetch(`${API_URL}/seller/orders`, {
       headers: {
         Authorization: `Bearer ${token}`,
         'Client-Id': CLIENT_ID,

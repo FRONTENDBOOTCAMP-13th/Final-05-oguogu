@@ -2,17 +2,15 @@
 
 import { useState } from 'react';
 
-const orderOptions = [
-  { label: '전체', value: 'all' },
-  { label: '배송완료', value: 'delivered' },
-  { label: '구매완료', value: 'OS020' },
-  { label: '환불 접수', value: 'refundInProgress' },
-  { label: '환불 완료', value: 'refundCompleted' },
-];
+export interface OrderDropdownType {
+  onChange?: (value: string) => void;
+  selected: { label: string; value: string };
+  setSelected: (option: { label: string; value: string }) => void; // 수정
+  orderOptions: { label: string; value: string }[];
+}
 
-export default function OrderDropdown({ onChange }: { onChange?: (value: string) => void }) {
+export default function OrderDropdown({ onChange, selected, setSelected, orderOptions }: OrderDropdownType) {
   const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState(orderOptions[0]);
 
   return (
     <div className="relative w-full max-w-[400px]">

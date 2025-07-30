@@ -9,7 +9,7 @@ export default function CheckButton({ children, size = 14, gap = 2, agreement, c
       {checked ? checkedSVG({ size }) : uncheckedSVG({ size })}
       <span>
         {children}
-        {agreement === 'required' && <span className="text-oguogu-gray-3 text-[12px] ml-2">(필수)</span>}
+        {agreement === 'required' && <span className="text-oguogu-main-dark text-[12px] ml-2">(필수)</span>}
         {agreement === 'optional' && <span className="text-oguogu-gray-3 text-[12px] ml-2">(선택)</span>}
       </span>
     </label>

@@ -38,7 +38,7 @@ export default function InteractionButton({
         </button>
 
         <Link href={`/search/result/${_id}/detail`} className="flex w-full">
-          <CommonButton feature={'자세히 보기'} textSize="text-[10px]" height="h-[22px]" />
+          <CommonButton feature={'자세히 보기'} textSize="text-xs" height="h-6" />
         </Link>
       </div>
     </>

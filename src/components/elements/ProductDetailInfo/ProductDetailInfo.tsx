@@ -1,4 +1,5 @@
 'use client';
+
 import Title from '@/components/elements/CommonTitleItem/Title';
 import { ProductDetailInfoType } from '@/components/elements/ProductDetailInfo/ProductDetailInfo.type';
 import Badge from '@/components/elements/ProductItem/Badge/Badge';
@@ -21,7 +22,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
 
   const isloggedin = useAuthStore(state => state.isLoggedIn);
   const remain = item.quantity! - item.buyQuantity!;
-  
+
   return (
     <div className="px-4 pt-4 flex flex-col gap-4">
       {/* 상품 뱃지 및 상품명 */}
@@ -55,13 +56,10 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           <ShareIcon type="share" />
         </div>
       </section>
+
       {/* 회원가입 버튼 */}
       {isloggedin ? (
-        <div className="bg-oguogu-main-light border border-oguogu-main-dark rounded-lg px-1 py-2 flex items-center justify-center  transition cursor-pointer">
-          <span className="text-oguogu-main-dark  flex items-center gap-2">
-            🥕지금 바로<span className="text-oguogu-main">할인된 가격</span>으로 주문해 보세요
-          </span>
-        </div>
+        <div className="w-full h-px my-2 bg-oguogu-gray-2"></div>
       ) : (
         <Link
           href="/register"
@@ -90,7 +88,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           <div className="flex">
             <span className="itemData">텃밭</span>
             <div className="itemDataExtra">
-              <span>돌쇠네농산물</span>
+              <span>{item.seller?.extra.businessName ?? '오구텃밭'}</span>
               <div className="flex gap-1">
                 <Image src="/images/product-hatIcon.svg" alt="인증 아이콘" width={14} height={14} />
                 <span className="text-[10px]">인증된 판매자 입니다.</span>
@@ -101,13 +99,13 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           {/* 판매자 주소 */}
           <div className="flex">
             <span className="itemData">주소</span>
-            <span>부산시 해운대구 반송로 456</span>
+            <span>{item.seller?.address ?? '오구시 오구동 59-59'}</span>
           </div>
 
           {/* 문의 */}
           <div className="flex">
             <span className="itemData">문의</span>
-            <span>02-123-4567</span>
+            <span>{item.seller?.extra.businessNumber ?? '070-5959-5959'}</span>
           </div>
         </section>
       ) : type === 'experience' ? (
@@ -154,7 +152,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           {/* 여행사 */}
           <div className="flex">
             <span className="itemData">여행사</span>
-            <span>트래블 코리아</span>
+            <span>{item.seller?.extra.businessName ?? '오구텃밭'}</span>
           </div>
 
           {/* 가이드 정보 */}
@@ -195,7 +193,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           {/* 판매자 주소 */}
           <div className="flex gap-2">
             <span className="itemData">텃밭 위치</span>
-            <span>전북 남원시 금동길 123</span>
+            <span>{item.seller?.address ?? '오구시 오구동 59-59'}</span>
           </div>
 
           {/* 구분선 */}
@@ -217,7 +215,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           <div className="flex gap-2">
             <span className="itemData">텃밭</span>
             <div className="flex flex-col">
-              <span>돌쇠네농산물</span>
+              <span>{item.seller?.extra.businessName ?? '오구텃밭'}</span>
               <div className="flex gap-1">
                 <Image src="/images/product-hatIcon.svg" alt="인증 아이콘" width={14} height={14} />
                 <span className="text-[10px]">인증된 판매자 입니다.</span>
@@ -228,7 +226,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           {/* 문의 */}
           <div className="flex gap-2">
             <span className="itemData">문의</span>
-            <span>02-2342-4567</span>
+            <span>{item.seller?.extra.businessNumber ?? '070-5959-5959'}</span>
           </div>
         </section>
       ) : (

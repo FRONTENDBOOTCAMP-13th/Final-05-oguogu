@@ -48,27 +48,40 @@ export default function CartClientControl() {
   const orderItems = cartItems
     .filter(item => selectedItems.includes(item._id))
     .map(item => ({
-      _id: item.product_id,
+      _id: item.product_id, // 주문에는 product_id 사용
       quantity: item.quantity,
+      cart_id: item._id,    // cart_id도 같이 저장
     }));
+
+  // 주문하기 버튼
 
   // 주문하기 버튼
   const handleOrder = async () => {
     if (!token) return;
-    const data = await createOrder(orderItems, token);
-    if (data.ok) {
-      alert('주문이 완료되었습니다.');
-      // 주문 완료 후, 해당 상품 장바구니에서 제거
-      for (const id of selectedItems) {
-        await deleteCart(id, token);
-      }
 
-      // 장바구니 UI에서도 제거
-      setCartItems(prev => prev.filter(item => !selectedItems.includes(item._id)));
-      setSelectedItems([]);
-    } else {
-      alert(data.message);
-      console.log(data);
+    let allSuccess = true;
+    const successCartIds: number[] = [];
+
+    for (const item of orderItems) {
+      const data = await createOrder([{ _id: item._id, quantity: item.quantity }], token);
+      if (data.ok) {
+        await deleteCart(item.cart_id, token);
+        successCartIds.push(item.cart_id);
+      } else {
+        allSuccess = false;
+        alert(`상품 ID ${item._id} 주문 실패: ${data.message}`);
+        console.log(data);
+      }
+    }
+
+    // 한 번에 상태 갱신
+    if (successCartIds.length > 0) {
+      setCartItems(prev => prev.filter(cartItem => !successCartIds.includes(cartItem._id)));
+      setSelectedItems(prev => prev.filter(id => !successCartIds.includes(id)));
+    }
+
+    if (allSuccess && successCartIds.length > 0) {
+      alert('주문이 완료되었습니다.');
     }
   };
 
@@ -178,7 +191,7 @@ export default function CartClientControl() {
       </div>
 
       {/* 주문 상세 내역: div 하위에 삼항연산자로 코드 작성 */}
-      <div className="border-t border-t-oguogu-black pt-4 pb-[84px] flex flex-col justify-start items-center gap-8">
+      <div className="border-t border-t-oguogu-black pt-4 pb-[84px] flex flex-col justify-start items-center gap-5 w-full">
         {/* 아무런 데이터가 없는 경우 */}
         {cartItems.length === 0 && (
           <IsEmptyMessage

@@ -62,9 +62,9 @@ export default async function ProductReview({ params }: ProductDetailPageProps) 
       <CategoryHeader title={productName} />
       <TextCategoryForDetailPage _id={Number(_id)} reviewCnt={reviewCnt} qnaCnt={qnaCnt} />
       <ReviewSortbar reviewAvg={average.toFixed(1)} />
-      <div className="px-4 flex flex-col gap-4 mb-6">{/* <ReviewClientControl /> */}</div>
+      <div className="px-4 flex flex-col gap-4 mb-2">{/* <ReviewClientControl /> */}</div>
 
-      <section className="px-4 flex flex-col gap-8">
+      <section className="px-4 flex flex-col">
         {ReviewList.length ? (
           ReviewList
         ) : (

@@ -1,10 +1,64 @@
+'use client';
 import HotMarkIcon from '@/components/elements/HotMarkIcon/HotMarkIcon';
 import LogOutIcon from '@/components/elements/LogoutIcon/LogoutIcon';
 import ProductLinkItem from '@/components/elements/ProductLink/ProductLink';
 import GetLoggedInUserData from '@/features/getLoggedInUserData/getLoggedInUserData';
+import { getOrdersSeller } from '@/shared/data/functions/order';
+import { getProductSeller } from '@/shared/data/functions/product';
+import { useAuthStore } from '@/shared/store/authStore';
+import { OrderListResponse } from '@/shared/types/order';
+import { productsRes } from '@/shared/types/product';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 export default function BackOffcieSectionDependsOnLoginStatus() {
+  const token = useAuthStore(state => state.token);
+
+  const [productRes, setProductRes] = useState<productsRes>();
+  const [orderRes, setOrderRes] = useState<OrderListResponse>();
+
+  useEffect(() => {
+    if (!token) return;
+
+    const fetch = async () => {
+      const data: productsRes = await getProductSeller(token);
+      const orderData: OrderListResponse = await getOrdersSeller(token);
+
+      if (data.ok) {
+        setProductRes(data);
+      }
+      if (orderData.ok) {
+        setOrderRes(orderData);
+      }
+    };
+    fetch();
+  }, [token]);
+
+  console.log(productRes);
+  console.log(orderRes);
+
+  const cropCnt = productRes?.item.filter(item => item.extra?.productType === 'crop').length;
+  const experiencepCnt = productRes?.item.filter(item => item.extra?.productType === 'experience').length;
+  const gardeningCnt = productRes?.item.filter(item => item.extra?.productType === 'gardening').length;
+
+  const payedCnt = orderRes?.item.filter(item => item.state === 'OS020').length;
+  const preparingShipmentCnt = orderRes?.item.filter(item => item.state === 'preparingShipment').length;
+  const inTransitCnt = orderRes?.item.filter(item => item.state === 'inTransit').length;
+  const deliveredCnt = orderRes?.item.filter(item => item.state === 'delivered').length;
+  const purchaseCompletedCnt = orderRes?.item.filter(item => item.state === 'purchaseCompleted').length;
+
+  const totalPrice = orderRes?.item.reduce((orderSum, order) => {
+    const productsSum = order.products.reduce((sum, prod) => {
+      const price = prod.price;
+      const quantity = prod.quantity;
+      const dcRate = prod.extra.dcRate;
+
+      const discounted = price * (1 - dcRate / 100);
+      return sum + discounted * quantity;
+    }, 0);
+    return orderSum + productsSum;
+  }, 0);
+
   return (
     <>
       <section className="flex flex-col gap-4">
@@ -41,7 +95,7 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
           <div className="flex flex-col gap-3 px-4 pt-4">
             <p className="text-xl">판매 수익</p>
             <div className="flex items-center justify-center gap-2">
-              <span className="text-[28px]">8,354,980</span>
+              <span className="text-[28px]">{totalPrice?.toLocaleString()}</span>
               <span>원</span>
             </div>
           </div>
@@ -53,26 +107,32 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
             <div className="flex justify-around gap-2">
               {/* 결제 완료 */}
               <div className={`flex flex-col items-center gap-2`}>
-                <span className="text-2xl">58</span>
+                <span className="text-2xl">{payedCnt}</span>
                 <span className="text-sm">결제 완료</span>
               </div>
 
               {/* 배송 준비 중 */}
               <div className={`flex flex-col items-center gap-2`}>
-                <span className="text-2xl">24</span>
+                <span className="text-2xl">{preparingShipmentCnt}</span>
                 <span className="text-sm">배송 준비 중</span>
               </div>
 
               {/* 배송 중 */}
               <div className={`flex flex-col items-center gap-2`}>
-                <span className="text-2xl">102</span>
+                <span className="text-2xl">{inTransitCnt}</span>
                 <span className="text-sm">배송 중</span>
               </div>
 
               {/* 배송 완료 */}
               <div className={`flex flex-col items-center gap-2`}>
-                <span className="text-2xl">80</span>
+                <span className="text-2xl">{deliveredCnt}</span>
                 <span className="text-sm">배송 완료</span>
+              </div>
+
+              {/* 구매 완료 */}
+              <div className={`flex flex-col items-center gap-2`}>
+                <span className="text-2xl">{purchaseCompletedCnt}</span>
+                <span className="text-sm">구매 완료</span>
               </div>
             </div>
           </div>
@@ -84,19 +144,23 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
             <div className="flex justify-around gap-2">
               {/* 농산물 */}
               <div className={`flex flex-col items-center gap-2`}>
-                <span className="text-2xl">24</span>
+                <span className={`text-2xl  ${cropCnt ? 'text-oguogu-black' : 'text-oguogu-gray-2'}`}>{cropCnt}</span>
                 <span className="text-sm">농산물</span>
               </div>
 
               {/* 체험 */}
               <div className={`flex flex-col items-center gap-2`}>
-                <span className="text-2xl text-oguogu-gray-2">0</span>
+                <span className={`text-2xl  ${experiencepCnt ? 'text-oguogu-black' : 'text-oguogu-gray-2'}`}>
+                  {experiencepCnt}
+                </span>
                 <span className="text-sm">체험</span>
               </div>
 
               {/* 텃밭 */}
               <div className={`flex flex-col items-center gap-2`}>
-                <span className="text-2xl">1</span>
+                <span className={`text-2xl  ${gardeningCnt ? 'text-oguogu-black' : 'text-oguogu-gray-2'}`}>
+                  {gardeningCnt}
+                </span>
                 <span className="text-sm">텃밭</span>
               </div>
             </div>

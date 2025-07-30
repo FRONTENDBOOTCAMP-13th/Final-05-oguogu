@@ -44,7 +44,7 @@ export default function OrderItem({ orderState, item, updateOrderStatus, handleS
   const cancelRefundRequest = () => updateOrderStatus(item._id, 'preparingShipment');
 
   return (
-    <div className="flex flex-col gap-4 justify-between w-[288px]">
+    <div className="flex flex-col gap-4 justify-between min-w-[288px] w-full">
       {/* 상단 상태 및 날짜 */}
       <section className="flex justify-between text-[12px] pb-2 border-b border-oguogu-gray-2">
         <span
@@ -65,9 +65,9 @@ export default function OrderItem({ orderState, item, updateOrderStatus, handleS
       <section className="flex flex-col gap-2">
         {item.products.map(product => (
           <div key={product._id} className="flex gap-2">
-            <div className="w-[48px] h-[48px] bg-cover bg-center bg-[url('/images/crop/crop-001.png')] bg-no-repeat rounded-[4px]" />
-            <div className="w-[216px]">
-              <div className="text-[12px] truncate">{product.name}</div>
+            <div className="w-[48px] h-[48px] bg-cover bg-center bg-[url('/images/crop/crop-001.png')] bg-no-repeat rounded-sm" />
+            <div>
+              <div className="text-[12px] clamp-1">{product.name}</div>
               <div className="text-[12px] text-oguogu-gray-4">
                 {product.quantity}개 · {(product.price * (1 - product.extra.dcRate / 100)).toLocaleString()}원
               </div>
@@ -92,13 +92,13 @@ export default function OrderItem({ orderState, item, updateOrderStatus, handleS
           <section className="flex justify-center items-center gap-2 text-[12px]">
             <button
               onClick={requestRefund}
-              className="w-[140px] py-2 leading-none border border-oguogu-gray-2 rounded-[4px]"
+              className="w-full py-2 leading-none border border-oguogu-gray-2 rounded-[4px]"
             >
               환불 신청
             </button>
             <button
               onClick={confirmPurchase}
-              className="w-[140px] py-2 leading-none border border-oguogu-main rounded-[4px]"
+              className="w-full py-2 leading-none border border-oguogu-main rounded-[4px]"
             >
               구매 확정
             </button>

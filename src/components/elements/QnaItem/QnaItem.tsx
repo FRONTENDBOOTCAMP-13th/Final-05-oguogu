@@ -69,7 +69,7 @@ export default function QnaItem({ state = false, isPrivate = false, viewerRole =
   const isViewerAllowed = !isPrivate || viewerRole === 'owner' || viewerRole === 'seller';
 
   return (
-    <div className={`p-4 bg-oguogu-${stateBgColor} shadow-sm`}>
+    <div className={`p-4 bg-oguogu-${stateBgColor} border-t border-oguogu-gray-1 shadow-sm`}>
       <div onClick={toggleOpen} className="cursor-pointer flex flex-col gap-3">
         <div className="flex justify-between">
           <span className={`text-oguogu-${stateColor} flex items-center gap-1`}>
@@ -104,8 +104,8 @@ export default function QnaItem({ state = false, isPrivate = false, viewerRole =
         )}
 
         <div className="flex gap-3">
-          <p className="text-[12px] text-oguogu-black">구매자이름 {maskName(res.user.name)}</p>
-          <p className="text-[12px] text-oguogu-black">이메일 앞부분 {maskEmail(res.user.email || '')}</p>
+          <p className="text-[12px] text-oguogu-black">{maskName(res.user.name)}</p>
+          <p className="text-[12px] text-oguogu-black">({maskEmail(res.user.email || '')})</p>
         </div>
       </div>
 
