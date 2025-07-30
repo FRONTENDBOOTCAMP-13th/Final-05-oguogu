@@ -1,6 +1,8 @@
 'use client';
 
-import GardenItemForMyGarden from '@/components/elements/GardenItemForMyGarden/GardenItemForMyGarden';
+import GardenItemForMyGarden, {
+  EmptyGardenItemForMyGarden,
+} from '@/components/elements/GardenItemForMyGarden/GardenItemForMyGarden';
 import { getOrders } from '@/shared/data/functions/order';
 import { useAuthStore } from '@/shared/store/authStore';
 import { Order, OrderedProduct } from '@/shared/types/order';
@@ -39,13 +41,20 @@ export default function GardenItemListForMyGarden() {
     };
 
     getGardeningOrders();
-  }, []);
+  }, [token]);
 
   return (
     <>
-      {gardenProducts.map((item: OrderedProduct) => (
-        <GardenItemForMyGarden key={item._id} />
-      ))}
+      {gardenProducts.length < 9 && (
+        <>
+          {gardenProducts.map((item: OrderedProduct) => (
+            <GardenItemForMyGarden key={item._id} />
+          ))}
+          {Array.from({ length: Math.max(0, 60 - gardenProducts.length) }).map((_, idx) => (
+            <EmptyGardenItemForMyGarden key={`empty-${idx}`} />
+          ))}
+        </>
+      )}
     </>
   );
 }
