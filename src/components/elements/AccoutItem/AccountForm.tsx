@@ -20,7 +20,7 @@ export default function AccountForm() {
             id="bank"
             value={bank}
             onChange={e => setBank(e.target.value)}
-            className="text-xs text-center border rounded h-7 border-oguogu-gray-2 text-oguogu-gray-4"
+            className="text-sm text-center border rounded h-7 border-oguogu-gray-2 text-oguogu-gray-4"
           >
             <option value="">은행 선택</option>
             <option value="국민은행">국민은행</option>
@@ -61,7 +61,8 @@ export default function AccountForm() {
           />
         </div>
 
-        <section className="flex justify-center items-center gap-2 text-[12px]">
+        {/* 버튼 */}
+        <section className="flex items-center justify-center gap-2">
           <button
             onClick={() => {
               console.log({ bank, owner, accountNumber });
@@ -71,11 +72,11 @@ export default function AccountForm() {
               }
               alert('계좌가 등록되었습니다!');
             }}
-            className="w-full mt-2 text-xs text-white rounded h-7 bg-oguogu-main hover:bg-oguogu-main-dark"
+            className="w-full mt-2 text-sm text-white rounded h-7 bg-oguogu-main hover:bg-oguogu-main-dark"
           >
             정산 계좌 등록
           </button>
-          <button className="w-full mt-2 text-xs border rounded h-7 text-oguogu-black border-oguogu-gray-2 bg-oguogu-white hover:bg-oguogu-gray-1">
+          <button className="w-full mt-2 text-sm border rounded h-7 text-oguogu-black border-oguogu-gray-2 bg-oguogu-white hover:bg-oguogu-gray-1">
             취소
           </button>
         </section>
