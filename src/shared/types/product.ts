@@ -70,7 +70,8 @@ export interface Extra {
   isLowStock?: boolean;
   isSold?: boolean;
   productUnit?: string; //상품 수량 또는 무게
-  productDetailContent: string; //상품 상세 설명
+  productDetailContent?: string; //상품 상세 설명
+  detailImages?: MainImage[];
 
   region?: string;
   meetingPlace?: string;

@@ -1,4 +1,4 @@
-import Input from '@/components/elements/LoginItem/Input';
+/* import Input from '@/components/elements/LoginItem/Input';
 import LinkHeader from '@/components/layouts/Header/LinkHeader';
 
 export default function GardeningProductEditor() {
@@ -68,3 +68,4 @@ export default function GardeningProductEditor() {
     </>
   );
 }
+ */

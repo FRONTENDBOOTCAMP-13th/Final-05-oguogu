@@ -1,4 +1,4 @@
-import IncludedItemsCheckbox from '@/components/elements/CheckOption/IncludedItemsCheckBok';
+/* import IncludedItemsCheckbox from '@/components/elements/CheckOption/IncludedItemsCheckBok';
 import Input from '@/components/elements/LoginItem/Input';
 import LinkHeader from '@/components/layouts/Header/LinkHeader';
 
@@ -78,3 +78,4 @@ export default function ExperienceProductEditor() {
     </>
   );
 }
+ */

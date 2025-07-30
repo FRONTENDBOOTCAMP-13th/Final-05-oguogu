@@ -20,7 +20,7 @@ export async function createProduct(
     shippingFees?: number;
     mainImages?: MainImage[];
     show?: boolean;
-    extra: Extra;
+    extra?: Extra;
   },
   token: string,
 ) {
