@@ -346,7 +346,7 @@ export default function LoginInput({
               className="w-1/3 pl-2 text-left placeholder-oguogu-gray-2"
             />
           ) : (
-            <div className="w-1/3 flex items-center pl-2 text-oguogu-black">{emailDomain}</div>
+            <div className="flex items-center w-1/3 pl-2 text-oguogu-black">{emailDomain}</div>
           )}
 
           {/* 도메인 , 직접 입력하기 옵션 */}
@@ -442,7 +442,7 @@ export default function LoginInput({
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-2 top-1/2 -translate-y-1/2 text-sm text-ogugu-blue-light cursor-pointer"
+              className="absolute text-sm -translate-y-1/2 cursor-pointer right-2 top-1/2 text-ogugu-blue-light"
             >
               {showPassword ? '숨기기' : '보기'}
             </button>
@@ -468,7 +468,7 @@ export default function LoginInput({
             setDefaultError('');
           }
         }}
-        className="w-[288px] h-[36px] font-normal text-[12px] pl-2 py-3 border-b border-oguogu-gray-2 placeholder-oguogu-gray-2"
+        className="w-full h-[36px] font-normal text-[14px] pl-2 py-3 border-b border-oguogu-gray-2 placeholder-oguogu-gray-2"
       />
       {defaultError && <p className="text-red-500 text-[12px] mt-1 px-1">{defaultError}</p>}
     </div>
