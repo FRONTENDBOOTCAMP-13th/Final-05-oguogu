@@ -6,20 +6,18 @@ export default function GardeningProductEditor() {
     <>
       <LinkHeader title="텃밭 상품 등록/수정" />
       <main className="p-4 flex flex-col gap-4">
-        <Input type="basic" title="제목" placeholder="상품명 (최대 30자)" id="title" required={true} />
+        <Input
+          type="basic"
+          title="제목"
+          placeholder="상품 종류만 적어주세요. ex) 감자 (최대 6자)"
+          id="title"
+          required={true}
+        />
         <Input type="basic" title="부제목" placeholder="상품 설명 (최대 30자)" id="title" required={true} />
         <Input type="unitOne" title="총 판매 수량" placeholder="총 판매 수량" id="title" required={true} unit="개" />
         <Input type="readOnly" title="최대 구매 가능 수량" placeholder="1" id="title" required={true} unit="개" />
-        <Input
-          type="unitTwo"
-          title="상품구성"
-          placeholder="판매 시작 일자"
-          secondPlaceholder="판매 종료 일자"
-          id="title"
-          required={true}
-          unit="시작"
-          secontUnit="종료"
-        />
+        <Input type="basic" title="판매 마감일" placeholder="판매 마감일" id="title" required={true} />
+
         <Input
           type="unitTwo"
           title="판매 가격 및 할인율"

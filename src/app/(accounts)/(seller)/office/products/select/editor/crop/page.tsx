@@ -26,16 +26,7 @@ export default function CropProductEditor() {
           required={true}
           unit="개"
         />
-        <Input
-          type="unitTwo"
-          title="상품구성"
-          placeholder="상품별 낱개 수량"
-          secondPlaceholder="포장된 상품 수량"
-          id="title"
-          required={true}
-          unit="개"
-          secontUnit="개"
-        />
+        <Input type="basic" title="상품구성" placeholder="상품 수량 또는 무게" id="title" required={true} />
         <Input
           type="unitTwo"
           title="판매 가격 및 할인율"
