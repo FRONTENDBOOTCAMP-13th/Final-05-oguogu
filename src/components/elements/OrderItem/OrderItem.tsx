@@ -92,13 +92,13 @@ export default function OrderItem({ orderState, item, updateOrderStatus, handleS
           <section className="flex justify-center items-center gap-2 text-[12px]">
             <button
               onClick={requestRefund}
-              className="w-[140px] py-2 leading-none border border-oguogu-gray-2 rounded-[4px]"
+              className="w-full py-2 leading-none border border-oguogu-gray-2 rounded-[4px]"
             >
               환불 신청
             </button>
             <button
               onClick={confirmPurchase}
-              className="w-[140px] py-2 leading-none border border-oguogu-main rounded-[4px]"
+              className="w-full py-2 leading-none border border-oguogu-main rounded-[4px]"
             >
               구매 확정
             </button>
