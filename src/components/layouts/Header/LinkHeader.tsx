@@ -5,13 +5,13 @@ import { useAuthStore } from '@/shared/store/authStore';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-export default function LinkHeader({ title }: { title: string }) {
+export default function LinkHeader({ title, bgColor = 'oguogu-white' }: { title: string; bgColor?: string }) {
   const { userInfo } = useAuthStore();
   const pathname = usePathname();
 
   return (
     <>
-      <header className="header">
+      <header className={`header bg-${bgColor}`}>
         {userInfo?.type === 'seller' && pathname.split('/').filter(Boolean).length === 1 ? (
           <div className="w-[18px] h-[18px]"></div>
         ) : (
