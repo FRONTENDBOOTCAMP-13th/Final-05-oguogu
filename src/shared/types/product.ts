@@ -55,20 +55,22 @@ export interface Item {
 
 export interface Extra {
   productType: 'crop' | 'experience' | 'gardening';
-  category: 'veggie' | 'fruit' | 'grain' | 'mushroom';
-  filter: string[];
-  originPlace: string;
-  productionPlace: string;
-  composition: string;
-  deliveryInfo: string;
-  likeCount: number;
-  dcRate: number;
-  productCnt: number;
-  isNew: boolean;
-  isInSeason: boolean;
-  isBest: boolean;
-  isLowStock: boolean;
-  isSold: boolean;
+  category?: 'veggie' | 'fruit' | 'grain' | 'mushroom';
+  filter?: string[];
+  originPlace?: string;
+  productionPlace?: string;
+  composition?: string;
+  deliveryInfo?: string;
+  likeCount?: number;
+  dcRate?: number;
+  productCnt?: number; //최대 구매 가능 수량
+  isNew?: boolean;
+  isInSeason?: boolean;
+  isBest?: boolean;
+  isLowStock?: boolean;
+  isSold?: boolean;
+  productUnit?: string; //상품 수량 또는 무게
+  productDetailContent: string; //상품 상세 설명
 
   region?: string;
   meetingPlace?: string;
@@ -80,9 +82,9 @@ export interface Extra {
   guideInfo?: { name: string; contact: string };
 
   deadline?: string;
-  harvestExpectedDate: string;
-  harvestExpectedCnt: string;
-  period: periodObject[];
+  harvestExpectedDate?: string;
+  harvestExpectedCnt?: string;
+  period?: periodObject[];
 
   badge?: badge;
 }
