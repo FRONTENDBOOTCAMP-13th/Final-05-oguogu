@@ -3,14 +3,34 @@
 import LoginInput from '@/components/elements/LoginItem/LoginInput';
 import { useState } from 'react';
 
-export default function AccountForm() {
+interface AccountFormProps {
+  setRegisteredAccount: (account: string) => void;
+  onCancel?: () => void;
+}
+
+export default function AccountForm({ setRegisteredAccount, onCancel }: AccountFormProps) {
   const [bank, setBank] = useState('');
   const [owner, setOwner] = useState('');
   const [accountNumber, setAccountNumber] = useState('');
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!bank || !owner || !accountNumber) {
+      alert('모든 항목을 입력해 주세요.');
+      return;
+    }
+
+    const fullAccount = `${bank} ${accountNumber}`;
+    setRegisteredAccount(fullAccount);
+    alert('계좌가 등록되었습니다!');
+  };
+
   return (
     <div className="flex items-center justify-center">
-      <div className="min-w-[320px] w-full p-4 space-y-4 bg-white border border-oguogu-gray-2 rounded-lg drop-shadow">
+      <form
+        onSubmit={handleSubmit}
+        className="min-w-[320px] w-full p-4 space-y-4 bg-white border border-oguogu-gray-2 rounded-lg drop-shadow"
+      >
         {/* 은행 선택 */}
         <div className="flex flex-col">
           <label htmlFor="bank">
@@ -64,23 +84,22 @@ export default function AccountForm() {
         {/* 버튼 */}
         <section className="flex items-center justify-center gap-2">
           <button
-            onClick={() => {
-              console.log({ bank, owner, accountNumber });
-              if (!bank || !owner || !accountNumber) {
-                alert('모든 항목을 입력해 주세요.');
-                return;
-              }
-              alert('계좌가 등록되었습니다!');
-            }}
-            className="w-full mt-2 text-sm text-white rounded h-7 bg-oguogu-main hover:bg-oguogu-main-dark"
+            type="submit"
+            className="w-full text-sm text-white rounded h-7 bg-oguogu-main hover:bg-oguogu-main-dark"
           >
             정산 계좌 등록
           </button>
-          <button className="w-full mt-2 text-sm border rounded h-7 text-oguogu-black border-oguogu-gray-2 bg-oguogu-white hover:bg-oguogu-gray-1">
-            취소
-          </button>
+          {onCancel && (
+            <button
+              type="button"
+              onClick={onCancel}
+              className="w-full text-sm border rounded h-7 text-oguogu-black border-oguogu-gray-2 bg-oguogu-white hover:bg-oguogu-gray-1"
+            >
+              취소
+            </button>
+          )}
         </section>
-      </div>
+      </form>
     </div>
   );
 }

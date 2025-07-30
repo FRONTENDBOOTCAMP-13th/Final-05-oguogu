@@ -1,12 +1,35 @@
+'use client';
+
 import AccountForm from '@/components/elements/AccoutItem/AccountForm';
 import GetLoggedInUserData from '@/features/getLoggedInUserData/getLoggedInUserData';
+import { useEffect, useState } from 'react';
 
 export default function AccountItem() {
+  const [amount, setAmount] = useState<string>('');
+  const [registeredAccount, setRegisteredAccount] = useState<string | null>(null); // 등록 여부
+  const [isEditing, setIsEditing] = useState(false); // 계좌 변경 중 여부
+
   const settlementInfo = [
     { label: '정산 주기', value: '매월 10일' },
     { label: '정산 대상 기간', value: '2025.07.01 ~ 2025.07.31' },
-    { label: '정산 계좌', value: '미등록' },
+    { label: '정산 계좌', value: registeredAccount ?? '미등록' },
   ];
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const mockAmount = 8354980;
+      const mockAccount = null; // 테스트용 값 (null 로 바꾸면 미등록 상태)
+
+      setAmount(mockAmount.toLocaleString());
+      setRegisteredAccount(mockAccount);
+    };
+
+    fetchData();
+  }, []);
+
+  const handleChangeAccount = () => {
+    setIsEditing(true); // 계좌 변경 시작
+  };
 
   return (
     <div className="flex flex-col justify-start min-h-screen gap-6 p-4">
@@ -15,13 +38,15 @@ export default function AccountItem() {
         {/* 정산 금액 */}
         <section className="flex flex-col items-center gap-2 p-4 pb-8 text-base">
           <p>
-            <GetLoggedInUserData type="name" />님의 7월 정산 예정 금액은
+            <GetLoggedInUserData type="name" />
+            님의 7월 정산 예정 금액은
           </p>
           <p>
-            <span className="text-2xl font-bold text-oguogu-main">8,354,980</span>
+            <span className="text-2xl font-bold text-oguogu-main">{amount}</span>
             <span className="text-2xl text-oguogu-black">원 입니다.</span>
           </p>
         </section>
+
         {/* 정산 정보 */}
         <section className="flex flex-col gap-2 pt-4 pb-4 text-xs border-t border-b border-oguogu-gray-2">
           {settlementInfo.map(({ label, value }) => (
@@ -33,8 +58,41 @@ export default function AccountItem() {
         </section>
       </div>
 
-      {/* 정산 계좌 입력 폼 */}
-      <AccountForm />
+      {/* 등록 중, 변경 중일 때만 폼 보이기 */}
+      {isEditing && (
+        <AccountForm
+          setRegisteredAccount={account => {
+            setRegisteredAccount(account);
+            setIsEditing(false); // 등록 완료 시 변경 모드 종료
+          }}
+          onCancel={() => setIsEditing(false)} // 변경 취소
+        />
+      )}
+
+      {/* 버튼 영역 */}
+      {!isEditing && (
+        <>
+          {/* 등록 안 된 경우 → 등록 버튼 */}
+          {!registeredAccount && (
+            <button
+              className="w-full text-sm border rounded h-7 text-oguogu-black border-oguogu-main bg-oguogu-white hover:bg-oguogu-gray-1"
+              onClick={handleChangeAccount}
+            >
+              정산 계좌 등록하기
+            </button>
+          )}
+
+          {/* 등록된 경우 → 변경 버튼 */}
+          {registeredAccount && (
+            <button
+              className="w-full text-sm border rounded h-7 text-oguogu-black border-oguogu-main bg-oguogu-white hover:bg-oguogu-gray-1"
+              onClick={handleChangeAccount}
+            >
+              정산 계좌 변경하기
+            </button>
+          )}
+        </>
+      )}
     </div>
   );
 }
