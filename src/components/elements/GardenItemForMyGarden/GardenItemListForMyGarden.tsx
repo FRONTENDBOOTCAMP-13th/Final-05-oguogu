@@ -45,7 +45,7 @@ export default function GardenItemListForMyGarden() {
 
   return (
     <>
-      {gardenProducts.length < 9 && (
+      {gardenProducts.length < 60 && (
         <>
           {gardenProducts.map((item: OrderedProduct) => (
             <GardenItemForMyGarden key={item._id} />
