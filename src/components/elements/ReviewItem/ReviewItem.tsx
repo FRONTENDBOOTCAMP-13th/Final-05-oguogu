@@ -84,7 +84,7 @@ export default function ReviewItem({ name, email, res }: ReviewItemType) {
 
   return (
     <>
-      <div className=" flex flex-col gap-3">
+      <div className=" flex flex-col gap-5 py-5 border-t border-oguogu-gray-1">
         <div className="flex justify-between">
           <span>
             <StarRating rating={res.rating} />
@@ -109,9 +109,9 @@ export default function ReviewItem({ name, email, res }: ReviewItemType) {
           <p className="text-[16px] text-oguogu-black">{res.extra.name}</p>
           <p className="text-[12px] text-oguogu-gray-4">{res.content}</p>
         </div>
-        <div className="flex gap-3">
-          <p className="text-[12px] text-oguogu-black">구매자이름 {maskName(name)}</p>
-          <p className="text-[12px] text-oguogu-black">이메일 앞부분 {maskEmail(email)}</p>
+        <div className="flex gap-2">
+          <p className="text-[12px] text-oguogu-black">{maskName(name)}</p>
+          <p className="text-[12px] text-oguogu-black">({maskEmail(email)})</p>
         </div>
       </div>
     </>

@@ -54,7 +54,15 @@ const rawData = [
  * @param {'crop' | 'experience' | 'gardening'} props.type - 상품 유형
  * @returns {JSX.Element} 구매 옵션 선택 영역
  */
-export default function BuyBoxOption({ name, price, maxQuantity = 1, type, handleBuy, product_id }: BuyBoxOptionType) {
+export default function BuyBoxOption({
+  name,
+  price,
+  maxQuantity = 1,
+  type,
+  handleBuy,
+  product_id,
+  res,
+}: BuyBoxOptionType) {
   const [count, setCount] = useState(1);
   const [totalPrice, setTotalPrice] = useState(price);
   const TOKEN = useAuthStore(state => state.token); //전역 관리중인 사용자 토큰
@@ -66,7 +74,9 @@ export default function BuyBoxOption({ name, price, maxQuantity = 1, type, handl
   };
 
   const addCount = () => {
-    if (count < maxQuantity) {
+    if (!res.item.extra?.productCnt) {
+      setCount(1);
+    } else if (count < res.item.extra?.productCnt) {
       setCount(count + 1);
     }
   };
@@ -87,10 +97,14 @@ export default function BuyBoxOption({ name, price, maxQuantity = 1, type, handl
       </div>
 
       {/* 남은 수량 */}
-      <div className="flex flex-col gap-2">
-        <span className="text-xs text-oguogu-gray-4">구매 가능한 수량</span>
-        <h3 className="text-xl max-w-full textElipsis">{maxQuantity} 개</h3>
-      </div>
+      {type === 'experience' ? (
+        <div className="flex flex-col gap-2">
+          <span className="text-xs text-oguogu-gray-4">구매 가능한 수량</span>
+          <h3 className="text-xl max-w-full textElipsis">{maxQuantity} 개</h3>
+        </div>
+      ) : (
+        ''
+      )}
 
       {/* 날짜 선택 : 체험 상품 전용 */}
       {/* 일단 코드 사용 막아두었습니다. 나중에 백업시 사용하시면 됩니다. */}
@@ -168,7 +182,7 @@ export default function BuyBoxOption({ name, price, maxQuantity = 1, type, handl
               </div>
               <div className="text-[8px] text-oguogu-gray-3">
                 <span>최대&nbsp;</span>
-                <span>{maxQuantity}</span>
+                <span>{res.item.extra?.productCnt}</span>
                 <span>{type === 'experience' ? '명 예약' : '개 구매'} 가능</span>
               </div>
             </div>
@@ -203,7 +217,7 @@ export default function BuyBoxOption({ name, price, maxQuantity = 1, type, handl
           handleBuy(product_id, count);
         }}
       >
-        {type === 'crop' ? '장바구니 담기' : '구매하기'}
+        장바구니 담기
       </button>
     </div>
   );

@@ -146,7 +146,7 @@ export async function addCart(
   } catch (error) {
     // 네트워크 오류 처리
     console.error(error);
-    return { ok: 0, message: '회원 등록에 실패했습니다.' };
+    return { ok: 0, message: '장바구니 추가에 실패했습니다.' };
   }
 }
 

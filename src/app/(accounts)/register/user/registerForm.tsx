@@ -205,7 +205,7 @@ export default function UserRegisterForm() {
           </div>
 
           {/* 약관 동의 */}
-          <div className="w-full flex flex-col items-start justify-start my-[16px]">
+          <div className="w-full flex flex-col gap-1.5 items-start justify-start my-[16px]">
             <CheckButton
               size={14}
               gap={2}

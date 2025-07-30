@@ -2,34 +2,46 @@
 
 import FilterButtonForMypage from '@/components/elements/InputButtonForMypage/InputButtonForMypage';
 import IsEmptyMessage from '@/components/elements/IsEmptyMessage/IsEmptyMessage';
-import CropItem from '@/components/elements/ProductItem/Item/CropItem';
-import ExperienceItem from '@/components/elements/ProductItem/Item/ExperienceItem';
-import GardenItem from '@/components/elements/ProductItem/Item/GardenItem';
 import { useEffect, useState } from 'react';
 import { useBookmarkStore } from '@/shared/store/bookmarkStore';
-import { getProducts } from '@/shared/data/functions/product';
-import { productsRes, Item } from '@/shared/types/product';
 import { ProductType } from '@/app/(exploring)/product/[type]/ProductListByType.type';
+import { useAuthStore } from '@/shared/store/authStore';
+import { BookmarkItem, BookmarkResponse } from '@/shared/types/bookmarkt';
+import { getBookmarks } from '@/shared/data/functions/bookmarks';
+import PickListItem from '@/components/elements/PickListItem/PickListItem';
 
 export default function PickList() {
-  const { bookmarkedIds, fetchBookmarks } = useBookmarkStore();
-  const [allProducts, setAllProducts] = useState<Item[]>([]);
+  const { fetchBookmarks } = useBookmarkStore();
+  const { token, userInfo } = useAuthStore();
+  const [bookmarkItem, setBookmarkItem] = useState<BookmarkItem[] | null>(null);
   const [checkedType, setCheckedType] = useState<ProductType>('crop');
 
   useEffect(() => {
     fetchBookmarks();
-    const fetchAllProducts = async () => {
-      const res: productsRes = await getProducts();
-      if (res.ok) {
-        setAllProducts(res.item);
+
+    /* 전체 상품에서 현재 로그인된 아이디의 북마크 리스트 가져오기 */
+    const getAllBookmarks = async () => {
+      if (!token) return;
+
+      try {
+        const res: BookmarkResponse = await getBookmarks('product', token);
+        const myBookmarks: BookmarkItem[] = res.item;
+
+        setBookmarkItem(myBookmarks);
+        console.log('현재 북마크 리스트 :', myBookmarks);
+      } catch (err) {
+        console.log('pickList 에서 에러 발생', err);
       }
     };
-    fetchAllProducts();
-  }, [fetchBookmarks]);
 
-  const filteredBookmarkedProducts = allProducts.filter(
-    item => bookmarkedIds.includes(item._id) && item.extra!.productType === checkedType,
-  );
+    getAllBookmarks();
+  }, [fetchBookmarks, token, userInfo]);
+
+  /* 찜하기 삭제 버튼 */
+  const handleDeleteBookmark = (deletedId: number) => {
+    setBookmarkItem(prev => (prev ? prev.filter(item => item._id !== deletedId) : prev));
+  };
+
   return (
     <>
       {/* 필터링 버튼 */}
@@ -59,58 +71,56 @@ export default function PickList() {
 
       {/* 주문 상세 내역 */}
       <div className="border-t border-t-oguogu-black pt-4 flex flex-col justify-start items-center gap-8">
-        {filteredBookmarkedProducts.length === 0 ? (
-          <IsEmptyMessage title="찜한 상품이 없습니다." subTxt="원하는 상품을 찜해보세요!" LinkTxt="쇼핑 계속하기 🥕" />
-        ) : (
-          // 데이터가 있는 경우 타입에 따라 아이템 목록 렌더링
-          <>
-            {checkedType === 'crop' && (
-              <div className="itemGrid grid-cols-[repeat(auto-fit,minmax(140px,1fr))]">
-                {filteredBookmarkedProducts.map(item => (
-                  <CropItem
-                    key={item._id}
-                    _id={item._id}
-                    name={item.name}
-                    price={item.price * (1 - item.extra!.dcRate / 100)}
-                    rating={item.rating}
-                    replies={item.replies}
-                    extra={item.extra}
-                    seller={item.seller}
-                    bookmarks={item.bookmarks}
-                  />
-                ))}
+        <>
+          {checkedType === 'crop' &&
+            (bookmarkItem?.filter(item => item.product.extra?.productType === checkedType).length !== 0 ? (
+              <div className="flex flex-col w-full gap-5">
+                {bookmarkItem
+                  ?.filter((item: BookmarkItem) => item.product.extra?.productType === checkedType)
+                  .map(item => (
+                    <PickListItem key={item.product._id} item={item} token={token!} onDeleted={handleDeleteBookmark} />
+                  ))}
               </div>
-            )}
-            {checkedType === 'experience' && (
-              <div className="itemGrid grid-cols-[repeat(auto-fit,minmax(288px,1fr))]">
-                {filteredBookmarkedProducts.map(item => (
-                  <ExperienceItem
-                    key={item._id}
-                    _id={item._id}
-                    name={item.name}
-                    price={item.price * (1 - item.extra!.dcRate / 100)}
-                    seller={item.seller}
-                    extra={item.extra}
-                  />
-                ))}
+            ) : (
+              <IsEmptyMessage
+                title="찜한 상품이 없습니다."
+                subTxt="원하는 상품을 찜해보세요!"
+                LinkTxt="쇼핑 계속하기 🥕"
+              />
+            ))}
+          {checkedType === 'experience' &&
+            (bookmarkItem?.filter(item => item.product.extra?.productType === checkedType).length !== 0 ? (
+              <div className="flex flex-col w-full gap-5">
+                {bookmarkItem
+                  ?.filter(item => item.product.extra?.productType === checkedType)
+                  .map(item => (
+                    <PickListItem key={item.product._id} item={item} token={token!} onDeleted={handleDeleteBookmark} />
+                  ))}
               </div>
-            )}
-            {checkedType === 'gardening' && (
-              <div className="itemGrid grid-cols-[repeat(auto-fit,minmax(140px,1fr))]">
-                {filteredBookmarkedProducts.map(item => (
-                  <GardenItem
-                    key={item._id}
-                    _id={item._id}
-                    name={item.name}
-                    price={item.price * (1 - item.extra!.dcRate / 100)}
-                    seller={item.seller}
-                    extra={item.extra}
-                  />
-                ))}
+            ) : (
+              <IsEmptyMessage
+                title="찜한 상품이 없습니다."
+                subTxt="원하는 상품을 찜해보세요!"
+                LinkTxt="쇼핑 계속하기 🥕"
+              />
+            ))}
+          {checkedType === 'gardening' &&
+            (bookmarkItem?.filter(item => item.product.extra?.productType === checkedType).length !== 0 ? (
+              <div className="flex flex-col w-full gap-5">
+                {bookmarkItem
+                  ?.filter(item => item.product.extra?.productType === checkedType)
+                  .map(item => (
+                    <PickListItem key={item.product._id} item={item} token={token!} onDeleted={handleDeleteBookmark} />
+                  ))}
               </div>
-            )}
-          </>
-        )}
+            ) : (
+              <IsEmptyMessage
+                title="찜한 상품이 없습니다."
+                subTxt="원하는 상품을 찜해보세요!"
+                LinkTxt="쇼핑 계속하기 🥕"
+              />
+            ))}
+        </>
       </div>
     </>
   );

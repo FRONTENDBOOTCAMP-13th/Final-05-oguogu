@@ -48,15 +48,17 @@ export function ReviewSortbar({ reviewAvg }: ReviewSortbarType) {
   );
 }
 
-export function QnaSortBar({ qnaCnt }: QnaSortBarType) {
+export function QnaSortBar({ qnaCnt, isMyPost, setIsMyPost }: QnaSortBarType) {
+  const handleCheckMyPost = () => {
+    setIsMyPost(!isMyPost);
+  };
+
   return (
     <div className="flex justify-between items-center h-[48px] p-[16px]">
       <span>총 {qnaCnt.toLocaleString()}개</span>
-      <div>
-        <CheckButton size={14} gap={2}>
-          내가 작성한 글
-        </CheckButton>
-      </div>
+      <CheckButton size={14} gap={2} checked={isMyPost} onChange={handleCheckMyPost}>
+        내가 작성한 글
+      </CheckButton>
     </div>
   );
 }
