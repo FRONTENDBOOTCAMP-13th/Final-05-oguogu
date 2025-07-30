@@ -225,7 +225,7 @@ export default function CropProductPostClientControl() {
       <Input
         type="unitOne"
         title="총 판매 수량"
-        placeholder="상품 설명 (최대 30자)"
+        placeholder="총 판매 수량"
         id="quantity"
         required={true}
         unit="개"
@@ -235,7 +235,7 @@ export default function CropProductPostClientControl() {
       <Input
         type="unitOne"
         title="최대 구매 가능 수량"
-        placeholder="상품명 (최대 30자)"
+        placeholder="최대 구매 가능 수량"
         id="productCnt"
         required={true}
         unit="개"
@@ -254,7 +254,7 @@ export default function CropProductPostClientControl() {
       <Input
         type="unitTwo"
         title="판매 가격 및 할인율"
-        placeholder="상품명 (최대 30자)"
+        placeholder="최초 판매가"
         secondPlaceholder="(선택) 할인율"
         id="price"
         required={true}
