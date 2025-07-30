@@ -108,6 +108,6 @@ export interface productsRes {
 export interface periodObject {
   date: string;
   image: string;
-  status: string;
+  status: 'seeding' | 'sprouting' | 'growing' | 'harvested';
   content: string;
 }
