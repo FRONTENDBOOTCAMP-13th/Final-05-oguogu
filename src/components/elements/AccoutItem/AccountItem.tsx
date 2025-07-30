@@ -10,7 +10,6 @@ import { productsRes } from '@/shared/types/product';
 import { useEffect, useState } from 'react';
 
 export default function AccountItem() {
-  // const [amount, setAmount] = useState<string>(''); // 정산 금액
   const [registeredAccount, setRegisteredAccount] = useState<string | null>(null); // 등록 여부
   const [isEditing, setIsEditing] = useState(false); // 계좌 변경 중 여부
   
