@@ -2,30 +2,60 @@
 
 import AccountForm from '@/components/elements/AccoutItem/AccountForm';
 import GetLoggedInUserData from '@/features/getLoggedInUserData/getLoggedInUserData';
+import { getOrdersSeller } from '@/shared/data/functions/order';
+import { getProductSeller } from '@/shared/data/functions/product';
+import { useAuthStore } from '@/shared/store/authStore';
+import { OrderListResponse } from '@/shared/types/order';
+import { productsRes } from '@/shared/types/product';
 import { useEffect, useState } from 'react';
 
 export default function AccountItem() {
-  const [amount, setAmount] = useState<string>('');
+  // const [amount, setAmount] = useState<string>(''); // 정산 금액
   const [registeredAccount, setRegisteredAccount] = useState<string | null>(null); // 등록 여부
   const [isEditing, setIsEditing] = useState(false); // 계좌 변경 중 여부
-
+  
   const settlementInfo = [
     { label: '정산 주기', value: '매월 10일' },
     { label: '정산 대상 기간', value: '2025.07.01 ~ 2025.07.31' },
     { label: '정산 계좌', value: registeredAccount ?? '미등록' },
   ];
 
+  const token = useAuthStore(state => state.token);
+
+  const [productRes, setProductRes] = useState<productsRes>();
+  const [orderRes, setOrderRes] = useState<OrderListResponse>();
+
   useEffect(() => {
-    const fetchData = async () => {
-      const mockAmount = 8354980;
-      const mockAccount = null; // 테스트용 값 (null 로 바꾸면 미등록 상태)
+    if (!token) return;
 
-      setAmount(mockAmount.toLocaleString());
-      setRegisteredAccount(mockAccount);
+    const fetch = async () => {
+      const data: productsRes = await getProductSeller(token);
+      const orderData: OrderListResponse = await getOrdersSeller(token);
+
+      if (data.ok) {
+        setProductRes(data);
+      }
+      if (orderData.ok) {
+        setOrderRes(orderData);
+      }
     };
+    fetch();
+  }, [token]);
 
-    fetchData();
-  }, []);
+  console.log(productRes);
+  console.log(orderRes);
+
+  const totalPrice = orderRes?.item.reduce((orderSum, order) => {
+    const productsSum = order.products.reduce((sum, prod) => {
+      const price = prod.price;
+      const quantity = prod.quantity;
+      const dcRate = prod.extra.dcRate;
+
+      const discounted = price * (1 - dcRate / 100);
+      return sum + discounted * quantity;
+    }, 0);
+    return orderSum + productsSum;
+  }, 0);
 
   const handleChangeAccount = () => {
     setIsEditing(true); // 계좌 변경 시작
@@ -42,7 +72,7 @@ export default function AccountItem() {
             님의 7월 정산 예정 금액은
           </p>
           <p>
-            <span className="text-2xl font-bold text-oguogu-main">{amount}</span>
+            <span className="text-2xl font-bold text-oguogu-main">{totalPrice?.toLocaleString()}</span>
             <span className="text-2xl text-oguogu-black">원 입니다.</span>
           </p>
         </section>
