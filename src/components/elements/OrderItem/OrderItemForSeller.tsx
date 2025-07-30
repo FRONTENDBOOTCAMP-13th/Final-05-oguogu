@@ -1,20 +1,35 @@
-export default function OrderItemForSeller({ orderState }: { orderState: string }) {
+import { Order } from '@/shared/types/order';
+
+export interface OrderItemForSellerType {
+  orderState: string;
+  updateOrderStatus: (order_id: number, newState: string) => void;
+  item: Order;
+}
+
+export default function OrderItemForSeller({ orderState, item, updateOrderStatus }: OrderItemForSellerType) {
   let refundState = false;
   let infoText = '결제완료';
   let nextText = '';
+
+  let onClick;
 
   switch (orderState) {
     case 'OS020':
       infoText = '결제 완료';
       nextText = '배송 준비중';
+      // 배송 준비중
+      onClick = () => updateOrderStatus(item._id, 'preparingShipment');
       break;
     case 'preparingShipment':
       infoText = '배송 준비중';
-      nextText = '배송중';
+      nextText = '배송중'; // 배송 중
+      onClick = () => updateOrderStatus(item._id, 'inTransit');
       break;
     case 'inTransit':
       infoText = '배송 중';
       nextText = '배송 완료';
+      // 배송 완료
+      onClick = () => updateOrderStatus(item._id, 'delivered');
       break;
     case 'delivered':
       infoText = '배송 완료';
@@ -26,6 +41,8 @@ export default function OrderItemForSeller({ orderState }: { orderState: string 
       infoText = '환불 접수';
       refundState = true;
       nextText = '환불 처리';
+      // 환불 승인
+      onClick = () => updateOrderStatus(item._id, 'refundCompleted');
       break;
     case 'refundCompleted':
       infoText = '환불 완료';
@@ -33,12 +50,7 @@ export default function OrderItemForSeller({ orderState }: { orderState: string 
       break;
   }
 
-  console.log(nextText);
-
   // 상태별 함수를 정의해야합니다.
-  /*   const requestRefund = () => updateOrderStatus(item._id, 'refundInProgress');
-  const confirmPurchase = () => updateOrderStatus(item._id, 'purchaseCompleted');
-  const cancelRefundRequest = () => updateOrderStatus(item._id, 'preparingShipment'); */
 
   return (
     <div className="flex flex-col gap-4 justify-between w-full max-w-[400px]">
@@ -55,12 +67,12 @@ export default function OrderItemForSeller({ orderState }: { orderState: string 
         >
           {infoText}
         </span>
-        <span className="text-oguogu-gray-4">2025.07.12</span>
+        <span className="text-oguogu-gray-4">{item.createdAt.split(' ')[0]}</span>
       </section>
 
       {/* 주문 상품 목록 */}
       {/* 아이템이 여러개면 map으로 뿌려줘야 합니다. */}
-      {/* <section className="flex flex-col gap-2">
+      <section className="flex flex-col gap-2">
         {item.products.map(product => (
           <div key={product._id} className="flex gap-2">
             <div className="w-[48px] h-[48px] bg-cover bg-center bg-[url('/images/crop/crop-001.png')] bg-no-repeat rounded-[4px]" />
@@ -72,19 +84,6 @@ export default function OrderItemForSeller({ orderState }: { orderState: string 
             </div>
           </div>
         ))}
-      </section> */}
-      <section className="flex flex-col gap-2">
-        <div className="flex gap-2">
-          <div className="w-[48px] h-[48px] bg-cover bg-center bg-[url('/images/crop/crop-001.png')] bg-no-repeat rounded-[4px]" />
-          <div className="w-[216px]">
-            <div className="text-[10px] text-oguogu-gray-4 ">주문 번호</div>
-            <div className="text-[12px] truncate">쫀득쫀득 대학 미백 찰옥수수 30개입</div>
-            <div className="text-[12px]">
-              <span>14,800원</span>
-              <span className="px-2">1개</span>
-            </div>
-          </div>
-        </div>
       </section>
 
       {orderState === 'OS020' ||
@@ -93,7 +92,9 @@ export default function OrderItemForSeller({ orderState }: { orderState: string 
       orderState === 'refundInProgress' ? (
         <section className="flex justify-center items-center gap-2 text-[12px]">
           <button className="w-full py-2 leading-none border border-oguogu-gray-2 rounded-[4px]">주문 정보 확인</button>
-          <button className="w-full py-2 leading-none border border-oguogu-main rounded-[4px]">{nextText} 전환</button>
+          <button onClick={onClick} className="w-full py-2 leading-none border border-oguogu-main rounded-[4px]">
+            {nextText} 전환
+          </button>
         </section>
       ) : (
         <section>
