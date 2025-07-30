@@ -47,7 +47,13 @@ export default function GardenItemForMyGarden({
       >
         <div className="flex flex-col items-center gap-y-1 translate-y-1">
           <div className="w-7 h-7 mobile-max:w-10 mobile-max:h-10 flex items-center justify-center">
-            <Image src={`/svgs/sowing.svg`} alt={`sowing`} width={56} height={56} className="" />
+            <Image
+              src={`/svgs/${lastStatus === '수확 완료' ? 'harvested' : lastStatus === '성장' ? 'growing' : lastStatus === '발아' ? 'sprouting' : 'seeding'}.svg`}
+              alt={`${lastStatus}`}
+              width={56}
+              height={56}
+              className=""
+            />
           </div>
           <div className="flex flex-col text-center">
             <p className="text-xs mobile-max:text-base">{name}</p>
