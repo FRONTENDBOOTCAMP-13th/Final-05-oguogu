@@ -10,7 +10,7 @@ export interface InputType {
   type?: string;
   unit?: string;
   secontUnit?: string;
-  value: string | number | File | null;
+  value?: string | number | File | null;
   onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void; // onChange 추가
   secondValue?: string | number | File | null;
   onSecondChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void; // onChange 추가

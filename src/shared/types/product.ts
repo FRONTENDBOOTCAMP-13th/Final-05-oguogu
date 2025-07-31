@@ -62,7 +62,7 @@ export interface Extra {
   composition?: string;
   deliveryInfo?: string;
   likeCount?: number;
-  dcRate?: number;
+  dcRate: number;
   productCnt?: number; //최대 구매 가능 수량
   isNew?: boolean;
   isInSeason?: boolean;
@@ -78,9 +78,10 @@ export interface Extra {
   departureDate?: string;
   returnDate?: string;
   reoresentitiveKeyword?: [];
-  includedItems?: [];
+  includedItems?: string[];
+  unincludedItems?: string[];
   schedule?: [];
-  guideInfo?: { name: string; contact: string };
+  guideInfo?: { name: string; contact: string; company: string };
 
   deadline?: string;
   harvestExpectedDate?: string;
