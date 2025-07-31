@@ -55,6 +55,9 @@ export default async function MyGardenItemPage({ params }: ProductDetailPageProp
   const daysFromStartDate = getDaysFromStartDateToEndDate - restDaysToEndDate;
   console.log('진행 날짜', daysFromStartDate);
 
+  // 업로드 날짜
+  const uploadDate = periodItemList?.map((item: periodObject) => item.date);
+
   return (
     <>
       <LinkHeader title={res.item.name} bgColor="garden" />
@@ -89,7 +92,12 @@ export default async function MyGardenItemPage({ params }: ProductDetailPageProp
             </div>
 
             {/* 전체 날짜 중 현재 기준으로 남은 날짜를 시각적으로 보여주는 Progress Bar */}
-            <ProgressBar max={getDaysFromStartDateToEndDate} value={daysFromStartDate} />
+            <ProgressBar
+              max={getDaysFromStartDateToEndDate}
+              value={daysFromStartDate}
+              uploadDate={uploadDate!}
+              endDate={endDate}
+            />
           </div>
         </div>
 

@@ -9,7 +9,7 @@ export default function PeriodItem({ periodItemList }: { periodItemList: periodO
   return (
     <>
       {periodItemList ? (
-        <div className="grid gap-4 mobile-max:grid-cols-2 mobile-max:gap-5 w-full">
+        <div className="mt-4 grid gap-4 mobile-max:grid-cols-2 mobile-max:gap-5 w-full">
           {periodItemList
             .slice()
             .reverse()
@@ -48,7 +48,7 @@ export default function PeriodItem({ periodItemList }: { periodItemList: periodO
             })}
         </div>
       ) : (
-        <div className="p-4 border border-dashed border-oguogu-gray-2 rounded-lg flex flex-col items-center gap-y-3 bg-oguogu-white/35 w-full">
+        <div className="mt-4 p-4 border border-dashed border-oguogu-gray-2 rounded-lg flex flex-col items-center gap-y-3 bg-oguogu-white/35 w-full">
           <div>업로드 전입니다.</div>
         </div>
       )}
