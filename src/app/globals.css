@@ -30,7 +30,8 @@
 
   --color-oguogu-black: #121212;
   --color-oguogu-yellow: #ffcc00;
-  --color-ogugu-blue-light: #3c9afa;
+  --color-oguogu-blue-light: #3c9afa;
+  --color-oguogu-red: #fb2c36;
 
   /* 커스텀 중단점 */
   --breakpoint-*: initial;

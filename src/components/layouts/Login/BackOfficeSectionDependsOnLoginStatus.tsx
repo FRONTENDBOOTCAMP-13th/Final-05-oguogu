@@ -4,18 +4,22 @@ import LogOutIcon from '@/components/elements/LogoutIcon/LogoutIcon';
 import ProductLinkItem from '@/components/elements/ProductLink/ProductLink';
 import GetLoggedInUserData from '@/features/getLoggedInUserData/getLoggedInUserData';
 import { getOrdersSeller } from '@/shared/data/functions/order';
+import { getPosts } from '@/shared/data/functions/post';
 import { getProductSeller } from '@/shared/data/functions/product';
 import { useAuthStore } from '@/shared/store/authStore';
 import { OrderListResponse } from '@/shared/types/order';
+import { responsePostReplies } from '@/shared/types/post';
 import { productsRes } from '@/shared/types/product';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 export default function BackOffcieSectionDependsOnLoginStatus() {
   const token = useAuthStore(state => state.token);
+  const seller_id = useAuthStore(state => state.userInfo?._id);
 
   const [productRes, setProductRes] = useState<productsRes>();
   const [orderRes, setOrderRes] = useState<OrderListResponse>();
+  const [qnaRes, setQnaRes] = useState<responsePostReplies>();
 
   useEffect(() => {
     if (!token) return;
@@ -23,6 +27,7 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
     const fetch = async () => {
       const data: productsRes = await getProductSeller(token);
       const orderData: OrderListResponse = await getOrdersSeller(token);
+      const qnaData: responsePostReplies = await getPosts('qna', token);
 
       if (data.ok) {
         setProductRes(data);
@@ -30,12 +35,12 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
       if (orderData.ok) {
         setOrderRes(orderData);
       }
+      if (qnaData.ok) {
+        setQnaRes(qnaData);
+      }
     };
     fetch();
   }, [token]);
-
-  console.log(productRes);
-  console.log(orderRes);
 
   const cropCnt = productRes?.item.filter(item => item.extra?.productType === 'crop').length;
   const experiencepCnt = productRes?.item.filter(item => item.extra?.productType === 'experience').length;
@@ -58,6 +63,11 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
     }, 0);
     return orderSum + productsSum;
   }, 0);
+
+  const qnaList = qnaRes?.item.filter(item => item.seller_id === seller_id);
+
+  const qnaWaitingCnt = qnaList?.filter(item => item.repliesCount === 0).length;
+  const qnafinishedCnt = qnaList?.filter(item => item.repliesCount !== 0).length;
 
   return (
     <>
@@ -154,13 +164,15 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
             <div className="flex justify-around gap-2">
               {/* 농산물 */}
               <div className={`flex flex-col items-center gap-2`}>
-                <span className={`text-2xl  ${cropCnt ? 'text-oguogu-black' : 'text-oguogu-gray-2'}`}>{cropCnt}</span>
+                <span className={`text-2xl  ${cropCnt !== 0 ? 'text-oguogu-black' : 'text-oguogu-gray-2'}`}>
+                  {cropCnt}
+                </span>
                 <span className="text-sm">농산물</span>
               </div>
 
               {/* 체험 */}
               <div className={`flex flex-col items-center gap-2`}>
-                <span className={`text-2xl  ${experiencepCnt ? 'text-oguogu-black' : 'text-oguogu-gray-2'}`}>
+                <span className={`text-2xl  ${experiencepCnt !== 0 ? 'text-oguogu-black' : 'text-oguogu-gray-2'}`}>
                   {experiencepCnt}
                 </span>
                 <span className="text-sm">체험</span>
@@ -168,7 +180,7 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
 
               {/* 텃밭 */}
               <div className={`flex flex-col items-center gap-2`}>
-                <span className={`text-2xl  ${gardeningCnt ? 'text-oguogu-black' : 'text-oguogu-gray-2'}`}>
+                <span className={`text-2xl  ${gardeningCnt !== 0 ? 'text-oguogu-black' : 'text-oguogu-gray-2'}`}>
                   {gardeningCnt}
                 </span>
                 <span className="text-sm">텃밭</span>
@@ -176,6 +188,29 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
             </div>
           </div>
           <ProductLinkItem link="/office/products" linkTitle="내 상품" subTxt="관리 하기" />
+
+          {/* 상품 문의 내역 */}
+          <div className="flex flex-col gap-3 px-4 pt-4">
+            <p className="text-xl">상품 문의 내역</p>
+            <div className="flex justify-center gap-30">
+              {/* 답변 준비중 */}
+              <div className={`flex flex-col items-center gap-2`}>
+                <span className={`text-2xl ${qnaWaitingCnt !== 0 ? 'text-oguogu-black' : 'text-oguogu-gray-2'}`}>
+                  {qnaWaitingCnt}
+                </span>
+                <span className="text-sm">답변 대기 중</span>
+              </div>
+
+              {/* 답변 완료 */}
+              <div className={`flex flex-col items-center gap-2`}>
+                <span className={`text-2xl ${qnafinishedCnt !== 0 ? 'text-oguogu-black' : 'text-oguogu-gray-2'}`}>
+                  {qnafinishedCnt}
+                </span>
+                <span className="text-sm">답변 완료</span>
+              </div>
+            </div>
+          </div>
+          <ProductLinkItem link="/office/qnas" linkTitle="전체 문의 내역" subTxt="확인 하기" />
         </div>
       </section>
     </>
