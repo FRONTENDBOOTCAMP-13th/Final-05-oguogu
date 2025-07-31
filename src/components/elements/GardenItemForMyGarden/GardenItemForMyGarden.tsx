@@ -27,13 +27,14 @@ export default function GardenItemForMyGarden({
   );
 
   /* 판매자가 업로드한 최근 게시물의 날짜가 오늘 기준 3일 이내일 때 색으로 표시하는 기능 */
+  // const lastDate = ['2025-07-31']; // -> 테스트용
   const lastDate = period.map((item: periodObject) => item.date);
   const getDaysFromLastDate = getDaysFromToday(lastDate).pop() ?? 1;
 
   let isRecent = false;
-  if (getDaysFromLastDate > 0) {
+  if (getDaysFromLastDate < 0) {
     isRecent = false;
-  } else if (getDaysFromLastDate < 0 && getDaysFromLastDate > -5) {
+  } else if (getDaysFromLastDate === 0 && getDaysFromLastDate < 5) {
     isRecent = true;
   } else {
     isRecent = false;
@@ -61,7 +62,7 @@ export default function GardenItemForMyGarden({
           </div>
         </div>
         <div
-          className={`w-5 h-5 border-2 bg-oguogu-${isRecent ? 'main' : 'gray-2'} border-oguogu-main-light absolute rounded-3xl top-0 right-0 translate-y-[-10px] translate-x-1/2 mobile-max:border-3`}
+          className={`w-5 h-5 border-2 bg-oguogu-${isRecent ? 'yellow' : 'gray-2'} border-oguogu-main-light absolute rounded-3xl top-0 right-0 translate-y-[-10px] translate-x-1/2 mobile-max:border-3`}
         ></div>
       </Link>
     </>
