@@ -1,22 +1,25 @@
 import LinkHeader from '@/components/layouts/Header/LinkHeader';
 import { ProductDetailPageProps } from '@/features/types/productDetail';
 import { getProduct } from '@/shared/data/functions/product';
-import { periodObject } from '@/shared/types/product';
+import { periodObject, productRes } from '@/shared/types/product';
+import getDaysFromToday, { getDayFromToday } from '@/utils/getDaysFromToday/getDaysFromToday';
+import { format, formatDate, parse, parseISO } from 'date-fns';
+import { ko } from 'date-fns/locale';
 import Image from 'next/image';
 
 export default async function MyGardenItemPage({ params }: ProductDetailPageProps) {
   const { _id } = await params;
-  const res = await getProduct(Number(_id));
+  const res: productRes = await getProduct(Number(_id));
 
   if (!res) {
     return <div>상품 정보를 불러오는 중입니다...</div>;
   }
 
   /* period 의 status 값을 추출, 포함 여부를 검증하여 가장 마지막 데이터를 렌더링 */
-  const allStatus = res.item.extra.period.map((item: periodObject) => item.status);
+  const allStatus = res.item.extra?.period.map((item: periodObject) => item.status);
 
   let lastStatus = '';
-  allStatus.map((status: string) =>
+  allStatus?.map((status: string) =>
     status.includes('harvest')
       ? (lastStatus = 'harvest')
       : status.includes('growing')
@@ -25,6 +28,31 @@ export default async function MyGardenItemPage({ params }: ProductDetailPageProp
           ? (lastStatus = 'sprouting')
           : (lastStatus = 'seeding'),
   );
+
+  /* 판매자가 업로드한 게시물 리스트를 받아오기 */
+  const allPeriodItem = res.item.extra?.period.map((item: periodObject) => item);
+
+  /* 현재 날짜와 시작한 날짜의 차이를 계산하는 progress bar 데이터 받아오기 */
+  // 시작(상품 판매 종료) 날짜
+  const startDate = res.item.extra?.deadline;
+
+  // INFO 종료 날짜 : 현재는 하드코딩된 데이터, dbinit 이후 실제 DB 반영 (아래 주석 사용)
+  // const endDate = res.item.extra.harvestExpectedDate;
+  const endDate = '2025-11-01';
+
+  // 전체 날짜: 시작 날짜 ~ 종료 날짜
+  const getDaysFromStartDateToEndDate = getDayFromToday(startDate!, endDate);
+  console.log('전체 날짜', getDaysFromStartDateToEndDate);
+
+  // 남은 날짜: 오늘 날짜 ~ 종료 날짜
+  const today = new Date();
+  const formattetToday = format(today, 'yyyy-MM-dd');
+  const restDaysToEndDate = getDayFromToday(formattetToday, endDate);
+  console.log('남은 날짜', restDaysToEndDate);
+
+  // 진행 날짜: 시작 날짜 ~ 오늘 날짜
+  const daysFromStartDate = getDaysFromStartDateToEndDate - restDaysToEndDate;
+  console.log('진행 날짜', daysFromStartDate);
 
   return (
     <>
@@ -52,10 +80,13 @@ export default async function MyGardenItemPage({ params }: ProductDetailPageProp
           </div>
           <div className="text-xs flex gap-1">
             <p>수확까지</p>
-            <p className="text-oguogu-main">43</p>
+            <p className="text-oguogu-main">{restDaysToEndDate}</p>
             <p>일 남았습니다</p>
           </div>
         </div>
+
+        {/* 전체 날짜 중 현재 기준으로 남은 날짜를 시각적으로 보여주는 Progress Bar */}
+        <input type="range" min="0" max={getDaysFromStartDateToEndDate} value={daysFromStartDate} disabled />
 
         {/* 업로드 게시물 */}
       </main>
