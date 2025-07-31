@@ -12,7 +12,7 @@ export default function LoginInput({
   id,
 }: LoginInputProps) {
   // CHECKLIST
-  // [ ] 빨간색 공통 색상 추가 필요 oguogu-red 또는 oguogu-error-message
+  // [x] 빨간색 공통 색상 추가 필요 oguogu-red 또는 oguogu-error-message
   // [ ] 생년월일 유효성 검사
   // 로그인 폼에는 유효성 검사 아직 안넣었습니다. 폼 내 디폴트 벨류 제거할 때 최종 리팩토링하겠습니다.
 
@@ -177,7 +177,7 @@ export default function LoginInput({
             className="placeholder-oguogu-gray-2 w-[60px] text-center pl-4"
           />
         </div>
-        {businessNumError && <p className="text-red-500 text-[12px] mt-1 px-1">{businessNumError}</p>}
+        {businessNumError && <p className="text-oguogu-red text-[12px] mt-1 px-1">{businessNumError}</p>}
       </div>
     );
   }
@@ -196,7 +196,8 @@ export default function LoginInput({
     return (
       <div className="flex items-center gap-x-4 w-[288px] h-[36px] font-normal text-[12px] py-3 border-b-1 text-oguogu-black border-oguogu-gray-2 justify-center">
         <input
-          type="number"
+          type="text"
+          inputMode="numeric"
           id={`${id}-birth-part1`}
           value={birthParts.part1}
           onChange={e => handleBirthChange('part1', e.target.value.slice(0, 4))}
@@ -205,7 +206,8 @@ export default function LoginInput({
         />
         <span className="text-oguogu-black text-[16px]">/</span>
         <input
-          type="number"
+          type="text"
+          inputMode="numeric"
           id={`${id}-birth-part2`}
           value={birthParts.part2}
           onChange={e => handleBirthChange('part2', e.target.value.slice(0, 2))}
@@ -214,7 +216,8 @@ export default function LoginInput({
         />
         <span className="text-oguogu-black text-[16px]">/</span>
         <input
-          type="number"
+          type="text"
+          inputMode="numeric"
           id={`${id}-birth-part3`}
           value={birthParts.part3}
           onChange={e => handleBirthChange('part3', e.target.value.slice(0, 2))}
@@ -280,7 +283,7 @@ export default function LoginInput({
             className="placeholder-oguogu-gray-2 w-[60px] text-center pl-4"
           />
         </div>
-        {phoneError && <p className="text-red-500 text-[12px] mt-1 px-1">{phoneError}</p>}
+        {phoneError && <p className="text-oguogu-red text-[12px] mt-1 px-1">{phoneError}</p>}
       </div>
     );
   }
@@ -367,7 +370,7 @@ export default function LoginInput({
             <option value="gmail.com">gmail.com</option>
           </select>
         </div>
-        {emailIdError && <p className="text-red-500 text-[12px] mt-1 px-1">{emailIdError}</p>}
+        {emailIdError && <p className="text-oguogu-red text-[12px] mt-1 px-1">{emailIdError}</p>}
       </div>
     );
   }
@@ -378,14 +381,14 @@ export default function LoginInput({
 
   if (type === 'address') {
     return (
-      <div className="flex items-center justify-between w-[288px] h-[36px] font-normal text-[12px] pl-2 pr-3 py-3 border-b-1 text-oguogu-black border-oguogu-gray-2">
+      <div className="flex items-center justify-between w-[288px] h-[36px] font-normal text-[12px] border-b-1 text-oguogu-black border-oguogu-gray-2">
         <input
           type="text"
           id={id}
           value={value}
           placeholder={placeholder}
           onChange={e => onChange(e.target.value)}
-          className="placeholder-oguogu-gray-2"
+          className="placeholder-oguogu-gray-2 w-full h-full  text-[12px] pl-2 pr-3 py-3 "
         />
         <button type="button" className="cursor-pointer">
           <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
@@ -442,13 +445,13 @@ export default function LoginInput({
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute text-sm -translate-y-1/2 cursor-pointer right-2 top-1/2 text-ogugu-blue-light"
+              className="absolute text-sm -translate-y-1/2 cursor-pointer right-2 top-1/2 text-oguogu-blue-light"
             >
               {showPassword ? '숨기기' : '보기'}
             </button>
           )}
         </div>
-        {passwordError && <p className="text-red-500 text-[12px] mt-1 px-1">{passwordError}</p>}
+        {passwordError && <p className="text-oguogu-red text-[12px] mt-1 px-1">{passwordError}</p>}
       </div>
     );
   }
@@ -468,9 +471,9 @@ export default function LoginInput({
             setDefaultError('');
           }
         }}
-        className="w-full h-[36px] font-normal text-[14px] pl-2 py-3 border-b border-oguogu-gray-2 placeholder-oguogu-gray-2"
+        className="w-full h-[36px] font-normal text-[12px] pl-2 py-3 border-b border-oguogu-gray-2 placeholder-oguogu-gray-2"
       />
-      {defaultError && <p className="text-red-500 text-[12px] mt-1 px-1">{defaultError}</p>}
+      {defaultError && <p className="text-oguogu-red text-[12px] mt-1 px-1">{defaultError}</p>}
     </div>
   );
 }
