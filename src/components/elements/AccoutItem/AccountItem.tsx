@@ -10,21 +10,37 @@ import { productsRes } from '@/shared/types/product';
 import { useEffect, useState } from 'react';
 
 export default function AccountItem() {
-  const [registeredAccount, setRegisteredAccount] = useState<string | null>(null); // 등록 여부
+  // 사용자 정보, 토큰 전역 상태에서 가져오기
+  const { userInfo, token, setUserInfo } = useAuthStore(state => ({
+    userInfo: state.userInfo,
+    token: state.token,
+    setUserInfo: state.setUserInfo,
+  }));
+
+  const [registeredAccount, setRegisteredAccount] = useState<string | null>(
+    userInfo?.extra?.settlementBank && userInfo?.extra?.settlementAccount
+      ? `${userInfo.extra.settlementBank} ${userInfo.extra.settlementAccount}`
+      : null,
+  );
+
   const [isEditing, setIsEditing] = useState(false); // 계좌 변경 중 여부
-  
+
+  // const settlementAccountDisplay = userInfo
+  //   ? `${userInfo.extra?.settlementBank ?? ''} ${userInfo.extra?.settlementAccount ?? ''}`.trim()
+  //   : '미등록';
+
   const settlementInfo = [
     { label: '정산 주기', value: '매월 10일' },
     { label: '정산 대상 기간', value: '2025.07.01 ~ 2025.07.31' },
     { label: '정산 계좌', value: registeredAccount ?? '미등록' },
   ];
 
-  const token = useAuthStore(state => state.token);
-
   const [productRes, setProductRes] = useState<productsRes>();
   const [orderRes, setOrderRes] = useState<OrderListResponse>();
 
+  // 토큰이 있을 때만 상품, 주문 데이터 받아오기
   useEffect(() => {
+    console.log(token, 'paymenttoken');
     if (!token) return;
 
     const fetch = async () => {
@@ -56,8 +72,25 @@ export default function AccountItem() {
     return orderSum + productsSum;
   }, 0);
 
+  // 계좌 등록/변경 버튼 클릭 핸들러
   const handleChangeAccount = () => {
-    setIsEditing(true); // 계좌 변경 시작
+    setIsEditing(true);
+  };
+
+  // AccountForm에서 등록 완료 시 실행되는 콜백
+  // 계좌 등록/변경 완료 후 Zustand 전역 상태 업데이트 및 편집 종료
+  const handleRegisteredAccount = (fullAccount: string, extraUpdates: Partial<typeof userInfo.extra>) => {
+    setRegisteredAccount(fullAccount);
+    setIsEditing(false);
+    if (userInfo) {
+      setUserInfo({
+        ...userInfo,
+        extra: {
+          ...userInfo.extra,
+          ...extraUpdates,
+        },
+      });
+    }
   };
 
   return (
@@ -90,10 +123,7 @@ export default function AccountItem() {
       {/* 등록 중, 변경 중일 때만 폼 보이기 */}
       {isEditing && (
         <AccountForm
-          setRegisteredAccount={account => {
-            setRegisteredAccount(account);
-            setIsEditing(false); // 등록 완료 시 변경 모드 종료
-          }}
+          setRegisteredAccount={(account, extraUpdates) => handleRegisteredAccount(account, extraUpdates)}
           onCancel={() => setIsEditing(false)} // 변경 취소
         />
       )}
@@ -102,7 +132,7 @@ export default function AccountItem() {
       {!isEditing && (
         <>
           {/* 등록 안 된 경우 → 등록 버튼 */}
-          {!registeredAccount && (
+          {!userInfo?.extra?.settlementAccount && (
             <button
               className="w-full text-sm border rounded h-7 text-oguogu-black border-oguogu-main bg-oguogu-white hover:bg-oguogu-gray-1"
               onClick={handleChangeAccount}
@@ -112,7 +142,7 @@ export default function AccountItem() {
           )}
 
           {/* 등록된 경우 → 변경 버튼 */}
-          {registeredAccount && (
+          {userInfo?.extra?.settlementAccount && (
             <button
               className="w-full text-sm border rounded h-7 text-oguogu-black border-oguogu-main bg-oguogu-white hover:bg-oguogu-gray-1"
               onClick={handleChangeAccount}
