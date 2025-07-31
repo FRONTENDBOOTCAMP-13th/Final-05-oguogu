@@ -35,7 +35,7 @@ export default function PeriodItem({ periodItemList }: { periodItemList: periodO
                   </div>
 
                   {/* 이미지 */}
-                  <div className="rounded-lg object-center overflow-hidden">
+                  <div className="rounded-lg overflow-hidden w-full bg-oguogu-white flex justify-center">
                     <Image src="/images/gardening/dummy-001.png" alt="period" width={256} height={256} />
                   </div>
 
