@@ -42,7 +42,7 @@ export default function MyPageSectionDependsOnLoginStatus() {
       const payedCount = orderInfo.filter(item => item.state === 'OS020').length;
       const preparingCount = orderInfo.filter(item => item.state === 'preparingShipment').length;
       const transitCount = orderInfo.filter(item => item.state === 'inTransit').length;
-      const deliveredCount = orderInfo.filter(item => item.state === 'purchaseCompleted').length;
+      const deliveredCount = orderInfo.filter(item => item.state === 'delivered').length;
 
       setPayedCnt(payedCount);
       setPreparingCnt(preparingCount);
@@ -89,7 +89,9 @@ export default function MyPageSectionDependsOnLoginStatus() {
             <p className="text-base">주문/배송</p>
             <div className="flex justify-around gap-2">
               {/* 결제 완료 */}
-              <div className={`flex flex-col items-center gap-2`}>
+              <div
+                className={`flex flex-col items-center gap-2 ${payedCnt === 0 ? `text-oguogu-gray-2` : 'text-oguogu-black'}`}
+              >
                 <span className="text-2xl">{payedCnt}</span>
                 <span className="text-sm">결제 완료</span>
               </div>
@@ -97,7 +99,9 @@ export default function MyPageSectionDependsOnLoginStatus() {
               <Image src="/svgs/arrow.svg" alt="다음 순서" width={6} height={9} className="rotate-180" />
 
               {/* 배송 준비 중 */}
-              <div className={`flex flex-col items-center gap-2 text-oguogu-gray-2`}>
+              <div
+                className={`flex flex-col items-center gap-2 ${preparingCnt === 0 ? `text-oguogu-gray-2` : 'text-oguogu-black'}`}
+              >
                 <span className="text-2xl">{preparingCnt}</span>
                 <span className="text-sm">배송 준비 중</span>
               </div>
@@ -105,7 +109,9 @@ export default function MyPageSectionDependsOnLoginStatus() {
               <Image src="/svgs/arrow.svg" alt="다음 순서" width={6} height={9} className="rotate-180" />
 
               {/* 배송 중 */}
-              <div className={`flex flex-col items-center gap-2 text-oguogu-gray-2`}>
+              <div
+                className={`flex flex-col items-center gap-2 ${transitCnt === 0 ? `text-oguogu-gray-2` : 'text-oguogu-black'}`}
+              >
                 <span className="text-2xl">{transitCnt}</span>
                 <span className="text-sm">배송 중</span>
               </div>
@@ -113,7 +119,9 @@ export default function MyPageSectionDependsOnLoginStatus() {
               <Image src="/svgs/arrow.svg" alt="다음 순서" width={6} height={9} className="rotate-180" />
 
               {/* 배송 완료 */}
-              <div className={`flex flex-col items-center gap-2`}>
+              <div
+                className={`flex flex-col items-center gap-2 ${delivered === 0 ? `text-oguogu-gray-2` : 'text-oguogu-black'}`}
+              >
                 <span className="text-2xl">{delivered}</span>
                 <span className="text-sm">배송 완료</span>
               </div>
