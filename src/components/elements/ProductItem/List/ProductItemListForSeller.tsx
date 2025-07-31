@@ -1,16 +1,9 @@
 'use client';
 
+import { ProductItemListForSellerType } from '@/components/elements/ProductItem/List/ProductItemListForSeller.type';
 import { useState } from 'react';
 
-export default function ProductItemListForSeller({
-  category,
-  title,
-  price,
-}: {
-  category: string;
-  title: string;
-  price: string;
-}) {
+export default function ProductItemListForSeller({ category, title, price }: ProductItemListForSellerType) {
   const [visible, setVisible] = useState(true);
 
   const toggleVisible = () => {
