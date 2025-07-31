@@ -35,8 +35,6 @@ export default function GardenItemListForMyGarden() {
       /* allProducts 에서 productType 이 'gardening'인 경우만 추출 */
       const allGardeningProducts = allProducts.filter((item: OrderedProduct) => item.extra.productType === 'gardening');
 
-      console.log('텃밭 상품 목록', allGardeningProducts);
-
       setGardenProducts(allGardeningProducts);
     };
 
@@ -47,8 +45,8 @@ export default function GardenItemListForMyGarden() {
     <>
       {gardenProducts.length < 60 && (
         <>
-          {gardenProducts.map((item: OrderedProduct) => (
-            <GardenItemForMyGarden key={item._id} id={item._id} name={item.name} period={item.extra.period!} />
+          {gardenProducts.map((item: OrderedProduct, index: number) => (
+            <GardenItemForMyGarden key={index} id={item._id} name={item.name} period={item.extra.period!} />
           ))}
           {Array.from({ length: Math.max(0, 60 - gardenProducts.length) }).map((_, idx) => (
             <EmptyGardenItemForMyGarden key={`empty-${idx}`} />
