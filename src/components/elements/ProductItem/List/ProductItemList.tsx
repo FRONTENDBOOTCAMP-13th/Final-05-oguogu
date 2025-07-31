@@ -104,15 +104,15 @@ export default function ProductItemList({ type }: ProductItemListType) {
   const cropData = res?.item
     .filter((item: Item) => item.name.includes('옥수수'))
     .filter((item: Item) => item.extra?.productType === 'crop')
-    .sort((a: Item, b: Item) => b.extra!.likeCount - a.extra!.likeCount);
+    .sort((a: Item, b: Item) => b.extra!.likeCount! - a.extra!.likeCount!);
 
   const expData = res?.item
     .filter((item: Item) => item.extra?.productType === 'experience')
-    .sort((a: Item, b: Item) => b.extra!.likeCount - a.extra!.likeCount);
+    .sort((a: Item, b: Item) => b.extra!.likeCount! - a.extra!.likeCount!);
 
   const gardeningData = res?.item
     .filter((item: Item) => item.extra?.productType === 'gardening')
-    .sort((a: Item, b: Item) => b.extra!.likeCount - a.extra!.likeCount);
+    .sort((a: Item, b: Item) => b.extra!.likeCount! - a.extra!.likeCount!);
 
   return (
     <>

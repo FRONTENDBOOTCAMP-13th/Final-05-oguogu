@@ -2,16 +2,20 @@
 
 import { useState } from 'react';
 
-const orderOptions = [
-  { label: '채소', value: 'veggie' },
-  { label: '과일', value: 'fruit' },
-  { label: '쌀/곡류', value: 'grain' },
-  { label: '버섯', value: 'mushroom' },
-];
+export interface SellerProductEditOptionType {
+  onChange?: (value: string) => void;
+  selected: { label: string; value: string };
+  setSelected: (option: { label: string; value: string }) => void; // 수정
+  orderOptions: { label: string; value: string }[];
+}
 
-export default function SellerProductEditOption({ onChange }: { onChange?: (value: string) => void }) {
+export default function SellerProductEditOption({
+  onChange,
+  selected,
+  setSelected,
+  orderOptions,
+}: SellerProductEditOptionType) {
   const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState(orderOptions[0]);
 
   return (
     <section className="flex flex-col gap-1">

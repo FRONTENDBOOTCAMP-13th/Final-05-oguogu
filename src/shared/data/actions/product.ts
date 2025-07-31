@@ -1,3 +1,5 @@
+import { Extra, MainImage } from '@/shared/types/product';
+
 const API_URL = 'https://fesp-api.koyeb.app/market';
 const CLIENT_ID = 'febc13-final05-emjf';
 const token =
@@ -9,16 +11,19 @@ const token =
 // [x] 상품 삭제
 
 //  1. 상품 등록
-export async function createProduct(data: {
-  price: number;
-  quantity: number;
-  name: string;
-  content: string;
-  shippingFees?: number;
-  mainImages?: [];
-  show?: boolean;
-  extra: object;
-}) {
+export async function createProduct(
+  data: {
+    price: number;
+    quantity: number;
+    name: string;
+    content: string;
+    shippingFees?: number;
+    mainImages?: MainImage[];
+    show?: boolean;
+    extra?: Extra;
+  },
+  token: string,
+) {
   try {
     const res = await fetch(`${API_URL}/seller/products`, {
       method: 'POST',
