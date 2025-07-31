@@ -166,6 +166,25 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
             </div>
           </div>
           <ProductLinkItem link="/office/products" linkTitle="내 상품" subTxt="관리 하기" />
+
+          {/* 상품 문의 내역 */}
+          <div className="flex flex-col gap-3 px-4 pt-4">
+            <p className="text-xl">상품 문의 내역</p>
+            <div className="flex justify-center gap-30">
+              {/* 답변 준비중 */}
+              <div className={`flex flex-col items-center gap-2`}>
+                <span className={`text-2xl 'text-oguogu-black'`}>3</span>
+                <span className="text-sm">답변 대기 중</span>
+              </div>
+
+              {/* 답변 완료 */}
+              <div className={`flex flex-col items-center gap-2`}>
+                <span className={`text-2xl 'text-oguogu-black'`}>2</span>
+                <span className="text-sm">답변 완료</span>
+              </div>
+            </div>
+          </div>
+          <ProductLinkItem link="/office/qnas" linkTitle="전체 문의 내역" subTxt="확인 하기" />
         </div>
       </section>
     </>
