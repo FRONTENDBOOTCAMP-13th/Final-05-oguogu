@@ -78,7 +78,7 @@ export default function PickListItem({
 
             {/* 판매가격 */}
             <span className="leading-tight">
-              {(item.product.price * (1 - item.product.extra!.dcRate / 100)).toLocaleString()}&nbsp;원
+              {(item.product.price * (1 - item.product.extra!.dcRate! / 100)).toLocaleString()}&nbsp;원
             </span>
           </div>
         </div>
