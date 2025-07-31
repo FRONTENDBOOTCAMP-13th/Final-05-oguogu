@@ -44,7 +44,11 @@
   }
 
   .header {
-    @apply h-12 sticky top-0 z-50 flex justify-between items-center p-3;
+    @apply h-12 sticky top-0 z-50 flex justify-between items-center p-3 bg-oguogu-white;
+  }
+
+  .headerForGarden {
+    @apply h-12 sticky top-0 z-50 flex justify-between items-center p-3 bg-[#DBFCE7];
   }
 
   .secondHeader {
@@ -98,6 +102,18 @@
   /* 애니메이션 */
   .animate-wave {
     animation: floatUp 2s ease-in-out infinite;
+  }
+
+  /* Progress Bar 전용 공통 스타일 */
+  [type='range'] {
+    appearance: none;
+    cursor: pointer;
+    outline: none;
+    width: 100%;
+    height: 1.5rem; /* thumb의 height와 일치 */
+    margin: 0; /* reset margin */
+    padding: 0; /* reset padding */
+    background-color: transparent;
   }
 }
 
