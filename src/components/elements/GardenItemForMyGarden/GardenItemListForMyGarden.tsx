@@ -48,7 +48,7 @@ export default function GardenItemListForMyGarden() {
       {gardenProducts.length < 60 && (
         <>
           {gardenProducts.map((item: OrderedProduct) => (
-            <GardenItemForMyGarden key={item._id} id={item._id} name={item.name} period={item.extra.period} />
+            <GardenItemForMyGarden key={item._id} id={item._id} name={item.name} period={item.extra.period!} />
           ))}
           {Array.from({ length: Math.max(0, 60 - gardenProducts.length) }).map((_, idx) => (
             <EmptyGardenItemForMyGarden key={`empty-${idx}`} />

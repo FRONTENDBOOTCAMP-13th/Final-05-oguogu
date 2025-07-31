@@ -14,13 +14,13 @@ export default async function MyGardenItemPage({ params }: ProductDetailPageProp
   const periodItemList = res.item.extra!.period;
 
   if (!res) {
-    return <div>상품 정보를 불러오는 중입니다...</div>;
+    return <div className="text-center">상품 정보가 없습니다.</div>;
   }
 
   /* period 의 status 값을 추출, 포함 여부를 검증하여 가장 마지막 데이터를 렌더링 */
-  const allStatus = res.item.extra?.period.map((item: periodObject) => item.status);
+  const allStatus = res.item.extra!.period?.map((item: periodObject) => item.status);
 
-  let lastStatus = '';
+  let lastStatus = 'seeding';
   allStatus?.map((status: string) =>
     status.includes('harvest')
       ? (lastStatus = 'harvest')
@@ -94,9 +94,7 @@ export default async function MyGardenItemPage({ params }: ProductDetailPageProp
         </div>
 
         {/* 판매자가 업로드한 Period 내역 */}
-        <div className="grid gap-4 mobile-max:grid-cols-2 mobile-max:gap-5">
-          <PeriodItem periodItemList={periodItemList} />
-        </div>
+        <PeriodItem periodItemList={periodItemList} />
       </main>
     </>
   );

@@ -13,10 +13,10 @@ export default function GardenItemForMyGarden({
   id: number;
 }) {
   /* period 의 status 값을 추출, 포함 여부를 검증하여 가장 마지막 데이터를 렌더링 */
-  const allStatus = period.map((item: periodObject) => item.status);
+  const allStatus = period?.map((item: periodObject) => item.status);
 
   let lastStatus = '';
-  allStatus.map((status: string) =>
+  allStatus?.map((status: string) =>
     status.includes('harvest')
       ? (lastStatus = '수확 완료')
       : status.includes('growing')
@@ -28,8 +28,8 @@ export default function GardenItemForMyGarden({
 
   /* 판매자가 업로드한 최근 게시물의 날짜가 오늘 기준 3일 이내일 때 색으로 표시하는 기능 */
   // const lastDate = ['2025-07-31']; // -> 테스트용
-  const lastDate = period.map((item: periodObject) => item.date);
-  const getDaysFromLastDate = getDaysFromToday(lastDate).pop() ?? 1;
+  const lastDate = period?.map((item: periodObject) => item.date) ?? 1;
+  const getDaysFromLastDate = Number(getDaysFromToday(lastDate).pop()) ?? 1;
 
   let isRecent = false;
   if (getDaysFromLastDate < 0) {
@@ -71,6 +71,6 @@ export default function GardenItemForMyGarden({
 
 export function EmptyGardenItemForMyGarden() {
   return (
-    <div className="flex justify-center items-center bg-[linear-gradient(to_bottom_right,rgba(250,250,250,0.2),rgba(250,250,250,0.8))] border-1 border-dashed border-oguogu-main rounded-lg relative min-w-[85px] w-full min-h-[85px] h-full aspect-square"></div>
+    <div className="flex justify-center items-center bg-[linear-gradient(to_bottom_right,rgba(250,250,250,0.2),rgba(250,250,250,0.8))] border-1 border-dashed border-oguogu-gray-2 rounded-lg relative min-w-[85px] w-full min-h-[85px] h-full aspect-square"></div>
   );
 }
