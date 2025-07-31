@@ -49,7 +49,7 @@ export default function ProductListClientControl({ productList, type }: productL
       setBookmarkedMap(updateMap);
     } catch (error) {
       console.error('북마크 토글 실패', error);
-      alert('북마크 처리에 실패했습니다.');
+      toast.error('북마크 처리에 실패했습니다.');
     } finally {
       setIsLoading(false);
     }

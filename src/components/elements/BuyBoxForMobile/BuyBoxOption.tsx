@@ -6,6 +6,7 @@ import BuyBoxOptionExtraItem from '@/components/elements/BuyBoxForMobile/BuyBoxO
 import { format } from 'date-fns';
 import { ko } from 'date-fns/locale';
 import { useAuthStore } from '@/shared/store/authStore';
+import toast from 'react-hot-toast';
 
 // 체험 상품 더미 데이터
 const rawData = [
@@ -220,7 +221,7 @@ export default function BuyBoxOption({
          px-6 py-1.5 rounded-sm w-full`}
         onClick={() => {
           if (!TOKEN) {
-            alert('로그인이 필요합니다.');
+            toast.error('로그인이 필요합니다.');
             return;
           }
           handleBuy(product_id, count);

@@ -6,6 +6,7 @@ import LoginInput from '@/components/elements/LoginItem/LoginInput';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createUser } from '@/shared/data/actions/user';
+import toast from 'react-hot-toast';
 
 export default function SellerRegisterForm() {
   const [companyName, setCompanyName] = useState('');
@@ -51,22 +52,22 @@ export default function SellerRegisterForm() {
       !sellerPassword ||
       !sellerConfirmPassword
     ) {
-      alert('입력하지 않은 부분이 있습니다 모두 입력해주세요');
+      toast.error('입력하지 않은 부분이 있습니다 모두 입력해주세요');
       return;
     }
     // 비밀번호 확인
     if (!isPasswordValid(sellerPassword)) {
-      alert('비밀번호는 영문, 숫자, 특수문자를 모두 포함해야 합니다.');
+      toast.error('비밀번호는 영문, 숫자, 특수문자를 모두 포함해야 합니다.');
       return;
     }
 
     if (sellerPassword !== sellerConfirmPassword) {
-      alert('비밀번호가 일치하지 않습니다');
+      toast.error('비밀번호가 일치하지 않습니다');
       return;
     }
 
     if (!sellerAgreeTerms || !sellerFinTerms || !sellerAgreePrivacy || !sellerProvidePrivacy) {
-      alert('필수 약관에 모두 동의해주세요');
+      toast.error('필수 약관에 모두 동의해주세요');
       return;
     }
 
@@ -96,14 +97,14 @@ export default function SellerRegisterForm() {
       });
 
       if (res.ok === 1) {
-        alert('회원가입 완료');
+        toast.success('회원가입 완료');
         router.push('/login');
       } else {
-        alert(res.message || '회원가입 실패');
+        toast.error(res.message || '회원가입 실패');
       }
     } catch (err) {
       console.error('회원가입 오류:', err);
-      alert('회원가입중 오류가 발생했습니다 오구 텃밭으로 전화주세요');
+      toast.error('회원가입중 오류가 발생했습니다 오구 텃밭으로 전화주세요');
     }
   };
   return (

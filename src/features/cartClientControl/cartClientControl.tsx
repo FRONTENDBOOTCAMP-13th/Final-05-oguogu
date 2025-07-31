@@ -10,6 +10,7 @@ import { getCart } from '@/shared/data/functions/cart';
 import { useAuthStore } from '@/shared/store/authStore';
 import { CartItem, CartResponse } from '@/shared/types/cart';
 import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 export default function CartClientControl() {
   const token = useAuthStore(state => state.token);
@@ -50,7 +51,7 @@ export default function CartClientControl() {
     .map(item => ({
       _id: item.product_id, // 주문에는 product_id 사용
       quantity: item.quantity,
-      cart_id: item._id,    // cart_id도 같이 저장
+      cart_id: item._id, // cart_id도 같이 저장
     }));
 
   // 주문하기 버튼
@@ -69,7 +70,7 @@ export default function CartClientControl() {
         successCartIds.push(item.cart_id);
       } else {
         allSuccess = false;
-        alert(`상품 ID ${item._id} 주문 실패: ${data.message}`);
+        toast.error(`상품 ID ${item._id} 주문 실패: ${data.message}`);
         console.log(data);
       }
     }
@@ -81,7 +82,7 @@ export default function CartClientControl() {
     }
 
     if (allSuccess && successCartIds.length > 0) {
-      alert('주문이 완료되었습니다.');
+      toast.success('주문이 완료되었습니다.');
     }
   };
 
@@ -102,13 +103,13 @@ export default function CartClientControl() {
     const data = await deleteCart(_id, token);
 
     if (data.ok) {
-      alert('장바구니 내역을 삭제했습니다.');
+      toast.success('장바구니 내역을 삭제했습니다.');
       //상태에서도 제거
       setCartItems(prev => prev.filter(item => item._id !== _id));
       // 선택 상태에서도 제거
       setSelectedItems(prev => prev.filter(id => id !== _id));
     } else {
-      alert(data.message);
+      toast.error(data.message);
       console.log(data);
     }
   };
@@ -121,10 +122,10 @@ export default function CartClientControl() {
     const result = await deleteSelectCart(allIds, token);
 
     if (result.ok) {
-      alert('장바구니를 모두 비웠습니다.');
+      toast.success('장바구니를 모두 비웠습니다.');
       setCartItems([]); // UI에서 모두 제거
     } else {
-      alert('삭제에 실패했습니다: ' + result.message);
+      toast.error('삭제에 실패했습니다: ' + result.message);
     }
   };
 

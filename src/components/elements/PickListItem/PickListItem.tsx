@@ -5,6 +5,7 @@ import { createCart } from '@/shared/data/actions/cart';
 import { BookmarkItem } from '@/shared/types/bookmarkt';
 import Image from 'next/image';
 import Link from 'next/link';
+import toast from 'react-hot-toast';
 // import { useRouter } from 'next/navigation'; // 필요하면 라우팅 구조 사용하기
 
 export default function PickListItem({
@@ -45,7 +46,7 @@ export default function PickListItem({
     try {
       await createCart({ product_id: item.product._id, quantity: 1 }, token);
 
-      alert('장바구니 추가 완료');
+      toast.success('장바구니 추가 완료');
       console.log('북마크에서 장바구니 추가', item.product.name);
       // router.push('/mypage/cart');
     } catch (err) {

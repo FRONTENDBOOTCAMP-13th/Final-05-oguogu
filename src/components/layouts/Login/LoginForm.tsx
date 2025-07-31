@@ -10,6 +10,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 export default function LoginForm() {
   const [email, setEmail] = useState('test1@gmail.com');
@@ -27,7 +28,7 @@ export default function LoginForm() {
       console.log(loginRes);
 
       if (loginRes?.item?.token?.accessToken) {
-        alert('로그인에 성공했습니다 ~~');
+        toast.success('로그인 되었습니다🥕');
 
         // Zustand에 토큰 저장
         setToken(loginRes.item.token.accessToken);
@@ -52,13 +53,13 @@ export default function LoginForm() {
         }
       } else {
         router.refresh();
-        alert('로그인 정보가 일치하지 않습니다.');
+        toast.error('로그인 정보가 일치하지 않습니다.');
         setEmail('');
         setPassword('');
       }
     } catch (error) {
       console.error('로그인 중 오류:', error);
-      alert('오류가 생겼습니다. 서버를 확인해주세요');
+      toast.error('오류가 생겼습니다. 서버를 확인해주세요');
     }
   };
 
