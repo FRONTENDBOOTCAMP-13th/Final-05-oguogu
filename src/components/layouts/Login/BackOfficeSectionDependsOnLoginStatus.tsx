@@ -154,13 +154,15 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
             <div className="flex justify-around gap-2">
               {/* 농산물 */}
               <div className={`flex flex-col items-center gap-2`}>
-                <span className={`text-2xl  ${cropCnt ? 'text-oguogu-black' : 'text-oguogu-gray-2'}`}>{cropCnt}</span>
+                <span className={`text-2xl  ${cropCnt !== 0 ? 'text-oguogu-black' : 'text-oguogu-gray-2'}`}>
+                  {cropCnt}
+                </span>
                 <span className="text-sm">농산물</span>
               </div>
 
               {/* 체험 */}
               <div className={`flex flex-col items-center gap-2`}>
-                <span className={`text-2xl  ${experiencepCnt ? 'text-oguogu-black' : 'text-oguogu-gray-2'}`}>
+                <span className={`text-2xl  ${experiencepCnt !== 0 ? 'text-oguogu-black' : 'text-oguogu-gray-2'}`}>
                   {experiencepCnt}
                 </span>
                 <span className="text-sm">체험</span>
@@ -168,7 +170,7 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
 
               {/* 텃밭 */}
               <div className={`flex flex-col items-center gap-2`}>
-                <span className={`text-2xl  ${gardeningCnt ? 'text-oguogu-black' : 'text-oguogu-gray-2'}`}>
+                <span className={`text-2xl  ${gardeningCnt !== 0 ? 'text-oguogu-black' : 'text-oguogu-gray-2'}`}>
                   {gardeningCnt}
                 </span>
                 <span className="text-sm">텃밭</span>
@@ -183,13 +185,17 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
             <div className="flex justify-center gap-30">
               {/* 답변 준비중 */}
               <div className={`flex flex-col items-center gap-2`}>
-                <span className={`text-2xl 'text-oguogu-black'`}>{qnaWaitingCnt}</span>
+                <span className={`text-2xl ${qnaWaitingCnt !== 0 ? 'text-oguogu-black' : 'text-oguogu-gray-2'}`}>
+                  {qnaWaitingCnt}
+                </span>
                 <span className="text-sm">답변 대기 중</span>
               </div>
 
               {/* 답변 완료 */}
               <div className={`flex flex-col items-center gap-2`}>
-                <span className={`text-2xl 'text-oguogu-black'`}>{qnafinishedCnt}</span>
+                <span className={`text-2xl ${qnafinishedCnt !== 0 ? 'text-oguogu-black' : 'text-oguogu-gray-2'}`}>
+                  {qnafinishedCnt}
+                </span>
                 <span className="text-sm">답변 완료</span>
               </div>
             </div>
