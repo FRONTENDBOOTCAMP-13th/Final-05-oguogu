@@ -3,11 +3,33 @@ import CuteLoading from '@/components/elements/CuteLoading/CuteLoading';
 import FilterButtonForMypage from '@/components/elements/InputButtonForMypage/InputButtonForMypage';
 import IsEmptyMessage from '@/components/elements/IsEmptyMessage/IsEmptyMessage';
 import OrderItem from '@/components/elements/OrderItem/OrderItem';
+import { uploadFile } from '@/shared/data/actions/file';
 import { updateOrder } from '@/shared/data/actions/order';
+import { createReplie } from '@/shared/data/actions/replies';
 import { getOrders } from '@/shared/data/functions/order';
 import { useAuthStore } from '@/shared/store/authStore';
+import { fileResponse } from '@/shared/types/file';
 import { OrderListResponse } from '@/shared/types/order';
 import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
+
+export interface handleSubmitType {
+  title: string;
+  content: string;
+  rating: number;
+  imageFile: File | null;
+  setTitle: (str: string) => void;
+  setContent: (str: string) => void;
+  setRating: (num: number) => void;
+  setImageFile: (file: File | null) => void;
+  setImagePreview: (str: string | null) => void;
+  setIsOpen: (state: boolean) => void;
+  setSelectedFileName: (str: string) => void;
+  setIsLoading: (state: boolean) => void;
+  order_id: number;
+  product_id: number;
+  token: string;
+}
 
 export default function OrderClientControl() {
   const [orders, setOrders] = useState<OrderListResponse>();
@@ -56,9 +78,97 @@ export default function OrderClientControl() {
     }
   };
 
+  const handleSubmit = async ({
+    title,
+    content,
+    rating,
+    imageFile,
+    setTitle,
+    setContent,
+    setRating,
+    setImageFile,
+    setImagePreview,
+    setIsOpen,
+    setSelectedFileName,
+    setIsLoading,
+    order_id,
+    product_id,
+    token,
+  }: handleSubmitType) => {
+    if (!title || !content || rating === 0) {
+      toast.error('제목, 내용, 별점을 모두 입력해주세요.');
+      return;
+    }
+
+    setIsLoading(true);
+
+    let fileRes: fileResponse | null = null;
+
+    // 이미지가 있을 때만 파일 업로드 처리
+    if (imageFile) {
+      const formData = new FormData();
+      formData.append('attach', imageFile);
+
+      fileRes = await uploadFile(formData);
+      console.log(fileRes);
+
+      if (!fileRes?.ok) {
+        console.error(fileRes?.message);
+        toast.error('이미지 업로드에 실패했습니다.');
+        setIsLoading(false);
+        return;
+      }
+    }
+
+    // 리뷰 생성 - 이미지 경로는 조건부로 설정
+    const res = await createReplie(
+      {
+        order_id,
+        product_id,
+        rating,
+        content,
+        extra: {
+          name: title,
+          imagePath: fileRes?.item[0]?.path || null, // 이미지가 없으면 null
+        },
+      },
+      token,
+    );
+
+    if (res.ok) {
+      toast.success('리뷰가 등록되었습니다!');
+      setTitle('');
+      setContent('');
+      setRating(0);
+      setImageFile(null);
+      setImagePreview(null);
+      setIsLoading(false);
+      setIsOpen(false); // 폼 닫기
+      setSelectedFileName('');
+    } else {
+      setTitle('');
+      setContent('');
+      setRating(0);
+      setImageFile(null);
+      setImagePreview(null);
+      setIsLoading(false);
+      setIsOpen(false); // 폼 닫기
+      setSelectedFileName('');
+      toast.error(res.message || '등록이 실패했습니다. 다시 시도해주세요');
+      console.error(res.message);
+    }
+  };
+
   const orderList = orders?.item.map(item => (
-    <OrderItem key={item._id} orderState={item.state} item={item} updateOrderStatus={updateOrderStatus} />
+    <OrderItem
+      key={item._id}
+      orderState={item.state}
+      item={item}
+      updateOrderStatus={updateOrderStatus}
+      handleSubmit={handleSubmit}
+    />
   ));
+
   return (
     <>
       <main className="px-4 py-4 flex flex-col gap-2 min-h-[calc(100vh-48px)]">

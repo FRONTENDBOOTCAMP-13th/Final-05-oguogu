@@ -1,9 +1,10 @@
-import { MainImage } from '@/shared/types/product';
+import { MainImage, periodObject } from '@/shared/types/product';
 
 export interface OrderListResponse {
   ok: number;
   item: Order[];
   pagination: Pagination;
+  message: string;
 }
 
 export interface Pagination {
@@ -31,6 +32,7 @@ export interface OrderedProduct {
   image: MainImage;
   price: number;
   extra: OrderedProductExtra;
+  review_id: number;
 }
 
 export interface OrderedProductExtra {
@@ -45,6 +47,7 @@ export interface OrderedProductExtra {
   dcRate: number;
   productCnt: number;
   badge: Badge[];
+  period: periodObject[];
 }
 
 export interface Badge {

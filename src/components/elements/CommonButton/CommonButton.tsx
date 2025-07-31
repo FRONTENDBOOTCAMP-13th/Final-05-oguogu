@@ -11,13 +11,15 @@ export default function CommonButton({
   cursorPointer,
   type,
   onClick,
+  borderColor,
+  border,
 }: CommonButtonProps) {
   return (
     <button
-      onClick={() => onClick}
+      onClick={e => onClick?.(e)}
       type={type}
       className={`relative flex flex-1 items-center justify-center text-center 
-         ${textSize} ${height} ${width} ${bgColor} ${textColor}  ${cursorPointer ? 'cursor-pointer' : ''} 
+         ${textSize} ${height} ${width} ${bgColor} ${textColor} ${border} ${borderColor} ${cursorPointer ? 'cursor-pointer' : ''} 
          px-[24px] py-[6px] rounded-[4px]`}
     >
       {icon && <span className="absolute left-[16px] ">{icon}</span>}

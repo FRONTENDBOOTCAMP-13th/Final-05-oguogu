@@ -9,6 +9,8 @@ export default interface CommonButtonProps {
   icon?: ReactNode;
   textColor?: string;
   cursorPointer?: boolean;
+  borderColor?: string;
+  border?: string;
   type?: 'submit' | 'button' | 'reset';
-  onClick?: (e: React.FormEvent<HTMLFormElement>) => Promise<void>;
+  onClick?: (e?: React.MouseEvent<HTMLButtonElement> | React.FormEvent<HTMLFormElement>) => void | Promise<void>;
 }

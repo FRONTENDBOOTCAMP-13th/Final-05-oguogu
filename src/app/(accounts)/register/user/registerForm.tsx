@@ -6,6 +6,7 @@ import LoginInput from '@/components/elements/LoginItem/LoginInput';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createUser } from '@/shared/data/actions/user';
+import toast from 'react-hot-toast';
 
 export default function UserRegisterForm() {
   const [address, setAddress] = useState('');
@@ -21,26 +22,41 @@ export default function UserRegisterForm() {
   const [isAdult, setIsAdult] = useState(false);
   const [agreeMarketing, setAgreeMarketing] = useState(false);
 
+  const [submitAttempted, setSubmitAttempted] = useState(false);
+
   const router = useRouter();
+
+  const isPasswordValid = (pwd: string) => {
+    const hasLetter = /[a-zA-Z]/.test(pwd);
+    const hasNumber = /\d/.test(pwd);
+    const hasSpecial = /[^a-zA-Z0-9]/.test(pwd);
+    return hasLetter && hasNumber && hasSpecial;
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setSubmitAttempted(true);
 
     // 필수값 검증
     if (!email || !password || !confirmPassword || !name || !phoneNum || !address) {
-      alert('입력하지 않은 부분이 있습니다 모두 입력해주세요');
+      toast.error('입력하지 않은 부분이 있습니다 모두 입력해주세요');
       return;
     }
 
     // 비밀번호 확인
+    if (!isPasswordValid(password)) {
+      toast.error('비밀번호는 영문, 숫자, 특수문자를 모두 포함해야 합니다.');
+      return;
+    }
+
     if (password !== confirmPassword) {
-      alert('비밀번호가 일치하지 않습니다');
+      toast.error('비밀번호가 일치하지 않습니다');
       return;
     }
 
     // 약관 체크
     if (!agreeTerms || !agreePrivacy || !isAdult) {
-      alert('필수 약관에 모두 동의해주세요');
+      toast.error('필수 약관에 모두 동의해주세요');
       return;
     }
 
@@ -64,14 +80,14 @@ export default function UserRegisterForm() {
       });
 
       if (res.ok === 1) {
-        alert('회원가입 완료');
+        toast.success('회원가입 완료');
         router.push('/login');
       } else {
-        alert(res.message || '회원가입 실패');
+        toast.error(res.message || '회원가입 실패');
       }
     } catch (error) {
       console.error('회원가입 오류 : ', error);
-      alert('회원가입중 오류가 발생했습니다 오구 텃밭으로 전화주세요');
+      toast.error('회원가입중 오류가 발생했습니다 오구 텃밭으로 전화주세요');
     }
   };
 
@@ -98,6 +114,7 @@ export default function UserRegisterForm() {
                 { label: 'naver.com', value: 'naver.com' },
                 { label: 'gmail.com', value: 'gmail.com' },
               ]}
+              triggerValidation={submitAttempted}
             />
           </div>
 
@@ -112,6 +129,7 @@ export default function UserRegisterForm() {
               placeholder="이름을 입력해주세요"
               value={name}
               onChange={setName}
+              triggerValidation={submitAttempted}
             />
           </div>
 
@@ -126,6 +144,7 @@ export default function UserRegisterForm() {
               placeholder="영문 + 숫자 + 특수문자"
               value={password}
               onChange={setPassword}
+              triggerValidation={submitAttempted}
             />
           </div>
 
@@ -140,6 +159,7 @@ export default function UserRegisterForm() {
               placeholder="비밀번호를 한번 더 입력해주세요"
               value={confirmPassword}
               onChange={setConfirmPassword}
+              triggerValidation={submitAttempted}
             />
           </div>
 
@@ -154,6 +174,7 @@ export default function UserRegisterForm() {
               placeholder="숫자"
               value={phoneNum}
               onChange={setPhoneNum}
+              triggerValidation={submitAttempted}
             />
           </div>
 
@@ -180,11 +201,12 @@ export default function UserRegisterForm() {
               placeholder="예: 1995-08-17"
               value={birth}
               onChange={setBirth}
+              triggerValidation={submitAttempted}
             />
           </div>
 
           {/* 약관 동의 */}
-          <div className="w-full flex flex-col items-start justify-start my-[16px]">
+          <div className="w-full flex flex-col gap-1.5 items-start justify-start my-[16px]">
             <CheckButton
               size={14}
               gap={2}

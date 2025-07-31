@@ -1,5 +1,7 @@
 'use client';
+
 import { CartItem } from '@/shared/types/cart';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 export default function CardItem({
@@ -23,8 +25,6 @@ export default function CardItem({
     setCount(quantity);
   }, [quantity]);
 
-  const shippingFee: boolean = true; //배송비가 0원인지 아닌지 검증하는 로직이 필요합니다.
-
   const countUp = () => {
     const newCount = count + 1;
     setCount(newCount);
@@ -38,45 +38,91 @@ export default function CardItem({
     }
   };
 
+  const DCprice = (item.product.price * (1 - item.product.extra.dcRate / 100)).toLocaleString();
+
   return (
     <>
-      <div className="w-[288px] flex flex-col gap-4">
+      <div className="min-w-[288px] w-full flex flex-col gap-2">
+        {/* 선택 버튼 */}
         <div className="flex items-center justify-between">
-          <div className="flex gap-2 items-center text-center">
-            <label className="relative top-[-2px]">
-              <input type="checkbox" checked={checked} onChange={onCheck} className="hidden" />
+          <div className="flex gap-1 items-center">
+            <input id={`check${item._id}`} type="checkbox" checked={checked} onChange={onCheck} className="hidden" />
+            <label
+              htmlFor={`check${item._id}`}
+              className="text-sm text-oguogu-black truncate translate-y-[0.5px] flex gap-1 items-center"
+            >
               {checked ? (
                 // 체크된 상태 SVG
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
-                    d="M14.2078 5.29375C14.1151 5.2004 14.0048 5.12637 13.8833 5.07595C13.7618 5.02553 13.6315 4.99971 13.5 5H11.5V4.5C11.5 3.57174 11.1313 2.6815 10.4749 2.02513C9.8185 1.36875 8.92826 1 8 1C7.07174 1 6.1815 1.36875 5.52513 2.02513C4.86875 2.6815 4.5 3.57174 4.5 4.5V5H2.5C2.23478 5 1.98043 5.10536 1.79289 5.29289C1.60536 5.48043 1.5 5.73478 1.5 6V12.75C1.5 13.9688 2.53125 15 3.75 15H12.25C12.8395 15.0002 13.4057 14.7697 13.8275 14.3578C14.0398 14.1553 14.2088 13.9119 14.3244 13.6423C14.4399 13.3727 14.4997 13.0824 14.5 12.7891V6C14.5004 5.86881 14.4748 5.73884 14.4246 5.61761C14.3745 5.49638 14.3008 5.38631 14.2078 5.29375ZM10.3903 8.5625L7.59031 12.0625C7.54433 12.12 7.48623 12.1665 7.42017 12.199C7.35411 12.2314 7.2817 12.2488 7.20813 12.25H7.2C7.12778 12.25 7.05642 12.2344 6.99082 12.2042C6.92522 12.1739 6.86694 12.1299 6.82 12.075L5.62 10.6725C5.57732 10.6226 5.54489 10.5648 5.52455 10.5023C5.50422 10.4399 5.49638 10.3741 5.50149 10.3086C5.5066 10.2431 5.52455 10.1793 5.55432 10.1208C5.58409 10.0623 5.6251 10.0102 5.675 9.9675C5.7249 9.92482 5.78272 9.89239 5.84516 9.87205C5.9076 9.85172 5.97343 9.84388 6.03889 9.84899C6.10436 9.8541 6.16817 9.87205 6.2267 9.90182C6.28523 9.93159 6.33732 9.9726 6.38 10.0225L7.1875 10.9659L9.60969 7.9375C9.69257 7.8339 9.81321 7.76747 9.94507 7.75282C10.0769 7.73816 10.2092 7.77649 10.3128 7.85938C10.4164 7.94226 10.4828 8.0629 10.4975 8.19476C10.5121 8.32662 10.4738 8.4589 10.3909 8.5625H10.3903ZM10.5 5H5.5V4.5C5.5 3.83696 5.76339 3.20107 6.23223 2.73223C6.70107 2.26339 7.33696 2 8 2C8.66304 2 9.29893 2.26339 9.76777 2.73223C10.2366 3.20107 10.5 3.83696 10.5 4.5V5Z"
+                    d="M7.0332 0C10.9175 7.03683e-05 14.0663 3.1489 14.0664 7.0332C14.0663 10.9175 10.9175 14.0663 7.0332 14.0664C3.1489 14.0663 7.03703e-05 10.9175 0 7.0332C7.05161e-05 3.1489 3.1489 7.05141e-05 7.0332 0Z"
                     fill="#489F51"
+                  />
+                  <path
+                    d="M8.63965 5.37305C8.83486 5.17783 9.15141 5.17792 9.34668 5.37305C9.54181 5.56832 9.5419 5.88486 9.34668 6.08008L6.7334 8.69336C6.63966 8.7871 6.51244 8.83981 6.37988 8.83984C6.24738 8.83981 6.1201 8.78702 6.02637 8.69336L4.71973 7.38672C4.52458 7.19145 4.5245 6.87491 4.71973 6.67969C4.91495 6.48448 5.23149 6.48454 5.42676 6.67969L6.37988 7.63281L8.63965 5.37305Z"
+                    fill="#FAFAFA"
                   />
                 </svg>
               ) : (
                 // 체크 안된 상태 SVG
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                  <path d="M10 8.25L7.2 11.75L6 10.3475" stroke="black" strokeLinecap="round" strokeLinejoin="round" />
+                <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path
-                    d="M5 5.5V4.5C5 3.70435 5.31607 2.94129 5.87868 2.37868C6.44129 1.81607 7.20435 1.5 8 1.5C8.79565 1.5 9.55871 1.81607 10.1213 2.37868C10.6839 2.94129 11 3.70435 11 4.5V5.5M2.5 5.5C2.36739 5.5 2.24021 5.55268 2.14645 5.64645C2.05268 5.74021 2 5.86739 2 6V12.75C2 13.695 2.805 14.5 3.75 14.5H12.25C13.195 14.5 14 13.7341 14 12.7891V6C14 5.86739 13.9473 5.74021 13.8536 5.64645C13.7598 5.55268 13.6326 5.5 13.5 5.5H2.5Z"
-                    stroke="black"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
+                    d="M7.0332 0C10.9175 7.03683e-05 14.0663 3.1489 14.0664 7.0332C14.0663 10.9175 10.9175 14.0663 7.0332 14.0664C3.1489 14.0663 7.03703e-05 10.9175 0 7.0332C7.05161e-05 3.1489 3.1489 7.05141e-05 7.0332 0ZM7.0332 1C3.70119 1.00007 1.00007 3.70119 1 7.0332C1.00007 10.3652 3.70119 13.0663 7.0332 13.0664C10.3652 13.0663 13.0663 10.3652 13.0664 7.0332C13.0663 3.70119 10.3652 1.00007 7.0332 1ZM8.63965 5.37305C8.83486 5.17783 9.15141 5.17792 9.34668 5.37305C9.54181 5.56832 9.5419 5.88486 9.34668 6.08008L6.7334 8.69336C6.63966 8.7871 6.51244 8.83981 6.37988 8.83984C6.24738 8.83981 6.1201 8.78702 6.02637 8.69336L4.71973 7.38672C4.52458 7.19145 4.5245 6.87491 4.71973 6.67969C4.91495 6.48448 5.23149 6.48454 5.42676 6.67969L6.37988 7.63281L8.63965 5.37305Z"
+                    fill="black"
                   />
                 </svg>
               )}
+              선택
             </label>
-
-            <p className="text-[12px] w-[180px] text-oguogu-black leading-none truncate">{item?.product.name} </p>
           </div>
+        </div>
+
+        <div className="flex min-w-[288px] w-full h-full gap-4">
+          {/* 이미지 */}
+          <Link href={`/search/result/${item.product._id}/detail`}>
+            <div className="min-w-[80px] h-[80px] bg-[url('/images/crop/crop-001.png')] bg-cover bg-center bg-no-repeat rounded-[4px]" />
+          </Link>
+
+          {/* 텍스트 */}
+          <div className="flex flex-col w-full justify-between">
+            <span className="leading-tight line-clamp-1 text-base">{item.product.name}</span>
+            <div className="flex items-center gap-2">
+              <span className="text-base text-oguogu-black leading-tight">
+                {/* {(item.price * (1 - item.extra!.dcRate / 100)).toLocaleString()}원 */}
+                {DCprice}원
+              </span>
+              <p className="text-xs text-oguogu-gray-4">
+                {item.shippingFees ? `배송비 포함(${item.shippingFees?.toLocaleString()}원)` : '배송비 무료'}
+              </p>
+            </div>
+            <div className="text-[10px] flex">
+              <button
+                onClick={countDown}
+                className="w-[20px] h-[20px] border-[0.5px] border-oguogu-gray-2 border-r-0 rounded-l"
+              >
+                -
+              </button>
+              <div className="w-[20px] h-[20px] border-y-[0.5px] border-oguogu-gray-2 flex items-center justify-center">
+                {count}
+              </div>
+              <button
+                onClick={countUp}
+                className="w-[20px] h-[20px] border-[0.5px] border-oguogu-gray-2 border-l-0 rounded-r"
+              >
+                +
+              </button>
+            </div>
+          </div>
+
+          {/* 삭제 버튼 */}
           <button
             onClick={() => handleDelete(item._id)}
-            className="flex items-center gap-[4px] px-[8px] h-[20px] text-[10px] leading-none border border-oguogu-gray-2 rounded-[4px]"
+            className="text-xs border border-oguogu-gray-2 rounded-sm w-[28px] min-h-[80px] h-full flex items-center justify-center gap-1 cursor-pointer"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="7"
-              height="8"
+              width="12"
+              height="12"
               viewBox="0 0 8 8"
               fill="none"
               className="min-w-[8px] min-h-[8px]"
@@ -100,38 +146,7 @@ export default function CardItem({
                 fill="black"
               />
             </svg>
-            <span className="leading-none">삭제</span>
           </button>
-        </div>
-
-        <div className="flex justify-between">
-          <div className="w-[48px] h-[48px] bg-[url('/images/crop/crop-001.png')] bg-cover bg-center bg-no-repeat rounded-[4px]" />
-
-          <div className="w-[216px] flex flex-col justify-between">
-            <div className="flex items-center gap-2">
-              <span className="text-[16px] text-oguogu-black leading-[16px]">
-                {item?.product.price.toLocaleString()}원
-              </span>
-              <p className="text-[12px] text-oguogu-gray-4">{shippingFee ? '배송비 무료' : '배송비 포함(3,000원)'}</p>
-            </div>
-            <div className="text-[10px] flex">
-              <button
-                onClick={countDown}
-                className="w-[20px] h-[20px] border-[0.5px] border-oguogu-gray-2 border-r-0 rounded-l"
-              >
-                -
-              </button>
-              <div className="w-[20px] h-[20px] border-y-[0.5px] border-oguogu-gray-2 flex items-center justify-center">
-                {count}
-              </div>
-              <button
-                onClick={countUp}
-                className="w-[20px] h-[20px] border-[0.5px] border-oguogu-gray-2 border-l-0 rounded-r"
-              >
-                +
-              </button>
-            </div>
-          </div>
         </div>
       </div>
     </>

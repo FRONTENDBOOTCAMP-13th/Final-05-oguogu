@@ -16,7 +16,7 @@ export default function SelectBox({ label, name, id, options, value, onChange, c
         id={id}
         value={value}
         onChange={e => onChange(e.target.value)}
-        className={`text-[16px] ${changeBoxSize}`}
+        className={`text-base ${changeBoxSize} text-right`}
       >
         {options.map(item => (
           <option key={item.value} value={item.value}>

@@ -30,7 +30,8 @@
 
   --color-oguogu-black: #121212;
   --color-oguogu-yellow: #ffcc00;
-  --color-ogugu-blue-light: #3c9afa;
+  --color-oguogu-blue-light: #3c9afa;
+  --color-oguogu-red: #fb2c36;
 
   /* 커스텀 중단점 */
   --breakpoint-*: initial;
@@ -44,7 +45,11 @@
   }
 
   .header {
-    @apply h-12 sticky top-0 z-50 bg-oguogu-white flex justify-between items-center p-3;
+    @apply h-12 sticky top-0 z-50 flex justify-between items-center p-3 bg-oguogu-white;
+  }
+
+  .headerForGarden {
+    @apply h-12 sticky top-0 z-50 flex justify-between items-center p-3 bg-[#DBFCE7];
   }
 
   .secondHeader {
@@ -67,7 +72,7 @@
 
   /* 메인 페이지에서 추천 카테고리에 사용되는 공통 스타일 */
   .titleWithProductItem {
-    @apply flex flex-col justify-center gap-y-4 px-4;
+    @apply flex flex-col justify-center gap-y-4;
   }
 
   /* 텍스트가 한 줄에서 벗어났을 때, ... 으로 표기되는 공통 스타일 */
@@ -77,7 +82,7 @@
 
   /* 상품 검색 결과 및 탐색 목록 페이지에서 개별 아이템들이 목록으로 정렬할 때의 기본 스타일, grid-cols-[...] 속성만 별도 정의 필요 */
   .itemGrid {
-    @apply grid gap-x-2 gap-y-8 px-4;
+    @apply grid gap-x-2 gap-y-8 px-4 pb-4;
   }
 
   /* 상품 상세 페이지 상품 정보 배치 */
@@ -93,5 +98,38 @@
   /* itemData 항목이 두 줄로 작성된 경우의 스타일링 */
   .itemDataExtra {
     @apply flex flex-col gap-1;
+  }
+
+  /* 애니메이션 */
+  .animate-wave {
+    animation: floatUp 2s ease-in-out infinite;
+  }
+
+  summary::-webkit-details-marker {
+    /* Safari 브라우저용 사용자 정의 스타일 */
+    display: none;
+  }
+  summary {
+    list-style-type: none; /* 그 외의 브라우저용 사용자 정의 스타일 */
+  }
+}
+
+@keyframes floatUpDown {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes floatUp {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-25px);
   }
 }

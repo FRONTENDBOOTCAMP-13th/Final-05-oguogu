@@ -4,10 +4,16 @@ import { createJSONStorage, persist } from 'zustand/middleware';
 
 export const useSearchKeywordStore = create<keywordState>()(
   persist(
-    set => ({
-      originKeyword: null,
-      saveKeyword: (keyword: string) => set({ originKeyword: keyword }),
-      clearKeyword: () => set({ originKeyword: null }),
+    (set, get) => ({
+      originKeyword: [],
+      saveKeyword: (keyword: string) => {
+        const keywords = get().originKeyword;
+        if (!keywords.includes(keyword)) {
+          set({ originKeyword: [...keywords, keyword] });
+        }
+      },
+      clearKeyword: () => set({ originKeyword: [] }),
+      getKeyword: () => get().originKeyword,
     }),
     {
       name: 'keyword',

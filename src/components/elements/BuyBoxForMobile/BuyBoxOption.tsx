@@ -6,6 +6,7 @@ import BuyBoxOptionExtraItem from '@/components/elements/BuyBoxForMobile/BuyBoxO
 import { format } from 'date-fns';
 import { ko } from 'date-fns/locale';
 import { useAuthStore } from '@/shared/store/authStore';
+import toast from 'react-hot-toast';
 
 // 체험 상품 더미 데이터
 const rawData = [
@@ -54,7 +55,15 @@ const rawData = [
  * @param {'crop' | 'experience' | 'gardening'} props.type - 상품 유형
  * @returns {JSX.Element} 구매 옵션 선택 영역
  */
-export default function BuyBoxOption({ name, price, maxQuantity = 1, type, handleBuy, product_id }: BuyBoxOptionType) {
+export default function BuyBoxOption({
+  name,
+  price,
+  maxQuantity = 1,
+  type,
+  handleBuy,
+  product_id,
+  res,
+}: BuyBoxOptionType) {
   const [count, setCount] = useState(1);
   const [totalPrice, setTotalPrice] = useState(price);
   const TOKEN = useAuthStore(state => state.token); //전역 관리중인 사용자 토큰
@@ -66,7 +75,9 @@ export default function BuyBoxOption({ name, price, maxQuantity = 1, type, handl
   };
 
   const addCount = () => {
-    if (count < maxQuantity) {
+    if (!res.item.extra?.productCnt) {
+      setCount(1);
+    } else if (count < res.item.extra?.productCnt) {
       setCount(count + 1);
     }
   };
@@ -86,32 +97,51 @@ export default function BuyBoxOption({ name, price, maxQuantity = 1, type, handl
         <h3 className="text-xl max-w-full textElipsis">{name}</h3>
       </div>
 
-      {/* 날짜 선택 : 체험 상품 전용 */}
-
-      {type === 'experience' ? (
+      {/* 남은 수량 */}
+      {type === 'crop' ? (
         <div className="flex flex-col gap-2">
-          <span className="text-xs text-oguogu-gray-4">날짜 선택</span>
-          <div className="flex gap-3 max-w-full overflow-auto hide-scrollbar">
-            {/* 선택 가능 & 선택됨 */}
-            {data.map(item => {
-              const { _id, quantity, buyQuantity } = item;
-
-              const formattedDate = format(item.extra.departureDate, 'M월 d일 (eee)', { locale: ko });
-              const formattedTime = format(item.extra.departureDate, 'HH:mm');
-
-              return (
-                <BuyBoxOptionExtraItem
-                  key={_id}
-                  date={formattedDate}
-                  time={formattedTime}
-                  count={quantity - buyQuantity}
-                />
-              );
-            })}
-          </div>
+          <span className="text-xs text-oguogu-gray-4">상품 정보</span>
+          <h3 className="text-xl max-w-full textElipsis">{res.item.extra?.productDetailContent ?? '10개입 1세트'}</h3>
+        </div>
+      ) : type === 'experience' ? (
+        <div className="flex flex-col gap-2">
+          <span className="text-xs text-oguogu-gray-4">잔여 인원</span>
+          <h3 className="text-xl max-w-full textElipsis">{maxQuantity} 명</h3>
         </div>
       ) : (
         ''
+      )}
+
+      {/* 날짜 선택 : 체험 상품 전용 */}
+      {/* 일단 코드 사용 막아두었습니다. 나중에 백업시 사용하시면 됩니다. */}
+      {false && (
+        <>
+          {type === 'experience' ? (
+            <div className="flex flex-col gap-2">
+              <span className="text-xs text-oguogu-gray-4">날짜 선택</span>
+              <div className="flex gap-3 max-w-full overflow-auto hide-scrollbar">
+                {/* 선택 가능 & 선택됨 */}
+                {data.map(item => {
+                  const { _id, quantity, buyQuantity } = item;
+
+                  const formattedDate = format(item.extra.departureDate, 'M월 d일 (eee)', { locale: ko });
+                  const formattedTime = format(item.extra.departureDate, 'HH:mm');
+
+                  return (
+                    <BuyBoxOptionExtraItem
+                      key={_id}
+                      date={formattedDate}
+                      time={formattedTime}
+                      count={quantity - buyQuantity}
+                    />
+                  );
+                })}
+              </div>
+            </div>
+          ) : (
+            ''
+          )}
+        </>
       )}
 
       {/* 수량 선택 */}
@@ -158,7 +188,11 @@ export default function BuyBoxOption({ name, price, maxQuantity = 1, type, handl
               </div>
               <div className="text-[8px] text-oguogu-gray-3">
                 <span>최대&nbsp;</span>
-                <span>{maxQuantity}</span>
+                <span>
+                  {maxQuantity > res.item.extra!.productCnt!
+                    ? res.item.extra?.productCnt
+                    : res.item.extra!.productCnt! - maxQuantity}
+                </span>
                 <span>{type === 'experience' ? '명 예약' : '개 구매'} 가능</span>
               </div>
             </div>
@@ -186,16 +220,14 @@ export default function BuyBoxOption({ name, price, maxQuantity = 1, type, handl
          text-[16px] h-[44px]
          px-6 py-1.5 rounded-sm w-full`}
         onClick={() => {
-          console.log('버튼 클릭됨');
-          console.log('TOKEN:', TOKEN);
           if (!TOKEN) {
-            alert('로그인이 필요합니다.');
+            toast.error('로그인이 필요합니다.');
             return;
           }
-          handleBuy(product_id, count, TOKEN);
+          handleBuy(product_id, count);
         }}
       >
-        {type === 'crop' ? '장바구니 담기' : '구매하기'}
+        장바구니 담기
       </button>
     </div>
   );

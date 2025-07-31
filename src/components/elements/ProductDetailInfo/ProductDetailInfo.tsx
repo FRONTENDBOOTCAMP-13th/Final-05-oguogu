@@ -1,33 +1,49 @@
+'use client';
+
 import Title from '@/components/elements/CommonTitleItem/Title';
 import { ProductDetailInfoType } from '@/components/elements/ProductDetailInfo/ProductDetailInfo.type';
 import Badge from '@/components/elements/ProductItem/Badge/Badge';
+import { BadgeTextProps } from '@/components/elements/ProductItem/Badge/Badge.type';
 import ProductLinkItem from '@/components/elements/ProductLink/ProductLink';
 import ShareIcon from '@/components/elements/ShareIcon/ShareIcon';
+import { useAuthStore } from '@/shared/store/authStore';
 import getDiffDays from '@/utils/getDiffDays/getDiffDays';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function ProductDetailInfo({ type, item }: ProductDetailInfoType) {
+  const isSold = item.extra!.badge?.isSold && 'sold';
+  const isBest = item.extra!.badge?.isBest && 'best';
+  const isInSeason = item.extra!.badge?.isInSeason && 'inseason';
+  const isNew = item.extra!.badge?.isNew && 'new';
+  const isLowStock = item.extra!.badge?.isLowStock && 'lowstock';
+
+  const badgeList = [isSold, isBest, isInSeason, isNew, isLowStock].filter(Boolean).slice(0, 2) as BadgeTextProps[];
+
+  const isloggedin = useAuthStore(state => state.isLoggedIn);
+  const remain = item.quantity! - item.buyQuantity!;
+
   return (
     <div className="px-4 pt-4 flex flex-col gap-4">
       {/* 상품 뱃지 및 상품명 */}
       <section className="flex flex-col gap-4">
         <div>
-          <Badge type="popular" size={12} />
-          <Badge type="seasonal" size={12} />
+          {badgeList.map((item, index) => (
+            <Badge key={index} type={item} size={12} />
+          ))}
         </div>
         <Title title={item.name} description={item.content!} />
 
         {/* 가격 정보 */}
         <div className="flex justify-between items-end">
           <div>
-            {item.extra!.dcRate > 0 ? (
+            {item.extra!.dcRate! > 0 ? (
               <>
                 <s className="text-oguogu-gray-2 mobile-max:text-lg">{item.price.toLocaleString() + '원'}</s>
                 <div className="flex gap-1">
                   <span className="text-xl text-oguogu-main mobile-max:text-2xl">{item.extra!.dcRate}%</span>
                   <span className="text-xl ml-2 mobile-max:text-2xl">
-                    {(item.price * (1 - item.extra!.dcRate / 100)).toLocaleString()}원
+                    {(item.price * (1 - item.extra!.dcRate! / 100)).toLocaleString()}원
                   </span>
                 </div>
               </>
@@ -42,12 +58,16 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
       </section>
 
       {/* 회원가입 버튼 */}
-      <Link
-        href="/register"
-        className="border-1 py-1.5 border-oguogu-main-dark rounded-md flex items-center text-center justify-center cursor-pointer"
-      >
-        회원가입 하고 할인가로 구매하기
-      </Link>
+      {isloggedin ? (
+        <div className="w-full h-px my-2 bg-oguogu-gray-2"></div>
+      ) : (
+        <Link
+          href="/register"
+          className="border border-oguogu-main-dark rounded-md px-4 py-3 flex items-center justify-center text-center cursor-pointer hover:bg-oguogu-main-light transition"
+        >
+          회원가입 하고 할인가로 구매하기
+        </Link>
+      )}
 
       {/* 상품 정보 */}
       {type === 'crop' ? (
@@ -68,7 +88,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           <div className="flex">
             <span className="itemData">텃밭</span>
             <div className="itemDataExtra">
-              <span>돌쇠네농산물</span>
+              <span>{item.seller?.extra.businessName ?? '오구텃밭'}</span>
               <div className="flex gap-1">
                 <Image src="/images/product-hatIcon.svg" alt="인증 아이콘" width={14} height={14} />
                 <span className="text-[10px]">인증된 판매자 입니다.</span>
@@ -79,13 +99,13 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           {/* 판매자 주소 */}
           <div className="flex">
             <span className="itemData">주소</span>
-            <span>부산시 해운대구 반송로 456</span>
+            <span>{item.seller?.address ?? '오구시 오구동 59-59'}</span>
           </div>
 
           {/* 문의 */}
           <div className="flex">
             <span className="itemData">문의</span>
-            <span>02-123-4567</span>
+            <span>{item.seller?.extra.businessNumber ?? '070-5959-5959'}</span>
           </div>
         </section>
       ) : type === 'experience' ? (
@@ -132,7 +152,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           {/* 여행사 */}
           <div className="flex">
             <span className="itemData">여행사</span>
-            <span>트래블 코리아</span>
+            <span>{item.seller?.extra.businessName ?? '오구텃밭'}</span>
           </div>
 
           {/* 가이드 정보 */}
@@ -152,7 +172,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           {/* 잔여 텃밭(남은 수량) */}
           <div className="flex gap-2">
             <span className="itemData">잔여 텃밭</span>
-            <span>{item.quantity! - item.buyQuantity!}개</span>
+            <span>{remain}칸</span>
           </div>
 
           {/* 판매 마감일 */}
@@ -173,7 +193,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           {/* 판매자 주소 */}
           <div className="flex gap-2">
             <span className="itemData">텃밭 위치</span>
-            <span>전북 남원시 금동길 123</span>
+            <span>{item.seller?.address ?? '오구시 오구동 59-59'}</span>
           </div>
 
           {/* 구분선 */}
@@ -195,7 +215,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           <div className="flex gap-2">
             <span className="itemData">텃밭</span>
             <div className="flex flex-col">
-              <span>돌쇠네농산물</span>
+              <span>{item.seller?.extra.businessName ?? '오구텃밭'}</span>
               <div className="flex gap-1">
                 <Image src="/images/product-hatIcon.svg" alt="인증 아이콘" width={14} height={14} />
                 <span className="text-[10px]">인증된 판매자 입니다.</span>
@@ -206,7 +226,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           {/* 문의 */}
           <div className="flex gap-2">
             <span className="itemData">문의</span>
-            <span>02-2342-4567</span>
+            <span>{item.seller?.extra.businessNumber ?? '070-5959-5959'}</span>
           </div>
         </section>
       ) : (

@@ -10,14 +10,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 export default function LoginForm() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('test1@gmail.com');
+  const [password, setPassword] = useState('test1');
   const [autoLogin, setAutoLogin] = useState(false);
   const router = useRouter();
 
-  const { setToken, setUserInfo } = useAuthStore.getState();
+  const { setToken, setUserInfo } = useAuthStore();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -27,6 +28,8 @@ export default function LoginForm() {
       console.log(loginRes);
 
       if (loginRes?.item?.token?.accessToken) {
+        toast.success('로그인 되었습니다🥕');
+
         // Zustand에 토큰 저장
         setToken(loginRes.item.token.accessToken);
 
@@ -38,17 +41,25 @@ export default function LoginForm() {
         };
         setUserInfo(userInfo);
 
-        alert('로그인에 성공했습니다 ~~');
-        router.push('/');
+        // 자동 로그인 체크 여부에 따라 스토리지 타입 설정
+        useAuthStore.getState().setStorageType(autoLogin);
+
+        // 로그인 성공 후 페이지를 강제로 새로고침하여 InitAuthStore의 useEffect가 다시 실행되도록
+        // INFO type 이 seller 인 경우, 홈으로 이동하지 않고 백오피스로 이동하도록 수정
+        if (userInfo.type === 'seller') {
+          router.push('/office');
+        } else {
+          router.push('/');
+        }
       } else {
         router.refresh();
-        alert('로그인 정보가 일치하지 않습니다.');
+        toast.error('로그인 정보가 일치하지 않습니다.');
         setEmail('');
         setPassword('');
       }
     } catch (error) {
       console.error('로그인 중 오류:', error);
-      alert('오류가 생겼습니다. 서버를 확인해주세요');
+      toast.error('오류가 생겼습니다. 서버를 확인해주세요');
     }
   };
 
@@ -57,17 +68,13 @@ export default function LoginForm() {
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         <fieldset className="flex flex-col gap-2">
           <legend className="sr-only">로그인 정보</legend>
-          {/* 이메일 */}
-          <LoginInput
-            type="email"
-            placeholder="예: ogugarden"
-            value={email}
-            onChange={setEmail}
-            options={[
-              { label: 'naver.com', value: 'naver.com' },
-              { label: 'gmail.com', value: 'gmail.com' },
-            ]}
-          />
+          <div>
+            <label htmlFor="email" className="sr-only">
+              이메일
+            </label>
+            {/* 이메일 */}
+            <LoginInput type="text" placeholder="이메일" value={email} onChange={setEmail} id="email" />
+          </div>
 
           {/* 비밀번호 */}
           <div>
@@ -97,7 +104,6 @@ export default function LoginForm() {
 
         {/* 로그인 버튼 */}
         <CommonButton
-          onClick={handleSubmit}
           feature="로그인"
           textSize="text-[16px]"
           width="w-[288px]"

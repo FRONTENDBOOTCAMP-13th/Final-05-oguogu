@@ -55,40 +55,55 @@ export interface Item {
 
 export interface Extra {
   productType: 'crop' | 'experience' | 'gardening';
-  category: 'veggie' | 'fruit' | 'grain' | 'mushroom';
-  filter: string[];
-  originPlace: string;
-  productionPlace: string;
-  composition: string;
-  deliveryInfo: string;
-  likeCount: number;
+  category?: 'veggie' | 'fruit' | 'grain' | 'mushroom';
+  filter?: string[];
+  originPlace?: string;
+  productionPlace?: string;
+  composition?: string;
+  deliveryInfo?: string;
+  likeCount?: number;
   dcRate: number;
-  productCnt: number;
-  isNew: boolean;
-  isInSeason: boolean;
-  isBest: boolean;
-  isLowStock: boolean;
-  isSold: boolean;
+  productCnt?: number; //최대 구매 가능 수량
+  isNew?: boolean;
+  isInSeason?: boolean;
+  isBest?: boolean;
+  isLowStock?: boolean;
+  isSold?: boolean;
+  productUnit?: string; //상품 수량 또는 무게
+  productDetailContent?: string; //상품 상세 설명
+  detailImages?: MainImage[];
 
   region?: string;
   meetingPlace?: string;
   departureDate?: string;
   returnDate?: string;
   reoresentitiveKeyword?: [];
-  includedItems?: [];
+  includedItems?: string[];
+  unincludedItems?: string[];
   schedule?: [];
-  guideInfo?: { name: string; contact: string };
+  guideInfo?: { name: string; contact: string; company: string };
 
   deadline?: string;
-  harvestExpectedDate: string;
-  harvestExpectedCnt: string;
-  period: periodObject[];
+  harvestExpectedDate?: string;
+  harvestExpectedCnt?: string;
+  period?: periodObject[];
+
+  badge?: badge;
+}
+
+export interface badge {
+  isNew: boolean | null;
+  isInSeason: boolean | null;
+  isBest: boolean | null;
+  isLowStock: boolean | null;
+  isSold: boolean | null;
 }
 
 export interface productRes {
   ok: number;
   item: Item;
 }
+
 export interface productsRes {
   ok: number;
   item: Item[];
@@ -97,6 +112,7 @@ export interface productsRes {
 export interface periodObject {
   date: string;
   image: string;
-  status: string;
+  status: 'seeding' | 'sprouting' | 'growing' | 'harvested';
+  title?: string;
   content: string;
 }

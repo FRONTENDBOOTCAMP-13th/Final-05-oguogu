@@ -1,5 +1,6 @@
 'use client';
 import CardItem from '@/components/elements/cardItem/cardItem';
+import CuteLoading from '@/components/elements/CuteLoading/CuteLoading';
 import DeleteButton from '@/components/elements/DeleteButton/DeleteButton';
 import { CheckButtonForMypage } from '@/components/elements/InputButtonForMypage/InputButtonForMypage';
 import IsEmptyMessage from '@/components/elements/IsEmptyMessage/IsEmptyMessage';
@@ -9,12 +10,16 @@ import { getCart } from '@/shared/data/functions/cart';
 import { useAuthStore } from '@/shared/store/authStore';
 import { CartItem, CartResponse } from '@/shared/types/cart';
 import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 export default function CartClientControl() {
   const token = useAuthStore(state => state.token);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
+
+  const isLoggedIn = useAuthStore(state => state.isLoggedIn);
 
   const allIds = cartItems.map(item => item._id);
 
@@ -38,33 +43,46 @@ export default function CartClientControl() {
   // 담은 총 가격
   const totalPrice = cartItems
     .filter(item => selectedItems.includes(item._id))
-    .reduce((sum, item) => sum + item.product.price * item.quantity, 0);
+    .reduce((sum, item) => sum + item.product.price * (1 - item.product.extra.dcRate / 100) * item.quantity, 0);
 
   // 주문 버튼 클릭시 보낼 주문 객체
   const orderItems = cartItems
     .filter(item => selectedItems.includes(item._id))
     .map(item => ({
-      _id: item.product_id,
+      _id: item.product_id, // 주문에는 product_id 사용
       quantity: item.quantity,
+      cart_id: item._id, // cart_id도 같이 저장
     }));
+
+  // 주문하기 버튼
 
   // 주문하기 버튼
   const handleOrder = async () => {
     if (!token) return;
-    const data = await createOrder(orderItems, token);
-    if (data.ok) {
-      alert('주문이 완료되었습니다.');
-      // 주문 완료 후, 해당 상품 장바구니에서 제거
-      for (const id of selectedItems) {
-        await deleteCart(id, token);
-      }
 
-      // 장바구니 UI에서도 제거
-      setCartItems(prev => prev.filter(item => !selectedItems.includes(item._id)));
-      setSelectedItems([]);
-    } else {
-      alert(data.message);
-      console.log(data);
+    let allSuccess = true;
+    const successCartIds: number[] = [];
+
+    for (const item of orderItems) {
+      const data = await createOrder([{ _id: item._id, quantity: item.quantity }], token);
+      if (data.ok) {
+        await deleteCart(item.cart_id, token);
+        successCartIds.push(item.cart_id);
+      } else {
+        allSuccess = false;
+        toast.error(`상품 ID ${item._id} 주문 실패: ${data.message}`);
+        console.log(data);
+      }
+    }
+
+    // 한 번에 상태 갱신
+    if (successCartIds.length > 0) {
+      setCartItems(prev => prev.filter(cartItem => !successCartIds.includes(cartItem._id)));
+      setSelectedItems(prev => prev.filter(id => !successCartIds.includes(id)));
+    }
+
+    if (allSuccess && successCartIds.length > 0) {
+      toast.success('주문이 완료되었습니다.');
     }
   };
 
@@ -85,13 +103,13 @@ export default function CartClientControl() {
     const data = await deleteCart(_id, token);
 
     if (data.ok) {
-      alert('장바구니 내역을 삭제했습니다.');
+      toast.success('장바구니 내역을 삭제했습니다.');
       //상태에서도 제거
       setCartItems(prev => prev.filter(item => item._id !== _id));
       // 선택 상태에서도 제거
       setSelectedItems(prev => prev.filter(id => id !== _id));
     } else {
-      alert(data.message);
+      toast.error(data.message);
       console.log(data);
     }
   };
@@ -104,20 +122,27 @@ export default function CartClientControl() {
     const result = await deleteSelectCart(allIds, token);
 
     if (result.ok) {
-      alert('장바구니를 모두 비웠습니다.');
+      toast.success('장바구니를 모두 비웠습니다.');
       setCartItems([]); // UI에서 모두 제거
     } else {
-      alert('삭제에 실패했습니다: ' + result.message);
+      toast.error('삭제에 실패했습니다: ' + result.message);
     }
   };
 
   useEffect(() => {
-    if (!token) return;
-
     const fetchCart = async () => {
-      const data: CartResponse = await getCart(token);
-      setCartItems(data.item);
-      console.log('data', data);
+      if (!token) {
+        setIsLoading(false);
+        return;
+      }
+
+      try {
+        const data: CartResponse = await getCart(token);
+        setCartItems(data.item);
+        console.log('data', data);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     fetchCart();
@@ -136,6 +161,22 @@ export default function CartClientControl() {
       handleDelete={handleDelete}
     />
   ));
+
+  if (isLoading) {
+    return <CuteLoading />;
+  }
+
+  if (!isLoggedIn) {
+    return (
+      <IsEmptyMessage
+        title="로그인이 필요합니다."
+        subTxt="장바구니를 보려면 먼저 로그인해주세요!"
+        LinkTxt="로그인 하러 가기 🥕"
+        link="/login"
+      />
+    );
+  }
+
   return (
     <>
       {/* 전체선택 및 삭제 버튼 */}
@@ -144,14 +185,14 @@ export default function CartClientControl() {
           name="cartGroup"
           type="selectAll"
           title="전체 선택"
-          isChecked={selectedItems.length === allIds.length}
+          isChecked={selectedItems.length === allIds.length && allIds.length !== 0}
           selectAll={handleSelectAll}
         />
         <DeleteButton deleteAll={handleDeleteAll} />
       </div>
 
       {/* 주문 상세 내역: div 하위에 삼항연산자로 코드 작성 */}
-      <div className="border-t border-t-oguogu-black pt-4 pb-[84px] flex flex-col justify-start items-center gap-8">
+      <div className="border-t border-t-oguogu-black pt-4 pb-[84px] flex flex-col justify-start items-center gap-5 w-full">
         {/* 아무런 데이터가 없는 경우 */}
         {cartItems.length === 0 && (
           <IsEmptyMessage

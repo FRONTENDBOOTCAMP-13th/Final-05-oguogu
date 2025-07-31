@@ -1,8 +1,11 @@
+'use client';
 import { ReviewItemType } from '@/components/elements/ReviewItem/ReviewItem.type';
 import StarRating from '@/components/elements/ReviewItem/StarRating';
+import { getfileName } from '@/shared/data/functions/file';
 import type { ReviewItem } from '@/shared/types/review';
 
 import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
 /**
  * 상품 리뷰 한 건을 렌더링하는 컴포넌트입니다.
@@ -46,45 +49,69 @@ export default function ReviewItem({ name, email, res }: ReviewItemType) {
     return visible + hidden;
   }
 
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
+
+  console.log(res.extra.imagePath);
+  useEffect(() => {
+    if (!res.extra.imagePath) return;
+    const fetchImage = async () => {
+      try {
+        const data = await getfileName(res.extra.imagePath);
+
+        // getfileName이 에러 객체를 반환하는 경우는 무시하고
+        // 성공한 경우(문자열)만 상태에 설정
+        if (typeof data === 'string') {
+          setImageUrl(data);
+        }
+        // 에러인 경우 그냥 imageUrl을 null로 유지 (렌더링 안함)
+      } catch (err) {
+        console.error('Image fetch error:', err);
+        // 에러 발생시에도 그냥 렌더링 안함
+      }
+    };
+
+    fetchImage();
+  }, [res.extra.imagePath]);
+
+  // 컴포넌트 언마운트 시 blob URL 정리
+  useEffect(() => {
+    return () => {
+      if (imageUrl && imageUrl.startsWith('blob:')) {
+        URL.revokeObjectURL(imageUrl);
+      }
+    };
+  }, [imageUrl]);
+
   return (
     <>
-      <div className="h-[207px] flex flex-col gap-3">
+      <div className=" flex flex-col gap-5 py-5 border-t border-oguogu-gray-1">
         <div className="flex justify-between">
           <span>
             <StarRating rating={res.rating} />
           </span>
           <span className="text-[12px] text-oguogu-gray-4">{res.createdAt.split(' ')[0]}</span>
         </div>
+        {/* 리뷰 이미지 창 */}
         <div className="flex gap-2">
-          <Image
-            className="w-[90px] h-[90px] object-cover rounded-[4px]"
-            src="/images/crop/crop-001.png"
-            alt="상품명"
-            width={90}
-            height={90}
-          />
-          <Image
-            className="w-[90px] h-[90px] object-cover rounded-[4px]"
-            src="/images/crop/crop-001.png"
-            alt="상품명"
-            width={90}
-            height={90}
-          />
-          <Image
-            className="w-[90px] h-[90px] object-cover rounded-[4px]"
-            src="/images/crop/crop-001.png"
-            alt="상품명"
-            width={90}
-            height={90}
-          />
+          {imageUrl && (
+            <div className="flex gap-2">
+              <Image
+                className="w-[90px] h-[90px] object-cover rounded-[4px]"
+                src={imageUrl}
+                alt="상품 이미지"
+                width={90}
+                height={90}
+              />
+            </div>
+          )}
         </div>
         <div>
           <p className="text-[16px] text-oguogu-black">{res.extra.name}</p>
           <p className="text-[12px] text-oguogu-gray-4">{res.content}</p>
         </div>
-        <div className="flex gap-3">
-          <p className="text-[12px] text-oguogu-black">구매자이름 {maskName(name)}</p>
-          <p className="text-[12px] text-oguogu-black">이메일 앞부분 {maskEmail(email)}</p>
+        <div className="flex gap-2">
+          <p className="text-[12px] text-oguogu-black">{maskName(name)}</p>
+          <p className="text-[12px] text-oguogu-black">({maskEmail(email)})</p>
         </div>
       </div>
     </>

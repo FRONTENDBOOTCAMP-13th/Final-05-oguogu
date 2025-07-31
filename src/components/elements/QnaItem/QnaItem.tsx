@@ -1,4 +1,6 @@
 'use client';
+import { getPostReplies } from '@/shared/data/functions/post';
+import { responsePostReplies } from '@/shared/types/post';
 import type { QnaItem } from '@/shared/types/qna';
 import { useState } from 'react';
 
@@ -19,15 +21,35 @@ interface QnaItemProps {
 
 export default function QnaItem({ state = false, isPrivate = false, viewerRole = 'other', res }: QnaItemProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [content, setContent] = useState('');
+  const [fetched, setFetched] = useState(false);
+  const [date, setDate] = useState('');
+
+  const handleContent = async () => {
+    if (fetched || !state) return; // 답변 없으면 호출 안 함
+    const data: responsePostReplies = await getPostReplies(res._id);
+
+    if (data.ok) {
+      setContent(data.item[0].content);
+      setDate(data.item[0].createdAt);
+      setFetched(true);
+    } else {
+      console.error(data.message);
+    }
+  };
 
   const toggleOpen = () => {
+    const nextOpen = !isOpen;
     setIsOpen(!isOpen);
+    if (nextOpen) handleContent(); // 열릴 때만 fetch 시도
   };
 
   // 이름 *표로 변환해주는 함수
   function maskName(name: string): string {
     if (!name) return '';
-    return name[0] + '*'.repeat(name.length - 1);
+    if (name.length <= 2) return name; // 두 글자 이하면 마스킹 생략
+
+    return name[0] + '*'.repeat(name.length - 2) + name[name.length - 1];
   }
 
   // 이메일 *표로 변환해주는 함수
@@ -47,7 +69,7 @@ export default function QnaItem({ state = false, isPrivate = false, viewerRole =
   const isViewerAllowed = !isPrivate || viewerRole === 'owner' || viewerRole === 'seller';
 
   return (
-    <div className={`p-4 bg-oguogu-${stateBgColor} shadow-sm`}>
+    <div className={`p-4 bg-oguogu-${stateBgColor} border-t border-oguogu-gray-1 shadow-sm`}>
       <div onClick={toggleOpen} className="cursor-pointer flex flex-col gap-3">
         <div className="flex justify-between">
           <span className={`text-oguogu-${stateColor} flex items-center gap-1`}>
@@ -74,7 +96,7 @@ export default function QnaItem({ state = false, isPrivate = false, viewerRole =
 
         {isViewerAllowed ? (
           <div>
-            <p className="text-[16px] text-oguogu-black">[배송] {res.title}</p>
+            <p className="text-[16px] text-oguogu-black">{res.title}</p>
             <p className="text-[12px] text-oguogu-gray-4">{res.content}</p>
           </div>
         ) : (
@@ -82,8 +104,8 @@ export default function QnaItem({ state = false, isPrivate = false, viewerRole =
         )}
 
         <div className="flex gap-3">
-          <p className="text-[12px] text-oguogu-black">구매자이름 {maskName(res.user.name)}</p>
-          <p className="text-[12px] text-oguogu-black">이메일 앞부분 {maskEmail('qwer@gamil.com')}</p>
+          <p className="text-[12px] text-oguogu-black">{maskName(res.user.name)}</p>
+          <p className="text-[12px] text-oguogu-black">({maskEmail(res.user.email || '')})</p>
         </div>
       </div>
 
@@ -92,9 +114,9 @@ export default function QnaItem({ state = false, isPrivate = false, viewerRole =
         <div className="mt-4 pt-4 border-t-1 border-oguogu-gray-4">
           <div className="flex justify-between mb-2">
             <span className="text-[12px] text-oguogu-black">상품 담당자</span>
-            <span className="text-[12px] text-oguogu-gray-4">2025.07.15</span>
+            <span className="text-[12px] text-oguogu-gray-4">{date.split(' ')[0]}</span>
           </div>
-          {`오구텃밭 고객센터입니다. 해당 상품은 사실 찰옥수수가 아니라 철보다 강한 철옥수수가 맞습니다. 딱딱해서 씹을 수 없으니 반드시 익혀 드시기 바랍니다. 감사합니다.`
+          {content
             .split('.')
             .filter(Boolean)
             .map((line, i) => (
@@ -105,6 +127,12 @@ export default function QnaItem({ state = false, isPrivate = false, viewerRole =
                 <br />
               </div>
             ))}
+        </div>
+      )}
+
+      {!state && isOpen && isViewerAllowed && (
+        <div className="mt-4 pt-4 border-t-1 border-oguogu-gray-4">
+          <p className="text-[12px] text-oguogu-gray-3">이 질문은 아직 답변을 기다리는 중입니다.</p>
         </div>
       )}
 

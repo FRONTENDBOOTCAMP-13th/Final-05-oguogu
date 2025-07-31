@@ -5,6 +5,7 @@ export interface CartItem {
   quantity: number;
   createdAt: string;
   updatedAt: string;
+  shippingFees?: number;
   product: {
     _id: number;
     name: string;
@@ -22,6 +23,7 @@ export interface CartItem {
       isBest: boolean;
       category: string[];
       sort: number;
+      dcRate: number;
     };
   };
 }

@@ -6,6 +6,7 @@ import LoginInput from '@/components/elements/LoginItem/LoginInput';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createUser } from '@/shared/data/actions/user';
+import toast from 'react-hot-toast';
 
 export default function SellerRegisterForm() {
   const [companyName, setCompanyName] = useState('');
@@ -25,10 +26,20 @@ export default function SellerRegisterForm() {
   const [sellerProvidePrivacy, setSellerProvidePrivacy] = useState(false);
   const [sellerAgreeMarketing, setSellerAgreeMarketing] = useState(false);
 
+  const [submitAttempted, setSubmitAttempted] = useState(false);
+
   const router = useRouter();
+
+  const isPasswordValid = (pwd: string) => {
+    const hasLetter = /[a-zA-Z]/.test(pwd);
+    const hasNumber = /\d/.test(pwd);
+    const hasSpecial = /[^a-zA-Z0-9]/.test(pwd);
+    return hasLetter && hasNumber && hasSpecial;
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setSubmitAttempted(true);
 
     if (
       !companyName ||
@@ -41,17 +52,22 @@ export default function SellerRegisterForm() {
       !sellerPassword ||
       !sellerConfirmPassword
     ) {
-      alert('입력하지 않은 부분이 있습니다 모두 입력해주세요');
+      toast.error('입력하지 않은 부분이 있습니다 모두 입력해주세요');
+      return;
+    }
+    // 비밀번호 확인
+    if (!isPasswordValid(sellerPassword)) {
+      toast.error('비밀번호는 영문, 숫자, 특수문자를 모두 포함해야 합니다.');
       return;
     }
 
     if (sellerPassword !== sellerConfirmPassword) {
-      alert('비밀번호가 일치하지 않습니다');
+      toast.error('비밀번호가 일치하지 않습니다');
       return;
     }
 
     if (!sellerAgreeTerms || !sellerFinTerms || !sellerAgreePrivacy || !sellerProvidePrivacy) {
-      alert('필수 약관에 모두 동의해주세요');
+      toast.error('필수 약관에 모두 동의해주세요');
       return;
     }
 
@@ -65,8 +81,8 @@ export default function SellerRegisterForm() {
         type: 'seller',
         extra: {
           businessInfo: {
-            companyName,
-            ownerName,
+            companyName: companyName,
+            ownerName: ownerName,
             businessTel: sellerBusinessTel,
             businessNumber: sellerRegisNum,
           },
@@ -81,14 +97,14 @@ export default function SellerRegisterForm() {
       });
 
       if (res.ok === 1) {
-        alert('회원가입 완료');
+        toast.success('회원가입 완료');
         router.push('/login');
       } else {
-        alert(res.message || '회원가입 실패');
+        toast.error(res.message || '회원가입 실패');
       }
     } catch (err) {
       console.error('회원가입 오류:', err);
-      alert('회원가입중 오류가 발생했습니다 오구 텃밭으로 전화주세요');
+      toast.error('회원가입중 오류가 발생했습니다 오구 텃밭으로 전화주세요');
     }
   };
   return (
@@ -107,6 +123,7 @@ export default function SellerRegisterForm() {
               placeholder="상호명을 입력해 주세요"
               onChange={setCompanyName}
               value={companyName}
+              triggerValidation={submitAttempted}
             />
           </div>
 
@@ -120,6 +137,7 @@ export default function SellerRegisterForm() {
               placeholder="대표자명을 입력해 주세요"
               onChange={setOwnerName}
               value={ownerName}
+              triggerValidation={submitAttempted}
             />
           </div>
 
@@ -133,6 +151,7 @@ export default function SellerRegisterForm() {
               onChange={setSellerTel}
               value={sellerTel}
               placeholder="숫자"
+              triggerValidation={submitAttempted}
             />
           </div>
 
@@ -146,6 +165,7 @@ export default function SellerRegisterForm() {
               onChange={setSellerBusinessTel}
               value={sellerBusinessTel}
               placeholder="숫자"
+              triggerValidation={submitAttempted}
             />
           </div>
 
@@ -159,6 +179,7 @@ export default function SellerRegisterForm() {
               onChange={setSellerAddress}
               value={sellerAddress}
               placeholder="도로명, 지번, 건물명 검색"
+              triggerValidation={submitAttempted}
             />
           </div>
 
@@ -168,10 +189,11 @@ export default function SellerRegisterForm() {
             </label>
             <LoginInput
               id="signUpSellerRegisNum"
-              type="phone"
+              type="business"
               onChange={setSellerRegisNum}
               value={sellerRegisNum}
               placeholder="숫자"
+              triggerValidation={submitAttempted}
             />
           </div>
 
@@ -189,6 +211,7 @@ export default function SellerRegisterForm() {
                 { label: 'naver.com', value: 'naver.com' },
                 { label: 'gmail.com', value: 'gmail.com' },
               ]}
+              triggerValidation={submitAttempted}
             />
           </div>
 
@@ -202,6 +225,7 @@ export default function SellerRegisterForm() {
               placeholder="영문 + 숫자 + 특수문자"
               onChange={setSellerPassword}
               value={sellerPassword}
+              triggerValidation={submitAttempted}
             />
           </div>
 
@@ -215,6 +239,7 @@ export default function SellerRegisterForm() {
               placeholder="비밀번호를 한번 더 입력해주세요"
               onChange={setSellerConfirmPassword}
               value={sellerConfirmPassword}
+              triggerValidation={submitAttempted}
             />
           </div>
 

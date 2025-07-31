@@ -1,11 +1,29 @@
 'use client';
 
-import { useCartStore } from '@/shared/store/cartStore';
+import { useEffect, useState } from 'react';
+import { getCart } from '@/shared/data/functions/cart';
 import Link from 'next/link';
+import { CartResponse } from '@/shared/types/cart';
+import { useAuthStore } from '@/shared/store/authStore';
 
 export default function CartItemCountIcon() {
-  const { items } = useCartStore();
-  console.log(items.length);
+  const token = useAuthStore(state => state.token);
+  const [cartCount, setCartCount] = useState(0);
+
+  useEffect(() => {
+    const fetchCart = async () => {
+      if (!token) return;
+
+      try {
+        const data: CartResponse = await getCart(token ?? '');
+        setCartCount(data.item.length);
+      } catch (err) {
+        console.log('에러 발생 :', err);
+      }
+    };
+
+    fetchCart();
+  }, [token]);
 
   return (
     <>
@@ -18,9 +36,9 @@ export default function CartItemCountIcon() {
             strokeLinejoin="round"
           />
         </svg>
-        {items.length > 0 ? (
+        {cartCount > 0 ? (
           <span className="absolute bottom-0 right-0 bg-oguogu-main text-oguogu-white text-[8px] w-3 h-3 flex items-center justify-center rounded-full">
-            {items.length > 99 ? '99' : items.length}
+            {cartCount > 99 ? '99' : cartCount}
           </span>
         ) : (
           ''

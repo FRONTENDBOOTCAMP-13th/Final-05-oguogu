@@ -11,6 +11,7 @@ export default async function TopRatedItem() {
   /* 판매자 데이터를 추출, postViews 속성을 기준으로 정렬하여 인덱스 0 ~ 9 까지 총 10개를 추출 */
   const sellerList = res.item
     .filter((data: UserSeller) => data.type === 'seller')
+    .filter((data: UserSeller) => data.extra.businessInfo?.companyName)
     .sort((a: UserSeller, b: UserSeller) => b.postViews - a.postViews)
     .slice(0, 10);
 
@@ -37,7 +38,7 @@ export default async function TopRatedItem() {
                 </span>
                 {/* 해당 아이템의 _id 와 매칭하는 판매자 채널로 경로 설정 */}
                 <Link href={`/gardening/${item._id}`} className="flex items-center h-6">
-                  {item.extra.businessName}
+                  {item.extra.businessInfo?.companyName ?? ''}
                 </Link>
               </li>
             );
@@ -58,7 +59,7 @@ export default async function TopRatedItem() {
               >
                 <span className="ml-1.5 font-medium text-md text-oguogu-main">{index + 6}</span>
                 <Link href={`/gardening/${item._id}`} className="flex items-center h-6">
-                  {item.extra.businessName}
+                  {item.extra.businessInfo?.companyName ?? ''}
                 </Link>
               </li>
             );

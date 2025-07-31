@@ -2,8 +2,9 @@ import ReviewItem from '@/components/elements/ReviewItem/ReviewItem';
 import { TextCategoryForDetailPage } from '@/components/layouts/Category/Category';
 import CategoryHeader from '@/components/layouts/Header/CategoryHeader';
 import { ReviewSortbar } from '@/components/layouts/SortBar/Sortbar';
-import ReviewClientControl from '@/features/reviewClientControl/reviewClientControl';
+// import ReviewClientControl from '@/features/reviewClientControl/reviewClientControl';
 import { ProductDetailPageProps } from '@/features/types/productDetail';
+
 import { getPosts } from '@/shared/data/functions/post';
 import { getProduct } from '@/shared/data/functions/product';
 import { getProductReplies } from '@/shared/data/functions/replies';
@@ -30,10 +31,14 @@ export default async function ProductReview({ params }: ProductDetailPageProps) 
   const { _id } = await params;
   const res: ReviewRes = await getProductReplies(Number(_id));
 
+  console.log(res);
   // 리뷰 리스트
   const ReviewList = res?.item.map(review => (
     <ReviewItem key={review._id} name={review.user.name} email="abcd@gamil.com" res={review} />
   ));
+
+  /*  // 이미지 바이너리 소스 요청하기
+  const imageResponse = getfileName(); */
 
   // 리뷰 평점 계산
   const ratings = res.item.map(item => item.rating); // 평점만 추출 → [5, 4, 3, ...]
@@ -53,15 +58,22 @@ export default async function ProductReview({ params }: ProductDetailPageProps) 
   const reviewCnt = res.item.length;
 
   return (
-    <div>
+    <div className="min-h-screen bg-oguogu-white flex flex-col">
       <CategoryHeader title={productName} />
       <TextCategoryForDetailPage _id={Number(_id)} reviewCnt={reviewCnt} qnaCnt={qnaCnt} />
-      <ReviewSortbar reviewAvg={average} />
-      <div className="px-4 flex flex-col gap-4 mb-6">
-        <ReviewClientControl />
-      </div>
+      <ReviewSortbar reviewAvg={average.toFixed(1)} />
+      <div className="px-4 flex flex-col gap-4 mb-2">{/* <ReviewClientControl /> */}</div>
 
-      <section className="px-4 flex flex-col gap-8">{ReviewList}</section>
+      <section className="px-4 flex flex-col">
+        {ReviewList.length ? (
+          ReviewList
+        ) : (
+          <div className="flex flex-col items-center justify-center h-full py-20 text-oguogu-gray-3">
+            <p className="text-lg mb-2">아직 작성된 리뷰가 없습니다.</p>
+            <p className="text-sm">상품을 사용해 보신 후 리뷰를 남겨주세요!</p>
+          </div>
+        )}
+      </section>
     </div>
   );
 }

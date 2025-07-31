@@ -28,7 +28,11 @@ export function ProductSort() {
 export function ReviewSort() {
   const [selectedSort, setSelectedSort] = useState('recommend');
 
-  const sortOptions = [{ value: 'high', label: '높은 별점 순' }];
+  const sortOptions = [
+    { value: 'recent', label: '최신순' },
+    { value: 'highRating', label: '높은 리뷰순' },
+    { value: 'lowRating', label: '낮은 리뷰순' },
+  ];
 
   return (
     <SelectBox

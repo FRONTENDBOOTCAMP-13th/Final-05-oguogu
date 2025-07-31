@@ -1,3 +1,4 @@
+import { handleSubmitType } from '@/features/orderClientControl/orderClientControl';
 import { Order } from '@/shared/types/order';
 
 export type OrderStatus =
@@ -14,4 +15,5 @@ export interface OrderItemType {
   orderState: string;
   item: Order;
   updateOrderStatus: (order_id: number, newState: string) => void;
+  handleSubmit: (paras: handleSubmitType) => void;
 }
