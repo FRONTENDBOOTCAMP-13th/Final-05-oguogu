@@ -1,15 +1,17 @@
+import PeriodItem from '@/components/elements/PeriodItem/PeriodItem';
+import ProgressBar from '@/components/elements/ProgressBar/ProgressBar';
 import LinkHeader from '@/components/layouts/Header/LinkHeader';
 import { ProductDetailPageProps } from '@/features/types/productDetail';
 import { getProduct } from '@/shared/data/functions/product';
 import { periodObject, productRes } from '@/shared/types/product';
-import getDaysFromToday, { getDayFromToday } from '@/utils/getDaysFromToday/getDaysFromToday';
-import { format, formatDate, parse, parseISO } from 'date-fns';
-import { ko } from 'date-fns/locale';
+import { getDayFromToday } from '@/utils/getDaysFromToday/getDaysFromToday';
+import { format } from 'date-fns';
 import Image from 'next/image';
 
 export default async function MyGardenItemPage({ params }: ProductDetailPageProps) {
   const { _id } = await params;
   const res: productRes = await getProduct(Number(_id));
+  const periodItemList = res.item.extra!.period;
 
   if (!res) {
     return <div>상품 정보를 불러오는 중입니다...</div>;
@@ -29,8 +31,7 @@ export default async function MyGardenItemPage({ params }: ProductDetailPageProp
           : (lastStatus = 'seeding'),
   );
 
-  /* 판매자가 업로드한 게시물 리스트를 받아오기 */
-  const allPeriodItem = res.item.extra?.period.map((item: periodObject) => item);
+  /* period */
 
   /* 현재 날짜와 시작한 날짜의 차이를 계산하는 progress bar 데이터 받아오기 */
   // 시작(상품 판매 종료) 날짜
@@ -56,39 +57,44 @@ export default async function MyGardenItemPage({ params }: ProductDetailPageProp
 
   return (
     <>
-      <LinkHeader title={res.item.name} bgColor="[#DBFCE7]" />
-      <main className="px-4 py-4 min-h-[calc(100vh-48px)] flex flex-col gap-y-3">
-        {/* 상품명, 이미지 */}
-        <div className="flex gap-2">
-          <p className="text-2xl">{res.item.name}</p>
-          <Image src={`/svgs/${lastStatus}.svg`} alt={`${lastStatus}`} width={24} height={24} />
+      <LinkHeader title={res.item.name} bgColor="garden" />
+      <main className="px-4 py-4 min-h-[calc(100vh-48px)] flex flex-col gap-y-5">
+        <div className="flex flex-col gap-y-3">
+          {/* 상품명, 이미지 */}
+          <div className="flex gap-2">
+            <p className="text-2xl">{res.item.name}</p>
+            <Image src={`/svgs/${lastStatus}.svg`} alt={`${lastStatus}`} width={24} height={24} />
+          </div>
+
+          {/* 진행단계, 수확 남은 일자, Progress Bar */}
+          <div className="flex flex-col gap-y-2">
+            <div className="flex justify-between">
+              <div className="text-xs flex gap-1">
+                <p>진행 단계</p>
+                <p className="text-oguogu-main">
+                  {lastStatus === 'harvested'
+                    ? '수확 완료'
+                    : lastStatus === 'growing'
+                      ? '성장'
+                      : lastStatus === 'sprouting'
+                        ? '발아'
+                        : '파종'}
+                </p>
+              </div>
+              <div className="text-xs flex gap-1">
+                <p>수확까지</p>
+                <p className="text-oguogu-main">{restDaysToEndDate}</p>
+                <p>일 남았습니다</p>
+              </div>
+            </div>
+
+            {/* 전체 날짜 중 현재 기준으로 남은 날짜를 시각적으로 보여주는 Progress Bar */}
+            <ProgressBar max={getDaysFromStartDateToEndDate} value={daysFromStartDate} />
+          </div>
         </div>
 
-        {/* 진행단계, 수확 남은 일자 */}
-        <div className="flex justify-between">
-          <div className="text-xs flex gap-1">
-            <p>진행 단계</p>
-            <p className="text-oguogu-main">
-              {lastStatus === 'harvested'
-                ? '수확 완료'
-                : lastStatus === 'growing'
-                  ? '성장'
-                  : lastStatus === 'sprouting'
-                    ? '발아'
-                    : '파종'}
-            </p>
-          </div>
-          <div className="text-xs flex gap-1">
-            <p>수확까지</p>
-            <p className="text-oguogu-main">{restDaysToEndDate}</p>
-            <p>일 남았습니다</p>
-          </div>
-        </div>
-
-        {/* 전체 날짜 중 현재 기준으로 남은 날짜를 시각적으로 보여주는 Progress Bar */}
-        <input type="range" min="0" max={getDaysFromStartDateToEndDate} value={daysFromStartDate} disabled />
-
-        {/* 업로드 게시물 */}
+        {/* 판매자가 업로드한 Period 내역 */}
+        <PeriodItem periodItemList={periodItemList} />
       </main>
     </>
   );
