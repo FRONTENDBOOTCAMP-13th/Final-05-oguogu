@@ -25,11 +25,11 @@ export default function ProgressBar({
         <div className="h-2 bg-oguogu-main rounded-lg absolute top-0 left-0" style={{ width: now }}></div>
         {parsedUploadDate.map((item, index) => {
           const diff = differenceInDays(parsedMaxDate, item);
-          const width = ((1 - diff / max) * 100).toFixed() + '%';
+          const width = (1 - diff / max) * 100 > 100 ? '100%' : ((1 - diff / max) * 100).toFixed() + '%';
           return (
             <div
               key={index}
-              className={`w-2 h-2 rounded-2xl bg-oguogu-yellow absolute bottom-0 translate-y-[16px]`}
+              className={`w-2 h-2 rounded-2xl bg-oguogu-yellow absolute bottom-0 translate-y-[16px] translate-x-[-50%]`}
               style={{ left: width }}
             ></div>
           );
