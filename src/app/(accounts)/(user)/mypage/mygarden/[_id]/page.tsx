@@ -94,7 +94,9 @@ export default async function MyGardenItemPage({ params }: ProductDetailPageProp
         </div>
 
         {/* 판매자가 업로드한 Period 내역 */}
-        <PeriodItem periodItemList={periodItemList} />
+        <div className="grid mobile-max:grid-cols-2 mobile-max:gap-5">
+          <PeriodItem periodItemList={periodItemList} />
+        </div>
       </main>
     </>
   );
