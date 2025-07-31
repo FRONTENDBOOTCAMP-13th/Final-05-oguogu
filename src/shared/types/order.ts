@@ -1,4 +1,4 @@
-import { MainImage } from '@/shared/types/product';
+import { MainImage, periodObject } from '@/shared/types/product';
 
 export interface OrderListResponse {
   ok: number;
@@ -47,6 +47,7 @@ export interface OrderedProductExtra {
   dcRate: number;
   productCnt: number;
   badge: Badge[];
+  period: periodObject[];
 }
 
 export interface Badge {
