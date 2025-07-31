@@ -54,10 +54,11 @@ export default function Footer() {
       </div>
 
       <p className="pt-2 text-base text-oguogu-black">SNS</p>
-      <Link href="/" className="flex gap-1">
-        <Image src="/svgs/instagram.svg" alt="instagram" width={24} height={24} />
-        <Image src="/svgs/x-twitter.svg" alt="x(twitter)" width={24} height={24} />
-      </Link>
+      <div className="flex gap-1">
+        <Link href="/" className="flex">
+          <Image src="/svgs/instagram.svg" alt="instagram" width={24} height={24} />
+        </Link>
+      </div>
     </footer>
   );
 }

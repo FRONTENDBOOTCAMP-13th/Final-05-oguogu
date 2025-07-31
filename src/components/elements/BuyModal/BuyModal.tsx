@@ -5,6 +5,7 @@ import { BuyModalProps } from '@/components/elements/BuyModal/BuyModal.type';
 import { createCart } from '@/shared/data/actions/cart';
 import { useAuthStore } from '@/shared/store/authStore';
 import { useEffect, useRef } from 'react';
+import toast from 'react-hot-toast';
 
 /**
  * 상품 구매 옵션을 선택할 수 있는 모달 컴포넌트입니다.
@@ -48,7 +49,7 @@ export default function BuyModal({ onClose, type, res, onSuccess }: BuyModalProp
    */
   const handleBuy = async (product_id: number, quantity: number) => {
     if (!isLoggedIn || !token) {
-      alert('로그인이 필요합니다!');
+      toast.error('로그인이 필요합니다!');
       onClose();
       return;
     }
@@ -68,7 +69,7 @@ export default function BuyModal({ onClose, type, res, onSuccess }: BuyModalProp
           <BuyBoxOption
             type={type}
             name={res.item.name}
-            price={res.item.price * (1 - res.item.extra!.dcRate / 100)}
+            price={res.item.price * (1 - res.item.extra!.dcRate! / 100)}
             maxQuantity={res.item.quantity! - res.item.buyQuantity!}
             handleBuy={handleBuy}
             product_id={res.item._id}
@@ -79,7 +80,7 @@ export default function BuyModal({ onClose, type, res, onSuccess }: BuyModalProp
           <BuyBoxOption
             type={type}
             name={res.item.name}
-            price={res.item.price * (1 - res.item.extra!.dcRate / 100)}
+            price={res.item.price * (1 - res.item.extra!.dcRate! / 100)}
             maxQuantity={res.item.quantity! - res.item.buyQuantity!}
             handleBuy={handleBuy}
             product_id={res.item._id}
@@ -90,7 +91,7 @@ export default function BuyModal({ onClose, type, res, onSuccess }: BuyModalProp
           <BuyBoxOption
             type={type}
             name={res.item.name}
-            price={res.item.price * (1 - res.item.extra!.dcRate / 100)}
+            price={res.item.price * (1 - res.item.extra!.dcRate! / 100)}
             handleBuy={handleBuy}
             product_id={res.item._id}
             res={res}

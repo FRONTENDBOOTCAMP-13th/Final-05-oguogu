@@ -20,7 +20,7 @@ export default function UserMyPage() {
             <Link href="/mypage/order">주문/배송 내역</Link>
             <Link href="/mypage/cart">장바구니</Link>
             <Link href="/mypage/pick">찜한 상품</Link>
-            <Link href="/mypage/gardening" className="relative">
+            <Link href="/mypage/mygarden" className="relative">
               텃밭 히스토리
               <HotMarkIcon />
             </Link>

@@ -77,7 +77,7 @@ export default function CropItem({
                 fill="#969696"
               />
             </svg>
-            <span>{bookmarks}</span>
+            <span>{bookmarks ?? 0}</span>
           </div>
           <div className="flex gap-1 items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="13 " viewBox="0 0 8 9" fill="none">
@@ -86,7 +86,7 @@ export default function CropItem({
                 fill="#969696"
               />
             </svg>
-            <span className="leading-none">{`${rating?.toFixed(1)} (${replies})`}</span>
+            <span className="leading-none">{`${rating?.toFixed(1) ?? 0} (${replies ?? 0})`}</span>
           </div>
         </div>
       </div>

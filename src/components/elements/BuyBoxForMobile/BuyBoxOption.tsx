@@ -6,6 +6,7 @@ import BuyBoxOptionExtraItem from '@/components/elements/BuyBoxForMobile/BuyBoxO
 import { format } from 'date-fns';
 import { ko } from 'date-fns/locale';
 import { useAuthStore } from '@/shared/store/authStore';
+import toast from 'react-hot-toast';
 
 // 체험 상품 더미 데이터
 const rawData = [
@@ -97,10 +98,15 @@ export default function BuyBoxOption({
       </div>
 
       {/* 남은 수량 */}
-      {type === 'experience' ? (
+      {type === 'crop' ? (
         <div className="flex flex-col gap-2">
-          <span className="text-xs text-oguogu-gray-4">구매 가능한 수량</span>
-          <h3 className="text-xl max-w-full textElipsis">{maxQuantity} 개</h3>
+          <span className="text-xs text-oguogu-gray-4">상품 정보</span>
+          <h3 className="text-xl max-w-full textElipsis">{res.item.extra?.productDetailContent ?? '10개입 1세트'}</h3>
+        </div>
+      ) : type === 'experience' ? (
+        <div className="flex flex-col gap-2">
+          <span className="text-xs text-oguogu-gray-4">잔여 인원</span>
+          <h3 className="text-xl max-w-full textElipsis">{maxQuantity} 명</h3>
         </div>
       ) : (
         ''
@@ -182,7 +188,11 @@ export default function BuyBoxOption({
               </div>
               <div className="text-[8px] text-oguogu-gray-3">
                 <span>최대&nbsp;</span>
-                <span>{res.item.extra?.productCnt}</span>
+                <span>
+                  {maxQuantity > res.item.extra!.productCnt!
+                    ? res.item.extra?.productCnt
+                    : res.item.extra!.productCnt! - maxQuantity}
+                </span>
                 <span>{type === 'experience' ? '명 예약' : '개 구매'} 가능</span>
               </div>
             </div>
@@ -211,7 +221,7 @@ export default function BuyBoxOption({
          px-6 py-1.5 rounded-sm w-full`}
         onClick={() => {
           if (!TOKEN) {
-            alert('로그인이 필요합니다.');
+            toast.error('로그인이 필요합니다.');
             return;
           }
           handleBuy(product_id, count);

@@ -2,6 +2,7 @@ import { createBookmark, deleteBookmark } from '@/shared/data/actions/bookmarks'
 import { getBookmarks } from '@/shared/data/functions/bookmarks';
 import { useAuthStore } from '@/shared/store/authStore';
 import { BookmarkResponse, BookmarkItem } from '@/shared/types/bookmarkt';
+import toast from 'react-hot-toast';
 import { create } from 'zustand';
 
 interface BookmarkState {
@@ -39,7 +40,7 @@ export const useBookmarkStore = create<BookmarkState>((set, get) => ({
     const isBookmarked = bookmarkedIds.includes(productId);
 
     if (!token) {
-      alert('로그인이 필요합니다.');
+      toast.error('로그인이 필요합니다.');
       return;
     }
 
@@ -47,11 +48,11 @@ export const useBookmarkStore = create<BookmarkState>((set, get) => ({
       if (isBookmarked) {
         await deleteBookmark(productId, { target_id: 'any' }, token);
         set({ bookmarkedIds: bookmarkedIds.filter(id => id !== productId) });
-        alert('북마크를 해제했습니다.');
+        toast.success('북마크를 해제했습니다.');
       } else {
         await createBookmark({ target_id: productId, extra: { type: 'like' } }, token);
         set({ bookmarkedIds: [...bookmarkedIds, productId] });
-        alert('북마크를 등록했습니다.');
+        toast.success('북마크를 등록했습니다.');
       }
     } catch (error) {
       console.error('Failed to toggle bookmark', error);

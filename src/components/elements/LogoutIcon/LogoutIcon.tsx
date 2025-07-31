@@ -2,13 +2,14 @@
 
 import { useAuthStore } from '@/shared/store/authStore';
 import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 
 export default function LogOutIcon() {
   const { logout, userInfo } = useAuthStore();
   const router = useRouter();
 
   const handeLogout = () => {
-    alert('로그아웃 되었습니다.');
+    toast.success('로그아웃 되었습니다.');
     logout();
 
     if (userInfo?.type === 'seller') {

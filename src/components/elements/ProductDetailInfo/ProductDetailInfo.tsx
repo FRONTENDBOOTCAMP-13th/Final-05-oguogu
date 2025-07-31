@@ -37,13 +37,13 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
         {/* 가격 정보 */}
         <div className="flex justify-between items-end">
           <div>
-            {item.extra!.dcRate > 0 ? (
+            {item.extra!.dcRate! > 0 ? (
               <>
                 <s className="text-oguogu-gray-2 mobile-max:text-lg">{item.price.toLocaleString() + '원'}</s>
                 <div className="flex gap-1">
                   <span className="text-xl text-oguogu-main mobile-max:text-2xl">{item.extra!.dcRate}%</span>
                   <span className="text-xl ml-2 mobile-max:text-2xl">
-                    {(item.price * (1 - item.extra!.dcRate / 100)).toLocaleString()}원
+                    {(item.price * (1 - item.extra!.dcRate! / 100)).toLocaleString()}원
                   </span>
                 </div>
               </>
