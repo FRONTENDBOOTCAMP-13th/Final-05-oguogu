@@ -109,5 +109,6 @@ export interface periodObject {
   date: string;
   image: string;
   status: 'seeding' | 'sprouting' | 'growing' | 'harvested';
+  title?: string;
   content: string;
 }
