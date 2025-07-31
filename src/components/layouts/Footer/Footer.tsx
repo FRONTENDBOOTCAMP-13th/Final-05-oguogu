@@ -58,9 +58,6 @@ export default function Footer() {
         <Link href="/" className="flex">
           <Image src="/svgs/instagram.svg" alt="instagram" width={24} height={24} />
         </Link>
-        <Link href="/" className="flex">
-          <Image src="/svgs/x-twitter.svg" alt="x(twitter)" width={24} height={24} />
-        </Link>
       </div>
     </footer>
   );
