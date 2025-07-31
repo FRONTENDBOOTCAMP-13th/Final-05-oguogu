@@ -1,5 +1,18 @@
 export type User = UserBasic | UserSeller | UserAdmin;
 
+export interface UserAccoutProps {
+  ok: number;
+  item: UserAccountExtra;
+}
+
+export interface UserAccountExtra {
+  extra: {
+    accountBank: string;
+    accountNum: string;
+    accountOwner: string;
+  };
+}
+
 export interface UserBasic {
   _id: number; // 사용자 고유 ID
   email: string; // 이메일 주소
@@ -52,6 +65,9 @@ export interface UserSellerExtra {
   settlementAccount?: string; //
   settlementOwner?: string; //
   settlementBank?: string; //
+  accountBank: string;
+  accountOwner: string;
+  accountNum: string;
 }
 
 export interface UserSeller {
