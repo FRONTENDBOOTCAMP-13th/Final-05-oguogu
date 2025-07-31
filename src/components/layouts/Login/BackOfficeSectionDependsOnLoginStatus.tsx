@@ -4,18 +4,22 @@ import LogOutIcon from '@/components/elements/LogoutIcon/LogoutIcon';
 import ProductLinkItem from '@/components/elements/ProductLink/ProductLink';
 import GetLoggedInUserData from '@/features/getLoggedInUserData/getLoggedInUserData';
 import { getOrdersSeller } from '@/shared/data/functions/order';
+import { getPosts } from '@/shared/data/functions/post';
 import { getProductSeller } from '@/shared/data/functions/product';
 import { useAuthStore } from '@/shared/store/authStore';
 import { OrderListResponse } from '@/shared/types/order';
+import { responsePostReplies } from '@/shared/types/post';
 import { productsRes } from '@/shared/types/product';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 export default function BackOffcieSectionDependsOnLoginStatus() {
   const token = useAuthStore(state => state.token);
+  const seller_id = useAuthStore(state => state.userInfo?._id);
 
   const [productRes, setProductRes] = useState<productsRes>();
   const [orderRes, setOrderRes] = useState<OrderListResponse>();
+  const [qnaRes, setQnaRes] = useState<responsePostReplies>();
 
   useEffect(() => {
     if (!token) return;
@@ -23,6 +27,7 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
     const fetch = async () => {
       const data: productsRes = await getProductSeller(token);
       const orderData: OrderListResponse = await getOrdersSeller(token);
+      const qnaData: responsePostReplies = await getPosts('qna', token);
 
       if (data.ok) {
         setProductRes(data);
@@ -30,12 +35,12 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
       if (orderData.ok) {
         setOrderRes(orderData);
       }
+      if (qnaData.ok) {
+        setQnaRes(qnaData);
+      }
     };
     fetch();
   }, [token]);
-
-  console.log(productRes);
-  console.log(orderRes);
 
   const cropCnt = productRes?.item.filter(item => item.extra?.productType === 'crop').length;
   const experiencepCnt = productRes?.item.filter(item => item.extra?.productType === 'experience').length;
@@ -58,6 +63,11 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
     }, 0);
     return orderSum + productsSum;
   }, 0);
+
+  const qnaList = qnaRes?.item.filter(item => item.seller_id === seller_id);
+
+  const qnaWaitingCnt = qnaList?.filter(item => item.repliesCount === 0).length;
+  const qnafinishedCnt = qnaList?.filter(item => item.repliesCount !== 0).length;
 
   return (
     <>
@@ -173,13 +183,13 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
             <div className="flex justify-center gap-30">
               {/* 답변 준비중 */}
               <div className={`flex flex-col items-center gap-2`}>
-                <span className={`text-2xl 'text-oguogu-black'`}>3</span>
+                <span className={`text-2xl 'text-oguogu-black'`}>{qnaWaitingCnt}</span>
                 <span className="text-sm">답변 대기 중</span>
               </div>
 
               {/* 답변 완료 */}
               <div className={`flex flex-col items-center gap-2`}>
-                <span className={`text-2xl 'text-oguogu-black'`}>2</span>
+                <span className={`text-2xl 'text-oguogu-black'`}>{qnafinishedCnt}</span>
                 <span className="text-sm">답변 완료</span>
               </div>
             </div>
