@@ -9,8 +9,12 @@ export interface responsePostRepliesItem {
   user: {
     _id: number;
     name: string;
+    email: string;
   };
+  seller_id: number;
   content: string;
   createdAt: string;
   updatedAt: string;
+  title: string;
+  repliesCount: number;
 }
