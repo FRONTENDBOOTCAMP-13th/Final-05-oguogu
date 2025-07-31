@@ -15,7 +15,7 @@ export default function GardenItemForMyGarden({
   /* period 의 status 값을 추출, 포함 여부를 검증하여 가장 마지막 데이터를 렌더링 */
   const allStatus = period?.map((item: periodObject) => item.status);
 
-  let lastStatus = '';
+  let lastStatus = '파종';
   allStatus?.map((status: string) =>
     status.includes('harvest')
       ? (lastStatus = '수확 완료')
