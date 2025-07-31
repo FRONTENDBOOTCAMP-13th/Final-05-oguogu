@@ -116,31 +116,41 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
             <p className="text-xl">주문 내역</p>
             <div className="flex justify-around gap-2">
               {/* 결제 완료 */}
-              <div className={`flex flex-col items-center gap-2`}>
+              <div
+                className={`flex flex-col items-center gap-2 ${payedCnt === 0 ? `text-oguogu-gray-2` : 'text-oguogu-black'}`}
+              >
                 <span className="text-2xl">{payedCnt}</span>
                 <span className="text-sm">결제 완료</span>
               </div>
 
               {/* 배송 준비 중 */}
-              <div className={`flex flex-col items-center gap-2`}>
+              <div
+                className={`flex flex-col items-center gap-2 ${preparingShipmentCnt === 0 ? `text-oguogu-gray-2` : 'text-oguogu-black'}`}
+              >
                 <span className="text-2xl">{preparingShipmentCnt}</span>
                 <span className="text-sm">배송 준비 중</span>
               </div>
 
               {/* 배송 중 */}
-              <div className={`flex flex-col items-center gap-2`}>
+              <div
+                className={`flex flex-col items-center gap-2 ${inTransitCnt === 0 ? `text-oguogu-gray-2` : 'text-oguogu-black'}`}
+              >
                 <span className="text-2xl">{inTransitCnt}</span>
                 <span className="text-sm">배송 중</span>
               </div>
 
               {/* 배송 완료 */}
-              <div className={`flex flex-col items-center gap-2`}>
+              <div
+                className={`flex flex-col items-center gap-2 ${deliveredCnt === 0 ? `text-oguogu-gray-2` : 'text-oguogu-black'}`}
+              >
                 <span className="text-2xl">{deliveredCnt}</span>
                 <span className="text-sm">배송 완료</span>
               </div>
 
               {/* 구매 완료 */}
-              <div className={`flex flex-col items-center gap-2`}>
+              <div
+                className={`flex flex-col items-center gap-2 ${purchaseCompletedCnt === 0 ? `text-oguogu-gray-2` : 'text-oguogu-black'}`}
+              >
                 <span className="text-2xl">{purchaseCompletedCnt}</span>
                 <span className="text-sm">구매 완료</span>
               </div>

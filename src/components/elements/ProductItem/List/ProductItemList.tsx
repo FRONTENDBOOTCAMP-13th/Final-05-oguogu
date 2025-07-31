@@ -12,6 +12,7 @@ import { useLoadingStore } from '@/shared/store/loadingStore';
 import { BookmarkPostResponse, BookmarkResponse } from '@/shared/types/bookmarkt';
 import { Item, productsRes } from '@/shared/types/product';
 import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 export default function ProductItemList({ type }: ProductItemListType) {
   const [res, setRes] = useState<productsRes>();
@@ -49,7 +50,7 @@ export default function ProductItemList({ type }: ProductItemListType) {
       setBookmarkedMap(updateMap);
     } catch (error) {
       console.error('북마크 토글 실패', error);
-      alert('북마크 처리에 실패했습니다.');
+      toast.error('북마크 처리에 실패했습니다.');
     }
   };
 
