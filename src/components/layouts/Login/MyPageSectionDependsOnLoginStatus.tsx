@@ -72,7 +72,7 @@ export default function MyPageSectionDependsOnLoginStatus() {
           </div>
         </div>
         {/* 배너 이미지 */}
-        <a href="https://github.com/FRONTENDBOOTCAMP-13th/Final-13-13tachi" target="_blank" rel="noopener noreferrer">
+        <Link href="https://ugveg.vercel.app/" target="_blank" rel="noopener noreferrer">
           <Image
             src="/images/sub-banner-01.png"
             alt="배너 이미지"
@@ -81,7 +81,7 @@ export default function MyPageSectionDependsOnLoginStatus() {
             height={48}
             className="w-full h-12 object-cover"
           />
-        </a>
+        </Link>
 
         {/* INFO 별도 컴포넌트로 분리하여 DB 반영 작업 필요 */}
         {/* 주문 상태 */}
