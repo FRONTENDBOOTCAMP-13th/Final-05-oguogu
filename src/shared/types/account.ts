@@ -8,8 +8,10 @@ export interface UserAccoutType {
 // prettier-ignore
 export interface UserAccountExtraType {
   extra: {
-    settlementBank: string;                                 // 정산 은행
-    settlementOwner: string;                                // 계좌 소유주
-    settlementAccount: string;                              // 계좌 번호
+    accountInfo: {
+      settlementBank: string;                                 // 정산 은행
+      settlementOwner: string;                                // 계좌 소유주
+      settlementAccount: string;                              // 계좌 번호
+    }
   };
 }

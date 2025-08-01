@@ -37,7 +37,7 @@ export default function AccountItem() {
     const getUserData = async () => {
       const userExtra: UserAccoutType = await getUserDetail(userInfo._id, 'extra');
       console.log(userExtra);
-      setAccount(userExtra.item.extra.settlementAccount);
+      setAccount(userExtra.item.extra.accountInfo.settlementAccount);
     };
 
     getUserData();
