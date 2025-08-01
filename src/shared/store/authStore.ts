@@ -1,5 +1,5 @@
 'use client';
-import { UserSellerExtra } from '@/shared/types/user';
+import { UserSellerExtraType } from '@/shared/types/user';
 import { create } from 'zustand';
 
 // 임시로 _id, 이름, 타입만 전역에서 바로 확인할 수 있도록 설정 (추후 확장 가능)
@@ -7,7 +7,7 @@ export interface userInfo {
   _id: number;
   name: string;
   type: 'user' | 'seller' | 'admin';
-  extra?: UserSellerExtra;
+  extra?: UserSellerExtraType;
 }
 
 // 인증 zustand 스토어 타입

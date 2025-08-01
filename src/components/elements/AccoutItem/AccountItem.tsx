@@ -5,8 +5,8 @@ import GetLoggedInUserData from '@/features/getLoggedInUserData/getLoggedInUserD
 import { getOrdersSeller } from '@/shared/data/functions/order';
 import { getUserDetail } from '@/shared/data/functions/user';
 import { useAuthStore } from '@/shared/store/authStore';
+import { UserAccoutType } from '@/shared/types/account';
 import { OrderListResponse } from '@/shared/types/order';
-import { UserAccoutProps } from '@/shared/types/user';
 import { useEffect, useState } from 'react';
 
 export default function AccountItem() {
@@ -35,9 +35,9 @@ export default function AccountItem() {
 
     /* 비동기로 데이터를 가져와 상태로 저장하기 */
     const getUserData = async () => {
-      const userExtra: UserAccoutProps = await getUserDetail(userInfo._id, 'extra');
+      const userExtra: UserAccoutType = await getUserDetail(userInfo._id, 'extra');
       console.log(userExtra);
-      setAccount(userExtra.item.extra.accountNum);
+      setAccount(userExtra.item.extra.settlementAccount);
     };
 
     getUserData();
@@ -107,7 +107,7 @@ export default function AccountItem() {
       {!isEditing && (
         <>
           {/* 등록 안 된 경우 → 등록 버튼 */}
-          {!userInfo?.extra?.settlementAccount && (
+          {!userInfo?.extra?.accountInfo?.settlementAccount && (
             <button
               className="w-full text-sm border rounded h-7 text-oguogu-black border-oguogu-main bg-oguogu-white hover:bg-oguogu-gray-1"
               onClick={handleChangeAccount}
@@ -117,7 +117,7 @@ export default function AccountItem() {
           )}
 
           {/* 등록된 경우 → 변경 버튼 */}
-          {userInfo?.extra?.settlementAccount && (
+          {userInfo?.extra?.accountInfo?.settlementAccount && (
             <button
               className="w-full text-sm border rounded h-7 text-oguogu-black border-oguogu-main bg-oguogu-white hover:bg-oguogu-gray-1"
               onClick={handleChangeAccount}

@@ -1,5 +1,5 @@
 import { getUsers } from '@/shared/data/functions/user';
-import { UserSeller } from '@/shared/types/user';
+import { UserSellerType } from '@/shared/types/user';
 import Link from 'next/link';
 
 /**
@@ -10,9 +10,9 @@ export default async function TopRatedItem() {
 
   /* 판매자 데이터를 추출, postViews 속성을 기준으로 정렬하여 인덱스 0 ~ 9 까지 총 10개를 추출 */
   const sellerList = res.item
-    .filter((data: UserSeller) => data.type === 'seller')
-    .filter((data: UserSeller) => data.extra.businessInfo?.companyName)
-    .sort((a: UserSeller, b: UserSeller) => b.postViews - a.postViews)
+    .filter((data: UserSellerType) => data.type === 'seller')
+    .filter((data: UserSellerType) => data.extra.businessInfo?.companyName)
+    .sort((a: UserSellerType, b: UserSellerType) => b.postViews - a.postViews)
     .slice(0, 10);
 
   const sellerListTop5 = sellerList.slice(0, 5);
@@ -24,7 +24,7 @@ export default async function TopRatedItem() {
       <div className="grid grid-cols-2 gap-2" role="list" aria-label="인기 텃밭 순위">
         {/* Top 1~5 */}
         <ul className="flex flex-col gap-2">
-          {sellerListTop5.map((item: UserSeller, index: number) => {
+          {sellerListTop5.map((item: UserSellerType, index: number) => {
             return (
               <li
                 key={item._id}
@@ -47,7 +47,7 @@ export default async function TopRatedItem() {
 
         {/* Top 6~10 */}
         <ul className="flex flex-col gap-2">
-          {sellerListRest5.map((item: UserSeller, index: number) => {
+          {sellerListRest5.map((item: UserSellerType, index: number) => {
             // if (item.extra.businessName) {
             return (
               <li

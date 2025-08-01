@@ -1,4 +1,10 @@
-/* 일반 */
+/* 0. 초기 데이터 타입 */
+export interface UserResType {
+  ok: 0 | 1;
+  item: UserCommonType | UserSellerType;
+}
+
+/* 1. 일반(user) */
 // prettier-ignore
 export interface UserCommonType {
   _id: number;                                              // 고유 ID
@@ -26,7 +32,7 @@ export interface UserCommonExtraType {
   }
 }
 
-/* 판매자 */
+/* 2. 판매자(seller) */
 // prettier-ignore
 export interface UserSellerType {
   _id: number;                                              // 고유 ID
@@ -55,39 +61,24 @@ export interface UserSellerType {
 
 // prettier-ignore
 export interface UserSellerExtraType {
-  businessInfo: {
-    businessName: string;                                   // 상호명
-    businessTel: string;                                    // 사업자 대표 전화
-    businessNumber: string;                                 // 사업자 등록번호
-    representativeName: string;                             // 대표자명
-    businessAddress: string;                                // 사업장 소재지
+  businessInfo?: {
+    companyName: string; // 상호명
+    ownerName: string; // 대표자명
+    businessTel: string; // 사업자 대표 전화
+    businessNumber: string; // 사업자 등록번호
   };
-  accountInfo: {
-    settlementBank: string;                                 // 정산 은행
-    settlementOwner: string;                                // 계좌 소유주
-    settlementAccount: string;                              // 계좌 번호
+
+  accountInfo?: {
+    settlementBank: string; // 정산 은행
+    settlementOwner: string; // 계좌 소유주
+    settlementAccount: string; // 계좌 번호
   };
-  agreement: {
-    sellerAgreeTerms: boolean;                              // 이용약관 동의
-    sellerFinTerms: boolean;                                // 전자금융거래 이용악관 동의
-    sellerAgreePrivacy: boolean;                            // 개인정보 수집이용 동의
-    sellerProvidePrivacy: boolean;                          // 개인정보 제공 동의
-    sellerAgreeMarketing: boolean;                          // 마케팅 광고 동의
-  }
-}
 
-/* 판매자 계좌 정보 */
-// prettier-ignore
-export interface UserAccoutType {
-  ok: 0 | 1;                                                // 데이터 정상 통신 여부
-  item: UserAccountExtraType;                               // 전달 받는 데이터
-}
-
-// prettier-ignore
-export interface UserAccountExtraType {
-  extra: {
-    settlementBank: string;                                 // 정산 은행
-    settlementOwner: string;                                // 계좌 소유주
-    settlementAccount: string;                              // 계좌 번호
+  agreement?: {
+    sellerAgreeTerms: boolean; // 이용약관 동의
+    sellerFinTerms: boolean; // 전자금융거래 이용악관 동의
+    sellerAgreePrivacy: boolean; // 개인정보 수집이용 동의
+    sellerProvidePrivacy: boolean; // 개인정보 제공 동의
+    sellerAgreeMarketing: boolean; // 마케팅 광고 동의
   };
 }

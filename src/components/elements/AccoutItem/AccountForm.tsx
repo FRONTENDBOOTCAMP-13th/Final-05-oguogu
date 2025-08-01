@@ -38,7 +38,11 @@ export default function AccountForm({ id, token }: AccountFormProps) {
       return;
     }
 
-    await updateUser(id, { extra: { accountBank: bank, accountOwner: owner, accountNum: accountNum } }, token);
+    await updateUser(
+      id,
+      { extra: { accountInfo: { settlementBank: bank, settlementOwner: owner, settlementAccount: accountNum } } },
+      token,
+    );
     toast.success('계좌 등록 성공');
   };
 
