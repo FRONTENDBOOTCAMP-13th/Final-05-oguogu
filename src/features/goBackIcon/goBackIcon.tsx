@@ -7,26 +7,25 @@ export default function GoBackIcon() {
   const pathname = usePathname();
   const handleGoBack = () => {
     const segments = pathname.split('/').filter(Boolean);
-    console.log(segments);
+    console.log('현재 경로', segments);
 
-    switch (segments.length) {
-      case 1:
-        /* 현재 URL 경로가 루트에서 한 단계로만 이동한 경우 루트로 이동 */
-        router.push('/');
-        return;
-      case 2:
-        /* 현재 URL 경로에서 첫 번째 요소에 page.tsx 가 없는 경우 루트로 이동 */
-        switch (segments[0]) {
-          case 'board':
-          case 'product':
-          case 'garden':
-            router.push('/');
-          default:
-            router.back();
-        }
-        return;
-      default:
-        router.back();
+    /* 라우팅 경로가  */
+    if (segments.length === 0) {
+      router.refresh();
+    } else if (segments.length === 1) {
+      router.push('/');
+    } else if (segments.length === 2) {
+      switch (segments[0]) {
+        case 'board':
+        case 'product':
+        case 'garden':
+          router.push('/');
+          break;
+        default:
+          router.push(`/${segments[0]}`);
+      }
+    } else {
+      router.back();
     }
   };
 
