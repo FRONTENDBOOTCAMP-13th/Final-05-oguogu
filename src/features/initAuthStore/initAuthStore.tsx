@@ -5,7 +5,11 @@ import { useAuthStore } from '@/shared/store/authStore';
 import { usePathname } from 'next/navigation';
 
 export default function InitAuthStore() {
-  const { setToken, setUserInfo, logout, isLoggedIn } = useAuthStore();
+  const setToken = useAuthStore(state => state.setToken);
+  const setUserInfo = useAuthStore(state => state.setUserInfo);
+  const logout = useAuthStore(state => state.logout);
+  const isLoggedIn = useAuthStore(state => state.isLoggedIn);
+
   const pathname = usePathname();
 
   useEffect(() => {

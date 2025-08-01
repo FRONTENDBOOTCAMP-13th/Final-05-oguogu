@@ -79,7 +79,7 @@ export default function CropProductPostClientControl() {
   };
 
   const handlePost = async () => {
-    if (!token) return;
+    if (token === null) return;
 
     let fileRes: fileResponse | null = null;
     let DetailFileRes: fileResponse | null = null;

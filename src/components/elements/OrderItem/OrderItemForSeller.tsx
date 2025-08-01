@@ -53,7 +53,7 @@ export default function OrderItemForSeller({ orderState, item, updateOrderStatus
   // 상태별 함수를 정의해야합니다.
 
   return (
-    <div className="flex flex-col gap-4 justify-between w-full max-w-[400px]">
+    <div className="flex flex-col gap-4 justify-between w-full min-w-[288px]">
       {/* 상단 상태 및 날짜 */}
       <section className="flex justify-between text-[12px] pb-2 border-b border-oguogu-gray-2">
         <span

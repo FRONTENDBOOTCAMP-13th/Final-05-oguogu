@@ -13,7 +13,7 @@ export default function GardenItemListForMyGarden() {
   const token = useAuthStore(state => state.token);
 
   useEffect(() => {
-    if (!token) return;
+    if (token === null) return;
 
     const getGardeningOrders = async () => {
       const res = await getOrders(token);

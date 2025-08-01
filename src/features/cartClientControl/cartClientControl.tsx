@@ -1,6 +1,5 @@
 'use client';
 import CardItem from '@/components/elements/cardItem/cardItem';
-import CuteLoading from '@/components/elements/CuteLoading/CuteLoading';
 import DeleteButton from '@/components/elements/DeleteButton/DeleteButton';
 import { CheckButtonForMypage } from '@/components/elements/InputButtonForMypage/InputButtonForMypage';
 import IsEmptyMessage from '@/components/elements/IsEmptyMessage/IsEmptyMessage';
@@ -15,8 +14,6 @@ import toast from 'react-hot-toast';
 export default function CartClientControl() {
   const token = useAuthStore(state => state.token);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
 
   const isLoggedIn = useAuthStore(state => state.isLoggedIn);
@@ -58,7 +55,7 @@ export default function CartClientControl() {
 
   // 주문하기 버튼
   const handleOrder = async () => {
-    if (!token) return;
+    if (token === null) return;
 
     let allSuccess = true;
     const successCartIds: number[] = [];
@@ -88,7 +85,7 @@ export default function CartClientControl() {
 
   // 하위컴포넌트를 보내서 수량을 수정할수 있는 함수
   const updateQuntity = async (_id: number, quantity: number) => {
-    if (!token) return;
+    if (token === null) return;
     if (!_id) return;
     await updateCart(_id, { quantity: quantity }, token);
 
@@ -99,7 +96,7 @@ export default function CartClientControl() {
 
   // 장바구니 삭제 함수
   const handleDelete = async (_id: number) => {
-    if (!token) return;
+    if (token === null) return;
     const data = await deleteCart(_id, token);
 
     if (data.ok) {
@@ -116,7 +113,7 @@ export default function CartClientControl() {
 
   // 장바구니 전체 삭제 함수
   const handleDeleteAll = async () => {
-    if (!token) return;
+    if (token === null) return;
 
     const allIds = cartItems.map(item => item._id);
     const result = await deleteSelectCart(allIds, token);
@@ -131,8 +128,7 @@ export default function CartClientControl() {
 
   useEffect(() => {
     const fetchCart = async () => {
-      if (!token) {
-        setIsLoading(false);
+      if (token === null) {
         return;
       }
 
@@ -140,8 +136,8 @@ export default function CartClientControl() {
         const data: CartResponse = await getCart(token);
         setCartItems(data.item);
         console.log('data', data);
-      } finally {
-        setIsLoading(false);
+      } catch (err) {
+        console.log('에러 발생', err);
       }
     };
 
@@ -161,10 +157,6 @@ export default function CartClientControl() {
       handleDelete={handleDelete}
     />
   ));
-
-  if (isLoading) {
-    return <CuteLoading />;
-  }
 
   if (!isLoggedIn) {
     return (

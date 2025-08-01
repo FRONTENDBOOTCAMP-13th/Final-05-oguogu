@@ -66,7 +66,7 @@ export default function BuyBoxOption({
 }: BuyBoxOptionType) {
   const [count, setCount] = useState(1);
   const [totalPrice, setTotalPrice] = useState(price);
-  const TOKEN = useAuthStore(state => state.token); //전역 관리중인 사용자 토큰
+  const token = useAuthStore(state => state.token); //전역 관리중인 사용자 토큰
 
   const minusCount = () => {
     if (count > 1) {
@@ -90,7 +90,7 @@ export default function BuyBoxOption({
   const data = rawData;
 
   return (
-    <div className="text-base flex flex-col gap-6 p-4 rounded-se-xl rounded-ss-xl">
+    <div className="text-base flex flex-col gap-6 pt-2 rounded-se-xl rounded-ss-xl">
       {/* 상품명 */}
       <div className="flex flex-col gap-2">
         <span className="text-xs text-oguogu-gray-4">상품명</span>
@@ -220,7 +220,7 @@ export default function BuyBoxOption({
          text-[16px] h-[44px]
          px-6 py-1.5 rounded-sm w-full`}
         onClick={() => {
-          if (!TOKEN) {
+          if (token === null) {
             toast.error('로그인이 필요합니다.');
             return;
           }

@@ -31,7 +31,7 @@ export default function BuyBox({ onOpenModal, res }: BuyBoxType) {
    */
   // 최초 진입 시 북마크 조회
   useEffect(() => {
-    if (!token) return;
+    if (token === null) return;
 
     const fetchBookmark = async () => {
       try {
@@ -55,7 +55,7 @@ export default function BuyBox({ onOpenModal, res }: BuyBoxType) {
 
   // 찜 버튼 클릭 → 토글 처리
   const handleBookmarkToggle = async () => {
-    if (!token) {
+    if (token === null) {
       toast.error('로그인이 필요합니다.');
       return;
     }

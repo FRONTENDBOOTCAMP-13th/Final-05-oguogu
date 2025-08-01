@@ -119,7 +119,7 @@ export default function GardeningProductPostClientControl() {
   const finalPrice = Number(form?.price) * (1 - Number(form?.dcRate) / 100);
 
   const handlePost = async () => {
-    if (!token) return;
+    if (token === null) return;
 
     let fileRes: fileResponse | null = null;
     let DetailFileRes: fileResponse | null = null;
