@@ -22,7 +22,7 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
   const [qnaRes, setQnaRes] = useState<responsePostReplies>();
 
   useEffect(() => {
-    if (!token) return;
+    if (token === null) return;
 
     const fetch = async () => {
       const data: productsRes = await getProductSeller(token);

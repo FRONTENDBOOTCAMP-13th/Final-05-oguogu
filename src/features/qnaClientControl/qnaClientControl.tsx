@@ -37,7 +37,7 @@ export default function QnaClientControls({ _id }: { _id: string }) {
   };
 
   const handleSubmit = async () => {
-    if (!token) return;
+    if (token === null) return;
 
     if (!title || !content) {
       toast.error('제목과 내용을 입력해주세요.');

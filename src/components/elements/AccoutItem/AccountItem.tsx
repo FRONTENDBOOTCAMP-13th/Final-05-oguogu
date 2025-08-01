@@ -11,7 +11,8 @@ import { useEffect, useState } from 'react';
 
 export default function AccountItem() {
   // 사용자 정보, 토큰 전역 상태에서 가져오기
-  const { userInfo, token } = useAuthStore();
+  const token = useAuthStore(state => state.token);
+  const userInfo = useAuthStore(state => state.userInfo);
   const [isEditing, setIsEditing] = useState(false); // 계좌 변경 중 여부
   const [account, setAccount] = useState('');
 
@@ -20,7 +21,7 @@ export default function AccountItem() {
   // 토큰이 있을 때만 상품, 주문 데이터 받아오기
   useEffect(() => {
     if (!userInfo) return;
-    if (!token) return;
+    if (token === null) return;
 
     /* 판매자 데이터 가져와 상태로 저장하기  */
     const fetch = async () => {

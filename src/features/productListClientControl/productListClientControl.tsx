@@ -21,7 +21,7 @@ export default function ProductListClientControl({ productList, type }: productL
 
   const token = useAuthStore(state => state.token);
   const toggleBookmark = async (_id: number) => {
-    if (!token) {
+    if (token === null) {
       toast.error('로그인이 필요합니다.');
       return;
     }
@@ -54,7 +54,7 @@ export default function ProductListClientControl({ productList, type }: productL
 
   // 북마크 목록 데이터를 초기에 불러오는 useEffect
   useEffect(() => {
-    if (!token) {
+    if (token === null) {
       return;
     }
 

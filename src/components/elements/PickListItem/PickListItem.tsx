@@ -21,7 +21,7 @@ export default function PickListItem({
 
   /* 찜하기 제거하기 버튼 */
   const handleDeleteBookmark = async () => {
-    if (!token) return;
+    if (token === null) return;
 
     try {
       await deleteBookmark(
@@ -41,7 +41,7 @@ export default function PickListItem({
 
   /* 장바구니 추가 버튼 */
   const handleAddCart = async () => {
-    if (!token) return;
+    if (token === null) return;
 
     try {
       await createCart({ product_id: item.product._id, quantity: 1 }, token);

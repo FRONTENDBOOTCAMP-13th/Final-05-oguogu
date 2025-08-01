@@ -66,7 +66,7 @@ export default function BuyBoxOption({
 }: BuyBoxOptionType) {
   const [count, setCount] = useState(1);
   const [totalPrice, setTotalPrice] = useState(price);
-  const TOKEN = useAuthStore(state => state.token); //전역 관리중인 사용자 토큰
+  const token = useAuthStore(state => state.token); //전역 관리중인 사용자 토큰
 
   const minusCount = () => {
     if (count > 1) {
@@ -220,7 +220,7 @@ export default function BuyBoxOption({
          text-[16px] h-[44px]
          px-6 py-1.5 rounded-sm w-full`}
         onClick={() => {
-          if (!TOKEN) {
+          if (token === null) {
             toast.error('로그인이 필요합니다.');
             return;
           }

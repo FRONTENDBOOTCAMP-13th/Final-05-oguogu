@@ -18,7 +18,7 @@ export default function SellerProductClientControl() {
 
   useEffect(() => {
     const fetch = async () => {
-      if (!token) return;
+      if (token === null) return;
       const res = await getProductSeller(token);
       console.log('결과', res);
       // setOrderRes(res);

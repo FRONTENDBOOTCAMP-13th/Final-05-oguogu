@@ -39,7 +39,7 @@ export default function OrderClientControl() {
 
   useEffect(() => {
     const fetchOrder = async () => {
-      if (!token) {
+      if (token === null) {
         return;
       }
       try {
@@ -55,7 +55,7 @@ export default function OrderClientControl() {
 
   const updateOrderStatus = async (order_id: number, newState: string) => {
     try {
-      if (!token) return;
+      if (token === null) return;
       const success = await updateOrder(order_id, { state: newState }, token);
 
       if (success) {

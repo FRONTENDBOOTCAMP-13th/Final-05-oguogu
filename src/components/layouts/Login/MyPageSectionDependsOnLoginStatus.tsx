@@ -21,7 +21,7 @@ export default function MyPageSectionDependsOnLoginStatus() {
   const [delivered, setDelivered] = useState(0);
 
   useEffect(() => {
-    if (!token) {
+    if (token === null) {
       return;
     }
 
