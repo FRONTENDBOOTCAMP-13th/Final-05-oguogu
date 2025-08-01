@@ -88,7 +88,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           <div className="flex">
             <span className="itemData">텃밭</span>
             <div className="itemDataExtra">
-              <span>{item.seller?.extra.businessName ?? '오구텃밭'}</span>
+              <span>{item.seller?.extra.businessInfo?.companyName ?? '오구텃밭'}</span>
               <div className="flex gap-1">
                 <Image src="/images/product-hatIcon.svg" alt="인증 아이콘" width={14} height={14} />
                 <span className="text-[10px]">인증된 판매자 입니다.</span>
@@ -105,7 +105,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           {/* 문의 */}
           <div className="flex">
             <span className="itemData">문의</span>
-            <span>{item.seller?.extra.businessNumber ?? '070-5959-5959'}</span>
+            <span>{item.seller?.extra.businessInfo?.businessTel ?? '070-5959-5959'}</span>
           </div>
         </section>
       ) : type === 'experience' ? (
@@ -152,7 +152,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           {/* 여행사 */}
           <div className="flex">
             <span className="itemData">여행사</span>
-            <span>{item.seller?.extra.businessName ?? '오구텃밭'}</span>
+            <span>{item.seller?.extra.businessInfo?.companyName ?? '오구텃밭'}</span>
           </div>
 
           {/* 가이드 정보 */}
@@ -215,7 +215,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           <div className="flex gap-2">
             <span className="itemData">텃밭</span>
             <div className="flex flex-col">
-              <span>{item.seller?.extra.businessName ?? '오구텃밭'}</span>
+              <span>{item.seller?.extra.businessInfo?.companyName ?? '오구텃밭'}</span>
               <div className="flex gap-1">
                 <Image src="/images/product-hatIcon.svg" alt="인증 아이콘" width={14} height={14} />
                 <span className="text-[10px]">인증된 판매자 입니다.</span>
@@ -226,7 +226,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           {/* 문의 */}
           <div className="flex gap-2">
             <span className="itemData">문의</span>
-            <span>{item.seller?.extra.businessNumber ?? '070-5959-5959'}</span>
+            <span>{item.seller?.extra.businessInfo?.businessTel ?? '070-5959-5959'}</span>
           </div>
         </section>
       ) : (

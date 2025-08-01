@@ -42,7 +42,7 @@ export interface UserSellerType {
   phone: string;                                            // 전화번호
   address: string;                                          // 주소
   type: 'seller';                                           // 사용자 유형
-  loginType: 'email' | 'kakao' | 'google' | 'github';       // 로그인 방식
+  loginType: 'email' | 'kakao' | 'google' | "github";       // 로그인 방식
   image: string;                                            // 프로필 이미지
   createdAt: string;                                        // 생성일자
   updatedAt: string;                                        // 수정일자
