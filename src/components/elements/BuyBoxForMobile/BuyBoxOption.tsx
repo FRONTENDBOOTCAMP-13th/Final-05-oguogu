@@ -90,7 +90,7 @@ export default function BuyBoxOption({
   const data = rawData;
 
   return (
-    <div className="text-base flex flex-col gap-6 p-4 rounded-se-xl rounded-ss-xl">
+    <div className="text-base flex flex-col gap-6 pt-2 rounded-se-xl rounded-ss-xl">
       {/* 상품명 */}
       <div className="flex flex-col gap-2">
         <span className="text-xs text-oguogu-gray-4">상품명</span>
