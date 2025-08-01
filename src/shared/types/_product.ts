@@ -1,3 +1,5 @@
+/* 해당 파일은 상품 타입 별로 어떤 속성이 들어가는지 참고하고자 작성한 파일입니다. */
+
 import { UserSellerType } from '@/shared/types/user';
 
 /* 0. 초기 데이터 타입  */
