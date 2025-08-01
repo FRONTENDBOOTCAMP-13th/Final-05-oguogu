@@ -16,17 +16,17 @@ import toast from 'react-hot-toast';
 
 export default function ProductItemList({ type }: ProductItemListType) {
   const [res, setRes] = useState<productsRes>();
-  const [bookmarkedMap, setBookmarkedMap] = useState<Map<number, number>>(new Map()); //상품 id, 북마크 id 쌍
+  const [bookmarkedMap, setBookmarkedMap] = useState<Map<number, number>>(new Map());
+  const isBookmarked = (_id: number) => bookmarkedMap.has(_id);
 
   /* Zustand 에서 스켈레톤 UI 작업을 위한 상태 가져오기 */
   const { isLoading, setLoading } = useLoadingStore();
-
-  const isBookmarked = (_id: number) => bookmarkedMap.has(_id);
 
   /* Zustand 에서 토큰 정보 가져오기 */
   const token = useAuthStore(state => state.token);
   const toggleBookmark = async (_id: number) => {
     if (!token) {
+      toast.error('로그인이 필요합니다.');
       return;
     }
 
@@ -40,11 +40,13 @@ export default function ProductItemList({ type }: ProductItemListType) {
 
         await deleteBookmark(bookmarkId, { target_id: 'any' }, token);
         updateMap.delete(_id);
+        toast.success('북마크가 제거되었습니다.');
       } else {
         const newBookmark: BookmarkPostResponse = await createBookmark({ target_id: _id }, token);
 
         if (newBookmark.ok) {
           updateMap.set(newBookmark.item.target_id, newBookmark.item._id);
+          toast.success('북마크가 추가되었습니다.');
         }
       }
       setBookmarkedMap(updateMap);

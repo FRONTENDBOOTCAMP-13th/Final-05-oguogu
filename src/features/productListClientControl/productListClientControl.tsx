@@ -15,19 +15,18 @@ import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
 export default function ProductListClientControl({ productList, type }: productListCientControlType) {
-  const [bookmarkedMap, setBookmarkedMap] = useState<Map<number, number>>(new Map()); //상품 id, 북마크 id 쌍
+  const [bookmarkedMap, setBookmarkedMap] = useState<Map<number, number>>(new Map()); // 상품 id, 북마크 id 쌍
 
   const isBookmarked = (_id: number) => bookmarkedMap.has(_id);
 
   const token = useAuthStore(state => state.token);
-
   const toggleBookmark = async (_id: number) => {
     if (!token) {
+      toast.error('로그인이 필요합니다.');
       return;
     }
 
     const isBookmarked = bookmarkedMap.has(_id);
-
     const updateMap = new Map(bookmarkedMap);
 
     try {
@@ -37,11 +36,13 @@ export default function ProductListClientControl({ productList, type }: productL
 
         await deleteBookmark(bookmarkId, { target_id: 'any' }, token);
         updateMap.delete(_id);
+        toast.success('북마크가 제거되었습니다.');
       } else {
         const newBookmark: BookmarkPostResponse = await createBookmark({ target_id: _id }, token);
 
         if (newBookmark.ok) {
           updateMap.set(newBookmark.item.target_id, newBookmark.item._id);
+          toast.success('북마크가 추가되었습니다.');
         }
       }
       setBookmarkedMap(updateMap);
@@ -51,6 +52,7 @@ export default function ProductListClientControl({ productList, type }: productL
     }
   };
 
+  // 북마크 목록 데이터를 초기에 불러오는 useEffect
   useEffect(() => {
     if (!token) {
       return;
