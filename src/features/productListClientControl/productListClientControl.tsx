@@ -1,6 +1,5 @@
 'use client';
 
-import CuteLoading from '@/components/elements/CuteLoading/CuteLoading';
 import CropItem from '@/components/elements/ProductItem/Item/CropItem';
 import ExperienceItem from '@/components/elements/ProductItem/Item/ExperienceItem';
 import GardenItem from '@/components/elements/ProductItem/Item/GardenItem';
@@ -16,7 +15,6 @@ import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
 export default function ProductListClientControl({ productList, type }: productListCientControlType) {
-  const [isLoading, setIsLoading] = useState(true);
   const [bookmarkedMap, setBookmarkedMap] = useState<Map<number, number>>(new Map()); //상품 id, 북마크 id 쌍
 
   const isBookmarked = (_id: number) => bookmarkedMap.has(_id);
@@ -25,7 +23,6 @@ export default function ProductListClientControl({ productList, type }: productL
 
   const toggleBookmark = async (_id: number) => {
     if (!token) {
-      setIsLoading(false);
       return;
     }
 
@@ -51,14 +48,11 @@ export default function ProductListClientControl({ productList, type }: productL
     } catch (error) {
       console.error('북마크 토글 실패', error);
       toast.error('북마크 처리에 실패했습니다.');
-    } finally {
-      setIsLoading(false);
     }
   };
 
   useEffect(() => {
     if (!token) {
-      setIsLoading(false);
       return;
     }
 
@@ -77,8 +71,6 @@ export default function ProductListClientControl({ productList, type }: productL
         }
       } catch (e) {
         console.error('북마크 가져오기 실패:', e);
-      } finally {
-        setIsLoading(false);
       }
     };
 

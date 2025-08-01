@@ -1,6 +1,5 @@
 'use client';
 import CardItem from '@/components/elements/cardItem/cardItem';
-import CuteLoading from '@/components/elements/CuteLoading/CuteLoading';
 import DeleteButton from '@/components/elements/DeleteButton/DeleteButton';
 import { CheckButtonForMypage } from '@/components/elements/InputButtonForMypage/InputButtonForMypage';
 import IsEmptyMessage from '@/components/elements/IsEmptyMessage/IsEmptyMessage';
@@ -15,7 +14,6 @@ import toast from 'react-hot-toast';
 export default function CartClientControl() {
   const token = useAuthStore(state => state.token);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
 
   const isLoggedIn = useAuthStore(state => state.isLoggedIn);

@@ -1,12 +1,9 @@
 'use client';
 
 import GoBackIcon from '@/features/goBackIcon/goBackIcon';
-import { useAuthStore } from '@/shared/store/authStore';
 import Link from 'next/link';
 
 export default function LinkHeader({ title, bgColor = 'default' }: { title: string; bgColor?: 'default' | 'garden' }) {
-  const { userInfo } = useAuthStore();
-
   return (
     <>
       <header className={bgColor === 'default' ? 'header' : 'headerForGarden'}>
