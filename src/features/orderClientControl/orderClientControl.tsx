@@ -33,7 +33,6 @@ export interface handleSubmitType {
 
 export default function OrderClientControl() {
   const [orders, setOrders] = useState<OrderListResponse>();
-  const [isLoading, setIsLoading] = useState(true);
 
   const token = useAuthStore(state => state.token);
   const isLoggedin = useAuthStore(state => state.isLoggedIn);
@@ -41,22 +40,18 @@ export default function OrderClientControl() {
   useEffect(() => {
     const fetchOrder = async () => {
       if (!token) {
-        setIsLoading(false);
         return;
       }
       try {
         const data = await getOrders(token);
         setOrders(data);
-      } finally {
-        setIsLoading(false);
+      } catch (err) {
+        console.log('에러 발생', err);
       }
     };
 
     fetchOrder();
   }, [token]);
-
-  console.log(orders);
-  console.log(orders?.item.length);
 
   const updateOrderStatus = async (order_id: number, newState: string) => {
     try {
@@ -182,9 +177,7 @@ export default function OrderClientControl() {
         {/* 주문 상세 내역: div 하위에 삼항연산자로 코드 작성 */}
         {/* lengh로 데이터 유무에 따라 페이지 렌더링을 다르게 함 */}
         <div className="border-t border-t-oguogu-black pt-4 flex flex-col justify-start items-center gap-8">
-          {isLoading ? (
-            <CuteLoading />
-          ) : isLoggedin ? (
+          {isLoggedin ? (
             orders?.item.length ? (
               orderList
             ) : (

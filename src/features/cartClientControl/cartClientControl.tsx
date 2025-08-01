@@ -15,7 +15,6 @@ import toast from 'react-hot-toast';
 export default function CartClientControl() {
   const token = useAuthStore(state => state.token);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
 
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
 
@@ -132,7 +131,6 @@ export default function CartClientControl() {
   useEffect(() => {
     const fetchCart = async () => {
       if (!token) {
-        setIsLoading(false);
         return;
       }
 
@@ -140,8 +138,8 @@ export default function CartClientControl() {
         const data: CartResponse = await getCart(token);
         setCartItems(data.item);
         console.log('data', data);
-      } finally {
-        setIsLoading(false);
+      } catch (err) {
+        console.log('에러 발생', err);
       }
     };
 
@@ -161,10 +159,6 @@ export default function CartClientControl() {
       handleDelete={handleDelete}
     />
   ));
-
-  if (isLoading) {
-    return <CuteLoading />;
-  }
 
   if (!isLoggedIn) {
     return (
