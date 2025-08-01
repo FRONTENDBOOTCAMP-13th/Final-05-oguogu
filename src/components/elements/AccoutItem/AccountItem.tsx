@@ -3,46 +3,44 @@
 import AccountForm from '@/components/elements/AccoutItem/AccountForm';
 import GetLoggedInUserData from '@/features/getLoggedInUserData/getLoggedInUserData';
 import { getOrdersSeller } from '@/shared/data/functions/order';
-import { getProductSeller } from '@/shared/data/functions/product';
+import { getUserDetail } from '@/shared/data/functions/user';
 import { useAuthStore } from '@/shared/store/authStore';
 import { OrderListResponse } from '@/shared/types/order';
-import { productsRes } from '@/shared/types/product';
+import { UserAccoutProps } from '@/shared/types/user';
 import { useEffect, useState } from 'react';
 
 export default function AccountItem() {
-  const [registeredAccount, setRegisteredAccount] = useState<string | null>(null); // 등록 여부
+  // 사용자 정보, 토큰 전역 상태에서 가져오기
+  const { userInfo, token } = useAuthStore();
   const [isEditing, setIsEditing] = useState(false); // 계좌 변경 중 여부
-  
-  const settlementInfo = [
-    { label: '정산 주기', value: '매월 10일' },
-    { label: '정산 대상 기간', value: '2025.07.01 ~ 2025.07.31' },
-    { label: '정산 계좌', value: registeredAccount ?? '미등록' },
-  ];
+  const [account, setAccount] = useState('');
 
-  const token = useAuthStore(state => state.token);
-
-  const [productRes, setProductRes] = useState<productsRes>();
   const [orderRes, setOrderRes] = useState<OrderListResponse>();
 
+  // 토큰이 있을 때만 상품, 주문 데이터 받아오기
   useEffect(() => {
+    if (!userInfo) return;
     if (!token) return;
 
+    /* 판매자 데이터 가져와 상태로 저장하기  */
     const fetch = async () => {
-      const data: productsRes = await getProductSeller(token);
       const orderData: OrderListResponse = await getOrdersSeller(token);
 
-      if (data.ok) {
-        setProductRes(data);
-      }
       if (orderData.ok) {
         setOrderRes(orderData);
       }
     };
     fetch();
-  }, [token]);
 
-  console.log(productRes);
-  console.log(orderRes);
+    /* 비동기로 데이터를 가져와 상태로 저장하기 */
+    const getUserData = async () => {
+      const userExtra: UserAccoutProps = await getUserDetail(userInfo._id, 'extra');
+      console.log(userExtra);
+      setAccount(userExtra.item.extra.accountNum);
+    };
+
+    getUserData();
+  }, [token, userInfo]);
 
   const totalPrice = orderRes?.item.reduce((orderSum, order) => {
     const productsSum = order.products.reduce((sum, prod) => {
@@ -56,8 +54,9 @@ export default function AccountItem() {
     return orderSum + productsSum;
   }, 0);
 
+  // 계좌 등록/변경 버튼 클릭 핸들러
   const handleChangeAccount = () => {
-    setIsEditing(true); // 계좌 변경 시작
+    setIsEditing(true);
   };
 
   return (
@@ -72,29 +71,34 @@ export default function AccountItem() {
           </p>
           <p>
             <span className="text-2xl font-bold text-oguogu-main">{totalPrice?.toLocaleString()}</span>
-            <span className="text-2xl text-oguogu-black">원 입니다.</span>
+            <span className="text-2xl text-oguogu-black"> 원 입니다.</span>
           </p>
         </section>
 
         {/* 정산 정보 */}
         <section className="flex flex-col gap-2 pt-4 pb-4 text-xs border-t border-b border-oguogu-gray-2">
-          {settlementInfo.map(({ label, value }) => (
-            <div key={label} className="flex gap-1">
-              <span className="text-oguogu-gray-4 min-w-[80px]">{label}</span>
-              <span>{value}</span>
-            </div>
-          ))}
+          <div className="flex gap-1">
+            <span className="text-oguogu-gray-4 min-w-[80px]">정산 주기</span>
+            <span>매월 10일</span>
+          </div>
+          <div className="flex gap-1">
+            <span className="text-oguogu-gray-4 min-w-[80px]">정산 대상 기간</span>
+            <span>2025.07.01 ~ 2025. 07.31</span>
+          </div>
+          <div className="flex gap-1">
+            <span className="text-oguogu-gray-4 min-w-[80px]">정산 계좌</span>
+            <span>{account! ?? '미등록'}</span>
+          </div>
         </section>
       </div>
 
       {/* 등록 중, 변경 중일 때만 폼 보이기 */}
       {isEditing && (
         <AccountForm
-          setRegisteredAccount={account => {
-            setRegisteredAccount(account);
-            setIsEditing(false); // 등록 완료 시 변경 모드 종료
-          }}
-          onCancel={() => setIsEditing(false)} // 변경 취소
+          id={userInfo!._id}
+          token={token!}
+          /*  setRegisteredAccount={(account, extraUpdates) => handleRegisteredAccount(account, extraUpdates)}
+          onCancel={() => setIsEditing(false)} // 변경 취소 */
         />
       )}
 
@@ -102,7 +106,7 @@ export default function AccountItem() {
       {!isEditing && (
         <>
           {/* 등록 안 된 경우 → 등록 버튼 */}
-          {!registeredAccount && (
+          {!userInfo?.extra?.settlementAccount && (
             <button
               className="w-full text-sm border rounded h-7 text-oguogu-black border-oguogu-main bg-oguogu-white hover:bg-oguogu-gray-1"
               onClick={handleChangeAccount}
@@ -112,7 +116,7 @@ export default function AccountItem() {
           )}
 
           {/* 등록된 경우 → 변경 버튼 */}
-          {registeredAccount && (
+          {userInfo?.extra?.settlementAccount && (
             <button
               className="w-full text-sm border rounded h-7 text-oguogu-black border-oguogu-main bg-oguogu-white hover:bg-oguogu-gray-1"
               onClick={handleChangeAccount}
