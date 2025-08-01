@@ -2,7 +2,7 @@ import ScrollToTopOnRouteChange from '@/features/resetScrollStatus/ResetScrollSt
 import ToggleOfficePageForSeller from '@/features/toggleOfficePageForSeller/ToggleOfficePageForSeller';
 import React from 'react';
 
-export default function MypageRootLayout({ children }: { children: React.ReactNode }) {
+export default function OfficeRootLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       {/* 스크롤을 최상단으로 강제 이동하는 코드 */}
