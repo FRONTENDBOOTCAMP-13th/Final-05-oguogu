@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 
 export default function LogOutIcon() {
-  const { logout } = useAuthStore();
+  const logout = useAuthStore(state => state.logout);
   const router = useRouter();
 
   const handeLogout = () => {

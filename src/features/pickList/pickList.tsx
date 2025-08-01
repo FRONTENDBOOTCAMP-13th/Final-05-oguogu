@@ -12,7 +12,8 @@ import PickListItem from '@/components/elements/PickListItem/PickListItem';
 
 export default function PickList() {
   const { fetchBookmarks } = useBookmarkStore();
-  const { token, userInfo } = useAuthStore();
+  const token = useAuthStore(state => state.token);
+  const userInfo = useAuthStore(state => state.userInfo);
   const [bookmarkItem, setBookmarkItem] = useState<BookmarkItem[] | null>(null);
   const [checkedType, setCheckedType] = useState<ProductType>('crop');
 
