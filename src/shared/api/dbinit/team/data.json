@@ -343,7 +343,7 @@
         "businessInfo": {
           "companyName": "흥부네농산물",
           "ownerName": "김흥부",
-          "businessTel": "123-45-67890",
+          "businessTel": "010-1234-5678",
           "businessNumber": "02-891-0123"
         },
 
@@ -369,7 +369,7 @@
         "businessInfo": {
           "companyName": "놀부네농산물",
           "ownerName": "이놀부",
-          "businessTel": "343-21-45332",
+          "businessTel": "010-5959-5959",
           "businessNumber": "02-456-7891"
         },
 
@@ -939,6 +939,7 @@
         "productCnt": 4,
         "representitiveKeyword": ["체험", "웰빙", "힐링"],
         "includedItems": ["식사 제공", "체험 상품"],
+        "unIncludedItems": ["숙소", "버스비"],
         "schedule": [
           { "day": 1, "startTime": "11:00", "title": "마을 소개 및 옥수수 재배법 교육" },
           { "day": 1, "startTime": "12:00", "title": "점심 식사" },
@@ -992,6 +993,7 @@
         "productCnt": 4,
         "representitiveKeyword": ["체험"],
         "includedItems": ["체험 상품"],
+        "unIncludedItems": ["숙소", "석식"],
         "schedule": [
           { "day": 1, "startTime": "14:00", "title": "옥수수 수확" },
           { "day": 1, "startTime": "15:00", "title": "옥수수 시식" }
@@ -1043,6 +1045,7 @@
         "productCnt": 2,
         "representitiveKeyword": ["낭만", "청춘", "젊음"],
         "includedItems": ["식사 제공", "숙소 제공", "픽업 버스 운행", "체험 상품"],
+        "unIncludedItems": ["가이드 비", "복귀 버스비"],
         "schedule": [
           { "day": 1, "startTime": "14:00", "title": "농촌마을 전입신고" },
           { "day": 1, "startTime": "15:00", "title": "1부 프로그램" },
@@ -1098,6 +1101,7 @@
         "productCnt": 4,
         "representitiveKeyword": ["가족", "대화", "힐링"],
         "includedItems": ["식사 제공", "체험 상품"],
+        "unIncludedItems": ["숙소", "버스비"],
         "schedule": [
           { "day": 1, "startTime": "13:00", "title": "오리엔테이션" },
           { "day": 1, "startTime": "13:30", "title": "경운기 투어" },

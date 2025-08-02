@@ -1,6 +1,6 @@
 const prettierConfig = {
   // 문자열에 single quote 사용(기본값 false)
-  singleQuote: ture,
+  singleQuote: true,
   // 코드 마지막에 세미콜론 추가(기본값 true)
   semi: true,
   // 들여쓰기를 탭으로 지정할지 여부(기본값 false)
