@@ -65,6 +65,7 @@ export default function AccountItem() {
 
   /* 정산 대상 기간 */
   const today = new Date();
+  const lastMonth = format(subMonths(today, 1), 'M');
   const lastMonthDate = subMonths(today, 1);
   const lastMonthStart = startOfMonth(lastMonthDate);
   const lastMonthEnd = endOfMonth(lastMonthDate);
@@ -79,7 +80,7 @@ export default function AccountItem() {
         <section className="flex flex-col items-center gap-2 p-4 pb-8 text-base">
           <p>
             <GetLoggedInUserData type="name" />
-            님의 7월 정산 예정 금액은
+            님의 {lastMonth}월 정산 예정 금액은
           </p>
           <p>
             <span className="text-2xl font-bold text-oguogu-main">{totalPrice?.toLocaleString()}</span>
