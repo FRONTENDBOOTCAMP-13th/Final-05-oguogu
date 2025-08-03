@@ -74,10 +74,11 @@ export default function LoginInput({
     '062',
     '063',
     '064',
+    '070',
   ];
   const isTelValid = (parts: typeof telParts) => {
     const { part1, part2, part3 } = parts;
-    const isAllFilled = part1.length < 3 && part1.length > 0 && part2.length < 4 && part3.length === 4;
+    const isAllFilled = part1.length < 3 && part1.length > 0 && part2.length > 0 && part3.length === 4;
     const isValidPrefix = validTelPrefixes.includes(part1);
     return isAllFilled && isValidPrefix;
   };
@@ -338,7 +339,7 @@ export default function LoginInput({
       onChange(fullNumber);
 
       if (!isTelValid(updated)) {
-        if (updated.part1.length === 3 && !validPrefixes.includes(updated.part1)) {
+        if (!validTelPrefixes.includes(updated.part1)) {
           setPhoneError('올바른 앞자리 번호(ex. 02, 031, 053)를 입력해주세요.');
         } else {
           setPhoneError('전화번호를 모두 입력해주세요');
