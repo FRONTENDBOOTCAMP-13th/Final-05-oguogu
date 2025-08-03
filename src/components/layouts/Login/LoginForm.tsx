@@ -13,8 +13,8 @@ import { useState } from 'react';
 import toast from 'react-hot-toast';
 
 export default function LoginForm() {
-  const [email, setEmail] = useState('test1@gmail.com');
-  const [password, setPassword] = useState('test1');
+  const [email, setEmail] = useState('seller1@gmail.com');
+  const [password, setPassword] = useState('seller1!!');
   const [autoLogin, setAutoLogin] = useState(false);
   const router = useRouter();
 
