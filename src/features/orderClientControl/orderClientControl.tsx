@@ -42,6 +42,7 @@ export default function OrderClientControl() {
       if (token === null) {
         return;
       }
+
       try {
         const data = await getOrders(token);
         setOrders(data);
@@ -131,6 +132,10 @@ export default function OrderClientControl() {
     );
 
     if (res.ok) {
+      /* 리뷰 등록 버튼 클릭 시, 데이터를 다시 가져와 상태로 변경하여 리프레시 */
+      const data = await getOrders(token);
+      setOrders(data);
+
       toast.success('리뷰가 등록되었습니다!');
       setTitle('');
       setContent('');
