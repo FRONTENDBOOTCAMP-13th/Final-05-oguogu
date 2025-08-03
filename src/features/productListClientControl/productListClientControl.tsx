@@ -11,12 +11,14 @@ import { getBookmarks } from '@/shared/data/functions/bookmarks';
 import { useAuthStore } from '@/shared/store/authStore';
 import { BookmarkPostResponse, BookmarkResponse } from '@/shared/types/bookmarkt';
 import { Item } from '@/shared/types/product';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
 export default function ProductListClientControl({ productList, type }: productListCientControlType) {
+  const router = useRouter();
+  const param = useSearchParams();
   const [bookmarkedMap, setBookmarkedMap] = useState<Map<number, number>>(new Map()); // 상품 id, 북마크 id 쌍
-
   const isBookmarked = (_id: number) => bookmarkedMap.has(_id);
 
   const token = useAuthStore(state => state.token);
@@ -80,29 +82,34 @@ export default function ProductListClientControl({ productList, type }: productL
   }, [token]);
 
   /* 필터링 기능 상태 관리 */
-  const [selectedCategory, setSelectedCategory] = useState('veggie');
-
-  /* URL 의 keyword QueryString 값을 가져와 상태로 저장  */
-  // const router = useRouter();
-  // const param = useSearchParams();
-  // const categoryParam = param.get('category') ?? '';
-  // useEffect(() => {
-  //   if (categoryParam) setSelectedCategory(categoryParam);
-  // }, [categoryParam]);
+  const [selectedCategory, setSelectedCategory] = useState('all');
 
   /* 필터링 기능 */
   const handleSelectType = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedCategory(e.target.value);
 
-    /* 라우팅 보류 */
-    // const newSearchParams = new URLSearchParams(param.toString());
-    // newSearchParams.set('category', e.target.value);
+    /* 쿼리스트링에 맞는 라우팅 경로 수정 */
+    const newSearchParams = new URLSearchParams(param.toString());
 
-    // router.push(`?${newSearchParams.toString()}`);
+    // select/option 의 데이터 값을 현재 데이터로 저장, 해당 데이터를 category 쿼리스트링 값으로 추가
+    newSearchParams.set('category', e.target.value);
+
+    // 현재 페이지를 해당 쿼리스트링이 있는 경로로 대체
+    const queryString = newSearchParams.toString();
+    router.replace(`?${queryString}`);
   };
+
+  /* URL 의 keyword QueryString 값을 가져와 상태로 저장  */
+  const categoryParam = param.get('category') ?? '';
+
+  useEffect(() => {
+    if (categoryParam) setSelectedCategory(categoryParam);
+  }, [categoryParam]);
 
   const filteredCropData = (item: Item[]) => {
     switch (selectedCategory) {
+      case 'all':
+        return item;
       case 'veggie':
         return item.filter(item => item.extra?.category === 'veggie');
       case 'fruit':
@@ -165,7 +172,9 @@ export default function ProductListClientControl({ productList, type }: productL
                 ? productList.filter((item: Item) => item.extra?.category === 'fruit').length
                 : selectedCategory === 'grain'
                   ? productList.filter((item: Item) => item.extra?.category === 'grain').length
-                  : productList.filter((item: Item) => item.extra?.category === 'mushroom').length
+                  : selectedCategory === 'mushroom'
+                    ? productList.filter((item: Item) => item.extra?.category === 'mushroom').length
+                    : productList.filter((item: Item) => item).length
             : type === 'experience'
               ? productList.filter((item: Item) => item.extra?.productType === 'experience').length
               : productList.filter((item: Item) => item.extra?.productType === 'gardening').length}
@@ -184,6 +193,7 @@ export default function ProductListClientControl({ productList, type }: productL
                 onChange={handleSelectType}
                 className="text-right pr-2"
               >
+                <option value="all">전체</option>
                 <option value="veggie">채소</option>
                 <option value="fruit">과일</option>
                 <option value="grain">쌀/곡류</option>
