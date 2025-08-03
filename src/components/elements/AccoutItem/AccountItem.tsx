@@ -39,7 +39,7 @@ export default function AccountItem() {
     const getUserData = async () => {
       const userExtra: UserAccoutType = await getUserDetail(userInfo._id, 'extra');
       setAccount(
-        `${userExtra.item.extra.accountInfo?.settlementBank} ${userExtra.item.extra.accountInfo?.settlementAccount}`,
+        `${userExtra.item.extra.accountInfo?.settlementBank ?? ''} ${userExtra.item.extra.accountInfo?.settlementAccount ?? ''}`,
       );
     };
 
@@ -101,7 +101,7 @@ export default function AccountItem() {
           </div>
           <div className="flex gap-1">
             <span className="text-oguogu-gray-4 min-w-[80px]">정산 계좌</span>
-            <span>{account ?? '미등록'}</span>
+            <span>{account.trim() !== '' ? account : '미등록'}</span>
           </div>
         </section>
       </div>
@@ -126,7 +126,7 @@ export default function AccountItem() {
             className="w-full text-sm border rounded h-7 text-oguogu-black border-oguogu-main bg-oguogu-white hover:bg-oguogu-gray-1"
             onClick={handleChangeAccount}
           >
-            {account !== '미등록' ? '정산 계좌 변경하기' : '정산 계좌 등록하기'}
+            {account.trim() !== '' ? '정산 계좌 변경하기' : '정산 계좌 등록하기'}
           </button>
         </>
       )}
