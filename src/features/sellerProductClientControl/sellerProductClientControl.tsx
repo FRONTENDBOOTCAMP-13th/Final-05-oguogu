@@ -114,7 +114,7 @@ export default function SellerProductClientControl() {
           key={item._id}
           title={item.name}
           category={getCategoryName(item.extra?.productType)}
-          price={`${item.price.toLocaleString()}`}
+          price={Math.round(Number(item?.price) * (1 - Number(item.extra?.dcRate) / 100)).toLocaleString() + '원'}
         />
       ))}
 
