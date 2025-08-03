@@ -88,7 +88,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           <div className="flex">
             <span className="itemData">텃밭</span>
             <div className="itemDataExtra">
-              <span>{item.seller?.extra.businessName ?? '오구텃밭'}</span>
+              <span>{item.seller?.extra.businessInfo?.companyName ?? '오구텃밭'}</span>
               <div className="flex gap-1">
                 <Image src="/images/product-hatIcon.svg" alt="인증 아이콘" width={14} height={14} />
                 <span className="text-[10px]">인증된 판매자 입니다.</span>
@@ -105,7 +105,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           {/* 문의 */}
           <div className="flex">
             <span className="itemData">문의</span>
-            <span>{item.seller?.extra.businessNumber ?? '070-5959-5959'}</span>
+            <span>{item.seller?.extra.businessInfo?.businessTel ?? '070-5959-5959'}</span>
           </div>
         </section>
       ) : type === 'experience' ? (
@@ -113,7 +113,9 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           {/* 출발 날짜 */}
           <div className="flex">
             <span className="itemData">날짜</span>
-            <span>{item.extra!.departureDate}</span>
+            <span>
+              {item.extra!.departureDate} ~ {item.extra?.returnDate}
+            </span>
           </div>
 
           {/* 여행 지역 */}
@@ -130,7 +132,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
 
           {/* 인원 */}
           <div className="flex">
-            <span className="itemData">인원</span>
+            <span className="itemData">모집 인원</span>
             <span>{item.quantity}명</span>
           </div>
 
@@ -143,7 +145,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           {/* 미포함 상품 */}
           <div className="flex">
             <span className="itemData">미포함</span>
-            <span>중식, 석식</span>
+            <span>{item.extra!.unincludedItems?.join(', ')}</span>
           </div>
 
           {/* 구분선 */}
@@ -152,7 +154,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           {/* 여행사 */}
           <div className="flex">
             <span className="itemData">여행사</span>
-            <span>{item.seller?.extra.businessName ?? '오구텃밭'}</span>
+            <span>{item.seller?.extra.businessInfo?.companyName ?? '오구텃밭'}</span>
           </div>
 
           {/* 가이드 정보 */}
@@ -193,7 +195,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           {/* 판매자 주소 */}
           <div className="flex gap-2">
             <span className="itemData">텃밭 위치</span>
-            <span>{item.seller?.address ?? '오구시 오구동 59-59'}</span>
+            <span>{item.extra?.region ?? '오구시 오구동 59-59'}</span>
           </div>
 
           {/* 구분선 */}
@@ -215,7 +217,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           <div className="flex gap-2">
             <span className="itemData">텃밭</span>
             <div className="flex flex-col">
-              <span>{item.seller?.extra.businessName ?? '오구텃밭'}</span>
+              <span>{item.seller?.extra.businessInfo?.companyName ?? '오구텃밭'}</span>
               <div className="flex gap-1">
                 <Image src="/images/product-hatIcon.svg" alt="인증 아이콘" width={14} height={14} />
                 <span className="text-[10px]">인증된 판매자 입니다.</span>
@@ -226,7 +228,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
           {/* 문의 */}
           <div className="flex gap-2">
             <span className="itemData">문의</span>
-            <span>{item.seller?.extra.businessNumber ?? '070-5959-5959'}</span>
+            <span>{item.seller?.extra.businessInfo?.businessTel ?? '070-5959-5959'}</span>
           </div>
         </section>
       ) : (

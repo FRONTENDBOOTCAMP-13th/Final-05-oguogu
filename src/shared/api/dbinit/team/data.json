@@ -1,0 +1,1829 @@
+{
+  "user": [
+    {
+      "email": "user1@gmail.com",
+      "password": "$2b$10$FcScXCrxU6nyBajm3QImZ.TRAaCkspwnLHEuW1W2Uo.WtemY4Av0.",
+      "name": "1조유저",
+      "phone": "01012123434",
+      "address": "서울 강서구 염창동 300",
+      "type": "user",
+      "loginType": "email",
+      "image": "/files/${clientId}/user-profile-MC03.svg",
+      "extra": {
+        "birthday": "1990-01-01",
+        "membershipClass": "MC03",
+        "coupons": [
+          { "id": "C001", "name": "5% 할인 쿠폰", "expiresAt": "2025-08-01" },
+          { "id": "C002", "name": "무료배송 쿠폰", "expiresAt": "2025-09-15" }
+        ],
+        "address": [
+          { "id": 1, "name": "회사", "value": "서울 종로구 청진동 246" },
+          { "id": 2, "name": "집", "value": "서울 강서구 염창동 300" }
+        ]
+      }
+    },
+    {
+      "email": "user2@gmail.com",
+      "password": "$2b$10$AO3a3MGrZ0BH21bDVGID9eADKKhYQRTfq6ZWQn3/.dICy60GQqHLC",
+      "name": "2조유저",
+      "phone": "01012123434",
+      "address": "서울 강서구 염창동 300",
+      "type": "user",
+      "loginType": "email",
+      "image": "/files/${clientId}/user-profile-MC03.svg",
+      "extra": {
+        "birthday": "1990-01-01",
+        "membershipClass": "MC03",
+        "coupons": [
+          { "id": "C001", "name": "5% 할인 쿠폰", "expiresAt": "2025-08-01" },
+          { "id": "C002", "name": "무료배송 쿠폰", "expiresAt": "2025-09-15" }
+        ],
+        "address": [
+          { "id": 1, "name": "회사", "value": "서울 종로구 청진동 246" },
+          { "id": 2, "name": "집", "value": "서울 강서구 염창동 300" }
+        ]
+      }
+    },
+    {
+      "email": "user3@gmail.com",
+      "password": "$2b$10$2b5USYlSOGD4Pk5.B3Mr0uGjQHXwswdc/KCCEuzPXspFJ/p57NL2y",
+      "name": "3조유저",
+      "phone": "01012123434",
+      "address": "서울 강서구 염창동 300",
+      "type": "user",
+      "loginType": "email",
+      "image": "/files/${clientId}/user-profile-MC03.svg",
+      "extra": {
+        "birthday": "1990-01-01",
+        "membershipClass": "MC03",
+        "coupons": [
+          { "id": "C001", "name": "5% 할인 쿠폰", "expiresAt": "2025-08-01" },
+          { "id": "C002", "name": "무료배송 쿠폰", "expiresAt": "2025-09-15" }
+        ],
+        "address": [
+          { "id": 1, "name": "회사", "value": "서울 종로구 청진동 246" },
+          { "id": 2, "name": "집", "value": "서울 강서구 염창동 300" }
+        ]
+      }
+    },
+    {
+      "email": "user4@gmail.com",
+      "password": "$2b$10$YpS0mYcw2FRzeeULfDPtAubhdiH4TBFlbkW4Nfhy7GiWcpVGMLqoy",
+      "name": "4조유저",
+      "phone": "01012123434",
+      "address": "서울 강서구 염창동 300",
+      "type": "user",
+      "loginType": "email",
+      "image": "/files/${clientId}/user-profile-MC03.svg",
+      "extra": {
+        "birthday": "1990-01-01",
+        "membershipClass": "MC03",
+        "coupons": [
+          { "id": "C001", "name": "5% 할인 쿠폰", "expiresAt": "2025-08-01" },
+          { "id": "C002", "name": "무료배송 쿠폰", "expiresAt": "2025-09-15" }
+        ],
+        "address": [
+          { "id": 1, "name": "회사", "value": "서울 종로구 청진동 246" },
+          { "id": 2, "name": "집", "value": "서울 강서구 염창동 300" }
+        ]
+      }
+    },
+    {
+      "email": "user5@gmail.com",
+      "password": "$2b$10$a0EEclFRysz.PjAiSSd8tO2CdhNYYG0fc.goo.zFilcTd5QpNTdrG",
+      "name": "5조유저",
+      "phone": "01012123434",
+      "address": "서울 강서구 염창동 300",
+      "type": "user",
+      "loginType": "email",
+      "image": "/files/${clientId}/user-profile-MC03.svg",
+      "extra": {
+        "birthday": "1990-01-01",
+        "membershipClass": "MC03",
+        "coupons": [
+          { "id": "C001", "name": "5% 할인 쿠폰", "expiresAt": "2025-08-01" },
+          { "id": "C002", "name": "무료배송 쿠폰", "expiresAt": "2025-09-15" }
+        ],
+        "address": [
+          { "id": 1, "name": "회사", "value": "서울 종로구 청진동 246" },
+          { "id": 2, "name": "집", "value": "서울 강서구 염창동 300" }
+        ]
+      }
+    },
+    {
+      "email": "user6@gmail.com",
+      "password": "$2b$10$XScFTgnNxKRzAZA.ZRSFKuTxhHvQ4LZJ9vSQhFArgOtBWTi71Pewy",
+      "name": "6조유저",
+      "phone": "01012123434",
+      "address": "서울 강서구 염창동 300",
+      "type": "user",
+      "loginType": "email",
+      "image": "/files/${clientId}/user-profile-MC03.svg",
+      "extra": {
+        "birthday": "1990-01-01",
+        "membershipClass": "MC03",
+        "coupons": [
+          { "id": "C001", "name": "5% 할인 쿠폰", "expiresAt": "2025-08-01" },
+          { "id": "C002", "name": "무료배송 쿠폰", "expiresAt": "2025-09-15" }
+        ],
+        "address": [
+          { "id": 1, "name": "회사", "value": "서울 종로구 청진동 246" },
+          { "id": 2, "name": "집", "value": "서울 강서구 염창동 300" }
+        ]
+      }
+    },
+    {
+      "email": "user7@gmail.com",
+      "password": "$2b$10$a6IsjR.Qson0ZdjzQl3eIu02i3r1fEC6KGA8qSDGju3G4NZyqgwUq",
+      "name": "7조유저",
+      "phone": "01012123434",
+      "address": "서울 강서구 염창동 300",
+      "type": "user",
+      "loginType": "email",
+      "image": "/files/${clientId}/user-profile-MC03.svg",
+      "extra": {
+        "birthday": "1990-01-01",
+        "membershipClass": "MC03",
+        "coupons": [
+          { "id": "C001", "name": "5% 할인 쿠폰", "expiresAt": "2025-08-01" },
+          { "id": "C002", "name": "무료배송 쿠폰", "expiresAt": "2025-09-15" }
+        ],
+        "address": [
+          { "id": 1, "name": "회사", "value": "서울 종로구 청진동 246" },
+          { "id": 2, "name": "집", "value": "서울 강서구 염창동 300" }
+        ]
+      }
+    },
+    {
+      "email": "user8@gmail.com",
+      "password": "$2b$10$UykllxPKNYMXOHCY4iDfHObGPVPfA/zmmeB5MZ07ASxyL3es1ZNyy",
+      "name": "8조유저",
+      "phone": "01012123434",
+      "address": "서울 강서구 염창동 300",
+      "type": "user",
+      "loginType": "email",
+      "image": "/files/${clientId}/user-profile-MC03.svg",
+      "extra": {
+        "birthday": "1990-01-01",
+        "membershipClass": "MC03",
+        "coupons": [
+          { "id": "C001", "name": "5% 할인 쿠폰", "expiresAt": "2025-08-01" },
+          { "id": "C002", "name": "무료배송 쿠폰", "expiresAt": "2025-09-15" }
+        ],
+        "address": [
+          { "id": 1, "name": "회사", "value": "서울 종로구 청진동 246" },
+          { "id": 2, "name": "집", "value": "서울 강서구 염창동 300" }
+        ]
+      }
+    },
+    {
+      "email": "user9@gmail.com",
+      "password": "$2b$10$19cqlFQYFDY8bged9v7uj.sT7pu0/J9PBi1rtb6gwPIiuRweGeUsm",
+      "name": "9조유저",
+      "phone": "01012123434",
+      "address": "서울 강서구 염창동 300",
+      "type": "user",
+      "loginType": "email",
+      "image": "/files/${clientId}/user-profile-MC03.svg",
+      "extra": {
+        "birthday": "1990-01-01",
+        "membershipClass": "MC03",
+        "coupons": [
+          { "id": "C001", "name": "5% 할인 쿠폰", "expiresAt": "2025-08-01" },
+          { "id": "C002", "name": "무료배송 쿠폰", "expiresAt": "2025-09-15" }
+        ],
+        "address": [
+          { "id": 1, "name": "회사", "value": "서울 종로구 청진동 246" },
+          { "id": 2, "name": "집", "value": "서울 강서구 염창동 300" }
+        ]
+      }
+    },
+    {
+      "email": "user10@gmail.com",
+      "password": "$2b$10$LwDUuIAe6ofP2g5IeWyNK.sshWuSHEHODT9OkZ5KpJf45LndyEhXa",
+      "name": "10조유저",
+      "phone": "01012123434",
+      "address": "서울 강서구 염창동 300",
+      "type": "user",
+      "loginType": "email",
+      "image": "/files/${clientId}/user-profile-MC03.svg",
+      "extra": {
+        "birthday": "1990-01-01",
+        "membershipClass": "MC03",
+        "coupons": [
+          { "id": "C001", "name": "5% 할인 쿠폰", "expiresAt": "2025-08-01" },
+          { "id": "C002", "name": "무료배송 쿠폰", "expiresAt": "2025-09-15" }
+        ],
+        "address": [
+          { "id": 1, "name": "회사", "value": "서울 종로구 청진동 246" },
+          { "id": 2, "name": "집", "value": "서울 강서구 염창동 300" }
+        ]
+      }
+    },
+    {
+      "email": "user11@gmail.com",
+      "password": "$2b$10$8dWVd.aMCUjNI39Fv.111usz6gIfZJpXTdEiLwvIRFhLLw.ViquqG",
+      "name": "11조유저",
+      "phone": "01012123434",
+      "address": "서울 강서구 염창동 300",
+      "type": "user",
+      "loginType": "email",
+      "image": "/files/${clientId}/user-profile-MC03.svg",
+      "extra": {
+        "birthday": "1990-01-01",
+        "membershipClass": "MC03",
+        "coupons": [
+          { "id": "C001", "name": "5% 할인 쿠폰", "expiresAt": "2025-08-01" },
+          { "id": "C002", "name": "무료배송 쿠폰", "expiresAt": "2025-09-15" }
+        ],
+        "address": [
+          { "id": 1, "name": "회사", "value": "서울 종로구 청진동 246" },
+          { "id": 2, "name": "집", "value": "서울 강서구 염창동 300" }
+        ]
+      }
+    },
+    {
+      "email": "user12@gmail.com",
+      "password": "$2b$10$Tq/sbpScAax3umAN4Zw9PetReM8uldMwh2oT.xboJYPY7fPs8EGAi",
+      "name": "12조유저",
+      "phone": "01012123434",
+      "address": "서울 강서구 염창동 300",
+      "type": "user",
+      "loginType": "email",
+      "image": "/files/${clientId}/user-profile-MC03.svg",
+      "extra": {
+        "birthday": "1990-01-01",
+        "membershipClass": "MC03",
+        "coupons": [
+          { "id": "C001", "name": "5% 할인 쿠폰", "expiresAt": "2025-08-01" },
+          { "id": "C002", "name": "무료배송 쿠폰", "expiresAt": "2025-09-15" }
+        ],
+        "address": [
+          { "id": 1, "name": "회사", "value": "서울 종로구 청진동 246" },
+          { "id": 2, "name": "집", "value": "서울 강서구 염창동 300" }
+        ]
+      }
+    },
+    {
+      "email": "user13@gmail.com",
+      "password": "$2b$10$V6EJf7Gzlj0q9cv6F8cLS.5mSx/c1ymNxy2xu/ogckcnkAtBIszHC",
+      "name": "13조유저",
+      "phone": "01012123434",
+      "address": "서울 강서구 염창동 300",
+      "type": "user",
+      "loginType": "email",
+      "image": "/files/${clientId}/user-profile-MC03.svg",
+      "extra": {
+        "birthday": "1990-01-01",
+        "membershipClass": "MC03",
+        "coupons": [
+          { "id": "C001", "name": "5% 할인 쿠폰", "expiresAt": "2025-08-01" },
+          { "id": "C002", "name": "무료배송 쿠폰", "expiresAt": "2025-09-15" }
+        ],
+        "address": [
+          { "id": 1, "name": "회사", "value": "서울 종로구 청진동 246" },
+          { "id": 2, "name": "집", "value": "서울 강서구 염창동 300" }
+        ]
+      }
+    },
+    {
+      "email": "user14@gmail.com",
+      "password": "$2b$10$pW0AsyBq8dJSIi4g5CLZGeuEpIJI95Z07uzU3wLkQFCJNXqapPMmq",
+      "name": "14조유저",
+      "phone": "01012123434",
+      "address": "서울 강서구 염창동 300",
+      "type": "user",
+      "loginType": "email",
+      "image": "/files/${clientId}/user-profile-MC03.svg",
+      "extra": {
+        "birthday": "1990-01-01",
+        "membershipClass": "MC03",
+        "coupons": [
+          { "id": "C001", "name": "5% 할인 쿠폰", "expiresAt": "2025-08-01" },
+          { "id": "C002", "name": "무료배송 쿠폰", "expiresAt": "2025-09-15" }
+        ],
+        "address": [
+          { "id": 1, "name": "회사", "value": "서울 종로구 청진동 246" },
+          { "id": 2, "name": "집", "value": "서울 강서구 염창동 300" }
+        ]
+      }
+    },
+    {
+      "email": "user15@gmail.com",
+      "password": "$2b$10$i9IHcPGUzrtFP8tUB6Pe8O8wp.r667KwvB.uzONX25ZVKKuMn/r5C",
+      "name": "15조유저",
+      "phone": "01012123434",
+      "address": "서울 강서구 염창동 300",
+      "type": "user",
+      "loginType": "email",
+      "image": "/files/${clientId}/user-profile-MC03.svg",
+      "extra": {
+        "birthday": "1990-01-01",
+        "membershipClass": "MC03",
+        "coupons": [
+          { "id": "C001", "name": "5% 할인 쿠폰", "expiresAt": "2025-08-01" },
+          { "id": "C002", "name": "무료배송 쿠폰", "expiresAt": "2025-09-15" }
+        ],
+        "address": [
+          { "id": 1, "name": "회사", "value": "서울 종로구 청진동 246" },
+          { "id": 2, "name": "집", "value": "서울 강서구 염창동 300" }
+        ]
+      }
+    },
+    {
+      "email": "seller1@gmail.com",
+      "password": "$2b$10$Q72//b/39dX.GGa8HWlhk.XmY2HHqqFnjKdZClixNg5QUMwQc6oRu",
+      "name": "1번셀러",
+      "phone": "01044532341",
+      "address": "서울특별시 강남구 테헤란로 123",
+      "type": "seller",
+      "loginType": "email",
+      "image": "uploadFiles/seller-3-profile.png",
+      "extra": {
+        "businessInfo": {
+          "companyName": "흥부네농산물",
+          "ownerName": "김흥부",
+          "businessTel": "010-1234-5678",
+          "businessNumber": "02-891-0123"
+        },
+
+        "certification": {
+          "status": "approved",
+          "requestedAt": "2025-07-01T09:30:00Z",
+          "reviewedAt": "2025-07-03T15:45:00Z",
+          "reviewer": "admin@5959.com",
+          "reason": "서류 이상 없음"
+        }
+      }
+    },
+    {
+      "email": "seller2@gmail.com",
+      "password": "$2b$10$l2PD/G3zq0LOTrcSDJzLCOPc8yVI0azh/iRd2ZpgZJJ0vHzE0B5L2",
+      "name": "2번셀러",
+      "phone": "01034212258",
+      "address": "부산광역시 해운대구 센텀중앙로 45",
+      "type": "seller",
+      "loginType": "email",
+      "image": "uploadFiles/seller-4-profile.png",
+      "extra": {
+        "businessInfo": {
+          "companyName": "놀부네농산물",
+          "ownerName": "이놀부",
+          "businessTel": "010-5959-5959",
+          "businessNumber": "02-456-7891"
+        },
+
+        "certification": {
+          "status": "approved",
+          "requestedAt": "2025-07-01T09:30:00Z",
+          "reviewedAt": "2025-07-03T15:45:00Z",
+          "reviewer": "admin@5959.com",
+          "reason": "서류 이상 없음"
+        }
+      }
+    },
+    {
+      "email": "admin1@gmail.com",
+      "password": "$2b$10$99FTFSxxnKOfK/Pc4QSvq.xzzBAsTsvr2kERDEF3j/P7ns8hZ7LJa",
+      "name": "관리자",
+      "phone": "01059595959",
+      "address": "서울시 강남구 역삼동 123",
+      "type": "admin",
+      "loginType": "email",
+      "image": "uploadFiles/seller-2-profile.png",
+      "extra": {
+        "birthday": "2000-01-01"
+      }
+    }
+  ],
+
+  "product": [
+    {
+      "seller_id": 16,
+      "name": "남다른 쫀득함! 신품종 전남 해남 25년 '햇' 오색촬옥수수",
+      "content": "씹으면 씹을수록 느껴지는 달짝지근함과 쫀득쫀득한 찰진 식감",
+      "price": 29900,
+      "shippingFees": 3000,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["옥수수"],
+        "originPlace": "국산",
+        "productionPlace": "전라남도 해남군",
+        "composition": "30개입 * 1개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 12499,
+        "dcRate": 40,
+        "productCnt": 10,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 16,
+      "name": "쫀득함이 남다른 의령 햇 미백 찰옥수수",
+      "content": "쫀득함과 구수한 맛이 일품인 건강한 미백 찰옥수수",
+      "price": 18500,
+      "shippingFees": 3000,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["옥수수"],
+        "originPlace": "국산",
+        "productionPlace": "경상남도 의령",
+        "composition": "10개입 * 1개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 2155,
+        "dcRate": 41,
+        "productCnt": 10,
+        "badge": {
+          "isNew": true,
+          "isInSeason": true,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+
+    {
+      "seller_id": 16,
+      "name": "은은하게 퍼지는 고소함과 달큰함이 좋은 유기농 냉동 찰옥수수",
+      "content": "이른 봄 씨앗을 파종해 직접 재배한 100% 국내산 냉동 찐 찰옥수수",
+      "price": 41900,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["옥수수", "찰옥수수"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 충주",
+        "composition": "18개입 * 6개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 854,
+        "dcRate": 26,
+        "productCnt": 4,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+
+    {
+      "seller_id": 16,
+      "name": "남다른 쫀득함! 신품종 전남 해남 25년 '햇' 오색촬옥수수",
+      "content": "재배 농가가 많지 않은 귀한 품종",
+      "price": 29900,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["옥수수"],
+        "originPlace": "국산",
+        "productionPlace": "전라남도 해남",
+        "composition": "10개입 * 1개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 1021,
+        "dcRate": 40,
+        "productCnt": 10,
+        "badge": {
+          "isNew": true,
+          "isInSeason": true,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 16,
+      "name": "유기농 홍천 찰옥수수 3입",
+      "content": "간편하게 누리는 찰진 고소함",
+      "price": 10900,
+      "shippingFees": 3000,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["옥수수"],
+        "originPlace": "국산",
+        "productionPlace": "강원도 홍천",
+        "composition": "3개입 * 1개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 34,
+        "dcRate": 8,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 16,
+      "name": "괴산 대학🌽찰 옥수수🌽30개✨달콤하고 쫀득함이 일품✨",
+      "content": "달콤하고 쫀득한 여름 대표 간식",
+      "price": 29800,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["옥수수"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "30개입 * 1개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 4,
+        "dcRate": 0,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 16,
+      "name": "❗특대 사이즈 찰옥수수 10개 ❗꿀맛 보장!! 부담없는 가격에 득템!!",
+      "content": "지금이 제일 맛있는 특대 사이즈 찰옥수수",
+      "price": 11900,
+      "shippingFees": 3000,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["옥수수"],
+        "originPlace": "국산",
+        "productionPlace": "전라남도 남원",
+        "composition": "10개입 * 1개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 0,
+        "dcRate": 0,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 16,
+      "name": "미백 찰옥수수 10송이 11-15cm 내외",
+      "content": "고랭지에서 재배해 더 쫀득한 미백 찰옥수수",
+      "price": 11900,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["옥수수"],
+        "originPlace": "국산",
+        "productionPlace": "강원도 홍천",
+        "composition": "10개입 * 1개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 0,
+        "dcRate": 0,
+        "productCnt": 100,
+        "badge": {
+          "isNew": true,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "쫀득 구수한~흑찰 옥수수 10개 20개 30개",
+      "content": "칼슘 흑찰옥수수! 우리 아이들이 좋아하는 흑찰옥수수",
+      "price": 19900,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["옥수수"],
+        "originPlace": "국산",
+        "productionPlace": "강원도 홍천",
+        "composition": "10개입 * 1개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 4532,
+        "dcRate": 35,
+        "productCnt": 10,
+        "badge": {
+          "isNew": true,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": true,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "경남 고성 찰옥수수 10개 미백찰 미흑찰 제철 생 옥수수",
+      "content": "고성바다의 시원한 바람결로 알알이 영근 찰옥수수를 만나보세요",
+      "price": 28000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["옥수수"],
+        "originPlace": "국산",
+        "productionPlace": "경상남도 고성",
+        "composition": "10개입 * 1개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 8775,
+        "dcRate": 55,
+        "productCnt": 10,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "찰옥수수 더 쫀득하고 연한 강원도 햇 옥수수",
+      "content": "충분한 퇴비, 두둑 간격을 넓혀 품질 향상",
+      "price": 15000,
+      "shippingFees": 3000,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["옥수수"],
+        "originPlace": "국산",
+        "productionPlace": "강원도 영월",
+        "composition": "10개입 * 1개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 18664,
+        "dcRate": 7,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
+      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
+      "price": 16000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["옥수수"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "10개입 * 1개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 31,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+
+    {
+      "seller_id": 16,
+      "name": "강원도 산골마을 찰옥수수 수확체험",
+      "content": "1인 20개 수확! 바베큐 중식 제공!",
+      "price": 30000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "/files/${clientId}/seller-2-exp2-1.jpg",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-exp2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "experience",
+        "category": [],
+        "filter": [],
+        "region": "강원도 인제",
+        "meetingPlace": "강원도 인제군 남면 부평정자로 1555",
+        "departureDate": "2025-08-12",
+        "returnDate": "2025-08-12",
+        "dcRate": 40,
+        "productCnt": 4,
+        "representitiveKeyword": ["체험", "웰빙", "힐링"],
+        "includedItems": ["식사 제공", "체험 상품"],
+        "unIncludedItems": ["숙소", "버스비"],
+        "schedule": [
+          { "day": 1, "startTime": "11:00", "title": "마을 소개 및 옥수수 재배법 교육" },
+          { "day": 1, "startTime": "12:00", "title": "점심 식사" },
+          { "day": 1, "startTime": "13:30", "title": "찰옥수수 수확" },
+          { "day": 1, "startTime": "14:30", "title": "찰옥수수 시식" }
+        ],
+        "guideInfo": {
+          "name": "신세경",
+          "contact": "010-7677-8123"
+        },
+        "badge": {
+          "isNew": false,
+          "isInSeason": null,
+          "isBest": true,
+          "isLowStock": true,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 16,
+      "name": "옥수수 수확 체험",
+      "content": "직접 딴 옥수수를 바로 삶아먹어요",
+      "price": 10000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "/files/${clientId}/seller-2-exp2-1.jpg",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-exp2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "experience",
+        "category": [],
+        "filter": [],
+        "region": "경상남도 거창",
+        "meetingPlace": "경상남도 거창군 북상면 송계로 738",
+        "departureDate": "2025-08-12",
+        "returnDate": "2025-08-12",
+        "dcRate": 0,
+        "productCnt": 4,
+        "representitiveKeyword": ["체험"],
+        "includedItems": ["체험 상품"],
+        "unIncludedItems": ["숙소", "석식"],
+        "schedule": [
+          { "day": 1, "startTime": "14:00", "title": "옥수수 수확" },
+          { "day": 1, "startTime": "15:00", "title": "옥수수 시식" }
+        ],
+        "guideInfo": {
+          "name": "전농희",
+          "contact": "010-4445-6667"
+        },
+        "badge": {
+          "isNew": true,
+          "isInSeason": null,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "[컨츄리타운] 촌캉스",
+      "content": "폭스클럽과 유명연예인도 다녀간 촌캉스!",
+      "price": 198000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "/files/${clientId}/seller-2-exp2-1.jpg",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-exp2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "experience",
+        "category": [],
+        "filter": [],
+        "region": "강원도 홍천",
+        "meetingPlace": "홍천터미널 정문 앞",
+        "departureDate": "2025-08-15",
+        "returnDate": "2025-08-16",
+        "dcRate": 30,
+        "productCnt": 2,
+        "representitiveKeyword": ["낭만", "청춘", "젊음"],
+        "includedItems": ["식사 제공", "숙소 제공", "픽업 버스 운행", "체험 상품"],
+        "unIncludedItems": ["가이드 비", "복귀 버스비"],
+        "schedule": [
+          { "day": 1, "startTime": "14:00", "title": "농촌마을 전입신고" },
+          { "day": 1, "startTime": "15:00", "title": "1부 프로그램" },
+          { "day": 1, "startTime": "18:00", "title": "시골 밥상(저녁)" },
+          { "day": 1, "startTime": "20:00", "title": "2부 프로그램" },
+          { "day": 2, "startTime": "10:00", "title": "정겨운 아침밥(아침)" },
+          { "day": 2, "startTime": "11:00", "title": "퇴소신고" }
+        ],
+        "guideInfo": {
+          "name": "김우리",
+          "contact": "010-1234-5678"
+        },
+        "badge": {
+          "isNew": false,
+          "isInSeason": null,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": true
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "고소한 대화 한 조각, 임실치즈마을 가족소풍",
+      "content": "임실 대표 관광지 치즈마을 당일 여행!",
+      "price": 92000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "/files/${clientId}/seller-2-exp2-1.jpg",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-exp2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "experience",
+        "category": [],
+        "filter": [],
+        "region": "전라북도 임실",
+        "meetingPlace": "전북특별자치도 임실군 임실읍 치즈마을길 96",
+        "departureDate": "2025-08-09",
+        "returnDate": "2025-08-09",
+        "dcRate": 45,
+        "productCnt": 4,
+        "representitiveKeyword": ["가족", "대화", "힐링"],
+        "includedItems": ["식사 제공", "체험 상품"],
+        "unIncludedItems": ["숙소", "버스비"],
+        "schedule": [
+          { "day": 1, "startTime": "13:00", "title": "오리엔테이션" },
+          { "day": 1, "startTime": "13:30", "title": "경운기 투어" },
+          { "day": 1, "startTime": "14:00", "title": "임실치즈피자 만들기" },
+          { "day": 1, "startTime": "15:00", "title": "마을 산책 - 농사이야기" },
+          { "day": 1, "startTime": "15:30", "title": "피크닉" },
+          { "day": 1, "startTime": "17:00", "title": "성가리 벽화마을 투어" }
+        ],
+        "guideInfo": {
+          "name": "이하나",
+          "contact": "010-1234-5678"
+        },
+        "badge": {
+          "isNew": true,
+          "isInSeason": null,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+
+    {
+      "seller_id": 16,
+      "name": "양배추",
+      "content": "양배추에서 조세호가 될 때까지",
+      "price": 30000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "/files/${clientId}/seller-2-gdn3-1.jpg",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-gdn3-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "gardening",
+        "category": [],
+        "filter": [],
+        "region": "경기 여주시 산북면 광여로 1509",
+        "deadline": "2025-08-15",
+        "harvestExpectedDate": "2025년 11월",
+        "harvestExpectedCnt": "5통",
+        "dcRate": 35,
+        "productCnt": 1,
+        "badge": {
+          "isNew": false,
+          "isInSeason": null,
+          "isBest": true,
+          "isLowStock": true,
+          "isSold": false
+        },
+        "period": [
+          { "date": "2025-08-18", "image": "src", "status": "seeding", "content": "양배추 재배, 오늘 시작합니다" },
+          { "date": "2025-09-04", "image": "src", "status": "growing", "content": "잘 커라 양배추야" },
+          { "date": "2025-09-17", "image": "src", "status": "growing", "content": "무럭무럭 잘 자라고 있습니다." },
+          { "date": "2025-10-04", "image": "src", "status": "growing", "content": "곧 있으면 수확할 수 있겠네요." },
+          { "date": "2025-10-15", "image": "src", "status": "havested", "content": "엄청 실하네요ㅎㅎ곧 배송 예정!" }
+        ]
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "청경채",
+      "content": "청경채의 성장 여정을 함께 해요",
+      "price": 15000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "/files/${clientId}/seller-2-gdn3-1.jpg",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-gdn3-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "gardening",
+        "category": [],
+        "filter": [],
+        "region": "경기 여주시 산북면 광여로 1509",
+        "deadline": "2025-08-09",
+        "harvestExpectedDate": "2025년 10월 초",
+        "harvestExpectedCnt": "2kg",
+        "dcRate": 25,
+        "productCnt": 1,
+        "badge": {
+          "isNew": true,
+          "isInSeason": null,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        },
+        "period": [
+          { "date": "2025-08-12", "image": "src", "status": "seeding", "content": "싹을 심었습니다." },
+          { "date": "2025-08-25", "image": "src", "status": "growing", "content": "싹이 자랐습니다." },
+          { "date": "2025-09-16", "image": "src", "status": "growing", "content": "잎이 무럭무럭 자라고 있습니다." },
+          { "date": "2025-09-30", "image": "src", "status": "growing", "content": "곧 있으면 수확할 수 있겠네요." },
+          { "date": "2025-10-19", "image": "src", "status": "havested", "content": "재배를 했습니다." }
+        ]
+      }
+    },
+    {
+      "seller_id": 16,
+      "name": "옥수수",
+      "content": "겨울에 수확하는 옥수수? 같이 키워주세요!",
+      "price": 27000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "/files/${clientId}/seller-2-gdn3-1.jpg",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-gdn3-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "gardening",
+        "category": [],
+        "filter": [],
+        "region": "중국",
+        "deadline": "2025-08-25",
+        "harvestExpectedDate": "2025년 12월",
+        "harvestExpectedCnt": "20개",
+        "dcRate": 59,
+        "productCnt": 1,
+        "badge": {
+          "isNew": false,
+          "isInSeason": null,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        },
+        "period": [
+          { "date": "2025-09-02", "image": "src", "status": "seeding", "content": "무럭 무럭 자라라" },
+          {
+            "date": "2025-09-23",
+            "image": "src",
+            "status": "growing",
+            "content": "체계적인 생산 공정 덕분에 신선하고 건강하게 자라고 있어요"
+          },
+          { "date": "2025-10-12", "image": "src", "status": "growing", "content": "유전자 조작 아닙니다. 대박이죠?" },
+          {
+            "date": "2025-11-02",
+            "image": "src",
+            "status": "havested",
+            "content": "올해는 조금 늦었습니다. 수확 완료!"
+          }
+        ],
+        "plots": [
+          {
+            "plotNumber": 1,
+            "name": "A-1",
+            "isAvailable": false,
+            "ownerUserId": 1002,
+            "plantedAt": "2025-07-01",
+            "status": "seeding"
+          },
+          {
+            "plotNumber": 2,
+            "name": "A-2",
+            "isAvailable": true,
+            "ownerUserId": null,
+            "plantedAt": "2025-07-01",
+            "status": "seeding"
+          },
+          {
+            "plotNumber": 3,
+            "name": "A-3",
+            "isAvailable": true,
+            "ownerUserId": null,
+            "plantedAt": null,
+            "status": "available"
+          },
+          {
+            "plotNumber": 4,
+            "name": "A-4",
+            "isAvailable": true,
+            "ownerUserId": null,
+            "plantedAt": null,
+            "status": "available"
+          },
+          {
+            "plotNumber": 5,
+            "name": "A-5",
+            "isAvailable": true,
+            "ownerUserId": null,
+            "plantedAt": null,
+            "status": "available"
+          }
+        ]
+      }
+    },
+
+    {
+      "seller_id": 17,
+      "name": "배추",
+      "content": "배추의 성장 여정을 함께 해요",
+      "price": 25000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "/files/${clientId}/seller-2-gdn3-1.jpg",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-gdn3-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "gardening",
+        "category": [],
+        "filter": [],
+        "region": "경기 여주시 산북면 광여로 1509",
+        "deadline": "2025-08-10",
+        "harvestExpectedDate": "2025년 10월 ~ 11월",
+        "harvestExpectedCnt": "6포기",
+        "dcRate": 40,
+        "productCnt": 1,
+        "badge": {
+          "isNew": true,
+          "isInSeason": null,
+          "isBest": true,
+          "isLowStock": true,
+          "isSold": false
+        },
+        "period": [
+          { "date": "2025-08-13", "image": "src", "status": "seeding", "content": "싹을 심었습니다." },
+          { "date": "2025-08-31", "image": "src", "status": "growing", "content": "싹이 자랐습니다." },
+          { "date": "2025-09-14", "image": "src", "status": "growing", "content": "잎이 무럭무럭 자라고 있습니다." },
+          { "date": "2025-10-01", "image": "src", "status": "growing", "content": "곧 있으면 수확할 수 있겠네요." },
+          { "date": "2025-10-21", "image": "src", "status": "havested", "content": "재배를 했습니다." }
+        ]
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "무",
+      "content": "무의 성장 여정을 함께 해요",
+      "price": 35000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "/files/${clientId}/seller-2-gdn3-1.jpg",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-gdn3-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "gardening",
+        "category": [],
+        "filter": [],
+        "region": "경기도 여주시 가남읍 상활1길 68",
+        "deadline": "2025-08-13",
+        "harvestExpectedDate": "2025년 10월 ~ 11월",
+        "harvestExpectedCnt": "10수",
+        "dcRate": 50,
+        "productCnt": 1,
+        "badge": {
+          "isNew": false,
+          "isInSeason": null,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": true
+        },
+        "period": [
+          { "date": "2025-08-20", "image": "src", "status": "seeding", "content": "싹을 심었습니다." },
+          {
+            "date": "2025-09-12",
+            "image": "src",
+            "status": "growing",
+            "content": "잎이 넓은게 올해 무는 기대가 됩니다"
+          },
+          {
+            "date": "2025-10-04",
+            "image": "src",
+            "status": "havested",
+            "content": "알이 실하죠? 곧 배송해드릴게요ㅎㅎ"
+          }
+        ]
+      }
+    },
+    {
+      "seller_id": 16,
+      "name": "브로콜리",
+      "content": "브로콜리의 성장 여정을 함께 해요",
+      "price": 22000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "/files/${clientId}/seller-2-gdn3-1.jpg",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-gdn3-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "gardening",
+        "category": [],
+        "filter": [],
+        "region": "경기도 여주시 가남읍 상활1길 68",
+        "deadline": "2025-08-12",
+        "harvestExpectedDate": "2025년 10월 ~ 11월",
+        "harvestExpectedCnt": "2kg",
+        "dcRate": 50,
+        "productCnt": 1,
+        "badge": {
+          "isNew": false,
+          "isInSeason": null,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        },
+        "period": [
+          { "date": "2025-08-14", "image": "src", "status": "seeding", "content": "싹을 심었습니다." },
+          {
+            "date": "2025-09-08",
+            "image": "src",
+            "status": "growing",
+            "content": "잎이 넓은게 올해 무는 기대가 됩니다"
+          },
+          {
+            "date": "2025-10-07",
+            "image": "src",
+            "status": "havested",
+            "content": "알이 실하죠? 곧 배송해드릴게요ㅎㅎ"
+          }
+        ]
+      }
+    }
+  ],
+
+  "order": [
+    {
+      "user_id": 4,
+      "state": "OS020",
+      "products": [
+        {
+          "_id": 2,
+          "seller_id": 2,
+          "state": "OS020",
+          "name": "헬로카봇 스톰다이버",
+          "image": {
+            "path": "/files/${clientId}/sample-diver.jpg",
+            "name": "sample-diver.jpg",
+            "originalname": "헬로카봇.jpg"
+          },
+          "quantity": 30,
+          "price": 34520,
+          "review_id": 3
+        }
+      ],
+      "cost": {
+        "products": 34520,
+        "shippingFees": 2500,
+        "discount": {
+          "products": 0,
+          "shippingFees": 0
+        },
+        "total": 37020
+      },
+      "address": {
+        "name": "회사",
+        "value": "서울시 강남구 신사동 234"
+      }
+    }
+  ],
+
+  "review": [
+    {
+      "rating": 1,
+      "content": "찰옥수수라고 해서 시켰는데, 딱딱해서 씹을 수가 없어요. 물론 제가 안삶아서 그렇긴 한데 이렇게 딱딱할 수 있나요? 어이가 없어서 정말",
+      "user_id": 8,
+      "product_id": 25,
+      "extra": {
+        "name": "찰옥수수가 아니라 철옥수수네요",
+        "image": [
+          {
+            "url": "/"
+          },
+          {
+            "url": "/"
+          }
+        ]
+      },
+
+      "user": {
+        "_id": 8,
+        "name": "정길용"
+      },
+      "product": {
+        "_id": 25,
+        "name": "제주농산물"
+      }
+    }
+  ],
+
+  "cart": [],
+
+  "bookmark": [],
+
+  "post": [
+    {
+      "type": "qna",
+      "product_id": 1,
+      "seller_id": 2,
+      "views": 5,
+      "user": {
+        "_id": 4,
+        "name": "제이지",
+        "image": "user-jayg.webp"
+      },
+      "title": "크기가 얼마만한가요?",
+      "content": "아이가 6살인데 가지고 놀기 적당한 크기인가요?",
+      "replies": [
+        {
+          "_id": "await nextSeq('reply')",
+          "user": {
+            "_id": 1,
+            "name": "관리자",
+            "image": "user-neo.png"
+          },
+          "content": "크기는 상품 상세정보에 나와 있습니다.",
+          "like": 5
+        }
+      ]
+    },
+    {
+      "type": "notice",
+      "title": "판매자 백오피스 개편 안내",
+      "content": "안녕하세요 오구텃밭입니다. 2025년 7월24일부로 판매자 백오피스 페이지에 대시보드 기능이 추가되었습니다. 이번 달 판매 수익, 전체 주문 내역, 판매 중인 상품 현황 등을 상세 페이지 이동 없이 백오피스에서 확인이 가능합니다. 감사합니다.",
+      "tag": "공지"
+    },
+    {
+      "type": "notice",
+      "title": "관리자 페이지 개편 안내",
+      "content": "안녕하세요, 오구텃밭입니다. 2025년 7월 24일자로 관리자 페이지가 전면 개편되었습니다. 이번 개편에서는 더욱 직관적인 UI/UX를 적용하여 관리자 분들이 효율적으로 정보를 확인하고 관리할 수 있도록 개선하였습니다. 특히, 주요 통계 대시보드가 추가되어 실시간 운영 현황을 한눈에 확인하실 수 있습니다. 더불어 페이지 로딩 속도 개선, 검색 기능 강화, 권한 관리 설정의 세분화 등 다양한 기능 향상이 이루어졌습니다. 앞으로도 더 나은 서비스를 위해 끊임없이 노력하겠습니다. 감사합니다.",
+      "tag": "공지"
+    },
+    {
+      "type": "notice",
+      "title": "서비스 점검 및 시스템 안내 (오전 2시 ~ 오전 5시)",
+      "content": "안녕하세요, 오구텃밭입니다. 고객님들께 보다 안정적인 서비스를 제공해드리기 위해 정기 시스템 점검을 진행할 예정입니다. 점검 일시: 2025년 7월 24일(목) 오전 2시부터 오전 5시까지. 해당 시간 동안 웹사이트 및 모바일 앱 서비스 이용이 일시적으로 제한될 수 있으며, 점검 후에는 보다 안정적이고 빠른 환경으로 접속하실 수 있습니다. 불편을 드려 대단히 죄송하며 너른 양해 부탁드립니다.",
+      "tag": "공지"
+    },
+    {
+      "type": "notice",
+      "title": "회원 혜택 추가 안내",
+      "content": "안녕하세요, 오구텃밭입니다. 2025년 7월 31일부터 더 풍성해진 회원 혜택 정책이 적용됩니다. 기존 등급별 할인 혜택에 더해 구매 누적 포인트 제도, 생일 쿠폰, 추천인 보너스가 새롭게 도입됩니다. 특히 VIP 회원에게는 매달 무료배송 쿠폰이 제공되며, 자주 찾는 고객님들을 위한 맞춤형 추천 상품 알림 기능도 추가됩니다. 자세한 내용은 마이페이지 내 '회원 혜택 안내'에서 확인하실 수 있습니다.",
+      "tag": "업데이트"
+    },
+    {
+      "type": "notice",
+      "title": "여름 맞이 전체 옥수수 상품 할인 안내",
+      "content": "안녕하세요, 오구텃밭입니다. 무더운 여름을 시원하게 날려줄 '여름 맞이 옥수수 할인 행사'를 준비했습니다. 2025년 7월 31일부터 8월 10일까지, 전 품목 옥수수 상품을 최대 30%까지 할인된 가격에 만나보실 수 있습니다. 당일 수확한 신선한 옥수수부터 찰옥수수, 미백옥수수 등 다양한 품종을 합리적인 가격으로 제공해드립니다. 수량 한정 이벤트이니 서둘러 이용해 주세요!",
+      "tag": "이벤트"
+    },
+    {
+      "type": "notice",
+      "title": "개인정보 처리방침 변경 안내",
+      "content": "안녕하세요, 오구텃밭입니다. 고객님의 개인정보 보호를 최우선으로 생각하는 오구텃밭에서는 관련 법령 및 정책 변경에 따라 2025년 8월 1일자로 개인정보 처리방침을 개정하게 되었습니다. 주요 변경사항으로는 수집 항목의 명확화, 보관 및 이용 기간의 구체화, 제3자 제공 내용 보완 등이 있으며, 보다 투명한 정보 제공을 위해 전체 내용을 홈페이지 하단의 '개인정보처리방침'에서 확인하실 수 있습니다. 변경된 방침은 2025년 8월 1일부터 적용됩니다.",
+      "tag": "공지"
+    },
+    {
+      "type": "notice",
+      "title": "장바구니 기능 개선 및 오류 수정",
+      "content": "안녕하세요, 오구텃밭입니다. 고객님들께서 많이 요청해주셨던 장바구니 기능이 한층 더 편리하게 개선되었습니다. 2025년 8월 1일부터 상품 수량 조정 시 자동 저장 기능이 추가되었으며, 상품 품절 시 별도의 안내 팝업이 표시됩니다. 또한 일부 브라우저에서 장바구니 내 항목이 삭제되지 않던 오류를 수정하였습니다. 앞으로도 고객님의 쇼핑 편의를 최우선으로 생각하며 개선을 이어가겠습니다.",
+      "tag": "업데이트"
+    },
+    {
+      "type": "notice",
+      "title": "앱 UI 개선 사항 안내",
+      "content": "안녕하세요, 오구텃밭입니다. 2025년 8월 2일부터 모바일 앱의 전반적인 디자인과 사용자 경험(UI/UX)이 개선되었습니다. 메인 홈 화면 구조가 간결하게 재배치되어 원하는 정보를 더 빠르게 찾을 수 있으며, 상품 상세 페이지의 이미지 확대 기능, 후기 탭 개별 정렬 기능 등이 추가되었습니다. 고객님의 사용 편의성을 높이기 위해 지속적인 앱 업데이트를 이어나가겠습니다.",
+      "tag": "업데이트"
+    },
+    {
+      "type": "notice",
+      "title": "8월 한정 주말 특가 행사",
+      "content": "안녕하세요, 오구텃밭입니다. 2025년 8월 주말 동안만 진행되는 특별한 할인 행사 소식을 전해드립니다. 매주 금~일요일 동안 인기 상품을 최대 40%까지 할인된 가격에 구매하실 수 있으며, 특가 상품은 매주 변경됩니다. 할인은 재고 소진 시 조기 종료될 수 있으며, 이벤트 페이지에서 매주 금요일 오전 10시에 해당 주 특가 상품이 공개됩니다. 많은 관심과 참여 부탁드립니다.",
+      "tag": "이벤트"
+    },
+    {
+      "type": "notice",
+      "title": "택배 배송 지연 안내 (폭염 영향)",
+      "content": "안녕하세요, 오구텃밭입니다. 최근 이어지는 폭염으로 인해 일부 지역의 택배 배송 일정에 차질이 발생하고 있습니다. 특히 냉장·냉동 상품의 경우 신선도를 유지하기 위한 포장 및 운송 과정에서 평소보다 시간이 지연될 수 있습니다. 고객님의 양해를 부탁드리며, 최대한 빠르고 안전하게 배송될 수 있도록 택배사와 긴밀히 협력하고 있습니다. 이용에 불편을 드려 진심으로 사과드립니다.",
+      "tag": "공지"
+    },
+    {
+      "type": "notice",
+      "title": "신규 가입 이벤트 - 선착순 사은품 증정",
+      "content": "안녕하세요, 오구텃밭입니다. 2025년 8월 3일부터 신규 회원 가입 고객님을 대상으로 선착순 500명에게 친환경 장바구니 또는 유기농 미니 세트를 증정하는 이벤트를 진행합니다. 회원 가입 후 첫 구매를 완료한 고객님께는 자동으로 사은품이 발송되며, 마이페이지에서 발송 여부를 확인하실 수 있습니다. 사은품 수량은 한정되어 있으며 조기 소진 시 이벤트는 종료됩니다. 많은 참여 바랍니다.",
+      "tag": "이벤트"
+    },
+
+    {
+      "type": "farm",
+      "product_id": 11,
+      "seller_id": 3,
+      "views": 0,
+      "user": {
+        "_id": 3,
+        "name": "김농부",
+        "image": "user-farmer.png"
+      },
+      "title": "우리 밭에서 상추가 자라요!",
+      "content": "비 온 다음날이라 그런지 훨씬 푸릇푸릇해졌어요 🌱",
+      "images": ["/files/3/farm-lettuce1.jpg", "/files/3/farm-lettuce2.jpg"],
+      "extra": {
+        "weather": "비 온 뒤 맑음",
+        "temperature": "22도",
+        "memo": "다음주엔 김장 채소 심기!"
+      }
+    },
+
+    {
+      "type": "faq",
+      "title": "직접 수령은 가능한가요?",
+      "content": "안녕하세요, 오구텃밭입니다. 현재 오구텃밭에서 판매 중인 상품은 모두 택배로 수령이 가능합니다. 직접 수령을 희망하시는 경우 해당 농가에 직접 연락하시어 문의해주시기 바랍니다. 감사합니다.",
+      "tag": "주문"
+    },
+    {
+      "type": "faq",
+      "title": "선물 포장도 가능한가요?",
+      "content": "안녕하세요, 오구텃밭입니다. 현재 일부 상품에 한해 선물 포장 옵션을 제공하고 있으며, 상품 상세 페이지 내 '포장 옵션 선택' 항목에서 확인하실 수 있습니다. 포장이 가능한 경우, 추가 포장 비용이 발생할 수 있으며, 요청 사항은 주문 시 메모란에 남겨주시기 바랍니다.",
+      "tag": "주문"
+    },
+    {
+      "type": "faq",
+      "title": "주문한 상품은 언제 배송되나요?",
+      "content": "안녕하세요, 오구텃밭입니다. 일반적으로 상품은 결제일 기준으로 1~3일 내에 발송되며, 배송은 평균적으로 2~5일 소요됩니다. 다만, 신선식품의 경우 수확일이나 생산 일정에 따라 배송일이 다소 지연될 수 있습니다. 각 상품의 상세페이지에서 예상 배송 일정을 확인하실 수 있습니다.",
+      "tag": "배송"
+    },
+    {
+      "type": "faq",
+      "title": "배송비는 어떻게 책정되나요?",
+      "content": "안녕하세요, 오구텃밭입니다. 배송비는 각 판매자 또는 상품마다 다를 수 있으며, 상품 상세페이지 또는 결제 페이지에서 확인 가능합니다. 일정 금액 이상 구매 시 무료 배송 혜택이 적용될 수 있으며, 도서산간 지역의 경우 추가 배송비가 발생할 수 있습니다.",
+      "tag": "배송"
+    },
+    {
+      "type": "faq",
+      "title": "상품에 문제가 있을 경우 교환이나 환불이 가능한가요?",
+      "content": "안녕하세요, 오구텃밭입니다. 상품 수령 후 문제가 있을 경우, 수령일 기준 2일 이내 고객센터 또는 1:1 문의를 통해 사진과 함께 내용을 접수해주시면 신속하게 확인 후 교환 또는 환불을 도와드리겠습니다. 단, 신선식품 특성상 단순 변심에 의한 교환/환불은 어려운 점 양해 부탁드립니다.",
+      "tag": "교환/환불"
+    },
+    {
+      "type": "faq",
+      "title": "비회원도 주문할 수 있나요?",
+      "content": "안녕하세요, 오구텃밭입니다. 오구텃밭에서는 비회원 주문도 가능합니다. 다만, 주문 내역 조회나 사후 지원(교환/환불 등)의 어려움이 있을 수 있으므로 회원가입 후 이용하시는 것을 권장드립니다. 회원가입 시 다양한 혜택도 함께 제공됩니다.",
+      "tag": "주문"
+    },
+    {
+      "type": "faq",
+      "title": "영수증이나 세금계산서 발급이 가능한가요?",
+      "content": "안녕하세요, 오구텃밭입니다. 주문 완료 후 마이페이지 내 '주문 내역'에서 현금영수증 또는 세금계산서 발급을 요청하실 수 있습니다. 사업자 고객의 경우 주문 시 사업자 정보를 정확히 입력해 주시기 바랍니다.",
+      "tag": "결제"
+    },
+    {
+      "type": "faq",
+      "title": "예약 주문 상품은 언제 발송되나요?",
+      "content": "안녕하세요, 오구텃밭입니다. 예약 주문 상품은 상품 상세 페이지에 안내된 예상 발송일에 맞춰 순차적으로 출고됩니다. 농산물의 경우 작황 상황에 따라 출고 일정이 일부 변경될 수 있으며, 변경 시 별도 안내드립니다.",
+      "tag": "배송"
+    },
+    {
+      "type": "faq",
+      "title": "상품 후기 작성은 어떻게 하나요?",
+      "content": "안녕하세요, 오구텃밭입니다. 상품 수령 후 마이페이지의 '주문 내역'에서 해당 상품을 선택하시면 후기 작성이 가능합니다. 정성스러운 후기를 남겨주시면 적립금 혜택이 제공되며, 우수 후기로 선정될 경우 추가 혜택도 드립니다.",
+      "tag": "리뷰"
+    },
+    {
+      "type": "faq",
+      "title": "구매한 상품에 대한 영양정보는 어디에서 확인할 수 있나요?",
+      "content": "안녕하세요, 오구텃밭입니다. 대부분의 상품은 상세 페이지 내에 영양정보 및 성분 정보가 기재되어 있습니다. 별도 표기가 없는 경우, 고객센터로 문의주시면 해당 정보를 제공해드릴 수 있도록 하겠습니다.",
+      "tag": "상품정보"
+    },
+
+    {
+      "type": "qna",
+      "product_id": 1,
+      "seller_id": 2,
+      "views": 5,
+      "user": {
+        "_id": 1,
+        "name": "제이지",
+        "image": "user-jayg.webp"
+      },
+      "title": "언제 배달이 되나요??",
+      "content": "주문한지 1년이 지났는데 소식이 없어요..",
+      "replies": [
+        {
+          "user": {
+            "_id": 1,
+            "name": "관리자",
+            "image": "user-neo.png"
+          },
+          "content": "오늘 출발했습니다. 죄송합니다.",
+          "like": 5
+        }
+      ]
+    },
+    {
+      "type": "qna",
+      "product_id": 1,
+      "seller_id": 2,
+      "views": 5,
+      "user": {
+        "_id": 1,
+        "name": "제이지",
+        "image": "user-jayg.webp"
+      },
+      "title": "크기가 얼마만한가요?",
+      "content": "아이가 6살인데 가지고 놀기 적당한 크기인가요?",
+      "replies": [
+        {
+          "user": {
+            "_id": 1,
+            "name": "관리자",
+            "image": "user-neo.png"
+          },
+          "content": "크기는 상품 상세정보에 나와 있습니다.",
+          "like": 5
+        }
+      ]
+    },
+    {
+      "type": "qna",
+      "product_id": 1,
+      "seller_id": 2,
+      "views": 5,
+      "user": {
+        "_id": 11,
+        "name": "제이지",
+        "image": "user-jayg.webp"
+      },
+      "title": "크기가 얼마만한가요?",
+      "content": "아이가 6살인데 가지고 놀기 적당한 크기인가요?",
+      "replies": [
+        {
+          "user": {
+            "_id": 1,
+            "name": "관리자",
+            "image": "user-neo.png"
+          },
+          "content": "크기는 상품 상세정보에 나와 있습니다.",
+          "like": 5
+        }
+      ]
+    },
+    {
+      "type": "qna",
+      "product_id": 1,
+      "seller_id": 2,
+      "views": 5,
+      "user": {
+        "_id": 11,
+        "name": "제이지",
+        "image": "user-jayg.webp"
+      },
+      "title": "크기가 얼마만한가요?",
+      "content": "아이가 6살인데 가지고 놀기 적당한 크기인가요?",
+      "replies": [
+        {
+          "user": {
+            "_id": 1,
+            "name": "관리자",
+            "image": "user-neo.png"
+          },
+          "content": "크기는 상품 상세정보에 나와 있습니다.",
+          "like": 5
+        }
+      ]
+    }
+  ],
+
+  "code": [],
+
+  "config": []
+}

@@ -1,17 +1,17 @@
-'use client';
+"use client";
 
-import FilterButtonForMypage from '@/components/elements/InputButtonForMypage/InputButtonForMypage';
-import IsEmptyMessage from '@/components/elements/IsEmptyMessage/IsEmptyMessage';
-import OrderItem from '@/components/elements/OrderItem/OrderItem';
-import { uploadFile } from '@/shared/data/actions/file';
-import { updateOrder } from '@/shared/data/actions/order';
-import { createReplie } from '@/shared/data/actions/replies';
-import { getOrders } from '@/shared/data/functions/order';
-import { useAuthStore } from '@/shared/store/authStore';
-import { fileResponse } from '@/shared/types/file';
-import { OrderListResponse } from '@/shared/types/order';
-import { useEffect, useState } from 'react';
-import toast from 'react-hot-toast';
+import FilterButtonForMypage from "@/components/elements/InputButtonForMypage/InputButtonForMypage";
+import IsEmptyMessage from "@/components/elements/IsEmptyMessage/IsEmptyMessage";
+import OrderItem from "@/components/elements/OrderItem/OrderItem";
+import { uploadFile } from "@/shared/data/actions/file";
+import { updateOrder } from "@/shared/data/actions/order";
+import { createReplie } from "@/shared/data/actions/replies";
+import { getOrders } from "@/shared/data/functions/order";
+import { useAuthStore } from "@/shared/store/authStore";
+import { fileResponse } from "@/shared/types/file";
+import { OrderListResponse } from "@/shared/types/order";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 export interface handleSubmitType {
   title: string;
@@ -42,11 +42,12 @@ export default function OrderClientControl() {
       if (token === null) {
         return;
       }
+
       try {
         const data = await getOrders(token);
         setOrders(data);
       } catch (err) {
-        console.log('에러 발생', err);
+        console.log("에러 발생", err);
       }
     };
 
@@ -69,7 +70,7 @@ export default function OrderClientControl() {
         );
       }
     } catch (err) {
-      console.error('주문 상태 변경 중 오류 발생:', err);
+      console.error("주문 상태 변경 중 오류 발생:", err);
     }
   };
 
@@ -91,7 +92,7 @@ export default function OrderClientControl() {
     token,
   }: handleSubmitType) => {
     if (!title || !content || rating === 0) {
-      toast.error('제목, 내용, 별점을 모두 입력해주세요.');
+      toast.error("제목, 내용, 별점을 모두 입력해주세요.");
       return;
     }
 
@@ -102,14 +103,14 @@ export default function OrderClientControl() {
     // 이미지가 있을 때만 파일 업로드 처리
     if (imageFile) {
       const formData = new FormData();
-      formData.append('attach', imageFile);
+      formData.append("attach", imageFile);
 
       fileRes = await uploadFile(formData);
       console.log(fileRes);
 
       if (!fileRes?.ok) {
         console.error(fileRes?.message);
-        toast.error('이미지 업로드에 실패했습니다.');
+        toast.error("이미지 업로드에 실패했습니다.");
         setIsLoading(false);
         return;
       }
@@ -131,25 +132,26 @@ export default function OrderClientControl() {
     );
 
     if (res.ok) {
-      toast.success('리뷰가 등록되었습니다!');
-      setTitle('');
-      setContent('');
+      toast.success("리뷰가 등록되었습니다!");
+      setTitle("");
+      setContent("");
       setRating(0);
       setImageFile(null);
       setImagePreview(null);
       setIsLoading(false);
       setIsOpen(false); // 폼 닫기
-      setSelectedFileName('');
+      setSelectedFileName("");
+      window.location.reload();
     } else {
-      setTitle('');
-      setContent('');
+      setTitle("");
+      setContent("");
       setRating(0);
       setImageFile(null);
       setImagePreview(null);
       setIsLoading(false);
       setIsOpen(false); // 폼 닫기
-      setSelectedFileName('');
-      toast.error(res.message || '등록이 실패했습니다. 다시 시도해주세요');
+      setSelectedFileName("");
+      toast.error(res.message || "등록이 실패했습니다. 다시 시도해주세요");
       console.error(res.message);
     }
   };

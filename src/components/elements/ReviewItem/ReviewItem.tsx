@@ -23,29 +23,21 @@ export default function ReviewItem({ name, email, res }: ReviewItemType) {
    * @param {string} name - 원본 이름
    * @returns {string} 마스킹된 이름
    */
+  // 이름 *표로 변환해주는 함수
   function maskName(name: string): string {
     if (!name) return '';
-    const first = name[0];
-    return first + '*'.repeat(name.length - 1);
+    if (name.length <= 2) return name; // 두 글자 이하면 마스킹 생략
+
+    return name[0] + '*'.repeat(name.length - 2) + name[name.length - 1];
   }
 
-  /**
-   * 이메일 마스킹 처리 함수
-   * 예: abcdef@gmail.com → abc***
-   *
-   * @param {string} email - 원본 이메일
-   * @returns {string} 마스킹된 이메일 접두사
-   */
+  // 이메일 *표로 변환해주는 함수
   function maskEmail(email: string): string {
     if (!email) return '';
-
     const atIndex = email.indexOf('@');
     const prefix = atIndex !== -1 ? email.slice(0, atIndex) : email;
-
-    const visibleLength = 3;
-    const visible = prefix.slice(0, visibleLength);
-    const hidden = '*'.repeat(Math.max(prefix.length - visibleLength, 1));
-
+    const visible = prefix.slice(0, 3);
+    const hidden = '*'.repeat(Math.max(prefix.length - 3, 1));
     return visible + hidden;
   }
 
@@ -93,7 +85,7 @@ export default function ReviewItem({ name, email, res }: ReviewItemType) {
         </div>
         {/* 리뷰 이미지 창 */}
         <div className="flex gap-2">
-          {imageUrl && (
+          {/* {imageUrl && (
             <div className="flex gap-2">
               <Image
                 className="w-[90px] h-[90px] object-cover rounded-[4px]"
@@ -103,7 +95,16 @@ export default function ReviewItem({ name, email, res }: ReviewItemType) {
                 height={90}
               />
             </div>
-          )}
+          )} */}
+          <div className="flex gap-2">
+            <Image
+              className="w-[90px] h-[90px] object-cover rounded-[4px]"
+              src={res.extra.imagePath}
+              alt="상품 이미지"
+              width={90}
+              height={90}
+            />
+          </div>
         </div>
         <div>
           <p className="text-[16px] text-oguogu-black">{res.extra.name}</p>

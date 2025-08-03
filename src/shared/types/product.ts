@@ -11,9 +11,12 @@ export interface Seller {
   phone: string;
   _id: number;
   extra: {
-    businessLicenseImage: string;
-    businessName: string;
-    businessNumber: string;
+    businessInfo?: {
+      companyName: string; // 상호명
+      ownerName: string; // 대표자명
+      businessTel: string; // 사업자 대표 전화
+      businessNumber: string; // 사업자 등록번호
+    };
     certification: {
       status: string;
       requestedAt: string;
