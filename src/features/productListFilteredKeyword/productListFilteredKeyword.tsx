@@ -4,10 +4,15 @@ import CuteLoading from '@/components/elements/CuteLoading/CuteLoading';
 import CropItem from '@/components/elements/ProductItem/Item/CropItem';
 import ExperienceItem from '@/components/elements/ProductItem/Item/ExperienceItem';
 import GardenItem from '@/components/elements/ProductItem/Item/GardenItem';
+import { createBookmark, deleteBookmark } from '@/shared/data/actions/bookmarks';
+import { getBookmarks } from '@/shared/data/functions/bookmarks';
 import { getProducts } from '@/shared/data/functions/product';
+import { useAuthStore } from '@/shared/store/authStore';
+import { BookmarkPostResponse, BookmarkResponse } from '@/shared/types/bookmarkt';
 import { Item, productsRes } from '@/shared/types/product';
 import { useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 export default function ProductListFilteredKeyword() {
   /* MongoDB 데이터 상태 관리 */
@@ -21,6 +26,39 @@ export default function ProductListFilteredKeyword() {
 
   /* 필터링 기능 상태 관리 */
   const [selectedType, setSelectedType] = useState('crop');
+
+  /* 북마크 저장 여부를 상태로 저장 */
+  const [bookmarkedMap, setBookmarkedMap] = useState<Map<number, number>>(new Map()); // 상품 id, 북마크 id 쌍
+
+  const isBookmarked = (_id: number) => bookmarkedMap.has(_id);
+  const token = useAuthStore(state => state.token);
+
+  /* 북마크 목록 데이터를 초기에 불러오는 useEffect */
+  useEffect(() => {
+    if (token === null) {
+      return;
+    }
+
+    const fetchBookmark = async () => {
+      try {
+        const data: BookmarkResponse = await getBookmarks('product', token);
+
+        if (data.ok) {
+          console.log('data', data);
+          const map = new Map<number, number>();
+
+          data.item.forEach(item => {
+            map.set(item.product._id, item._id);
+            setBookmarkedMap(map);
+          });
+        }
+      } catch (e) {
+        console.error('북마크 가져오기 실패:', e);
+      }
+    };
+
+    fetchBookmark();
+  }, [token]);
 
   /* URL 의 keyword QueryString 값을 가져와 상태로 저장  */
   const param = useSearchParams();
@@ -43,6 +81,38 @@ export default function ProductListFilteredKeyword() {
   if (data == null) {
     return <CuteLoading />;
   }
+
+  const toggleBookmark = async (_id: number) => {
+    if (token === null) {
+      toast.error('로그인이 필요합니다.');
+      return;
+    }
+
+    const isBookmarked = bookmarkedMap.has(_id);
+    const updateMap = new Map(bookmarkedMap);
+
+    try {
+      if (isBookmarked) {
+        const bookmarkId = bookmarkedMap.get(_id);
+        if (!bookmarkId) return;
+
+        await deleteBookmark(bookmarkId, { target_id: 'any' }, token);
+        updateMap.delete(_id);
+        toast.success('북마크가 제거되었습니다.');
+      } else {
+        const newBookmark: BookmarkPostResponse = await createBookmark({ target_id: _id }, token);
+
+        if (newBookmark.ok) {
+          updateMap.set(newBookmark.item.target_id, newBookmark.item._id);
+          toast.success('북마크가 추가되었습니다.');
+        }
+      }
+      setBookmarkedMap(updateMap);
+    } catch (error) {
+      console.error('북마크 토글 실패', error);
+      toast.error('북마크 처리에 실패했습니다.');
+    }
+  };
 
   /* 전체 DB 에서 해당 키워드가 상품명에 포함된 DB 를 필터링 */
   const searchDataFromKeyword = data.item.filter((item: Item) => item.name.includes(keyword ?? ''));
@@ -147,6 +217,8 @@ export default function ProductListFilteredKeyword() {
                 bookmarks={item.bookmarks}
                 extra={item.extra}
                 seller={item.seller}
+                isbookmarked={isBookmarked(item._id)}
+                togglebookmark={() => toggleBookmark(item._id)}
               />
             ))}
           </main>
@@ -163,6 +235,8 @@ export default function ProductListFilteredKeyword() {
                 bookmarks={item.bookmarks}
                 extra={item.extra}
                 seller={item.seller}
+                isbookmarked={isBookmarked(item._id)}
+                togglebookmark={() => toggleBookmark(item._id)}
               />
             ))}
             {Array.from({ length: Math.max(0, 4 - sortItems(cropDataFromKeyword).length) }).map((_, idx) => (
@@ -186,6 +260,8 @@ export default function ProductListFilteredKeyword() {
                 bookmarks={item.bookmarks}
                 extra={item.extra}
                 seller={item.seller}
+                isbookmarked={isBookmarked(item._id)}
+                togglebookmark={() => toggleBookmark(item._id)}
               />
             ))}
           </main>
@@ -208,6 +284,8 @@ export default function ProductListFilteredKeyword() {
                 buyQuantity={item.buyQuantity}
                 extra={item.extra}
                 seller={item.seller}
+                isbookmarked={isBookmarked(item._id)}
+                togglebookmark={() => toggleBookmark(item._id)}
               />
             ))}
           </main>
@@ -226,6 +304,8 @@ export default function ProductListFilteredKeyword() {
                 buyQuantity={item.buyQuantity}
                 extra={item.extra}
                 seller={item.seller}
+                isbookmarked={isBookmarked(item._id)}
+                togglebookmark={() => toggleBookmark(item._id)}
               />
             ))}
             {Array.from({ length: Math.max(0, 4 - sortItems(gardeningDataFromKeyword).length) }).map((_, idx) => (
