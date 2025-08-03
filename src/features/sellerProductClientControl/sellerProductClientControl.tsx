@@ -111,6 +111,7 @@ export default function SellerProductClientControl() {
 
       {sortProducts(filteredProductData(productList)).map((item: Item) => (
         <ProductItemListForSeller
+          _id={item._id}
           key={item._id}
           title={item.name}
           category={getCategoryName(item.extra?.productType)}

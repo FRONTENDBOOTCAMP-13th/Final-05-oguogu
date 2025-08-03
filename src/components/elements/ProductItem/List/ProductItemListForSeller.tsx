@@ -1,9 +1,10 @@
 'use client';
 
 import { ProductItemListForSellerType } from '@/components/elements/ProductItem/List/ProductItemListForSeller.type';
+import Link from 'next/link';
 import { useState } from 'react';
 
-export default function ProductItemListForSeller({ category, title, price }: ProductItemListForSellerType) {
+export default function ProductItemListForSeller({ _id, category, title, price }: ProductItemListForSellerType) {
   const [visible, setVisible] = useState(true);
 
   const toggleVisible = () => {
@@ -16,7 +17,12 @@ export default function ProductItemListForSeller({ category, title, price }: Pro
         {visible ? (
           <>
             <div className="flex-shrink-0 w-[40px]">{category}</div>
-            <div className="truncate min-w-0 flex-1 ">{title}</div>
+            <Link
+              href={`/search/result/${_id}/detail`}
+              className="truncate min-w-0 flex-1 text-oguogu-black hover:underline"
+            >
+              {title}
+            </Link>
             <div className="flex-shrink-0 w-[56px]">{price}</div>
           </>
         ) : (
