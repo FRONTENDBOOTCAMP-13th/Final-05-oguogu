@@ -78,7 +78,7 @@ export default function LoginInput({
   ];
   const isTelValid = (parts: typeof telParts) => {
     const { part1, part2, part3 } = parts;
-    const isAllFilled = part1.length < 3 && part1.length > 0 && part2.length > 0 && part3.length === 4;
+    const isAllFilled = part1.length > 0 && part2.length > 0 && part3.length === 4;
     const isValidPrefix = validTelPrefixes.includes(part1);
     return isAllFilled && isValidPrefix;
   };
