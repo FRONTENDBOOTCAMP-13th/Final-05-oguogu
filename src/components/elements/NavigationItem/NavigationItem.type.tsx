@@ -1,5 +1,6 @@
 export interface NavigationItemType {
   item: string;
   link: string;
-  isSelected?: boolean;
+  isSelected: boolean;
+  onSelect: () => void;
 }

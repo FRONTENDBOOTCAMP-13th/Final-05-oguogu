@@ -1,10 +1,19 @@
 'use client';
 
 import NavigationItem from '@/components/elements/NavigationItem/NavigationItem';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useDraggable } from 'react-use-draggable-scroll';
 
+const navItems = [
+  { item: '홈', link: '/' },
+  { item: '금주 마감 체험', link: 'link1' },
+  { item: '제철 농산물', link: 'link2' },
+  { item: '추천 텃밭', link: 'link3' },
+];
+
 export default function Navigation() {
+  const [selectedItem, setSelectedItem] = useState<string | null>('홈');
+
   // draggable-scroll 라이브러리 사용
   // 드래그로 가로 스크롤이 가능한 영역을 만들기 위한 ref와 이벤트 바인딩
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -16,11 +25,18 @@ export default function Navigation() {
       {...events}
       className="sticky top-12 z-50 bg-gradient-to-b from-oguogu-white via-oguogu-white/90 to-oguogu-white/100 h-12 overflow-x-scroll cursor-grab px-2.5 py-3 text-[14px] select-none no-scrollbar mobile-max:flex mobile-max:justify-center"
     >
-      <ul className="flex flex-row gap-4 w-max">
-        <NavigationItem link="/" item="홈" isSelected />
-        <NavigationItem link="link1" item="체험상품" />
-        <NavigationItem link="link2" item="제철농산물" />
-        <NavigationItem link="link3" item="마감임박" />
+      <ul className="flex flex-row gap-2 w-max">
+        {navItems.map(({ item, link }, index) => {
+          return (
+            <NavigationItem
+              key={index}
+              link={link}
+              item={item}
+              isSelected={selectedItem === item}
+              onSelect={() => setSelectedItem(item)}
+            />
+          );
+        })}
       </ul>
     </nav>
   );
