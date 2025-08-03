@@ -134,7 +134,7 @@ export default function ProductListFilteredKeyword() {
 
       {/* DB 렌더링 */}
       {selectedType === 'crop' ? (
-        cropDataFromKeyword.length > 0 ? (
+        cropDataFromKeyword.length > 3 ? (
           <main className="itemGrid grid-cols-[repeat(auto-fit,minmax(140px,1fr))] min-h-[calc(100vh-96px)]">
             {sortItems(cropDataFromKeyword).map((item: Item) => (
               <CropItem
@@ -148,6 +148,25 @@ export default function ProductListFilteredKeyword() {
                 extra={item.extra}
                 seller={item.seller}
               />
+            ))}
+          </main>
+        ) : cropDataFromKeyword.length > 0 ? (
+          <main className="itemGrid grid-cols-[repeat(auto-fit,minmax(140px,1fr))] min-h-[calc(100vh-96px)]">
+            {sortItems(cropDataFromKeyword).map((item: Item) => (
+              <CropItem
+                key={item._id}
+                _id={item._id}
+                name={item.name}
+                price={item.price}
+                rating={item.rating}
+                replies={item.replies}
+                bookmarks={item.bookmarks}
+                extra={item.extra}
+                seller={item.seller}
+              />
+            ))}
+            {Array.from({ length: Math.max(0, 4 - sortItems(cropDataFromKeyword).length) }).map((_, idx) => (
+              <div key={`empty-${idx}`} className="invisible" />
             ))}
           </main>
         ) : (
@@ -174,7 +193,7 @@ export default function ProductListFilteredKeyword() {
           emptyData
         )
       ) : selectedType === 'gardening' ? (
-        gardeningDataFromKeyword.length > 0 ? (
+        gardeningDataFromKeyword.length > 3 ? (
           <main className="itemGrid grid-cols-[repeat(auto-fit,minmax(140px,1fr))] min-h-[calc(100vh-96px)]">
             {sortItems(gardeningDataFromKeyword).map((item: Item) => (
               <GardenItem
@@ -190,6 +209,27 @@ export default function ProductListFilteredKeyword() {
                 extra={item.extra}
                 seller={item.seller}
               />
+            ))}
+          </main>
+        ) : gardeningDataFromKeyword.length > 0 ? (
+          <main className="itemGrid grid-cols-[repeat(auto-fit,minmax(140px,1fr))] min-h-[calc(100vh-96px)]">
+            {sortItems(gardeningDataFromKeyword).map((item: Item) => (
+              <GardenItem
+                key={item._id}
+                _id={item._id}
+                name={item.name}
+                price={item.price}
+                rating={item.rating}
+                replies={item.replies}
+                bookmarks={item.bookmarks}
+                quantity={item.quantity}
+                buyQuantity={item.buyQuantity}
+                extra={item.extra}
+                seller={item.seller}
+              />
+            ))}
+            {Array.from({ length: Math.max(0, 4 - sortItems(gardeningDataFromKeyword).length) }).map((_, idx) => (
+              <div key={`empty-${idx}`} className="invisible" />
             ))}
           </main>
         ) : (
