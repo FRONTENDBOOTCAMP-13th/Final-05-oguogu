@@ -6,9 +6,9 @@ import { useDraggable } from 'react-use-draggable-scroll';
 
 const navItems = [
   { item: '홈', link: '/' },
-  { item: '금주 마감 체험', link: 'link1' },
+  { item: '주말 농장 체험', link: 'link1' },
   { item: '제철 농산물', link: 'link2' },
-  { item: '추천 텃밭', link: 'link3' },
+  { item: '마감 임박 텃밭', link: 'link3' },
 ];
 
 export default function Navigation() {
