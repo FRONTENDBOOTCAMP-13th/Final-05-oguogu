@@ -54,6 +54,8 @@ export default function SellerProductClientControl() {
   };
 
   const sortProducts = (products: Item[]) => {
+    const getDiscountedPrice = (item: Item) => Number(item?.price) * (1 - Number(item.extra?.dcRate ?? 0) / 100);
+
     switch (sortOption) {
       case 'recent':
         return [...products].sort(
@@ -64,9 +66,9 @@ export default function SellerProductClientControl() {
           (a, b) => new Date(a.createdAt ?? '').getTime() - new Date(b.createdAt ?? '').getTime(),
         );
       case 'priceHigh':
-        return [...products].sort((a, b) => b.price - a.price);
+        return [...products].sort((a, b) => getDiscountedPrice(b) - getDiscountedPrice(a));
       case 'priceLow':
-        return [...products].sort((a, b) => a.price - b.price);
+        return [...products].sort((a, b) => getDiscountedPrice(a) - getDiscountedPrice(b));
       case 'stockHigh':
         return [...products].sort((a, b) => (b.quantity ?? 0) - (a.quantity ?? 0));
       case 'stockLow':
