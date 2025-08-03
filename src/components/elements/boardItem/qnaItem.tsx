@@ -10,9 +10,9 @@ export interface QnaItemType {
 export default function QnaItem({ type, title, _id }: QnaItemType) {
   return (
     <>
-      <div className="flex justify-between gap-2 text-[12px] text-oguogu-black">
+      <div className="flex justify-start gap-2 text-[12px] text-oguogu-black">
         <div className={`flex-shrink-0 w-[60px] `}>{type}</div>
-        <Link href={`/board/notice/${_id}`}>
+        <Link href={`/board/qna/${_id}`}>
           <div className="truncate min-w-0 flex-1 ">{title}</div>
         </Link>
       </div>
