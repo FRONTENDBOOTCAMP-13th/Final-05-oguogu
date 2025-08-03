@@ -83,8 +83,14 @@ export default function AccountForm({ id, token, isEditing, onSubmit, onUpdateAc
             id="owner"
             name="accoutOwner"
             type="text"
+            pattern="^[가-힣]{1,8}$"
+            onInvalid={(e: React.FormEvent<HTMLInputElement>) => {
+              e.currentTarget.setCustomValidity('한글만 입력해주세요 (최대 8자)');
+            }}
             value={owner}
-            onChange={e => setOwner(e.target.value)}
+            onChange={e => {
+              if (owner.length < 8) setOwner(e.target.value);
+            }}
             placeholder="실제 계좌를 소유한 사람의 이름을 입력해 주세요"
             className="w-full h-[36px] font-normal text-[14px] pl-2 py-3 border-b border-oguogu-gray-2 placeholder-oguogu-gray-2"
           />
@@ -99,9 +105,15 @@ export default function AccountForm({ id, token, isEditing, onSubmit, onUpdateAc
             id="accountNumber"
             name="accoutNum"
             type="text"
+            pattern="^\d{0,14}$"
+            onInvalid={(e: React.FormEvent<HTMLInputElement>) => {
+              e.currentTarget.setCustomValidity('숫자만 입력해주세요 (최대 14자)');
+            }}
             placeholder="- 를 제외한 숫자만 입력해 주세요"
             value={accountNum}
-            onChange={e => setAccountNum(e.target.value)}
+            onChange={e => {
+              if (accountNum.length < 14) setAccountNum(e.target.value);
+            }}
             className="w-full h-[36px] font-normal text-[14px] pl-2 py-3 border-b border-oguogu-gray-2 placeholder-oguogu-gray-2"
           />
         </div>
