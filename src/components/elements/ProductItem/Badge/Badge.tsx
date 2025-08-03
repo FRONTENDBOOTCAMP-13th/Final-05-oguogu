@@ -17,7 +17,7 @@ export default function Badge({ type, size = 8 }: BadgeProps) {
       content = '인기 상품';
       break;
     case 'lowstock':
-      bgColor = 'bg-ogugu-blue-light';
+      bgColor = 'bg-oguogu-blue-light';
       textColor = 'text-oguogu-white';
       content = '마감 임박';
       break;

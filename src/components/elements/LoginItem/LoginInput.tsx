@@ -22,6 +22,11 @@ export default function LoginInput({
     part2: value.toString().slice(3, 7),
     part3: value.toString().slice(7, 11),
   });
+  const [telParts, setTelParts] = useState({
+    part1: value.toString().slice(0, 3),
+    part2: value.toString().slice(3, 7),
+    part3: value.toString().slice(7, 11),
+  });
   const [birthParts, setBirthParts] = useState({
     part1: value.toString().slice(0, 4),
     part2: value.toString().slice(4, 6),
@@ -47,6 +52,34 @@ export default function LoginInput({
     const { part1, part2, part3 } = parts;
     const isAllFilled = part1.length === 3 && part2.length === 4 && part3.length === 4;
     const isValidPrefix = validPrefixes.includes(part1);
+    return isAllFilled && isValidPrefix;
+  };
+
+  // 대표 번호
+  const validTelPrefixes = [
+    '02',
+    '031',
+    '032',
+    '033',
+    '041',
+    '042',
+    '043',
+    '044',
+    '051',
+    '052',
+    '053',
+    '054',
+    '055',
+    '061',
+    '062',
+    '063',
+    '064',
+    '070',
+  ];
+  const isTelValid = (parts: typeof telParts) => {
+    const { part1, part2, part3 } = parts;
+    const isAllFilled = part1.length < 3 && part1.length > 0 && part2.length > 0 && part3.length === 4;
+    const isValidPrefix = validTelPrefixes.includes(part1);
     return isAllFilled && isValidPrefix;
   };
 
@@ -76,6 +109,14 @@ export default function LoginInput({
 
     if (type === 'phone') {
       if (!isPhoneValid(phoneParts)) {
+        setPhoneError('전화번호를 올바르게 입력해주세요');
+      } else {
+        setPhoneError('');
+      }
+    }
+
+    if (type === 'tel') {
+      if (!isTelValid(telParts)) {
         setPhoneError('전화번호를 올바르게 입력해주세요');
       } else {
         setPhoneError('');
@@ -152,7 +193,7 @@ export default function LoginInput({
             value={businessNumParts.part1}
             onChange={e => handleBusinessNumChange('part1', e.target.value)}
             placeholder={placeholder}
-            className="placeholder-oguogu-gray-2 w-[60px] text-center pl-2"
+            className="placeholder-oguogu-gray-2 w-full text-center"
           />
           <span className="text-oguogu-black text-[16px]">-</span>
           <input
@@ -163,7 +204,7 @@ export default function LoginInput({
             value={businessNumParts.part2}
             onChange={e => handleBusinessNumChange('part2', e.target.value)}
             placeholder={placeholder}
-            className="placeholder-oguogu-gray-2 w-[60px] text-center pl-2"
+            className="placeholder-oguogu-gray-2 w-full text-center"
           />
           <span className="text-oguogu-black text-[16px]">-</span>
           <input
@@ -174,7 +215,7 @@ export default function LoginInput({
             value={businessNumParts.part3}
             onChange={e => handleBusinessNumChange('part3', e.target.value)}
             placeholder={placeholder}
-            className="placeholder-oguogu-gray-2 w-[60px] text-center pl-4"
+            className="placeholder-oguogu-gray-2 w-full text-center"
           />
         </div>
         {businessNumError && <p className="text-oguogu-red text-[12px] mt-1 px-1">{businessNumError}</p>}
@@ -258,7 +299,7 @@ export default function LoginInput({
             value={phoneParts.part1}
             onChange={e => handlePhoneChange('part1', e.target.value.slice(0, 3).replace(/\D/g, ''))}
             placeholder={placeholder}
-            className="placeholder-oguogu-gray-2 w-[60px] text-center pl-2"
+            className="placeholder-oguogu-gray-2 w-full text-center"
           />
           <span className="text-oguogu-black text-[16px]">-</span>
           <input
@@ -269,7 +310,7 @@ export default function LoginInput({
             value={phoneParts.part2}
             onChange={e => handlePhoneChange('part2', e.target.value.slice(0, 4).replace(/\D/g, ''))}
             placeholder={placeholder}
-            className="placeholder-oguogu-gray-2 w-[60px] text-center pl-2"
+            className="placeholder-oguogu-gray-2 w-full text-center"
           />
           <span className="text-oguogu-black text-[16px]">-</span>
           <input
@@ -280,7 +321,68 @@ export default function LoginInput({
             value={phoneParts.part3}
             onChange={e => handlePhoneChange('part3', e.target.value.slice(0, 4).replace(/\D/g, ''))}
             placeholder={placeholder}
-            className="placeholder-oguogu-gray-2 w-[60px] text-center pl-4"
+            className="placeholder-oguogu-gray-2 w-full text-center"
+          />
+        </div>
+        {phoneError && <p className="text-oguogu-red text-[12px] mt-1 px-1">{phoneError}</p>}
+      </div>
+    );
+  }
+
+  // 전화번호
+  if (type === 'tel') {
+    const handleTelChange = (key: 'part1' | 'part2' | 'part3', val: string) => {
+      const updated = { ...telParts, [key]: val };
+      setTelParts(updated);
+
+      const fullNumber = `${updated.part1}${updated.part2}${updated.part3}`;
+      onChange(fullNumber);
+
+      if (!isTelValid(updated)) {
+        if (!validTelPrefixes.includes(updated.part1)) {
+          setPhoneError('올바른 앞자리 번호(ex. 02, 031, 053)를 입력해주세요.');
+        } else {
+          setPhoneError('전화번호를 모두 입력해주세요');
+        }
+      } else {
+        setPhoneError('');
+      }
+    };
+
+    return (
+      <div>
+        <div className="flex items-center gap-x-4 w-[288px] h-[36px] font-normal text-[12px] py-3 border-b-1 text-oguogu-black border-oguogu-gray-2 justify-center">
+          <input
+            type="text"
+            inputMode="numeric"
+            pattern="\d*"
+            id={`${id}-part1`}
+            value={telParts.part1}
+            onChange={e => handleTelChange('part1', e.target.value.slice(0, 3).replace(/\D/g, ''))}
+            placeholder={placeholder}
+            className="placeholder-oguogu-gray-2 w-full text-center"
+          />
+          <span className="text-oguogu-black text-[16px]">-</span>
+          <input
+            type="text"
+            inputMode="numeric"
+            pattern="\d*"
+            id={`${id}-part2`}
+            value={telParts.part2}
+            onChange={e => handleTelChange('part2', e.target.value.slice(0, 4).replace(/\D/g, ''))}
+            placeholder={placeholder}
+            className="placeholder-oguogu-gray-2 w-full text-center"
+          />
+          <span className="text-oguogu-black text-[16px]">-</span>
+          <input
+            type="text"
+            inputMode="numeric"
+            pattern="\d*"
+            id={`${id}-part3`}
+            value={telParts.part3}
+            onChange={e => handleTelChange('part3', e.target.value.slice(0, 4).replace(/\D/g, ''))}
+            placeholder={placeholder}
+            className="placeholder-oguogu-gray-2 w-full text-center "
           />
         </div>
         {phoneError && <p className="text-oguogu-red text-[12px] mt-1 px-1">{phoneError}</p>}

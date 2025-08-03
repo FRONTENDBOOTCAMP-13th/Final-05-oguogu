@@ -163,7 +163,7 @@ export default function SellerRegisterForm() {
             </label>
             <LoginInput
               id="signUpSellerBusinessTel"
-              type="phone"
+              type="tel"
               onChange={setSellerBusinessTel}
               value={sellerBusinessTel}
               placeholder="숫자"

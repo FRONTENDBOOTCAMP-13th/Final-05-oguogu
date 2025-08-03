@@ -7,18 +7,13 @@ import toast from 'react-hot-toast';
 interface AccountFormProps {
   id: number;
   token: string;
-  setRegisteredAccount?: (
-    account: string,
-    extraUpdates: {
-      settlementAccount: string;
-      settlementOwner: string;
-      settlementBank: string;
-    },
-  ) => void;
-  onCancel?: () => void;
+  isEditing: boolean;
+  onSubmit: (isEditing: boolean) => void;
+  onUpdateAccount: (accountNum: string) => void;
+  onCancel: () => void;
 }
 
-export default function AccountForm({ id, token }: AccountFormProps) {
+export default function AccountForm({ id, token, isEditing, onSubmit, onUpdateAccount, onCancel }: AccountFormProps) {
   const [bank, setBank] = useState('');
   const [owner, setOwner] = useState('');
   const [accountNum, setAccountNum] = useState('');
@@ -43,6 +38,9 @@ export default function AccountForm({ id, token }: AccountFormProps) {
       { extra: { accountInfo: { settlementBank: bank, settlementOwner: owner, settlementAccount: accountNum } } },
       token,
     );
+
+    onSubmit(!isEditing);
+    onUpdateAccount(`${bank} ${accountNum}`);
     toast.success('계좌 등록 성공');
   };
 
@@ -60,6 +58,7 @@ export default function AccountForm({ id, token }: AccountFormProps) {
           <select
             id="bank"
             name="accountBank"
+            value={bank}
             onChange={e => setBank(e.target.value)}
             className="text-sm text-center border rounded h-7 border-oguogu-gray-2 text-oguogu-gray-4"
             required
@@ -84,8 +83,14 @@ export default function AccountForm({ id, token }: AccountFormProps) {
             id="owner"
             name="accoutOwner"
             type="text"
+            pattern="^[가-힣]{1,8}$"
+            onInvalid={(e: React.FormEvent<HTMLInputElement>) => {
+              e.currentTarget.setCustomValidity('한글만 입력해주세요 (최대 8자)');
+            }}
             value={owner}
-            onChange={e => setOwner(e.target.value)}
+            onChange={e => {
+              if (owner.length < 8) setOwner(e.target.value);
+            }}
             placeholder="실제 계좌를 소유한 사람의 이름을 입력해 주세요"
             className="w-full h-[36px] font-normal text-[14px] pl-2 py-3 border-b border-oguogu-gray-2 placeholder-oguogu-gray-2"
           />
@@ -100,9 +105,15 @@ export default function AccountForm({ id, token }: AccountFormProps) {
             id="accountNumber"
             name="accoutNum"
             type="text"
+            pattern="^\d{0,14}$"
+            onInvalid={(e: React.FormEvent<HTMLInputElement>) => {
+              e.currentTarget.setCustomValidity('숫자만 입력해주세요 (최대 14자)');
+            }}
             placeholder="- 를 제외한 숫자만 입력해 주세요"
             value={accountNum}
-            onChange={e => setAccountNum(e.target.value)}
+            onChange={e => {
+              if (accountNum.length < 14) setAccountNum(e.target.value);
+            }}
             className="w-full h-[36px] font-normal text-[14px] pl-2 py-3 border-b border-oguogu-gray-2 placeholder-oguogu-gray-2"
           />
         </div>
@@ -115,7 +126,7 @@ export default function AccountForm({ id, token }: AccountFormProps) {
           >
             정산 계좌 등록
           </button>
-          {/* {onCancel && (
+          {onCancel && (
             <button
               type="button"
               onClick={onCancel}
@@ -123,7 +134,7 @@ export default function AccountForm({ id, token }: AccountFormProps) {
             >
               취소
             </button>
-          )} */}
+          )}
         </section>
       </form>
     </div>

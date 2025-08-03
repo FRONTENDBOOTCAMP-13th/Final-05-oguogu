@@ -4,7 +4,7 @@ export interface Option {
 }
 
 export interface LoginInputProps {
-  type: 'text' | 'number' | 'email' | 'password' | 'address' | 'phone' | 'birth' | 'business';
+  type: 'text' | 'number' | 'email' | 'password' | 'address' | 'phone' | 'birth' | 'business' | 'tel';
   value: string;
   placeholder?: string;
   onChange: (value: string) => void;

@@ -11,10 +11,18 @@ import { getBookmarks } from '@/shared/data/functions/bookmarks';
 import { useAuthStore } from '@/shared/store/authStore';
 import { BookmarkPostResponse, BookmarkResponse } from '@/shared/types/bookmarkt';
 import { Item } from '@/shared/types/product';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
 export default function ProductListClientControl({ productList, type }: productListCientControlType) {
+  const router = useRouter();
+  const param = useSearchParams();
+
+  /* 필터링 데이터 상태 관리 */
+  const [selectedCategory, setSelectedCategory] = useState('all');
+
+  /* 북마크 리스트 상태 관리 */
   const [bookmarkedMap, setBookmarkedMap] = useState<Map<number, number>>(new Map()); // 상품 id, 북마크 id 쌍
 
   const isBookmarked = (_id: number) => bookmarkedMap.has(_id);
@@ -52,7 +60,7 @@ export default function ProductListClientControl({ productList, type }: productL
     }
   };
 
-  // 북마크 목록 데이터를 초기에 불러오는 useEffect
+  /* 북마크 목록 데이터를 초기에 불러오기*/
   useEffect(() => {
     if (token === null) {
       return;
@@ -79,30 +87,37 @@ export default function ProductListClientControl({ productList, type }: productL
     fetchBookmark();
   }, [token]);
 
-  /* 필터링 기능 상태 관리 */
-  const [selectedCategory, setSelectedCategory] = useState('veggie');
+  /* 초기 마운트 시, URL 쿼리값을 selectedCategory로 설정, URL category 변경시 리렌더링 */
+  useEffect(() => {
+    // URL category 쿼리스트링 값을 추출
+    const categoryParam = param.get('category') ?? '';
 
-  /* URL 의 keyword QueryString 값을 가져와 상태로 저장  */
-  // const router = useRouter();
-  // const param = useSearchParams();
-  // const categoryParam = param.get('category') ?? '';
-  // useEffect(() => {
-  //   if (categoryParam) setSelectedCategory(categoryParam);
-  // }, [categoryParam]);
+    // URL category 쿼리스트링 값이 있고, 현재 상태로 저장된 필터리 데이터와 일치하지 않으면 리렌더링
+    if (!categoryParam) return;
 
-  /* 필터링 기능 */
+    // URL category 쿼리스트링 값과 현재 선택된 필터링 키워드 상태 데이터와 다른 경우 리렌더링
+    if (categoryParam !== selectedCategory) {
+      setSelectedCategory(categoryParam);
+    }
+  }, [param]); // param만 감지
+
+  /* select/option 상태 변경 및 URL category 쿼리스트링 반영 */
   const handleSelectType = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedCategory(e.target.value);
+    const value = e.target.value;
+    setSelectedCategory(value);
 
-    /* 라우팅 보류 */
-    // const newSearchParams = new URLSearchParams(param.toString());
-    // newSearchParams.set('category', e.target.value);
+    // 상태로 저장된 값을 URL 의 상태 데이터로 저장, 쿼리스트링 경로에 맞게 URL 을 대체
+    const newSearchParams = new URLSearchParams(param.toString());
+    newSearchParams.set('category', value);
 
-    // router.push(`?${newSearchParams.toString()}`);
+    // URL category 값을 대체, 즉 변경을 일으킴 -> param 변경으로 useEffet 실행
+    router.replace(`?${newSearchParams.toString()}`);
   };
 
   const filteredCropData = (item: Item[]) => {
     switch (selectedCategory) {
+      case 'all':
+        return item;
       case 'veggie':
         return item.filter(item => item.extra?.category === 'veggie');
       case 'fruit':
@@ -165,7 +180,9 @@ export default function ProductListClientControl({ productList, type }: productL
                 ? productList.filter((item: Item) => item.extra?.category === 'fruit').length
                 : selectedCategory === 'grain'
                   ? productList.filter((item: Item) => item.extra?.category === 'grain').length
-                  : productList.filter((item: Item) => item.extra?.category === 'mushroom').length
+                  : selectedCategory === 'mushroom'
+                    ? productList.filter((item: Item) => item.extra?.category === 'mushroom').length
+                    : productList.filter((item: Item) => item).length
             : type === 'experience'
               ? productList.filter((item: Item) => item.extra?.productType === 'experience').length
               : productList.filter((item: Item) => item.extra?.productType === 'gardening').length}
@@ -184,6 +201,7 @@ export default function ProductListClientControl({ productList, type }: productL
                 onChange={handleSelectType}
                 className="text-right pr-2"
               >
+                <option value="all">전체</option>
                 <option value="veggie">채소</option>
                 <option value="fruit">과일</option>
                 <option value="grain">쌀/곡류</option>

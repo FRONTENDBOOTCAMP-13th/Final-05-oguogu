@@ -42,6 +42,7 @@ export default function OrderClientControl() {
       if (token === null) {
         return;
       }
+
       try {
         const data = await getOrders(token);
         setOrders(data);
