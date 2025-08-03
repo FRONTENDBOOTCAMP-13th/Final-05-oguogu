@@ -6,9 +6,9 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'fesp-api.koyeb.app',
+        hostname: 'res.cloudinary.com',
         port: '',
-        pathname: '/market/files/**',
+        pathname: '**',
       },
     ],
   },

@@ -17,4 +17,5 @@ export interface responsePostRepliesItem {
   updatedAt: string;
   title: string;
   repliesCount: number;
+  tag: string;
 }

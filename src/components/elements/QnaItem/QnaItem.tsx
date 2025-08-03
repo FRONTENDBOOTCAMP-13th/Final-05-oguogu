@@ -1,8 +1,8 @@
-'use client';
-import { getPostReplies } from '@/shared/data/functions/post';
-import { responsePostReplies } from '@/shared/types/post';
-import type { QnaItem } from '@/shared/types/qna';
-import { useState } from 'react';
+"use client";
+import { getPostReplies } from "@/shared/data/functions/post";
+import { responsePostReplies } from "@/shared/types/post";
+import type { QnaItem } from "@/shared/types/qna";
+import { useState } from "react";
 
 interface QnaItemProps {
   state: boolean; // 답변 완료 여부
@@ -15,15 +15,15 @@ interface QnaItemProps {
        판매자면 'seller'
        둘 다 아니면 'other'
    */
-  viewerRole: 'owner' | 'seller' | 'other';
+  viewerRole: "owner" | "seller" | "other";
   res: QnaItem;
 }
 
-export default function QnaItem({ state = false, isPrivate = false, viewerRole = 'other', res }: QnaItemProps) {
+export default function QnaItem({ state = false, isPrivate = false, viewerRole = "other", res }: QnaItemProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [content, setContent] = useState('');
+  const [content, setContent] = useState("");
   const [fetched, setFetched] = useState(false);
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState("");
 
   const handleContent = async () => {
     if (fetched || !state) return; // 답변 없으면 호출 안 함
@@ -46,27 +46,27 @@ export default function QnaItem({ state = false, isPrivate = false, viewerRole =
 
   // 이름 *표로 변환해주는 함수
   function maskName(name: string): string {
-    if (!name) return '';
+    if (!name) return "";
     if (name.length <= 2) return name; // 두 글자 이하면 마스킹 생략
 
-    return name[0] + '*'.repeat(name.length - 2) + name[name.length - 1];
+    return name[0] + "*".repeat(name.length - 2) + name[name.length - 1];
   }
 
   // 이메일 *표로 변환해주는 함수
   function maskEmail(email: string): string {
-    if (!email) return '';
-    const atIndex = email.indexOf('@');
+    if (!email) return "";
+    const atIndex = email.indexOf("@");
     const prefix = atIndex !== -1 ? email.slice(0, atIndex) : email;
     const visible = prefix.slice(0, 3);
-    const hidden = '*'.repeat(Math.max(prefix.length - 3, 1));
+    const hidden = "*".repeat(Math.max(prefix.length - 3, 1));
     return visible + hidden;
   }
 
-  const stateColor = state ? 'main' : 'black';
-  const stateBgColor = isOpen ? 'main-light' : 'white';
+  const stateColor = state ? "main" : "black";
+  const stateBgColor = isOpen ? "main-light" : "white";
 
   // 접근 허용 조건 (비밀모드가 아니거나, 비밀모드여도 글쓴이거나, 관리자(판매자)인 경우 접근 허용)
-  const isViewerAllowed = !isPrivate || viewerRole === 'owner' || viewerRole === 'seller';
+  const isViewerAllowed = !isPrivate || viewerRole === "owner" || viewerRole === "seller";
 
   return (
     <div className={`p-4 bg-oguogu-${stateBgColor} border-t border-oguogu-gray-1 shadow-sm`}>
@@ -87,11 +87,11 @@ export default function QnaItem({ state = false, isPrivate = false, viewerRole =
                   fill="#969696"
                 />
               </svg>
-            )}{' '}
-            {state ? '답변 완료' : '답변 대기 중'}
+            )}{" "}
+            {state ? "답변 완료" : "답변 대기 중"}
             {/* 잠금 표시 */}
           </span>
-          <span className="text-[12px] text-oguogu-gray-4">{res.createdAt.split(' ')[0]}</span>
+          <span className="text-[12px] text-oguogu-gray-4">{res.createdAt.split(" ")[0]}</span>
         </div>
 
         {isViewerAllowed ? (
@@ -105,7 +105,7 @@ export default function QnaItem({ state = false, isPrivate = false, viewerRole =
 
         <div className="flex gap-3">
           <p className="text-[12px] text-oguogu-black">{maskName(res.user.name)}</p>
-          <p className="text-[12px] text-oguogu-black">({maskEmail(res.user.email || '')})</p>
+          <p className="text-[12px] text-oguogu-black">({maskEmail(res.user.email || "")})</p>
         </div>
       </div>
 
@@ -114,10 +114,10 @@ export default function QnaItem({ state = false, isPrivate = false, viewerRole =
         <div className="mt-4 pt-4 border-t-1 border-oguogu-gray-4">
           <div className="flex justify-between mb-2">
             <span className="text-[12px] text-oguogu-black">상품 담당자</span>
-            <span className="text-[12px] text-oguogu-gray-4">{date.split(' ')[0]}</span>
+            <span className="text-[12px] text-oguogu-gray-4">{date.split(" ")[0]}</span>
           </div>
           {content
-            .split('.')
+            .split(".")
             .filter(Boolean)
             .map((line, i) => (
               <div key={i}>

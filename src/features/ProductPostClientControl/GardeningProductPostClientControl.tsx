@@ -196,10 +196,12 @@ export default function GardeningProductPostClientControl() {
     };
 
     const postData = await createProduct(productData, token);
+    console.log(postData);
     if (postData.ok) {
       toast.success('상품이 정상적으로 등록되었습니다.');
       router.push('/office/products');
     } else {
+      console.error(postData.message);
       toast.error('등록을 실패했습니다.');
     }
   };
