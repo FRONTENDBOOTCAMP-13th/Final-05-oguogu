@@ -64,7 +64,7 @@ export default function OrderItem({ orderState, item, updateOrderStatus, handleS
       {/* 주문 상품 목록 */}
       <section className="flex flex-col gap-2">
         {item.products.map(product => (
-          <div key={product._id} className="flex gap-2">
+          <Link href={`/search/result/${product._id}/detail`} key={product._id} className="flex gap-2">
             <div className="w-[48px] h-[48px] bg-cover bg-center bg-[url('/images/crop/crop-001.png')] bg-no-repeat rounded-sm" />
             <div>
               <div className="text-[12px] clamp-1">{product.name}</div>
@@ -72,7 +72,7 @@ export default function OrderItem({ orderState, item, updateOrderStatus, handleS
                 {product.quantity}개 · {(product.price * (1 - product.extra.dcRate / 100)).toLocaleString()}원
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </section>
 
@@ -108,8 +108,8 @@ export default function OrderItem({ orderState, item, updateOrderStatus, handleS
       {orderState === 'purchaseCompleted' &&
         (reviewState ? (
           <Link href={`/search/result/${item.products[0]._id}/review`}>
-            <button className="text-[12px] w-full py-2 leading-none border border-oguogu-main rounded-[4px]">
-              작성한 후기 보러가기
+            <button className="text-[12px] w-full py-2 leading-none border border-oguogu-gray-2 rounded-[4px]">
+              후기 작성 완료
             </button>
           </Link>
         ) : (
