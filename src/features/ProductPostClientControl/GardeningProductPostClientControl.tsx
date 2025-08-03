@@ -249,7 +249,7 @@ export default function GardeningProductPostClientControl() {
       <Input
         type="basic"
         title="판매 마감일"
-        placeholder="판매 마감일"
+        placeholder="판매 마감일 (YYYY-MM-DD)"
         id="title"
         required={true}
         value={form.deadline}
@@ -292,7 +292,7 @@ export default function GardeningProductPostClientControl() {
       <Input
         type="basic"
         title="수확 예정일"
-        placeholder="상품의 수확 예정일 (ex 8월 말)"
+        placeholder="상품의 수확 예정일 (YYYY-MM-DD)"
         id="title"
         required={true}
         value={form.harvestExpectedDate}
