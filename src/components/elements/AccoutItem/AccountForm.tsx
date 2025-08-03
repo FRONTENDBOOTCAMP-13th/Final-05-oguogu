@@ -7,18 +7,13 @@ import toast from 'react-hot-toast';
 interface AccountFormProps {
   id: number;
   token: string;
-  setRegisteredAccount?: (
-    account: string,
-    extraUpdates: {
-      settlementAccount: string;
-      settlementOwner: string;
-      settlementBank: string;
-    },
-  ) => void;
-  onCancel?: () => void;
+  isEditing: boolean;
+  onSubmit: (isEditing: boolean) => void;
+  onUpdateAccount: (accountNum: string) => void;
+  onCancel: () => void;
 }
 
-export default function AccountForm({ id, token }: AccountFormProps) {
+export default function AccountForm({ id, token, isEditing, onSubmit, onUpdateAccount, onCancel }: AccountFormProps) {
   const [bank, setBank] = useState('');
   const [owner, setOwner] = useState('');
   const [accountNum, setAccountNum] = useState('');
@@ -43,6 +38,9 @@ export default function AccountForm({ id, token }: AccountFormProps) {
       { extra: { accountInfo: { settlementBank: bank, settlementOwner: owner, settlementAccount: accountNum } } },
       token,
     );
+
+    onSubmit(!isEditing);
+    onUpdateAccount(`${bank} ${accountNum}`);
     toast.success('계좌 등록 성공');
   };
 
@@ -60,6 +58,7 @@ export default function AccountForm({ id, token }: AccountFormProps) {
           <select
             id="bank"
             name="accountBank"
+            value={bank}
             onChange={e => setBank(e.target.value)}
             className="text-sm text-center border rounded h-7 border-oguogu-gray-2 text-oguogu-gray-4"
             required
@@ -115,7 +114,7 @@ export default function AccountForm({ id, token }: AccountFormProps) {
           >
             정산 계좌 등록
           </button>
-          {/* {onCancel && (
+          {onCancel && (
             <button
               type="button"
               onClick={onCancel}
@@ -123,7 +122,7 @@ export default function AccountForm({ id, token }: AccountFormProps) {
             >
               취소
             </button>
-          )} */}
+          )}
         </section>
       </form>
     </div>

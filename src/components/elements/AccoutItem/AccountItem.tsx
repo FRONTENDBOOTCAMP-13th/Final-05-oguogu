@@ -14,12 +14,12 @@ export default function AccountItem() {
   // 사용자 정보, 토큰 전역 상태에서 가져오기
   const token = useAuthStore(state => state.token);
   const userInfo = useAuthStore(state => state.userInfo);
-  const [isEditing, setIsEditing] = useState(false); // 계좌 변경 중 여부
-  const [account, setAccount] = useState('');
+  const [isEditing, setIsEditing] = useState(false);
+  const [account, setAccount] = useState('미등록');
 
   const [orderRes, setOrderRes] = useState<OrderListResponse>();
 
-  // 토큰이 있을 때만 상품, 주문 데이터 받아오기
+  /* 상품, 주문 데이터 받아오고, 현재 계좌 정보를 상태로 저장 */
   useEffect(() => {
     if (!userInfo) return;
     if (token === null) return;
@@ -32,13 +32,15 @@ export default function AccountItem() {
         setOrderRes(orderData);
       }
     };
+
     fetch();
 
     /* 비동기로 데이터를 가져와 상태로 저장하기 */
     const getUserData = async () => {
       const userExtra: UserAccoutType = await getUserDetail(userInfo._id, 'extra');
-      console.log(userExtra);
-      setAccount(userExtra.item.extra.accountInfo?.settlementAccount);
+      setAccount(
+        `${userExtra.item.extra.accountInfo?.settlementBank} ${userExtra.item.extra.accountInfo?.settlementAccount}`,
+      );
     };
 
     getUserData();
@@ -99,7 +101,7 @@ export default function AccountItem() {
           </div>
           <div className="flex gap-1">
             <span className="text-oguogu-gray-4 min-w-[80px]">정산 계좌</span>
-            <span>{account! ?? '미등록'}</span>
+            <span>{account ?? '미등록'}</span>
           </div>
         </section>
       </div>
@@ -109,8 +111,10 @@ export default function AccountItem() {
         <AccountForm
           id={userInfo!._id}
           token={token!}
-          /*  setRegisteredAccount={(account, extraUpdates) => handleRegisteredAccount(account, extraUpdates)}
-          onCancel={() => setIsEditing(false)} // 변경 취소 */
+          onCancel={() => setIsEditing(false)}
+          isEditing={isEditing}
+          onSubmit={setIsEditing}
+          onUpdateAccount={setAccount}
         />
       )}
 
@@ -122,7 +126,7 @@ export default function AccountItem() {
             className="w-full text-sm border rounded h-7 text-oguogu-black border-oguogu-main bg-oguogu-white hover:bg-oguogu-gray-1"
             onClick={handleChangeAccount}
           >
-            {!userInfo?.extra?.accountInfo?.settlementAccount ? '정산 계좌 등록하기' : '정산 계좌 변경하기'}
+            {account !== '미등록' ? '정산 계좌 변경하기' : '정산 계좌 등록하기'}
           </button>
         </>
       )}
