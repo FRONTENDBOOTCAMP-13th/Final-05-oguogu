@@ -28,7 +28,7 @@ export default function Home() {
       {/* 메인 */}
       <main className="flex flex-col pt-8 gap-y-8 mobile-max:gap-y-12 mobile-max:pt-12 ">
         {/* 추천 카테고리 1 */}
-        <article className="titleWithProductItem">
+        <article id="link1" className="titleWithProductItem">
           <div className="px-4 flex flex-col gap-y-8">
             <Title title="온 가족이 함께 즐기는 텃밭 체험" description="7월 한 달 간 체험 상품 20% 할인!" />
             <ProductItemList type="experience" />
@@ -43,7 +43,7 @@ export default function Home() {
         </article>
 
         {/* 추천 카테고리 2 */}
-        <article className="titleWithProductItem">
+        <article id="link2" className="titleWithProductItem">
           <div className="px-4 flex flex-col gap-y-8">
             <Title title="톡! 터지는 옥수수의 반전 매력" description="7월 제철 채소 옥수수🌽" />
             <ProductItemList type="crop" />
@@ -52,7 +52,7 @@ export default function Home() {
         </article>
 
         {/* 추천 카테고리 3 */}
-        <article className="titleWithProductItem">
+        <article id="link3" className="titleWithProductItem">
           <div className="px-4 flex flex-col gap-y-8">
             <Title title="마감 임박! 텃밭 상품 BEST 10" description="같이 심고, 같이 키우고, 같이 수확해요!" />
             <ProductItemList type="gardening" />
