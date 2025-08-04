@@ -11,8 +11,6 @@ import { BuyBoxOptionExtraItemType } from '@/components/elements/BuyBoxForMobile
  * @returns {JSX.Element} 날짜/시간 선택용 라디오 버튼 요소
  */
 export default function BuyBoxOptionExtraItem({ date, time, count }: BuyBoxOptionExtraItemType) {
-  console.log(date, time, count);
-
   return (
     <>
       {count > 0 ? (

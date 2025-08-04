@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default function OrdersForSeller() {
   return (
     <>
-      <LinkHeader title="주문내역" />
+      <LinkHeader title="주문 관리" />
       <OfficeOrderClientContorl />
     </>
   );

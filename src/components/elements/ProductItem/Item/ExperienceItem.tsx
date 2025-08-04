@@ -68,8 +68,8 @@ export default function ExperienceItem({
 
         {/* 가격 정보 */}
         <div className="text-base flex gap-1 items-center">
-          {extra!.dcRate > 0 ? <span className="text-oguogu-main">{extra!.dcRate}%</span> : ''}
-          <span>{(price * (1 - extra!.dcRate / 100)).toLocaleString()}원</span>
+          {extra!.dcRate! > 0 ? <span className="text-oguogu-main">{extra!.dcRate}%</span> : ''}
+          <span>{(price * (1 - extra!.dcRate! / 100)).toLocaleString()}원</span>
           <span className="text-[10px] leading-none">/ 1인</span>
         </div>
 

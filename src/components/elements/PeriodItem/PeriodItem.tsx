@@ -1,13 +1,17 @@
+import AddPeriodForm from '@/features/addPeriodForm/AddPeriodForm';
 import { periodObject } from '@/shared/types/product';
 import Image from 'next/image';
 
-export default function PeriodItem({ periodItemList }: { periodItemList: periodObject[] }) {
+export default function PeriodItem({ id, periodItemList }: { id: number; periodItemList: periodObject[] }) {
   if (periodItemList === null) {
     return <div>업로드 전입니다.</div>;
   }
 
   return (
     <>
+      {/* 히스토리 등록 버튼 */}
+      <AddPeriodForm id={id} />
+
       {periodItemList ? (
         <div className="mt-4 grid gap-4 mobile-max:grid-cols-2 mobile-max:gap-5 w-full">
           {periodItemList
@@ -35,9 +39,13 @@ export default function PeriodItem({ periodItemList }: { periodItemList: periodO
                   </div>
 
                   {/* 이미지 */}
-                  <div className="rounded-lg overflow-hidden w-full bg-oguogu-white flex justify-center">
-                    <Image src="/images/gardening/dummy-001.png" alt="period" width={256} height={256} />
-                  </div>
+                  {item.image?.imagePath ? (
+                    <div className="rounded-lg overflow-hidden w-full bg-oguogu-white flex justify-center">
+                      <Image src={item.image?.imagePath} alt="period" width={256} height={256} />
+                    </div>
+                  ) : (
+                    ''
+                  )}
 
                   <div className="flex flex-col text-xs w-full">
                     <p className="text-base">{item.title ?? '제목 없음'}</p>

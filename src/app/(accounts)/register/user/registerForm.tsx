@@ -7,7 +7,6 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createUser } from '@/shared/data/actions/user';
 import toast from 'react-hot-toast';
-import { UserResType } from '@/shared/types/user';
 
 export default function UserRegisterForm() {
   const [address, setAddress] = useState('');
@@ -62,7 +61,7 @@ export default function UserRegisterForm() {
     }
 
     try {
-      const res: UserResType = await createUser({
+      await createUser({
         email,
         password,
         name,
@@ -80,12 +79,8 @@ export default function UserRegisterForm() {
         },
       });
 
-      if (res.ok === 1) {
-        toast.success('회원가입이 완료되었습니다');
-        router.push('/login');
-      } else {
-        toast.error('회원가입이 실패했습니다');
-      }
+      toast.success('회원가입이 완료되었습니다');
+      router.push('/login');
     } catch (error) {
       console.error('회원가입 오류 :', error);
       toast.error('회원가입 중 오류가 발생했습니다');

@@ -13,7 +13,7 @@ export default function ToggleOfficePageForSeller() {
   return (
     <>
       {LoggedInUserType === 'seller' ? (
-        pathname === '/mypage' ? (
+        pathname.includes('/mypage') ? (
           <Link
             href="/office"
             className="fixed w-20 h-20 bottom-18 right-6 border-3 border-oguogu-main rounded-[100px] bg-oguogu-white shadow-sm shadow-oguogu-gray-2 text-sm flex flex-col items-center justify-center"

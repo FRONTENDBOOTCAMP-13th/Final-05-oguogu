@@ -25,6 +25,18 @@ export default function BackOffice() {
         <section className="px-4 py-6 flex flex-col gap-6 text-xl">
           <div className="flex flex-col gap-4">
             <h2 className="text-base text-oguogu-gray-4 flex gap-1 items-start">
+              나의 텃밭 생활
+              <Image src="/svgs/pot.svg" alt="" width={20} height={20}></Image>
+            </h2>
+            <Link href="/office/orders">주문 관리</Link>
+            <Link href="/office/products">상품 관리</Link>
+            <Link href="/office/mygarden">텃밭 히스토리 관리</Link>
+            <Link href="/office/payments">정산</Link>
+            <Link href="/office/qnas">문의 내역</Link>
+          </div>
+
+          <div className="flex flex-col gap-4">
+            <h2 className="text-base text-oguogu-gray-4 flex gap-1 items-start">
               고객센터
               <Image src="/svgs/notice.svg" alt="" width={18} height={18}></Image>
             </h2>

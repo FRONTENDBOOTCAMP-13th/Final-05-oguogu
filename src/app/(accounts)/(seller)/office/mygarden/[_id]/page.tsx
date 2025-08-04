@@ -7,16 +7,6 @@ import { periodObject, productRes } from '@/shared/types/product';
 import { getDayFromToday } from '@/utils/getDaysFromToday/getDaysFromToday';
 import { format } from 'date-fns';
 import Image from 'next/image';
-import { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: '텃밭 성장 기록 | 오구오구',
-  description: '텃밭 상품의 성장 단계, 수확 예정일, 판매자 기록을 시각적으로 확인할 수 있는 상세 페이지입니다.',
-  robots: {
-    index: false,
-    follow: false,
-  },
-};
 
 export default async function MyGardenItemPage({ params }: ProductDetailPageProps) {
   const { _id } = await params;
@@ -28,9 +18,10 @@ export default async function MyGardenItemPage({ params }: ProductDetailPageProp
   }
 
   /* period 의 status 값을 추출, 포함 여부를 검증하여 가장 마지막 데이터를 렌더링 */
-  const allStatus = res.item.extra!.period?.map((item: periodObject) => item.status);
+  const allStatus = periodItemList?.map((item: periodObject) => item.status);
+  console.log('모든 상태 정보', allStatus);
 
-  let lastStatus = 'seeding';
+  let lastStatus = '';
   allStatus?.map((status: string) =>
     status.includes('harvested')
       ? (lastStatus = 'harvested')
@@ -41,14 +32,12 @@ export default async function MyGardenItemPage({ params }: ProductDetailPageProp
           : (lastStatus = 'seeding'),
   );
 
-  /* period */
-
   /* 현재 날짜와 시작한 날짜의 차이를 계산하는 progress bar 데이터 받아오기 */
   // 시작(상품 판매 종료) 날짜
-  const startDate = res.item.extra?.deadline;
+  const startDate = res.item.extra?.deadline ?? '2025-08-01';
 
   // INFO 종료 날짜 : 현재는 하드코딩된 데이터, dbinit 이후 실제 DB 반영 (아래 주석 사용)
-  // const endDate = res.item.extra.harvestExpectedDate;
+  // const endDate = res.item.extra?.harvestExpectedDate ?? '2025-11-01';
   const endDate = '2025-11-01';
 
   // 전체 날짜: 시작 날짜 ~ 종료 날짜
@@ -67,6 +56,7 @@ export default async function MyGardenItemPage({ params }: ProductDetailPageProp
 
   // 업로드 날짜
   const uploadDate = periodItemList?.map((item: periodObject) => item.date);
+  console.log(uploadDate);
 
   return (
     <>
