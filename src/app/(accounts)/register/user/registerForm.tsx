@@ -7,7 +7,6 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createUser } from '@/shared/data/actions/user';
 import toast from 'react-hot-toast';
-import { UserResType } from '@/shared/types/user';
 
 export default function UserRegisterForm() {
   const [address, setAddress] = useState('');
