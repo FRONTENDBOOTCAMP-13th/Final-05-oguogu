@@ -42,7 +42,7 @@ export default async function QnA() {
           <div className="flex-shrink-0 w-[60px] ">구분</div>
           <div className="truncate min-w-0 flex-1 ">제목</div>
         </div>
-        <div className="flex flex-col gap-2">{qnaList}</div>
+        <div className="flex flex-col gap-4">{qnaList}</div>
       </main>
     </>
   );

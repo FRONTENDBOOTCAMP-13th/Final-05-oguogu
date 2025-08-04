@@ -67,7 +67,7 @@ export default async function QnaDetailPage({ params }: QnaDetailPageProps) {
           <div className="flex-shrink-0 w-[80px] text-oguogu-main ">{detailQna?.tag}</div>
           <div className="truncate min-w-0 flex-1 text-oguogu-black ">{detailQna?.title}</div>
         </div>
-        <div className="text-[12px] leading-[140%] mt-5">
+        <div className="text-[14px] leading-[140%] mt-5">
           {detailQna?.content
             .split('.')
             .filter(Boolean)

@@ -66,9 +66,11 @@ export default async function NoticeDetailPage({ params }: NoticeDetailPageProps
         <div className="flex justify-between gap-2 border-b border-oguogu-gray-4 pb-1 mb-2 text-[16px] items-end ">
           <div className="flex-shrink-0 w-[60px] text-oguogu-main ">{detailNotice?.tag}</div>
           <div className="truncate min-w-0 flex-1 text-oguogu-black ">{detailNotice?.title}</div>
-          <div className="flex-shrink-0 w-[90px] text-oguogu-gray-4 text-[12px]">2025.08.02</div>
+          <div className="flex-shrink-0 w-[90px] text-oguogu-gray-4 text-[12px]">
+            {detailNotice?.createdAt.split(' ')[0]}
+          </div>
         </div>
-        <div className="text-[12px] leading-[140%] mt-5">
+        <div className="text-[14px] leading-[140%] mt-5">
           {detailNotice?.content
             .split('.')
             .filter(Boolean)
