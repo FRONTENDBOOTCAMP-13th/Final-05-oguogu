@@ -357,19 +357,45 @@
       }
     },
     {
-      "email": "seller2@gmail.com",
-      "password": "$2b$10$l2PD/G3zq0LOTrcSDJzLCOPc8yVI0azh/iRd2ZpgZJJ0vHzE0B5L2",
-      "name": "2번셀러",
+      "email": "seller3@gmail.com",
+      "password": "$2b$10$8b3gXZdb/0lF3.OdToMiZOS1bwapxrlKkUstbs6CaqNSOCDo3/TzW",
+      "name": "3번셀러",
       "phone": "01034212258",
-      "address": "부산광역시 해운대구 센텀중앙로 45",
+      "address": "서울시 용산구 이태원로 52",
       "type": "seller",
       "loginType": "email",
       "image": "uploadFiles/seller-4-profile.png",
       "extra": {
         "businessInfo": {
-          "companyName": "놀부네농산물",
-          "ownerName": "이놀부",
-          "businessTel": "010-5959-5959",
+          "companyName": "친환경농산물협회",
+          "ownerName": "김감자",
+          "businessTel": "010-1212-4489",
+          "businessNumber": "02-456-7891"
+        },
+
+        "certification": {
+          "status": "approved",
+          "requestedAt": "2025-07-01T09:30:00Z",
+          "reviewedAt": "2025-07-03T15:45:00Z",
+          "reviewer": "admin@5959.com",
+          "reason": "서류 이상 없음"
+        }
+      }
+    },
+    {
+      "email": "seller4@gmail.com",
+      "password": "$2b$10$iFo2noEnVTNU3brh9lpX6eCMPg0ybhWcE7naH0IcvHRRtEjV5I05W",
+      "name": "4번셀러",
+      "phone": "01034212258",
+      "address": "강원도 춘천시 효자동 2번길",
+      "type": "seller",
+      "loginType": "email",
+      "image": "uploadFiles/seller-4-profile.png",
+      "extra": {
+        "businessInfo": {
+          "companyName": "춘천이최고야",
+          "ownerName": "박춘천",
+          "businessTel": "010-1029-1028",
           "businessNumber": "02-456-7891"
         },
 
@@ -400,6 +426,80 @@
   "product": [
     {
       "seller_id": 16,
+      "name": "아삭한 달콤함! 전남 해남 25년 '햇' 사과",
+      "content": "씹을수록 퍼지는 상큼달콤한 맛과 아삭아삭한 식감",
+      "price": 29900,
+      "shippingFees": 3000,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/apple1.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "fruit",
+        "filter": ["사과"],
+        "originPlace": "국산",
+        "productionPlace": "전라남도 해남군",
+        "composition": "30개입 * 1개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 12499,
+        "dcRate": 40,
+        "productCnt": 10,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 18,
+      "name": "아삭한 달콤함! 전남 해남 25년 '햇' 사과",
+      "content": "씹을수록 퍼지는 상큼달콤한 맛과 아삭아삭한 식감",
+      "price": 29900,
+      "shippingFees": 3000,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/apple1.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "fruit",
+        "filter": ["사과"],
+        "originPlace": "국산",
+        "productionPlace": "전라남도 해남군",
+        "composition": "30개입 * 1개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 12499,
+        "dcRate": 40,
+        "productCnt": 10,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 19,
       "name": "아삭한 달콤함! 전남 해남 25년 '햇' 사과",
       "content": "씹을수록 퍼지는 상큼달콤한 맛과 아삭아삭한 식감",
       "price": 29900,
@@ -2039,6 +2139,102 @@
       }
     },
     {
+      "seller_id": 18,
+      "name": "갯벌에서 뛰놀자! 전라북도 갯벌 체험",
+      "content": "신나는 갯벌놀이와 조개잡이! 아이들과 함께 자연 속으로!",
+      "price": 28000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/mud-flat.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-exp2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "experience",
+        "category": ["자연체험", "갯벌체험"],
+        "filter": ["갯벌", "조개잡이", "아이동반", "자연"],
+        "region": "전라북도 임실",
+        "meetingPlace": "전북특별자치도 임실군 임실읍 치즈마을길 96",
+        "departureDate": "2025-08-09",
+        "returnDate": "2025-08-09",
+        "dcRate": 45,
+        "productCnt": 4,
+        "representitiveKeyword": ["갯벌", "자연", "가족체험"],
+        "includedItems": ["체험 장비 대여", "식사 제공"],
+        "unIncludedItems": ["숙소", "버스비"],
+        "guideInfo": {
+          "name": "이하나",
+          "contact": "010-1234-5678"
+        },
+        "badge": {
+          "isNew": true,
+          "isInSeason": true,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 19,
+      "name": "갯벌에서 뛰놀자! 전라북도 갯벌 체험",
+      "content": "신나는 갯벌놀이와 조개잡이! 아이들과 함께 자연 속으로!",
+      "price": 28000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/mud-flat.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-exp2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "experience",
+        "category": ["자연체험", "갯벌체험"],
+        "filter": ["갯벌", "조개잡이", "아이동반", "자연"],
+        "region": "전라북도 임실",
+        "meetingPlace": "전북특별자치도 임실군 임실읍 치즈마을길 96",
+        "departureDate": "2025-08-09",
+        "returnDate": "2025-08-09",
+        "dcRate": 45,
+        "productCnt": 4,
+        "representitiveKeyword": ["갯벌", "자연", "가족체험"],
+        "includedItems": ["체험 장비 대여", "식사 제공"],
+        "unIncludedItems": ["숙소", "버스비"],
+        "guideInfo": {
+          "name": "이하나",
+          "contact": "010-1234-5678"
+        },
+        "badge": {
+          "isNew": true,
+          "isInSeason": true,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
       "seller_id": 17,
       "name": "아이들과 함께하는 갯벌 조개잡이 체험",
       "content": "갯벌에서 뛰놀며 조개도 잡고, 바닷바람도 즐겨요!",
@@ -2296,6 +2492,152 @@
     },
     {
       "seller_id": 16,
+      "name": "당근",
+      "content": "겨울에 수확하는 당근, 함께 키워보세요!",
+      "price": 19800,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/Carrot.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-gdn3-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "gardening",
+        "category": ["텃밭체험"],
+        "filter": ["당근", "겨울채소", "친환경"],
+        "region": "경상북도 의성군",
+        "deadline": "2025-08-25",
+        "harvestExpectedDate": "2025-12-10",
+        "harvestExpectedCnt": "약 20개",
+        "dcRate": 41,
+        "productCnt": 1,
+        "badge": {
+          "isNew": true,
+          "isInSeason": true,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        },
+        "period": [
+          {
+            "date": "2025-09-02",
+            "image": "src",
+            "status": "seeding",
+            "content": "당근 씨앗을 조심스럽게 심었어요."
+          },
+          {
+            "date": "2025-09-23",
+            "image": "src",
+            "status": "growing",
+            "content": "파릇파릇 새싹이 올라오고 있어요!"
+          },
+          {
+            "date": "2025-10-12",
+            "image": "src",
+            "status": "growing",
+            "content": "잎이 풍성해졌어요. 뿌리도 잘 자라고 있겠죠?"
+          },
+          {
+            "date": "2025-11-20",
+            "image": "src",
+            "status": "growing",
+            "content": "곧 수확을 앞두고 있어요. 기대돼요!"
+          },
+          {
+            "date": "2025-12-10",
+            "image": "src",
+            "status": "harvested",
+            "content": "싱싱한 겨울 당근 수확 완료!"
+          }
+        ]
+      }
+    },
+    {
+      "seller_id": 19,
+      "name": "당근",
+      "content": "겨울에 수확하는 당근, 함께 키워보세요!",
+      "price": 19800,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/Carrot.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-gdn3-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "gardening",
+        "category": ["텃밭체험"],
+        "filter": ["당근", "겨울채소", "친환경"],
+        "region": "경상북도 의성군",
+        "deadline": "2025-08-25",
+        "harvestExpectedDate": "2025-12-10",
+        "harvestExpectedCnt": "약 20개",
+        "dcRate": 41,
+        "productCnt": 1,
+        "badge": {
+          "isNew": true,
+          "isInSeason": true,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        },
+        "period": [
+          {
+            "date": "2025-09-02",
+            "image": "src",
+            "status": "seeding",
+            "content": "당근 씨앗을 조심스럽게 심었어요."
+          },
+          {
+            "date": "2025-09-23",
+            "image": "src",
+            "status": "growing",
+            "content": "파릇파릇 새싹이 올라오고 있어요!"
+          },
+          {
+            "date": "2025-10-12",
+            "image": "src",
+            "status": "growing",
+            "content": "잎이 풍성해졌어요. 뿌리도 잘 자라고 있겠죠?"
+          },
+          {
+            "date": "2025-11-20",
+            "image": "src",
+            "status": "growing",
+            "content": "곧 수확을 앞두고 있어요. 기대돼요!"
+          },
+          {
+            "date": "2025-12-10",
+            "image": "src",
+            "status": "harvested",
+            "content": "싱싱한 겨울 당근 수확 완료!"
+          }
+        ]
+      }
+    },
+    {
+      "seller_id": 18,
       "name": "당근",
       "content": "겨울에 수확하는 당근, 함께 키워보세요!",
       "price": 19800,
