@@ -57,7 +57,7 @@ export interface Item {
 }
 
 export interface Extra {
-  productType: 'crop' | 'experience' | 'gardening';
+  productType?: 'crop' | 'experience' | 'gardening';
   category?: 'veggie' | 'fruit' | 'grain' | 'mushroom';
   filter?: string[];
   originPlace?: string;
@@ -65,7 +65,7 @@ export interface Extra {
   composition?: string;
   deliveryInfo?: string;
   likeCount?: number;
-  dcRate: number;
+  dcRate?: number;
   productCnt?: number; //최대 구매 가능 수량
   isNew?: boolean;
   isInSeason?: boolean;
@@ -114,8 +114,11 @@ export interface productsRes {
 
 export interface periodObject {
   date: string;
-  image: string;
-  status: 'seeding' | 'sprouting' | 'growing' | 'harvested';
-  title?: string;
+  image?: {
+    name?: File | null;
+    imagePath?: string | null;
+  };
+  status: string;
+  title: string;
   content: string;
 }

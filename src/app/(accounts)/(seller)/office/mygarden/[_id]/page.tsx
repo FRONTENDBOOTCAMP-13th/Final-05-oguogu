@@ -35,10 +35,10 @@ export default async function MyGardenItemPage({ params }: ProductDetailPageProp
 
   /* 현재 날짜와 시작한 날짜의 차이를 계산하는 progress bar 데이터 받아오기 */
   // 시작(상품 판매 종료) 날짜
-  const startDate = res.item.extra?.deadline;
+  const startDate = res.item.extra?.deadline ?? '2025-08-01';
 
   // INFO 종료 날짜 : 현재는 하드코딩된 데이터, dbinit 이후 실제 DB 반영 (아래 주석 사용)
-  // const endDate = res.item.extra.harvestExpectedDate;
+  // const endDate = res.item.extra?.harvestExpectedDate ?? '2025-11-01';
   const endDate = '2025-11-01';
 
   // 전체 날짜: 시작 날짜 ~ 종료 날짜
@@ -102,7 +102,7 @@ export default async function MyGardenItemPage({ params }: ProductDetailPageProp
         </div>
 
         {/* 판매자가 업로드한 Period 내역 */}
-        <PeriodItem periodItemList={periodItemList!} />
+        <PeriodItem periodItemList={periodItemList!} id={Number(_id)} />
       </main>
     </>
   );
