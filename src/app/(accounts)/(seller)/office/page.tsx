@@ -1,7 +1,20 @@
 import LinkHeader from '@/components/layouts/Header/LinkHeader';
 import BackOffcieSectionDependsOnLoginStatus from '@/components/layouts/Login/BackOfficeSectionDependsOnLoginStatus';
+import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+  title: '백오피스 | 판매자 센터 - 오구오구',
+  description: '판매자 전용 백오피스 메인 페이지입니다. 로그인 상태에 따라 다양한 관리 메뉴를 확인할 수 있습니다.',
+  robots: {
+    index: false,
+    follow: false,
+  },
+  alternates: {
+    canonical: 'https://final-05-oguogu.vercel.app/office',
+  },
+};
 
 export default function BackOffice() {
   return (
