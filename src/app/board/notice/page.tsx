@@ -2,7 +2,6 @@ import NoticeItem from '@/components/elements/boardItem/noticeItem';
 import LinkHeader from '@/components/layouts/Header/LinkHeader';
 import { getPosts } from '@/shared/data/functions/post';
 import { responsePostReplies } from '@/shared/types/post';
-import { format } from 'date-fns';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -31,9 +30,8 @@ export const metadata: Metadata = {
 export default async function Notice() {
   const noticeRes: responsePostReplies = await getPosts('notice');
 
-  const noticeList = await noticeRes.item.map(item => {
-    const formattedDate = format(item.createdAt, 'yyyy.MM.dd');
-    return <NoticeItem key={item._id} type={item.tag} title={item.title} date={formattedDate} _id={item._id} />;
+  const noticeList = noticeRes.item.map(item => {
+    return <NoticeItem key={item._id} type={item.tag} title={item.title} date={`2025.08.04`} _id={item._id} />;
   });
   return (
     <>
