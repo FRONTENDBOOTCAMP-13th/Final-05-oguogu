@@ -54,7 +54,7 @@ export default function GardenItem({
       <div className="flex flex-col gap-1">
         {/* 판매자 정보 */}
         <div className="flex gap-1 items-center">
-          <Image src="/images/product-hatIcon.svg" alt="농사꾼 모자 아이콘" width={16} height={16} />
+          <Image src="/images/product-hatIcon.svg" alt="" aria-hidden="true" width={16} height={16} />
           <p className="text-[10px]">{seller?.extra?.businessInfo?.companyName ?? '오구텃밭'}</p>
         </div>
 

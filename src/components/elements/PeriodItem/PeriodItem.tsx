@@ -45,7 +45,12 @@ export default async function PeriodItem({ id, periodItemList }: { id: number; p
                   {/* 이미지 */}
                   {item.image?.imagePath ? (
                     <div className="rounded-lg overflow-hidden w-full bg-oguogu-white flex justify-center">
-                      <Image src={item.image?.imagePath} alt="period" width={256} height={256} />
+                      <Image
+                        src={item.image?.imagePath}
+                        alt={`${item.status}를 추가 설명하는 이미지`}
+                        width={256}
+                        height={256}
+                      />
                     </div>
                   ) : (
                     ''

@@ -14,7 +14,7 @@ import Link from 'next/link';
 export function ImageCategoryItem({ params, title }: ImageCategoryItemType) {
   return (
     <Link href={`/product/crop?category=${params}`} className="flex flex-col items-center gap-2">
-      <Image src={`/images/category-${params}.webp`} alt={title} width={48} height={48} />
+      <Image src={`/images/category-${params}.webp`} alt={`${title} 탐색 페이지 이동`} width={48} height={48} />
       <p className="text-xs">{title}</p>
     </Link>
   );
@@ -54,9 +54,19 @@ export function SelectProductItem({ params, title }: SelectProductItemType) {
       <Link href={`/office/products/select/editor/${params}`} className="flex flex-col items-center gap-2">
         <div className="w-[60px] h-[60px] flex items-center justify-center">
           {params === 'experience' ? (
-            <Image src={`/images/category-seller-${params}.png`} alt={title} width={44} height={44} />
+            <Image
+              src={`/images/category-seller-${params}.png`}
+              alt={`${params} 상품 등록 또는 수정`}
+              width={44}
+              height={44}
+            />
           ) : (
-            <Image src={`/images/category-seller-${params}.png`} alt={title} width={60} height={60} />
+            <Image
+              src={`/images/category-seller-${params}.png`}
+              alt={`${params} 상품 등록 또는 수정`}
+              width={60}
+              height={60}
+            />
           )}
         </div>
         <p className="text-xl">{title}</p>
