@@ -1,6 +1,50 @@
 import LinkHeader from '@/components/layouts/Header/LinkHeader';
 import { getPosts } from '@/shared/data/functions/post';
 import { responsePostReplies } from '@/shared/types/post';
+import { Metadata } from 'next';
+
+export async function generateMetadata({ params }: NoticeDetailPageProps): Promise<Metadata> {
+  const { _id } = await params;
+  const noticeRes: responsePostReplies = await getPosts('notice');
+  const notice = noticeRes.item.find(item => item._id === Number(_id));
+
+  if (!notice) {
+    return {
+      title: '공지사항을 찾을 수 없습니다 | 오구오구',
+      description: '존재하지 않는 공지글입니다.',
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
+  }
+
+  const { title, content } = notice;
+  const desc = content.slice(0, 80).replace(/\n/g, ' ').trim();
+
+  return {
+    title: `${title} | 공지사항 - 오구오구`,
+    description: desc,
+    robots: {
+      index: true,
+      follow: true,
+    },
+    alternates: {
+      canonical: `https://final-05-oguogu.vercel.app/board/notice/${_id}`,
+    },
+    openGraph: {
+      title: `${title} | 공지사항 - 오구오구`,
+      description: desc,
+      type: 'article',
+      url: `https://final-05-oguogu.vercel.app/board/notice/${_id}`,
+    },
+    twitter: {
+      card: 'summary',
+      title: `${title} | 오구오구`,
+      description: desc,
+    },
+  };
+}
 
 export interface NoticeDetailPageProps {
   params: Promise<{
