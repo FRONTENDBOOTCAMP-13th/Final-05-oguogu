@@ -4,4 +4,5 @@ export interface SlideBannerItemType {
   productName: string;
   farmName: string;
   className?: string;
+  keyword: string;
 }

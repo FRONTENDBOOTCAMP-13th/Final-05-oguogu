@@ -13,11 +13,18 @@ import Link from 'next/link';
  * @param {string} props.className - 기본 클래스 외 추가로 지정할 CSS 스타일
  * @returns {JSX.Element} 슬라이드 배너 아이템 JSX 요소
  */
-export default function SlideBannerItem({ order, size, productName, farmName, className }: SlideBannerItemType) {
+export default function SlideBannerItem({
+  order,
+  size,
+  productName,
+  farmName,
+  className,
+  keyword,
+}: SlideBannerItemType) {
   return (
     // CHECKLIST
     // [ ] 링크 연결
-    <Link href={`/`}>
+    <Link href={`/search/result?keyword=${keyword}`}>
       <figure className={`relative w-[210px] h-[280px] overflow-hidden rounded-[12px] transform ${className}`}>
         <Image
           src={`/images/main-banner-${order}-${size}.webp`}

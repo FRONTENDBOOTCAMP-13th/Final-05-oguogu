@@ -19,9 +19,9 @@ export default function SlideBanner() {
   const [autoSlide, setAutoSlide] = useState(true);
 
   const bannerItems: SlideBannerItemType[] = [
-    { order: '01', size: 'lg', productName: '프리미엄 초당 옥수수', farmName: '돌쇠네 농산물' },
-    { order: '02', size: 'lg', productName: '프리미엄 퇴천 토마토', farmName: '대성농장 농산물' },
-    { order: '03', size: 'lg', productName: '프리미엄 인제 감자', farmName: '두메산골 농산물' },
+    { order: '01', size: 'lg', productName: '프리미엄 초당 옥수수', farmName: '돌쇠네 농산물', keyword: '옥수수' },
+    { order: '02', size: 'lg', productName: '프리미엄 퇴천 토마토', farmName: '대성농장 농산물', keyword: '토마토' },
+    { order: '03', size: 'lg', productName: '프리미엄 인제 감자', farmName: '두메산골 농산물', keyword: '감자' },
   ];
 
   // 슬라이드 무한 루프

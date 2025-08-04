@@ -50,9 +50,15 @@ export function TextCategoryItem({ type, _id, params, title, isClick = false }: 
 
 export function SelectProductItem({ params, title }: SelectProductItemType) {
   return (
-    <div className="bg-oguogu-main-light w-full p-4 rounded-xl border border-oguogu-gray-2">
+    <div className="bg-oguogu-main-light w-full p-4 rounded-xl border border-oguogu-main">
       <Link href={`/office/products/select/editor/${params}`} className="flex flex-col items-center gap-2">
-        <Image src={`/images/category-seller-${params}.png`} alt={title} width={60} height={60} />
+        <div className="w-[60px] h-[60px] flex items-center justify-center">
+          {params === 'experience' ? (
+            <Image src={`/images/category-seller-${params}.png`} alt={title} width={44} height={44} />
+          ) : (
+            <Image src={`/images/category-seller-${params}.png`} alt={title} width={60} height={60} />
+          )}
+        </div>
         <p className="text-xl">{title}</p>
       </Link>
     </div>
