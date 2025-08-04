@@ -1,4 +1,5 @@
 'use client';
+
 import HotMarkIcon from '@/components/elements/HotMarkIcon/HotMarkIcon';
 import LogOutIcon from '@/components/elements/LogoutIcon/LogoutIcon';
 import ProductLinkItem from '@/components/elements/ProductLink/ProductLink';
@@ -29,10 +30,12 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
 
     const fetch = async () => {
       setLoading(true);
+
       try {
         const data: productsRes = await getProductSeller(token);
         const orderData: OrderListResponse = await getOrdersSeller(token);
         const qnaData: responsePostReplies = await getPosts('qna', token);
+
         setProductRes(data);
         setOrderRes(orderData);
         setQnaRes(qnaData);
@@ -95,9 +98,9 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
         {/* 최신 공지사항 게시물 */}
         <div className="flex items-center justify-between px-3 py-2 mx-4 border rounded-sm border-oguogu-gray-2">
           <div className="flex gap-2">
-            <HotMarkIcon title="신규" animate={false} />
-            <Link href="/board/notice" className="text-xs textElipsis">
-              [공지] 관리자 페이지 개편 안내
+            <HotMarkIcon title="공지" animate={false} />
+            <Link href="/board/notice" className="text-xs w-full textElipsis">
+              관리자 페이지 개편 안내
             </Link>
           </div>
           <p className="text-xs text-oguogu-gray-4">25.07.24</p>
