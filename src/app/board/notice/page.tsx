@@ -40,7 +40,7 @@ export default async function Notice() {
         <div className="flex justify-between gap-2 border-b border-oguogu-gray-4 pb-1 mb-2 text-[12px] text-oguogu-gray-4">
           <div className="flex-shrink-0 w-[60px] ">구분</div>
           <div className="truncate min-w-0 flex-1 ">제목</div>
-          <div className="flex-shrink-0 w-[90px] ">날짜</div>
+          <div className="flex-shrink-0 w-[70px] ">날짜</div>
         </div>
         <div className="flex flex-col gap-4">{noticeList}</div>
       </main>
