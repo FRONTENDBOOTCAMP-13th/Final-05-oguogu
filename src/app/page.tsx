@@ -84,7 +84,7 @@ export default async function Home() {
 
         {/* 이주의 리뷰 미리보기 */}
         <article id="link4" className="titleWithProductItem scroll-mt-[130px]">
-          <div className="px-4 ">
+          <div className="px-4 flex flex-col gap-5 ">
             <Title title="이주의 리뷰" description="이번 주 인기 폭발 후기들🔥" />
             {ReviewList?.length > 0 ? (
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">{ReviewList}</div>
