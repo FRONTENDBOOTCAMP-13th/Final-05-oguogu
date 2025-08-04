@@ -19,7 +19,7 @@ export default function QnasSeller() {
     <>
       <LinkHeader title="문의 내역" />
 
-      <main className="p-4 flex flex-col gap-4">
+      <main className="p-4 flex flex-col gap-4  min-h-screen bg-oguogu-white">
         <SellerQnaPageClientControl />
       </main>
     </>
