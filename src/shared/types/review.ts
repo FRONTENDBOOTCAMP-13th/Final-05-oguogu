@@ -16,7 +16,7 @@ export interface ReviewUser {
 export interface ReviewProduct {
   _id: number;
   name: string;
-  image?: {
+  image: {
     path: string;
     name: string;
     originalname: string;
