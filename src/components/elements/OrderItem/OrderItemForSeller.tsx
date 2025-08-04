@@ -91,17 +91,18 @@ export default function OrderItemForSeller({ orderState, item, updateOrderStatus
       orderState === 'inTransit' ||
       orderState === 'refundInProgress' ? (
         <section className="flex justify-center items-center gap-2 text-[12px]">
-          <button className="w-full py-2 leading-none border border-oguogu-gray-2 rounded-[4px]">주문 정보 확인</button>
+          {/* <button className="w-full py-2 leading-none border border-oguogu-gray-2 rounded-[4px]">주문 정보 확인</button> */}
           <button onClick={onClick} className="w-full py-2 leading-none border border-oguogu-main rounded-[4px]">
             {nextText} 전환
           </button>
         </section>
       ) : (
-        <section>
+        ''
+        /*  <section>
           <button className="text-[12px] w-full py-2 leading-none border border-oguogu-gray-2 rounded-[4px]">
             주문 정보 확인
           </button>
-        </section>
+        </section> */
       )}
     </div>
   );
