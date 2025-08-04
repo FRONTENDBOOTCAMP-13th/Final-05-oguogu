@@ -17,10 +17,10 @@ export default function MyPageSectionDependsOnLoginStatus() {
   const token = useAuthStore(state => state.token);
 
   const [orderInfo, setOrderInfo] = useState<Order[]>([]);
-  const [payedCnt, setPayedCnt] = useState<number>();
-  const [preparingCnt, setPreparingCnt] = useState<number>();
-  const [transitCnt, setTransitCnt] = useState<number>();
-  const [delivered, setDelivered] = useState<number>();
+  const [payedCnt, setPayedCnt] = useState<number>(0);
+  const [preparingCnt, setPreparingCnt] = useState<number>(0);
+  const [transitCnt, setTransitCnt] = useState<number>(0);
+  const [delivered, setDelivered] = useState<number>(0);
   const { isLoading, setLoading } = useLoadingStore();
 
   useEffect(() => {
@@ -50,10 +50,10 @@ export default function MyPageSectionDependsOnLoginStatus() {
       const transitCount = orderInfo.filter(item => item.state === 'inTransit').length;
       const deliveredCount = orderInfo.filter(item => item.state === 'delivered').length;
 
-      setPayedCnt(payedCount);
-      setPreparingCnt(preparingCount);
-      setTransitCnt(transitCount);
-      setDelivered(deliveredCount);
+      setPayedCnt(payedCount ?? 0);
+      setPreparingCnt(preparingCount ?? 0);
+      setTransitCnt(transitCount ?? 0);
+      setDelivered(deliveredCount ?? 0);
     }
   }, [orderInfo]);
 
