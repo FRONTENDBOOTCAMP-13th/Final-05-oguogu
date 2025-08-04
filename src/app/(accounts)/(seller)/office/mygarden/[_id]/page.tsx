@@ -18,20 +18,19 @@ export default async function MyGardenItemPage({ params }: ProductDetailPageProp
   }
 
   /* period 의 status 값을 추출, 포함 여부를 검증하여 가장 마지막 데이터를 렌더링 */
-  const allStatus = res.item.extra!.period?.map((item: periodObject) => item.status);
+  const allStatus = periodItemList?.map((item: periodObject) => item.status);
+  console.log('모든 상태 정보', allStatus);
 
-  let lastStatus = 'seeding';
+  let lastStatus = '';
   allStatus?.map((status: string) =>
-    status.includes('harvest')
-      ? (lastStatus = 'harvest')
+    status.includes('harvested')
+      ? (lastStatus = 'harvested')
       : status.includes('growing')
         ? (lastStatus = 'growing')
         : status.includes('sprouting')
           ? (lastStatus = 'sprouting')
           : (lastStatus = 'seeding'),
   );
-
-  /* period */
 
   /* 현재 날짜와 시작한 날짜의 차이를 계산하는 progress bar 데이터 받아오기 */
   // 시작(상품 판매 종료) 날짜
@@ -57,6 +56,7 @@ export default async function MyGardenItemPage({ params }: ProductDetailPageProp
 
   // 업로드 날짜
   const uploadDate = periodItemList?.map((item: periodObject) => item.date);
+  console.log(uploadDate);
 
   return (
     <>

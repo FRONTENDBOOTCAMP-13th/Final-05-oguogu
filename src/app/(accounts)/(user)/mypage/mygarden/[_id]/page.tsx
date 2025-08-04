@@ -22,8 +22,8 @@ export default async function MyGardenItemPage({ params }: ProductDetailPageProp
 
   let lastStatus = 'seeding';
   allStatus?.map((status: string) =>
-    status.includes('harvest')
-      ? (lastStatus = 'harvest')
+    status.includes('harvested')
+      ? (lastStatus = 'harvested')
       : status.includes('growing')
         ? (lastStatus = 'growing')
         : status.includes('sprouting')

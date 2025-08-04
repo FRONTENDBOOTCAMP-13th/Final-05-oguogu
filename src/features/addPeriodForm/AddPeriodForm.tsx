@@ -9,6 +9,7 @@ import { fileResponse } from '@/shared/types/file';
 import { Extra, Item, productRes } from '@/shared/types/product';
 import { format } from 'date-fns';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import React, { useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 
@@ -21,6 +22,8 @@ export default function AddPeriodForm({ id }: { id: number }) {
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [selectedFileName, setSelectedFileName] = useState<string>('');
   const fileInputRef = useRef<HTMLInputElement | null>(null);
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   /* 토큰 정보 */
   const type = useAuthStore(state => state.userInfo?.type);
@@ -28,7 +31,7 @@ export default function AddPeriodForm({ id }: { id: number }) {
 
   /* 오늘 날짜를 업로드일자로 기록 */
   const today = new Date();
-  const parsedToday = format(today, 'yy-MM-dd');
+  const parsedToday = format(today, 'yyyy-MM-dd');
 
   /* 등록 버튼 클릭 시, DB 전송 */
   const handleReplySubmit = async (e: React.FormEvent) => {
@@ -42,6 +45,7 @@ export default function AddPeriodForm({ id }: { id: number }) {
     }
 
     try {
+      setLoading(true);
       const product: productRes = await getProduct(id);
       const allItem: Item = product.item;
       console.log('item', allItem);
@@ -103,9 +107,13 @@ export default function AddPeriodForm({ id }: { id: number }) {
       setImageFile(null);
       setSelectedFileName('');
       setImagePreview(null);
-      // window.location.reload();
+
+      // 강제 리로드
+      router.refresh();
     } catch (err) {
       console.log('에러 발생', err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -269,12 +277,23 @@ export default function AddPeriodForm({ id }: { id: number }) {
 
               {/* 버튼 */}
               <div className="flex w-full justify-end gap-2">
-                <button
-                  onClick={handleReplySubmit}
-                  className="w-full text-sm text-white rounded h-7 bg-oguogu-main hover:bg-oguogu-main-dark"
-                >
-                  히스토리 등록
-                </button>
+                {loading ? (
+                  <button
+                    onClick={handleReplySubmit}
+                    className="w-full text-sm text-white rounded h-7 bg-oguogu-main hover:bg-oguogu-main-dark"
+                    disabled
+                  >
+                    등록 중
+                  </button>
+                ) : (
+                  <button
+                    onClick={handleReplySubmit}
+                    className="w-full text-sm text-white rounded h-7 bg-oguogu-main hover:bg-oguogu-main-dark"
+                  >
+                    히스토리 등록
+                  </button>
+                )}
+
                 <button
                   onClick={handleCancle}
                   className="w-full text-sm border rounded h-7 text-oguogu-black border-oguogu-gray-2 bg-oguogu-white hover:bg-oguogu-gray-1"

@@ -31,8 +31,6 @@ export default async function ProductReview({ params }: ProductDetailPageProps) 
   const { _id } = await params;
   const res: ReviewRes = await getProductReplies(Number(_id));
 
-  console.log(res);
-  // 리뷰 리스트
   const ReviewList = res?.item.map(review => (
     <ReviewItem key={review._id} name={review.user.name} email="abcd@gamil.com" res={review} />
   ));
