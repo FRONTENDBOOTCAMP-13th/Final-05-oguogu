@@ -2,9 +2,11 @@
 
 import HotMarkIcon from '@/components/elements/HotMarkIcon/HotMarkIcon';
 import LogOutIcon from '@/components/elements/LogoutIcon/LogoutIcon';
+import BackOfficeSectionSkeleton from '@/components/layouts/Login/BackOfficeSectionSkeleton';
 import GetLoggedInUserData from '@/features/getLoggedInUserData/getLoggedInUserData';
 import { getOrders } from '@/shared/data/functions/order';
 import { useAuthStore } from '@/shared/store/authStore';
+import { useLoadingStore } from '@/shared/store/loadingStore';
 import { Order, OrderListResponse } from '@/shared/types/order';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -15,10 +17,11 @@ export default function MyPageSectionDependsOnLoginStatus() {
   const token = useAuthStore(state => state.token);
 
   const [orderInfo, setOrderInfo] = useState<Order[]>([]);
-  const [payedCnt, setPayedCnt] = useState<number>(0);
-  const [preparingCnt, setPreparingCnt] = useState(0);
-  const [transitCnt, setTransitCnt] = useState(0);
-  const [delivered, setDelivered] = useState(0);
+  const [payedCnt, setPayedCnt] = useState<number>();
+  const [preparingCnt, setPreparingCnt] = useState('');
+  const [transitCnt, setTransitCnt] = useState('');
+  const [delivered, setDelivered] = useState('');
+  const { isLoading, setLoading } = useLoadingStore();
 
   useEffect(() => {
     if (token === null) {
@@ -26,17 +29,19 @@ export default function MyPageSectionDependsOnLoginStatus() {
     }
 
     const fetch = async () => {
-      const data: OrderListResponse = await getOrders(token);
-
-      if (data.ok) {
+      try {
+        setLoading(true);
+        const data: OrderListResponse = await getOrders(token);
         setOrderInfo(data.item);
-      } else {
-        console.error(data.message || '데이터 로드 오류 발생');
+      } catch (err) {
+        console.error('데이터 로드 오류 발생', err);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetch();
-  }, [token]);
+  }, [token, setLoading]);
 
   useEffect(() => {
     if (orderInfo.length > 0) {
@@ -92,7 +97,11 @@ export default function MyPageSectionDependsOnLoginStatus() {
             <div
               className={`flex flex-col items-center gap-2 ${payedCnt === 0 ? `text-oguogu-gray-2` : 'text-oguogu-black'}`}
             >
-              <span className="text-2xl">{payedCnt}</span>
+              {isLoading ? (
+                <BackOfficeSectionSkeleton width="24px" height="32px" />
+              ) : (
+                <span className="text-2xl">{payedCnt}</span>
+              )}
               <span className="text-sm">결제 완료</span>
             </div>
 
@@ -102,7 +111,11 @@ export default function MyPageSectionDependsOnLoginStatus() {
             <div
               className={`flex flex-col items-center gap-2 ${preparingCnt === 0 ? `text-oguogu-gray-2` : 'text-oguogu-black'}`}
             >
-              <span className="text-2xl">{preparingCnt}</span>
+              {isLoading ? (
+                <BackOfficeSectionSkeleton width="24px" height="32px" />
+              ) : (
+                <span className="text-2xl">{preparingCnt}</span>
+              )}
               <span className="text-sm">배송 준비 중</span>
             </div>
 
@@ -112,7 +125,11 @@ export default function MyPageSectionDependsOnLoginStatus() {
             <div
               className={`flex flex-col items-center gap-2 ${transitCnt === 0 ? `text-oguogu-gray-2` : 'text-oguogu-black'}`}
             >
-              <span className="text-2xl">{transitCnt}</span>
+              {isLoading ? (
+                <BackOfficeSectionSkeleton width="24px" height="32px" />
+              ) : (
+                <span className="text-2xl">{transitCnt}</span>
+              )}
               <span className="text-sm">배송 중</span>
             </div>
 
@@ -122,7 +139,11 @@ export default function MyPageSectionDependsOnLoginStatus() {
             <div
               className={`flex flex-col items-center gap-2 ${delivered === 0 ? `text-oguogu-gray-2` : 'text-oguogu-black'}`}
             >
-              <span className="text-2xl">{delivered}</span>
+              {isLoading ? (
+                <BackOfficeSectionSkeleton width="24px" height="32px" />
+              ) : (
+                <span className="text-2xl">{delivered}</span>
+              )}
               <span className="text-sm">배송 완료</span>
             </div>
           </div>
