@@ -51,13 +51,15 @@ export default function ReviewItem({ name, email, res }: ReviewItemType) {
         {/* 리뷰 이미지 창 */}
         <div className="flex gap-2">
           <div className="flex gap-2">
-            <Image
-              className="w-[90px] h-[90px] object-cover rounded-[4px]"
-              src={res.extra.imagePath}
-              alt="상품 이미지"
-              width={90}
-              height={90}
-            />
+            {res.extra.imagePath && (
+              <Image
+                className="w-[90px] h-[90px] object-cover rounded-[4px]"
+                src={res.extra.imagePath}
+                alt="상품 이미지"
+                width={90}
+                height={90}
+              />
+            )}
           </div>
         </div>
         <div>
