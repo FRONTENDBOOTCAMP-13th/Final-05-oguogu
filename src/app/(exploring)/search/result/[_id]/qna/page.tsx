@@ -18,11 +18,45 @@ import QnaItemList from '@/components/elements/QnaItem/QnaItemList';
  * @returns  Q&A 목록 UI
  */
 
-export const metadata: Metadata = {
-  title: '상품 Q&A | OguOgu',
-  description: '상품에 대한 고객 문의 및 답변을 확인하고 작성할 수 있는 Q&A 페이지입니다.',
-  keywords: ['상품', 'Q&A', '문의', '고객지원', 'OguOgu'],
-};
+export async function generateMetadata({ params }: ProductDetailPageProps): Promise<Metadata> {
+  const { _id } = await params;
+  const productRes = await getProduct(Number(_id));
+
+  if (!productRes) {
+    return {
+      title: '상품 Q&A | 오구오구',
+      description: '해당 상품 정보를 찾을 수 없습니다.',
+      robots: { index: false, follow: false },
+    };
+  }
+
+  const name = productRes.item.name;
+  const url = `https://final-05-oguogu.vercel.app/search/result/${_id}/qna`;
+
+  return {
+    title: `${name} 상품 Q&A | 오구오구`,
+    description: `고객님들이 자주 묻는 '${name}' 상품에 대한 질문과 답변을 확인해보세요.`,
+    keywords: ['상품 Q&A', name, '문의', '질문', '오구오구', '고객 지원'],
+    robots: {
+      index: true,
+      follow: true,
+    },
+    alternates: {
+      canonical: url,
+    },
+    openGraph: {
+      title: `${name} 상품 Q&A | 오구오구`,
+      description: `궁금한 '${name}' 상품에 대해 다른 고객들의 질문과 답변을 확인할 수 있습니다.`,
+      url,
+      type: 'article',
+    },
+    twitter: {
+      card: 'summary',
+      title: `${name} 상품 Q&A | 오구오구`,
+      description: `궁금한 '${name}' 상품에 대해 고객 문의를 확인하고 답변을 받아보세요.`,
+    },
+  };
+}
 
 export default async function ProductQna({ params }: ProductDetailPageProps) {
   const { _id } = await params;

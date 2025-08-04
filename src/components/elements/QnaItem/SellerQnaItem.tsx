@@ -81,7 +81,7 @@ export default function SellerQnaItem({
   const [replyInput, setReplyInput] = useState(''); // 답변 작성 textarea 값
 
   const handleReplySubmit = async () => {
-    if (!token) return;
+    if (token === null) return;
 
     if (!replyInput) {
       toast.error('내용을 입력해주세요.');

@@ -1,3 +1,5 @@
+import { UserSellerExtraType } from '@/shared/types/user';
+
 const API_URL = 'https://fesp-api.koyeb.app/market';
 const CLIENT_ID = 'febc13-final05-emjf';
 
@@ -68,7 +70,7 @@ export async function updateUser(
     name: string;
     phone: string;
     address: string;
-    extra: object;
+    extra: UserSellerExtraType;
   }>,
   token: string,
 ) {

@@ -12,7 +12,8 @@ import PickListItem from '@/components/elements/PickListItem/PickListItem';
 
 export default function PickList() {
   const { fetchBookmarks } = useBookmarkStore();
-  const { token, userInfo } = useAuthStore();
+  const token = useAuthStore(state => state.token);
+  const userInfo = useAuthStore(state => state.userInfo);
   const [bookmarkItem, setBookmarkItem] = useState<BookmarkItem[] | null>(null);
   const [checkedType, setCheckedType] = useState<ProductType>('crop');
 
@@ -21,7 +22,7 @@ export default function PickList() {
 
     /* 전체 상품에서 현재 로그인된 아이디의 북마크 리스트 가져오기 */
     const getAllBookmarks = async () => {
-      if (!token) return;
+      if (token === null) return;
 
       try {
         const res: BookmarkResponse = await getBookmarks('product', token);

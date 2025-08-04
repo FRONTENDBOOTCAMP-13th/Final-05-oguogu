@@ -31,7 +31,7 @@ export default function BuyBox({ onOpenModal, res }: BuyBoxType) {
    */
   // 최초 진입 시 북마크 조회
   useEffect(() => {
-    if (!token) return;
+    if (token === null) return;
 
     const fetchBookmark = async () => {
       try {
@@ -55,7 +55,7 @@ export default function BuyBox({ onOpenModal, res }: BuyBoxType) {
 
   // 찜 버튼 클릭 → 토글 처리
   const handleBookmarkToggle = async () => {
-    if (!token) {
+    if (token === null) {
       toast.error('로그인이 필요합니다.');
       return;
     }
@@ -66,7 +66,7 @@ export default function BuyBox({ onOpenModal, res }: BuyBoxType) {
         const res = await deleteBookmark(bookmarkId, { target_id: 'any' }, token);
         if (res.ok === 1) {
           setBookmarkId(null);
-          toast.error('북마크가 삭제되었습니다.');
+          toast.error('찜한 상품이 취소되었습니다.');
         } else {
           toast.error(res.message || '북마크 삭제 실패');
         }
@@ -79,20 +79,20 @@ export default function BuyBox({ onOpenModal, res }: BuyBoxType) {
 
         if (res.ok === 1) {
           setBookmarkId(res.item._id);
-          toast.success('북마크가 등록되었습니다!');
+          toast.success('찜한 상품에 추가되었습니다!');
         } else {
-          toast.error('북마크 등록 실패');
+          toast.error('찜한 상품 등록 실패');
         }
       }
     } catch (err) {
       console.error('북마크 처리 실패:', err);
-      toast.error('북마크 처리 중 오류가 발생했습니다.');
+      toast.error('찜한 상품 처리 중 오류가 발생했습니다.');
     }
   };
 
   return (
     <div className="fixed bottom-0 w-full min-w-[320px] max-w-[768px] h-[68px] bg-oguogu-white z-999 px-4 py-3 ">
-      <div className="flex f items-center justify-between gap-2">
+      <div className="flex items-center justify-between gap-2 f">
         <button
           onClick={handleBookmarkToggle}
           className="flex items-center justify-center border border-oguogu-main bg-oguogu-white w-[46px] h-[44px] rounded-[4px] cursor-pointer"

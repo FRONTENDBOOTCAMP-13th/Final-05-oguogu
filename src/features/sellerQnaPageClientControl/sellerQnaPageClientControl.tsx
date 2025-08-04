@@ -22,7 +22,7 @@ export default function SellerQnaPageClientControl() {
   const [selected, setSelected] = useState(orderOptions[0]);
 
   useEffect(() => {
-    if (!token) return;
+    if (token === null) return;
 
     const fetch = async () => {
       const data: responsePostReplies = await getPosts('qna', token);

@@ -13,19 +13,19 @@ import { useState } from 'react';
 import toast from 'react-hot-toast';
 
 export default function LoginForm() {
-  const [email, setEmail] = useState('test1@gmail.com');
-  const [password, setPassword] = useState('test1');
+  const [email, setEmail] = useState('seller1@gmail.com');
+  const [password, setPassword] = useState('seller1!!');
   const [autoLogin, setAutoLogin] = useState(false);
   const router = useRouter();
 
-  const { setToken, setUserInfo } = useAuthStore();
+  const setToken = useAuthStore(state => state.setToken);
+  const setUserInfo = useAuthStore(state => state.setUserInfo);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
       const loginRes = await loginUser({ email, password });
-      console.log(loginRes);
 
       if (loginRes?.item?.token?.accessToken) {
         toast.success('로그인 되었습니다🥕');
@@ -41,16 +41,18 @@ export default function LoginForm() {
         };
         setUserInfo(userInfo);
 
-        // 자동 로그인 체크 여부에 따라 스토리지 타입 설정
+        /* 자동 로그인 체크 여부에 따라 스토리지 타입 설정 */
         useAuthStore.getState().setStorageType(autoLogin);
 
-        // 로그인 성공 후 페이지를 강제로 새로고침하여 InitAuthStore의 useEffect가 다시 실행되도록
+        /* 로그인 성공 후 페이지를 강제로 새로고침하여 InitAuthStore의 useEffect가 다시 실행되도록 */
         // INFO type 이 seller 인 경우, 홈으로 이동하지 않고 백오피스로 이동하도록 수정
-        if (userInfo.type === 'seller') {
-          router.push('/office');
-        } else {
-          router.push('/');
-        }
+        // INFO seller 검증 기능 삭제, 모두 홈으로 이동하도록
+        // if (userInfo.type === 'seller') {
+        //   router.push('/office');
+        // } else {
+        //   router.push('/');
+        // }
+        router.push('/');
       } else {
         router.refresh();
         toast.error('로그인 정보가 일치하지 않습니다.');

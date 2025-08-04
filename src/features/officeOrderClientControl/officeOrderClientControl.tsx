@@ -11,6 +11,9 @@ import { useEffect, useState } from 'react';
 
 const orderOptions = [
   { label: '전체', value: 'all' },
+  { label: '결제 완료', value: 'OS020' },
+  { label: '배송 준비 중', value: 'preparingShipment' },
+  { label: '배송 중', value: 'inTransit' },
   { label: '배송완료', value: 'delivered' },
   { label: '구매완료', value: 'purchaseCompleted' },
   { label: '환불 접수', value: 'refundInProgress' },
@@ -28,7 +31,7 @@ export default function OfficeOrderClientContorl() {
   /*   const isLoggedin = useAuthStore(state => state.isLoggedIn); */
 
   useEffect(() => {
-    if (!token) return;
+    if (token === null) return;
     const fetch = async () => {
       const orderData: OrderListResponse = await getOrdersSeller(token);
       if (orderData.ok) {
@@ -42,7 +45,7 @@ export default function OfficeOrderClientContorl() {
 
   const updateOrderStatus = async (order_id: number, newState: string) => {
     try {
-      if (!token) return;
+      if (token === null) return;
       const success = await updateOrderSeller(order_id, { state: newState }, token);
 
       if (success) {

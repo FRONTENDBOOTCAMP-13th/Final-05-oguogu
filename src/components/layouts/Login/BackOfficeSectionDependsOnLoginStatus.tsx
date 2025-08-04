@@ -1,12 +1,15 @@
 'use client';
+
 import HotMarkIcon from '@/components/elements/HotMarkIcon/HotMarkIcon';
 import LogOutIcon from '@/components/elements/LogoutIcon/LogoutIcon';
 import ProductLinkItem from '@/components/elements/ProductLink/ProductLink';
+import BackOfficeSectionSkeleton from '@/components/layouts/Login/BackOfficeSectionSkeleton';
 import GetLoggedInUserData from '@/features/getLoggedInUserData/getLoggedInUserData';
 import { getOrdersSeller } from '@/shared/data/functions/order';
 import { getPosts } from '@/shared/data/functions/post';
 import { getProductSeller } from '@/shared/data/functions/product';
 import { useAuthStore } from '@/shared/store/authStore';
+import { useLoadingStore } from '@/shared/store/loadingStore';
 import { OrderListResponse } from '@/shared/types/order';
 import { responsePostReplies } from '@/shared/types/post';
 import { productsRes } from '@/shared/types/product';
@@ -20,27 +23,30 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
   const [productRes, setProductRes] = useState<productsRes>();
   const [orderRes, setOrderRes] = useState<OrderListResponse>();
   const [qnaRes, setQnaRes] = useState<responsePostReplies>();
+  const { isLoading, setLoading } = useLoadingStore();
 
   useEffect(() => {
-    if (!token) return;
+    if (token === null) return;
 
     const fetch = async () => {
-      const data: productsRes = await getProductSeller(token);
-      const orderData: OrderListResponse = await getOrdersSeller(token);
-      const qnaData: responsePostReplies = await getPosts('qna', token);
+      setLoading(true);
 
-      if (data.ok) {
+      try {
+        const data: productsRes = await getProductSeller(token);
+        const orderData: OrderListResponse = await getOrdersSeller(token);
+        const qnaData: responsePostReplies = await getPosts('qna', token);
+
         setProductRes(data);
-      }
-      if (orderData.ok) {
         setOrderRes(orderData);
-      }
-      if (qnaData.ok) {
         setQnaRes(qnaData);
+      } catch (err) {
+        console.log('에러 발생', err);
+      } finally {
+        setLoading(false);
       }
     };
     fetch();
-  }, [token]);
+  }, [token, setLoading]);
 
   const cropCnt = productRes?.item.filter(item => item.extra?.productType === 'crop').length;
   const experiencepCnt = productRes?.item.filter(item => item.extra?.productType === 'experience').length;
@@ -92,9 +98,9 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
         {/* 최신 공지사항 게시물 */}
         <div className="flex items-center justify-between px-3 py-2 mx-4 border rounded-sm border-oguogu-gray-2">
           <div className="flex gap-2">
-            <HotMarkIcon title="신규" animate={false} />
-            <Link href="/board/notice" className="text-xs textElipsis">
-              [공지] 관리자 페이지 개편 안내
+            <HotMarkIcon title="공지" animate={false} />
+            <Link href="/board/notice" className="text-xs w-full textElipsis">
+              관리자 페이지 개편 안내
             </Link>
           </div>
           <p className="text-xs text-oguogu-gray-4">25.07.24</p>
@@ -105,7 +111,11 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
           <div className="flex flex-col gap-3 px-4 pt-4">
             <p className="text-xl">판매 수익</p>
             <div className="flex items-center justify-center gap-2">
-              <span className="text-[28px]">{totalPrice?.toLocaleString()}</span>
+              {isLoading ? (
+                <BackOfficeSectionSkeleton width="120px" height="42px" />
+              ) : (
+                <span className="text-[28px]">{totalPrice?.toLocaleString()}</span>
+              )}
               <span>원</span>
             </div>
           </div>
@@ -119,7 +129,11 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
               <div
                 className={`flex flex-col items-center gap-2 ${payedCnt === 0 ? `text-oguogu-gray-2` : 'text-oguogu-black'}`}
               >
-                <span className="text-2xl">{payedCnt}</span>
+                {isLoading ? (
+                  <BackOfficeSectionSkeleton width="24px" height="32px" />
+                ) : (
+                  <span className="text-2xl">{payedCnt}</span>
+                )}
                 <span className="text-sm">결제 완료</span>
               </div>
 
@@ -127,7 +141,11 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
               <div
                 className={`flex flex-col items-center gap-2 ${preparingShipmentCnt === 0 ? `text-oguogu-gray-2` : 'text-oguogu-black'}`}
               >
-                <span className="text-2xl">{preparingShipmentCnt}</span>
+                {isLoading ? (
+                  <BackOfficeSectionSkeleton width="24px" height="32px" />
+                ) : (
+                  <span className="text-2xl">{preparingShipmentCnt}</span>
+                )}
                 <span className="text-sm">배송 준비 중</span>
               </div>
 
@@ -135,7 +153,11 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
               <div
                 className={`flex flex-col items-center gap-2 ${inTransitCnt === 0 ? `text-oguogu-gray-2` : 'text-oguogu-black'}`}
               >
-                <span className="text-2xl">{inTransitCnt}</span>
+                {isLoading ? (
+                  <BackOfficeSectionSkeleton width="24px" height="32px" />
+                ) : (
+                  <span className="text-2xl">{inTransitCnt}</span>
+                )}
                 <span className="text-sm">배송 중</span>
               </div>
 
@@ -143,7 +165,11 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
               <div
                 className={`flex flex-col items-center gap-2 ${deliveredCnt === 0 ? `text-oguogu-gray-2` : 'text-oguogu-black'}`}
               >
-                <span className="text-2xl">{deliveredCnt}</span>
+                {isLoading ? (
+                  <BackOfficeSectionSkeleton width="24px" height="32px" />
+                ) : (
+                  <span className="text-2xl">{deliveredCnt}</span>
+                )}
                 <span className="text-sm">배송 완료</span>
               </div>
 
@@ -151,7 +177,11 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
               <div
                 className={`flex flex-col items-center gap-2 ${purchaseCompletedCnt === 0 ? `text-oguogu-gray-2` : 'text-oguogu-black'}`}
               >
-                <span className="text-2xl">{purchaseCompletedCnt}</span>
+                {isLoading ? (
+                  <BackOfficeSectionSkeleton width="24px" height="32px" />
+                ) : (
+                  <span className="text-2xl">{purchaseCompletedCnt}</span>
+                )}
                 <span className="text-sm">구매 완료</span>
               </div>
             </div>
@@ -164,25 +194,37 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
             <div className="flex justify-around gap-2">
               {/* 농산물 */}
               <div className={`flex flex-col items-center gap-2`}>
-                <span className={`text-2xl  ${cropCnt !== 0 ? 'text-oguogu-black' : 'text-oguogu-gray-2'}`}>
-                  {cropCnt}
-                </span>
+                {isLoading ? (
+                  <BackOfficeSectionSkeleton width="24px" height="32px" />
+                ) : (
+                  <span className={`text-2xl  ${cropCnt !== 0 ? 'text-oguogu-black' : 'text-oguogu-gray-2'}`}>
+                    {cropCnt}
+                  </span>
+                )}
                 <span className="text-sm">농산물</span>
               </div>
 
               {/* 체험 */}
               <div className={`flex flex-col items-center gap-2`}>
-                <span className={`text-2xl  ${experiencepCnt !== 0 ? 'text-oguogu-black' : 'text-oguogu-gray-2'}`}>
-                  {experiencepCnt}
-                </span>
+                {isLoading ? (
+                  <BackOfficeSectionSkeleton width="24px" height="32px" />
+                ) : (
+                  <span className={`text-2xl  ${experiencepCnt !== 0 ? 'text-oguogu-black' : 'text-oguogu-gray-2'}`}>
+                    {experiencepCnt}
+                  </span>
+                )}
                 <span className="text-sm">체험</span>
               </div>
 
               {/* 텃밭 */}
               <div className={`flex flex-col items-center gap-2`}>
-                <span className={`text-2xl  ${gardeningCnt !== 0 ? 'text-oguogu-black' : 'text-oguogu-gray-2'}`}>
-                  {gardeningCnt}
-                </span>
+                {isLoading ? (
+                  <BackOfficeSectionSkeleton width="24px" height="32px" />
+                ) : (
+                  <span className={`text-2xl  ${gardeningCnt !== 0 ? 'text-oguogu-black' : 'text-oguogu-gray-2'}`}>
+                    {gardeningCnt}
+                  </span>
+                )}
                 <span className="text-sm">텃밭</span>
               </div>
             </div>
@@ -195,17 +237,25 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
             <div className="flex justify-center gap-30">
               {/* 답변 준비중 */}
               <div className={`flex flex-col items-center gap-2`}>
-                <span className={`text-2xl ${qnaWaitingCnt !== 0 ? 'text-oguogu-black' : 'text-oguogu-gray-2'}`}>
-                  {qnaWaitingCnt}
-                </span>
+                {isLoading ? (
+                  <BackOfficeSectionSkeleton width="24px" height="32px" />
+                ) : (
+                  <span className={`text-2xl ${qnaWaitingCnt !== 0 ? 'text-oguogu-black' : 'text-oguogu-gray-2'}`}>
+                    {qnaWaitingCnt}
+                  </span>
+                )}
                 <span className="text-sm">답변 대기 중</span>
               </div>
 
               {/* 답변 완료 */}
               <div className={`flex flex-col items-center gap-2`}>
-                <span className={`text-2xl ${qnafinishedCnt !== 0 ? 'text-oguogu-black' : 'text-oguogu-gray-2'}`}>
-                  {qnafinishedCnt}
-                </span>
+                {isLoading ? (
+                  <BackOfficeSectionSkeleton width="24px" height="32px" />
+                ) : (
+                  <span className={`text-2xl ${qnafinishedCnt !== 0 ? 'text-oguogu-black' : 'text-oguogu-gray-2'}`}>
+                    {qnafinishedCnt}
+                  </span>
+                )}
                 <span className="text-sm">답변 완료</span>
               </div>
             </div>

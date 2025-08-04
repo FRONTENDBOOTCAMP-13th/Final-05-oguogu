@@ -54,7 +54,7 @@ export default function ReviewClientControl({ isOpen, setIsOpen, handleSubmit, i
   const product_id = item.products[0]._id;
 
   const clickHandleSubmit = () => {
-    if (!token) return;
+    if (token === null) return;
 
     /* // 2) 이미지 선택 검증)
     if (!imageFile) {

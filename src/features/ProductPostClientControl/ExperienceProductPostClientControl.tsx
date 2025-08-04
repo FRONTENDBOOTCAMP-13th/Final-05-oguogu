@@ -126,7 +126,7 @@ export default function ExperienceProductPostClientControl() {
   const finalPrice = Number(form?.price) * (1 - Number(form?.dcRate) / 100);
 
   const handlePost = async () => {
-    if (!token) return;
+    if (token === null) return;
 
     let fileRes: fileResponse | null = null;
     let DetailFileRes: fileResponse | null = null;
@@ -188,8 +188,8 @@ export default function ExperienceProductPostClientControl() {
         meetingPlace: form.departRegion,
         departureDate: form.startDate,
         returnDate: form.endDate,
-        includedItems: form.include.split(' '),
-        unincludedItems: form.uninclude.split(' '),
+        includedItems: form.include.split(','),
+        unincludedItems: form.uninclude.split(','),
         productCnt: Number(form.productCnt) || 1,
         dcRate: Number(form.dcRate) || 0,
         productDetailContent: detailText,

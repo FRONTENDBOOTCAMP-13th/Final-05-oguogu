@@ -4,10 +4,15 @@ import CuteLoading from '@/components/elements/CuteLoading/CuteLoading';
 import CropItem from '@/components/elements/ProductItem/Item/CropItem';
 import ExperienceItem from '@/components/elements/ProductItem/Item/ExperienceItem';
 import GardenItem from '@/components/elements/ProductItem/Item/GardenItem';
+import { createBookmark, deleteBookmark } from '@/shared/data/actions/bookmarks';
+import { getBookmarks } from '@/shared/data/functions/bookmarks';
 import { getProducts } from '@/shared/data/functions/product';
+import { useAuthStore } from '@/shared/store/authStore';
+import { BookmarkPostResponse, BookmarkResponse } from '@/shared/types/bookmarkt';
 import { Item, productsRes } from '@/shared/types/product';
 import { useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 export default function ProductListFilteredKeyword() {
   /* MongoDB 데이터 상태 관리 */
@@ -21,6 +26,39 @@ export default function ProductListFilteredKeyword() {
 
   /* 필터링 기능 상태 관리 */
   const [selectedType, setSelectedType] = useState('crop');
+
+  /* 북마크 저장 여부를 상태로 저장 */
+  const [bookmarkedMap, setBookmarkedMap] = useState<Map<number, number>>(new Map()); // 상품 id, 북마크 id 쌍
+
+  const isBookmarked = (_id: number) => bookmarkedMap.has(_id);
+  const token = useAuthStore(state => state.token);
+
+  /* 북마크 목록 데이터를 초기에 불러오는 useEffect */
+  useEffect(() => {
+    if (token === null) {
+      return;
+    }
+
+    const fetchBookmark = async () => {
+      try {
+        const data: BookmarkResponse = await getBookmarks('product', token);
+
+        if (data.ok) {
+          console.log('data', data);
+          const map = new Map<number, number>();
+
+          data.item.forEach(item => {
+            map.set(item.product._id, item._id);
+            setBookmarkedMap(map);
+          });
+        }
+      } catch (e) {
+        console.error('북마크 가져오기 실패:', e);
+      }
+    };
+
+    fetchBookmark();
+  }, [token]);
 
   /* URL 의 keyword QueryString 값을 가져와 상태로 저장  */
   const param = useSearchParams();
@@ -44,6 +82,38 @@ export default function ProductListFilteredKeyword() {
     return <CuteLoading />;
   }
 
+  const toggleBookmark = async (_id: number) => {
+    if (token === null) {
+      toast.error('로그인이 필요합니다.');
+      return;
+    }
+
+    const isBookmarked = bookmarkedMap.has(_id);
+    const updateMap = new Map(bookmarkedMap);
+
+    try {
+      if (isBookmarked) {
+        const bookmarkId = bookmarkedMap.get(_id);
+        if (!bookmarkId) return;
+
+        await deleteBookmark(bookmarkId, { target_id: 'any' }, token);
+        updateMap.delete(_id);
+        toast.success('찜한 상품이 취소되었습니다.');
+      } else {
+        const newBookmark: BookmarkPostResponse = await createBookmark({ target_id: _id }, token);
+
+        if (newBookmark.ok) {
+          updateMap.set(newBookmark.item.target_id, newBookmark.item._id);
+          toast.success('찜한 상품에 추가되었습니다.');
+        }
+      }
+      setBookmarkedMap(updateMap);
+    } catch (error) {
+      console.error('북마크 토글 실패', error);
+      toast.error('찜하기에 실패했습니다.');
+    }
+  };
+
   /* 전체 DB 에서 해당 키워드가 상품명에 포함된 DB 를 필터링 */
   const searchDataFromKeyword = data.item.filter((item: Item) => item.name.includes(keyword ?? ''));
 
@@ -59,7 +129,7 @@ export default function ProductListFilteredKeyword() {
   /* 매칭된 키워드의 데이터가 없을 때 */
   const emptyData = (
     <main className="pt-12 min-h-[calc(100vh-96px)]">
-      <p className="text-center text-gray-500 text-xl">검색 결과가 없습니다.</p>
+      <p className="text-xl text-center text-gray-500">검색 결과가 없습니다.</p>
     </main>
   );
 
@@ -114,7 +184,7 @@ export default function ProductListFilteredKeyword() {
             name="type"
             value={selectedType}
             onChange={handleSelectType}
-            className="text-right pr-2"
+            className="pr-2 text-right"
           >
             <option value="crop">농산물</option>
             <option value="experience">체험</option>
@@ -123,7 +193,7 @@ export default function ProductListFilteredKeyword() {
           <label htmlFor="sorting" className="sr-only">
             정렬
           </label>
-          <select id="sorting" name="sorting" value={sort} onChange={handleSelectSort} className="text-right pr-2">
+          <select id="sorting" name="sorting" value={sort} onChange={handleSelectSort} className="pr-2 text-right">
             <option value="popular">인기순</option>
             <option value="dcRate">할인 높은순</option>
             <option value="review">리뷰 많은순</option>
@@ -134,7 +204,7 @@ export default function ProductListFilteredKeyword() {
 
       {/* DB 렌더링 */}
       {selectedType === 'crop' ? (
-        cropDataFromKeyword.length > 0 ? (
+        cropDataFromKeyword.length > 3 ? (
           <main className="itemGrid grid-cols-[repeat(auto-fit,minmax(140px,1fr))] min-h-[calc(100vh-96px)]">
             {sortItems(cropDataFromKeyword).map((item: Item) => (
               <CropItem
@@ -147,7 +217,30 @@ export default function ProductListFilteredKeyword() {
                 bookmarks={item.bookmarks}
                 extra={item.extra}
                 seller={item.seller}
+                isbookmarked={isBookmarked(item._id)}
+                togglebookmark={() => toggleBookmark(item._id)}
               />
+            ))}
+          </main>
+        ) : cropDataFromKeyword.length > 0 ? (
+          <main className="itemGrid grid-cols-[repeat(auto-fit,minmax(140px,1fr))] min-h-[calc(100vh-96px)]">
+            {sortItems(cropDataFromKeyword).map((item: Item) => (
+              <CropItem
+                key={item._id}
+                _id={item._id}
+                name={item.name}
+                price={item.price}
+                rating={item.rating}
+                replies={item.replies}
+                bookmarks={item.bookmarks}
+                extra={item.extra}
+                seller={item.seller}
+                isbookmarked={isBookmarked(item._id)}
+                togglebookmark={() => toggleBookmark(item._id)}
+              />
+            ))}
+            {Array.from({ length: Math.max(0, 4 - sortItems(cropDataFromKeyword).length) }).map((_, idx) => (
+              <div key={`empty-${idx}`} className="invisible" />
             ))}
           </main>
         ) : (
@@ -167,6 +260,8 @@ export default function ProductListFilteredKeyword() {
                 bookmarks={item.bookmarks}
                 extra={item.extra}
                 seller={item.seller}
+                isbookmarked={isBookmarked(item._id)}
+                togglebookmark={() => toggleBookmark(item._id)}
               />
             ))}
           </main>
@@ -174,7 +269,7 @@ export default function ProductListFilteredKeyword() {
           emptyData
         )
       ) : selectedType === 'gardening' ? (
-        gardeningDataFromKeyword.length > 0 ? (
+        gardeningDataFromKeyword.length > 3 ? (
           <main className="itemGrid grid-cols-[repeat(auto-fit,minmax(140px,1fr))] min-h-[calc(100vh-96px)]">
             {sortItems(gardeningDataFromKeyword).map((item: Item) => (
               <GardenItem
@@ -189,7 +284,32 @@ export default function ProductListFilteredKeyword() {
                 buyQuantity={item.buyQuantity}
                 extra={item.extra}
                 seller={item.seller}
+                isbookmarked={isBookmarked(item._id)}
+                togglebookmark={() => toggleBookmark(item._id)}
               />
+            ))}
+          </main>
+        ) : gardeningDataFromKeyword.length > 0 ? (
+          <main className="itemGrid grid-cols-[repeat(auto-fit,minmax(140px,1fr))] min-h-[calc(100vh-96px)]">
+            {sortItems(gardeningDataFromKeyword).map((item: Item) => (
+              <GardenItem
+                key={item._id}
+                _id={item._id}
+                name={item.name}
+                price={item.price}
+                rating={item.rating}
+                replies={item.replies}
+                bookmarks={item.bookmarks}
+                quantity={item.quantity}
+                buyQuantity={item.buyQuantity}
+                extra={item.extra}
+                seller={item.seller}
+                isbookmarked={isBookmarked(item._id)}
+                togglebookmark={() => toggleBookmark(item._id)}
+              />
+            ))}
+            {Array.from({ length: Math.max(0, 4 - sortItems(gardeningDataFromKeyword).length) }).map((_, idx) => (
+              <div key={`empty-${idx}`} className="invisible" />
             ))}
           </main>
         ) : (

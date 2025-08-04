@@ -18,7 +18,7 @@ export default function SellerProductClientControl() {
 
   useEffect(() => {
     const fetch = async () => {
-      if (!token) return;
+      if (token === null) return;
       const res = await getProductSeller(token);
       console.log('결과', res);
       // setOrderRes(res);
@@ -54,6 +54,8 @@ export default function SellerProductClientControl() {
   };
 
   const sortProducts = (products: Item[]) => {
+    const getDiscountedPrice = (item: Item) => Number(item?.price) * (1 - Number(item.extra?.dcRate ?? 0) / 100);
+
     switch (sortOption) {
       case 'recent':
         return [...products].sort(
@@ -64,9 +66,9 @@ export default function SellerProductClientControl() {
           (a, b) => new Date(a.createdAt ?? '').getTime() - new Date(b.createdAt ?? '').getTime(),
         );
       case 'priceHigh':
-        return [...products].sort((a, b) => b.price - a.price);
+        return [...products].sort((a, b) => getDiscountedPrice(b) - getDiscountedPrice(a));
       case 'priceLow':
-        return [...products].sort((a, b) => a.price - b.price);
+        return [...products].sort((a, b) => getDiscountedPrice(a) - getDiscountedPrice(b));
       case 'stockHigh':
         return [...products].sort((a, b) => (b.quantity ?? 0) - (a.quantity ?? 0));
       case 'stockLow':
@@ -111,10 +113,11 @@ export default function SellerProductClientControl() {
 
       {sortProducts(filteredProductData(productList)).map((item: Item) => (
         <ProductItemListForSeller
+          _id={item._id}
           key={item._id}
           title={item.name}
           category={getCategoryName(item.extra?.productType)}
-          price={`${item.price.toLocaleString()}`}
+          price={Math.round(Number(item?.price) * (1 - Number(item.extra?.dcRate) / 100)).toLocaleString() + '원'}
         />
       ))}
 

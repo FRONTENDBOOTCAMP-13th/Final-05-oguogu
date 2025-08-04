@@ -21,18 +21,69 @@ import { Metadata } from 'next';
  * @returns  리뷰 목록 UI
  */
 
-export const metadata: Metadata = {
-  title: '상품 리뷰 | OguOgu',
-  description: '상품에 대한 실제 구매자들의 리뷰를 확인하고 평가할 수 있는 리뷰 페이지입니다.',
-  keywords: ['상품', '리뷰', '평점', '고객 후기', 'OguOgu'],
-};
+export async function generateMetadata({ params }: ProductDetailPageProps): Promise<Metadata> {
+  const { _id } = await params;
+  const productRes = await getProduct(Number(_id));
+
+  if (!productRes) {
+    return {
+      title: '상품 리뷰 | 오구오구',
+      description: '해당 상품의 리뷰 정보를 불러올 수 없습니다.',
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
+  }
+
+  const { name, content } = productRes.item;
+  const url = `https://final-05-oguogu.vercel.app/search/result/${_id}/review`;
+  const image_url = productRes.item.mainImages?.[0]?.path || '/images/default-og-image.png';
+
+  return {
+    title: `${name} 리뷰 | 오구오구`,
+    description: content
+      ? `${name}에 대한 리뷰를 확인해보세요.`
+      : `실제 고객들이 평가한 ${name} 리뷰를 확인하고 구매에 참고하세요.`,
+    keywords: [name, '리뷰', '평점', '후기', '고객 리뷰', '오구오구'],
+    alternates: {
+      canonical: url,
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+    openGraph: {
+      title: `${name} 리뷰 | 오구오구`,
+      description: content
+        ? `${name} 상품에 대한 리뷰입니다.`
+        : `실제 구매자들의 ${name} 사용 후기와 평점을 확인하세요.`,
+      url,
+      type: 'article',
+      images: [
+        {
+          url: image_url,
+          width: 800,
+          height: 600,
+          alt: `${name} 대표 이미지`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${name} 리뷰 | 오구오구`,
+      description: content
+        ? `${name} 상품 리뷰를 확인해보세요.`
+        : `${name}에 대해 고객들이 어떻게 평가했는지 확인해보세요.`,
+      images: [image_url],
+    },
+  };
+}
 
 export default async function ProductReview({ params }: ProductDetailPageProps) {
   const { _id } = await params;
   const res: ReviewRes = await getProductReplies(Number(_id));
 
-  console.log(res);
-  // 리뷰 리스트
   const ReviewList = res?.item.map(review => (
     <ReviewItem key={review._id} name={review.user.name} email="abcd@gamil.com" res={review} />
   ));

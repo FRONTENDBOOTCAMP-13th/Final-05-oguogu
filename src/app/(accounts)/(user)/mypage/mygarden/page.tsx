@@ -1,5 +1,18 @@
 import GardenItemListForMyGarden from '@/components/elements/GardenItemForMyGarden/GardenItemListForMyGarden';
 import LinkHeader from '@/components/layouts/Header/LinkHeader';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: '텃밭 히스토리 | 오구오구',
+  description: '내가 구매한 텃밭의 성장 과정을 사진과 함께 확인할 수 있는 히스토리 페이지입니다.',
+  robots: {
+    index: false,
+    follow: false,
+  },
+  alternates: {
+    canonical: 'https://final-05-oguogu.vercel.app/mypage/mygarden',
+  },
+};
 
 export default async function UserGardeningList() {
   return (

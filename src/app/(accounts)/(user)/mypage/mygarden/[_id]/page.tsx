@@ -7,6 +7,16 @@ import { periodObject, productRes } from '@/shared/types/product';
 import { getDayFromToday } from '@/utils/getDaysFromToday/getDaysFromToday';
 import { format } from 'date-fns';
 import Image from 'next/image';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: '텃밭 성장 기록 | 오구오구',
+  description: '텃밭 상품의 성장 단계, 수확 예정일, 판매자 기록을 시각적으로 확인할 수 있는 상세 페이지입니다.',
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default async function MyGardenItemPage({ params }: ProductDetailPageProps) {
   const { _id } = await params;
@@ -22,8 +32,8 @@ export default async function MyGardenItemPage({ params }: ProductDetailPageProp
 
   let lastStatus = 'seeding';
   allStatus?.map((status: string) =>
-    status.includes('harvest')
-      ? (lastStatus = 'harvest')
+    status.includes('harvested')
+      ? (lastStatus = 'harvested')
       : status.includes('growing')
         ? (lastStatus = 'growing')
         : status.includes('sprouting')
@@ -102,7 +112,7 @@ export default async function MyGardenItemPage({ params }: ProductDetailPageProp
         </div>
 
         {/* 판매자가 업로드한 Period 내역 */}
-        <PeriodItem periodItemList={periodItemList!} />
+        <PeriodItem periodItemList={periodItemList!} id={Number(_id)} />
       </main>
     </>
   );

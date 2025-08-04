@@ -6,6 +6,7 @@ import { ProductDetailPageProps } from '@/features/types/productDetail';
 import { getPosts } from '@/shared/data/functions/post';
 import { getProduct } from '@/shared/data/functions/product';
 import { getProductReplies } from '@/shared/data/functions/replies';
+import { productRes } from '@/shared/types/product';
 import { QnaRes } from '@/shared/types/qna';
 import { ReviewRes } from '@/shared/types/review';
 import { Metadata } from 'next';
@@ -14,7 +15,7 @@ import Image from 'next/image';
 // SEO 최적화를 위한 메타데이터 동적 생성 (임시)
 export async function generateMetadata({ params }: ProductDetailPageProps): Promise<Metadata> {
   const { _id } = await params;
-  const product = await getProduct(Number(_id));
+  const product: productRes = await getProduct(Number(_id));
 
   if (!product) {
     return {
@@ -23,14 +24,36 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
     };
   }
 
-  const { name, content, image_url } = product.item;
+  const { name, content } = product.item;
+  const image_url = product.item.mainImages![0].path;
+  const url = `https://final-05-oguogu.vercel.app/search/result/${_id}/detail`;
 
   return {
-    title: `${name} | 오구오구`,
-    description: content || `${name} 상품의 자세한 정보를 확인해보세요.`,
+    title: `${name} | 산지직송 농산물 - 오구오구`,
+    description: content || `신선한 ${name}를 산지에서 직배송으로 만나보세요. 무농약, 친환경 농산물을 믿고 구매하세요.`,
+    alternates: {
+      canonical: url,
+    },
+    keywords: [
+      name,
+      '신선한 농산물',
+      '산지직송',
+      '친환경 농작물',
+      '무농약 채소',
+      '유기농 과일',
+      '농부 직거래',
+      '제철 농산물',
+      '오구오구',
+    ],
+    robots: {
+      index: true,
+      follow: true,
+    },
     openGraph: {
       title: `${name} | 오구오구`,
       description: content || `${name} 상품의 자세한 정보를 확인해보세요.`,
+      url,
+      type: 'website',
       images: [
         {
           url: image_url || '/images/default-og-image.png', // 이미지 경로 수정 필요

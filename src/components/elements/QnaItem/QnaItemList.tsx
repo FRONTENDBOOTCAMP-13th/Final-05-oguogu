@@ -9,7 +9,7 @@ import { useState } from 'react';
 
 export default function QnaItemList({ res, _id }: { res: QnaRes; _id: string }) {
   const [isMyPost, setIsMyPost] = useState(false);
-  const { userInfo } = useAuthStore();
+  const userInfo = useAuthStore(state => state.userInfo);
 
   const qnaList = res?.item
     .filter(item => item.product_id === Number(_id))

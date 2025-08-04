@@ -12,7 +12,7 @@ export default function CartItemCountIcon() {
 
   useEffect(() => {
     const fetchCart = async () => {
-      if (!token) return;
+      if (token === null) return;
 
       try {
         const data: CartResponse = await getCart(token ?? '');

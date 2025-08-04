@@ -55,7 +55,7 @@ export default function ExperienceItem({
         {/* 판매자 정보 */}
         <div className="flex gap-1 items-center">
           <Image src="/images/product-hatIcon.svg" alt="농사꾼 모자 아이콘" width={16} height={16} />
-          <p className="text-[10px]">{seller?.extra?.businessName ?? '오구텃밭'}</p>
+          <p className="text-[10px]">{seller?.extra?.businessInfo?.companyName ?? '오구텃밭'}</p>
         </div>
 
         {/* 상품명 */}
@@ -68,8 +68,8 @@ export default function ExperienceItem({
 
         {/* 가격 정보 */}
         <div className="text-base flex gap-1 items-center">
-          {extra!.dcRate > 0 ? <span className="text-oguogu-main">{extra!.dcRate}%</span> : ''}
-          <span>{(price * (1 - extra!.dcRate / 100)).toLocaleString()}원</span>
+          {extra!.dcRate! > 0 ? <span className="text-oguogu-main">{extra!.dcRate}%</span> : ''}
+          <span>{(price * (1 - extra!.dcRate! / 100)).toLocaleString()}원</span>
           <span className="text-[10px] leading-none">/ 1인</span>
         </div>
 

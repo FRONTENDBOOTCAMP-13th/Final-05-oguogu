@@ -28,7 +28,7 @@ export default function CropItem({
   const badgeList = [isSold, isBest, isInSeason, isNew, isLowStock].filter(Boolean).slice(0, 2) as BadgeTextProps[];
 
   return (
-    <div className="flex flex-col gap-4 min-w-[140px] max-w-[220px]">
+    <div className="flex flex-col gap-4 min-w-[140px] max-w-[400px] w-full">
       {/* 상품 이미지 및 뱃지 영역 */}
       <Link href={`/search/result/${_id}/detail`}>
         <div className="relative">
@@ -51,7 +51,7 @@ export default function CropItem({
         {/* 판매자 정보 */}
         <div className="flex gap-1 items-center">
           <Image src="/images/product-hatIcon.svg" alt="농사꾼 모자 아이콘" width={16} height={16} />
-          <p className="text-[10px]">{seller?.extra?.businessName ?? '오구텃밭'}</p>
+          <p className="text-[10px]">{seller?.extra?.businessInfo?.companyName ?? '오구텃밭'}</p>
         </div>
 
         {/* 상품명 */}
@@ -64,8 +64,8 @@ export default function CropItem({
 
         {/* 가격 정보 */}
         <div className="text-base flex gap-1">
-          {extra!.dcRate > 0 ? <span className="text-oguogu-main">{extra!.dcRate}%</span> : ''}
-          <span>{(price * (1 - extra!.dcRate / 100)).toLocaleString()}원</span>
+          {extra!.dcRate! > 0 ? <span className="text-oguogu-main">{extra!.dcRate}%</span> : ''}
+          <span>{(price * (1 - extra!.dcRate! / 100)).toLocaleString()}원</span>
         </div>
 
         {/* 좋아요 & 별점 */}

@@ -119,7 +119,7 @@ export default function GardeningProductPostClientControl() {
   const finalPrice = Number(form?.price) * (1 - Number(form?.dcRate) / 100);
 
   const handlePost = async () => {
-    if (!token) return;
+    if (token === null) return;
 
     let fileRes: fileResponse | null = null;
     let DetailFileRes: fileResponse | null = null;
@@ -196,10 +196,12 @@ export default function GardeningProductPostClientControl() {
     };
 
     const postData = await createProduct(productData, token);
+    console.log(postData);
     if (postData.ok) {
       toast.success('상품이 정상적으로 등록되었습니다.');
       router.push('/office/products');
     } else {
+      console.error(postData.message);
       toast.error('등록을 실패했습니다.');
     }
   };
@@ -247,7 +249,7 @@ export default function GardeningProductPostClientControl() {
       <Input
         type="basic"
         title="판매 마감일"
-        placeholder="판매 마감일"
+        placeholder="판매 마감일 (YYYY-MM-DD)"
         id="title"
         required={true}
         value={form.deadline}
@@ -290,7 +292,7 @@ export default function GardeningProductPostClientControl() {
       <Input
         type="basic"
         title="수확 예정일"
-        placeholder="상품의 수확 예정일 (ex 8월 말)"
+        placeholder="상품의 수확 예정일 (YYYY-MM-DD)"
         id="title"
         required={true}
         value={form.harvestExpectedDate}

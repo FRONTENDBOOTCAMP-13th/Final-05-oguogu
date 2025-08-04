@@ -16,17 +16,17 @@ import toast from 'react-hot-toast';
 
 export default function ProductItemList({ type }: ProductItemListType) {
   const [res, setRes] = useState<productsRes>();
-  const [bookmarkedMap, setBookmarkedMap] = useState<Map<number, number>>(new Map()); //상품 id, 북마크 id 쌍
+  const [bookmarkedMap, setBookmarkedMap] = useState<Map<number, number>>(new Map());
+  const isBookmarked = (_id: number) => bookmarkedMap.has(_id);
 
   /* Zustand 에서 스켈레톤 UI 작업을 위한 상태 가져오기 */
   const { isLoading, setLoading } = useLoadingStore();
 
-  const isBookmarked = (_id: number) => bookmarkedMap.has(_id);
-
   /* Zustand 에서 토큰 정보 가져오기 */
   const token = useAuthStore(state => state.token);
   const toggleBookmark = async (_id: number) => {
-    if (!token) {
+    if (token === null) {
+      toast.error('로그인이 필요합니다.');
       return;
     }
 
@@ -40,23 +40,25 @@ export default function ProductItemList({ type }: ProductItemListType) {
 
         await deleteBookmark(bookmarkId, { target_id: 'any' }, token);
         updateMap.delete(_id);
+        toast.success('찜한 상품이 취소되었습니다.');
       } else {
         const newBookmark: BookmarkPostResponse = await createBookmark({ target_id: _id }, token);
 
         if (newBookmark.ok) {
           updateMap.set(newBookmark.item.target_id, newBookmark.item._id);
+          toast.success('찜한 상품에 추가되었습니다.');
         }
       }
       setBookmarkedMap(updateMap);
     } catch (error) {
       console.error('북마크 토글 실패', error);
-      toast.error('북마크 처리에 실패했습니다.');
+      toast.error('찜하기에 실패했습니다.');
     }
   };
 
   // 북마크 목록 데이터를 초기에 불러오는 useEffect
   useEffect(() => {
-    if (!token) {
+    if (token === null) {
       return;
     }
 
@@ -119,7 +121,7 @@ export default function ProductItemList({ type }: ProductItemListType) {
     <>
       {type === 'crop' ? (
         isLoading ? (
-          <div className="flex gap-3 cursor-grab overflow-auto hide-scrollbar">
+          <div className="flex gap-4 overflow-auto cursor-grab hide-scrollbar">
             <CropItemSkeleton />
             <CropItemSkeleton />
             <CropItemSkeleton />
@@ -127,7 +129,7 @@ export default function ProductItemList({ type }: ProductItemListType) {
             <CropItemSkeleton />
           </div>
         ) : (
-          <div className="flex gap-3 cursor-grab overflow-auto hide-scrollbar">
+          <div className="flex gap-4 overflow-auto cursor-grab hide-scrollbar">
             {cropData &&
               cropData
                 .map((item: Item) => (
@@ -150,7 +152,7 @@ export default function ProductItemList({ type }: ProductItemListType) {
         )
       ) : type === 'experience' ? (
         isLoading ? (
-          <div className="flex gap-3 cursor-grab overflow-auto hide-scrollbar">
+          <div className="flex gap-4 overflow-auto cursor-grab hide-scrollbar">
             <ExperienceItemSkeleton />
             <ExperienceItemSkeleton />
             <ExperienceItemSkeleton />
@@ -158,7 +160,7 @@ export default function ProductItemList({ type }: ProductItemListType) {
             <ExperienceItemSkeleton />
           </div>
         ) : (
-          <div className="flex gap-3  cursor-grab overflow-auto hide-scrollbar">
+          <div className="flex gap-4 overflow-auto cursor-grab hide-scrollbar">
             {expData &&
               expData.map((item: Item) => (
                 <ExperienceItem
@@ -179,7 +181,7 @@ export default function ProductItemList({ type }: ProductItemListType) {
         )
       ) : type === 'gardening' ? (
         isLoading ? (
-          <div className="flex gap-3 cursor-grab overflow-auto hide-scrollbar">
+          <div className="flex gap-4 overflow-auto cursor-grab hide-scrollbar">
             <GardenItemSkeleton />
             <GardenItemSkeleton />
             <GardenItemSkeleton />
@@ -187,7 +189,7 @@ export default function ProductItemList({ type }: ProductItemListType) {
             <GardenItemSkeleton />
           </div>
         ) : (
-          <div className="flex gap-3 cursor-grab overflow-auto hide-scrollbar">
+          <div className="flex gap-4 overflow-auto cursor-grab hide-scrollbar">
             {gardeningData &&
               gardeningData.map((item: Item) => (
                 <GardenItem

@@ -11,7 +11,7 @@ export default function ProductCategory({ _id, reviewCnt }: { _id: string; revie
   const [qnaCnt, setQnaCnt] = useState(0);
 
   useEffect(() => {
-    if (!token) return;
+    if (token === null) return;
     const fetch = async () => {
       // QnA 데이터 요청
       const qnaRes: QnaRes = await getPosts('qna', token);

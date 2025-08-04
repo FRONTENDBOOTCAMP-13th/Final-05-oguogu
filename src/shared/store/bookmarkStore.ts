@@ -18,7 +18,7 @@ export const useBookmarkStore = create<BookmarkState>((set, get) => ({
   fetchBookmarks: async () => {
     try {
       const token = useAuthStore.getState().token;
-      if (!token) return;
+      if (token === null) return;
 
       const res: BookmarkResponse = await getBookmarks('product', token);
 
@@ -39,7 +39,7 @@ export const useBookmarkStore = create<BookmarkState>((set, get) => ({
     const token = useAuthStore.getState().token;
     const isBookmarked = bookmarkedIds.includes(productId);
 
-    if (!token) {
+    if (token === null) {
       toast.error('로그인이 필요합니다.');
       return;
     }

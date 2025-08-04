@@ -64,7 +64,7 @@ export default function BuyModal({ onClose, type, res, onSuccess }: BuyModalProp
   return (
     <div className="fixed inset-0 z-50 left-1/2 translate-x-[-50%] flex items-end min-w-[320px] max-w-[768px] w-full ">
       {/* 모달 본체 */}
-      <div ref={modalRef} className="w-full bg-white rounded-t-2xl  p-4 max-h-[80vh]  animate-slide-up">
+      <div ref={modalRef} className="w-full bg-white rounded-t-2xl  px-4 py-3 max-h-[80vh]  animate-slide-up">
         {type === 'crop' && (
           <BuyBoxOption
             type={type}

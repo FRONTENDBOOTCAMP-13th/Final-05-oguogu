@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createUser } from '@/shared/data/actions/user';
 import toast from 'react-hot-toast';
+import { UserResType } from '@/shared/types/user';
 
 export default function SellerRegisterForm() {
   const [companyName, setCompanyName] = useState('');
@@ -72,7 +73,7 @@ export default function SellerRegisterForm() {
     }
 
     try {
-      const res = await createUser({
+      const res: UserResType = await createUser({
         email: sellerEmail,
         password: sellerPassword,
         name: ownerName,
@@ -97,14 +98,15 @@ export default function SellerRegisterForm() {
       });
 
       if (res.ok === 1) {
-        toast.success('회원가입 완료');
+        console.log(res);
+        toast.success('회원가입이 완료되었습니다');
         router.push('/login');
       } else {
-        toast.error(res.message || '회원가입 실패');
+        toast.error('회원가입이 실패했습니다');
       }
     } catch (err) {
       console.error('회원가입 오류:', err);
-      toast.error('회원가입중 오류가 발생했습니다 오구 텃밭으로 전화주세요');
+      toast.error('회원가입 중 오류가 발생했습니다');
     }
   };
   return (
@@ -161,7 +163,7 @@ export default function SellerRegisterForm() {
             </label>
             <LoginInput
               id="signUpSellerBusinessTel"
-              type="phone"
+              type="tel"
               onChange={setSellerBusinessTel}
               value={sellerBusinessTel}
               placeholder="숫자"

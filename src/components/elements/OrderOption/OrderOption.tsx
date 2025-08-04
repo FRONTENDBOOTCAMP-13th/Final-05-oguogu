@@ -13,7 +13,7 @@ export default function OrderDropdown({ onChange, selected, setSelected, orderOp
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="relative w-full max-w-[400px]">
+    <div className="relative min-w-[288px] w-full">
       <button
         type="button"
         className="w-full relative px-4 py-1 text-[12px] border border-oguogu-gray-2 rounded-[4px] flex items-center justify-center"
@@ -63,7 +63,7 @@ export function ProductDropdown({ onChange }: { onChange?: (value: string) => vo
   const [selected, setSelected] = useState(productOptions[0]);
 
   return (
-    <div className="relative w-full max-w-[400px]">
+    <div className="relative w-full">
       <button
         type="button"
         className="w-full relative px-4 py-1 text-[12px] border border-oguogu-gray-2 rounded-[4px] flex items-center justify-center"
@@ -111,7 +111,7 @@ export function UploadDropdown({ onChange }: { onChange?: (value: string) => voi
   const [selected, setSelected] = useState(uploadOptions[0]);
 
   return (
-    <div className="relative w-full max-w-[400px]">
+    <div className="relative w-full">
       <button
         type="button"
         className="w-full relative px-4 py-1 text-[12px] border border-oguogu-gray-2 rounded-[4px] flex items-center justify-center"
