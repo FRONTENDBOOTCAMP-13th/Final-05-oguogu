@@ -1,7 +1,5 @@
 import { getProducts } from '@/shared/data/functions/product';
-import { getUsers } from '@/shared/data/functions/user';
 import { Item } from '@/shared/types/product';
-import { UserSellerType } from '@/shared/types/user';
 import Link from 'next/link';
 
 /**
@@ -32,7 +30,7 @@ export default async function TopRatedItem() {
       </div>
       <div className="flex w-full gap-2" role="list" aria-label="인기 텃밭 순위">
         {/* Top 1~5 */}
-        <ul className="flex flex-col gap-2">
+        <ul className="flex flex-col w-full gap-2">
           {/* {sellerListTop5.map((item: UserSellerType, index: number) => {
             return (
               <li
