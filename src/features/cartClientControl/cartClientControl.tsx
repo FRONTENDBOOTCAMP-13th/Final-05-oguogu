@@ -3,6 +3,7 @@ import CardItem from '@/components/elements/cardItem/cardItem';
 import DeleteButton from '@/components/elements/DeleteButton/DeleteButton';
 import { CheckButtonForMypage } from '@/components/elements/InputButtonForMypage/InputButtonForMypage';
 import IsEmptyMessage from '@/components/elements/IsEmptyMessage/IsEmptyMessage';
+import OrderSuccessModal from '@/components/layouts/Modal/OrderSucessModal';
 import { deleteCart, deleteSelectCart, updateCart } from '@/shared/data/actions/cart';
 import { createOrder } from '@/shared/data/actions/order';
 import { getCart } from '@/shared/data/functions/cart';
@@ -15,6 +16,7 @@ export default function CartClientControl() {
   const token = useAuthStore(state => state.token);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
+  const [isSuccessOpen, setIsSuccessOpen] = useState(false);
 
   const isLoggedIn = useAuthStore(state => state.isLoggedIn);
 
@@ -65,6 +67,7 @@ export default function CartClientControl() {
       if (data.ok) {
         await deleteCart(item.cart_id, token);
         successCartIds.push(item.cart_id);
+        setIsSuccessOpen(true);
       } else {
         allSuccess = false;
         toast.error(`상품 ID ${item._id} 주문 실패: ${data.message}`);
@@ -171,6 +174,9 @@ export default function CartClientControl() {
 
   return (
     <>
+      {/* 주문하기 성공 모달 */}
+      <OrderSuccessModal open={isSuccessOpen} onClose={() => setIsSuccessOpen(false)} />
+
       {/* 전체선택 및 삭제 버튼 */}
       <div className="flex justify-between gap-1">
         <CheckButtonForMypage
