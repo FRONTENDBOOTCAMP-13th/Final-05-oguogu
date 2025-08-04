@@ -5,9 +5,7 @@ import Image from 'next/image';
 
 export default async function PeriodItem({ id, periodItemList }: { id: number; periodItemList: periodObject[] }) {
   const res: productRes = await getProduct(id);
-  console.log(res);
-
-  const userIdFromProduct = res.item.seller_id;
+  const userIdFromProduct = res.item.seller?._id;
 
   if (periodItemList === null) {
     return <div>업로드 전입니다.</div>;
