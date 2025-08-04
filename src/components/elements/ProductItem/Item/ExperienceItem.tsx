@@ -38,7 +38,7 @@ export default function ExperienceItem({
             style={{
               backgroundImage: `url(${mainImages[0].path})`,
             }}
-            className="bg-center bg-cover rounded-lg aspect-[3/4] min-w-[140px] min-h-[186.67px]"
+            className="min-w-[288px] min-h-[216px] bg-center bg-cover aspect-[4/3] rounded-lg"
           ></div>
           {/* <Image
             src={`/images/experience/experience-001.png`}
