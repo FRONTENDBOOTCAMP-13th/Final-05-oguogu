@@ -400,8 +400,8 @@
   "product": [
     {
       "seller_id": 16,
-      "name": "남다른 쫀득함! 신품종 전남 해남 25년 '햇' 오색촬옥수수",
-      "content": "씹으면 씹을수록 느껴지는 달짝지근함과 쫀득쫀득한 찰진 식감",
+      "name": "아삭한 달콤함! 전남 해남 25년 '햇' 사과",
+      "content": "씹을수록 퍼지는 상큼달콤한 맛과 아삭아삭한 식감",
       "price": 29900,
       "shippingFees": 3000,
       "quantity": 30,
@@ -417,8 +417,8 @@
       ],
       "extra": {
         "productType": "crop",
-        "category": "veggie",
-        "filter": ["옥수수"],
+        "category": "fruit",
+        "filter": ["사과"],
         "originPlace": "국산",
         "productionPlace": "전라남도 해남군",
         "composition": "30개입 * 1개",
@@ -437,9 +437,9 @@
     },
     {
       "seller_id": 16,
-      "name": "쫀득함이 남다른 의령 햇 미백 찰옥수수",
-      "content": "쫀득함과 구수한 맛이 일품인 건강한 미백 찰옥수수",
-      "price": 18500,
+      "name": "달콤하고 부드러운 의령 햇 바나나",
+      "content": "부드럽고 촉촉한 식감에 은은한 단맛이 매력적인 신선한 햇 바나나",
+      "price": 16900,
       "shippingFees": 3000,
       "quantity": 30,
       "buyQuantity": 0,
@@ -454,14 +454,14 @@
       ],
       "extra": {
         "productType": "crop",
-        "category": "veggie",
-        "filter": ["옥수수"],
+        "category": "fruit",
+        "filter": ["바나나"],
         "originPlace": "국산",
         "productionPlace": "경상남도 의령",
         "composition": "10개입 * 1개",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 2155,
-        "dcRate": 41,
+        "dcRate": 35,
         "productCnt": 10,
         "badge": {
           "isNew": true,
@@ -475,9 +475,9 @@
 
     {
       "seller_id": 16,
-      "name": "은은하게 퍼지는 고소함과 달큰함이 좋은 유기농 냉동 찰옥수수",
-      "content": "이른 봄 씨앗을 파종해 직접 재배한 100% 국내산 냉동 찐 찰옥수수",
-      "price": 41900,
+      "name": "자연의 새콤달콤함! 국내산 유기농 냉동 블루베리",
+      "content": "이른 봄부터 정성껏 재배한 100% 국내산 유기농 냉동 블루베리, 신선함을 그대로 담았습니다",
+      "price": 38900,
       "shippingFees": 0,
       "quantity": 30,
       "buyQuantity": 0,
@@ -497,14 +497,14 @@
       ],
       "extra": {
         "productType": "crop",
-        "category": "veggie",
-        "filter": ["옥수수", "찰옥수수"],
+        "category": "fruit",
+        "filter": ["블루베리", "냉동과일"],
         "originPlace": "국산",
         "productionPlace": "충청북도 충주",
-        "composition": "18개입 * 6개",
+        "composition": "300g * 6팩",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 854,
-        "dcRate": 26,
+        "dcRate": 30,
         "productCnt": 4,
         "badge": {
           "isNew": false,
@@ -518,9 +518,9 @@
 
     {
       "seller_id": 16,
-      "name": "남다른 쫀득함! 신품종 전남 해남 25년 '햇' 오색촬옥수수",
-      "content": "재배 농가가 많지 않은 귀한 품종",
-      "price": 29900,
+      "name": "탱글탱글! 전남 해남 25년 '햇' 고당도 생 체리",
+      "content": "재배 농가가 적은 귀한 품종으로 깊고 진한 단맛이 매력적입니다",
+      "price": 27900,
       "shippingFees": 0,
       "quantity": 30,
       "buyQuantity": 0,
@@ -540,11 +540,11 @@
       ],
       "extra": {
         "productType": "crop",
-        "category": "veggie",
-        "filter": ["옥수수"],
+        "category": "fruit",
+        "filter": ["체리", "생과일"],
         "originPlace": "국산",
         "productionPlace": "전라남도 해남",
-        "composition": "10개입 * 1개",
+        "composition": "500g * 1팩",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 1021,
         "dcRate": 40,
@@ -560,9 +560,9 @@
     },
     {
       "seller_id": 16,
-      "name": "유기농 홍천 찰옥수수 3입",
-      "content": "간편하게 누리는 찰진 고소함",
-      "price": 10900,
+      "name": "새콤달콤 유기농 홍천 키위 3입",
+      "content": "간편하게 즐기는 상큼한 비타민 충전",
+      "price": 9900,
       "shippingFees": 3000,
       "quantity": 30,
       "buyQuantity": 0,
@@ -582,14 +582,14 @@
       ],
       "extra": {
         "productType": "crop",
-        "category": "veggie",
-        "filter": ["옥수수"],
+        "category": "fruit",
+        "filter": ["키위", "유기농"],
         "originPlace": "국산",
         "productionPlace": "강원도 홍천",
-        "composition": "3개입 * 1개",
+        "composition": "3개입 * 1팩",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 34,
-        "dcRate": 8,
+        "dcRate": 10,
         "productCnt": 100,
         "badge": {
           "isNew": false,
@@ -602,8 +602,8 @@
     },
     {
       "seller_id": 16,
-      "name": "괴산 대학🌽찰 옥수수🌽30개✨달콤하고 쫀득함이 일품✨",
-      "content": "달콤하고 쫀득한 여름 대표 간식",
+      "name": "괴산 프리미엄🍈멜론 2수✨달콤하고 시원한 여름 과일✨",
+      "content": "달콤한 과즙과 부드러운 식감이 매력적인 여름 대표 멜론",
       "price": 29800,
       "shippingFees": 0,
       "quantity": 30,
@@ -624,11 +624,11 @@
       ],
       "extra": {
         "productType": "crop",
-        "category": "veggie",
-        "filter": ["옥수수"],
+        "category": "fruit",
+        "filter": ["멜론", "여름과일"],
         "originPlace": "국산",
         "productionPlace": "충청북도 괴산",
-        "composition": "30개입 * 1개",
+        "composition": "2수 * 1박스",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 4,
         "dcRate": 0,
@@ -644,8 +644,8 @@
     },
     {
       "seller_id": 16,
-      "name": "❗특대 사이즈 찰옥수수 10개 ❗꿀맛 보장!! 부담없는 가격에 득템!!",
-      "content": "지금이 제일 맛있는 특대 사이즈 찰옥수수",
+      "name": "❗특대 사이즈 생딸기 1kg❗꿀맛 보장!! 달콤함 가득 득템 찬스!!",
+      "content": "지금이 제철! 향긋하고 달콤한 특대 사이즈 딸기",
       "price": 11900,
       "shippingFees": 3000,
       "quantity": 30,
@@ -666,11 +666,11 @@
       ],
       "extra": {
         "productType": "crop",
-        "category": "veggie",
-        "filter": ["옥수수"],
+        "category": "fruit",
+        "filter": ["딸기", "생과일"],
         "originPlace": "국산",
         "productionPlace": "전라남도 남원",
-        "composition": "10개입 * 1개",
+        "composition": "1kg * 1팩",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 0,
         "dcRate": 0,
@@ -686,8 +686,8 @@
     },
     {
       "seller_id": 16,
-      "name": "미백 찰옥수수 10송이 11-15cm 내외",
-      "content": "고랭지에서 재배해 더 쫀득한 미백 찰옥수수",
+      "name": "고랭지 수박 1통 (4~5kg 내외)",
+      "content": "강원도 고랭지에서 자란 시원하고 달콤한 여름 대표 과일",
       "price": 11900,
       "shippingFees": 0,
       "quantity": 30,
@@ -708,11 +708,11 @@
       ],
       "extra": {
         "productType": "crop",
-        "category": "veggie",
-        "filter": ["옥수수"],
+        "category": "fruit",
+        "filter": ["수박", "여름과일"],
         "originPlace": "국산",
         "productionPlace": "강원도 홍천",
-        "composition": "10개입 * 1개",
+        "composition": "1통 (4~5kg)",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 0,
         "dcRate": 0,
@@ -728,8 +728,8 @@
     },
     {
       "seller_id": 17,
-      "name": "쫀득 구수한~흑찰 옥수수 10개 20개 30개",
-      "content": "칼슘 흑찰옥수수! 우리 아이들이 좋아하는 흑찰옥수수",
+      "name": "아삭하고 싱그러운~ 유기농 양배추 1통부터 3통까지",
+      "content": "건강한 밥상에 빠질 수 없는 국내산 유기농 양배추! 아이들도 좋아해요",
       "price": 19900,
       "shippingFees": 0,
       "quantity": 30,
@@ -751,10 +751,10 @@
       "extra": {
         "productType": "crop",
         "category": "veggie",
-        "filter": ["옥수수"],
+        "filter": ["양배추", "유기농"],
         "originPlace": "국산",
         "productionPlace": "강원도 홍천",
-        "composition": "10개입 * 1개",
+        "composition": "1통 ~ 3통 선택 가능",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 4532,
         "dcRate": 35,
@@ -770,8 +770,8 @@
     },
     {
       "seller_id": 17,
-      "name": "경남 고성 찰옥수수 10개 미백찰 미흑찰 제철 생 옥수수",
-      "content": "고성바다의 시원한 바람결로 알알이 영근 찰옥수수를 만나보세요",
+      "name": "경남 고성 당근 3kg 껍질째 즐기는 신선한 햇당근",
+      "content": "고성 바다의 깨끗한 공기 속에서 자란 아삭하고 달큰한 국내산 당근",
       "price": 28000,
       "shippingFees": 0,
       "quantity": 30,
@@ -793,10 +793,10 @@
       "extra": {
         "productType": "crop",
         "category": "veggie",
-        "filter": ["옥수수"],
+        "filter": ["당근", "햇채소"],
         "originPlace": "국산",
         "productionPlace": "경상남도 고성",
-        "composition": "10개입 * 1개",
+        "composition": "3kg * 1박스",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 8775,
         "dcRate": 55,
@@ -812,8 +812,8 @@
     },
     {
       "seller_id": 17,
-      "name": "찰옥수수 더 쫀득하고 연한 강원도 햇 옥수수",
-      "content": "충분한 퇴비, 두둑 간격을 넓혀 품질 향상",
+      "name": "강원도 햇 오이 10입! 아삭하고 시원한 국내산 오이",
+      "content": "충분한 유기질 퇴비와 넓은 간격 재배로 아삭한 식감과 신선함을 살렸습니다",
       "price": 15000,
       "shippingFees": 3000,
       "quantity": 30,
@@ -835,7 +835,7 @@
       "extra": {
         "productType": "crop",
         "category": "veggie",
-        "filter": ["옥수수"],
+        "filter": ["오이", "햇채소"],
         "originPlace": "국산",
         "productionPlace": "강원도 영월",
         "composition": "10개입 * 1개",
@@ -854,8 +854,8 @@
     },
     {
       "seller_id": 17,
-      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
-      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
+      "name": "특품 사이즈 햇 양파 생으로 즐기는 제철 채소",
+      "content": "일반 양파보다 단단하고 큼직한 알맹이로 저장성과 풍미가 뛰어납니다",
       "price": 16000,
       "shippingFees": 0,
       "quantity": 30,
@@ -877,10 +877,10 @@
       "extra": {
         "productType": "crop",
         "category": "veggie",
-        "filter": ["옥수수"],
+        "filter": ["양파", "제철채소"],
         "originPlace": "국산",
         "productionPlace": "충청북도 괴산",
-        "composition": "10개입 * 1개",
+        "composition": "10개입 * 1망",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 9475,
         "dcRate": 31,
@@ -896,9 +896,9 @@
     },
     {
       "seller_id": 17,
-      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
-      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
-      "price": 16000,
+      "name": "특품 사이즈 햇 무 10입! 아삭하고 시원한 국내산 무",
+      "content": "일반 무보다 길고 알이 굵어 단맛과 식감이 뛰어난 괴산 햇무",
+      "price": 14000,
       "shippingFees": 0,
       "quantity": 30,
       "buyQuantity": 0,
@@ -919,10 +919,10 @@
       "extra": {
         "productType": "crop",
         "category": "veggie",
-        "filter": ["옥수수"],
+        "filter": ["무", "제철채소"],
         "originPlace": "국산",
         "productionPlace": "충청북도 괴산",
-        "composition": "10개입 * 1개",
+        "composition": "10개입 * 1망",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 9475,
         "dcRate": 31,
@@ -938,9 +938,9 @@
     },
     {
       "seller_id": 17,
-      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
-      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
-      "price": 16000,
+      "name": "특품 사이즈 햇 당근 10입! 아삭하고 달큰한 괴산 당근",
+      "content": "일반 당근보다 슬림하지만 육질이 단단하고 당도 높은 튼실한 국내산 당근",
+      "price": 12000,
       "shippingFees": 0,
       "quantity": 30,
       "buyQuantity": 0,
@@ -961,10 +961,10 @@
       "extra": {
         "productType": "crop",
         "category": "veggie",
-        "filter": ["옥수수"],
+        "filter": ["당근", "제철채소"],
         "originPlace": "국산",
         "productionPlace": "충청북도 괴산",
-        "composition": "10개입 * 1개",
+        "composition": "10개입 * 1망",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 9475,
         "dcRate": 31,
@@ -980,9 +980,9 @@
     },
     {
       "seller_id": 17,
-      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
-      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
-      "price": 16000,
+      "name": "특품 사이즈 괴산 햇 배추 2포기 제철 채소",
+      "content": "속이 꽉 차고 단단한 괴산산지 배추! 김장용으로도 딱 좋아요",
+      "price": 12000,
       "shippingFees": 0,
       "quantity": 30,
       "buyQuantity": 0,
@@ -1003,10 +1003,10 @@
       "extra": {
         "productType": "crop",
         "category": "veggie",
-        "filter": ["옥수수"],
+        "filter": ["배추", "김장채소"],
         "originPlace": "국산",
         "productionPlace": "충청북도 괴산",
-        "composition": "10개입 * 1개",
+        "composition": "2포기 * 1망",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 9475,
         "dcRate": 31,
@@ -1022,9 +1022,51 @@
     },
     {
       "seller_id": 17,
-      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
-      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
-      "price": 16000,
+      "name": " 햇 배추 2포기 제철 채소",
+      "content": "속이 꽉 차고 단단한 괴산산지 배추! ",
+      "price": 12000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/crop-napa_cabbage-2.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["배추", "김장채소"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "2포기 * 1망",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 31,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "2025년 햇괴산쌀 특등급 백미 4kg",
+      "content": "충북 괴산의 맑은 물과 큰 일교차에서 자란 품질 좋은 햅쌀, 밥맛이 다릅니다",
+      "price": 11500,
       "shippingFees": 0,
       "quantity": 30,
       "buyQuantity": 0,
@@ -1044,11 +1086,11 @@
       ],
       "extra": {
         "productType": "crop",
-        "category": "veggie",
-        "filter": ["옥수수"],
+        "category": "grain",
+        "filter": ["쌀", "햅쌀", "백미"],
         "originPlace": "국산",
         "productionPlace": "충청북도 괴산",
-        "composition": "10개입 * 1개",
+        "composition": "4kg * 1포",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 9475,
         "dcRate": 31,
@@ -1064,9 +1106,9 @@
     },
     {
       "seller_id": 17,
-      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
-      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
-      "price": 16000,
+      "name": "2025년 햇괴산쌀 백미 4kg 특등급",
+      "content": "일교차 큰 괴산에서 자란 햅쌀! 윤기 있고 찰진 밥맛이 일품입니다",
+      "price": 13200,
       "shippingFees": 0,
       "quantity": 30,
       "buyQuantity": 0,
@@ -1086,11 +1128,11 @@
       ],
       "extra": {
         "productType": "crop",
-        "category": "veggie",
-        "filter": ["옥수수"],
+        "category": "grain",
+        "filter": ["쌀", "백미", "햅쌀"],
         "originPlace": "국산",
         "productionPlace": "충청북도 괴산",
-        "composition": "10개입 * 1개",
+        "composition": "4kg * 1포",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 9475,
         "dcRate": 31,
@@ -1106,9 +1148,9 @@
     },
     {
       "seller_id": 17,
-      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
-      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
-      "price": 16000,
+      "name": "2025년 햇쌀 괴산 백미 4kg 특등급",
+      "content": "충북 괴산의 청정 자연에서 자란 햅쌀! 찰기와 윤기가 뛰어난 국내산 백미",
+      "price": 40000,
       "shippingFees": 0,
       "quantity": 30,
       "buyQuantity": 0,
@@ -1128,11 +1170,11 @@
       ],
       "extra": {
         "productType": "crop",
-        "category": "veggie",
-        "filter": ["옥수수"],
+        "category": "grain",
+        "filter": ["쌀", "백미", "햅쌀"],
         "originPlace": "국산",
         "productionPlace": "충청북도 괴산",
-        "composition": "10개입 * 1개",
+        "composition": "4kg * 1포",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 9475,
         "dcRate": 31,
@@ -1148,8 +1190,8 @@
     },
     {
       "seller_id": 17,
-      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
-      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
+      "name": "2025년 햇괴산 적두 1kg 국산 붉은 팥",
+      "content": "알이 크고 윤기 나는 괴산산 햇 팥! 죽, 떡, 밥에 활용하기 좋은 고품질 적두",
       "price": 16000,
       "shippingFees": 0,
       "quantity": 30,
@@ -1170,11 +1212,11 @@
       ],
       "extra": {
         "productType": "crop",
-        "category": "veggie",
-        "filter": ["옥수수"],
+        "category": "grain",
+        "filter": ["팥", "적두", "붉은콩"],
         "originPlace": "국산",
         "productionPlace": "충청북도 괴산",
-        "composition": "10개입 * 1개",
+        "composition": "1kg * 1포",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 9475,
         "dcRate": 31,
@@ -1190,9 +1232,9 @@
     },
     {
       "seller_id": 17,
-      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
-      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
-      "price": 16000,
+      "name": "햇괴산 생완두콩 1kg 국산 그린피",
+      "content": "탱글한 식감과 고소한 풍미! 밥에 넣어도, 삶아 먹어도 맛있는 제철 완두콩",
+      "price": 13800,
       "shippingFees": 0,
       "quantity": 30,
       "buyQuantity": 0,
@@ -1213,13 +1255,13 @@
       "extra": {
         "productType": "crop",
         "category": "veggie",
-        "filter": ["옥수수"],
+        "filter": ["완두콩", "그린피", "제철콩"],
         "originPlace": "국산",
         "productionPlace": "충청북도 괴산",
-        "composition": "10개입 * 1개",
+        "composition": "1kg * 1포",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 9475,
-        "dcRate": 31,
+        "dcRate": 18,
         "productCnt": 100,
         "badge": {
           "isNew": false,
@@ -1232,9 +1274,9 @@
     },
     {
       "seller_id": 17,
-      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
-      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
-      "price": 16000,
+      "name": "2025년 햇괴산 보리쌀 1.5kg 국내산 겉보리",
+      "content": "쫀득한 밥맛과 고소한 풍미! 건강한 곡물 섭취를 위한 국산 햇보리",
+      "price": 12900,
       "shippingFees": 0,
       "quantity": 30,
       "buyQuantity": 0,
@@ -1254,14 +1296,14 @@
       ],
       "extra": {
         "productType": "crop",
-        "category": "veggie",
-        "filter": ["옥수수"],
+        "category": "grain",
+        "filter": ["보리쌀", "겉보리", "혼합곡"],
         "originPlace": "국산",
         "productionPlace": "충청북도 괴산",
-        "composition": "10개입 * 1개",
+        "composition": "1.5kg * 1포",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 9475,
-        "dcRate": 31,
+        "dcRate": 22,
         "productCnt": 100,
         "badge": {
           "isNew": false,
@@ -1274,9 +1316,9 @@
     },
     {
       "seller_id": 17,
-      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
-      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
-      "price": 16000,
+      "name": "2025년 햇괴산 찰보리쌀 2kg 국내산 건강 잡곡",
+      "content": "부드러운 식감과 쫀득함이 살아있는 국산 찰보리! 밥에 넣어 드세요",
+      "price": 14500,
       "shippingFees": 0,
       "quantity": 30,
       "buyQuantity": 0,
@@ -1296,14 +1338,14 @@
       ],
       "extra": {
         "productType": "crop",
-        "category": "veggie",
-        "filter": ["옥수수"],
+        "category": "grain",
+        "filter": ["찰보리", "보리쌀", "잡곡"],
         "originPlace": "국산",
         "productionPlace": "충청북도 괴산",
-        "composition": "10개입 * 1개",
+        "composition": "2kg * 1포",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 9475,
-        "dcRate": 31,
+        "dcRate": 25,
         "productCnt": 100,
         "badge": {
           "isNew": false,
@@ -1316,9 +1358,9 @@
     },
     {
       "seller_id": 17,
-      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
-      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
-      "price": 16000,
+      "name": "햇괴산 생표고버섯 500g 특품 선별 국내산 버섯",
+      "content": "두툼하고 탄탄한 식감! 향긋한 풍미가 살아있는 괴산산 생표고버섯",
+      "price": 13900,
       "shippingFees": 0,
       "quantity": 30,
       "buyQuantity": 0,
@@ -1338,14 +1380,14 @@
       ],
       "extra": {
         "productType": "crop",
-        "category": "veggie",
-        "filter": ["옥수수"],
+        "category": "mushroom",
+        "filter": ["표고버섯", "버섯", "생버섯"],
         "originPlace": "국산",
         "productionPlace": "충청북도 괴산",
-        "composition": "10개입 * 1개",
+        "composition": "500g * 1팩",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 9475,
-        "dcRate": 31,
+        "dcRate": 17,
         "productCnt": 100,
         "badge": {
           "isNew": false,
@@ -1358,9 +1400,9 @@
     },
     {
       "seller_id": 17,
-      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
-      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
-      "price": 16000,
+      "name": "괴산 특품 생 새송이버섯 1kg 아삭하고 담백한 국내산",
+      "content": "탱글한 육질과 고소한 풍미가 살아있는 햇 새송이버섯! 구이, 볶음에 딱 좋아요",
+      "price": 12500,
       "shippingFees": 0,
       "quantity": 30,
       "buyQuantity": 0,
@@ -1380,14 +1422,14 @@
       ],
       "extra": {
         "productType": "crop",
-        "category": "veggie",
-        "filter": ["옥수수"],
+        "category": "mushroom",
+        "filter": ["새송이버섯", "버섯", "생버섯"],
         "originPlace": "국산",
         "productionPlace": "충청북도 괴산",
-        "composition": "10개입 * 1개",
+        "composition": "1kg * 1팩",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 9475,
-        "dcRate": 31,
+        "dcRate": 19,
         "productCnt": 100,
         "badge": {
           "isNew": false,
@@ -1398,11 +1440,12 @@
         }
       }
     },
+
     {
       "seller_id": 17,
-      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
-      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
-      "price": 16000,
+      "name": "괴산 햇 느타리버섯 1kg 고소하고 담백한 국내산 버섯",
+      "content": "탱글하고 쫄깃한 식감! 볶음·국·찌개 어디에나 잘 어울리는 제철 느타리버섯",
+      "price": 11200,
       "shippingFees": 0,
       "quantity": 30,
       "buyQuantity": 0,
@@ -1422,14 +1465,14 @@
       ],
       "extra": {
         "productType": "crop",
-        "category": "veggie",
-        "filter": ["옥수수"],
+        "category": "mushroom",
+        "filter": ["느타리버섯", "버섯", "생버섯"],
         "originPlace": "국산",
         "productionPlace": "충청북도 괴산",
-        "composition": "10개입 * 1개",
+        "composition": "1kg * 1팩",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 9475,
-        "dcRate": 31,
+        "dcRate": 21,
         "productCnt": 100,
         "badge": {
           "isNew": false,
@@ -1442,9 +1485,9 @@
     },
     {
       "seller_id": 17,
-      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
-      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
-      "price": 16000,
+      "name": "괴산 노루궁뎅이버섯 300g 쫄깃한 건강 식재료",
+      "content": "식감이 쫄깃하고 영양이 풍부한 노루궁뎅이버섯! 면역력 챙기고 요리에도 다양하게 활용해보세요",
+      "price": 11900,
       "shippingFees": 0,
       "quantity": 30,
       "buyQuantity": 0,
@@ -1464,14 +1507,14 @@
       ],
       "extra": {
         "productType": "crop",
-        "category": "veggie",
-        "filter": ["옥수수"],
+        "category": "mushroom",
+        "filter": ["노루궁뎅이버섯", "버섯", "건강버섯"],
         "originPlace": "국산",
         "productionPlace": "충청북도 괴산",
-        "composition": "10개입 * 1개",
+        "composition": "300g * 1팩",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 9475,
-        "dcRate": 31,
+        "dcRate": 15,
         "productCnt": 100,
         "badge": {
           "isNew": false,
@@ -1484,9 +1527,9 @@
     },
     {
       "seller_id": 17,
-      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
-      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
-      "price": 16000,
+      "name": "괴산 햇 팽이버섯 200g x 3팩 담백하고 신선한 국내산",
+      "content": "국, 찌개, 볶음 어디에나 잘 어울리는 팽이버섯! 아삭한 식감이 살아있는 제철 농산물",
+      "price": 8900,
       "shippingFees": 0,
       "quantity": 30,
       "buyQuantity": 0,
@@ -1506,14 +1549,14 @@
       ],
       "extra": {
         "productType": "crop",
-        "category": "veggie",
-        "filter": ["옥수수"],
+        "category": "mushroom",
+        "filter": ["팽이버섯", "버섯", "신선채소"],
         "originPlace": "국산",
         "productionPlace": "충청북도 괴산",
-        "composition": "10개입 * 1개",
+        "composition": "200g x 3팩",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 9475,
-        "dcRate": 31,
+        "dcRate": 12,
         "productCnt": 100,
         "badge": {
           "isNew": false,
@@ -1526,9 +1569,9 @@
     },
     {
       "seller_id": 17,
-      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
-      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
-      "price": 16000,
+      "name": "괴산 만가닥버섯 500g 쫄깃한 식감의 국산 버섯",
+      "content": "탱탱하고 쫄깃한 식감이 매력적인 만가닥버섯! 볶음, 찌개, 샤브샤브에 다양하게 활용해보세요",
+      "price": 10900,
       "shippingFees": 0,
       "quantity": 30,
       "buyQuantity": 0,
@@ -1548,14 +1591,14 @@
       ],
       "extra": {
         "productType": "crop",
-        "category": "veggie",
-        "filter": ["옥수수"],
+        "category": "mushroom",
+        "filter": ["만가닥버섯", "버섯", "샤브샤브용"],
         "originPlace": "국산",
         "productionPlace": "충청북도 괴산",
-        "composition": "10개입 * 1개",
+        "composition": "500g * 1팩",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 9475,
-        "dcRate": 31,
+        "dcRate": 16,
         "productCnt": 100,
         "badge": {
           "isNew": false,
@@ -1568,9 +1611,9 @@
     },
     {
       "seller_id": 17,
-      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
-      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
-      "price": 16000,
+      "name": "탱글탱글한 식감! 괴산 햇 느타리버섯 1kg",
+      "content": "신선함 가득, 탱글한 식감이 살아있는 제철 느타리버섯",
+      "price": 13800,
       "shippingFees": 0,
       "quantity": 30,
       "buyQuantity": 0,
@@ -1590,14 +1633,14 @@
       ],
       "extra": {
         "productType": "crop",
-        "category": "veggie",
-        "filter": ["옥수수"],
+        "category": "mushroom",
+        "filter": ["느타리버섯", "버섯", "국산 버섯"],
         "originPlace": "국산",
         "productionPlace": "충청북도 괴산",
-        "composition": "10개입 * 1개",
+        "composition": "1kg * 1팩",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 9475,
-        "dcRate": 31,
+        "dcRate": 22,
         "productCnt": 100,
         "badge": {
           "isNew": false,
@@ -1610,9 +1653,9 @@
     },
     {
       "seller_id": 17,
-      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
-      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
-      "price": 16000,
+      "name": "탱글탱글한 백만송이 버섯 1kg",
+      "content": "촉촉하고 부드러운 식감! 국산 백만송이버섯으로 건강한 식탁을 완성하세요",
+      "price": 12900,
       "shippingFees": 0,
       "quantity": 30,
       "buyQuantity": 0,
@@ -1632,14 +1675,14 @@
       ],
       "extra": {
         "productType": "crop",
-        "category": "veggie",
-        "filter": ["옥수수"],
+        "category": "mushroom",
+        "filter": ["백만송이버섯", "버섯", "국산 버섯"],
         "originPlace": "국산",
         "productionPlace": "충청북도 괴산",
-        "composition": "10개입 * 1개",
+        "composition": "1kg * 1팩",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 9475,
-        "dcRate": 31,
+        "dcRate": 19,
         "productCnt": 100,
         "badge": {
           "isNew": false,
@@ -1653,9 +1696,9 @@
 
     {
       "seller_id": 16,
-      "name": "강원도 산골마을 찰옥수수 수확체험",
-      "content": "1인 20개 수확! 바베큐 중식 제공!",
-      "price": 30000,
+      "name": "내 손으로 가꾸는 텃밭 체험! 하루 농부되기",
+      "content": "직접 심고 수확하는 즐거움! 신선한 채소와 건강한 중식 제공",
+      "price": 25000,
       "shippingFees": 0,
       "quantity": 30,
       "buyQuantity": 0,
@@ -1663,52 +1706,54 @@
       "active": true,
       "mainImages": [
         {
-          "path": "",
+          "path": "uploadFiles/farming",
           "name": "image-1.jpg",
-          "originalname": "상품이미지-1.jpg"
+          "originalname": "텃밭체험-1.jpg"
         },
         {
-          "path": "/files/${clientId}/seller-2-exp2-2.jpg",
+          "path": "uploadFiles/farming",
           "name": "image-2.jpg",
-          "originalname": "상품이미지-2.jpg"
+          "originalname": "텃밭체험-2.jpg"
         }
       ],
       "extra": {
         "productType": "experience",
-        "category": [],
-        "filter": [],
-        "region": "강원도 인제",
-        "meetingPlace": "강원도 인제군 남면 부평정자로 1555",
+        "category": ["농촌체험"],
+        "filter": ["텃밭", "농부체험", "가족추천"],
+        "region": "경기도 양평",
+        "meetingPlace": "경기도 양평군 강하면 텃밭길 55-3",
         "departureDate": "2025-08-12",
         "returnDate": "2025-08-12",
-        "dcRate": 40,
-        "productCnt": 4,
-        "representitiveKeyword": ["체험", "웰빙", "힐링"],
-        "includedItems": ["식사 제공", "체험 상품"],
-        "unIncludedItems": ["숙소", "버스비"],
+        "dcRate": 30,
+        "productCnt": 10,
+        "representitiveKeyword": ["체험", "로컬푸드", "가족여행"],
+        "includedItems": ["중식 제공", "채소 수확체험", "도구 대여"],
+        "unIncludedItems": ["숙박", "교통비"],
         "schedule": [
-          { "day": 1, "startTime": "11:00", "title": "마을 소개 및 옥수수 재배법 교육" },
-          { "day": 1, "startTime": "12:00", "title": "점심 식사" },
-          { "day": 1, "startTime": "13:30", "title": "찰옥수수 수확" },
-          { "day": 1, "startTime": "14:30", "title": "찰옥수수 시식" }
+          { "day": 1, "startTime": "10:00", "title": "체험장 도착 및 오리엔테이션" },
+          { "day": 1, "startTime": "10:30", "title": "텃밭 가꾸기 기초 교육" },
+          { "day": 1, "startTime": "11:00", "title": "채소 심기 및 직접 물 주기" },
+          { "day": 1, "startTime": "12:30", "title": "건강한 로컬푸드 점심 식사" },
+          { "day": 1, "startTime": "13:30", "title": "채소 수확 및 나만의 바구니 만들기" },
+          { "day": 1, "startTime": "14:30", "title": "정리 및 기념 촬영" }
         ],
         "guideInfo": {
-          "name": "신세경",
-          "contact": "010-7677-8123"
+          "name": "박진수",
+          "contact": "010-3456-7890"
         },
         "badge": {
-          "isNew": false,
-          "isInSeason": null,
-          "isBest": true,
-          "isLowStock": true,
+          "isNew": true,
+          "isInSeason": true,
+          "isBest": false,
+          "isLowStock": false,
           "isSold": false
         }
       }
     },
     {
       "seller_id": 16,
-      "name": "옥수수 수확 체험",
-      "content": "직접 딴 옥수수를 바로 삶아먹어요",
+      "name": "경남 거창 옥수수 텃밭 수확 체험",
+      "content": "텃밭에서 직접 수확한 옥수수를 바로 쪄먹는 특별한 경험!",
       "price": 10000,
       "shippingFees": 0,
       "quantity": 30,
@@ -1717,7 +1762,7 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-exp2-1.jpg",
+          "path": "uploadFiles/Farming2",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
@@ -1729,28 +1774,24 @@
       ],
       "extra": {
         "productType": "experience",
-        "category": [],
-        "filter": [],
+        "category": ["농촌체험", "수확체험"],
+        "filter": ["옥수수", "텃밭", "수확"],
         "region": "경상남도 거창",
         "meetingPlace": "경상남도 거창군 북상면 송계로 738",
         "departureDate": "2025-08-12",
         "returnDate": "2025-08-12",
         "dcRate": 0,
         "productCnt": 4,
-        "representitiveKeyword": ["체험"],
+        "representitiveKeyword": ["체험", "농촌", "옥수수"],
         "includedItems": ["체험 상품"],
         "unIncludedItems": ["숙소", "석식"],
-        "schedule": [
-          { "day": 1, "startTime": "14:00", "title": "옥수수 수확" },
-          { "day": 1, "startTime": "15:00", "title": "옥수수 시식" }
-        ],
         "guideInfo": {
           "name": "전농희",
           "contact": "010-4445-6667"
         },
         "badge": {
           "isNew": true,
-          "isInSeason": null,
+          "isInSeason": true,
           "isBest": false,
           "isLowStock": false,
           "isSold": false
@@ -1759,8 +1800,8 @@
     },
     {
       "seller_id": 17,
-      "name": "[컨츄리타운] 촌캉스",
-      "content": "폭스클럽과 유명연예인도 다녀간 촌캉스!",
+      "name": "강원 홍천 촌캉스 – 해녀 체험이 있는 농촌 힐링 여행",
+      "content": "유명 연예인도 반한 촌캉스! 자연과 전통이 살아 숨쉬는 특별한 1박 2일",
       "price": 198000,
       "shippingFees": 0,
       "quantity": 30,
@@ -1769,7 +1810,7 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-exp2-1.jpg",
+          "path": "uploadFiles/Female-diver",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
@@ -1781,32 +1822,24 @@
       ],
       "extra": {
         "productType": "experience",
-        "category": [],
-        "filter": [],
+        "category": ["촌캉스", "해녀체험", "자연휴식"],
+        "filter": ["해녀체험", "청춘", "1박2일"],
         "region": "강원도 홍천",
         "meetingPlace": "홍천터미널 정문 앞",
         "departureDate": "2025-08-15",
         "returnDate": "2025-08-16",
         "dcRate": 30,
         "productCnt": 2,
-        "representitiveKeyword": ["낭만", "청춘", "젊음"],
+        "representitiveKeyword": ["낭만", "청춘", "힐링"],
         "includedItems": ["식사 제공", "숙소 제공", "픽업 버스 운행", "체험 상품"],
         "unIncludedItems": ["가이드 비", "복귀 버스비"],
-        "schedule": [
-          { "day": 1, "startTime": "14:00", "title": "농촌마을 전입신고" },
-          { "day": 1, "startTime": "15:00", "title": "1부 프로그램" },
-          { "day": 1, "startTime": "18:00", "title": "시골 밥상(저녁)" },
-          { "day": 1, "startTime": "20:00", "title": "2부 프로그램" },
-          { "day": 2, "startTime": "10:00", "title": "정겨운 아침밥(아침)" },
-          { "day": 2, "startTime": "11:00", "title": "퇴소신고" }
-        ],
         "guideInfo": {
           "name": "김우리",
           "contact": "010-1234-5678"
         },
         "badge": {
           "isNew": false,
-          "isInSeason": null,
+          "isInSeason": true,
           "isBest": true,
           "isLowStock": false,
           "isSold": true
@@ -1815,8 +1848,8 @@
     },
     {
       "seller_id": 17,
-      "name": "고소한 대화 한 조각, 임실치즈마을 가족소풍",
-      "content": "임실 대표 관광지 치즈마을 당일 여행!",
+      "name": "제주 해녀체험 – 바닷속 보물 캐기",
+      "content": "진짜 해녀복을 입고, 맨손으로 전복·소라·해삼을 잡아보는 생생한 체험!",
       "price": 92000,
       "shippingFees": 0,
       "quantity": 30,
@@ -1825,7 +1858,7 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-exp2-1.jpg",
+          "path": "uploadFiles/Female-diver2",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
@@ -1837,32 +1870,312 @@
       ],
       "extra": {
         "productType": "experience",
-        "category": [],
-        "filter": [],
-        "region": "전라북도 임실",
-        "meetingPlace": "전북특별자치도 임실군 임실읍 치즈마을길 96",
+        "category": ["해양체험", "전통문화", "제주도"],
+        "filter": ["해녀체험", "바다체험", "수산물채취"],
+        "region": "제주특별자치도 제주시",
+        "meetingPlace": "제주시 구좌읍 해녀박물관 앞",
         "departureDate": "2025-08-09",
         "returnDate": "2025-08-09",
         "dcRate": 45,
         "productCnt": 4,
-        "representitiveKeyword": ["가족", "대화", "힐링"],
-        "includedItems": ["식사 제공", "체험 상품"],
-        "unIncludedItems": ["숙소", "버스비"],
-        "schedule": [
-          { "day": 1, "startTime": "13:00", "title": "오리엔테이션" },
-          { "day": 1, "startTime": "13:30", "title": "경운기 투어" },
-          { "day": 1, "startTime": "14:00", "title": "임실치즈피자 만들기" },
-          { "day": 1, "startTime": "15:00", "title": "마을 산책 - 농사이야기" },
-          { "day": 1, "startTime": "15:30", "title": "피크닉" },
-          { "day": 1, "startTime": "17:00", "title": "성가리 벽화마을 투어" }
-        ],
+        "representitiveKeyword": ["해녀", "바다", "제주문화"],
+        "includedItems": ["체험 장비 대여", "전복/소라 시식", "안전요원 상주"],
+        "unIncludedItems": ["숙소", "제주도 왕복 교통"],
         "guideInfo": {
           "name": "이하나",
           "contact": "010-1234-5678"
         },
         "badge": {
           "isNew": true,
-          "isInSeason": null,
+          "isInSeason": true,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "손맛 가득 김장 체험 – 전통 방식으로 배우는 김장 담그기",
+      "content": "갓 수확한 배추로 김치를 담그고, 직접 담근 김치도 가져가요!",
+      "price": 42000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/Making-Kimchi",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-exp2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "experience",
+        "category": ["전통문화", "식도락", "가족체험"],
+        "filter": ["김장체험", "김치", "전통음식", "겨울체험"],
+        "region": "전라북도 임실",
+        "meetingPlace": "전북특별자치도 임실군 임실읍 치즈마을길 96",
+        "departureDate": "2025-08-09",
+        "returnDate": "2025-08-09",
+        "dcRate": 45,
+        "productCnt": 4,
+        "representitiveKeyword": ["김장", "전통", "정성"],
+        "includedItems": ["김장 재료", "체험 상품", "김치 포장용기", "점심 식사"],
+        "unIncludedItems": ["숙소", "교통비"],
+        "guideInfo": {
+          "name": "이하나",
+          "contact": "010-1234-5678"
+        },
+        "badge": {
+          "isNew": true,
+          "isInSeason": true,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "손맛 가득! 전통 김장 체험 하루 여행",
+      "content": "직접 버무리고 담가보는 깊은 맛의 김장 체험! 가족과 함께 즐겨요",
+      "price": 24000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/Making-Kimchi2",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-exp2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "experience",
+        "category": ["전통문화", "김장체험"],
+        "filter": ["김장", "전통", "겨울체험", "가족"],
+        "region": "전라북도 임실",
+        "meetingPlace": "전북특별자치도 임실군 임실읍 치즈마을길 96",
+        "departureDate": "2025-08-09",
+        "returnDate": "2025-08-09",
+        "dcRate": 45,
+        "productCnt": 4,
+        "representitiveKeyword": ["김장", "가족", "체험"],
+        "includedItems": ["김장 재료", "점심 식사", "김치 포장용기"],
+        "unIncludedItems": ["숙소", "버스비"],
+        "guideInfo": {
+          "name": "이하나",
+          "contact": "010-1234-5678"
+        },
+        "badge": {
+          "isNew": true,
+          "isInSeason": true,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "갯벌에서 뛰놀자! 전라북도 갯벌 체험",
+      "content": "신나는 갯벌놀이와 조개잡이! 아이들과 함께 자연 속으로!",
+      "price": 28000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/mud-flat",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-exp2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "experience",
+        "category": ["자연체험", "갯벌체험"],
+        "filter": ["갯벌", "조개잡이", "아이동반", "자연"],
+        "region": "전라북도 임실",
+        "meetingPlace": "전북특별자치도 임실군 임실읍 치즈마을길 96",
+        "departureDate": "2025-08-09",
+        "returnDate": "2025-08-09",
+        "dcRate": 45,
+        "productCnt": 4,
+        "representitiveKeyword": ["갯벌", "자연", "가족체험"],
+        "includedItems": ["체험 장비 대여", "식사 제공"],
+        "unIncludedItems": ["숙소", "버스비"],
+        "guideInfo": {
+          "name": "이하나",
+          "contact": "010-1234-5678"
+        },
+        "badge": {
+          "isNew": true,
+          "isInSeason": true,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "아이들과 함께하는 갯벌 조개잡이 체험",
+      "content": "갯벌에서 뛰놀며 조개도 잡고, 바닷바람도 즐겨요!",
+      "price": 89000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/mud-flat2",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-exp2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "experience",
+        "category": ["자연체험", "갯벌"],
+        "filter": ["갯벌체험", "조개잡이", "가족여행", "자연놀이"],
+        "region": "전라북도 부안",
+        "meetingPlace": "전북특별자치도 부안군 하서면 갯벌체험장 앞",
+        "departureDate": "2025-08-09",
+        "returnDate": "2025-08-09",
+        "dcRate": 40,
+        "productCnt": 4,
+        "representitiveKeyword": ["자연", "가족", "물놀이"],
+        "includedItems": ["체험 장비 대여", "식사 제공"],
+        "unIncludedItems": ["숙소", "버스비"],
+        "guideInfo": {
+          "name": "이하나",
+          "contact": "010-1234-5678"
+        },
+        "badge": {
+          "isNew": true,
+          "isInSeason": true,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "바닷속 힐링여행, 제주 스노클링 체험",
+      "content": "맑고 푸른 제주 바다에서 물고기와 함께 떠나는 수중 여행!",
+      "price": 85000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/Snorkeling",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-exp2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "experience",
+        "category": ["해양체험"],
+        "filter": ["스노클링", "바다체험", "여름", "제주도"],
+        "region": "제주특별자치도 서귀포시",
+        "meetingPlace": "제주 서귀포시 중문관광로 123",
+        "departureDate": "2025-08-09",
+        "returnDate": "2025-08-09",
+        "dcRate": 35,
+        "productCnt": 4,
+        "representitiveKeyword": ["자연", "스노클링", "바다여행"],
+        "includedItems": ["장비 대여", "체험 가이드", "식사 제공"],
+        "unIncludedItems": ["숙소", "교통비"],
+        "guideInfo": {
+          "name": "이하나",
+          "contact": "010-1234-5678"
+        },
+        "badge": {
+          "isNew": true,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "달콤한 손끝의 행복, 과수원 체험 소풍",
+      "content": "제철 과일을 직접 따고 맛보는 달콤한 하루!",
+      "price": 78000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/orchard",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-exp2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "experience",
+        "category": ["농촌체험"],
+        "filter": ["과일수확", "과수원", "가족체험", "계절체험"],
+        "region": "전라북도 임실",
+        "meetingPlace": "전북특별자치도 임실군 임실읍 치즈마을길 96",
+        "departureDate": "2025-08-09",
+        "returnDate": "2025-08-09",
+        "dcRate": 33,
+        "productCnt": 4,
+        "representitiveKeyword": ["자연", "과일체험", "피크닉"],
+        "includedItems": ["식사 제공", "과일 수확 체험", "과일 시식"],
+        "unIncludedItems": ["숙소", "교통비"],
+        "guideInfo": {
+          "name": "이하나",
+          "contact": "010-1234-5678"
+        },
+        "badge": {
+          "isNew": true,
+          "isInSeason": true,
           "isBest": false,
           "isLowStock": false,
           "isSold": false
