@@ -25,8 +25,6 @@ export default function OfficeOrderClientContorl() {
   const [orderRes, setOrderRes] = useState<OrderListResponse>();
   /*   const [isLoading, setIsLoading] = useState(true); */
 
-  console.log(selected);
-
   const token = useAuthStore(state => state.token);
   /*   const isLoggedin = useAuthStore(state => state.isLoggedIn); */
 
@@ -40,8 +38,6 @@ export default function OfficeOrderClientContorl() {
     };
     fetch();
   }, [token]);
-
-  console.log(orderRes);
 
   const updateOrderStatus = async (order_id: number, newState: string) => {
     try {
@@ -66,8 +62,6 @@ export default function OfficeOrderClientContorl() {
   const filteredOrderList = orderRes?.item.filter(item =>
     selected.value === 'all' ? item : item.state === selected.value,
   );
-
-  console.log(filteredOrderList);
 
   const orderList = filteredOrderList?.map(item => (
     <OrderItemForSeller key={item._id} orderState={item.state} updateOrderStatus={updateOrderStatus} item={item} />
