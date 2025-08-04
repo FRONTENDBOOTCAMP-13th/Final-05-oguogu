@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="p-4 w-full text-xs flex flex-col gap-3 text-oguogu-gray-4 ">
+    <footer className="flex flex-col w-full gap-3 p-4 text-xs text-oguogu-gray-4 ">
       <p className="pt-2 text-base text-oguogu-black">고객센터</p>
       <div className="flex flex-col gap-y-0.5">
         <div className="flex gap-1">
@@ -58,6 +58,18 @@ export default function Footer() {
         <Link href="/" className="flex">
           <Image src="/svgs/instagram.svg" alt="instagram" width={24} height={24} />
         </Link>
+        <Link href="/" className="flex">
+          <Image src="/svgs/x-twitter.svg" alt="twitter" width={24} height={24} />
+        </Link>
+        <Link href="/" className="flex">
+          <Image src="/svgs/KakaoTalk_logo.svg" alt="kakaotalk" width={24} height={24} />
+        </Link>
+        <Link href="/" className="flex">
+          <Image src="/svgs/youtube_logo.svg" alt="youtube" width={24} height={24} />
+        </Link>
+      </div>
+      <div className="py-4 text-xs text-center border-t border-oguogu-gray-1 text-oguogu-gray-3">
+        ⓒ 2025 OGUOGU. All rights reserved.
       </div>
     </footer>
   );

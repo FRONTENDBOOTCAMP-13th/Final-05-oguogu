@@ -40,19 +40,19 @@ export default function ProductItemList({ type }: ProductItemListType) {
 
         await deleteBookmark(bookmarkId, { target_id: 'any' }, token);
         updateMap.delete(_id);
-        toast.success('북마크가 제거되었습니다.');
+        toast.success('찜한 상품이 취소되었습니다.');
       } else {
         const newBookmark: BookmarkPostResponse = await createBookmark({ target_id: _id }, token);
 
         if (newBookmark.ok) {
           updateMap.set(newBookmark.item.target_id, newBookmark.item._id);
-          toast.success('북마크가 추가되었습니다.');
+          toast.success('찜한 상품에 추가되었습니다.');
         }
       }
       setBookmarkedMap(updateMap);
     } catch (error) {
       console.error('북마크 토글 실패', error);
-      toast.error('북마크 처리에 실패했습니다.');
+      toast.error('찜하기에 실패했습니다.');
     }
   };
 
@@ -121,7 +121,7 @@ export default function ProductItemList({ type }: ProductItemListType) {
     <>
       {type === 'crop' ? (
         isLoading ? (
-          <div className="flex gap-3 cursor-grab overflow-auto hide-scrollbar">
+          <div className="flex gap-3 overflow-auto cursor-grab hide-scrollbar">
             <CropItemSkeleton />
             <CropItemSkeleton />
             <CropItemSkeleton />
@@ -129,7 +129,7 @@ export default function ProductItemList({ type }: ProductItemListType) {
             <CropItemSkeleton />
           </div>
         ) : (
-          <div className="flex gap-3 cursor-grab overflow-auto hide-scrollbar">
+          <div className="flex gap-3 overflow-auto cursor-grab hide-scrollbar">
             {cropData &&
               cropData
                 .map((item: Item) => (
@@ -152,7 +152,7 @@ export default function ProductItemList({ type }: ProductItemListType) {
         )
       ) : type === 'experience' ? (
         isLoading ? (
-          <div className="flex gap-3 cursor-grab overflow-auto hide-scrollbar">
+          <div className="flex gap-3 overflow-auto cursor-grab hide-scrollbar">
             <ExperienceItemSkeleton />
             <ExperienceItemSkeleton />
             <ExperienceItemSkeleton />
@@ -160,7 +160,7 @@ export default function ProductItemList({ type }: ProductItemListType) {
             <ExperienceItemSkeleton />
           </div>
         ) : (
-          <div className="flex gap-3  cursor-grab overflow-auto hide-scrollbar">
+          <div className="flex gap-3 overflow-auto cursor-grab hide-scrollbar">
             {expData &&
               expData.map((item: Item) => (
                 <ExperienceItem
@@ -181,7 +181,7 @@ export default function ProductItemList({ type }: ProductItemListType) {
         )
       ) : type === 'gardening' ? (
         isLoading ? (
-          <div className="flex gap-3 cursor-grab overflow-auto hide-scrollbar">
+          <div className="flex gap-3 overflow-auto cursor-grab hide-scrollbar">
             <GardenItemSkeleton />
             <GardenItemSkeleton />
             <GardenItemSkeleton />
@@ -189,7 +189,7 @@ export default function ProductItemList({ type }: ProductItemListType) {
             <GardenItemSkeleton />
           </div>
         ) : (
-          <div className="flex gap-3 cursor-grab overflow-auto hide-scrollbar">
+          <div className="flex gap-3 overflow-auto cursor-grab hide-scrollbar">
             {gardeningData &&
               gardeningData.map((item: Item) => (
                 <GardenItem

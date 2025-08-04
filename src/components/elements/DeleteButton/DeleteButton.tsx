@@ -27,7 +27,7 @@ export default function DeleteButton({ deleteAll }: { deleteAll?: () => void }) 
           fill="black"
         />
       </svg>
-      <span className="translate-y-[0.5px]">삭제</span>
+      <span className="translate-y-[0.5px]">전체 삭제</span>
     </button>
   );
 }

@@ -44,19 +44,19 @@ export default function ProductListClientControl({ productList, type }: productL
 
         await deleteBookmark(bookmarkId, { target_id: 'any' }, token);
         updateMap.delete(_id);
-        toast.success('북마크가 제거되었습니다.');
+        toast.success('찜한 상품이 취소되었습니다.');
       } else {
         const newBookmark: BookmarkPostResponse = await createBookmark({ target_id: _id }, token);
 
         if (newBookmark.ok) {
           updateMap.set(newBookmark.item.target_id, newBookmark.item._id);
-          toast.success('북마크가 추가되었습니다.');
+          toast.success('찜한 상품에 추가되었습니다.');
         }
       }
       setBookmarkedMap(updateMap);
     } catch (error) {
-      console.error('북마크 토글 실패', error);
-      toast.error('북마크 처리에 실패했습니다.');
+      console.error('찜하기 토글 실패', error);
+      toast.error('찜하기에 실패했습니다.');
     }
   };
 
@@ -199,7 +199,7 @@ export default function ProductListClientControl({ productList, type }: productL
                 name="type"
                 value={selectedCategory}
                 onChange={handleSelectType}
-                className="text-right pr-2"
+                className="pr-2 text-right"
               >
                 <option value="all">전체</option>
                 <option value="veggie">채소</option>
@@ -212,7 +212,7 @@ export default function ProductListClientControl({ productList, type }: productL
           <label htmlFor="sorting" className="sr-only">
             정렬
           </label>
-          <select id="sorting" name="sorting" value={sort} onChange={handleSelectSort} className="text-right pr-2">
+          <select id="sorting" name="sorting" value={sort} onChange={handleSelectSort} className="pr-2 text-right">
             <option value="popular">인기순</option>
             <option value="dcRate">할인 높은순</option>
             <option value="review">리뷰 많은순</option>
