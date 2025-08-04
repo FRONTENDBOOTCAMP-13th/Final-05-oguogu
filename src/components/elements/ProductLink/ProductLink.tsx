@@ -7,11 +7,14 @@ export default function ProductLinkItem({
   subTxt = '보러가기',
   mode,
 }: ProductLinkType) {
+  // 모드에 따라 스타일 조정 ( 로그인 페이지 , 회원가입 페이지 )
+  const isLoginPage = mode === 'loginPage';
+  const isRegisterPage = mode === 'registerPage';
   return (
-    <div className="flex justify-center border-b-1 border-b-oguogu-gray-2 pt-2 pb-4">
+    <div className={`flex justify-center pt-2 pb-4 ${isLoginPage ? '' : 'border-b-1 border-b-oguogu-gray-2'}`}>
       <Link href={link} className="flex items-center gap-2 text-xs mobile-max:text-base">
         <span className="content-center">
-          {mode === 'login' ? (
+          {isRegisterPage ? (
             <>
               <span>{subTxt}</span>
               <span className="text-oguogu-main">&nbsp;{linkTitle}</span>
