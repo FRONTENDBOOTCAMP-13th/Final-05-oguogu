@@ -9,13 +9,16 @@ import { format } from 'date-fns';
 import Image from 'next/image';
 
 export default async function MyGardenItemPage({ params }: ProductDetailPageProps) {
+  /* product_id 를 추출, 해당 id 의 period 를 가져오기  */
   const { _id } = await params;
   const res: productRes = await getProduct(Number(_id));
-  const periodItemList = res.item.extra!.period;
 
   if (!res) {
     return <div className="text-center">상품 정보가 없습니다.</div>;
   }
+
+  /* 텃밭 히스토리 리스트를 추출 */
+  const periodItemList = res.item.extra!.period;
 
   /* period 의 status 값을 추출, 포함 여부를 검증하여 가장 마지막 데이터를 렌더링 */
   const allStatus = periodItemList?.map((item: periodObject) => item.status);
@@ -56,7 +59,7 @@ export default async function MyGardenItemPage({ params }: ProductDetailPageProp
 
   // 업로드 날짜
   const uploadDate = periodItemList?.map((item: periodObject) => item.date);
-  console.log(uploadDate);
+  console.log('업로드 날짜', uploadDate);
 
   return (
     <>
