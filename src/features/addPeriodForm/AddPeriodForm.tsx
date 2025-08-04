@@ -150,7 +150,7 @@ export default function AddPeriodForm({ id }: { id: number }) {
       {type !== 'seller' ? (
         ''
       ) : (
-        <div className="mt-4 w-full flex flex-col items-center gap-2">
+        <div className="mt-8 w-full h-full flex flex-col justify-center items-center gap-2">
           {/* 토글 버튼 */}
           {showForm ? (
             ''

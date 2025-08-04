@@ -9,11 +9,11 @@ export default function PeriodItem({ id, periodItemList }: { id: number; periodI
 
   return (
     <>
+      {/* 히스토리 등록 버튼 */}
+      <AddPeriodForm id={id} />
+
       {periodItemList ? (
         <div className="mt-4 grid gap-4 mobile-max:grid-cols-2 mobile-max:gap-5 w-full">
-          {/* 히스토리 등록 버튼 */}
-          <AddPeriodForm id={id} />
-
           {periodItemList
             .slice()
             .reverse()
