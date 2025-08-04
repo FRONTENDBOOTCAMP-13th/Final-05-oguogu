@@ -145,6 +145,7 @@ export default function ProductItemList({ type }: ProductItemListType) {
                     replies={item.replies}
                     isbookmarked={isBookmarked(item._id)}
                     togglebookmark={() => toggleBookmark(item._id)}
+                    mainImages={item.mainImages}
                   />
                 ))
                 .slice(0, 10)}
@@ -175,6 +176,7 @@ export default function ProductItemList({ type }: ProductItemListType) {
                   replies={item.replies}
                   isbookmarked={isBookmarked(item._id)}
                   togglebookmark={() => toggleBookmark(item._id)}
+                  mainImages={item.mainImages}
                 />
               ))}
           </div>
@@ -206,6 +208,7 @@ export default function ProductItemList({ type }: ProductItemListType) {
                   buyQuantity={item.buyQuantity}
                   isbookmarked={isBookmarked(item._id)}
                   togglebookmark={() => toggleBookmark(item._id)}
+                  mainImages={item.mainImages}
                 />
               ))}
           </div>

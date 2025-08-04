@@ -17,6 +17,7 @@ export default function ExperienceItem({
   seller,
   isbookmarked,
   togglebookmark,
+  mainImages,
 }: Item) {
   const isSold = extra!.badge?.isSold && 'sold';
   const isBest = extra!.badge?.isBest && 'best';
@@ -33,7 +34,12 @@ export default function ExperienceItem({
         {/* 대표 이미지 */}
         {/*이미지를 하드코딩 해둔 상태 추후 동적으로 관리해야 함*/}
         <div className="relative">
-          <div className="bg-[url('/images/experience/experience-001.png')] min-w-[288px] min-h-[216px] bg-center bg-cover aspect-[4/3] rounded-lg"></div>
+          <div
+            style={{
+              backgroundImage: `url(${mainImages[0].path})`,
+            }}
+            className="bg-center bg-cover rounded-lg aspect-[3/4] min-w-[140px] min-h-[186.67px]"
+          ></div>
           {/* <Image
             src={`/images/experience/experience-001.png`}
             alt=""

@@ -44,7 +44,7 @@ export interface Item {
   buyQuantity?: number;
   show?: boolean;
   active?: boolean;
-  mainImages?: MainImage[];
+  mainImages: MainImage[];
   createdAt?: string; // ISO date string
   updatedAt?: string; // ISO date string
   extra?: Extra;

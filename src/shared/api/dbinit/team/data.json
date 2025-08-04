@@ -410,14 +410,9 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "path": "uploadFiles/apple1.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
-        },
-        {
-          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
-          "name": "image-2.jpg",
-          "originalname": "상품이미지-2.jpg"
         }
       ],
       "extra": {
@@ -452,14 +447,9 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "path": "uploadFiles/banana1.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
-        },
-        {
-          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
-          "name": "image-2.jpg",
-          "originalname": "상품이미지-2.jpg"
         }
       ],
       "extra": {
@@ -495,7 +485,7 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "path": "uploadFiles/blueberry1.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
@@ -538,7 +528,7 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "path": "uploadFiles/cherry1.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
@@ -580,7 +570,7 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "path": "uploadFiles/kiwi1.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
@@ -622,7 +612,7 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "path": "uploadFiles/melon1.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
@@ -664,7 +654,7 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "path": "uploadFiles/strawbarry1.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
@@ -706,7 +696,7 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "path": "uploadFiles/watermelon1.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
@@ -748,7 +738,7 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "path": "uploadFiles/crop-cabbage-1.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
@@ -790,7 +780,7 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "path": "uploadFiles/crop-carrot-1.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
@@ -832,7 +822,7 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "path": "uploadFiles/crop-cucumber-001.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
@@ -874,7 +864,763 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "path": "uploadFiles/crop-onion-1.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["옥수수"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "10개입 * 1개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 31,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
+      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
+      "price": 16000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/crop-radish-1.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["옥수수"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "10개입 * 1개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 31,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
+      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
+      "price": 16000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/crop-carrot-2.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["옥수수"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "10개입 * 1개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 31,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
+      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
+      "price": 16000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/crop-napa_cabbage-1.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["옥수수"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "10개입 * 1개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 31,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
+      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
+      "price": 16000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/rice1.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["옥수수"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "10개입 * 1개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 31,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
+      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
+      "price": 16000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/rice2.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["옥수수"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "10개입 * 1개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 31,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
+      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
+      "price": 16000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/rice3.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["옥수수"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "10개입 * 1개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 31,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
+      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
+      "price": 16000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/red_bean.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["옥수수"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "10개입 * 1개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 31,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
+      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
+      "price": 16000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/green_pea.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["옥수수"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "10개입 * 1개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 31,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
+      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
+      "price": 16000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/barley_rice1.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["옥수수"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "10개입 * 1개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 31,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
+      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
+      "price": 16000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/barley_rice2.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["옥수수"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "10개입 * 1개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 31,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
+      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
+      "price": 16000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/mushroom-001.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["옥수수"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "10개입 * 1개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 31,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
+      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
+      "price": 16000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/mushroom-002.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["옥수수"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "10개입 * 1개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 31,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
+      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
+      "price": 16000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/mushroom-003.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["옥수수"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "10개입 * 1개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 31,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
+      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
+      "price": 16000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/mushroom-004.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["옥수수"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "10개입 * 1개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 31,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
+      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
+      "price": 16000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/mushroom-005.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["옥수수"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "10개입 * 1개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 31,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
+      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
+      "price": 16000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/mushroom-006.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["옥수수"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "10개입 * 1개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 31,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
+      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
+      "price": 16000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/mushroom-007.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["옥수수"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "10개입 * 1개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 31,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
+      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
+      "price": 16000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/mushroom-008.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
@@ -917,7 +1663,7 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-exp2-1.jpg",
+          "path": "",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
