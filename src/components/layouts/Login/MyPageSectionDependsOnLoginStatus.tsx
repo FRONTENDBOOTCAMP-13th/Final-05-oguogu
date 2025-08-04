@@ -18,9 +18,9 @@ export default function MyPageSectionDependsOnLoginStatus() {
 
   const [orderInfo, setOrderInfo] = useState<Order[]>([]);
   const [payedCnt, setPayedCnt] = useState<number>();
-  const [preparingCnt, setPreparingCnt] = useState('');
-  const [transitCnt, setTransitCnt] = useState('');
-  const [delivered, setDelivered] = useState('');
+  const [preparingCnt, setPreparingCnt] = useState<number>();
+  const [transitCnt, setTransitCnt] = useState<number>();
+  const [delivered, setDelivered] = useState<number>();
   const { isLoading, setLoading } = useLoadingStore();
 
   useEffect(() => {
