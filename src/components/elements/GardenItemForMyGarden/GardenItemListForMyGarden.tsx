@@ -17,7 +17,11 @@ export default function GardenItemListForMyGarden() {
 
     const getGardeningOrders = async () => {
       const res = await getOrders(token);
-      const data = res.item;
+      const data = res.item.filter(
+        (item: Order) => item.state !== 'refundInProgress' && item.state !== 'refundCompleted',
+      );
+
+      console.log('data', data);
 
       /* OrderProduct 배열만 추출해서 별도 배열로 저장 */
       const newData = data.map((item: Order) => item.products);
