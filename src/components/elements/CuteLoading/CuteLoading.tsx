@@ -4,10 +4,18 @@ export default function CuteLoading() {
   return (
     <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-white">
       <div className="flex items-center justify-center gap-2">
-        <Image src="/svgs/loading-carrot.svg" alt="loading icons" width={48} height={48} className="animate-wave" />
+        <Image
+          src="/svgs/loading-carrot.svg"
+          alt=""
+          aria-hidden="true"
+          width={48}
+          height={48}
+          className="animate-wave"
+        />
         <Image
           src="/svgs/loading-tomato.svg"
-          alt="loading icons"
+          alt=""
+          aria-hidden="true"
           width={48}
           height={48}
           className="animate-wave"
@@ -15,7 +23,8 @@ export default function CuteLoading() {
         />
         <Image
           src="/svgs/loading-broccoli.svg"
-          alt="loading icons"
+          alt=""
+          aria-hidden="true"
           width={48}
           height={48}
           className="animate-wave"
@@ -23,7 +32,8 @@ export default function CuteLoading() {
         />
         <Image
           src="/svgs/loading-corn.svg"
-          alt="loading icons"
+          alt=""
+          aria-hidden="true"
           width={48}
           height={48}
           className="animate-wave"
@@ -31,7 +41,8 @@ export default function CuteLoading() {
         />
         <Image
           src="/svgs/loading-eggplant.svg"
-          alt="loading icons"
+          alt=""
+          aria-hidden="true"
           width={48}
           height={48}
           className="animate-wave"
@@ -39,7 +50,8 @@ export default function CuteLoading() {
         />
         <Image
           src="/svgs/loading-sweetpotato.svg"
-          alt="loading icons"
+          alt=""
+          aria-hidden="true"
           width={48}
           height={48}
           className="animate-wave"

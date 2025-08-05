@@ -90,7 +90,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
             <div className="itemDataExtra">
               <span>{item.seller?.extra.businessInfo?.companyName ?? '오구텃밭'}</span>
               <div className="flex gap-1">
-                <Image src="/images/product-hatIcon.svg" alt="인증 아이콘" width={14} height={14} />
+                <Image src="/images/product-hatIcon.svg" alt="" aria-hidden="true" width={14} height={14} />
                 <span className="text-[10px]">인증된 판매자 입니다.</span>
               </div>
             </div>
@@ -219,7 +219,7 @@ export default function ProductDetailInfo({ type, item }: ProductDetailInfoType)
             <div className="flex flex-col">
               <span>{item.seller?.extra.businessInfo?.companyName ?? '오구텃밭'}</span>
               <div className="flex gap-1">
-                <Image src="/images/product-hatIcon.svg" alt="인증 아이콘" width={14} height={14} />
+                <Image src="/images/product-hatIcon.svg" alt="" aria-hidden="true" width={14} height={14} />
                 <span className="text-[10px]">인증된 판매자 입니다.</span>
               </div>
             </div>

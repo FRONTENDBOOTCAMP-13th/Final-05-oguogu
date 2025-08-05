@@ -50,8 +50,6 @@ export const metadata: Metadata = {
   },
 };
 
-
-
 export default async function Home() {
   const noticeRes: responsePostReplies = await getPosts('notice');
   const qnaRes: responsePostReplies = await getPosts('faq');
@@ -97,7 +95,7 @@ export default async function Home() {
             keywordParams=""
             typeParams=""
             link="/product/experience"
-            linkTitle="전체 체험 상품"
+            linkTitle="체험 상품"
             subTxt="보러 가기"
           />
         </article>

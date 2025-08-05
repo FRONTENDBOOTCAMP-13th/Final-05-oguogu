@@ -76,7 +76,7 @@ export default async function MyGardenItemPage({ params }: ProductDetailPageProp
           {/* 상품명, 이미지 */}
           <div className="flex gap-2">
             <p className="text-2xl">{res.item.name}</p>
-            <Image src={`/svgs/${lastStatus}.svg`} alt={`${lastStatus}`} width={24} height={24} />
+            <Image src={`/svgs/${lastStatus}.svg`} alt={`상품 상태 : ${lastStatus}`} width={24} height={24} />
           </div>
 
           {/* 진행단계, 수확 남은 일자, Progress Bar */}

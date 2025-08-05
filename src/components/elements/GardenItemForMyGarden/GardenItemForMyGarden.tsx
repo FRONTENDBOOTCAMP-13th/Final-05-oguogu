@@ -50,7 +50,7 @@ export default function GardenItemForMyGarden({
           <div className="w-7 h-7 mobile-max:w-10 mobile-max:h-10 flex items-center justify-center">
             <Image
               src={`/svgs/${lastStatus === '수확 완료' ? 'harvested' : lastStatus === '성장' ? 'growing' : lastStatus === '발아' ? 'sprouting' : 'seeding'}.svg`}
-              alt={`${lastStatus}`}
+              alt={`상품 상태 : ${lastStatus}`}
               width={56}
               height={56}
               className=""

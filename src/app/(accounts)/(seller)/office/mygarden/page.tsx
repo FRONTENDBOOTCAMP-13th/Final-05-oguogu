@@ -1,7 +1,7 @@
 import GardenItemListForSeller from '@/components/elements/GardenItemForMyGarden/GardenItemListForSeller';
 import LinkHeader from '@/components/layouts/Header/LinkHeader';
 
-export default async function UserGardeningList() {
+export default async function SellerGardeningList() {
   return (
     <>
       <LinkHeader title="텃밭 히스토리 관리" bgColor="garden" />

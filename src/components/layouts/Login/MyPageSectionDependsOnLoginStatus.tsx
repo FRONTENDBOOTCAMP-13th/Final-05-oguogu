@@ -80,7 +80,7 @@ export default function MyPageSectionDependsOnLoginStatus() {
         <Link href="https://ugveg.vercel.app/" target="_blank" rel="noopener noreferrer">
           <Image
             src="/images/sub-banner-01.png"
-            alt="배너 이미지"
+            alt="흙내음상점 이동 링크"
             fill={false}
             width={768}
             height={48}
@@ -153,7 +153,7 @@ export default function MyPageSectionDependsOnLoginStatus() {
         <div className="flex flex-col gap-4">
           <h2 className="text-base text-oguogu-gray-4 flex gap-1 items-start">
             나의 텃밭 생활
-            <Image src="/svgs/pot.svg" alt="" width={20} height={20}></Image>
+            <Image src="/svgs/pot.svg" alt="" aria-hidden="true" width={20} height={20}></Image>
           </h2>
           <Link href="/mypage/order">주문/배송 내역</Link>
           <Link href="/mypage/cart">장바구니</Link>
@@ -167,7 +167,7 @@ export default function MyPageSectionDependsOnLoginStatus() {
         <div className="flex flex-col gap-4">
           <h2 className="text-base text-oguogu-gray-4 flex gap-1 items-start">
             고객센터
-            <Image src="/svgs/notice.svg" alt="" width={18} height={18}></Image>
+            <Image src="/svgs/notice.svg" alt="" aria-hidden="true" width={18} height={18}></Image>
           </h2>
           <Link href="/board/notice">공지사항</Link>
           <Link href="/board/qna">자주 묻는 질문</Link>

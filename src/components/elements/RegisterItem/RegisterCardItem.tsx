@@ -9,7 +9,8 @@ export default function RegisterCardItem({ type }: { type: 'seller' | 'user' }) 
           <Image
             className="mb-3"
             src={`/images/register/register-${type}.svg`}
-            alt="타입 아이콘"
+            alt=""
+            aria-hidden="true"
             width={30}
             height={30}
           />
