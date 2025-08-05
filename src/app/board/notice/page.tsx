@@ -39,7 +39,7 @@ export default async function Notice() {
           <div className="truncate min-w-0 flex-1 ">제목</div>
           <div className="flex-shrink-0 w-[70px] ">날짜</div>
         </div>
-        <div className="flex flex-col gap-2">{noticeList}</div>
+        <div className="flex flex-col gap-4">{noticeList}</div>
       </main>
     </>
   );

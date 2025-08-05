@@ -83,7 +83,7 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
 
 export default async function ProductDetailPage({ params }: ProductDetailPageProps) {
   const { _id } = await params;
-  const res = await getProduct(Number(_id));
+  const res: productRes = await getProduct(Number(_id));
 
   if (!res) {
     return <div>상품 정보를 불러오는 중입니다...</div>;
@@ -103,7 +103,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
   const reviewCnt = reviewRes.item.length;
 
   // 상품 타입
-  const productType = await res.item.extra.productType;
+  const productType = await res.item.extra!.productType;
 
   // 상품명
   const productName = await res.item.name;
@@ -114,13 +114,21 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
       <TextCategoryForDetailPage _id={Number(_id)} reviewCnt={reviewCnt} qnaCnt={qnaCnt} />
       <Image
         className="w-full max-h-[480px] object-cover aspect-square"
-        src="/images/crop/crop-001.png"
+        src={res.item.mainImages[0].path}
         alt="상품명"
         width={320}
         height={320}
       />
+
+      {/*  <div
+        style={{
+          backgroundImage: `url(${mainImages[0].path})`,
+        }}
+        className="bg-center bg-cover rounded-lg aspect-[3/4] min-w-[140px] min-h-[186.67px]"
+      ></div> */}
+
       <section id="userInfo">
-        <ProductDetailInfo type={productType} item={res.item} />
+        <ProductDetailInfo type={productType || 'crop'} item={res.item} />
       </section>
       <main className="flex items-center justify-center h-[1500px] bg-oguogu-gray-1">상품 상세 이미지</main>
 

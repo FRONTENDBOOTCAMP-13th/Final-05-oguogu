@@ -18,12 +18,16 @@ export default function ReviewItemCard({ name, email, res }: ReviewItemType) {
     return visible + hidden;
   };
 
-  console.log(res);
+  function isValidImagePath(path: string): boolean {
+    if (!path || path === 'src') return false;
+    return path.startsWith('/') || path.startsWith('http://') || path.startsWith('https://');
+  }
 
   return (
     <div className="w-full border border-oguogu-gray-2 p-4 flex flex-col gap-3 bg-[#fafafa]">
       {/* 상품 이미지 */}
-      {res.extra.imagePath ? (
+      {/* 상품 이미지 - 임시값 검증 적용 */}
+      {res.extra.imagePath && isValidImagePath(res.extra.imagePath) ? (
         <div className="w-full h-[140px] relative overflow-hidden">
           <Image
             src={res.extra.imagePath}
@@ -32,7 +36,7 @@ export default function ReviewItemCard({ name, email, res }: ReviewItemType) {
             className="object-cover border border-oguogu-gray-1"
           />
         </div>
-      ) : (
+      ) : res.product.image.path && isValidImagePath(res.product.image.path) ? (
         <div className="w-full h-[140px] relative overflow-hidden">
           <Image
             src={res.product.image.path}
@@ -40,6 +44,11 @@ export default function ReviewItemCard({ name, email, res }: ReviewItemType) {
             fill
             className="object-cover border border-oguogu-gray-1"
           />
+        </div>
+      ) : (
+        // 유효한 이미지가 없는 경우 빈 공간 또는 기본 이미지 자리
+        <div className="w-full h-[140px] relative overflow-hidden bg-oguogu-gray-1 flex items-center justify-center">
+          <span className="text-oguogu-gray-4 text-[12px]">이미지 없음</span>
         </div>
       )}
 

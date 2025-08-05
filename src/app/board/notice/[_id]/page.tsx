@@ -1,7 +1,6 @@
 import LinkHeader from '@/components/layouts/Header/LinkHeader';
 import { getPosts } from '@/shared/data/functions/post';
 import { responsePostReplies } from '@/shared/types/post';
-import { format } from 'date-fns';
 import { Metadata } from 'next';
 
 export async function generateMetadata({ params }: NoticeDetailPageProps): Promise<Metadata> {
@@ -57,8 +56,8 @@ export default async function NoticeDetailPage({ params }: NoticeDetailPageProps
   const { _id } = await params;
 
   const noticeRes: responsePostReplies = await getPosts('notice');
-  const notice = noticeRes.item.find(item => item._id === Number(_id));
-  const formattedDate = format(notice!.createdAt, 'yyyy.MM.dd');
+  /* const notice = noticeRes.item.find(item => item._id === Number(_id)); */
+  /* const formattedDate = format(notice!.createdAt, 'yyyy.MM.dd'); */
 
   const detailNotice = noticeRes.item.find(item => item._id === Number(_id));
 
@@ -70,7 +69,9 @@ export default async function NoticeDetailPage({ params }: NoticeDetailPageProps
           <div className="flex-shrink-0  text-oguogu-main ">{detailNotice?.tag}</div>
           <div className="flex items-end">
             <div className="truncate min-w-0 flex-1 text-oguogu-black ">{detailNotice?.title}</div>
-            <div className="flex-shrink-0 text-oguogu-gray-4 text-[12px]">&nbsp;&nbsp;{formattedDate}</div>
+            <div className="flex-shrink-0 text-oguogu-gray-4 text-[12px]">
+              &nbsp;&nbsp;{detailNotice?.createdAt.split(' ')[0]}
+            </div>
           </div>
         </div>
         <div className="text-base leading-[140%] mt-6">
