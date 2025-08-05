@@ -3,7 +3,7 @@ import ExperienceProductPostClientControl from '@/features/ProductPostClientCont
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: '체험 상품 등록/수정 | 판매자 센터 - 오구오구',
+  title: '체험 상품 등록/수정 | 판매자 센터 - 오구텃밭',
   description: '판매자가 체험 상품을 등록하거나 수정할 수 있는 페이지입니다.',
   robots: {
     index: false,

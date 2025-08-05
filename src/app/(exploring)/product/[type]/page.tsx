@@ -10,19 +10,19 @@ import { Suspense } from 'react';
 
   const base = {
     crop: {
-      title: '농산물 상품 | 오구오구',
+      title: '농산물 상품 | 오구텃밭',
       description: '산지에서 신선하게 배송되는 제철 농산물을 확인해보세요.',
       keywords: ['농산물', '제철 채소', '산지직송', '신선식품'],
       url: 'https://final-05-oguogu.vercel.app/product/crop',
     },
     experience: {
-      title: '농촌 체험 상품 | 오구오구',
+      title: '농촌 체험 상품 | 오구텃밭',
       description: '온 가족이 즐길 수 있는 1일 농장 체험부터 수확 체험까지 확인해보세요.',
       keywords: ['농촌 체험', '주말 나들이', '농장 방문', '아이들과 체험'],
       url: 'https://final-05-oguogu.vercel.app/product/experience',
     },
     gardening: {
-      title: '텃밭 분양 상품 | 오구오구',
+      title: '텃밭 분양 상품 | 오구텃밭',
       description: '씨앗부터 수확까지, 텃밭 히스토리를 통해 나만의 농작물을 키워보세요.',
       keywords: ['텃밭', '도시농부', '주말농장', '자급자족', '식물 키우기'],
       url: 'https://final-05-oguogu.vercel.app/product/gardening',
@@ -34,7 +34,7 @@ import { Suspense } from 'react';
   // 혹시 잘못된 type이 들어왔을 경우 방어처리
   if (!meta) {
     return {
-      title: '상품 | 오구오구',
+      title: '상품 | 오구텃밭',
       description: '다양한 농산물과 체험 상품을 둘러보세요.',
     };
   }
@@ -42,7 +42,7 @@ import { Suspense } from 'react';
   return {
     title: meta.title,
     description: meta.description,
-    keywords: [...meta.keywords, '오구오구'],
+    keywords: [...meta.keywords, '오구텃밭'],
     alternates: {
       canonical: meta.url,
     },

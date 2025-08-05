@@ -3,7 +3,7 @@ import LinkHeader from '@/components/layouts/Header/LinkHeader';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: '상품 등록 | 판매자 센터 - 오구오구',
+  title: '상품 등록 | 판매자 센터 - 오구텃밭',
   description: '판매자가 등록할 상품의 유형을 선택하는 페이지입니다. 농산물, 체험, 텃밭 중에서 선택하세요.',
   robots: {
     index: false,

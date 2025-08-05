@@ -3,8 +3,8 @@ import LoginForm from '@/components/layouts/Login/LoginForm';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: '통합 로그인 | 오구오구',
-  description: '오구오구 회원 계정으로 로그인하여 텃밭, 농산물, 체험 상품을 편리하게 이용하세요.',
+  title: '통합 로그인 | 오구텃밭',
+  description: '오구텃밭 회원 계정으로 로그인하여 텃밭, 농산물, 체험 상품을 편리하게 이용하세요.',
   robots: {
     index: false,
     follow: false,

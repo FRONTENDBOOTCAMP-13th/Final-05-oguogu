@@ -3,8 +3,8 @@ import LinkHeader from '@/components/layouts/Header/LinkHeader';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: '회원가입 - 일반회원 | 오구오구',
-  description: '오구오구 일반회원으로 가입하고 나만의 텃밭과 신선한 농산물을 경험해보세요.',
+  title: '회원가입 - 일반회원 | 오구텃밭',
+  description: '오구텃밭 일반회원으로 가입하고 나만의 텃밭과 신선한 농산물을 경험해보세요.',
   robots: {
     index: false,
     follow: false,

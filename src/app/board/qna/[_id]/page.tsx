@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: QnaDetailPageProps): Promise<
 
   if (!qna) {
     return {
-      title: '질문을 찾을 수 없습니다 | 오구오구',
+      title: '질문을 찾을 수 없습니다 | 오구텃밭',
       description: '존재하지 않거나 삭제된 질문입니다.',
       robots: {
         index: false,
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: QnaDetailPageProps): Promise<
   const desc = content.slice(0, 80).replace(/\n/g, ' ').trim();
 
   return {
-    title: `${title} | 자주 묻는 질문 - 오구오구`,
+    title: `${title} | 자주 묻는 질문 - 오구텃밭`,
     description: desc,
     robots: {
       index: true,
@@ -33,14 +33,14 @@ export async function generateMetadata({ params }: QnaDetailPageProps): Promise<
       canonical: `https://final-05-oguogu.vercel.app/board/qna/${_id}`,
     },
     openGraph: {
-      title: `${title} | 자주 묻는 질문 - 오구오구`,
+      title: `${title} | 자주 묻는 질문 - 오구텃밭`,
       description: desc,
       type: 'article',
       url: `https://final-05-oguogu.vercel.app/board/qna/${_id}`,
     },
     twitter: {
       card: 'summary',
-      title: `${title} | 오구오구`,
+      title: `${title} | 오구텃밭`,
       description: desc,
     },
   };

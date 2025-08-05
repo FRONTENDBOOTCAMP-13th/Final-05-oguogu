@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: NoticeDetailPageProps): Promi
 
   if (!notice) {
     return {
-      title: '공지사항을 찾을 수 없습니다 | 오구오구',
+      title: '공지사항을 찾을 수 없습니다 | 오구텃밭',
       description: '존재하지 않는 공지글입니다.',
       robots: {
         index: false,
@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: NoticeDetailPageProps): Promi
   const desc = content.slice(0, 80).replace(/\n/g, ' ').trim();
 
   return {
-    title: `${title} | 공지사항 - 오구오구`,
+    title: `${title} | 공지사항 - 오구텃밭`,
     description: desc,
     robots: {
       index: true,
@@ -34,14 +34,14 @@ export async function generateMetadata({ params }: NoticeDetailPageProps): Promi
       canonical: `https://final-05-oguogu.vercel.app/board/notice/${_id}`,
     },
     openGraph: {
-      title: `${title} | 공지사항 - 오구오구`,
+      title: `${title} | 공지사항 - 오구텃밭`,
       description: desc,
       type: 'article',
       url: `https://final-05-oguogu.vercel.app/board/notice/${_id}`,
     },
     twitter: {
       card: 'summary',
-      title: `${title} | 오구오구`,
+      title: `${title} | 오구텃밭`,
       description: desc,
     },
   };

@@ -3,7 +3,7 @@ import SellerProductClientControl from '@/features/sellerProductClientControl/se
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: '상품 관리 | 판매자 센터 - 오구오구',
+  title: '상품 관리 | 판매자 센터 - 오구텃밭',
   description: '판매자가 등록한 상품을 수정하거나 삭제할 수 있는 상품 관리 페이지입니다.',
   robots: {
     index: false,
