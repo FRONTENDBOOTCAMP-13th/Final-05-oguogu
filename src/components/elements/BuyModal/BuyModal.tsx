@@ -60,26 +60,29 @@ export default function BuyModal({ onClose, type, res, onSuccess }: BuyModalProp
     }
 
     const orderList = await getOrder(userId, token);
+    console.log('전체 주문 목록', orderList);
+
     const isInOrderList = orderList.item.products
       .filter((item: Order) => item._id === product_id)
       .filter((item: OrderedProduct) => item.extra.productType === 'gardening');
-    console.log(`\t`, isInOrderList);
+    console.log(`\t주문 목록 내 존재하는 해당 상품 데이터`, isInOrderList);
 
     const cartList = await getCart(token);
     console.log('전체 장바구니 목록', cartList);
+
     const isInCartList = cartList.item
       .filter((item: CartItem) => item.product_id === product_id)
       .filter((item: CartItem) => item.product.extra.productType === 'gardening');
-    console.log(`\t`, isInCartList);
+    console.log(`\t장바구니 목록 내 존재하는 해당 상품 데이터`, isInCartList);
 
     /* 주문 목록, 장바구니 목록에 상품이 있으면 장바구니 담지 않기 */
     if (isInOrderList.length) {
-      toast.error('해당 상품은 1회 이상 주문이 불가합니다.');
+      toast.error('동일한 텃밭 상품은 1회 이상 주문이 불가합니다.');
       return;
     }
 
     if (isInCartList.length) {
-      toast.error('해당 상품이 이미 장바구니에 존재합니다.');
+      toast.error('해당 텃밭 상품이 이미 장바구니에 존재합니다.');
       return;
     }
 
