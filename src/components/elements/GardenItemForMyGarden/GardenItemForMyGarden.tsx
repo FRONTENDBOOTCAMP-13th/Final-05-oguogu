@@ -32,9 +32,14 @@ export default function GardenItemForMyGarden({
   const getDaysFromLastDate = Number(getDaysFromToday(lastDate).pop()) ?? 1;
 
   let isRecent = false;
-  if (getDaysFromLastDate < 0) {
-    isRecent = false;
-  } else if (getDaysFromLastDate === 0 && getDaysFromLastDate < 5) {
+  // if (getDaysFromLastDate < 0) {
+  //   isRecent = false;
+  // } else if (getDaysFromLastDate === 0 || getDaysFromLastDate < 5) {
+  //   isRecent = true;
+  // } else {
+  //   isRecent = false;
+  // }
+  if (getDaysFromLastDate < 0 || getDaysFromLastDate > -5) {
     isRecent = true;
   } else {
     isRecent = false;
@@ -43,6 +48,7 @@ export default function GardenItemForMyGarden({
   console.log('전체 상태', allStatus);
   console.log('마지막 상태', lastStatus);
   console.log('최근 업로드 여부', isRecent);
+  console.log('최근 업로드 일자와 현재 날짜와 차이', getDaysFromLastDate);
 
   return (
     <>
