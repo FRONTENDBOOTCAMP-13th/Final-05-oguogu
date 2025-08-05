@@ -9,7 +9,7 @@ const navItems = [
   { item: '주말 농장 체험', link: 'link1' },
   { item: '제철 과일', link: 'link2' },
   { item: '추천 텃밭', link: 'link3' },
-  { item: '이주의 리뷰', link: 'link4' },
+  { item: '베스트 리뷰', link: 'link4' },
   { item: '공지 사항', link: 'link5' },
   { item: '자주하는 질문', link: 'link6' },
 ];
