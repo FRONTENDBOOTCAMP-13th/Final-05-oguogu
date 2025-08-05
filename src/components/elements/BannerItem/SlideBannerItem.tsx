@@ -13,19 +13,11 @@ import Link from 'next/link';
  * @param {string} props.className - 기본 클래스 외 추가로 지정할 CSS 스타일
  * @returns {JSX.Element} 슬라이드 배너 아이템 JSX 요소
  */
-export default function SlideBannerItem({ order, size, title, subtitle, text, className, link }: SlideBannerItemType) {
+export default function SlideBannerItem({ order, title, subtitle, text, className, link }: SlideBannerItemType) {
   return (
     <Link href={link}>
       <figure className={`relative w-[210px] h-[280px] overflow-hidden rounded-[12px] transform ${className}`}>
         <video src={`/videos/main-banner-${order}.mp4`} autoPlay muted></video>
-        <Image
-          src={`/images/main-banner-${order}-${size}.webp`}
-          alt={`${title} ${subtitle}`}
-          width={210}
-          height={280}
-          className="w-full h-full object-cover scale-100"
-          priority
-        />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
         <figcaption className="absolute bottom-0 left-0 w-full text-oguogu-white text-center py-5">
           <p className="text-[20px] font-bold leading-none">{title}</p>
