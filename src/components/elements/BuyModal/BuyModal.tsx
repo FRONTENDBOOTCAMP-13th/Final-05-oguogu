@@ -3,7 +3,11 @@
 import BuyBoxOption from '@/components/elements/BuyBoxForMobile/BuyBoxOption';
 import { BuyModalProps } from '@/components/elements/BuyModal/BuyModal.type';
 import { createCart } from '@/shared/data/actions/cart';
+import { getCart } from '@/shared/data/functions/cart';
+import { getOrder } from '@/shared/data/functions/order';
 import { useAuthStore } from '@/shared/store/authStore';
+import { CartItem } from '@/shared/types/cart';
+import { Order, OrderedProduct } from '@/shared/types/order';
 import { useEffect, useRef } from 'react';
 import toast from 'react-hot-toast';
 
@@ -22,7 +26,8 @@ import toast from 'react-hot-toast';
 
 export default function BuyModal({ onClose, type, res, onSuccess }: BuyModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
-  const isLoggedIn: boolean = useAuthStore(state => state.isLoggedIn); //전역 로그인 속성
+  const isLoggedIn: boolean = useAuthStore(state => state.isLoggedIn); // 전역 로그인 속성
+  const userId = useAuthStore(state => state.userInfo?._id);
   const token = useAuthStore(state => state.token);
 
   // 바깥 클릭 시 모달 닫기
@@ -48,9 +53,33 @@ export default function BuyModal({ onClose, type, res, onSuccess }: BuyModalProp
    * @param {string} token - 사용자 인증 토큰
    */
   const handleBuy = async (product_id: number, quantity: number) => {
-    if (!isLoggedIn || !token) {
+    if (!isLoggedIn || !token || !userId) {
       toast.error('로그인이 필요합니다!');
       onClose();
+      return;
+    }
+
+    const orderList = await getOrder(userId, token);
+    const isInOrderList = orderList.item.products
+      .filter((item: Order) => item._id === product_id)
+      .filter((item: OrderedProduct) => item.extra.productType === 'gardening');
+    console.log(`\t`, isInOrderList);
+
+    const cartList = await getCart(token);
+    console.log('전체 장바구니 목록', cartList);
+    const isInCartList = cartList.item
+      .filter((item: CartItem) => item.product_id === product_id)
+      .filter((item: CartItem) => item.product.extra.productType === 'gardening');
+    console.log(`\t`, isInCartList);
+
+    /* 주문 목록, 장바구니 목록에 상품이 있으면 장바구니 담지 않기 */
+    if (isInOrderList.length) {
+      toast.error('해당 상품은 1회 이상 주문이 불가합니다.');
+      return;
+    }
+
+    if (isInCartList.length) {
+      toast.error('해당 상품이 이미 장바구니에 존재합니다.');
       return;
     }
 

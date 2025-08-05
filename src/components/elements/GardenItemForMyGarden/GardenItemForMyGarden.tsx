@@ -17,7 +17,7 @@ export default function GardenItemForMyGarden({
 
   let lastStatus = '파종';
   allStatus?.map((status: string) =>
-    status.includes('harvest')
+    status.includes('harvested')
       ? (lastStatus = '수확 완료')
       : status.includes('growing')
         ? (lastStatus = '성장')
@@ -39,6 +39,10 @@ export default function GardenItemForMyGarden({
   } else {
     isRecent = false;
   }
+
+  console.log('전체 상태', allStatus);
+  console.log('마지막 상태', lastStatus);
+  console.log('최근 업로드 여부', isRecent);
 
   return (
     <>
