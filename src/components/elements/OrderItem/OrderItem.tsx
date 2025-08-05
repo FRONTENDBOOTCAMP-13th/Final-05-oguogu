@@ -86,14 +86,7 @@ export default function OrderItem({ orderState, item, updateOrderStatus, handleS
       {orderState !== 'purchaseCompleted' &&
         orderState !== 'refundCompleted' &&
         (refundState ? (
-          <section>
-            <button
-              onClick={cancelRefundRequest}
-              className="text-[12px] w-full py-2 leading-none border border-oguogu-gray-2 rounded-[4px]"
-            >
-              환불 신청 취소
-            </button>
-          </section>
+          ''
         ) : (
           <section className="flex justify-center items-center gap-2 text-[12px]">
             <button
