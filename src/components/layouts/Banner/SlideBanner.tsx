@@ -2,7 +2,7 @@
 
 import SlideBannerItem from '@/components/elements/BannerItem/SlideBannerItem';
 import { SlideBannerItemType } from '@/components/elements/BannerItem/SlideBannerItem.type';
-import { useEffect, useState } from 'react';
+import { /* useEffect, */ useState } from 'react';
 
 // CHECKLIST
 // [x] 1차 마크업
@@ -16,7 +16,7 @@ import { useEffect, useState } from 'react';
 
 export default function SlideBanner() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [autoSlide, setAutoSlide] = useState(true);
+  // const [autoSlide, setAutoSlide] = useState(true);
 
   const bannerItems: SlideBannerItemType[] = [
     {
@@ -65,24 +65,24 @@ export default function SlideBanner() {
   const prevIndex = (currentIndex - 1 + bannerItems.length) % bannerItems.length;
   const nextIndex = (currentIndex + 1) % bannerItems.length;
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (!autoSlide) return;
     const interval = setInterval(() => {
       setCurrentIndex(prev => (prev + 1) % bannerItems.length);
     }, 1000 * 4);
     return () => clearInterval(interval);
-  }, [autoSlide, bannerItems.length]);
+  }, [autoSlide, bannerItems.length]); */
 
   // 버튼 누르고 있을 때 해당 슬라이드로 이동 및 정지
 
   const handlePress = (index: number) => {
-    setAutoSlide(false);
+    // setAutoSlide(false);
     setCurrentIndex(index);
   };
 
   // 버튼 떼면 다시 자동 슬라이드 시작
   const handleRelease = () => {
-    setAutoSlide(true);
+    // setAutoSlide(true);
   };
 
   return (
