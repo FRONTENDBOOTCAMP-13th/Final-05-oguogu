@@ -1,5 +1,4 @@
 import { SlideBannerItemType } from '@/components/elements/BannerItem/SlideBannerItem.type';
-import Image from 'next/image';
 import Link from 'next/link';
 
 /**
