@@ -30,6 +30,14 @@ export default function Footer() {
         <div className="flex gap-1">
           <p>상호명 :</p>
           <p>멋사 프론트엔드 13기 파이널 프로젝트 5조 &apos;오구텃밭&apos;</p>
+          <a
+            href="https://github.com/FRONTENDBOOTCAMP-13th/Final-05-oguogu"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline transition hover:text-oguogu-black"
+          >
+            Team Project by OGUOGU
+          </a>
         </div>
         <div className="flex gap-1">
           <p>대표자명 :</p>
@@ -59,10 +67,10 @@ export default function Footer() {
           <Image src="/svgs/instagram.svg" alt="instagram" width={24} height={24} />
         </Link>
         <Link href="/" className="flex">
-          <Image src="/svgs/x-twitter.svg" alt="twitter" width={24} height={24} />
+          <Image src="/svgs/x-logo.svg" alt="twitter" width={24} height={24} />
         </Link>
         <Link href="/" className="flex">
-          <Image src="/svgs/KakaoTalk_logo.svg" alt="kakaotalk" width={24} height={24} />
+          <Image src="/svgs/kakaotalk_logo.svg" alt="kakaotalk" width={24} height={24} />
         </Link>
         <Link href="/" className="flex">
           <Image src="/svgs/youtube_logo.svg" alt="youtube" width={24} height={24} />
