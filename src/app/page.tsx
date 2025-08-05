@@ -64,10 +64,10 @@ export default async function Home() {
         {/* 추천 카테고리 2 */}
         <article id="link2" className="titleWithProductItem scroll-mt-[130px]">
           <div className="px-4 flex flex-col gap-y-8">
-            <Title title="톡! 터지는 옥수수의 반전 매력" description="7월 제철 농산물 찰옥수수를 만나보세요 🌽" />
+            <Title title="톡! 터지는 여름의 맛" description="제철 과일과 함께 시원한 여름을 즐겨보세요 🍉" />
             <ProductItemList type="crop" />
           </div>
-          <ProductLinkItem link="/search/result" linkTitle="옥수수" subTxt="구매하러 가기" />
+          <ProductLinkItem link="/search/result" linkTitle="제철 과일" subTxt="구매하러 가기" />
         </article>
 
         {/* 추천 카테고리 3 */}
