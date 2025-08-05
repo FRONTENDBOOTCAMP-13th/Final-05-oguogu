@@ -15,7 +15,7 @@ export default function NoticeItem({ type, title, date = '2025.08.02', _id }: No
         <Link href={`/board/notice/${_id}`} className="truncate min-w-0 flex-1 text-left">
           {title}
         </Link>
-        <div className="flex-shrink-0 w-[70px] ">{date}</div>
+        <div className="flex-shrink-0 w-[70px] ">{date.split(' ')[0]}</div>
       </div>
     </>
   );

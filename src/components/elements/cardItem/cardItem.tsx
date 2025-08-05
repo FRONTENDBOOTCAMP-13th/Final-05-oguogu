@@ -20,15 +20,21 @@ export default function CardItem({
   handleDelete: (_id: number) => void;
 }) {
   const [count, setCount] = useState(quantity);
+  console.log(item);
 
   useEffect(() => {
     setCount(quantity);
   }, [quantity]);
 
   const countUp = () => {
-    const newCount = count + 1;
-    setCount(newCount);
-    updateQuantity(item._id, newCount);
+    const remain = item.product.quantity - item.product.buyQuantity;
+    const limit = Math.min(remain, item.product.extra.productCnt);
+
+    if (count !== limit) {
+      const newCount = count + 1;
+      setCount(newCount);
+      updateQuantity(item._id, newCount);
+    }
   };
   const countDown = () => {
     if (count != 1) {
