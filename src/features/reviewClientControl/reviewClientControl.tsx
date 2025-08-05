@@ -105,7 +105,7 @@ export default function ReviewClientControl({ isOpen, setIsOpen, handleSubmit, i
                 src={
                   rating >= star ? '/images/iconImage/icon-star-filled.svg' : '/images/iconImage/icon-star-empty.svg'
                 }
-                alt={`${star}점`}
+                alt={`5점 만점 중 ${star}점`}
                 width={17}
                 height={16}
                 onClick={() => handleRatingClick(star)}

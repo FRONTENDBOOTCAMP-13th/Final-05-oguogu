@@ -10,7 +10,7 @@ import Image from 'next/image';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: '텃밭 성장 기록 | 오구오구',
+  title: '텃밭 성장 기록 | 오구텃밭',
   description: '텃밭 상품의 성장 단계, 수확 예정일, 판매자 기록을 시각적으로 확인할 수 있는 상세 페이지입니다.',
   robots: {
     index: false,
@@ -76,7 +76,7 @@ export default async function MyGardenItemPage({ params }: ProductDetailPageProp
           {/* 상품명, 이미지 */}
           <div className="flex gap-2">
             <p className="text-2xl">{res.item.name}</p>
-            <Image src={`/svgs/${lastStatus}.svg`} alt={`${lastStatus}`} width={24} height={24} />
+            <Image src={`/svgs/${lastStatus}.svg`} alt={`상품 상태 : ${lastStatus}`} width={24} height={24} />
           </div>
 
           {/* 진행단계, 수확 남은 일자, Progress Bar */}

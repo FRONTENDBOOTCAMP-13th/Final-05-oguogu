@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: NoticeDetailPageProps): Promi
 
   if (!notice) {
     return {
-      title: '공지사항을 찾을 수 없습니다 | 오구오구',
+      title: '공지사항을 찾을 수 없습니다 | 오구텃밭',
       description: '존재하지 않는 공지글입니다.',
       robots: {
         index: false,
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: NoticeDetailPageProps): Promi
   const desc = content.slice(0, 80).replace(/\n/g, ' ').trim();
 
   return {
-    title: `${title} | 공지사항 - 오구오구`,
+    title: `${title} | 공지사항 - 오구텃밭`,
     description: desc,
     robots: {
       index: true,
@@ -33,14 +33,14 @@ export async function generateMetadata({ params }: NoticeDetailPageProps): Promi
       canonical: `https://final-05-oguogu.vercel.app/board/notice/${_id}`,
     },
     openGraph: {
-      title: `${title} | 공지사항 - 오구오구`,
+      title: `${title} | 공지사항 - 오구텃밭`,
       description: desc,
       type: 'article',
       url: `https://final-05-oguogu.vercel.app/board/notice/${_id}`,
     },
     twitter: {
       card: 'summary',
-      title: `${title} | 오구오구`,
+      title: `${title} | 오구텃밭`,
       description: desc,
     },
   };
@@ -56,6 +56,8 @@ export default async function NoticeDetailPage({ params }: NoticeDetailPageProps
   const { _id } = await params;
 
   const noticeRes: responsePostReplies = await getPosts('notice');
+  /* const notice = noticeRes.item.find(item => item._id === Number(_id)); */
+  /* const formattedDate = format(notice!.createdAt, 'yyyy.MM.dd'); */
 
   const detailNotice = noticeRes.item.find(item => item._id === Number(_id));
 
@@ -63,12 +65,16 @@ export default async function NoticeDetailPage({ params }: NoticeDetailPageProps
     <>
       <LinkHeader title="공지사항" />
       <main className="px-4 py-4 min-h-[calc(100vh-48px)]">
-        <div className="flex justify-between gap-2 border-b border-oguogu-gray-4 pb-1 mb-2 text-[16px] items-end ">
-          <div className="flex-shrink-0 w-[60px] text-oguogu-main ">{detailNotice?.tag}</div>
-          <div className="truncate min-w-0 flex-1 text-oguogu-black ">{detailNotice?.title}</div>
-          <div className="flex-shrink-0 w-[90px] text-oguogu-gray-4 text-[12px]">2025.08.02</div>
+        <div className="flex flex-col border-b border-oguogu-gray-4 pb-3 mb-2 text-base">
+          <div className="flex-shrink-0  text-oguogu-main ">{detailNotice?.tag}</div>
+          <div className="flex items-end">
+            <div className="truncate min-w-0 flex-1 text-oguogu-black ">{detailNotice?.title}</div>
+            <div className="flex-shrink-0 text-oguogu-gray-4 text-[12px]">
+              &nbsp;&nbsp;{detailNotice?.createdAt.split(' ')[0]}
+            </div>
+          </div>
         </div>
-        <div className="text-[12px] leading-[140%] mt-5">
+        <div className="text-base leading-[140%] mt-6">
           {detailNotice?.content
             .split('.')
             .filter(Boolean)

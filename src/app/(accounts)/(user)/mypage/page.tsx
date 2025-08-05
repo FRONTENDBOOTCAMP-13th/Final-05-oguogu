@@ -3,7 +3,7 @@ import MyPageSectionDependsOnLoginStatus from '@/components/layouts/Login/MyPage
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: '마이페이지 | 오구오구',
+  title: '마이페이지 | 오구텃밭',
   description: '주문 내역, 찜한 상품, 계정 정보를 확인할 수 있는 나의 공간입니다.',
   robots: {
     index: false,

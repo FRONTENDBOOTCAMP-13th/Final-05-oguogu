@@ -3,7 +3,7 @@ import CropProductPostClientControl from '@/features/ProductPostClientControl/Cr
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: '농산물 상품 등록/수정 | 판매자 센터 - 오구오구',
+  title: '농산물 상품 등록/수정 | 판매자 센터 - 오구텃밭',
   description: '판매자가 농산물 상품을 등록하거나 수정할 수 있는 페이지입니다.',
   robots: {
     index: false,

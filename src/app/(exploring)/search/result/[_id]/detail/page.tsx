@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
 
   if (!product) {
     return {
-      title: '상품 정보를 찾을 수 없습니다 | 오구오구',
+      title: '상품 정보를 찾을 수 없습니다 | 오구텃밭',
       description: '존재하지 않는 상품이거나, 정보를 불러오는 중입니다.',
     };
   }
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
   const url = `https://final-05-oguogu.vercel.app/search/result/${_id}/detail`;
 
   return {
-    title: `${name} | 산지직송 농산물 - 오구오구`,
+    title: `${name} | 산지직송 농산물 - 오구텃밭`,
     description: content || `신선한 ${name}를 산지에서 직배송으로 만나보세요. 무농약, 친환경 농산물을 믿고 구매하세요.`,
     alternates: {
       canonical: url,
@@ -43,14 +43,14 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
       '유기농 과일',
       '농부 직거래',
       '제철 농산물',
-      '오구오구',
+      '오구텃밭',
     ],
     robots: {
       index: true,
       follow: true,
     },
     openGraph: {
-      title: `${name} | 오구오구`,
+      title: `${name} | 오구텃밭`,
       description: content || `${name} 상품의 자세한 정보를 확인해보세요.`,
       url,
       type: 'website',
@@ -65,7 +65,7 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${name} | 오구오구`,
+      title: `${name} | 오구텃밭`,
       description: content || `${name} 상품의 자세한 정보를 확인해보세요.`,
       images: [image_url || '/images/default-og-image.png'], //이미지 경로 수정 필요
     },
@@ -83,7 +83,7 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
 
 export default async function ProductDetailPage({ params }: ProductDetailPageProps) {
   const { _id } = await params;
-  const res = await getProduct(Number(_id));
+  const res: productRes = await getProduct(Number(_id));
 
   if (!res) {
     return <div>상품 정보를 불러오는 중입니다...</div>;
@@ -103,7 +103,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
   const reviewCnt = reviewRes.item.length;
 
   // 상품 타입
-  const productType = await res.item.extra.productType;
+  const productType = await res.item.extra!.productType;
 
   // 상품명
   const productName = await res.item.name;
@@ -114,13 +114,14 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
       <TextCategoryForDetailPage _id={Number(_id)} reviewCnt={reviewCnt} qnaCnt={qnaCnt} />
       <Image
         className="w-full max-h-[480px] object-cover aspect-square"
-        src="/images/crop/crop-001.png"
+        src={res.item.mainImages[0].path}
         alt="상품명"
         width={320}
         height={320}
       />
+
       <section id="userInfo">
-        <ProductDetailInfo type={productType} item={res.item} />
+        <ProductDetailInfo type={productType || 'crop'} item={res.item} />
       </section>
       <main className="flex items-center justify-center h-[1500px] bg-oguogu-gray-1">상품 상세 이미지</main>
 

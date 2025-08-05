@@ -358,18 +358,70 @@
     },
     {
       "email": "seller2@gmail.com",
-      "password": "$2b$10$l2PD/G3zq0LOTrcSDJzLCOPc8yVI0azh/iRd2ZpgZJJ0vHzE0B5L2",
+      "password": "$2b$10$X0Bwb6o.JwvHb6YfJMZNreLJIQq3C1KT/2BOXqtGenkObuuwYE4cS",
       "name": "2번셀러",
+      "phone": "01044532341",
+      "address": "경기도 가평군 하면 현1리",
+      "type": "seller",
+      "loginType": "email",
+      "image": "uploadFiles/seller-3-profile.png",
+      "extra": {
+        "businessInfo": {
+          "companyName": "놀부네농산물",
+          "ownerName": "신놀부",
+          "businessTel": "010-1233-2826",
+          "businessNumber": "02-891-0123"
+        },
+
+        "certification": {
+          "status": "approved",
+          "requestedAt": "2025-07-01T09:30:00Z",
+          "reviewedAt": "2025-07-03T15:45:00Z",
+          "reviewer": "admin@5959.com",
+          "reason": "서류 이상 없음"
+        }
+      }
+    },
+    {
+      "email": "seller3@gmail.com",
+      "password": "$2b$10$8b3gXZdb/0lF3.OdToMiZOS1bwapxrlKkUstbs6CaqNSOCDo3/TzW",
+      "name": "3번셀러",
       "phone": "01034212258",
-      "address": "부산광역시 해운대구 센텀중앙로 45",
+      "address": "서울시 용산구 이태원로 52",
       "type": "seller",
       "loginType": "email",
       "image": "uploadFiles/seller-4-profile.png",
       "extra": {
         "businessInfo": {
-          "companyName": "놀부네농산물",
-          "ownerName": "이놀부",
-          "businessTel": "010-5959-5959",
+          "companyName": "친환경농산물협회",
+          "ownerName": "김감자",
+          "businessTel": "010-1212-4489",
+          "businessNumber": "02-456-7891"
+        },
+
+        "certification": {
+          "status": "approved",
+          "requestedAt": "2025-07-01T09:30:00Z",
+          "reviewedAt": "2025-07-03T15:45:00Z",
+          "reviewer": "admin@5959.com",
+          "reason": "서류 이상 없음"
+        }
+      }
+    },
+    {
+      "email": "seller4@gmail.com",
+      "password": "$2b$10$iFo2noEnVTNU3brh9lpX6eCMPg0ybhWcE7naH0IcvHRRtEjV5I05W",
+      "name": "4번셀러",
+      "phone": "01034212258",
+      "address": "강원도 춘천시 효자동 2번길",
+      "type": "seller",
+      "loginType": "email",
+      "image": "uploadFiles/seller-4-profile.png",
+      "extra": {
+        "businessInfo": {
+          "companyName": "춘천이최고야",
+          "ownerName": "박춘천",
+          "businessTel": "010-1029-1028",
           "businessNumber": "02-456-7891"
         },
 
@@ -400,8 +452,8 @@
   "product": [
     {
       "seller_id": 16,
-      "name": "남다른 쫀득함! 신품종 전남 해남 25년 '햇' 오색촬옥수수",
-      "content": "씹으면 씹을수록 느껴지는 달짝지근함과 쫀득쫀득한 찰진 식감",
+      "name": "아삭한 달콤함! 전남 해남 25년 '햇' 사과",
+      "content": "씹을수록 퍼지는 상큼달콤한 맛과 아삭아삭한 식감",
       "price": 29900,
       "shippingFees": 3000,
       "quantity": 30,
@@ -410,20 +462,53 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "path": "uploadFiles/apple1.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
-        },
-        {
-          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
-          "name": "image-2.jpg",
-          "originalname": "상품이미지-2.jpg"
         }
       ],
       "extra": {
         "productType": "crop",
-        "category": "veggie",
-        "filter": ["옥수수"],
+        "category": "fruit",
+        "filter": ["사과"],
+        "originPlace": "국산",
+        "productionPlace": "전라남도 해남군",
+        "composition": "30개입 * 1개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 12499,
+        "dcRate": 40,
+        "productCnt": 10,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+
+    {
+      "seller_id": 19,
+      "name": "아삭한 달콤함! 전남 해남 25년 '햇' 사과",
+      "content": "씹을수록 퍼지는 상큼달콤한 맛과 아삭아삭한 식감",
+      "price": 29900,
+      "shippingFees": 3000,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/apple1.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "fruit",
+        "filter": ["사과"],
         "originPlace": "국산",
         "productionPlace": "전라남도 해남군",
         "composition": "30개입 * 1개",
@@ -442,9 +527,9 @@
     },
     {
       "seller_id": 16,
-      "name": "쫀득함이 남다른 의령 햇 미백 찰옥수수",
-      "content": "쫀득함과 구수한 맛이 일품인 건강한 미백 찰옥수수",
-      "price": 18500,
+      "name": "달콤하고 부드러운 의령 햇 바나나",
+      "content": "부드럽고 촉촉한 식감에 은은한 단맛이 매력적인 신선한 햇 바나나",
+      "price": 16900,
       "shippingFees": 3000,
       "quantity": 30,
       "buyQuantity": 0,
@@ -452,26 +537,21 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "path": "uploadFiles/banana1.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
-        },
-        {
-          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
-          "name": "image-2.jpg",
-          "originalname": "상품이미지-2.jpg"
         }
       ],
       "extra": {
         "productType": "crop",
-        "category": "veggie",
-        "filter": ["옥수수"],
+        "category": "fruit",
+        "filter": ["바나나"],
         "originPlace": "국산",
         "productionPlace": "경상남도 의령",
         "composition": "10개입 * 1개",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 2155,
-        "dcRate": 41,
+        "dcRate": 35,
         "productCnt": 10,
         "badge": {
           "isNew": true,
@@ -485,9 +565,9 @@
 
     {
       "seller_id": 16,
-      "name": "은은하게 퍼지는 고소함과 달큰함이 좋은 유기농 냉동 찰옥수수",
-      "content": "이른 봄 씨앗을 파종해 직접 재배한 100% 국내산 냉동 찐 찰옥수수",
-      "price": 41900,
+      "name": "자연의 새콤달콤함! 국내산 유기농 냉동 블루베리",
+      "content": "이른 봄부터 정성껏 재배한 100% 국내산 유기농 냉동 블루베리, 신선함을 그대로 담았습니다",
+      "price": 38900,
       "shippingFees": 0,
       "quantity": 30,
       "buyQuantity": 0,
@@ -495,7 +575,7 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "path": "uploadFiles/blueberry1.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
@@ -507,14 +587,14 @@
       ],
       "extra": {
         "productType": "crop",
-        "category": "veggie",
-        "filter": ["옥수수", "찰옥수수"],
+        "category": "fruit",
+        "filter": ["블루베리", "냉동과일"],
         "originPlace": "국산",
         "productionPlace": "충청북도 충주",
-        "composition": "18개입 * 6개",
+        "composition": "300g * 6팩",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 854,
-        "dcRate": 26,
+        "dcRate": 30,
         "productCnt": 4,
         "badge": {
           "isNew": false,
@@ -528,9 +608,9 @@
 
     {
       "seller_id": 16,
-      "name": "남다른 쫀득함! 신품종 전남 해남 25년 '햇' 오색촬옥수수",
-      "content": "재배 농가가 많지 않은 귀한 품종",
-      "price": 29900,
+      "name": "탱글탱글! 전남 해남 25년 '햇' 고당도 생 체리",
+      "content": "재배 농가가 적은 귀한 품종으로 깊고 진한 단맛이 매력적입니다",
+      "price": 27900,
       "shippingFees": 0,
       "quantity": 30,
       "buyQuantity": 0,
@@ -538,7 +618,7 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "path": "uploadFiles/cherry1.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
@@ -550,11 +630,11 @@
       ],
       "extra": {
         "productType": "crop",
-        "category": "veggie",
-        "filter": ["옥수수"],
+        "category": "fruit",
+        "filter": ["체리", "생과일"],
         "originPlace": "국산",
         "productionPlace": "전라남도 해남",
-        "composition": "10개입 * 1개",
+        "composition": "500g * 1팩",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 1021,
         "dcRate": 40,
@@ -570,9 +650,9 @@
     },
     {
       "seller_id": 16,
-      "name": "유기농 홍천 찰옥수수 3입",
-      "content": "간편하게 누리는 찰진 고소함",
-      "price": 10900,
+      "name": "새콤달콤 유기농 홍천 키위 3입",
+      "content": "간편하게 즐기는 상큼한 비타민 충전",
+      "price": 9900,
       "shippingFees": 3000,
       "quantity": 30,
       "buyQuantity": 0,
@@ -580,7 +660,7 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "path": "uploadFiles/kiwi1.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
@@ -592,14 +672,14 @@
       ],
       "extra": {
         "productType": "crop",
-        "category": "veggie",
-        "filter": ["옥수수"],
+        "category": "fruit",
+        "filter": ["키위", "유기농"],
         "originPlace": "국산",
         "productionPlace": "강원도 홍천",
-        "composition": "3개입 * 1개",
+        "composition": "3개입 * 1팩",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 34,
-        "dcRate": 8,
+        "dcRate": 10,
         "productCnt": 100,
         "badge": {
           "isNew": false,
@@ -611,9 +691,47 @@
       }
     },
     {
+      "seller_id": 18,
+      "name": "아삭한 달콤함! 전남 해남 25년 '햇' 사과",
+      "content": "씹을수록 퍼지는 상큼달콤한 맛과 아삭아삭한 식감",
+      "price": 29900,
+      "shippingFees": 3000,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/apple1.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "fruit",
+        "filter": ["사과"],
+        "originPlace": "국산",
+        "productionPlace": "전라남도 해남군",
+        "composition": "30개입 * 1개",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 12499,
+        "dcRate": 40,
+        "productCnt": 10,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+
+    {
       "seller_id": 16,
-      "name": "괴산 대학🌽찰 옥수수🌽30개✨달콤하고 쫀득함이 일품✨",
-      "content": "달콤하고 쫀득한 여름 대표 간식",
+      "name": "괴산 프리미엄🍈멜론 2수✨달콤하고 시원한 여름 과일✨",
+      "content": "달콤한 과즙과 부드러운 식감이 매력적인 여름 대표 멜론",
       "price": 29800,
       "shippingFees": 0,
       "quantity": 30,
@@ -622,7 +740,7 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "path": "uploadFiles/melon1.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
@@ -634,11 +752,11 @@
       ],
       "extra": {
         "productType": "crop",
-        "category": "veggie",
-        "filter": ["옥수수"],
+        "category": "fruit",
+        "filter": ["멜론", "여름과일"],
         "originPlace": "국산",
         "productionPlace": "충청북도 괴산",
-        "composition": "30개입 * 1개",
+        "composition": "2수 * 1박스",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 4,
         "dcRate": 0,
@@ -654,8 +772,8 @@
     },
     {
       "seller_id": 16,
-      "name": "❗특대 사이즈 찰옥수수 10개 ❗꿀맛 보장!! 부담없는 가격에 득템!!",
-      "content": "지금이 제일 맛있는 특대 사이즈 찰옥수수",
+      "name": "❗특대 사이즈 생딸기 1kg❗꿀맛 보장!! 달콤함 가득 득템 찬스!!",
+      "content": "지금이 제철! 향긋하고 달콤한 특대 사이즈 딸기",
       "price": 11900,
       "shippingFees": 3000,
       "quantity": 30,
@@ -664,7 +782,7 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "path": "uploadFiles/strawbarry1.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
@@ -676,11 +794,11 @@
       ],
       "extra": {
         "productType": "crop",
-        "category": "veggie",
-        "filter": ["옥수수"],
+        "category": "fruit",
+        "filter": ["딸기", "생과일"],
         "originPlace": "국산",
         "productionPlace": "전라남도 남원",
-        "composition": "10개입 * 1개",
+        "composition": "1kg * 1팩",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 0,
         "dcRate": 0,
@@ -696,8 +814,8 @@
     },
     {
       "seller_id": 16,
-      "name": "미백 찰옥수수 10송이 11-15cm 내외",
-      "content": "고랭지에서 재배해 더 쫀득한 미백 찰옥수수",
+      "name": "고랭지 수박 1통 (4~5kg 내외)",
+      "content": "강원도 고랭지에서 자란 시원하고 달콤한 여름 대표 과일",
       "price": 11900,
       "shippingFees": 0,
       "quantity": 30,
@@ -706,7 +824,7 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "path": "uploadFiles/watermelon1.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
@@ -718,11 +836,11 @@
       ],
       "extra": {
         "productType": "crop",
-        "category": "veggie",
-        "filter": ["옥수수"],
+        "category": "fruit",
+        "filter": ["수박", "여름과일"],
         "originPlace": "국산",
         "productionPlace": "강원도 홍천",
-        "composition": "10개입 * 1개",
+        "composition": "1통 (4~5kg)",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 0,
         "dcRate": 0,
@@ -738,8 +856,8 @@
     },
     {
       "seller_id": 17,
-      "name": "쫀득 구수한~흑찰 옥수수 10개 20개 30개",
-      "content": "칼슘 흑찰옥수수! 우리 아이들이 좋아하는 흑찰옥수수",
+      "name": "아삭하고 싱그러운~ 유기농 양배추 1통부터 3통까지",
+      "content": "건강한 밥상에 빠질 수 없는 국내산 유기농 양배추! 아이들도 좋아해요",
       "price": 19900,
       "shippingFees": 0,
       "quantity": 30,
@@ -748,7 +866,7 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "path": "uploadFiles/crop-cabbage-1.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
@@ -761,10 +879,10 @@
       "extra": {
         "productType": "crop",
         "category": "veggie",
-        "filter": ["옥수수"],
+        "filter": ["양배추", "유기농"],
         "originPlace": "국산",
         "productionPlace": "강원도 홍천",
-        "composition": "10개입 * 1개",
+        "composition": "1통 ~ 3통 선택 가능",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 4532,
         "dcRate": 35,
@@ -780,8 +898,8 @@
     },
     {
       "seller_id": 17,
-      "name": "경남 고성 찰옥수수 10개 미백찰 미흑찰 제철 생 옥수수",
-      "content": "고성바다의 시원한 바람결로 알알이 영근 찰옥수수를 만나보세요",
+      "name": "경남 고성 당근 3kg 껍질째 즐기는 신선한 햇당근",
+      "content": "고성 바다의 깨끗한 공기 속에서 자란 아삭하고 달큰한 국내산 당근",
       "price": 28000,
       "shippingFees": 0,
       "quantity": 30,
@@ -790,7 +908,7 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "path": "uploadFiles/crop-carrot-1.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
@@ -803,10 +921,10 @@
       "extra": {
         "productType": "crop",
         "category": "veggie",
-        "filter": ["옥수수"],
+        "filter": ["당근", "햇채소"],
         "originPlace": "국산",
         "productionPlace": "경상남도 고성",
-        "composition": "10개입 * 1개",
+        "composition": "3kg * 1박스",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 8775,
         "dcRate": 55,
@@ -822,8 +940,8 @@
     },
     {
       "seller_id": 17,
-      "name": "찰옥수수 더 쫀득하고 연한 강원도 햇 옥수수",
-      "content": "충분한 퇴비, 두둑 간격을 넓혀 품질 향상",
+      "name": "강원도 햇 오이 10입! 아삭하고 시원한 국내산 오이",
+      "content": "충분한 유기질 퇴비와 넓은 간격 재배로 아삭한 식감과 신선함을 살렸습니다",
       "price": 15000,
       "shippingFees": 3000,
       "quantity": 30,
@@ -832,7 +950,7 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "path": "uploadFiles/crop-cucumber-001.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
@@ -845,7 +963,7 @@
       "extra": {
         "productType": "crop",
         "category": "veggie",
-        "filter": ["옥수수"],
+        "filter": ["오이", "햇채소"],
         "originPlace": "국산",
         "productionPlace": "강원도 영월",
         "composition": "10개입 * 1개",
@@ -864,8 +982,8 @@
     },
     {
       "seller_id": 17,
-      "name": "특품 사이즈 찰옥수수 햇 옥수수 생 제철",
-      "content": "일반옥수수보다 가늘지만 알 하나 사이즈가 큰 튼실한 옥수수",
+      "name": "특품 사이즈 햇 양파 생으로 즐기는 제철 채소",
+      "content": "일반 양파보다 단단하고 큼직한 알맹이로 저장성과 풍미가 뛰어납니다",
       "price": 16000,
       "shippingFees": 0,
       "quantity": 30,
@@ -874,7 +992,7 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-crop1-1.jpg",
+          "path": "uploadFiles/crop-onion-1.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
@@ -887,10 +1005,10 @@
       "extra": {
         "productType": "crop",
         "category": "veggie",
-        "filter": ["옥수수"],
+        "filter": ["양파", "제철채소"],
         "originPlace": "국산",
         "productionPlace": "충청북도 괴산",
-        "composition": "10개입 * 1개",
+        "composition": "10개입 * 1망",
         "deliveryInfo": "평일 1~2일 소요",
         "likeCount": 9475,
         "dcRate": 31,
@@ -904,12 +1022,11 @@
         }
       }
     },
-
     {
-      "seller_id": 16,
-      "name": "강원도 산골마을 찰옥수수 수확체험",
-      "content": "1인 20개 수확! 바베큐 중식 제공!",
-      "price": 30000,
+      "seller_id": 17,
+      "name": "특품 사이즈 햇 무 10입! 아삭하고 시원한 국내산 무",
+      "content": "일반 무보다 길고 알이 굵어 단맛과 식감이 뛰어난 괴산 햇무",
+      "price": 14000,
       "shippingFees": 0,
       "quantity": 30,
       "buyQuantity": 0,
@@ -917,95 +1034,31 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-exp2-1.jpg",
+          "path": "uploadFiles/crop-radish-1.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
         {
-          "path": "/files/${clientId}/seller-2-exp2-2.jpg",
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
           "name": "image-2.jpg",
           "originalname": "상품이미지-2.jpg"
         }
       ],
       "extra": {
-        "productType": "experience",
-        "category": [],
-        "filter": [],
-        "region": "강원도 인제",
-        "meetingPlace": "강원도 인제군 남면 부평정자로 1555",
-        "departureDate": "2025-08-12",
-        "returnDate": "2025-08-12",
-        "dcRate": 40,
-        "productCnt": 4,
-        "representitiveKeyword": ["체험", "웰빙", "힐링"],
-        "includedItems": ["식사 제공", "체험 상품"],
-        "unIncludedItems": ["숙소", "버스비"],
-        "schedule": [
-          { "day": 1, "startTime": "11:00", "title": "마을 소개 및 옥수수 재배법 교육" },
-          { "day": 1, "startTime": "12:00", "title": "점심 식사" },
-          { "day": 1, "startTime": "13:30", "title": "찰옥수수 수확" },
-          { "day": 1, "startTime": "14:30", "title": "찰옥수수 시식" }
-        ],
-        "guideInfo": {
-          "name": "신세경",
-          "contact": "010-7677-8123"
-        },
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["무", "제철채소"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "10개입 * 1망",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 31,
+        "productCnt": 100,
         "badge": {
           "isNew": false,
-          "isInSeason": null,
+          "isInSeason": true,
           "isBest": true,
-          "isLowStock": true,
-          "isSold": false
-        }
-      }
-    },
-    {
-      "seller_id": 16,
-      "name": "옥수수 수확 체험",
-      "content": "직접 딴 옥수수를 바로 삶아먹어요",
-      "price": 10000,
-      "shippingFees": 0,
-      "quantity": 30,
-      "buyQuantity": 0,
-      "show": true,
-      "active": true,
-      "mainImages": [
-        {
-          "path": "/files/${clientId}/seller-2-exp2-1.jpg",
-          "name": "image-1.jpg",
-          "originalname": "상품이미지-1.jpg"
-        },
-        {
-          "path": "/files/${clientId}/seller-2-exp2-2.jpg",
-          "name": "image-2.jpg",
-          "originalname": "상품이미지-2.jpg"
-        }
-      ],
-      "extra": {
-        "productType": "experience",
-        "category": [],
-        "filter": [],
-        "region": "경상남도 거창",
-        "meetingPlace": "경상남도 거창군 북상면 송계로 738",
-        "departureDate": "2025-08-12",
-        "returnDate": "2025-08-12",
-        "dcRate": 0,
-        "productCnt": 4,
-        "representitiveKeyword": ["체험"],
-        "includedItems": ["체험 상품"],
-        "unIncludedItems": ["숙소", "석식"],
-        "schedule": [
-          { "day": 1, "startTime": "14:00", "title": "옥수수 수확" },
-          { "day": 1, "startTime": "15:00", "title": "옥수수 시식" }
-        ],
-        "guideInfo": {
-          "name": "전농희",
-          "contact": "010-4445-6667"
-        },
-        "badge": {
-          "isNew": true,
-          "isInSeason": null,
-          "isBest": false,
           "isLowStock": false,
           "isSold": false
         }
@@ -1013,9 +1066,9 @@
     },
     {
       "seller_id": 17,
-      "name": "[컨츄리타운] 촌캉스",
-      "content": "폭스클럽과 유명연예인도 다녀간 촌캉스!",
-      "price": 198000,
+      "name": "특품 사이즈 햇 당근 10입! 아삭하고 달큰한 괴산 당근",
+      "content": "일반 당근보다 슬림하지만 육질이 단단하고 당도 높은 튼실한 국내산 당근",
+      "price": 12000,
       "shippingFees": 0,
       "quantity": 30,
       "buyQuantity": 0,
@@ -1023,112 +1076,41 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-exp2-1.jpg",
+          "path": "uploadFiles/crop-carrot-2.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
         {
-          "path": "/files/${clientId}/seller-2-exp2-2.jpg",
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
           "name": "image-2.jpg",
           "originalname": "상품이미지-2.jpg"
         }
       ],
       "extra": {
-        "productType": "experience",
-        "category": [],
-        "filter": [],
-        "region": "강원도 홍천",
-        "meetingPlace": "홍천터미널 정문 앞",
-        "departureDate": "2025-08-15",
-        "returnDate": "2025-08-16",
-        "dcRate": 30,
-        "productCnt": 2,
-        "representitiveKeyword": ["낭만", "청춘", "젊음"],
-        "includedItems": ["식사 제공", "숙소 제공", "픽업 버스 운행", "체험 상품"],
-        "unIncludedItems": ["가이드 비", "복귀 버스비"],
-        "schedule": [
-          { "day": 1, "startTime": "14:00", "title": "농촌마을 전입신고" },
-          { "day": 1, "startTime": "15:00", "title": "1부 프로그램" },
-          { "day": 1, "startTime": "18:00", "title": "시골 밥상(저녁)" },
-          { "day": 1, "startTime": "20:00", "title": "2부 프로그램" },
-          { "day": 2, "startTime": "10:00", "title": "정겨운 아침밥(아침)" },
-          { "day": 2, "startTime": "11:00", "title": "퇴소신고" }
-        ],
-        "guideInfo": {
-          "name": "김우리",
-          "contact": "010-1234-5678"
-        },
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["당근", "제철채소"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "10개입 * 1망",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 31,
+        "productCnt": 100,
         "badge": {
           "isNew": false,
-          "isInSeason": null,
+          "isInSeason": true,
           "isBest": true,
-          "isLowStock": false,
-          "isSold": true
-        }
-      }
-    },
-    {
-      "seller_id": 17,
-      "name": "고소한 대화 한 조각, 임실치즈마을 가족소풍",
-      "content": "임실 대표 관광지 치즈마을 당일 여행!",
-      "price": 92000,
-      "shippingFees": 0,
-      "quantity": 30,
-      "buyQuantity": 0,
-      "show": true,
-      "active": true,
-      "mainImages": [
-        {
-          "path": "/files/${clientId}/seller-2-exp2-1.jpg",
-          "name": "image-1.jpg",
-          "originalname": "상품이미지-1.jpg"
-        },
-        {
-          "path": "/files/${clientId}/seller-2-exp2-2.jpg",
-          "name": "image-2.jpg",
-          "originalname": "상품이미지-2.jpg"
-        }
-      ],
-      "extra": {
-        "productType": "experience",
-        "category": [],
-        "filter": [],
-        "region": "전라북도 임실",
-        "meetingPlace": "전북특별자치도 임실군 임실읍 치즈마을길 96",
-        "departureDate": "2025-08-09",
-        "returnDate": "2025-08-09",
-        "dcRate": 45,
-        "productCnt": 4,
-        "representitiveKeyword": ["가족", "대화", "힐링"],
-        "includedItems": ["식사 제공", "체험 상품"],
-        "unIncludedItems": ["숙소", "버스비"],
-        "schedule": [
-          { "day": 1, "startTime": "13:00", "title": "오리엔테이션" },
-          { "day": 1, "startTime": "13:30", "title": "경운기 투어" },
-          { "day": 1, "startTime": "14:00", "title": "임실치즈피자 만들기" },
-          { "day": 1, "startTime": "15:00", "title": "마을 산책 - 농사이야기" },
-          { "day": 1, "startTime": "15:30", "title": "피크닉" },
-          { "day": 1, "startTime": "17:00", "title": "성가리 벽화마을 투어" }
-        ],
-        "guideInfo": {
-          "name": "이하나",
-          "contact": "010-1234-5678"
-        },
-        "badge": {
-          "isNew": true,
-          "isInSeason": null,
-          "isBest": false,
           "isLowStock": false,
           "isSold": false
         }
       }
     },
-
     {
-      "seller_id": 16,
-      "name": "양배추",
-      "content": "양배추에서 조세호가 될 때까지",
-      "price": 30000,
+      "seller_id": 17,
+      "name": "특품 사이즈 괴산 햇 배추 2포기 제철 채소",
+      "content": "속이 꽉 차고 단단한 괴산산지 배추! 김장용으로도 딱 좋아요",
+      "price": 12000,
       "shippingFees": 0,
       "quantity": 30,
       "buyQuantity": 0,
@@ -1136,47 +1118,41 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-gdn3-1.jpg",
+          "path": "uploadFiles/crop-napa_cabbage-1.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
         {
-          "path": "/files/${clientId}/seller-2-gdn3-2.jpg",
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
           "name": "image-2.jpg",
           "originalname": "상품이미지-2.jpg"
         }
       ],
       "extra": {
-        "productType": "gardening",
-        "category": [],
-        "filter": [],
-        "region": "경기 여주시 산북면 광여로 1509",
-        "deadline": "2025-08-15",
-        "harvestExpectedDate": "2025년 11월",
-        "harvestExpectedCnt": "5통",
-        "dcRate": 35,
-        "productCnt": 1,
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["배추", "김장채소"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "2포기 * 1망",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 31,
+        "productCnt": 100,
         "badge": {
           "isNew": false,
-          "isInSeason": null,
+          "isInSeason": true,
           "isBest": true,
-          "isLowStock": true,
+          "isLowStock": false,
           "isSold": false
-        },
-        "period": [
-          { "date": "2025-08-18", "image": "src", "status": "seeding", "content": "양배추 재배, 오늘 시작합니다" },
-          { "date": "2025-09-04", "image": "src", "status": "growing", "content": "잘 커라 양배추야" },
-          { "date": "2025-09-17", "image": "src", "status": "growing", "content": "무럭무럭 잘 자라고 있습니다." },
-          { "date": "2025-10-04", "image": "src", "status": "growing", "content": "곧 있으면 수확할 수 있겠네요." },
-          { "date": "2025-10-15", "image": "src", "status": "havested", "content": "엄청 실하네요ㅎㅎ곧 배송 예정!" }
-        ]
+        }
       }
     },
     {
       "seller_id": 17,
-      "name": "청경채",
-      "content": "청경채의 성장 여정을 함께 해요",
-      "price": 15000,
+      "name": " 햇 배추 2포기 제철 채소",
+      "content": "속이 꽉 차고 단단한 괴산산지 배추! ",
+      "price": 12000,
       "shippingFees": 0,
       "quantity": 30,
       "buyQuantity": 0,
@@ -1184,47 +1160,335 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-gdn3-1.jpg",
+          "path": "uploadFiles/crop-napacabbage-02.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
         {
-          "path": "/files/${clientId}/seller-2-gdn3-2.jpg",
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
           "name": "image-2.jpg",
           "originalname": "상품이미지-2.jpg"
         }
       ],
       "extra": {
-        "productType": "gardening",
-        "category": [],
-        "filter": [],
-        "region": "경기 여주시 산북면 광여로 1509",
-        "deadline": "2025-08-09",
-        "harvestExpectedDate": "2025년 10월 초",
-        "harvestExpectedCnt": "2kg",
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["배추", "김장채소"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "2포기 * 1망",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 31,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "2025년 햇괴산쌀 특등급 백미 4kg",
+      "content": "충북 괴산의 맑은 물과 큰 일교차에서 자란 품질 좋은 햅쌀, 밥맛이 다릅니다",
+      "price": 11500,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/rice1.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "grain",
+        "filter": ["쌀", "햅쌀", "백미"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "4kg * 1포",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 31,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "2025년 햇괴산쌀 백미 4kg 특등급",
+      "content": "일교차 큰 괴산에서 자란 햅쌀! 윤기 있고 찰진 밥맛이 일품입니다",
+      "price": 13200,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/rice2.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "grain",
+        "filter": ["쌀", "백미", "햅쌀"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "4kg * 1포",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 31,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "2025년 햇쌀 괴산 백미 4kg 특등급",
+      "content": "충북 괴산의 청정 자연에서 자란 햅쌀! 찰기와 윤기가 뛰어난 국내산 백미",
+      "price": 40000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/rice3.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "grain",
+        "filter": ["쌀", "백미", "햅쌀"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "4kg * 1포",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 31,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "2025년 햇괴산 적두 1kg 국산 붉은 팥",
+      "content": "알이 크고 윤기 나는 괴산산 햇 팥! 죽, 떡, 밥에 활용하기 좋은 고품질 적두",
+      "price": 16000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/red_bean.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "grain",
+        "filter": ["팥", "적두", "붉은콩"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "1kg * 1포",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 31,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "햇괴산 생완두콩 1kg 국산 그린피",
+      "content": "탱글한 식감과 고소한 풍미! 밥에 넣어도, 삶아 먹어도 맛있는 제철 완두콩",
+      "price": 13800,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/green_pea.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "veggie",
+        "filter": ["완두콩", "그린피", "제철콩"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "1kg * 1포",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 18,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "2025년 햇괴산 보리쌀 1.5kg 국내산 겉보리",
+      "content": "쫀득한 밥맛과 고소한 풍미! 건강한 곡물 섭취를 위한 국산 햇보리",
+      "price": 12900,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/barley_rice1.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "grain",
+        "filter": ["보리쌀", "겉보리", "혼합곡"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "1.5kg * 1포",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 22,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "2025년 햇괴산 찰보리쌀 2kg 국내산 건강 잡곡",
+      "content": "부드러운 식감과 쫀득함이 살아있는 국산 찰보리! 밥에 넣어 드세요",
+      "price": 14500,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/barley_rice2.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "grain",
+        "filter": ["찰보리", "보리쌀", "잡곡"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "2kg * 1포",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
         "dcRate": 25,
-        "productCnt": 1,
+        "productCnt": 100,
         "badge": {
-          "isNew": true,
-          "isInSeason": null,
-          "isBest": false,
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
           "isLowStock": false,
           "isSold": false
-        },
-        "period": [
-          { "date": "2025-08-12", "image": "src", "status": "seeding", "content": "싹을 심었습니다." },
-          { "date": "2025-08-25", "image": "src", "status": "growing", "content": "싹이 자랐습니다." },
-          { "date": "2025-09-16", "image": "src", "status": "growing", "content": "잎이 무럭무럭 자라고 있습니다." },
-          { "date": "2025-09-30", "image": "src", "status": "growing", "content": "곧 있으면 수확할 수 있겠네요." },
-          { "date": "2025-10-19", "image": "src", "status": "havested", "content": "재배를 했습니다." }
-        ]
+        }
       }
     },
     {
-      "seller_id": 16,
-      "name": "옥수수",
-      "content": "겨울에 수확하는 옥수수? 같이 키워주세요!",
-      "price": 27000,
+      "seller_id": 17,
+      "name": "햇괴산 생표고버섯 500g 특품 선별 국내산 버섯",
+      "content": "두툼하고 탄탄한 식감! 향긋한 풍미가 살아있는 괴산산 생표고버섯",
+      "price": 13900,
       "shippingFees": 0,
       "quantity": 30,
       "buyQuantity": 0,
@@ -1232,98 +1496,336 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-gdn3-1.jpg",
+          "path": "uploadFiles/mushroom-001.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
         {
-          "path": "/files/${clientId}/seller-2-gdn3-2.jpg",
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
           "name": "image-2.jpg",
           "originalname": "상품이미지-2.jpg"
         }
       ],
       "extra": {
-        "productType": "gardening",
-        "category": [],
-        "filter": [],
-        "region": "중국",
-        "deadline": "2025-08-25",
-        "harvestExpectedDate": "2025년 12월",
-        "harvestExpectedCnt": "20개",
-        "dcRate": 59,
-        "productCnt": 1,
+        "productType": "crop",
+        "category": "mushroom",
+        "filter": ["표고버섯", "버섯", "생버섯"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "500g * 1팩",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 17,
+        "productCnt": 100,
         "badge": {
           "isNew": false,
-          "isInSeason": null,
-          "isBest": false,
+          "isInSeason": true,
+          "isBest": true,
           "isLowStock": false,
           "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "괴산 특품 생 새송이버섯 1kg 아삭하고 담백한 국내산",
+      "content": "탱글한 육질과 고소한 풍미가 살아있는 햇 새송이버섯! 구이, 볶음에 딱 좋아요",
+      "price": 12500,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/mushroom-002.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
         },
-        "period": [
-          { "date": "2025-09-02", "image": "src", "status": "seeding", "content": "무럭 무럭 자라라" },
-          {
-            "date": "2025-09-23",
-            "image": "src",
-            "status": "growing",
-            "content": "체계적인 생산 공정 덕분에 신선하고 건강하게 자라고 있어요"
-          },
-          { "date": "2025-10-12", "image": "src", "status": "growing", "content": "유전자 조작 아닙니다. 대박이죠?" },
-          {
-            "date": "2025-11-02",
-            "image": "src",
-            "status": "havested",
-            "content": "올해는 조금 늦었습니다. 수확 완료!"
-          }
-        ],
-        "plots": [
-          {
-            "plotNumber": 1,
-            "name": "A-1",
-            "isAvailable": false,
-            "ownerUserId": 1002,
-            "plantedAt": "2025-07-01",
-            "status": "seeding"
-          },
-          {
-            "plotNumber": 2,
-            "name": "A-2",
-            "isAvailable": true,
-            "ownerUserId": null,
-            "plantedAt": "2025-07-01",
-            "status": "seeding"
-          },
-          {
-            "plotNumber": 3,
-            "name": "A-3",
-            "isAvailable": true,
-            "ownerUserId": null,
-            "plantedAt": null,
-            "status": "available"
-          },
-          {
-            "plotNumber": 4,
-            "name": "A-4",
-            "isAvailable": true,
-            "ownerUserId": null,
-            "plantedAt": null,
-            "status": "available"
-          },
-          {
-            "plotNumber": 5,
-            "name": "A-5",
-            "isAvailable": true,
-            "ownerUserId": null,
-            "plantedAt": null,
-            "status": "available"
-          }
-        ]
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "mushroom",
+        "filter": ["새송이버섯", "버섯", "생버섯"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "1kg * 1팩",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 19,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
       }
     },
 
     {
       "seller_id": 17,
-      "name": "배추",
-      "content": "배추의 성장 여정을 함께 해요",
+      "name": "괴산 햇 느타리버섯 1kg 고소하고 담백한 국내산 버섯",
+      "content": "탱글하고 쫄깃한 식감! 볶음·국·찌개 어디에나 잘 어울리는 제철 느타리버섯",
+      "price": 11200,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/mushroom-003.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "mushroom",
+        "filter": ["느타리버섯", "버섯", "생버섯"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "1kg * 1팩",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 21,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "괴산 노루궁뎅이버섯 300g 쫄깃한 건강 식재료",
+      "content": "식감이 쫄깃하고 영양이 풍부한 노루궁뎅이버섯! 면역력 챙기고 요리에도 다양하게 활용해보세요",
+      "price": 11900,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/mushroom-004.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "mushroom",
+        "filter": ["노루궁뎅이버섯", "버섯", "건강버섯"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "300g * 1팩",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 15,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "괴산 햇 팽이버섯 200g x 3팩 담백하고 신선한 국내산",
+      "content": "국, 찌개, 볶음 어디에나 잘 어울리는 팽이버섯! 아삭한 식감이 살아있는 제철 농산물",
+      "price": 8900,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/mushroom-005.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "mushroom",
+        "filter": ["팽이버섯", "버섯", "신선채소"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "200g x 3팩",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 12,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "괴산 만가닥버섯 500g 쫄깃한 식감의 국산 버섯",
+      "content": "탱탱하고 쫄깃한 식감이 매력적인 만가닥버섯! 볶음, 찌개, 샤브샤브에 다양하게 활용해보세요",
+      "price": 10900,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/mushroom-006.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "mushroom",
+        "filter": ["만가닥버섯", "버섯", "샤브샤브용"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "500g * 1팩",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 16,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "탱글탱글한 식감! 괴산 햇 느타리버섯 1kg",
+      "content": "신선함 가득, 탱글한 식감이 살아있는 제철 느타리버섯",
+      "price": 13800,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/mushroom-007.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "mushroom",
+        "filter": ["느타리버섯", "버섯", "국산 버섯"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "1kg * 1팩",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 22,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "탱글탱글한 백만송이 버섯 1kg",
+      "content": "촉촉하고 부드러운 식감! 국산 백만송이버섯으로 건강한 식탁을 완성하세요",
+      "price": 12900,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/mushroom-008.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-crop2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "crop",
+        "category": "mushroom",
+        "filter": ["백만송이버섯", "버섯", "국산 버섯"],
+        "originPlace": "국산",
+        "productionPlace": "충청북도 괴산",
+        "composition": "1kg * 1팩",
+        "deliveryInfo": "평일 1~2일 소요",
+        "likeCount": 9475,
+        "dcRate": 19,
+        "productCnt": 100,
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+
+    {
+      "seller_id": 16,
+      "name": "내 손으로 가꾸는 텃밭 체험! 하루 농부되기",
+      "content": "직접 심고 수확하는 즐거움! 신선한 채소와 건강한 중식 제공",
       "price": 25000,
       "shippingFees": 0,
       "quantity": 30,
@@ -1332,47 +1834,55 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-gdn3-1.jpg",
+          "path": "uploadFiles/Farming.png",
           "name": "image-1.jpg",
-          "originalname": "상품이미지-1.jpg"
+          "originalname": "텃밭체험-1.jpg"
         },
         {
-          "path": "/files/${clientId}/seller-2-gdn3-2.jpg",
+          "path": "uploadFiles/farming",
           "name": "image-2.jpg",
-          "originalname": "상품이미지-2.jpg"
+          "originalname": "텃밭체험-2.jpg"
         }
       ],
       "extra": {
-        "productType": "gardening",
-        "category": [],
-        "filter": [],
-        "region": "경기 여주시 산북면 광여로 1509",
-        "deadline": "2025-08-10",
-        "harvestExpectedDate": "2025년 10월 ~ 11월",
-        "harvestExpectedCnt": "6포기",
-        "dcRate": 40,
-        "productCnt": 1,
+        "productType": "experience",
+        "category": ["농촌체험"],
+        "filter": ["텃밭", "농부체험", "가족추천"],
+        "region": "경기도 양평",
+        "meetingPlace": "경기도 양평군 강하면 텃밭길 55-3",
+        "departureDate": "2025-08-12",
+        "returnDate": "2025-08-12",
+        "dcRate": 30,
+        "productCnt": 10,
+        "representitiveKeyword": ["체험", "로컬푸드", "가족여행"],
+        "includedItems": ["중식 제공", "채소 수확체험", "도구 대여"],
+        "unIncludedItems": ["숙박", "교통비"],
+        "schedule": [
+          { "day": 1, "startTime": "10:00", "title": "체험장 도착 및 오리엔테이션" },
+          { "day": 1, "startTime": "10:30", "title": "텃밭 가꾸기 기초 교육" },
+          { "day": 1, "startTime": "11:00", "title": "채소 심기 및 직접 물 주기" },
+          { "day": 1, "startTime": "12:30", "title": "건강한 로컬푸드 점심 식사" },
+          { "day": 1, "startTime": "13:30", "title": "채소 수확 및 나만의 바구니 만들기" },
+          { "day": 1, "startTime": "14:30", "title": "정리 및 기념 촬영" }
+        ],
+        "guideInfo": {
+          "name": "박진수",
+          "contact": "010-3456-7890"
+        },
         "badge": {
           "isNew": true,
-          "isInSeason": null,
-          "isBest": true,
-          "isLowStock": true,
+          "isInSeason": true,
+          "isBest": false,
+          "isLowStock": false,
           "isSold": false
-        },
-        "period": [
-          { "date": "2025-08-13", "image": "src", "status": "seeding", "content": "싹을 심었습니다." },
-          { "date": "2025-08-31", "image": "src", "status": "growing", "content": "싹이 자랐습니다." },
-          { "date": "2025-09-14", "image": "src", "status": "growing", "content": "잎이 무럭무럭 자라고 있습니다." },
-          { "date": "2025-10-01", "image": "src", "status": "growing", "content": "곧 있으면 수확할 수 있겠네요." },
-          { "date": "2025-10-21", "image": "src", "status": "havested", "content": "재배를 했습니다." }
-        ]
+        }
       }
     },
     {
-      "seller_id": 17,
-      "name": "무",
-      "content": "무의 성장 여정을 함께 해요",
-      "price": 35000,
+      "seller_id": 16,
+      "name": "경남 거창 옥수수 텃밭 수확 체험",
+      "content": "텃밭에서 직접 수확한 옥수수를 바로 쪄먹는 특별한 경험!",
+      "price": 10000,
       "shippingFees": 0,
       "quantity": 30,
       "buyQuantity": 0,
@@ -1380,7 +1890,538 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-gdn3-1.jpg",
+          "path": "uploadFiles/Farming2.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-exp2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "experience",
+        "category": ["농촌체험", "수확체험"],
+        "filter": ["옥수수", "텃밭", "수확"],
+        "region": "경상남도 거창",
+        "meetingPlace": "경상남도 거창군 북상면 송계로 738",
+        "departureDate": "2025-08-12",
+        "returnDate": "2025-08-12",
+        "dcRate": 0,
+        "productCnt": 4,
+        "representitiveKeyword": ["체험", "농촌", "옥수수"],
+        "includedItems": ["체험 상품"],
+        "unIncludedItems": ["숙소", "석식"],
+        "guideInfo": {
+          "name": "전농희",
+          "contact": "010-4445-6667"
+        },
+        "badge": {
+          "isNew": true,
+          "isInSeason": true,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "강원 홍천 촌캉스 – 해녀 체험이 있는 농촌 힐링 여행",
+      "content": "유명 연예인도 반한 촌캉스! 자연과 전통이 살아 숨쉬는 특별한 1박 2일",
+      "price": 198000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/Female-diver.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-exp2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "experience",
+        "category": ["촌캉스", "해녀체험", "자연휴식"],
+        "filter": ["해녀체험", "청춘", "1박2일"],
+        "region": "강원도 홍천",
+        "meetingPlace": "홍천터미널 정문 앞",
+        "departureDate": "2025-08-15",
+        "returnDate": "2025-08-16",
+        "dcRate": 30,
+        "productCnt": 2,
+        "representitiveKeyword": ["낭만", "청춘", "힐링"],
+        "includedItems": ["식사 제공", "숙소 제공", "픽업 버스 운행", "체험 상품"],
+        "unIncludedItems": ["가이드 비", "복귀 버스비"],
+        "guideInfo": {
+          "name": "김우리",
+          "contact": "010-1234-5678"
+        },
+        "badge": {
+          "isNew": false,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": true
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "제주 해녀체험 – 바닷속 보물 캐기",
+      "content": "진짜 해녀복을 입고, 맨손으로 전복·소라·해삼을 잡아보는 생생한 체험!",
+      "price": 92000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/Female-diver2.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-exp2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "experience",
+        "category": ["해양체험", "전통문화", "제주도"],
+        "filter": ["해녀체험", "바다체험", "수산물채취"],
+        "region": "제주특별자치도 제주시",
+        "meetingPlace": "제주시 구좌읍 해녀박물관 앞",
+        "departureDate": "2025-08-09",
+        "returnDate": "2025-08-09",
+        "dcRate": 45,
+        "productCnt": 4,
+        "representitiveKeyword": ["해녀", "바다", "제주문화"],
+        "includedItems": ["체험 장비 대여", "전복/소라 시식", "안전요원 상주"],
+        "unIncludedItems": ["숙소", "제주도 왕복 교통"],
+        "guideInfo": {
+          "name": "이하나",
+          "contact": "010-1234-5678"
+        },
+        "badge": {
+          "isNew": true,
+          "isInSeason": true,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "손맛 가득 김장 체험 – 전통 방식으로 배우는 김장 담그기",
+      "content": "갓 수확한 배추로 김치를 담그고, 직접 담근 김치도 가져가요!",
+      "price": 42000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/Making-Kimchi.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-exp2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "experience",
+        "category": ["전통문화", "식도락", "가족체험"],
+        "filter": ["김장체험", "김치", "전통음식", "겨울체험"],
+        "region": "전라북도 임실",
+        "meetingPlace": "전북특별자치도 임실군 임실읍 치즈마을길 96",
+        "departureDate": "2025-08-09",
+        "returnDate": "2025-08-09",
+        "dcRate": 45,
+        "productCnt": 4,
+        "representitiveKeyword": ["김장", "전통", "정성"],
+        "includedItems": ["김장 재료", "체험 상품", "김치 포장용기", "점심 식사"],
+        "unIncludedItems": ["숙소", "교통비"],
+        "guideInfo": {
+          "name": "이하나",
+          "contact": "010-1234-5678"
+        },
+        "badge": {
+          "isNew": true,
+          "isInSeason": true,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "손맛 가득! 전통 김장 체험 하루 여행",
+      "content": "직접 버무리고 담가보는 깊은 맛의 김장 체험! 가족과 함께 즐겨요",
+      "price": 24000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/Making-Kimchi2.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-exp2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "experience",
+        "category": ["전통문화", "김장체험"],
+        "filter": ["김장", "전통", "겨울체험", "가족"],
+        "region": "전라북도 임실",
+        "meetingPlace": "전북특별자치도 임실군 임실읍 치즈마을길 96",
+        "departureDate": "2025-08-09",
+        "returnDate": "2025-08-09",
+        "dcRate": 45,
+        "productCnt": 4,
+        "representitiveKeyword": ["김장", "가족", "체험"],
+        "includedItems": ["김장 재료", "점심 식사", "김치 포장용기"],
+        "unIncludedItems": ["숙소", "버스비"],
+        "guideInfo": {
+          "name": "이하나",
+          "contact": "010-1234-5678"
+        },
+        "badge": {
+          "isNew": true,
+          "isInSeason": true,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+
+    {
+      "seller_id": 18,
+      "name": "갯벌에서 뛰놀자! 전라북도 갯벌 체험",
+      "content": "신나는 갯벌놀이와 조개잡이! 아이들과 함께 자연 속으로!",
+      "price": 28000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/mud-flat.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-exp2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "experience",
+        "category": ["자연체험", "갯벌체험"],
+        "filter": ["갯벌", "조개잡이", "아이동반", "자연"],
+        "region": "전라북도 임실",
+        "meetingPlace": "전북특별자치도 임실군 임실읍 치즈마을길 96",
+        "departureDate": "2025-08-09",
+        "returnDate": "2025-08-09",
+        "dcRate": 45,
+        "productCnt": 4,
+        "representitiveKeyword": ["갯벌", "자연", "가족체험"],
+        "includedItems": ["체험 장비 대여", "식사 제공"],
+        "unIncludedItems": ["숙소", "버스비"],
+        "guideInfo": {
+          "name": "이하나",
+          "contact": "010-1234-5678"
+        },
+        "badge": {
+          "isNew": true,
+          "isInSeason": true,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+
+    {
+      "seller_id": 17,
+      "name": "아이들과 함께하는 갯벌 조개잡이 체험",
+      "content": "갯벌에서 뛰놀며 조개도 잡고, 바닷바람도 즐겨요!",
+      "price": 89000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/mud-flat2.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-exp2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "experience",
+        "category": ["자연체험", "갯벌"],
+        "filter": ["갯벌체험", "조개잡이", "가족여행", "자연놀이"],
+        "region": "전라북도 부안",
+        "meetingPlace": "전북특별자치도 부안군 하서면 갯벌체험장 앞",
+        "departureDate": "2025-08-09",
+        "returnDate": "2025-08-09",
+        "dcRate": 40,
+        "productCnt": 4,
+        "representitiveKeyword": ["자연", "가족", "물놀이"],
+        "includedItems": ["체험 장비 대여", "식사 제공"],
+        "unIncludedItems": ["숙소", "버스비"],
+        "guideInfo": {
+          "name": "이하나",
+          "contact": "010-1234-5678"
+        },
+        "badge": {
+          "isNew": true,
+          "isInSeason": true,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 19,
+      "name": "갯벌에서 뛰놀자! 전라북도 갯벌 체험",
+      "content": "신나는 갯벌놀이와 조개잡이! 아이들과 함께 자연 속으로!",
+      "price": 28000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/mud-flat.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-exp2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "experience",
+        "category": ["자연체험", "갯벌체험"],
+        "filter": ["갯벌", "조개잡이", "아이동반", "자연"],
+        "region": "전라북도 임실",
+        "meetingPlace": "전북특별자치도 임실군 임실읍 치즈마을길 96",
+        "departureDate": "2025-08-09",
+        "returnDate": "2025-08-09",
+        "dcRate": 45,
+        "productCnt": 4,
+        "representitiveKeyword": ["갯벌", "자연", "가족체험"],
+        "includedItems": ["체험 장비 대여", "식사 제공"],
+        "unIncludedItems": ["숙소", "버스비"],
+        "guideInfo": {
+          "name": "이하나",
+          "contact": "010-1234-5678"
+        },
+        "badge": {
+          "isNew": true,
+          "isInSeason": true,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "바닷속 힐링여행, 제주 스노클링 체험",
+      "content": "맑고 푸른 제주 바다에서 물고기와 함께 떠나는 수중 여행!",
+      "price": 85000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/Snorkeling.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-exp2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "experience",
+        "category": ["해양체험"],
+        "filter": ["스노클링", "바다체험", "여름", "제주도"],
+        "region": "제주특별자치도 서귀포시",
+        "meetingPlace": "제주 서귀포시 중문관광로 123",
+        "departureDate": "2025-08-09",
+        "returnDate": "2025-08-09",
+        "dcRate": 35,
+        "productCnt": 4,
+        "representitiveKeyword": ["자연", "스노클링", "바다여행"],
+        "includedItems": ["장비 대여", "체험 가이드", "식사 제공"],
+        "unIncludedItems": ["숙소", "교통비"],
+        "guideInfo": {
+          "name": "이하나",
+          "contact": "010-1234-5678"
+        },
+        "badge": {
+          "isNew": true,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "달콤한 손끝의 행복, 과수원 체험 소풍",
+      "content": "제철 과일을 직접 따고 맛보는 달콤한 하루!",
+      "price": 78000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/orchard.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-exp2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "experience",
+        "category": ["농촌체험"],
+        "filter": ["과일수확", "과수원", "가족체험", "계절체험"],
+        "region": "전라북도 임실",
+        "meetingPlace": "전북특별자치도 임실군 임실읍 치즈마을길 96",
+        "departureDate": "2025-08-09",
+        "returnDate": "2025-08-09",
+        "dcRate": 33,
+        "productCnt": 4,
+        "representitiveKeyword": ["자연", "과일체험", "피크닉"],
+        "includedItems": ["식사 제공", "과일 수확 체험", "과일 시식"],
+        "unIncludedItems": ["숙소", "교통비"],
+        "guideInfo": {
+          "name": "이하나",
+          "contact": "010-1234-5678"
+        },
+        "badge": {
+          "isNew": true,
+          "isInSeason": true,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "갯벌에서 뛰놀자! 전라북도 갯벌 체험",
+      "content": "신나는 갯벌놀이와 조개잡이! 아이들과 함께 자연 속으로!",
+      "price": 28000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/mud-flat.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-exp2-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "experience",
+        "category": ["자연체험", "갯벌체험"],
+        "filter": ["갯벌", "조개잡이", "아이동반", "자연"],
+        "region": "전라북도 임실",
+        "meetingPlace": "전북특별자치도 임실군 임실읍 치즈마을길 96",
+        "departureDate": "2025-08-09",
+        "returnDate": "2025-08-09",
+        "dcRate": 45,
+        "productCnt": 4,
+        "representitiveKeyword": ["갯벌", "자연", "가족체험"],
+        "includedItems": ["체험 장비 대여", "식사 제공"],
+        "unIncludedItems": ["숙소", "버스비"],
+        "guideInfo": {
+          "name": "이하나",
+          "contact": "010-1234-5678"
+        },
+        "badge": {
+          "isNew": true,
+          "isInSeason": true,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        }
+      }
+    },
+
+    {
+      "seller_id": 16,
+      "name": "브로콜리 한 송이의 기적",
+      "content": "건강한 초록을 기다리는 시간, 내 손으로 키우는 브로콜리",
+      "price": 28000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/Broccoli.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
@@ -1392,43 +2433,400 @@
       ],
       "extra": {
         "productType": "gardening",
-        "category": [],
-        "filter": [],
-        "region": "경기도 여주시 가남읍 상활1길 68",
-        "deadline": "2025-08-13",
-        "harvestExpectedDate": "2025년 10월 ~ 11월",
-        "harvestExpectedCnt": "10수",
-        "dcRate": 50,
+        "category": ["텃밭체험"],
+        "filter": ["브로콜리", "가드닝", "자연재배"],
+        "region": "경기 여주시 산북면 광여로 1509",
+        "deadline": "2025-08-18",
+        "harvestExpectedDate": "2025-11-20",
+        "harvestExpectedCnt": "6송이",
+        "dcRate": 28,
         "productCnt": 1,
         "badge": {
-          "isNew": false,
-          "isInSeason": null,
-          "isBest": true,
+          "isNew": true,
+          "isInSeason": true,
+          "isBest": false,
           "isLowStock": false,
-          "isSold": true
+          "isSold": false
         },
         "period": [
-          { "date": "2025-08-20", "image": "src", "status": "seeding", "content": "싹을 심었습니다." },
+          { "date": "2025-08-20", "image": "src", "status": "seeding", "content": "브로콜리 텃밭을 심었어요!" },
+          {
+            "date": "2025-09-05",
+            "image": "src",
+            "status": "growing",
+            "content": "초록빛 잎들이 올라오기 시작했어요."
+          },
+          { "date": "2025-09-22", "image": "src", "status": "growing", "content": "줄기도 튼튼하게 잘 자라고 있어요." },
+          { "date": "2025-10-10", "image": "src", "status": "growing", "content": "곧 꽃봉오리가 맺힐 예정입니다." },
+          {
+            "date": "2025-11-20",
+            "image": "src",
+            "status": "harvested",
+            "content": "통통하고 싱싱한 브로콜리 수확 완료!"
+          }
+        ]
+      }
+    },
+
+    {
+      "seller_id": 16,
+      "name": "당근",
+      "content": "겨울에 수확하는 당근, 함께 키워보세요!",
+      "price": 19800,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/Carrot.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-gdn3-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "gardening",
+        "category": ["텃밭체험"],
+        "filter": ["당근", "겨울채소", "친환경"],
+        "region": "경상북도 의성군",
+        "deadline": "2025-08-25",
+        "harvestExpectedDate": "2025-12-10",
+        "harvestExpectedCnt": "약 20개",
+        "dcRate": 41,
+        "productCnt": 1,
+        "badge": {
+          "isNew": true,
+          "isInSeason": true,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        },
+        "period": [
+          {
+            "date": "2025-09-02",
+            "image": "src",
+            "status": "seeding",
+            "content": "당근 씨앗을 조심스럽게 심었어요."
+          },
+          {
+            "date": "2025-09-23",
+            "image": "src",
+            "status": "growing",
+            "content": "파릇파릇 새싹이 올라오고 있어요!"
+          },
+          {
+            "date": "2025-10-12",
+            "image": "src",
+            "status": "growing",
+            "content": "잎이 풍성해졌어요. 뿌리도 잘 자라고 있겠죠?"
+          },
+          {
+            "date": "2025-11-20",
+            "image": "src",
+            "status": "growing",
+            "content": "곧 수확을 앞두고 있어요. 기대돼요!"
+          },
+          {
+            "date": "2025-12-10",
+            "image": "src",
+            "status": "harvested",
+            "content": "싱싱한 겨울 당근 수확 완료!"
+          }
+        ]
+      }
+    },
+    {
+      "seller_id": 19,
+      "name": "당근",
+      "content": "겨울에 수확하는 당근, 함께 키워보세요!",
+      "price": 19800,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/Carrot.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-gdn3-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "gardening",
+        "category": ["텃밭체험"],
+        "filter": ["당근", "겨울채소", "친환경"],
+        "region": "경상북도 의성군",
+        "deadline": "2025-08-25",
+        "harvestExpectedDate": "2025-12-10",
+        "harvestExpectedCnt": "약 20개",
+        "dcRate": 41,
+        "productCnt": 1,
+        "badge": {
+          "isNew": true,
+          "isInSeason": true,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        },
+        "period": [
+          {
+            "date": "2025-09-02",
+            "image": "src",
+            "status": "seeding",
+            "content": "당근 씨앗을 조심스럽게 심었어요."
+          },
+          {
+            "date": "2025-09-23",
+            "image": "src",
+            "status": "growing",
+            "content": "파릇파릇 새싹이 올라오고 있어요!"
+          },
+          {
+            "date": "2025-10-12",
+            "image": "src",
+            "status": "growing",
+            "content": "잎이 풍성해졌어요. 뿌리도 잘 자라고 있겠죠?"
+          },
+          {
+            "date": "2025-11-20",
+            "image": "src",
+            "status": "growing",
+            "content": "곧 수확을 앞두고 있어요. 기대돼요!"
+          },
+          {
+            "date": "2025-12-10",
+            "image": "src",
+            "status": "harvested",
+            "content": "싱싱한 겨울 당근 수확 완료!"
+          }
+        ]
+      }
+    },
+
+    {
+      "seller_id": 17,
+      "name": "상추",
+      "content": "매일 자라는 상추의 생생한 변화, 함께 지켜봐요!",
+      "price": 17800,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/Lettuce.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-gdn3-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "gardening",
+        "category": ["텃밭체험"],
+        "filter": ["상추", "친환경", "샐러드채소"],
+        "region": "경기 여주시 산북면 광여로 1509",
+        "deadline": "2025-08-10",
+        "harvestExpectedDate": "2025-10-20",
+        "harvestExpectedCnt": "6포기 이상",
+        "dcRate": 28,
+        "productCnt": 1,
+        "badge": {
+          "isNew": true,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": true,
+          "isSold": false
+        },
+        "period": [
+          {
+            "date": "2025-08-13",
+            "image": "src",
+            "status": "seeding",
+            "content": "상추 씨앗을 조심스럽게 심었어요."
+          },
+          {
+            "date": "2025-08-31",
+            "image": "src",
+            "status": "growing",
+            "content": "파릇한 새싹이 귀엽게 자라고 있어요!"
+          },
+          {
+            "date": "2025-09-14",
+            "image": "src",
+            "status": "growing",
+            "content": "잎이 점점 넓어지고 무성해졌어요."
+          },
+          {
+            "date": "2025-10-01",
+            "image": "src",
+            "status": "growing",
+            "content": "이제 수확할 날이 머지않았어요!"
+          },
+          {
+            "date": "2025-10-20",
+            "image": "src",
+            "status": "harvested",
+            "content": "상추 수확 완료! 건강한 밥상으로 갑니다!"
+          }
+        ]
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "감자",
+      "content": "땅속에서 무럭무럭 자라는 감자의 하루!",
+      "price": 28000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/Potato.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-gdn3-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "gardening",
+        "category": ["텃밭체험"],
+        "filter": ["감자", "뿌리채소", "제철채소"],
+        "region": "경기도 여주시 가남읍 상활1길 68",
+        "deadline": "2025-08-13",
+        "harvestExpectedDate": "2025-10-25",
+        "harvestExpectedCnt": "약 3kg",
+        "dcRate": 42,
+        "productCnt": 1,
+        "badge": {
+          "isNew": true,
+          "isInSeason": true,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        },
+        "period": [
+          {
+            "date": "2025-08-20",
+            "image": "src",
+            "status": "seeding",
+            "content": "포슬포슬한 감자를 기대하며 심었습니다!"
+          },
           {
             "date": "2025-09-12",
             "image": "src",
             "status": "growing",
-            "content": "잎이 넓은게 올해 무는 기대가 됩니다"
+            "content": "줄기와 잎이 건강하게 올라오고 있어요 🌱"
           },
           {
             "date": "2025-10-04",
             "image": "src",
-            "status": "havested",
-            "content": "알이 실하죠? 곧 배송해드릴게요ㅎㅎ"
+            "status": "harvested",
+            "content": "알이 꽉 찼어요! 수확 완료, 이제 배송만 남았어요!"
+          }
+        ]
+      }
+    },
+    {
+      "seller_id": 18,
+      "name": "당근",
+      "content": "겨울에 수확하는 당근, 함께 키워보세요!",
+      "price": 19800,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/Carrot.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-gdn3-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "gardening",
+        "category": ["텃밭체험"],
+        "filter": ["당근", "겨울채소", "친환경"],
+        "region": "경상북도 의성군",
+        "deadline": "2025-08-25",
+        "harvestExpectedDate": "2025-12-10",
+        "harvestExpectedCnt": "약 20개",
+        "dcRate": 41,
+        "productCnt": 1,
+        "badge": {
+          "isNew": true,
+          "isInSeason": true,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        },
+        "period": [
+          {
+            "date": "2025-09-02",
+            "image": "src",
+            "status": "seeding",
+            "content": "당근 씨앗을 조심스럽게 심었어요."
+          },
+          {
+            "date": "2025-09-23",
+            "image": "src",
+            "status": "growing",
+            "content": "파릇파릇 새싹이 올라오고 있어요!"
+          },
+          {
+            "date": "2025-10-12",
+            "image": "src",
+            "status": "growing",
+            "content": "잎이 풍성해졌어요. 뿌리도 잘 자라고 있겠죠?"
+          },
+          {
+            "date": "2025-11-20",
+            "image": "src",
+            "status": "growing",
+            "content": "곧 수확을 앞두고 있어요. 기대돼요!"
+          },
+          {
+            "date": "2025-12-10",
+            "image": "src",
+            "status": "harvested",
+            "content": "싱싱한 겨울 당근 수확 완료!"
           }
         ]
       }
     },
     {
       "seller_id": 16,
-      "name": "브로콜리",
-      "content": "브로콜리의 성장 여정을 함께 해요",
-      "price": 22000,
+      "name": "적상추",
+      "content": "신선함 그대로, 적상추의 하루를 함께해요",
+      "price": 18000,
       "shippingFees": 0,
       "quantity": 30,
       "buyQuantity": 0,
@@ -1436,7 +2834,7 @@
       "active": true,
       "mainImages": [
         {
-          "path": "/files/${clientId}/seller-2-gdn3-1.jpg",
+          "path": "uploadFiles/red-lettuce.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
@@ -1448,34 +2846,220 @@
       ],
       "extra": {
         "productType": "gardening",
-        "category": [],
-        "filter": [],
+        "category": ["텃밭체험"],
+        "filter": ["상추", "잎채소", "건강채소"],
         "region": "경기도 여주시 가남읍 상활1길 68",
         "deadline": "2025-08-12",
-        "harvestExpectedDate": "2025년 10월 ~ 11월",
-        "harvestExpectedCnt": "2kg",
-        "dcRate": 50,
+        "harvestExpectedDate": "2025-10-28",
+        "harvestExpectedCnt": "1.5kg",
+        "dcRate": 35,
         "productCnt": 1,
         "badge": {
-          "isNew": false,
-          "isInSeason": null,
+          "isNew": true,
+          "isInSeason": true,
           "isBest": false,
           "isLowStock": false,
           "isSold": false
         },
         "period": [
-          { "date": "2025-08-14", "image": "src", "status": "seeding", "content": "싹을 심었습니다." },
+          {
+            "date": "2025-08-14",
+            "image": "src",
+            "status": "seeding",
+            "content": "적상추의 씨앗을 심었어요 🌱"
+          },
           {
             "date": "2025-09-08",
             "image": "src",
             "status": "growing",
-            "content": "잎이 넓은게 올해 무는 기대가 됩니다"
+            "content": "잎이 풍성하게 자라고 있어요. 곧 샐러드 재료로!"
+          },
+          {
+            "date": "2025-10-10",
+            "image": "src",
+            "status": "harvested",
+            "content": "신선한 적상추, 수확 완료! 곧 배송됩니다."
+          }
+        ]
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "신선한 양배추 텃밭 체험",
+      "content": "씨앗부터 수확까지! 내 손으로 키우는 건강한 양배추",
+      "price": 15800,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/Cabbage.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-gdn3-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "gardening",
+        "category": ["텃밭체험"],
+        "filter": ["양배추", "무농약", "자연재배"],
+        "region": "경기 여주시 산북면 광여로 1509",
+        "deadline": "2025-08-10",
+        "harvestExpectedDate": "2025-11-01",
+        "harvestExpectedCnt": "5통",
+        "dcRate": 27,
+        "productCnt": 1,
+        "badge": {
+          "isNew": true,
+          "isInSeason": true,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        },
+        "period": [
+          { "date": "2025-08-13", "image": "src", "status": "seeding", "content": "양배추 씨앗을 정성껏 심었습니다." },
+          {
+            "date": "2025-08-28",
+            "image": "src",
+            "status": "growing",
+            "content": "초록빛 새싹이 올라오기 시작했어요!"
+          },
+          { "date": "2025-09-17", "image": "src", "status": "growing", "content": "줄기가 튼튼해지고 있어요." },
+          { "date": "2025-10-08", "image": "src", "status": "growing", "content": "통통하게 속이 차고 있어요." },
+          { "date": "2025-11-01", "image": "src", "status": "harvested", "content": "싱싱한 양배추 수확 완료!" }
+        ]
+      }
+    },
+    {
+      "seller_id": 16,
+      "name": "벼(쌀)",
+      "content": "논에서 직접 키우는 벼, 수확 후 신선한 햅쌀을 맛보세요!",
+      "price": 26000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/Rice.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-gdn3-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "gardening",
+        "category": ["텃밭체험"],
+        "filter": ["벼", "쌀", "친환경재배"],
+        "region": "경기도 여주시 가남읍 상활1길 68",
+        "deadline": "2025-08-12",
+        "harvestExpectedDate": "2025-11-05",
+        "harvestExpectedCnt": "약 5kg",
+        "dcRate": 37,
+        "productCnt": 1,
+        "badge": {
+          "isNew": true,
+          "isInSeason": true,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        },
+        "period": [
+          {
+            "date": "2025-08-14",
+            "image": "src",
+            "status": "seeding",
+            "content": "모를 심고 물을 채웠습니다. 이제 시작이에요!"
+          },
+          {
+            "date": "2025-09-08",
+            "image": "src",
+            "status": "growing",
+            "content": "벼 포기가 푸르게 자라고 있습니다."
           },
           {
             "date": "2025-10-07",
             "image": "src",
-            "status": "havested",
-            "content": "알이 실하죠? 곧 배송해드릴게요ㅎㅎ"
+            "status": "growing",
+            "content": "이삭이 맺히고 황금빛 들판이 되어가고 있어요."
+          },
+          {
+            "date": "2025-11-05",
+            "image": "src",
+            "status": "harvested",
+            "content": "벼 수확 완료! 이제 도정 후 햅쌀로 배송됩니다."
+          }
+        ]
+      }
+    },
+    {
+      "seller_id": 16,
+      "name": "토마토",
+      "content": "탱글탱글 잘 익은 토마토, 직접 길러보세요!",
+      "price": 24000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/Tomato.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-gdn3-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "gardening",
+        "category": ["텃밭체험"],
+        "filter": ["토마토", "과채류", "텃밭"],
+        "region": "경기도 여주시 가남읍 상활1길 68",
+        "deadline": "2025-08-12",
+        "harvestExpectedDate": "2025-10-25",
+        "harvestExpectedCnt": "약 1.5kg",
+        "dcRate": 38,
+        "productCnt": 1,
+        "badge": {
+          "isNew": true,
+          "isInSeason": true,
+          "isBest": false,
+          "isLowStock": false,
+          "isSold": false
+        },
+        "period": [
+          {
+            "date": "2025-08-14",
+            "image": "src",
+            "status": "seeding",
+            "content": "토마토 모종을 정식했습니다."
+          },
+          {
+            "date": "2025-09-08",
+            "image": "src",
+            "status": "growing",
+            "content": "잎이 무성하게 자라며 열매가 맺히기 시작했어요."
+          },
+          {
+            "date": "2025-10-12",
+            "image": "src",
+            "status": "harvested",
+            "content": "탱글탱글 토마토 수확 완료! 곧 배송됩니다."
           }
         ]
       }
@@ -1484,7 +3068,7 @@
 
   "order": [
     {
-      "user_id": 4,
+      "user_id": 29,
       "state": "OS020",
       "products": [
         {
@@ -1493,11 +3077,11 @@
           "state": "OS020",
           "name": "헬로카봇 스톰다이버",
           "image": {
-            "path": "/files/${clientId}/sample-diver.jpg",
+            "path": "src",
             "name": "sample-diver.jpg",
             "originalname": "헬로카봇.jpg"
           },
-          "quantity": 30,
+          "quantity": 4,
           "price": 34520,
           "review_id": 3
         }
@@ -1520,29 +3104,913 @@
 
   "review": [
     {
-      "rating": 1,
-      "content": "찰옥수수라고 해서 시켰는데, 딱딱해서 씹을 수가 없어요. 물론 제가 안삶아서 그렇긴 한데 이렇게 딱딱할 수 있나요? 어이가 없어서 정말",
-      "user_id": 8,
-      "product_id": 25,
+      "rating": 5,
+      "content": "토마토가 정말 달고 맛있어요! 유기농이라 안심하고 먹을 수 있네요.",
+      "user_id": 1,
+      "product_id": 1,
       "extra": {
-        "name": "찰옥수수가 아니라 철옥수수네요",
-        "image": [
-          {
-            "url": "/"
-          },
-          {
-            "url": "/"
-          }
-        ]
+        "name": "달콤한 유기농 토마토",
+        "imagePath": "src"
       },
-
+      "user": {
+        "_id": 1,
+        "name": "1조유저"
+      }
+    },
+    {
+      "rating": 4,
+      "content": "신선한 상태로 잘 포장되어 왔습니다. 다만 크기가 조금 작아서 아쉬워요.",
+      "user_id": 3,
+      "product_id": 2,
+      "extra": {
+        "name": "신선하지만 작은 크기",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 3,
+        "name": "3조유저"
+      }
+    },
+    {
+      "rating": 5,
+      "content": "당근이 이렇게 단줄 몰랐어요. 아이가 생으로도 잘 먹네요!",
+      "user_id": 5,
+      "product_id": 3,
+      "extra": {
+        "name": "아이도 좋아하는 단 당근",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 5,
+        "name": "5조유저"
+      }
+    },
+    {
+      "rating": 3,
+      "content": "배추가 조금 시들어서 왔네요. 배송 과정에서 문제가 있었나 봅니다.",
+      "user_id": 8,
+      "product_id": 4,
+      "extra": {
+        "name": "배송 중 약간 손상",
+        "imagePath": "src"
+      },
       "user": {
         "_id": 8,
-        "name": "정길용"
+        "name": "8조유저"
+      }
+    },
+    {
+      "rating": 4,
+      "content": "감자 크기도 적당하고 맛도 좋아요. 찜해서 먹으니 정말 맛있습니다.",
+      "user_id": 12,
+      "product_id": 5,
+      "extra": {
+        "name": "적당한 크기의 맛있는 감자",
+        "imagePath": "src"
       },
-      "product": {
-        "_id": 25,
-        "name": "제주농산물"
+      "user": {
+        "_id": 12,
+        "name": "12조유저"
+      }
+    },
+    {
+      "rating": 5,
+      "content": "브로콜리가 정말 싱싱해요! 영양도 많고 아이들 반찬으로 최고입니다.",
+      "user_id": 2,
+      "product_id": 10,
+      "extra": {
+        "name": "영양 만점 싱싱한 브로콜리",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 2,
+        "name": "2조유저"
+      }
+    },
+    {
+      "rating": 4,
+      "content": "딸기가 달고 향이 좋네요. 다만 가격이 조금 비싸긴 해요.",
+      "user_id": 9,
+      "product_id": 15,
+      "extra": {
+        "name": "달콤한 딸기, 다소 비싼 가격",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 9,
+        "name": "9조유저"
+      }
+    },
+    {
+      "rating": 5,
+      "content": "사과가 아삭하고 정말 맛있어요. 친환경 인증 받은 것 같아 더 좋네요.",
+      "user_id": 6,
+      "product_id": 20,
+      "extra": {
+        "name": "아삭한 친환경 사과",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 6,
+        "name": "6조유저"
+      }
+    },
+    {
+      "rating": 3,
+      "content": "상추가 좀 질겨요. 어린잎이라고 했는데 생각보다 질기네요.",
+      "user_id": 11,
+      "product_id": 25,
+      "extra": {
+        "name": "생각보다 질긴 상추",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 11,
+        "name": "11조유저"
+      }
+    },
+    {
+      "rating": 4,
+      "content": "오이가 아삭하고 시원해요. 여름에 먹기 딱 좋습니다!",
+      "user_id": 4,
+      "product_id": 28,
+      "extra": {
+        "name": "여름에 딱 좋은 시원한 오이",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 4,
+        "name": "4조유저"
+      }
+    },
+    {
+      "rating": 5,
+      "content": "포도따기 체험 정말 재밌었어요! 아이들이 너무 좋아했습니다.",
+      "user_id": 7,
+      "product_id": 32,
+      "extra": {
+        "name": "아이들이 좋아한 포도따기",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 7,
+        "name": "7조유저"
+      }
+    },
+    {
+      "rating": 4,
+      "content": "감자캐기 체험이 생각보다 힘들었지만 보람있었어요. 좋은 추억 만들었습니다.",
+      "user_id": 13,
+      "product_id": 33,
+      "extra": {
+        "name": "힘들지만 보람있는 감자캐기",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 13,
+        "name": "13조유저"
+      }
+    },
+    {
+      "rating": 5,
+      "content": "블루베리 따기 체험 최고예요! 직접 딴 블루베리가 이렇게 달 줄 몰랐어요.",
+      "user_id": 1,
+      "product_id": 35,
+      "extra": {
+        "name": "달콤한 블루베리 수확 체험",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 1,
+        "name": "1조유저"
+      }
+    },
+    {
+      "rating": 3,
+      "content": "체험 시간이 너무 짧았어요. 좀 더 길게 했으면 좋겠습니다.",
+      "user_id": 10,
+      "product_id": 37,
+      "extra": {
+        "name": "너무 짧은 체험 시간",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 10,
+        "name": "10조유저"
+      }
+    },
+    {
+      "rating": 4,
+      "content": "딸기따기 체험 재밌었어요. 직접 딴 딸기로 잼도 만들어줘서 좋았습니다.",
+      "user_id": 14,
+      "product_id": 39,
+      "extra": {
+        "name": "딸기 따기와 잼 만들기",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 14,
+        "name": "14조유저"
+      }
+    },
+    {
+      "rating": 5,
+      "content": "상추 모종부터 키워서 수확까지! 정말 뿌듯했어요. 아이 교육에도 좋네요.",
+      "user_id": 2,
+      "product_id": 42,
+      "extra": {
+        "name": "뿌듯한 상추 재배 과정",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 2,
+        "name": "2조유저"
+      }
+    },
+    {
+      "rating": 4,
+      "content": "토마토 모종이 튼튼하게 잘 자랐어요. 수확한 토마토가 정말 맛있습니다!",
+      "user_id": 8,
+      "product_id": 43,
+      "extra": {
+        "name": "튼튼한 토마토 모종",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 8,
+        "name": "8조유저"
+      }
+    },
+    {
+      "rating": 3,
+      "content": "고추 모종이 조금 약해 보였는데 잘 자랄지 걱정이에요.",
+      "user_id": 15,
+      "product_id": 45,
+      "extra": {
+        "name": "약해 보이는 고추 모종",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 15,
+        "name": "15조유저"
+      }
+    },
+    {
+      "rating": 5,
+      "content": "가지 기르기 정말 재밌어요! 매일 성장하는 모습 보는 게 즐겁습니다.",
+      "user_id": 5,
+      "product_id": 47,
+      "extra": {
+        "name": "매일 성장하는 가지의 즐거움",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 5,
+        "name": "5조유저"
+      }
+    },
+    {
+      "rating": 4,
+      "content": "허브 키트 구성이 알차네요. 바질이 특히 향이 좋아요!",
+      "user_id": 11,
+      "product_id": 49,
+      "extra": {
+        "name": "향 좋은 바질 허브 키트",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 11,
+        "name": "11조유저"
+      }
+    },
+    {
+      "rating": 2,
+      "content": "배송이 너무 늦었어요. 농산물인데 이틀이나 늦게 와서 싱싱도가 떨어졌습니다.",
+      "user_id": 7,
+      "product_id": 7,
+      "extra": {
+        "name": "늦은 배송으로 신선도 하락",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 7,
+        "name": "7조유저"
+      }
+    },
+    {
+      "rating": 5,
+      "content": "수박이 정말 달고 시원해요! 여름 보양식으로 최고입니다.",
+      "user_id": 3,
+      "product_id": 18,
+      "extra": {
+        "name": "달고 시원한 여름 수박",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 3,
+        "name": "3조유저"
+      }
+    },
+    {
+      "rating": 4,
+      "content": "옥수수가 알이 꽉 차고 달달해요. 쪄서 먹으니 정말 맛있네요!",
+      "user_id": 12,
+      "product_id": 22,
+      "extra": {
+        "name": "알찬 달달한 옥수수",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 12,
+        "name": "12조유저"
+      }
+    },
+    {
+      "rating": 3,
+      "content": "양파가 맵네요. 단양파라고 했는데 생각보다 매워서 아쉬워요.",
+      "user_id": 9,
+      "product_id": 12,
+      "extra": {
+        "name": "생각보다 매운 양파",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 9,
+        "name": "9조유저"
+      }
+    },
+    {
+      "rating": 5,
+      "content": "무 수확 체험 정말 신기했어요! 이렇게 큰 무가 땅 속에 있다니!",
+      "user_id": 6,
+      "product_id": 34,
+      "extra": {
+        "name": "신기한 무 수확 체험",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 6,
+        "name": "6조유저"
+      }
+    },
+    {
+      "rating": 4,
+      "content": "방울토마토 따기 체험 아이들이 정말 좋아했어요. 직접 따서 먹는 맛이 달라요!",
+      "user_id": 4,
+      "product_id": 38,
+      "extra": {
+        "name": "아이들이 좋아한 방울토마토",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 4,
+        "name": "4조유저"
+      }
+    },
+    {
+      "rating": 2,
+      "content": "체험 진행자분이 불친절했어요. 설명도 부족하고 아쉬웠습니다.",
+      "user_id": 13,
+      "product_id": 36,
+      "extra": {
+        "name": "불친절한 진행자",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 13,
+        "name": "13조유저"
+      }
+    },
+    {
+      "rating": 5,
+      "content": "당근 모종부터 수확까지 3개월간 정말 재밌었어요! 아이와 함께 매일 관찰했습니다.",
+      "user_id": 1,
+      "product_id": 44,
+      "extra": {
+        "name": "3개월간의 당근 재배 여행",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 1,
+        "name": "1조유저"
+      }
+    },
+    {
+      "rating": 4,
+      "content": "오이 키우기 생각보다 쉬웠어요. 관리 방법도 자세히 알려주셔서 좋았습니다.",
+      "user_id": 10,
+      "product_id": 46,
+      "extra": {
+        "name": "쉬운 오이 재배법",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 10,
+        "name": "10조유저"
+      }
+    },
+    {
+      "rating": 3,
+      "content": "상추 키트 구성품이 부족했어요. 화분이 너무 작아서 제대로 자라지 못했습니다.",
+      "user_id": 14,
+      "product_id": 48,
+      "extra": {
+        "name": "부족한 키트 구성품",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 14,
+        "name": "14조유저"
+      }
+    },
+    {
+      "rating": 5,
+      "content": "토마토 품질이 정말 좋아요! 색깔도 예쁘고 당도도 높네요.",
+      "user_id": 4,
+      "product_id": 1,
+      "extra": {
+        "name": "색깔 예쁜 고당도 토마토",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 4,
+        "name": "4조유저"
+      }
+    },
+    {
+      "rating": 3,
+      "content": "토마토는 맛있는데 몇 개가 터져서 왔어요. 포장을 더 꼼꼼히 해주세요.",
+      "user_id": 13,
+      "product_id": 1,
+      "extra": {
+        "name": "맛있지만 포장 아쉬움",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 13,
+        "name": "13조유저"
+      }
+    },
+    {
+      "rating": 4,
+      "content": "당근이 정말 달아요! 아이가 간식으로 먹을 정도예요.",
+      "user_id": 7,
+      "product_id": 3,
+      "extra": {
+        "name": "간식 같은 달콤한 당근",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 7,
+        "name": "7조유저"
+      }
+    },
+    {
+      "rating": 5,
+      "content": "유기농 당근이라 그런지 향이 진하고 맛있어요. 재주문 예정입니다!",
+      "user_id": 11,
+      "product_id": 3,
+      "extra": {
+        "name": "향 진한 유기농 당근",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 11,
+        "name": "11조유저"
+      }
+    },
+    {
+      "rating": 2,
+      "content": "감자에 싹이 나 있었어요. 보관 상태가 좋지 않았나 봅니다.",
+      "user_id": 15,
+      "product_id": 5,
+      "extra": {
+        "name": "싹 난 감자, 보관 상태 문제",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 15,
+        "name": "15조유저"
+      }
+    },
+    {
+      "rating": 4,
+      "content": "감자 크기가 일정하고 좋네요. 찜, 볶음 뭘 해도 맛있어요!",
+      "user_id": 6,
+      "product_id": 5,
+      "extra": {
+        "name": "일정한 크기의 다용도 감자",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 6,
+        "name": "6조유저"
+      }
+    },
+    {
+      "rating": 5,
+      "content": "딸기가 너무 예뻐요! 맛도 달고 향도 좋아서 만족합니다.",
+      "user_id": 2,
+      "product_id": 15,
+      "extra": {
+        "name": "예쁘고 달콤한 딸기",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 2,
+        "name": "2조유저"
+      }
+    },
+    {
+      "rating": 3,
+      "content": "딸기가 조금 물러서 왔네요. 배송 시간을 줄여주시면 좋겠어요.",
+      "user_id": 8,
+      "product_id": 15,
+      "extra": {
+        "name": "물러진 딸기, 배송 시간 개선 필요",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 8,
+        "name": "8조유저"
+      }
+    },
+    {
+      "rating": 4,
+      "content": "딸기 크기가 생각보다 커서 좋았어요. 가족들이 모두 좋아합니다!",
+      "user_id": 12,
+      "product_id": 15,
+      "extra": {
+        "name": "큰 크기의 가족 만족 딸기",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 12,
+        "name": "12조유저"
+      }
+    },
+    {
+      "rating": 5,
+      "content": "포도따기 체험 두 번째인데 이번에도 너무 즐거웠어요! 직원분들도 친절하시고!",
+      "user_id": 3,
+      "product_id": 32,
+      "extra": {
+        "name": "두 번째 포도따기, 친절한 직원",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 3,
+        "name": "3조유저"
+      }
+    },
+    {
+      "rating": 4,
+      "content": "포도가 정말 달아요! 체험 후 가져갈 수 있는 양도 넉넉해서 좋았습니다.",
+      "user_id": 9,
+      "product_id": 32,
+      "extra": {
+        "name": "달콤하고 넉넉한 포도 체험",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 9,
+        "name": "9조유저"
+      }
+    },
+    {
+      "rating": 3,
+      "content": "포도따기는 재밌었는데 대기 시간이 너무 길었어요. 예약 시스템 개선이 필요할 것 같아요.",
+      "user_id": 14,
+      "product_id": 32,
+      "extra": {
+        "name": "긴 대기시간, 예약 시스템 개선 필요",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 14,
+        "name": "14조유저"
+      }
+    },
+    {
+      "rating": 4,
+      "content": "감자캐기 정말 재밌어요! 땅에서 감자 나올 때마다 신기했습니다.",
+      "user_id": 5,
+      "product_id": 33,
+      "extra": {
+        "name": "신기한 감자캐기 체험",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 5,
+        "name": "5조유저"
+      }
+    },
+    {
+      "rating": 5,
+      "content": "아이들과 함께 감자캐기 체험했는데 교육적 효과도 좋고 재밌었어요!",
+      "user_id": 1,
+      "product_id": 33,
+      "extra": {
+        "name": "교육적이고 재밌는 가족 체험",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 1,
+        "name": "1조유저"
+      }
+    },
+    {
+      "rating": 4,
+      "content": "블루베리 따기 체험 좋았어요! 직접 딴 블루베리로 만든 주스가 최고였습니다.",
+      "user_id": 10,
+      "product_id": 35,
+      "extra": {
+        "name": "직접 딴 블루베리로 만든 주스",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 10,
+        "name": "10조유저"
+      }
+    },
+    {
+      "rating": 3,
+      "content": "블루베리 농장이 조금 멀어서 아쉬웠어요. 하지만 체험 자체는 만족스러웠습니다.",
+      "user_id": 7,
+      "product_id": 35,
+      "extra": {
+        "name": "멀지만 만족스러운 체험",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 7,
+        "name": "7조유저"
+      }
+    },
+    {
+      "rating": 5,
+      "content": "상추 모종이 정말 튼튼해요! 심은 지 한 달 만에 벌써 수확할 수 있을 정도로 자랐어요.",
+      "user_id": 12,
+      "product_id": 42,
+      "extra": {
+        "name": "튼튼하고 빠른 성장의 상추",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 12,
+        "name": "12조유저"
+      }
+    },
+    {
+      "rating": 4,
+      "content": "상추 키우기 처음인데도 잘 자라네요! 관리 가이드가 자세해서 도움됐어요.",
+      "user_id": 6,
+      "product_id": 42,
+      "extra": {
+        "name": "초보자도 성공한 상추 재배",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 6,
+        "name": "6조유저"
+      }
+    },
+    {
+      "rating": 3,
+      "content": "상추가 잘 자라긴 했는데 벌레가 조금 생겼어요. 방충 관리법도 알려주시면 좋겠어요.",
+      "user_id": 15,
+      "product_id": 42,
+      "extra": {
+        "name": "벌레 문제, 방충 관리법 필요",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 15,
+        "name": "15조유저"
+      }
+    },
+    {
+      "rating": 5,
+      "content": "토마토 모종 품질이 정말 좋아요! 뿌리도 튼튼하고 잎도 싱싱해요.",
+      "user_id": 3,
+      "product_id": 43,
+      "extra": {
+        "name": "뿌리 튼튼한 품질 좋은 모종",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 3,
+        "name": "3조유저"
+      }
+    },
+    {
+      "rating": 4,
+      "content": "토마토가 주렁주렁 열렸어요! 방울토마토가 이렇게 많이 열릴 줄 몰랐네요.",
+      "user_id": 11,
+      "product_id": 43,
+      "extra": {
+        "name": "주렁주렁 열린 방울토마토",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 11,
+        "name": "11조유저"
+      }
+    },
+    {
+      "rating": 2,
+      "content": "토마토 모종 중 하나가 시들어서 왔어요. 교체해주시면 좋겠습니다.",
+      "user_id": 9,
+      "product_id": 43,
+      "extra": {
+        "name": "시든 모종, 교체 요청",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 9,
+        "name": "9조유저"
+      }
+    },
+    {
+      "rating": 4,
+      "content": "고추 모종이 잘 자라고 있어요! 고추가 빨갛게 익어가는 모습이 예뻐요.",
+      "user_id": 4,
+      "product_id": 45,
+      "extra": {
+        "name": "빨갛게 익어가는 예쁜 고추",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 4,
+        "name": "4조유저"
+      }
+    },
+    {
+      "rating": 5,
+      "content": "고추가 정말 매워요! 진짜 청양고추 맞네요. 김치 담그기 딱 좋아요!",
+      "user_id": 1,
+      "product_id": 45,
+      "extra": {
+        "name": "진짜 매운 청양고추",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 1,
+        "name": "1조유저"
+      }
+    },
+    {
+      "rating": 3,
+      "content": "고추 모종 관리가 생각보다 까다로워요. 초보자에게는 어려울 수 있을 것 같아요.",
+      "user_id": 14,
+      "product_id": 45,
+      "extra": {
+        "name": "까다로운 고추 모종 관리",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 14,
+        "name": "14조유저"
+      }
+    },
+    {
+      "rating": 4,
+      "content": "가지가 정말 크고 윤기가 나요! 가지볶음 해먹으니 맛있어요.",
+      "user_id": 8,
+      "product_id": 47,
+      "extra": {
+        "name": "크고 윤기 나는 가지",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 8,
+        "name": "8조유저"
+      }
+    },
+    {
+      "rating": 5,
+      "content": "가지 키우는 재미가 쏠쏠해요! 꽃도 예쁘고 열매도 잘 맺어요.",
+      "user_id": 13,
+      "product_id": 47,
+      "extra": {
+        "name": "꽃도 예쁜 재미있는 가지 재배",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 13,
+        "name": "13조유저"
+      }
+    },
+    {
+      "rating": 5,
+      "content": "허브 키트 구성이 정말 알차요! 바질, 로즈마리, 민트까지 다 들어있어서 좋아요.",
+      "user_id": 2,
+      "product_id": 49,
+      "extra": {
+        "name": "알찬 구성의 허브 키트",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 2,
+        "name": "2조유저"
+      }
+    },
+    {
+      "rating": 4,
+      "content": "허브 향이 정말 진해요! 요리할 때 직접 따서 쓰니까 향이 살아있어요.",
+      "user_id": 10,
+      "product_id": 49,
+      "extra": {
+        "name": "진한 향의 신선한 허브",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 10,
+        "name": "10조유저"
+      }
+    },
+    {
+      "rating": 3,
+      "content": "허브는 잘 자라는데 화분이 조금 작아서 뿌리가 답답해 보여요.",
+      "user_id": 7,
+      "product_id": 49,
+      "extra": {
+        "name": "작은 화분, 뿌리 공간 부족",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 7,
+        "name": "7조유저"
+      }
+    },
+    {
+      "rating": 4,
+      "content": "브로콜리가 정말 싱싱하고 크네요! 영양가도 높고 아이들 간식으로 좋아요.",
+      "user_id": 14,
+      "product_id": 10,
+      "extra": {
+        "name": "크고 영양가 높은 브로콜리",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 14,
+        "name": "14조유저"
+      }
+    },
+    {
+      "rating": 5,
+      "content": "브로콜리 색깔이 진한 초록색이라 보기에도 좋고 맛도 진해요!",
+      "user_id": 5,
+      "product_id": 10,
+      "extra": {
+        "name": "진한 초록색의 맛있는 브로콜리",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 5,
+        "name": "5조유저"
+      }
+    },
+    {
+      "rating": 2,
+      "content": "사과에 흠집이 많이 있었어요. 포장이나 운송 과정에서 조심해주세요.",
+      "user_id": 15,
+      "product_id": 20,
+      "extra": {
+        "name": "흠집 많은 사과, 포장 개선 필요",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 15,
+        "name": "15조유저"
+      }
+    },
+    {
+      "rating": 4,
+      "content": "사과가 달고 아삭해요! 껍질째 먹어도 맛있네요.",
+      "user_id": 1,
+      "product_id": 20,
+      "extra": {
+        "name": "껍질째 먹어도 맛있는 사과",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 1,
+        "name": "1조유저"
+      }
+    },
+    {
+      "rating": 5,
+      "content": "사과 크기가 일정하고 당도도 높아요! 선물용으로도 좋을 것 같아요.",
+      "user_id": 11,
+      "product_id": 20,
+      "extra": {
+        "name": "선물용으로도 좋은 고당도 사과",
+        "imagePath": "src"
+      },
+      "user": {
+        "_id": 11,
+        "name": "11조유저"
       }
     }
   ],

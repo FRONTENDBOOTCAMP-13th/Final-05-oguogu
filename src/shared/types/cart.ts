@@ -14,7 +14,7 @@ export interface CartItem {
     quantity: number;
     buyQuantity: number;
     image: {
-      url: string;
+      path: string;
       fileName: string;
       orgName: string;
     };
@@ -24,6 +24,7 @@ export interface CartItem {
       category: string[];
       sort: number;
       dcRate: number;
+      productCnt: number;
     };
   };
 }

@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: QnaDetailPageProps): Promise<
 
   if (!qna) {
     return {
-      title: '질문을 찾을 수 없습니다 | 오구오구',
+      title: '질문을 찾을 수 없습니다 | 오구텃밭',
       description: '존재하지 않거나 삭제된 질문입니다.',
       robots: {
         index: false,
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: QnaDetailPageProps): Promise<
   const desc = content.slice(0, 80).replace(/\n/g, ' ').trim();
 
   return {
-    title: `${title} | 자주 묻는 질문 - 오구오구`,
+    title: `${title} | 자주 묻는 질문 - 오구텃밭`,
     description: desc,
     robots: {
       index: true,
@@ -33,14 +33,14 @@ export async function generateMetadata({ params }: QnaDetailPageProps): Promise<
       canonical: `https://final-05-oguogu.vercel.app/board/qna/${_id}`,
     },
     openGraph: {
-      title: `${title} | 자주 묻는 질문 - 오구오구`,
+      title: `${title} | 자주 묻는 질문 - 오구텃밭`,
       description: desc,
       type: 'article',
       url: `https://final-05-oguogu.vercel.app/board/qna/${_id}`,
     },
     twitter: {
       card: 'summary',
-      title: `${title} | 오구오구`,
+      title: `${title} | 오구텃밭`,
       description: desc,
     },
   };
@@ -63,11 +63,11 @@ export default async function QnaDetailPage({ params }: QnaDetailPageProps) {
     <>
       <LinkHeader title="자주 묻는 질문" />
       <main className="px-4 py-4 min-h-[calc(100vh-48px)]">
-        <div className="flex justify-between gap-2 border-b border-oguogu-gray-4 pb-1 mb-2 text-[16px] items-end ">
-          <div className="flex-shrink-0 w-[80px] text-oguogu-main ">{detailQna?.tag}</div>
-          <div className="truncate min-w-0 flex-1 text-oguogu-black ">{detailQna?.title}</div>
+        <div className="flex flex-col border-b border-oguogu-gray-4 pb-3 mb-2 text-base">
+          <div className="flex-shrink-0 text-oguogu-main">{detailQna?.tag}</div>
+          <div className="min-w-0 flex-1 text-oguogu-black">{detailQna?.title}</div>
         </div>
-        <div className="text-[12px] leading-[140%] mt-5">
+        <div className="text-base leading-[140%] mt-6">
           {detailQna?.content
             .split('.')
             .filter(Boolean)

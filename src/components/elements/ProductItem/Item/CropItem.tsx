@@ -18,6 +18,7 @@ export default function CropItem({
   seller,
   togglebookmark = () => {},
   isbookmarked = false,
+  mainImages,
 }: Item) {
   const isSold = extra!.badge?.isSold && 'sold';
   const isBest = extra!.badge?.isBest && 'best';
@@ -34,9 +35,18 @@ export default function CropItem({
         <div className="relative">
           {/* 대표 이미지 */}
           {/* 이미지를 하드코딩 해둔 상태 추후 동적으로 관리해야 함 */}
-          <div className="bg-[url('/images/crop/crop-001.png')] min-w-[140px] min-h-[186.67px] bg-center bg-cover aspect-[3/4] rounded-lg"></div>
-          {/* <Image src={`/images/crop/crop-001.png`} alt="" width={140} height={186.67} className="rounded-[8px]" /> */}
 
+          <div
+            style={{
+              backgroundImage: `url(${mainImages[0].path})`,
+            }}
+            className="bg-center bg-cover rounded-lg aspect-[3/4] min-w-[140px] min-h-[186.67px]"
+          ></div>
+
+          {/* <div
+            className={`bg-[url(${mainImages[0].path})] min-w-[140px] min-h-[186.67px] bg-center bg-cover aspect-[3/4] rounded-lg`}
+          ></div>
+ */}
           {/* 뱃지 (제철 상품, 인기 상품 등) */}
           <div className="absolute top-0.5 left-1.5">
             {badgeList.map((item, index) => (
@@ -50,7 +60,7 @@ export default function CropItem({
       <div className="flex flex-col gap-1">
         {/* 판매자 정보 */}
         <div className="flex gap-1 items-center">
-          <Image src="/images/product-hatIcon.svg" alt="농사꾼 모자 아이콘" width={16} height={16} />
+          <Image src="/images/product-hatIcon.svg" alt="" aria-hidden="true" width={16} height={16} />
           <p className="text-[10px]">{seller?.extra?.businessInfo?.companyName ?? '오구텃밭'}</p>
         </div>
 

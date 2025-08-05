@@ -13,7 +13,7 @@ import { useRouter } from 'next/navigation';
 import React, { useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 
-export default function AddPeriodForm({ id }: { id: number }) {
+export default function AddPeriodForm({ id, sellerId }: { id: number; sellerId: number }) {
   const [status, setStatus] = useState('');
   const [title, setTitle] = useState('');
   const [content, setContent] = useState<string>('');
@@ -26,6 +26,7 @@ export default function AddPeriodForm({ id }: { id: number }) {
   const router = useRouter();
 
   /* 토큰 정보 */
+  const userId = useAuthStore(state => state.userInfo?._id);
   const type = useAuthStore(state => state.userInfo?.type);
   const token = useAuthStore(state => state.token);
 
@@ -54,7 +55,7 @@ export default function AddPeriodForm({ id }: { id: number }) {
       console.log('extra', allExtra);
 
       const period = allExtra.period || [];
-      console.log(period);
+      console.log('period', period);
 
       let fileRes: fileResponse | null = null;
 
@@ -63,7 +64,7 @@ export default function AddPeriodForm({ id }: { id: number }) {
         formData.append('attach', imageFile);
 
         fileRes = await uploadFile(formData);
-        console.log(fileRes);
+        console.log('파일 업로드', fileRes);
 
         if (!fileRes?.ok) {
           console.error(fileRes?.message);
@@ -82,10 +83,10 @@ export default function AddPeriodForm({ id }: { id: number }) {
           imagePath: fileRes?.item[0]?.path || null,
         },
       };
-      console.log(newPeriodItem);
+      console.log('신규 히스토리', newPeriodItem);
 
       const updatedPeriod = [...period, newPeriodItem];
-      console.log(updatedPeriod);
+      console.log('히스토리 전체', updatedPeriod);
 
       /* 데이터 전송 */
       await updateProduct(
@@ -108,7 +109,7 @@ export default function AddPeriodForm({ id }: { id: number }) {
       setSelectedFileName('');
       setImagePreview(null);
 
-      // 강제 리로드
+      // 강제 리프레시
       router.refresh();
     } catch (err) {
       console.log('에러 발생', err);
@@ -147,9 +148,7 @@ export default function AddPeriodForm({ id }: { id: number }) {
 
   return (
     <>
-      {type !== 'seller' ? (
-        ''
-      ) : (
+      {type === 'seller' && userId === sellerId ? (
         <div className="mt-8 w-full h-full flex flex-col justify-center items-center gap-2">
           {/* 토글 버튼 */}
           {showForm ? (
@@ -306,6 +305,8 @@ export default function AddPeriodForm({ id }: { id: number }) {
             ''
           )}
         </div>
+      ) : (
+        ''
       )}
     </>
   );

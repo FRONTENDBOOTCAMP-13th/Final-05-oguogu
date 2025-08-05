@@ -75,7 +75,13 @@ export default function OrderItemForSeller({ orderState, item, updateOrderStatus
       <section className="flex flex-col gap-2">
         {item.products.map(product => (
           <div key={product._id} className="flex gap-2">
-            <div className="w-[48px] h-[48px] bg-cover bg-center bg-[url('/images/crop/crop-001.png')] bg-no-repeat rounded-[4px]" />
+            {/* <div className="w-[48px] h-[48px] bg-cover bg-center bg-[url('/images/crop/crop-001.png')] bg-no-repeat rounded-[4px]" /> */}
+            <div
+              style={{
+                backgroundImage: `url(${item.products[0].image.path})`,
+              }}
+              className="w-[48px] h-[48px] bg-cover bg-center bg-[url('/images/crop/crop-001.png')] bg-no-repeat rounded-[4px]"
+            ></div>
             <div className="w-[216px]">
               <div className="text-[12px] truncate">{product.name}</div>
               <div className="text-[12px] text-oguogu-gray-4">
@@ -91,17 +97,18 @@ export default function OrderItemForSeller({ orderState, item, updateOrderStatus
       orderState === 'inTransit' ||
       orderState === 'refundInProgress' ? (
         <section className="flex justify-center items-center gap-2 text-[12px]">
-          <button className="w-full py-2 leading-none border border-oguogu-gray-2 rounded-[4px]">주문 정보 확인</button>
+          {/* <button className="w-full py-2 leading-none border border-oguogu-gray-2 rounded-[4px]">주문 정보 확인</button> */}
           <button onClick={onClick} className="w-full py-2 leading-none border border-oguogu-main rounded-[4px]">
             {nextText} 전환
           </button>
         </section>
       ) : (
-        <section>
+        ''
+        /*  <section>
           <button className="text-[12px] w-full py-2 leading-none border border-oguogu-gray-2 rounded-[4px]">
             주문 정보 확인
           </button>
-        </section>
+        </section> */
       )}
     </div>
   );

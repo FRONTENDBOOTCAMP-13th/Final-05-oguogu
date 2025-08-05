@@ -1,3 +1,4 @@
+import { UserAccountExtraType } from '@/shared/types/account';
 import { MainImage, periodObject } from '@/shared/types/product';
 
 export interface OrderListResponse {
@@ -22,6 +23,18 @@ export interface Order {
   createdAt: string; // 예: "2025.07.23 14:02:52"
   updatedAt: string;
   cost: OrderCost;
+  user: OrderUser;
+}
+
+export interface OrderUser {
+  email: string;
+  address: string;
+  image: string;
+  loginType: string;
+  name: string;
+  phone: string;
+  _id: number;
+  extra: UserAccountExtraType;
 }
 
 export interface OrderedProduct {

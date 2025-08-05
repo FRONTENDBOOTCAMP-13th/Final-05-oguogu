@@ -4,5 +4,5 @@ export interface ProductLinkType {
   link: string;
   linkTitle: string;
   subTxt: string;
-  mode?: 'login';
+  mode?: 'registerPage' | 'loginPage';
 }
