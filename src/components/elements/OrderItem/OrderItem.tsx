@@ -41,7 +41,7 @@ export default function OrderItem({ orderState, item, updateOrderStatus, handleS
 
   const requestRefund = () => updateOrderStatus(item._id, 'refundInProgress');
   const confirmPurchase = () => updateOrderStatus(item._id, 'purchaseCompleted');
-  const cancelRefundRequest = () => updateOrderStatus(item._id, 'preparingShipment');
+  // const cancelRefundRequest = () => updateOrderStatus(item._id, 'preparingShipment');
 
   return (
     <div className="flex flex-col gap-4 justify-between min-w-[288px] w-full">
