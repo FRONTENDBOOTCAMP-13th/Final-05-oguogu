@@ -16,6 +16,7 @@ export default function GardenItem({
   seller,
   isbookmarked,
   togglebookmark,
+  mainImages,
 }: Item) {
   const isSold = extra!.badge?.isSold && 'sold';
   const isBest = extra!.badge?.isBest && 'best';
@@ -32,7 +33,12 @@ export default function GardenItem({
         {/* 대표 이미지 */}
         {/*이미지를 하드코딩 해둔 상태 추후 동적으로 관리해야 함*/}
         <div className="relative">
-          <div className="bg-[url('/images/gardening/gardening-001.png')] min-w-[140px] min-h-[186.67px] bg-center bg-cover aspect-[3/4] rounded-lg"></div>
+          <div
+            style={{
+              backgroundImage: `url(${mainImages[0].path})`,
+            }}
+            className="bg-center bg-cover rounded-lg aspect-[3/4] min-w-[140px] min-h-[186.67px]"
+          ></div>
           {/* <Image
             src={`/images/garden/garden-001.png`}
             alt=""
@@ -54,7 +60,7 @@ export default function GardenItem({
       <div className="flex flex-col gap-1">
         {/* 판매자 정보 */}
         <div className="flex gap-1 items-center">
-          <Image src="/images/product-hatIcon.svg" alt="농사꾼 모자 아이콘" width={16} height={16} />
+          <Image src="/images/product-hatIcon.svg" alt="" aria-hidden="true" width={16} height={16} />
           <p className="text-[10px]">{seller?.extra?.businessInfo?.companyName ?? '오구텃밭'}</p>
         </div>
 

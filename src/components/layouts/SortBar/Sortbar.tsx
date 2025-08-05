@@ -35,7 +35,8 @@ export function ReviewSortbar({ reviewAvg }: ReviewSortbarType) {
         <div className="flex flex-row gap-x-[2px]">
           <Image
             src="/images/iconImage/icon-star-filled.svg"
-            alt="별 모양의 평점 아이콘"
+            alt=""
+            aria-hidden="true"
             width={16}
             height={16}
             className="mb-[4px]"

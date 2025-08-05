@@ -1,8 +1,12 @@
 import AddPeriodForm from '@/features/addPeriodForm/AddPeriodForm';
-import { periodObject } from '@/shared/types/product';
+import { getProduct } from '@/shared/data/functions/product';
+import { periodObject, productRes } from '@/shared/types/product';
 import Image from 'next/image';
 
-export default function PeriodItem({ id, periodItemList }: { id: number; periodItemList: periodObject[] }) {
+export default async function PeriodItem({ id, periodItemList }: { id: number; periodItemList: periodObject[] }) {
+  const res: productRes = await getProduct(id);
+  const userIdFromProduct = res.item.seller?._id;
+
   if (periodItemList === null) {
     return <div>업로드 전입니다.</div>;
   }
@@ -10,7 +14,7 @@ export default function PeriodItem({ id, periodItemList }: { id: number; periodI
   return (
     <>
       {/* 히스토리 등록 버튼 */}
-      <AddPeriodForm id={id} />
+      <AddPeriodForm id={id} sellerId={userIdFromProduct!} />
 
       {periodItemList ? (
         <div className="mt-4 grid gap-4 mobile-max:grid-cols-2 mobile-max:gap-5 w-full">
@@ -41,7 +45,12 @@ export default function PeriodItem({ id, periodItemList }: { id: number; periodI
                   {/* 이미지 */}
                   {item.image?.imagePath ? (
                     <div className="rounded-lg overflow-hidden w-full bg-oguogu-white flex justify-center">
-                      <Image src={item.image?.imagePath} alt="period" width={256} height={256} />
+                      <Image
+                        src={item.image?.imagePath}
+                        alt={`${item.status}를 추가 설명하는 이미지`}
+                        width={256}
+                        height={256}
+                      />
                     </div>
                   ) : (
                     ''

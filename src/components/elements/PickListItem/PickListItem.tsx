@@ -71,7 +71,7 @@ export default function PickListItem({
             {/* 판매자명 & 상품명 */}
             <div className="flex flex-col gap-1">
               <div className="flex gap-1">
-                <Image src="/images/product-hatIcon.svg" alt="농사꾼 모자 아이콘" width={16} height={16} />
+                <Image src="/images/product-hatIcon.svg" alt="" aria-hidden="true" width={16} height={16} />
                 <span className="leading-tight line-clamp-1 text-xs">{item.product.seller?.name ?? '오구텃밭'}</span>
               </div>
               <span className="leading-tight line-clamp-1">{item.product.name}</span>

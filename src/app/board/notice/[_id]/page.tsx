@@ -56,6 +56,8 @@ export default async function NoticeDetailPage({ params }: NoticeDetailPageProps
   const { _id } = await params;
 
   const noticeRes: responsePostReplies = await getPosts('notice');
+  /* const notice = noticeRes.item.find(item => item._id === Number(_id)); */
+  /* const formattedDate = format(notice!.createdAt, 'yyyy.MM.dd'); */
 
   const detailNotice = noticeRes.item.find(item => item._id === Number(_id));
 
@@ -63,12 +65,16 @@ export default async function NoticeDetailPage({ params }: NoticeDetailPageProps
     <>
       <LinkHeader title="공지사항" />
       <main className="px-4 py-4 min-h-[calc(100vh-48px)]">
-        <div className="flex justify-between gap-2 border-b border-oguogu-gray-4 pb-1 mb-2 text-[16px] items-end ">
-          <div className="flex-shrink-0 w-[60px] text-oguogu-main ">{detailNotice?.tag}</div>
-          <div className="truncate min-w-0 flex-1 text-oguogu-black ">{detailNotice?.title}</div>
-          <div className="flex-shrink-0 w-[90px] text-oguogu-gray-4 text-[12px]">2025.08.02</div>
+        <div className="flex flex-col border-b border-oguogu-gray-4 pb-3 mb-2 text-base">
+          <div className="flex-shrink-0  text-oguogu-main ">{detailNotice?.tag}</div>
+          <div className="flex items-end">
+            <div className="truncate min-w-0 flex-1 text-oguogu-black ">{detailNotice?.title}</div>
+            <div className="flex-shrink-0 text-oguogu-gray-4 text-[12px]">
+              &nbsp;&nbsp;{detailNotice?.createdAt.split(' ')[0]}
+            </div>
+          </div>
         </div>
-        <div className="text-[12px] leading-[140%] mt-5">
+        <div className="text-base leading-[140%] mt-6">
           {detailNotice?.content
             .split('.')
             .filter(Boolean)

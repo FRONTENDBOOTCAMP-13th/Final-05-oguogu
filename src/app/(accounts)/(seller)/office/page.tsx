@@ -26,7 +26,7 @@ export default function BackOffice() {
           <div className="flex flex-col gap-4">
             <h2 className="text-base text-oguogu-gray-4 flex gap-1 items-start">
               나의 텃밭 생활
-              <Image src="/svgs/pot.svg" alt="" width={20} height={20}></Image>
+              <Image src="/svgs/pot.svg" alt="" aria-hidden="true" width={20} height={20}></Image>
             </h2>
             <Link href="/office/orders">주문 관리</Link>
             <Link href="/office/products">상품 관리</Link>
@@ -38,7 +38,7 @@ export default function BackOffice() {
           <div className="flex flex-col gap-4">
             <h2 className="text-base text-oguogu-gray-4 flex gap-1 items-start">
               고객센터
-              <Image src="/svgs/notice.svg" alt="" width={18} height={18}></Image>
+              <Image src="/svgs/notice.svg" alt="" aria-hidden="true" width={18} height={18}></Image>
             </h2>
             <Link href="/board/notice">공지사항</Link>
             <Link href="/board/qna">자주 묻는 질문</Link>
