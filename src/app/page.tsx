@@ -43,7 +43,8 @@ export default async function Home() {
         <ImageCategory />
         <ProductLinkItem link="/product/crop" linkTitle="전체 농산물" subTxt="보러 가기" />
       </aside>
-      메인
+
+      {/* 메인 */}
       <main className="flex flex-col pt-8 gap-y-8 mobile-max:gap-y-12 mobile-max:pt-12 ">
         {/* 추천 카테고리 1 */}
         <article id="link1" className="titleWithProductItem scroll-mt-[130px]">
