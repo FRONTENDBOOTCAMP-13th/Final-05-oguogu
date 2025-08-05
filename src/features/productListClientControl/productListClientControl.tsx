@@ -237,6 +237,7 @@ export default function ProductListClientControl({ productList, type }: productL
               seller={item.seller}
               isbookmarked={isBookmarked(item._id)}
               togglebookmark={() => toggleBookmark(item._id)}
+              mainImages={item.mainImages}
             />
           ))}
         </main>
@@ -256,6 +257,7 @@ export default function ProductListClientControl({ productList, type }: productL
               bookmarks={item.bookmarks}
               rating={item.rating}
               replies={item.replies}
+              mainImages={item.mainImages}
             />
           ))}
         </main>
@@ -274,6 +276,7 @@ export default function ProductListClientControl({ productList, type }: productL
               seller={item.seller}
               buyQuantity={item.buyQuantity}
               quantity={item.quantity}
+              mainImages={item.mainImages}
             />
           ))}
         </main>

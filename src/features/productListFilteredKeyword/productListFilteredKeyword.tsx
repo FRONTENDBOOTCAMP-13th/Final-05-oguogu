@@ -219,6 +219,7 @@ export default function ProductListFilteredKeyword() {
                 seller={item.seller}
                 isbookmarked={isBookmarked(item._id)}
                 togglebookmark={() => toggleBookmark(item._id)}
+                mainImages={item.mainImages}
               />
             ))}
           </main>
@@ -237,6 +238,7 @@ export default function ProductListFilteredKeyword() {
                 seller={item.seller}
                 isbookmarked={isBookmarked(item._id)}
                 togglebookmark={() => toggleBookmark(item._id)}
+                mainImages={item.mainImages}
               />
             ))}
             {Array.from({ length: Math.max(0, 4 - sortItems(cropDataFromKeyword).length) }).map((_, idx) => (
@@ -262,6 +264,7 @@ export default function ProductListFilteredKeyword() {
                 seller={item.seller}
                 isbookmarked={isBookmarked(item._id)}
                 togglebookmark={() => toggleBookmark(item._id)}
+                mainImages={item.mainImages}
               />
             ))}
           </main>
@@ -286,6 +289,7 @@ export default function ProductListFilteredKeyword() {
                 seller={item.seller}
                 isbookmarked={isBookmarked(item._id)}
                 togglebookmark={() => toggleBookmark(item._id)}
+                mainImages={item.mainImages}
               />
             ))}
           </main>
@@ -306,6 +310,7 @@ export default function ProductListFilteredKeyword() {
                 seller={item.seller}
                 isbookmarked={isBookmarked(item._id)}
                 togglebookmark={() => toggleBookmark(item._id)}
+                mainImages={item.mainImages}
               />
             ))}
             {Array.from({ length: Math.max(0, 4 - sortItems(gardeningDataFromKeyword).length) }).map((_, idx) => (

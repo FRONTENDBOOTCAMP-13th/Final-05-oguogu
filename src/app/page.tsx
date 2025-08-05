@@ -10,10 +10,11 @@ import NoticeItem from '@/components/elements/boardItem/noticeItem';
 import { responsePostReplies } from '@/shared/types/post';
 import { getPosts } from '@/shared/data/functions/post';
 import QnaItem from '@/components/elements/boardItem/qnaItem';
-import { ReviewRes } from '@/shared/types/review';
-import { getALLReplies } from '@/shared/data/functions/replies';
-import ReviewItemCard from '@/components/elements/ReviewItem/ReviewItemCard';
+
 import { Metadata } from 'next';
+import ReviewItemCard from '@/components/elements/ReviewItem/ReviewItemCard';
+import { getALLReplies } from '@/shared/data/functions/replies';
+import { ReviewRes } from '@/shared/types/review';
 
 export const metadata: Metadata = {
   title: '오구오구 - 산지직송 농산물과 특별한 농촌 체험',
