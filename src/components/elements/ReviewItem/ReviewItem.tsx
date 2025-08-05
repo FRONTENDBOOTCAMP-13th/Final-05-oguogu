@@ -39,6 +39,11 @@ export default function ReviewItem({ name, email, res }: ReviewItemType) {
     return visible + hidden;
   }
 
+  function isValidImagePath(path: string): boolean {
+    if (!path || path === 'src') return false;
+    return path.startsWith('/') || path.startsWith('http://') || path.startsWith('https://');
+  }
+
   return (
     <>
       <div className=" flex flex-col gap-2 py-5 border-t border-oguogu-gray-1">
@@ -51,7 +56,7 @@ export default function ReviewItem({ name, email, res }: ReviewItemType) {
         {/* 리뷰 이미지 창 */}
         <div className="flex gap-2">
           <div className="flex gap-2">
-            {res.extra.imagePath && (
+            {res.extra.imagePath && isValidImagePath(res.extra.imagePath) && (
               <Image
                 className="w-[90px] h-[90px] object-cover rounded-[4px]"
                 src={res.extra.imagePath}

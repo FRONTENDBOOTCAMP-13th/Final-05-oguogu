@@ -1132,7 +1132,7 @@
       "active": true,
       "mainImages": [
         {
-          "path": "uploadFiles/crop-napa_cabbage-2.png",
+          "path": "uploadFiles/crop-napacabbage-02.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
@@ -1806,7 +1806,7 @@
       "active": true,
       "mainImages": [
         {
-          "path": "uploadFiles/farming.png",
+          "path": "uploadFiles/Farming.png",
           "name": "image-1.jpg",
           "originalname": "텃밭체험-1.jpg"
         },
