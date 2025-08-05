@@ -86,7 +86,13 @@ export default function CardItem({
         <div className="flex min-w-[288px] w-full h-full gap-4">
           {/* 이미지 */}
           <Link href={`/search/result/${item.product._id}/detail`}>
-            <div className="min-w-[80px] h-[80px] bg-[url('/images/crop/crop-001.png')] bg-cover bg-center bg-no-repeat rounded-[4px]" />
+            {/* <div className="min-w-[80px] h-[80px] bg-[url('/images/crop/crop-001.png')] bg-cover bg-center bg-no-repeat rounded-[4px]" /> */}
+            <div
+              style={{
+                backgroundImage: `url(${item.product.image.path})`,
+              }}
+              className="min-w-[80px] h-[80px]  bg-cover bg-center bg-no-repeat rounded-[4px]"
+            ></div>
           </Link>
 
           {/* 텍스트 */}

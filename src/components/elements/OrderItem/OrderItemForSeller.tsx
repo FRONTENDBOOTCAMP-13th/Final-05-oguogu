@@ -75,7 +75,13 @@ export default function OrderItemForSeller({ orderState, item, updateOrderStatus
       <section className="flex flex-col gap-2">
         {item.products.map(product => (
           <div key={product._id} className="flex gap-2">
-            <div className="w-[48px] h-[48px] bg-cover bg-center bg-[url('/images/crop/crop-001.png')] bg-no-repeat rounded-[4px]" />
+            {/* <div className="w-[48px] h-[48px] bg-cover bg-center bg-[url('/images/crop/crop-001.png')] bg-no-repeat rounded-[4px]" /> */}
+            <div
+              style={{
+                backgroundImage: `url(${item.products[0].image.path})`,
+              }}
+              className="w-[48px] h-[48px] bg-cover bg-center bg-[url('/images/crop/crop-001.png')] bg-no-repeat rounded-[4px]"
+            ></div>
             <div className="w-[216px]">
               <div className="text-[12px] truncate">{product.name}</div>
               <div className="text-[12px] text-oguogu-gray-4">

@@ -14,7 +14,7 @@ export interface CartItem {
     quantity: number;
     buyQuantity: number;
     image: {
-      url: string;
+      path: string;
       fileName: string;
       orgName: string;
     };

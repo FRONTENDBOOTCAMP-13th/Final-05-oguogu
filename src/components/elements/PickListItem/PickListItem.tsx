@@ -62,7 +62,7 @@ export default function PickListItem({
           href={`/search/result/${item.product._id}/detail`}
           className="flex items-center justify-center min-w-[80px] h-[80px] overflow-hidden rounded-sm"
         >
-          <Image src="/images/crop/crop-001.png" alt={item.product.name} width={100} height={100} />
+          <Image src={item.product.mainImages[0].path} alt={item.product.name} width={100} height={100} />
         </Link>
 
         {/* 텍스트 */}

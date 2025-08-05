@@ -120,13 +120,6 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
         height={320}
       />
 
-      {/*  <div
-        style={{
-          backgroundImage: `url(${mainImages[0].path})`,
-        }}
-        className="bg-center bg-cover rounded-lg aspect-[3/4] min-w-[140px] min-h-[186.67px]"
-      ></div> */}
-
       <section id="userInfo">
         <ProductDetailInfo type={productType || 'crop'} item={res.item} />
       </section>
