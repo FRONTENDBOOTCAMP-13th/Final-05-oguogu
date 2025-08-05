@@ -67,7 +67,6 @@ export default function CartClientControl() {
       if (data.ok) {
         await deleteCart(item.cart_id, token);
         successCartIds.push(item.cart_id);
-        setIsSuccessOpen(true);
       } else {
         allSuccess = false;
         toast.error(`상품 ID ${item._id} 주문 실패: ${data.message}`);
@@ -83,6 +82,7 @@ export default function CartClientControl() {
 
     if (allSuccess && successCartIds.length > 0) {
       toast.success('주문이 완료되었습니다.');
+      setIsSuccessOpen(true);
     }
   };
 
