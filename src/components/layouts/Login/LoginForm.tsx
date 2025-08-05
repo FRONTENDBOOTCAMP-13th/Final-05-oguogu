@@ -6,8 +6,6 @@ import LoginInput from '@/components/elements/LoginItem/LoginInput';
 import ProductLinkItem from '@/components/elements/ProductLink/ProductLink';
 import { loginUser } from '@/shared/data/actions/user';
 import { useAuthStore, userInfo } from '@/shared/store/authStore';
-import Image from 'next/image';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
@@ -98,10 +96,6 @@ export default function LoginForm() {
           <CheckButton size={14} gap={2} checked={autoLogin} onChange={() => setAutoLogin(prev => !prev)}>
             자동 로그인
           </CheckButton>
-          <div className="flex flex-row gap-[12px] text-[8px] text-oguogu-gray-3">
-            <Link href={`/`}>아이디 찾기</Link>
-            <Link href={`/`}>비밀번호 찾기</Link>
-          </div>
         </div>
 
         {/* 로그인 버튼 */}
@@ -115,29 +109,7 @@ export default function LoginForm() {
         />
 
         {/* 회원가입 링크 */}
-        <ProductLinkItem link="/register" linkTitle="회원가입" subTxt="하러 가기" />
-
-        {/* 외부 폼 */}
-
-        <section className=" flex flex-col gap-y-[16px]">
-          <div>
-            <CommonButton
-              feature="카카오 로그인"
-              textSize="text-[16px]"
-              width="w-[288px]"
-              height="h-[43px]"
-              bgColor="bg-[#FEE500]"
-              textColor="text-oguogu-black"
-              cursorPointer={true}
-              icon={<Image src="images/iconImage/icon-login-kakao.svg" alt="카카오 아이콘" width={20} height={20} />}
-            />
-          </div>
-
-          <div className="flex flex-row items-center justify-center gap-2">
-            <Image src={`images/iconImage/icon-login-google.svg`} alt="googleIcon" width={36} height={36} />
-            <Image src={`images/iconImage/icon-login-naver.svg`} alt="naverIcon" width={36} height={36} />
-          </div>
-        </section>
+        <ProductLinkItem link="/register" linkTitle="회원가입" subTxt="하러 가기" mode="loginPage" />
       </form>
     </section>
   );
