@@ -67,7 +67,7 @@ export default async function Home() {
             <Title title="톡! 터지는 여름의 맛" description="제철 과일과 함께 시원한 여름을 즐겨보세요 🍉" />
             <ProductItemList type="crop" />
           </div>
-          <ProductLinkItem link="/search/result" linkTitle="제철 과일" subTxt="구매하러 가기" />
+          <ProductLinkItem link="/product/crop?category=fruit" linkTitle="제철 과일" subTxt="구매하러 가기" />
         </article>
 
         {/* 추천 카테고리 3 */}
