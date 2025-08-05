@@ -1,8 +1,9 @@
 export interface SlideBannerItemType {
   order: string;
   size: 'sm' | 'md' | 'lg';
-  productName: string;
-  farmName: string;
+  title: string;
+  subtitle: string;
   className?: string;
-  keyword: string;
+  text: string;
+  link: string;
 }

@@ -1,5 +1,4 @@
 import { SlideBannerItemType } from '@/components/elements/BannerItem/SlideBannerItem.type';
-import Image from 'next/image';
 import Link from 'next/link';
 
 /**
@@ -13,31 +12,16 @@ import Link from 'next/link';
  * @param {string} props.className - 기본 클래스 외 추가로 지정할 CSS 스타일
  * @returns {JSX.Element} 슬라이드 배너 아이템 JSX 요소
  */
-export default function SlideBannerItem({
-  order,
-  size,
-  productName,
-  farmName,
-  className,
-  keyword,
-}: SlideBannerItemType) {
+export default function SlideBannerItem({ order, title, subtitle, text, className, link }: SlideBannerItemType) {
   return (
-    // CHECKLIST
-    // [ ] 링크 연결
-    <Link href={`/search/result?keyword=${keyword}`}>
+    <Link href={link}>
       <figure className={`relative w-[210px] h-[280px] overflow-hidden rounded-[12px] transform ${className}`}>
-        <Image
-          src={`/images/main-banner-${order}-${size}.webp`}
-          alt={`${farmName}에서 판매하는 ${productName}`}
-          width={210}
-          height={280}
-          className="w-full h-full object-cover scale-100"
-          priority
-        />
+        <video src={`/videos/main-banner-${order}.mp4`} autoPlay muted></video>
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
-        <figcaption className="absolute bottom-0 left-0 w-full text-oguogu-white text-center py-2">
-          <p className="text-[20px] font-bold">{productName}</p>
-          <p className="text-[14px]">{farmName}</p>
+        <figcaption className="absolute bottom-0 left-0 w-full text-oguogu-white text-center py-5">
+          <p className="text-[20px] font-bold leading-none">{title}</p>
+          <p className="text-[20px] font-bold leading-normal">{subtitle}</p>
+          <p className="pt-1 text-xs leading-none text-oguogu-gray-2">{text}</p>
         </figcaption>
       </figure>
     </Link>
