@@ -65,7 +65,13 @@ export default function OrderItem({ orderState, item, updateOrderStatus, handleS
       <section className="flex flex-col gap-2">
         {item.products.map(product => (
           <Link href={`/search/result/${product._id}/detail`} key={product._id} className="flex gap-2">
-            <div className="w-[48px] h-[48px] bg-cover bg-center bg-[url('/images/crop/crop-001.png')] bg-no-repeat rounded-sm" />
+            {/* <div className="w-[48px] h-[48px] bg-cover bg-center bg-[url('/images/crop/crop-001.png')] bg-no-repeat rounded-sm" /> */}
+            <div
+              style={{
+                backgroundImage: `url(${item.products[0].image.path})`,
+              }}
+              className="w-[48px] h-[48px] bg-cover bg-center  bg-no-repeat rounded-sm"
+            ></div>
             <div>
               <div className="text-[12px] clamp-1">{product.name}</div>
               <div className="text-[12px] text-oguogu-gray-4">
