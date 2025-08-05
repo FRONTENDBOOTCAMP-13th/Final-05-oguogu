@@ -142,7 +142,7 @@ export default function SearchForm() {
         }}
         onBlur={() => setTimeout(() => setIsFocused(false), 100)}
         onKeyDown={handleKeyDown}
-        placeholder="7월은 초당옥수수가 제철!"
+        placeholder="8월 더운 여름에는 제철 과일과 함께!"
         className="flex-1 h-6 py-3 pl-2 ml-2 text-sm outline-none appearance-none sm:w-48 text-oguogu-black placeholder-oguogu-gray-3"
       />
 

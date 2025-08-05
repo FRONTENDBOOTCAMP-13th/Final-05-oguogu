@@ -19,9 +19,46 @@ export default function SlideBanner() {
   const [autoSlide, setAutoSlide] = useState(true);
 
   const bannerItems: SlideBannerItemType[] = [
-    { order: '01', size: 'lg', productName: '프리미엄 초당 옥수수', farmName: '돌쇠네 농산물', keyword: '옥수수' },
-    { order: '02', size: 'lg', productName: '프리미엄 퇴천 토마토', farmName: '대성농장 농산물', keyword: '토마토' },
-    { order: '03', size: 'lg', productName: '프리미엄 인제 감자', farmName: '두메산골 농산물', keyword: '감자' },
+    {
+      order: '01',
+      size: 'lg',
+      title: '맛있게 건강한,',
+      subtitle: '믿을 수 있는 농산물',
+      text: '농산물 보러 가기',
+      link: '/product/crop',
+    },
+    {
+      order: '02',
+      size: 'lg',
+      title: '자연 속에서',
+      subtitle: '숨을 쉬세요!',
+      text: '체험 상품 신청하기',
+      link: '/product/experience',
+    },
+    {
+      order: '03',
+      size: 'lg',
+      title: '요즘 건강,',
+      subtitle: '직접 키워먹는 게 국룰!',
+      text: '텃밭 상품 구경하기',
+      link: '/product/gardening',
+    },
+    {
+      order: '04',
+      size: 'lg',
+      title: '믿고 먹는 채소',
+      subtitle: '오구텃밭이 보증합니다',
+      text: '제철 채소 구매하기',
+      link: '/product/crop?category=veggie',
+    },
+    {
+      order: '05',
+      size: 'lg',
+      title: '싱싱할 타이밍,',
+      subtitle: ' 지금 오구!',
+      text: '제철 과일 구매하기',
+      link: '/product/crop?category=fruit',
+    },
   ];
 
   // 슬라이드 무한 루프
@@ -32,7 +69,7 @@ export default function SlideBanner() {
     if (!autoSlide) return;
     const interval = setInterval(() => {
       setCurrentIndex(prev => (prev + 1) % bannerItems.length);
-    }, 3000);
+    }, 1000 * 4);
     return () => clearInterval(interval);
   }, [autoSlide, bannerItems.length]);
 

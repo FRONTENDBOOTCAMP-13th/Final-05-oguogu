@@ -105,8 +105,8 @@ export default function ProductItemList({ type }: ProductItemListType) {
   }, [setLoading, type]);
 
   const cropData = res?.item
-    .filter((item: Item) => item.name.includes('옥수수'))
     .filter((item: Item) => item.extra?.productType === 'crop')
+    .filter((item: Item) => item.extra?.category?.includes('fruit'))
     .sort((a: Item, b: Item) => b.extra!.likeCount! - a.extra!.likeCount!);
 
   const expData = res?.item
