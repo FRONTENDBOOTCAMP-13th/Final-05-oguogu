@@ -2726,7 +2726,7 @@
 
     {
       "seller_id": 16,
-      "name": "브로콜리 한 송이의 기적",
+      "name": "브로콜리",
       "content": "건강한 초록을 기다리는 시간, 내 손으로 키우는 브로콜리",
       "price": 28000,
       "shippingFees": 0,
@@ -2758,8 +2758,8 @@
         "category": ["텃밭체험"],
         "filter": ["브로콜리", "가드닝", "자연재배"],
         "region": "경기 여주시 산북면 광여로 1509",
-        "deadline": "2025-08-18",
-        "harvestExpectedDate": "2025-11-20",
+        "deadline": "2025-03-31",
+        "harvestExpectedDate": "2025-09-01",
         "harvestExpectedCnt": "6송이",
         "dcRate": 28,
         "productCnt": 1,
@@ -2771,20 +2771,40 @@
           "isSold": false
         },
         "period": [
-          { "date": "2025-08-20", "image": "src", "status": "seeding", "content": "브로콜리 텃밭을 심었어요!" },
           {
-            "date": "2025-09-05",
+            "date": "2025-04-02",
+            "image": "src",
+            "status": "seeding",
+            "title": "작은 씨앗 하나에서 시작된 봄🌱",
+            "content": "오늘, 브로콜리 씨앗을 조심스레 심었어요. 흙 한 줌 속에 봄의 시작을 담는 기분이랄까요? 눈에 보이진 않지만, 지금 이 아이들은 땅속에서 조용히 생명을 준비하고 있답니다. 조금만 기다려 주세요. 곧 인사할 거예요 🌿"
+          },
+          {
+            "date": "2025-04-15",
+            "image": "src",
+            "status": "sprouting",
+            "title": "처음 인사해요! 싹이 났어요 👋",
+            "content": "드디어 작디작은 초록빛 생명이 얼굴을 내밀었어요! 정말 감탄스럽죠? 며칠 전까진 아무것도 없던 땅에서 이렇게 싹이 올라오는 걸 보면 늘 신기하답니다."
+          },
+          {
+            "date": "2025-05-12",
             "image": "src",
             "status": "growing",
-            "content": "초록빛 잎들이 올라오기 시작했어요."
+            "title": "잎이 늘었어요, 더 단단해졌어요 🍃",
+            "content": "지금은 키는 작아도 기운은 충만한 시기! 매일매일 해가 질 때쯤 잎을 살펴보는 게 제 하루의 낙이에요. 조금씩 강해지고 있는 이 아이들을 응원해주세요 🙌"
           },
-          { "date": "2025-09-22", "image": "src", "status": "growing", "content": "줄기도 튼튼하게 잘 자라고 있어요." },
-          { "date": "2025-10-10", "image": "src", "status": "growing", "content": "곧 꽃봉오리가 맺힐 예정입니다." },
           {
-            "date": "2025-11-20",
+            "date": "2025-06-11",
             "image": "src",
-            "status": "harvested",
-            "content": "통통하고 싱싱한 브로콜리 수확 완료!"
+            "status": "growing",
+            "title": "이제 진짜 밭으로! 더 크게 자라볼게요 💪",
+            "content": "햇살도, 바람도, 비도 온몸으로 받아들이며 하루가 다르게 자라고 있답니다. 이제부턴 진짜 성장의 시간! 여름 동안 브로콜리답게 단단한 몸을 만들어갈 거예요 🥦"
+          },
+          {
+            "date": "2025-07-16",
+            "image": "src",
+            "status": "growing",
+            "title": "머리가 생기기 시작했어요! 🥦",
+            "content": "브로콜리 특유의 동글동글한 머리, 이제 막 그 윤곽이 잡히기 시작했어요! 이제 진짜 수확이 머지않았답니다! 💚"
           }
         ]
       }
@@ -2824,8 +2844,8 @@
         "category": ["텃밭체험"],
         "filter": ["당근", "겨울채소", "친환경"],
         "region": "경상북도 의성군",
-        "deadline": "2025-08-25",
-        "harvestExpectedDate": "2025-12-10",
+        "deadline": "2025-07-28",
+        "harvestExpectedDate": "2025-11-25",
         "harvestExpectedCnt": "약 20개",
         "dcRate": 41,
         "productCnt": 1,
@@ -2838,34 +2858,24 @@
         },
         "period": [
           {
-            "date": "2025-09-02",
-            "image": "src",
+            "date": "2025-08-01",
+            "image": {
+              "imagePath": "/images/gardeningHistory/seeding-001.png",
+              "name": "image-1.jpg"
+            },
             "status": "seeding",
-            "content": "당근 씨앗을 조심스럽게 심었어요."
+            "title": "여름 땅속에 씨앗 하나 심었어요 🌾",
+            "content": "8월의 시작과 함께 올해 첫 당근 씨앗을 뿌렸어요. 땅속에서 조용히 움직이는 이 작은 생명을 함께 응원해주세요 🧡🥕"
           },
           {
-            "date": "2025-09-23",
-            "image": "src",
-            "status": "growing",
-            "content": "파릇파릇 새싹이 올라오고 있어요!"
-          },
-          {
-            "date": "2025-10-12",
-            "image": "src",
-            "status": "growing",
-            "content": "잎이 풍성해졌어요. 뿌리도 잘 자라고 있겠죠?"
-          },
-          {
-            "date": "2025-11-20",
-            "image": "src",
-            "status": "growing",
-            "content": "곧 수확을 앞두고 있어요. 기대돼요!"
-          },
-          {
-            "date": "2025-12-10",
-            "image": "src",
-            "status": "harvested",
-            "content": "싱싱한 겨울 당근 수확 완료!"
+            "date": "2025-08-06",
+            "image": {
+              "imagePath": "/images/gardeningHistory/sprouting-002.png",
+              "name": "image-1.jpg"
+            },
+            "status": "sprouting",
+            "title": "얇고 여린 싹이 올라왔어요 ✨",
+            "content": "당근은 작고 섬세한 싹을 틔우며 인사를 해요. 햇살을 받으며 가느다란 초록이 올라오는 모습은 볼 때마다 뿌듯해요."
           }
         ]
       }
@@ -2905,8 +2915,8 @@
         "category": ["텃밭체험"],
         "filter": ["상추", "친환경", "샐러드채소"],
         "region": "경기 여주시 산북면 광여로 1509",
-        "deadline": "2025-08-10",
-        "harvestExpectedDate": "2025-10-20",
+        "deadline": "2025-07-15",
+        "harvestExpectedDate": "2025-11-01",
         "harvestExpectedCnt": "6포기 이상",
         "dcRate": 28,
         "productCnt": 1,
@@ -2919,34 +2929,34 @@
         },
         "period": [
           {
-            "date": "2025-08-13",
-            "image": "src",
+            "date": "2025-07-18",
+            "image": {
+              "imagePath": "/images/gardeningHistory/seeding-002.png",
+              "name": "image-1.jpg"
+            },
             "status": "seeding",
-            "content": "상추 씨앗을 조심스럽게 심었어요."
+            "title": "상추, 첫걸음을 내딛다 🌱",
+            "content": "지금은 보이지 않지만, 이 흙 속에서 상추가 첫 숨을 쉬고 있답니다."
           },
           {
-            "date": "2025-08-31",
-            "image": "src",
+            "date": "2025-07-24",
+            "image": {
+              "imagePath": "/images/gardeningHistory/sprouting-003.png",
+              "name": "image-1.jpg"
+            },
+            "status": "sprouting",
+            "title": "처음 인사하는 상추 싹 🌿",
+            "content": "며칠 만에 초록빛이 고개를 들었어요. 정말 작고 여린 생명, 그게 바로 지금의 상추입니다."
+          },
+          {
+            "date": "2025-08-05",
+            "image": {
+              "imagePath": "/images/gardeningHistory/growing-001.png",
+              "name": "image-1.jpg"
+            },
             "status": "growing",
-            "content": "파릇한 새싹이 귀엽게 자라고 있어요!"
-          },
-          {
-            "date": "2025-09-14",
-            "image": "src",
-            "status": "growing",
-            "content": "잎이 점점 넓어지고 무성해졌어요."
-          },
-          {
-            "date": "2025-10-01",
-            "image": "src",
-            "status": "growing",
-            "content": "이제 수확할 날이 머지않았어요!"
-          },
-          {
-            "date": "2025-10-20",
-            "image": "src",
-            "status": "harvested",
-            "content": "상추 수확 완료! 건강한 밥상으로 갑니다!"
+            "title": "잎을 키우고 있어요! 매일이 다르게 성장 중 🧡",
+            "content": "본잎이 자라나기 시작하면서 이제 제법 상추 같은 모양이 되었어요!"
           }
         ]
       }
@@ -2985,8 +2995,8 @@
         "category": ["텃밭체험"],
         "filter": ["감자", "뿌리채소", "제철채소"],
         "region": "경기도 여주시 가남읍 상활1길 68",
-        "deadline": "2025-08-13",
-        "harvestExpectedDate": "2025-10-25",
+        "deadline": "2025-05-25",
+        "harvestExpectedDate": "2025-08-10",
         "harvestExpectedCnt": "약 3kg",
         "dcRate": 42,
         "productCnt": 1,
@@ -2999,31 +3009,73 @@
         },
         "period": [
           {
-            "date": "2025-08-20",
-            "image": "src",
+            "date": "2025-05-30",
+            "image": {
+              "imagePath": "/images/gardeningHistory/seeding-003.png",
+              "name": "image-1.jpg"
+            },
             "status": "seeding",
-            "content": "포슬포슬한 감자를 기대하며 심었습니다!"
+            "title": "땅속에 씨감자를 심었습니다 🥔🌱",
+            "content": "둥글둥글한 씨감자 하나가 여러 개의 새 감자로 자라나기까지, 이제 77일간의 여정을 시작합니다!"
           },
           {
-            "date": "2025-09-12",
-            "image": "src",
+            "date": "2025-06-10",
+            "image": {
+              "imagePath": "/images/gardeningHistory/sprouting-004.png",
+              "name": "image-1.jpg"
+            },
+            "status": "sprouting",
+            "title": "파릇파릇 싹이 올라왔어요! 🌱",
+            "content": "땅속에서 준비하던 감자 싹들이 드디어 흙 위로 얼굴을 내밀었어요!"
+          },
+          {
+            "date": "2025-06-25",
+            "image": {
+              "imagePath": "/images/gardeningHistory/growing-002.png",
+              "name": "image-1.jpg"
+            },
             "status": "growing",
-            "content": "줄기와 잎이 건강하게 올라오고 있어요 🌱"
+            "title": "잎이 무성하게 자라요 🌿",
+            "content": "줄기와 잎이 하루가 다르게 커지고 있어요. 이 시기의 감자는 마치 작은 덤불처럼 무성하답니다."
           },
           {
-            "date": "2025-10-04",
-            "image": "src",
+            "date": "2025-07-12",
+            "image": {
+              "imagePath": "/images/gardeningHistory/growing-003.png",
+              "name": "image-1.jpg"
+            },
+            "status": "growing",
+            "title": "감자들이 자리를 잡기 시작했어요 🧤",
+            "content": "줄기 아래 땅속에서는 작은 감자들이 이제 제 몸을 만들어가는 중이에요. 지금은 감자가 스스로 자리를 잡고 뿌리를 뻗으며 알차게 자라는 시간입니다."
+          },
+          {
+            "date": "2025-07-28",
+            "image": {
+              "imagePath": "/images/gardeningHistory/growing-004.png",
+              "name": "image-1.jpg"
+            },
+            "status": "growing",
+            "title": "감자가 통통하게 살찌는 중이에요! 😋",
+            "content": "이 시기에는 병해충 관리도 철저히! 맛있는 수확을 위해 마지막 힘을 내고 있어요 💪"
+          },
+          {
+            "date": "2025-08-06",
+            "image": {
+              "imagePath": "/images/gardeningHistory/harvested-001.png",
+              "name": "image-1.jpg"
+            },
             "status": "harvested",
-            "content": "알이 꽉 찼어요! 수확 완료, 이제 배송만 남았어요!"
+            "title": "수확 중입니다! 싱싱하게 갈 준비 중 🎁",
+            "content": "8월 10일, 배송 예정! 올여름 햇살 가득 담은 우리 감자, 곧 여러분께 전해드릴게요 🥔☀️"
           }
         ]
       }
     },
     {
       "seller_id": 18,
-      "name": "당근",
-      "content": "겨울에 수확하는 당근, 함께 키워보세요!",
-      "price": 19800,
+      "name": "토마토",
+      "content": "멋쟁이 토마토~ 토마토!",
+      "price": 15000,
       "shippingFees": 0,
       "quantity": 30,
       "buyQuantity": 0,
@@ -3031,7 +3083,7 @@
       "active": true,
       "mainImages": [
         {
-          "path": "uploadFiles/Carrot.png",
+          "path": "uploadFiles/Tomato-002.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
@@ -3051,12 +3103,12 @@
           }
         ],
         "category": ["텃밭체험"],
-        "filter": ["당근", "겨울채소", "친환경"],
+        "filter": ["토마토", "과채류", "친환경"],
         "region": "경상북도 의성군",
-        "deadline": "2025-08-25",
-        "harvestExpectedDate": "2025-12-10",
+        "deadline": "2025-03-01",
+        "harvestExpectedDate": "2025-08-01",
         "harvestExpectedCnt": "약 20개",
-        "dcRate": 41,
+        "dcRate": 25,
         "productCnt": 1,
         "badge": {
           "isNew": true,
@@ -3067,34 +3119,74 @@
         },
         "period": [
           {
-            "date": "2025-09-02",
-            "image": "src",
+            "date": "2025-03-08",
+            "image": {
+              "imagePath": "/images/gardeningHistory/seeding-001.png",
+              "name": "image-1.jpg"
+            },
             "status": "seeding",
-            "content": "당근 씨앗을 조심스럽게 심었어요."
+            "title": "토마토 씨앗 심었습니다 🍅🌱",
+            "content": "올해도 드디어 시작! 작고 동그란 토마토 씨앗을 조심스럽게 흙 위에 뿌렸어요."
           },
           {
-            "date": "2025-09-23",
-            "image": "src",
+            "date": "2025-03-21",
+            "image": {
+              "imagePath": "/images/gardeningHistory/sprouting-001.png",
+              "name": "image-1.jpg"
+            },
+            "status": "sprouting",
+            "title": "토마토 새싹이 뿅! 👶🍃",
+            "content": "흙 위로 뾰족한 초록빛이 올라왔어요! 토마토 새싹, 너무 귀엽죠? 🥹"
+          },
+          {
+            "date": "2025-04-09",
+            "image": {
+              "imagePath": "/images/gardeningHistory/growing-003.png",
+              "name": "image-1.jpg"
+            },
             "status": "growing",
-            "content": "파릇파릇 새싹이 올라오고 있어요!"
+            "title": "모종이 쑥쑥 자라고 있어요 🌱🪴",
+            "content": "이제는 제법 줄기도 굵어지고 잎도 풍성해졌어요. 하나하나 건강하게 자라도록 통풍과 햇볕 조절, 관수에도 신경 쓰고 있답니다."
           },
           {
-            "date": "2025-10-12",
-            "image": "src",
+            "date": "2025-05-02",
+            "image": {
+              "imagePath": "/images/gardeningHistory/growing-001.png",
+              "name": "image-1.jpg"
+            },
             "status": "growing",
-            "content": "잎이 풍성해졌어요. 뿌리도 잘 자라고 있겠죠?"
+            "title": "모종, 밭으로 이사했습니다! 🍃🌱",
+            "content": "이제 모종이 충분히 컸으니 넓은 밭으로 옮겨 심었어요. 뿌리가 땅속 깊이 자리잡을 수 있도록 심는 깊이와 간격도 딱 맞춰서 정성껏!"
           },
           {
-            "date": "2025-11-20",
-            "image": "src",
+            "date": "2025-05-24",
+            "image": {
+              "imagePath": "/images/gardeningHistory/seeding-004.png",
+              "name": "image-1.jpg"
+            },
             "status": "growing",
-            "content": "곧 수확을 앞두고 있어요. 기대돼요!"
+            "title": "줄기와 잎이 무성하게 자라요! 💪🌿",
+            "content": "요즘은 매일 자라는 게 눈에 보일 정도예요! 지지대를 세우고, 순도 정리하면서 곧 꽃이 필 준비를 하고 있답니다."
           },
           {
-            "date": "2025-12-10",
-            "image": "src",
+            "date": "2025-06-20",
+            "image": {
+              "imagePath": "/images/gardeningHistory/growing-002.png",
+              "name": "image-1.jpg"
+            },
+            "status": "growing",
+            "title": "노란 꽃이 피고, 작은 열매가 보여요! 🌼🍅",
+            "content": "꽃이 피기 시작했어요. 그리고 그 뒤엔 아주 작은 토마토 알맹이들이 보이죠?"
+          },
+          {
+            "date": "2025-07-19",
+            "image": {
+              "imagePath": "/images/gardeningHistory/harvested-002.png",
+              "name": "image-1.jpg"
+            },
             "status": "harvested",
-            "content": "싱싱한 겨울 당근 수확 완료!"
+            "title": "빨갛게 익어가는 토마토들 🍅",
+            "content": "드디어 토마토들이 붉게 익어가기 시작했어요. 처음엔 초록빛이던 열매들이 하루가 다르게 선명한 붉은색으로 물들어요."
           }
         ]
       }
@@ -3133,8 +3225,8 @@
         "category": ["텃밭체험"],
         "filter": ["상추", "잎채소", "건강채소"],
         "region": "경기도 여주시 가남읍 상활1길 68",
-        "deadline": "2025-08-12",
-        "harvestExpectedDate": "2025-10-28",
+        "deadline": "2025-08-10",
+        "harvestExpectedDate": "2025-11-10",
         "harvestExpectedCnt": "1.5kg",
         "dcRate": 35,
         "productCnt": 1,
@@ -3145,31 +3237,12 @@
           "isLowStock": false,
           "isSold": false
         },
-        "period": [
-          {
-            "date": "2025-08-14",
-            "image": "src",
-            "status": "seeding",
-            "content": "적상추의 씨앗을 심었어요 🌱"
-          },
-          {
-            "date": "2025-09-08",
-            "image": "src",
-            "status": "growing",
-            "content": "잎이 풍성하게 자라고 있어요. 곧 샐러드 재료로!"
-          },
-          {
-            "date": "2025-10-10",
-            "image": "src",
-            "status": "harvested",
-            "content": "신선한 적상추, 수확 완료! 곧 배송됩니다."
-          }
-        ]
+        "period": []
       }
     },
     {
       "seller_id": 17,
-      "name": "신선한 양배추 텃밭 체험",
+      "name": "양배추",
       "content": "씨앗부터 수확까지! 내 손으로 키우는 건강한 양배추",
       "price": 15800,
       "shippingFees": 0,
@@ -3201,29 +3274,59 @@
         "category": ["텃밭체험"],
         "filter": ["양배추", "무농약", "자연재배"],
         "region": "경기 여주시 산북면 광여로 1509",
-        "deadline": "2025-08-10",
-        "harvestExpectedDate": "2025-11-01",
+        "deadline": "2025-07-12",
+        "harvestExpectedDate": "2025-08-24",
         "harvestExpectedCnt": "5통",
         "dcRate": 27,
         "productCnt": 1,
         "badge": {
           "isNew": true,
           "isInSeason": true,
-          "isBest": false,
+          "isBest": true,
           "isLowStock": false,
           "isSold": false
         },
         "period": [
-          { "date": "2025-08-13", "image": "src", "status": "seeding", "content": "양배추 씨앗을 정성껏 심었습니다." },
           {
-            "date": "2025-08-28",
-            "image": "src",
-            "status": "growing",
-            "content": "초록빛 새싹이 올라오기 시작했어요!"
+            "date": "2025-07-13",
+            "image": {
+              "imagePath": "/images/gardeningHistory/seeding-002.png",
+              "name": "image-1.jpg"
+            },
+            "status": "seeding",
+            "title": "양배추 씨앗 심었어요! 🥬",
+            "content": "여름 한가운데, 양배추 재배가 시작되었어요. 작고 단단한 씨앗들이 이제 싹을 틔울 준비를 하고 있답니다."
           },
-          { "date": "2025-09-17", "image": "src", "status": "growing", "content": "줄기가 튼튼해지고 있어요." },
-          { "date": "2025-10-08", "image": "src", "status": "growing", "content": "통통하게 속이 차고 있어요." },
-          { "date": "2025-11-01", "image": "src", "status": "harvested", "content": "싱싱한 양배추 수확 완료!" }
+          {
+            "date": "2025-07-21",
+            "image": {
+              "imagePath": "/images/gardeningHistory/sprouting-001.png",
+              "name": "image-1.jpg"
+            },
+            "status": "sprouting",
+            "title": "새싹이 얼굴을 내밀었어요! 👶🥬",
+            "content": "양배추 씨앗에서 연한 초록빛 새싹이 뾰족 올라왔어요. 아직은 연약하지만, 곧 튼튼한 잎으로 자랄 거예요."
+          },
+          {
+            "date": "2025-07-24",
+            "image": {
+              "imagePath": "/images/gardeningHistory/growing-003.png",
+              "name": "image-1.jpg"
+            },
+            "status": "growing",
+            "title": "모종 밭으로 이사했어요! 🚜🌱",
+            "content": "튼튼하게 자란 모종을 밭으로 옮겨 심었어요. 이제 더 넓은 공간에서 뿌리를 내리고 자랄 시간!"
+          },
+          {
+            "date": "2025-08-01",
+            "image": {
+              "imagePath": "/images/gardeningHistory/growing-002.png",
+              "name": "image-1.jpg"
+            },
+            "status": "growing",
+            "title": "잎이 점점 커지고 있어요! 🥬✨",
+            "content": "모종에서 자라 양배추 잎이 점점 넓어지고 단단해지고 있어요. 바람과 비를 맞으며 건강하게 자라는 모습에 뿌듯해집니다."
+          }
         ]
       }
     },
@@ -3231,7 +3334,7 @@
       "seller_id": 16,
       "name": "벼(쌀)",
       "content": "논에서 직접 키우는 벼, 수확 후 신선한 햅쌀을 맛보세요!",
-      "price": 26000,
+      "price": 38000,
       "shippingFees": 0,
       "quantity": 30,
       "buyQuantity": 0,
@@ -3261,50 +3364,66 @@
         "category": ["텃밭체험"],
         "filter": ["벼", "쌀", "친환경재배"],
         "region": "경기도 여주시 가남읍 상활1길 68",
-        "deadline": "2025-08-12",
-        "harvestExpectedDate": "2025-11-05",
-        "harvestExpectedCnt": "약 5kg",
-        "dcRate": 37,
+        "deadline": "2025-04-30",
+        "harvestExpectedDate": "2025-09-15",
+        "harvestExpectedCnt": "약 10kg",
+        "dcRate": 20,
         "productCnt": 1,
         "badge": {
-          "isNew": true,
-          "isInSeason": true,
-          "isBest": false,
+          "isNew": false,
+          "isInSeason": false,
+          "isBest": true,
           "isLowStock": false,
           "isSold": false
         },
         "period": [
           {
-            "date": "2025-08-14",
-            "image": "src",
+            "date": "2025-05-02",
+            "image": {
+              "imagePath": "/images/gardeningHistory/seeding-004.png",
+              "name": "image-1.jpg"
+            },
             "status": "seeding",
-            "content": "모를 심고 물을 채웠습니다. 이제 시작이에요!"
+            "title": "쌀 씨앗 뿌렸어요! 🌾",
+            "content": "따뜻한 봄날, 논에 쌀씨를 심었어요. 조용히 물속에 잠긴 씨앗들이 싹을 틔우며 건강한 벼로 자라날 준비 중입니다."
           },
           {
-            "date": "2025-09-08",
-            "image": "src",
+            "date": "2025-05-24",
+            "image": {
+              "imagePath": "/images/gardeningHistory/sprouting-004.png",
+              "name": "image-1.jpg"
+            },
+            "status": "sprouting",
+            "title": "새싹이 고개를 내밀었어요! 🌾👶",
+            "content": "논에서 벼 새싹이 고개를 내밀었어요. 연약하지만 생명력이 넘치는 초록빛 잎들이 무럭무럭 자라고 있습니다."
+          },
+          {
+            "date": "2025-06-17",
+            "image": {
+              "imagePath": "/images/gardeningHistory/growing-002.png",
+              "name": "image-1.jpg"
+            },
             "status": "growing",
-            "content": "벼 포기가 푸르게 자라고 있습니다."
+            "title": "논으로 옮겨 심었어요! 🚜🌱",
+            "content": "유묘를 논에 옮겨 심고, 넓은 공간에서 자라도록 했어요. 햇빛과 물, 바람 속에서 벼가 쑥쑥 자라나는 중!"
           },
           {
-            "date": "2025-10-07",
-            "image": "src",
+            "date": "2025-08-05",
+            "image": {
+              "imagePath": "/images/gardeningHistory/growing-004.png",
+              "name": "image-1.jpg"
+            },
             "status": "growing",
-            "content": "이삭이 맺히고 황금빛 들판이 되어가고 있어요."
-          },
-          {
-            "date": "2025-11-05",
-            "image": "src",
-            "status": "harvested",
-            "content": "벼 수확 완료! 이제 도정 후 햅쌀로 배송됩니다."
+            "title": "벼 이삭이 고개를 숙였어요! 🌾✨",
+            "content": "수확을 앞두고 농부의 손길이 분주해지는 시기입니다! 🚜"
           }
         ]
       }
     },
     {
       "seller_id": 19,
-      "name": "당근",
-      "content": "겨울에 수확하는 당근, 함께 키워보세요!",
+      "name": "옥수수",
+      "content": "여름에 먹는 찰옥수수, 말 안해도 알죠?",
       "price": 19800,
       "shippingFees": 0,
       "quantity": 30,
@@ -3313,7 +3432,7 @@
       "active": true,
       "mainImages": [
         {
-          "path": "uploadFiles/Carrot.png",
+          "path": "uploadFiles/Corn.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
@@ -3333,59 +3452,69 @@
           }
         ],
         "category": ["텃밭체험"],
-        "filter": ["당근", "겨울채소", "친환경"],
+        "filter": ["옥수수", "찰옥수수", "친환경"],
         "region": "경상북도 의성군",
-        "deadline": "2025-08-25",
-        "harvestExpectedDate": "2025-12-10",
+        "deadline": "2025-06-18",
+        "harvestExpectedDate": "2025-08-15",
         "harvestExpectedCnt": "약 20개",
-        "dcRate": 41,
+        "dcRate": 20,
         "productCnt": 1,
         "badge": {
           "isNew": true,
-          "isInSeason": true,
+          "isInSeason": false,
           "isBest": false,
           "isLowStock": false,
           "isSold": false
         },
         "period": [
           {
-            "date": "2025-09-02",
-            "image": "src",
+            "date": "2025-06-20",
+            "image": {
+              "imagePath": "/images/gardeningHistory/seeding-002.png",
+              "name": "image-1.jpg"
+            },
             "status": "seeding",
-            "content": "당근 씨앗을 조심스럽게 심었어요."
+            "title": "옥수수 씨앗 심었어요! 🌽",
+            "content": "여름 초입, 옥수수 씨앗을 땅에 심었어요. 뜨거운 햇볕 아래에서 씨앗이 건강하게 발아할 준비 중입니다."
           },
           {
-            "date": "2025-09-23",
-            "image": "src",
+            "date": "2025-07-05",
+            "image": {
+              "imagePath": "/images/gardeningHistory/sprouting-001.png",
+              "name": "image-1.jpg"
+            },
+            "status": "sprouting",
+            "title": "새싹이 땅 위로 얼굴을 내밀었어요! 🌽",
+            "content": "옥수수 새싹이 싹트고 푸른 줄기가 쑥쑥 자라나고 있어요. 아직은 작지만 생명력이 넘치는 모습에 힘이 납니다. 꼼꼼한 물주기와 관리로 건강하게 키워요! 💧"
+          },
+          {
+            "date": "2025-07-19",
+            "image": {
+              "imagePath": "/images/gardeningHistory/growing-001.png",
+              "name": "image-1.jpg"
+            },
             "status": "growing",
-            "content": "파릇파릇 새싹이 올라오고 있어요!"
+            "title": "옥수수 줄기가 쑥쑥 자라고 있어요! 🌽✨",
+            "content": "푸른 옥수수 줄기가 키 크고 튼튼해지고 있어요. 잎도 넓어지고, 곧 옥수수 이삭이 맺히기 시작할 거예요."
           },
           {
-            "date": "2025-10-12",
-            "image": "src",
+            "date": "2025-08-04",
+            "image": {
+              "imagePath": "/images/gardeningHistory/growing-002.png",
+              "name": "image-1.jpg"
+            },
             "status": "growing",
-            "content": "잎이 풍성해졌어요. 뿌리도 잘 자라고 있겠죠?"
-          },
-          {
-            "date": "2025-11-20",
-            "image": "src",
-            "status": "growing",
-            "content": "곧 수확을 앞두고 있어요. 기대돼요!"
-          },
-          {
-            "date": "2025-12-10",
-            "image": "src",
-            "status": "harvested",
-            "content": "싱싱한 겨울 당근 수확 완료!"
+            "title": "옥수수 이삭이 고개를 내밀었어요! 🌽🌽",
+            "content": "옥수수 이삭이 줄기 사이로 모습을 드러내기 시작했어요. 촉촉한 수염도 자라고, 달콤한 옥수수가 자랄 준비 완료! 수확 전까지 정성껏 관리할게요 😊"
           }
         ]
       }
     },
     {
       "seller_id": 16,
-      "name": "토마토",
-      "content": "탱글탱글 잘 익은 토마토, 직접 길러보세요!",
-      "price": 24000,
+      "name": "수박",
+      "content": "여름하면 수박, 수박하면 여름",
+      "price": 40000,
       "shippingFees": 0,
       "quantity": 30,
       "buyQuantity": 0,
@@ -3393,7 +3522,7 @@
       "active": true,
       "mainImages": [
         {
-          "path": "uploadFiles/Tomato.png",
+          "path": "uploadFiles/Watermelon.png",
           "name": "image-1.jpg",
           "originalname": "상품이미지-1.jpg"
         },
@@ -3413,38 +3542,150 @@
           }
         ],
         "category": ["텃밭체험"],
-        "filter": ["토마토", "과채류", "텃밭"],
+        "filter": ["수박", "텃밭"],
         "region": "경기도 여주시 가남읍 상활1길 68",
-        "deadline": "2025-08-12",
-        "harvestExpectedDate": "2025-10-25",
-        "harvestExpectedCnt": "약 1.5kg",
-        "dcRate": 38,
+        "deadline": "2025-06-10",
+        "harvestExpectedDate": "2025-08-10",
+        "harvestExpectedCnt": "약 8~9kg",
+        "dcRate": 40,
         "productCnt": 1,
         "badge": {
-          "isNew": true,
-          "isInSeason": true,
+          "isNew": false,
+          "isInSeason": false,
+          "isBest": true,
+          "isLowStock": false,
+          "isSold": false
+        },
+        "period": [
+          {
+            "date": "2025-06-11",
+            "image": {
+              "imagePath": "/images/gardeningHistory/seeding-002.png",
+              "name": "image-1.jpg"
+            },
+            "status": "seeding",
+            "title": "수박 씨앗 심었어요! 🍉",
+            "content": "여름의 상징, 수박 재배가 시작됐어요! 큼직한 수박을 꿈꾸며 작고 단단한 씨앗들을 정성껏 심었답니다."
+          },
+          {
+            "date": "2025-06-21",
+            "image": {
+              "imagePath": "/images/gardeningHistory/sprouting-002.png",
+              "name": "image-1.jpg"
+            },
+            "status": "sprouting",
+            "title": "수박 새싹이 싹텄어요! 👶🍃",
+            "content": "작은 씨앗에서 귀여운 새싹이 고개를 내밀었어요. 넓은 잎과 길게 뻗는 덩굴이 자라나는 시작!"
+          },
+          {
+            "date": "2025-07-08",
+            "image": {
+              "imagePath": "/images/gardeningHistory/growing-001.png",
+              "name": "image-1.jpg"
+            },
+            "status": "growing",
+            "title": "덩굴이 길게 뻗고 있어요! 🌿🍉",
+            "content": "줄기가 뻗고, 잎이 커지고, 수박꽃이 피기 시작했어요. 벌들이 열심히 꽃을 오가며 수분을 도와주는 모습도 보이네요 🐝"
+          },
+          {
+            "date": "2025-08-01",
+            "image": {
+              "imagePath": "/images/gardeningHistory/growing-002.png",
+              "name": "image-1.jpg"
+            },
+            "status": "growing",
+            "title": "작은 수박이 생겼어요! 🍈➡️🍉",
+            "content": "둥글둥글, 초록초록! 드디어 수박 모양이 보이기 시작했어요 🎉"
+          }
+        ]
+      }
+    },
+    {
+      "seller_id": 17,
+      "name": "멜론",
+      "content": "수박이 되고 싶었던 멜론",
+      "price": 22000,
+      "shippingFees": 0,
+      "quantity": 30,
+      "buyQuantity": 0,
+      "show": true,
+      "active": true,
+      "mainImages": [
+        {
+          "path": "uploadFiles/Melon.png",
+          "name": "image-1.jpg",
+          "originalname": "상품이미지-1.jpg"
+        },
+        {
+          "path": "/files/${clientId}/seller-2-gdn3-2.jpg",
+          "name": "image-2.jpg",
+          "originalname": "상품이미지-2.jpg"
+        }
+      ],
+      "extra": {
+        "productType": "gardening",
+        "detailImages": [
+          {
+            "path": "uploadFiles/detail-gardening.png",
+            "name": "image-1.jpg",
+            "originalname": "상품이미지-1.jpg"
+          }
+        ],
+        "category": ["텃밭체험"],
+        "filter": ["멜론", "텃밭"],
+        "region": "경기도 여주시 가남읍 상활1길 68",
+        "deadline": "2025-06-28",
+        "harvestExpectedDate": "2025-08-24",
+        "harvestExpectedCnt": "약 4~5kg",
+        "dcRate": 35,
+        "productCnt": 1,
+        "badge": {
+          "isNew": false,
+          "isInSeason": false,
           "isBest": false,
           "isLowStock": false,
           "isSold": false
         },
         "period": [
           {
-            "date": "2025-08-14",
-            "image": "src",
+            "date": "2025-06-29",
+            "image": {
+              "imagePath": "/images/gardeningHistory/seeding-003.png",
+              "name": "image-1.jpg"
+            },
             "status": "seeding",
-            "content": "토마토 모종을 정식했습니다."
+            "title": "멜론 씨앗 심었어요! 🍈",
+            "content": "햇살 가득한 여름날, 달콤한 멜론을 위한 첫걸음! 작은 씨앗 하나에 담긴 여름의 향기를 흙 속에 묻었어요."
           },
           {
-            "date": "2025-09-08",
-            "image": "src",
+            "date": "2025-07-09",
+            "image": {
+              "imagePath": "/images/gardeningHistory/sprouting-003.png",
+              "name": "image-1.jpg"
+            },
+            "status": "sprouting",
+            "title": "새싹이 톡! 얼굴을 내밀었어요 👶🍃",
+            "content": "멜론 씨앗에서 연두빛 새싹이 고개를 들었어요. 덩굴이 자라기 시작하고, 잎도 점점 넓어지는 중이에요."
+          },
+          {
+            "date": "2025-07-27",
+            "image": {
+              "imagePath": "/images/gardeningHistory/growing-004.png",
+              "name": "image-1.jpg"
+            },
             "status": "growing",
-            "content": "잎이 무성하게 자라며 열매가 맺히기 시작했어요."
+            "title": "덩굴이 뻗고 꽃이 피었어요! 🌼🍈",
+            "content": "덩굴이 길게 퍼지고, 노란 멜론꽃이 피기 시작했어요. 꽃이 진 자리마다 달콤한 멜론이 생길 거예요. 기대돼요!"
           },
           {
-            "date": "2025-10-12",
-            "image": "src",
-            "status": "harvested",
-            "content": "탱글탱글 토마토 수확 완료! 곧 배송됩니다."
+            "date": "2025-08-05",
+            "image": {
+              "imagePath": "/images/gardeningHistory/harvested-002.png",
+              "name": "image-1.jpg"
+            },
+            "status": "growing",
+            "title": "멜론이 통통하게 자라고 있어요! 🍈✨",
+            "content": "이제 작은 멜론 열매들이 점점 커지고 있어요. 껍질에 하얀 망이 생기기 시작하고, 무게도 묵직해졌답니다."
           }
         ]
       }
