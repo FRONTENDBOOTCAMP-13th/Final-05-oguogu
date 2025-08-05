@@ -130,7 +130,7 @@ export default function CardItem({
                 onClick={countDown}
                 className={
                   count === 1
-                    ? `w-[20px] h-[20px] border-[0.5px] bg-oguogu-gray-1 border-oguogu-gray-2 border-r-0 rounded-l`
+                    ? `w-[20px] h-[20px] border-[0.5px] bg-oguogu-gray-1 border-oguogu-gray-2 border-r-0 rounded-l cursor-not-allowed`
                     : `w-[20px] h-[20px] border-[0.5px] border-oguogu-gray-2 border-r-0 rounded-l`
                 }
               >
@@ -143,7 +143,7 @@ export default function CardItem({
                 onClick={countUp}
                 className={
                   disable
-                    ? `w-[20px] h-[20px] border-[0.5px] bg-oguogu-gray-1 border-oguogu-gray-2 border-l-0 rounded-r`
+                    ? `w-[20px] h-[20px] border-[0.5px] bg-oguogu-gray-1 border-oguogu-gray-2 border-l-0 rounded-r cursor-not-allowed`
                     : `w-[20px] h-[20px] border-[0.5px] border-oguogu-gray-2 border-l-0 rounded-r`
                 }
               >
