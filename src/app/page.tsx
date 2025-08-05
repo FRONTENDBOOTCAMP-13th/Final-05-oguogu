@@ -89,7 +89,7 @@ export default async function Home() {
               <p className="text-sm text-gray-400">등록된 리뷰가 없습니다.</p>
             )}
           </div>
-          <ProductLinkItem link="/product/crop" linkTitle="상품 구매" subTxt="하고 리뷰 작성하기" />
+          <ProductLinkItem link="/product/crop" linkTitle="전체 상품" subTxt="둘러보기" />
         </article>
 
         {/* 공지사항 미리보기 */}
