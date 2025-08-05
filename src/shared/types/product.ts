@@ -47,7 +47,7 @@ export interface Item {
   mainImages: MainImage[];
   createdAt?: string; // ISO date string
   updatedAt?: string; // ISO date string
-  extra?: Extra;
+  extra: Extra;
   rating?: number;
   replies?: number;
   bookmarks?: number;
@@ -74,7 +74,7 @@ export interface Extra {
   isSold?: boolean;
   productUnit?: string; //상품 수량 또는 무게
   productDetailContent?: string; //상품 상세 설명
-  detailImages?: MainImage[];
+  detailImages: MainImage[];
 
   region?: string;
   meetingPlace?: string;
