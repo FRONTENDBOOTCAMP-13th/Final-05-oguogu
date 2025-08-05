@@ -61,8 +61,6 @@ export default async function NoticeDetailPage({ params }: NoticeDetailPageProps
 
   const detailNotice = noticeRes.item.find(item => item._id === Number(_id));
 
-  console.log(_id, detailNotice);
-
   return (
     <>
       <LinkHeader title="공지사항" />
