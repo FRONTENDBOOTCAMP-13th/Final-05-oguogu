@@ -3,7 +3,7 @@ import OrderClientControl from '@/features/orderClientControl/orderClientControl
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: '주문/배송 내역 | 오구오구',
+  title: '주문/배송 내역 | 오구텃밭',
   description: '내가 주문한 상품의 상태와 배송 현황을 확인할 수 있는 페이지입니다.',
   robots: {
     index: false,

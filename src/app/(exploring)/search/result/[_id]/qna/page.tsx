@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
 
   if (!productRes) {
     return {
-      title: '상품 Q&A | 오구오구',
+      title: '상품 Q&A | 오구텃밭',
       description: '해당 상품 정보를 찾을 수 없습니다.',
       robots: { index: false, follow: false },
     };
@@ -34,9 +34,9 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
   const url = `https://final-05-oguogu.vercel.app/search/result/${_id}/qna`;
 
   return {
-    title: `${name} 상품 Q&A | 오구오구`,
+    title: `${name} 상품 Q&A | 오구텃밭`,
     description: `고객님들이 자주 묻는 '${name}' 상품에 대한 질문과 답변을 확인해보세요.`,
-    keywords: ['상품 Q&A', name, '문의', '질문', '오구오구', '고객 지원'],
+    keywords: ['상품 Q&A', name, '문의', '질문', '오구텃밭', '고객 지원'],
     robots: {
       index: true,
       follow: true,
@@ -45,14 +45,14 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
       canonical: url,
     },
     openGraph: {
-      title: `${name} 상품 Q&A | 오구오구`,
+      title: `${name} 상품 Q&A | 오구텃밭`,
       description: `궁금한 '${name}' 상품에 대해 다른 고객들의 질문과 답변을 확인할 수 있습니다.`,
       url,
       type: 'article',
     },
     twitter: {
       card: 'summary',
-      title: `${name} 상품 Q&A | 오구오구`,
+      title: `${name} 상품 Q&A | 오구텃밭`,
       description: `궁금한 '${name}' 상품에 대해 고객 문의를 확인하고 답변을 받아보세요.`,
     },
   };

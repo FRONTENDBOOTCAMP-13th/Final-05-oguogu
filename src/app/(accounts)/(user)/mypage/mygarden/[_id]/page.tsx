@@ -10,7 +10,7 @@ import Image from 'next/image';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: '텃밭 성장 기록 | 오구오구',
+  title: '텃밭 성장 기록 | 오구텃밭',
   description: '텃밭 상품의 성장 단계, 수확 예정일, 판매자 기록을 시각적으로 확인할 수 있는 상세 페이지입니다.',
   robots: {
     index: false,

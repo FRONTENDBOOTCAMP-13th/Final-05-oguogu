@@ -10,46 +10,9 @@ import NoticeItem from '@/components/elements/boardItem/noticeItem';
 import { responsePostReplies } from '@/shared/types/post';
 import { getPosts } from '@/shared/data/functions/post';
 import QnaItem from '@/components/elements/boardItem/qnaItem';
-
-import { Metadata } from 'next';
-import ReviewItemCard from '@/components/elements/ReviewItem/ReviewItemCard';
-import { getALLReplies } from '@/shared/data/functions/replies';
 import { ReviewRes } from '@/shared/types/review';
-
-export const metadata: Metadata = {
-  title: '오구오구 - 산지직송 농산물과 특별한 농촌 체험',
-  description:
-    '신선한 농산물, 직접 키우는 텃밭, 가족과 함께하는 농촌 체험까지! 오구오구에서 건강한 즐거움을 만나보세요.',
-  keywords: ['산지직송', '신선한 농산물', '농촌 체험', '텃밭', '옥수수', '유기농', '무농약', '농부 직거래', '오구오구'],
-  robots: {
-    index: true,
-    follow: true,
-  },
-  alternates: {
-    canonical: 'https://final-05-oguogu.vercel.app/',
-  },
-  openGraph: {
-    title: '오구오구 - 산지직송 농산물과 특별한 농촌 체험',
-    description:
-      '지금 오구오구에서 제철 농산물과 특별한 체험 상품을 만나보세요. 텃밭 성장 히스토리까지 기록해드립니다!',
-    url: 'https://final-05-oguogu.vercel.app/',
-    type: 'website',
-    /* images: [
-      {
-        url: 'https://final-05-oguogu.vercel.app/images/main-og-image.png',
-        width: 1200,
-        height: 630,
-        alt: '오구오구 대표 이미지',
-      },
-    ], */
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: '오구오구 - 산지직송 농산물과 특별한 농촌 체험',
-    description: '신선함과 즐거움이 가득한 오구오구. 지금 만나보세요!',
-    /*  images: ['https://final-05-oguogu.vercel.app/images/main-og-image.png'], */
-  },
-};
+import { getALLReplies } from '@/shared/data/functions/replies';
+import ReviewItemCard from '@/components/elements/ReviewItem/ReviewItemCard';
 
 export default async function Home() {
   const noticeRes: responsePostReplies = await getPosts('notice');
@@ -71,20 +34,16 @@ export default async function Home() {
     <>
       {/* 헤더 */}
       <Header />
-
       {/* 네비게이션 */}
       <Navigation />
-
       {/* 메인 슬라이드배너 */}
       <SlideBanner />
-
       {/* 보조 네비게이션(aside) */}
       <aside className="flex flex-col pt-6 gap-y-2 mobile-max:gap-y-4 mobile-max:pt-8 ">
         <ImageCategory />
         <ProductLinkItem link="/product/crop" linkTitle="전체 농산물" subTxt="보러 가기" />
       </aside>
-
-      {/* 메인 */}
+      메인
       <main className="flex flex-col pt-8 gap-y-8 mobile-max:gap-y-12 mobile-max:pt-12 ">
         {/* 추천 카테고리 1 */}
         <article id="link1" className="titleWithProductItem scroll-mt-[130px]">
