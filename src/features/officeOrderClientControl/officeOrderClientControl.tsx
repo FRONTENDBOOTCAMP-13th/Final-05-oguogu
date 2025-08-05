@@ -11,6 +11,9 @@ import { useEffect, useState } from 'react';
 
 const orderOptions = [
   { label: '전체', value: 'all' },
+  { label: '결제 완료', value: 'OS020' },
+  { label: '배송 준비 중', value: 'preparingShipment' },
+  { label: '배송 중', value: 'inTransit' },
   { label: '배송완료', value: 'delivered' },
   { label: '구매완료', value: 'purchaseCompleted' },
   { label: '환불 접수', value: 'refundInProgress' },
@@ -21,8 +24,6 @@ export default function OfficeOrderClientContorl() {
   const [selected, setSelected] = useState(orderOptions[0]);
   const [orderRes, setOrderRes] = useState<OrderListResponse>();
   /*   const [isLoading, setIsLoading] = useState(true); */
-
-  console.log(selected);
 
   const token = useAuthStore(state => state.token);
   /*   const isLoggedin = useAuthStore(state => state.isLoggedIn); */
@@ -37,8 +38,6 @@ export default function OfficeOrderClientContorl() {
     };
     fetch();
   }, [token]);
-
-  console.log(orderRes);
 
   const updateOrderStatus = async (order_id: number, newState: string) => {
     try {
@@ -63,8 +62,6 @@ export default function OfficeOrderClientContorl() {
   const filteredOrderList = orderRes?.item.filter(item =>
     selected.value === 'all' ? item : item.state === selected.value,
   );
-
-  console.log(filteredOrderList);
 
   const orderList = filteredOrderList?.map(item => (
     <OrderItemForSeller key={item._id} orderState={item.state} updateOrderStatus={updateOrderStatus} item={item} />

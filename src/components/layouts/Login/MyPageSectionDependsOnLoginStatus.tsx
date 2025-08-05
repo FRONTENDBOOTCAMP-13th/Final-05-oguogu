@@ -2,9 +2,11 @@
 
 import HotMarkIcon from '@/components/elements/HotMarkIcon/HotMarkIcon';
 import LogOutIcon from '@/components/elements/LogoutIcon/LogoutIcon';
+import BackOfficeSectionSkeleton from '@/components/layouts/Login/BackOfficeSectionSkeleton';
 import GetLoggedInUserData from '@/features/getLoggedInUserData/getLoggedInUserData';
 import { getOrders } from '@/shared/data/functions/order';
 import { useAuthStore } from '@/shared/store/authStore';
+import { useLoadingStore } from '@/shared/store/loadingStore';
 import { Order, OrderListResponse } from '@/shared/types/order';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -16,9 +18,10 @@ export default function MyPageSectionDependsOnLoginStatus() {
 
   const [orderInfo, setOrderInfo] = useState<Order[]>([]);
   const [payedCnt, setPayedCnt] = useState<number>(0);
-  const [preparingCnt, setPreparingCnt] = useState(0);
-  const [transitCnt, setTransitCnt] = useState(0);
-  const [delivered, setDelivered] = useState(0);
+  const [preparingCnt, setPreparingCnt] = useState<number>(0);
+  const [transitCnt, setTransitCnt] = useState<number>(0);
+  const [delivered, setDelivered] = useState<number>(0);
+  const { isLoading, setLoading } = useLoadingStore();
 
   useEffect(() => {
     if (token === null) {
@@ -26,17 +29,19 @@ export default function MyPageSectionDependsOnLoginStatus() {
     }
 
     const fetch = async () => {
-      const data: OrderListResponse = await getOrders(token);
-
-      if (data.ok) {
+      try {
+        setLoading(true);
+        const data: OrderListResponse = await getOrders(token);
         setOrderInfo(data.item);
-      } else {
-        console.error(data.message || '데이터 로드 오류 발생');
+      } catch (err) {
+        console.error('데이터 로드 오류 발생', err);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetch();
-  }, [token]);
+  }, [token, setLoading]);
 
   useEffect(() => {
     if (orderInfo.length > 0) {
@@ -45,10 +50,10 @@ export default function MyPageSectionDependsOnLoginStatus() {
       const transitCount = orderInfo.filter(item => item.state === 'inTransit').length;
       const deliveredCount = orderInfo.filter(item => item.state === 'delivered').length;
 
-      setPayedCnt(payedCount);
-      setPreparingCnt(preparingCount);
-      setTransitCnt(transitCount);
-      setDelivered(deliveredCount);
+      setPayedCnt(payedCount ?? 0);
+      setPreparingCnt(preparingCount ?? 0);
+      setTransitCnt(transitCount ?? 0);
+      setDelivered(deliveredCount ?? 0);
     }
   }, [orderInfo]);
 
@@ -75,7 +80,7 @@ export default function MyPageSectionDependsOnLoginStatus() {
         <Link href="https://ugveg.vercel.app/" target="_blank" rel="noopener noreferrer">
           <Image
             src="/images/sub-banner-01.png"
-            alt="배너 이미지"
+            alt="흙내음상점 이동 링크"
             fill={false}
             width={768}
             height={48}
@@ -92,7 +97,11 @@ export default function MyPageSectionDependsOnLoginStatus() {
             <div
               className={`flex flex-col items-center gap-2 ${payedCnt === 0 ? `text-oguogu-gray-2` : 'text-oguogu-black'}`}
             >
-              <span className="text-2xl">{payedCnt}</span>
+              {isLoading ? (
+                <BackOfficeSectionSkeleton width="24px" height="32px" />
+              ) : (
+                <span className="text-2xl">{payedCnt}</span>
+              )}
               <span className="text-sm">결제 완료</span>
             </div>
 
@@ -102,7 +111,11 @@ export default function MyPageSectionDependsOnLoginStatus() {
             <div
               className={`flex flex-col items-center gap-2 ${preparingCnt === 0 ? `text-oguogu-gray-2` : 'text-oguogu-black'}`}
             >
-              <span className="text-2xl">{preparingCnt}</span>
+              {isLoading ? (
+                <BackOfficeSectionSkeleton width="24px" height="32px" />
+              ) : (
+                <span className="text-2xl">{preparingCnt}</span>
+              )}
               <span className="text-sm">배송 준비 중</span>
             </div>
 
@@ -112,7 +125,11 @@ export default function MyPageSectionDependsOnLoginStatus() {
             <div
               className={`flex flex-col items-center gap-2 ${transitCnt === 0 ? `text-oguogu-gray-2` : 'text-oguogu-black'}`}
             >
-              <span className="text-2xl">{transitCnt}</span>
+              {isLoading ? (
+                <BackOfficeSectionSkeleton width="24px" height="32px" />
+              ) : (
+                <span className="text-2xl">{transitCnt}</span>
+              )}
               <span className="text-sm">배송 중</span>
             </div>
 
@@ -122,7 +139,11 @@ export default function MyPageSectionDependsOnLoginStatus() {
             <div
               className={`flex flex-col items-center gap-2 ${delivered === 0 ? `text-oguogu-gray-2` : 'text-oguogu-black'}`}
             >
-              <span className="text-2xl">{delivered}</span>
+              {isLoading ? (
+                <BackOfficeSectionSkeleton width="24px" height="32px" />
+              ) : (
+                <span className="text-2xl">{delivered}</span>
+              )}
               <span className="text-sm">배송 완료</span>
             </div>
           </div>
@@ -132,7 +153,7 @@ export default function MyPageSectionDependsOnLoginStatus() {
         <div className="flex flex-col gap-4">
           <h2 className="text-base text-oguogu-gray-4 flex gap-1 items-start">
             나의 텃밭 생활
-            <Image src="/svgs/pot.svg" alt="" width={20} height={20}></Image>
+            <Image src="/svgs/pot.svg" alt="" aria-hidden="true" width={20} height={20}></Image>
           </h2>
           <Link href="/mypage/order">주문/배송 내역</Link>
           <Link href="/mypage/cart">장바구니</Link>
@@ -146,7 +167,7 @@ export default function MyPageSectionDependsOnLoginStatus() {
         <div className="flex flex-col gap-4">
           <h2 className="text-base text-oguogu-gray-4 flex gap-1 items-start">
             고객센터
-            <Image src="/svgs/notice.svg" alt="" width={18} height={18}></Image>
+            <Image src="/svgs/notice.svg" alt="" aria-hidden="true" width={18} height={18}></Image>
           </h2>
           <Link href="/board/notice">공지사항</Link>
           <Link href="/board/qna">자주 묻는 질문</Link>

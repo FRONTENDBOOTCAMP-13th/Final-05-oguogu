@@ -2,8 +2,8 @@ import { Extra, MainImage } from '@/shared/types/product';
 
 const API_URL = 'https://fesp-api.koyeb.app/market';
 const CLIENT_ID = 'febc13-final05-emjf';
-const token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOjIsInR5cGUiOiJzZWxsZXIiLCJuYW1lIjoi64Sk7JikIiwiZW1haWwiOiJzMUBtYXJrZXQuY29tIiwiaW1hZ2UiOiIvZmlsZXMvZmViYzEzLWZpbmFsMDUtZW1qZi91c2VyLW5lby5wbmciLCJsb2dpblR5cGUiOiJlbWFpbCIsImlhdCI6MTc1MjEzNzE5OCwiZXhwIjoxNzUyMjIzNTk4LCJpc3MiOiJGRUJDIn0.BddWCFVqtTtBPD9bKZw3KelLPJG3BZkn8FG3JU960us';
+// const token =
+//   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOjIsInR5cGUiOiJzZWxsZXIiLCJuYW1lIjoi64Sk7JikIiwiZW1haWwiOiJzMUBtYXJrZXQuY29tIiwiaW1hZ2UiOiIvZmlsZXMvZmViYzEzLWZpbmFsMDUtZW1qZi91c2VyLW5lby5wbmciLCJsb2dpblR5cGUiOiJlbWFpbCIsImlhdCI6MTc1MjEzNzE5OCwiZXhwIjoxNzUyMjIzNTk4LCJpc3MiOiJGRUJDIn0.BddWCFVqtTtBPD9bKZw3KelLPJG3BZkn8FG3JU960us';
 
 // CHECKLIST
 // [x] 상품 등록
@@ -53,7 +53,9 @@ export async function updateProduct(
     shippingFees: number;
     mainImages: string[];
     show: boolean;
+    extra: Extra;
   }>,
+  token: string,
 ) {
   try {
     const res = await fetch(`${API_URL}/seller/products/${_id}`, {
@@ -75,7 +77,7 @@ export async function updateProduct(
 }
 
 //  3. 상품 삭제 [실패 ok 리턴은 오는데 실제 db에서 삭제가 안됨]
-export async function deleteProduct(_id: number) {
+export async function deleteProduct(_id: number, token: string) {
   try {
     const res = await fetch(`${API_URL}/seller/products/${_id}`, {
       method: 'DELETE',

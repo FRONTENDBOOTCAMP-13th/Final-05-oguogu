@@ -121,7 +121,7 @@ export default function ProductItemList({ type }: ProductItemListType) {
     <>
       {type === 'crop' ? (
         isLoading ? (
-          <div className="flex gap-3 overflow-auto cursor-grab hide-scrollbar">
+          <div className="flex gap-4 overflow-auto cursor-grab hide-scrollbar">
             <CropItemSkeleton />
             <CropItemSkeleton />
             <CropItemSkeleton />
@@ -129,7 +129,7 @@ export default function ProductItemList({ type }: ProductItemListType) {
             <CropItemSkeleton />
           </div>
         ) : (
-          <div className="flex gap-3 overflow-auto cursor-grab hide-scrollbar">
+          <div className="flex gap-4 overflow-auto cursor-grab hide-scrollbar">
             {cropData &&
               cropData
                 .map((item: Item) => (
@@ -153,7 +153,7 @@ export default function ProductItemList({ type }: ProductItemListType) {
         )
       ) : type === 'experience' ? (
         isLoading ? (
-          <div className="flex gap-3 overflow-auto cursor-grab hide-scrollbar">
+          <div className="flex gap-4 overflow-auto cursor-grab hide-scrollbar">
             <ExperienceItemSkeleton />
             <ExperienceItemSkeleton />
             <ExperienceItemSkeleton />
@@ -161,7 +161,7 @@ export default function ProductItemList({ type }: ProductItemListType) {
             <ExperienceItemSkeleton />
           </div>
         ) : (
-          <div className="flex gap-3 overflow-auto cursor-grab hide-scrollbar">
+          <div className="flex gap-4 overflow-auto cursor-grab hide-scrollbar">
             {expData &&
               expData.map((item: Item) => (
                 <ExperienceItem
@@ -183,7 +183,7 @@ export default function ProductItemList({ type }: ProductItemListType) {
         )
       ) : type === 'gardening' ? (
         isLoading ? (
-          <div className="flex gap-3 overflow-auto cursor-grab hide-scrollbar">
+          <div className="flex gap-4 overflow-auto cursor-grab hide-scrollbar">
             <GardenItemSkeleton />
             <GardenItemSkeleton />
             <GardenItemSkeleton />
@@ -191,7 +191,7 @@ export default function ProductItemList({ type }: ProductItemListType) {
             <GardenItemSkeleton />
           </div>
         ) : (
-          <div className="flex gap-3 overflow-auto cursor-grab hide-scrollbar">
+          <div className="flex gap-4 overflow-auto cursor-grab hide-scrollbar">
             {gardeningData &&
               gardeningData.map((item: Item) => (
                 <GardenItem

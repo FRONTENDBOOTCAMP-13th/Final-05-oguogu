@@ -1,23 +1,10 @@
-import GardenItemListForMyGarden from '@/components/elements/GardenItemForMyGarden/GardenItemListForMyGarden';
+import GardenItemListForSeller from '@/components/elements/GardenItemForMyGarden/GardenItemListForSeller';
 import LinkHeader from '@/components/layouts/Header/LinkHeader';
-import { Metadata } from 'next';
 
-export const metadata: Metadata = {
-  title: '텃밭 히스토리 | 오구오구',
-  description: '내가 구매한 텃밭의 성장 과정을 사진과 함께 확인할 수 있는 히스토리 페이지입니다.',
-  robots: {
-    index: false,
-    follow: false,
-  },
-  alternates: {
-    canonical: 'https://final-05-oguogu.vercel.app/mypage/mygarden',
-  },
-};
-
-export default async function UserGardeningList() {
+export default async function SellerGardeningList() {
   return (
     <>
-      <LinkHeader title="텃밭 히스토리" bgColor="garden" />
+      <LinkHeader title="텃밭 히스토리 관리" bgColor="garden" />
 
       {/* 텃밭 설명 텍스트 */}
       <div className="px-6 pt-4 text-lg flex flex-col gap-y-2">
@@ -52,7 +39,7 @@ export default async function UserGardeningList() {
       <main className="px-4 pt-2 pb-4 min-h-[calc(100vh-48px)]">
         <div className="grid grid-cols-3 mobile-max:grid-cols-4 gap-4">
           <>
-            <GardenItemListForMyGarden />
+            <GardenItemListForSeller />
           </>
         </div>
       </main>

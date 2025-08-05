@@ -7,16 +7,15 @@ export default function GoBackIcon() {
   const pathname = usePathname();
   const handleGoBack = () => {
     const segments = pathname.split('/').filter(Boolean);
-    console.log('현재 경로', segments);
 
     /* 라우팅 경로가  */
-    if (segments.length === 0) {
-      router.refresh();
-    } else if (segments.length === 1) {
+    if (segments.length === 1) {
       router.push('/');
     } else if (segments.length === 2) {
       switch (segments[0]) {
         case 'board':
+          router.push('/mypage');
+          break;
         case 'product':
         case 'garden':
           router.push('/');

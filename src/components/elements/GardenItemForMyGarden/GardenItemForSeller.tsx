@@ -3,7 +3,7 @@ import getDaysFromToday from '@/utils/getDaysFromToday/getDaysFromToday';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function GardenItemForMyGarden({
+export default function GardenItemForSeller({
   name,
   period,
   id,
@@ -43,7 +43,7 @@ export default function GardenItemForMyGarden({
   return (
     <>
       <Link
-        href={`/mypage/mygarden/${id}`}
+        href={`/office/mygarden/${id}`}
         className="flex justify-center items-center bg-oguogu-main-light border-2 border-oguogu-main rounded-lg relative min-w-[85px] w-full min-h-[85px] h-full aspect-square"
       >
         <div className="flex flex-col items-center gap-y-1 translate-y-1">

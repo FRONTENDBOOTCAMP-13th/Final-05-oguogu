@@ -10,5 +10,5 @@ export default function GardenItemIcon({ icon }: { icon: 'remain' | 'start' | 'e
     src = '/images/iconImage/icon-end.svg';
   }
 
-  return <Image src={src} alt="텃밭 상품 관련 아이콘" width={10} height={10} />;
+  return <Image src={src} alt="" aria-hidden="true" width={10} height={10} />;
 }
