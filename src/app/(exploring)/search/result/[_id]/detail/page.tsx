@@ -123,7 +123,14 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
       <section id="userInfo">
         <ProductDetailInfo type={productType || 'crop'} item={res.item} />
       </section>
-      <main className="flex items-center justify-center h-[1500px] bg-oguogu-gray-1">상품 상세 이미지</main>
+
+      <Image
+        className="w-full object-cover"
+        src={res.item.extra?.detailImages[0].path}
+        alt={res.item.extra.detailImages[0].name}
+        width={320}
+        height={1500}
+      />
 
       <BuyModalAction res={res} />
     </>
