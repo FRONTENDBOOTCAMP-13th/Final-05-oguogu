@@ -4,10 +4,10 @@ import BuyBoxOption from '@/components/elements/BuyBoxForMobile/BuyBoxOption';
 import { BuyModalProps } from '@/components/elements/BuyModal/BuyModal.type';
 import { createCart } from '@/shared/data/actions/cart';
 import { getCart } from '@/shared/data/functions/cart';
-import { getOrder } from '@/shared/data/functions/order';
+import { getOrders } from '@/shared/data/functions/order';
 import { useAuthStore } from '@/shared/store/authStore';
 import { CartItem } from '@/shared/types/cart';
-import { Order, OrderedProduct } from '@/shared/types/order';
+import { Order } from '@/shared/types/order';
 import { useEffect, useRef } from 'react';
 import toast from 'react-hot-toast';
 
@@ -59,28 +59,34 @@ export default function BuyModal({ onClose, type, res, onSuccess }: BuyModalProp
       return;
     }
 
-    const orderList = await getOrder(userId, token);
+    /* 전체 주문 목록에서 환불 상태가 아닌 상품 중 해당 상품을 확인 */
+    const orderList = await getOrders(token);
     console.log('전체 주문 목록', orderList);
 
-    const isInOrderList = orderList.item.products
-      .filter((item: Order) => item._id === product_id)
-      .filter((item: OrderedProduct) => item.extra.productType === 'gardening');
-    console.log(`\t주문 목록 내 존재하는 해당 상품 데이터`, isInOrderList);
+    const unrefundOrderList = orderList.item.filter(
+      (item: Order) => item.state !== 'refundCompleted' && item.state !== 'refundInProgress',
+    );
+    console.log(`\t전체 주문 목록 중 환불 상태가 아닌 목록`, unrefundOrderList);
 
+    const isInOrderList = unrefundOrderList.filter((item: Order) => item.products[0]._id === product_id);
+    console.log(`\t현재 상품이 주문 목록에 존재하면 데이터 추출`, isInOrderList);
+
+    /* 전체 장바구니 목록에서 해당 상품을 확인 */
     const cartList = await getCart(token);
     console.log('전체 장바구니 목록', cartList);
 
     const isInCartList = cartList.item
       .filter((item: CartItem) => item.product_id === product_id)
       .filter((item: CartItem) => item.product.extra.productType === 'gardening');
-    console.log(`\t장바구니 목록 내 존재하는 해당 상품 데이터`, isInCartList);
+    console.log(`\t현재 상품이 장바구니 목록에 존재하면 데이터 추출`, isInCartList);
 
-    /* 주문 목록, 장바구니 목록에 상품이 있으면 장바구니 담지 않기 */
+    /* 주문 목록에 환불 상태가 아닌 상품이 있으면 장바구니 담지 않기 */
     if (isInOrderList.length) {
       toast.error('동일한 텃밭 상품은 1회 이상 주문이 불가합니다.');
       return;
     }
 
+    /* 장바구니 목록에 상품이 있으면 장바구니 담지 않기 */
     if (isInCartList.length) {
       toast.error('해당 텃밭 상품이 이미 장바구니에 존재합니다.');
       return;
