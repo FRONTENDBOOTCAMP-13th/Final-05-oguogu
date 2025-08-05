@@ -28,10 +28,11 @@ export default function SlideBannerItem({
       <figure className={`relative w-[210px] h-[280px] overflow-hidden rounded-[12px] transform ${className}`}>
         <Image
           src={`/images/main-banner-${order}-${size}.webp`}
-          alt={`${productName}${farmName}`}
+          alt={`${farmName}에서 판매하는 ${productName}`}
           width={210}
           height={280}
           className="w-full h-full object-cover scale-100"
+          priority
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
         <figcaption className="absolute bottom-0 left-0 w-full text-oguogu-white text-center py-2">

@@ -7,7 +7,6 @@ export default function GoBackIcon() {
   const pathname = usePathname();
   const handleGoBack = () => {
     const segments = pathname.split('/').filter(Boolean);
-    console.log('현재 경로', segments);
 
     /* 라우팅 경로가  */
     if (segments.length === 1) {
