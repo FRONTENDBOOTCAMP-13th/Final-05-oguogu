@@ -14,7 +14,7 @@ export default function GoBackIcon() {
     } else if (segments.length === 2) {
       switch (segments[0]) {
         case 'board':
-          router.push('/mypage');
+          router.back();
           break;
         case 'product':
         case 'garden':
