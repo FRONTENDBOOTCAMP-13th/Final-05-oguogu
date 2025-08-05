@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import Header from '@/components/layouts/Header/Header';
 import Navigation from '@/components/layouts/Navigation/Navigation';
 import SlideBanner from '@/components/layouts/Banner/SlideBanner';
@@ -27,9 +28,20 @@ export default async function Home() {
     .slice(0, 6);
 
   const reviewRes: ReviewRes = await getALLReplies();
-  const ReviewList = reviewRes?.item
-    .slice(0, 6)
-    .map(review => <ReviewItemCard key={review._id} name={review.user.name} email="abcd@gamil.com" res={review} />);
+  function shuffleArray<T>(arr: T[]): T[] {
+    const a = arr.slice();
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  const randomSix = shuffleArray(reviewRes.item).slice(0, 6);
+
+  const ReviewList = randomSix.map(review => (
+    <ReviewItemCard key={review._id} name={review.user.name} email="abcd@gamil.com" res={review} />
+  ));
   return (
     <>
       {/* 헤더 */}
