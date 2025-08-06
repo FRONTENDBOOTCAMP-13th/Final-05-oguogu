@@ -86,7 +86,7 @@ export default function SlideBanner() {
   };
 
   return (
-    <div className="flex flex-col items-center gap-3 overflow-hidden pt-2">
+    <div className="flex flex-col items-center gap-3 pt-2 overflow-hidden">
       <div className="relative w-full h-[300px] overflow-hidden">
         <ul className="flex items-center justify-center transition-transform duration-500">
           {/* 이전 슬라이드 */}
@@ -119,6 +119,7 @@ export default function SlideBanner() {
         {bannerItems.map((_item, index) => (
           <button
             key={index}
+            aria-label="슬라이드 이동 버튼"
             onMouseDown={() => handlePress(index)}
             onMouseUp={handleRelease}
             onTouchEnd={handleRelease}

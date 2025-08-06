@@ -126,6 +126,7 @@ export default function AccountItem() {
           <button
             className="w-full text-sm border rounded h-7 text-oguogu-black border-oguogu-main bg-oguogu-white hover:bg-oguogu-gray-1"
             onClick={handleChangeAccount}
+            aria-label="정산 계좌 등록/변경"
           >
             {account.trim() !== '' ? '정산 계좌 변경하기' : '정산 계좌 등록하기'}
           </button>
