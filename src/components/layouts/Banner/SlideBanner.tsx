@@ -3,6 +3,7 @@
 import SlideBannerItem from '@/components/elements/BannerItem/SlideBannerItem';
 import { SlideBannerItemType } from '@/components/elements/BannerItem/SlideBannerItem.type';
 import { /* useEffect, */ useState } from 'react';
+import { useSwipeable } from 'react-swipeable';
 
 // CHECKLIST
 // [x] 1차 마크업
@@ -65,6 +66,13 @@ export default function SlideBanner() {
   const prevIndex = (currentIndex - 1 + bannerItems.length) % bannerItems.length;
   const nextIndex = (currentIndex + 1) % bannerItems.length;
 
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => setCurrentIndex(prev => (prev + 1) % bannerItems.length),
+    onSwipedRight: () => setCurrentIndex(prev => (prev - 1 + bannerItems.length) % bannerItems.length),
+    preventScrollOnSwipe: true,
+    trackMouse: true,
+  });
+
   /* useEffect(() => {
     if (!autoSlide) return;
     const interval = setInterval(() => {
@@ -88,7 +96,7 @@ export default function SlideBanner() {
   return (
     <div className="flex flex-col items-center gap-3 pt-2 overflow-hidden">
       <div className="relative w-full h-[300px] overflow-hidden">
-        <ul className="flex items-center justify-center transition-transform duration-500">
+        <ul {...swipeHandlers} className="flex items-center justify-center transition-transform duration-500">
           {/* 이전 슬라이드 */}
           <li className="w-[210px] shrink-0">
             <SlideBannerItem
@@ -124,7 +132,7 @@ export default function SlideBanner() {
             onMouseUp={handleRelease}
             onTouchEnd={handleRelease}
             onTouchStart={() => handlePress(index)}
-            className={`w-2 h-2 rounded-full border cursor-pointer ${
+            className={`w-4 h-4 rounded-full border cursor-pointer ${
               currentIndex === index
                 ? 'bg-oguogu-white border-[var(--color-oguogu-gray-3)]'
                 : 'bg-oguogu-gray-2 border-none'

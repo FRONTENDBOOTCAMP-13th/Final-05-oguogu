@@ -10,8 +10,10 @@ export interface NoticeItemType {
   _id: number;
 }
 
-export default function NoticeItem({ type, title, date = '2025.08.02', _id }: NoticeItemType) {
+
+export default function NoticeItem({ type, title, date, _id }: NoticeItemType) {
   const pathname = usePathname();
+
 
   return (
     <>

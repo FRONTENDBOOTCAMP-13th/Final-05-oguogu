@@ -1,6 +1,7 @@
 'use client';
 
 import { CartItem } from '@/shared/types/cart';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
@@ -104,13 +105,16 @@ export default function CardItem({
         <div className="flex min-w-[288px] w-full h-full gap-4">
           {/* 이미지 */}
           <Link href={`/search/result/${item.product._id}/detail`}>
-            {/* <div className="min-w-[80px] h-[80px] bg-[url('/images/crop/crop-001.png')] bg-cover bg-center bg-no-repeat rounded-[4px]" /> */}
-            <div
-              style={{
-                backgroundImage: `url(${item.product.image.path})`,
-              }}
-              className="min-w-[80px] h-[80px]  bg-cover bg-center bg-no-repeat rounded-[4px]"
-            ></div>
+            <div className="min-w-[80px] h-[80px] relative rounded-[4px] overflow-hidden">
+              <Image
+                src={item.product.image.path}
+                alt={item.product.name ?? '상품 이미지'}
+                fill
+                className="object-cover"
+                sizes="80px"
+                priority={false} // 필요에 따라 true로 변경
+              />
+            </div>
           </Link>
 
           {/* 텍스트 */}
