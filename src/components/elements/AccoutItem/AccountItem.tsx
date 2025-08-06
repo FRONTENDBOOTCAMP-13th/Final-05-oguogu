@@ -6,7 +6,7 @@ import { getOrdersSeller } from '@/shared/data/functions/order';
 import { getUserDetail } from '@/shared/data/functions/user';
 import { useAuthStore } from '@/shared/store/authStore';
 import { UserAccoutType } from '@/shared/types/account';
-import { OrderListResponse } from '@/shared/types/order';
+import { Order, OrderListResponse } from '@/shared/types/order';
 import { endOfMonth, format, startOfMonth, subMonths } from 'date-fns';
 import { useEffect, useState } from 'react';
 
@@ -17,7 +17,7 @@ export default function AccountItem() {
   const [isEditing, setIsEditing] = useState(false);
   const [account, setAccount] = useState('미등록');
 
-  const [orderRes, setOrderRes] = useState<OrderListResponse>();
+  const [orderRes, setOrderRes] = useState<Order[]>();
 
   /* 상품, 주문 데이터 받아오고, 현재 계좌 정보를 상태로 저장 */
   useEffect(() => {
@@ -28,9 +28,12 @@ export default function AccountItem() {
     const fetch = async () => {
       const orderData: OrderListResponse = await getOrdersSeller(token);
 
-      if (orderData.ok) {
-        setOrderRes(orderData);
-      }
+      /* 환불 관련 상태인 데이터는 제외 */
+      const onPurchasingOrderData = orderData.item.filter(
+        item => item.state !== 'refundCompleted' && item.state !== 'refundInProgress',
+      );
+
+      setOrderRes(onPurchasingOrderData);
     };
 
     fetch();
@@ -46,17 +49,11 @@ export default function AccountItem() {
     getUserData();
   }, [token, userInfo]);
 
-  const totalPrice = orderRes?.item.reduce((orderSum, order) => {
-    const productsSum = order.products.reduce((sum, prod) => {
-      const price = prod.price;
-      const quantity = prod.quantity;
-      const dcRate = prod.extra.dcRate;
-
-      const discounted = price * (1 - dcRate / 100);
-      return sum + discounted * quantity;
-    }, 0);
-    return orderSum + productsSum;
-  }, 0);
+  const totalPrice =
+    orderRes
+      ?.map(order => order.products.filter(product => product.price)) // 2차원 배열
+      .flat() // 1차원 배열로 변환
+      .reduce((sum, product) => sum + product.price * (1 - product.extra.dcRate / 100), 0) ?? 0;
 
   /* 계좌 등록/변경 버튼 클릭 핸들러 */
   const handleChangeAccount = () => {
@@ -126,6 +123,7 @@ export default function AccountItem() {
           <button
             className="w-full text-sm border rounded h-7 text-oguogu-black border-oguogu-main bg-oguogu-white hover:bg-oguogu-gray-1"
             onClick={handleChangeAccount}
+            aria-label="정산 계좌 등록/변경"
           >
             {account.trim() !== '' ? '정산 계좌 변경하기' : '정산 계좌 등록하기'}
           </button>

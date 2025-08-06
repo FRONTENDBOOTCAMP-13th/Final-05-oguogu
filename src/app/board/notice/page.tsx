@@ -30,6 +30,7 @@ export default async function Notice() {
   const noticeList = noticeRes.item.map(item => {
     return <NoticeItem key={item._id} type={item.tag} title={item.title} date={item.createdAt} _id={item._id} />;
   });
+
   return (
     <>
       <LinkHeader title="공지사항" />

@@ -61,8 +61,9 @@ export default function ExperienceItem({
         </div>
 
         {/* 상품명 */}
+
         <Link href={`/search/result/${_id}/detail`} className="text-[14px] tracking-[-0.28px] leading-4">
-          {name}
+          <h3>{name}</h3>
         </Link>
 
         {/* 추가 상품 내용 설명 */}

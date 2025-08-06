@@ -12,7 +12,7 @@ export default function ProductLinkItem({
   const isRegisterPage = mode === 'registerPage';
   return (
     <div className={`flex justify-center pt-2 pb-4 ${isLoginPage ? '' : 'border-b-1 border-b-oguogu-gray-2'}`}>
-      <Link href={link} className="flex items-center gap-2 text-xs mobile-max:text-base">
+      <Link href={link} className="flex items-center gap-2 text-xs mobile-max:text-base" aria-label="상품 전체 보기">
         <span className="content-center">
           {isRegisterPage ? (
             <>

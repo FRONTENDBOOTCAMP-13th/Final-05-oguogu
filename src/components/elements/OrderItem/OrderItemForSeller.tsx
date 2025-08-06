@@ -101,7 +101,11 @@ export default function OrderItemForSeller({ orderState, item, updateOrderStatus
       orderState === 'refundInProgress' ? (
         <section className="flex justify-center items-center gap-2 text-[12px]">
           {/* <button className="w-full py-2 leading-none border border-oguogu-gray-2 rounded-[4px]">주문 정보 확인</button> */}
-          <button onClick={onClick} className="w-full py-2 leading-none border border-oguogu-main rounded-[4px]">
+          <button
+            onClick={onClick}
+            className="w-full py-2 leading-none border border-oguogu-main rounded-[4px]"
+            aria-label="주문 상태 변경"
+          >
             {nextText} 전환
           </button>
         </section>

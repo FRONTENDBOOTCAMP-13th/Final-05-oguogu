@@ -65,7 +65,7 @@ export default async function QnaDetailPage({ params }: QnaDetailPageProps) {
       <main className="px-4 py-4 min-h-[calc(100vh-48px)]">
         <div className="flex flex-col border-b border-oguogu-gray-4 pb-3 mb-2 text-base">
           <div className="flex-shrink-0 text-oguogu-main">{detailQna?.tag}</div>
-          <div className="min-w-0 flex-1 text-oguogu-black">{detailQna?.title}</div>
+          <h2 className="min-w-0 flex-1 text-oguogu-black">{detailQna?.title}</h2>
         </div>
         <div className="text-base leading-[140%] mt-6">
           {detailQna?.content

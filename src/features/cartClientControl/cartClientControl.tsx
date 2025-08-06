@@ -206,6 +206,7 @@ export default function CartClientControl() {
           <button
             onClick={handleOrder}
             disabled={selectedItems.length === 0}
+            aria-label="주문하기 버튼"
             className={`flex flex-1 items-center justify-center text-center
                         text-[16px] h-[44px] px-[24px] py-[6px] rounded-[4px] w-[272px]
                           ${selectedItems.length === 0 ? 'bg-oguogu-gray-2 text-oguogu-black cursor-not-allowed' : 'bg-oguogu-main text-oguogu-white'}

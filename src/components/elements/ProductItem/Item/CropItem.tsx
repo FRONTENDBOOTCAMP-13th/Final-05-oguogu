@@ -69,7 +69,7 @@ export default function CropItem({
           href={`/search/result/${_id}/detail`}
           className="text-[14px] tracking-[-0.28px] leading-5 line-clamp-2 min-h-[40px]"
         >
-          {name}
+          <h3>{name}</h3>
         </Link>
 
         {/* 가격 정보 */}
