@@ -73,7 +73,7 @@ export default function ReviewItem({ name, email, res }: ReviewItemType) {
         </div>
         <div className="flex gap-2">
           <p className="text-[12px] text-oguogu-black">{maskName(name)}</p>
-          <p className="text-[12px] text-oguogu-black">({maskEmail(email)})</p>
+          <p className="text-[12px] text-oguogu-black">({maskEmail(email!)})</p>
         </div>
       </div>
     </>
