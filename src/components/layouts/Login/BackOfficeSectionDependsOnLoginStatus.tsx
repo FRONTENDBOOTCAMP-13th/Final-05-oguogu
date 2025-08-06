@@ -41,8 +41,8 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
           item => item.state !== 'refundCompleted' && item.state !== 'refundInProgress',
         );
 
-        console.log(orderData);
-        console.log(onPurchasingOrderData);
+        console.log('주문 내역', orderData);
+        console.log('환불 제외 주문 내역', onPurchasingOrderData);
 
         setProductRes(data);
         setOrderRes(onPurchasingOrderData);
@@ -66,20 +66,26 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
   const deliveredCnt = orderRes?.filter(item => item.state === 'delivered').length;
   const purchaseCompletedCnt = orderRes?.filter(item => item.state === 'purchaseCompleted').length;
 
-  const totalPrice = orderRes?.reduce((orderSum, order) => {
-    const productsSum = order.products.reduce((sum, prod) => {
-      const price = prod.price;
-      const quantity = prod.quantity;
-      const dcRate = prod.extra.dcRate;
+  /* 합계 구하는 로직 수정 */
+  const totalPrice =
+    orderRes
+      ?.map(order => order.products.filter(product => product.price)) // 2차원 배열
+      .flat() // 1차원 배열로 변환
+      .reduce((sum, product) => sum + product.price * (1 - product.extra.dcRate / 100), 0) ?? 0;
 
-      const discounted = price * (1 - dcRate / 100);
-      return sum + discounted * quantity;
-    }, 0);
-    return orderSum + productsSum;
-  }, 0);
+  // const totalPrice = orderRes?.reduce((orderSum, order) => {
+  //   const productsSum = order.products.reduce((sum, prod) => {
+  //     const price = prod.price;
+  //     const quantity = prod.quantity;
+  //     const dcRate = prod.extra.dcRate;
+
+  //     const discounted = price * (1 - dcRate / 100);
+  //     return sum + discounted * quantity;
+  //   }, 0);
+  //   return orderSum + productsSum;
+  // }, 0);
 
   const qnaList = qnaRes?.item.filter(item => item.seller_id === seller_id);
-
   const qnaWaitingCnt = qnaList?.filter(item => item.repliesCount === 0).length;
   const qnafinishedCnt = qnaList?.filter(item => item.repliesCount !== 0).length;
 
