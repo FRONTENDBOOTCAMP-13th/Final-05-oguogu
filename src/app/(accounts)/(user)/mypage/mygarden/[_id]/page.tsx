@@ -41,6 +41,9 @@ export default async function MyGardenItemPage({ params }: ProductDetailPageProp
           : (lastStatus = 'seeding'),
   );
 
+  console.log('전체 상태', allStatus);
+  console.log('마지막 상태', lastStatus);
+
   /* period */
 
   /* 현재 날짜와 시작한 날짜의 차이를 계산하는 progress bar 데이터 받아오기 */
@@ -48,8 +51,8 @@ export default async function MyGardenItemPage({ params }: ProductDetailPageProp
   const startDate = res.item.extra?.deadline;
 
   // INFO 종료 날짜 : 현재는 하드코딩된 데이터, dbinit 이후 실제 DB 반영 (아래 주석 사용)
-  // const endDate = res.item.extra.harvestExpectedDate;
-  const endDate = '2025-11-01';
+  const endDate = res.item.extra.harvestExpectedDate ?? '2025-11-01';
+  // const endDate = '2025-11-01';
 
   // 전체 날짜: 시작 날짜 ~ 종료 날짜
   const getDaysFromStartDateToEndDate = getDayFromToday(startDate!, endDate);

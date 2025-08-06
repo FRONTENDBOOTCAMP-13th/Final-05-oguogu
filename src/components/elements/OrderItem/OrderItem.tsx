@@ -41,7 +41,7 @@ export default function OrderItem({ orderState, item, updateOrderStatus, handleS
 
   const requestRefund = () => updateOrderStatus(item._id, 'refundInProgress');
   const confirmPurchase = () => updateOrderStatus(item._id, 'purchaseCompleted');
-  const cancelRefundRequest = () => updateOrderStatus(item._id, 'preparingShipment');
+  // const cancelRefundRequest = () => updateOrderStatus(item._id, 'preparingShipment');
 
   return (
     <div className="flex flex-col gap-4 justify-between min-w-[288px] w-full">
@@ -86,14 +86,7 @@ export default function OrderItem({ orderState, item, updateOrderStatus, handleS
       {orderState !== 'purchaseCompleted' &&
         orderState !== 'refundCompleted' &&
         (refundState ? (
-          <section>
-            <button
-              onClick={cancelRefundRequest}
-              className="text-[12px] w-full py-2 leading-none border border-oguogu-gray-2 rounded-[4px]"
-            >
-              환불 신청 취소
-            </button>
-          </section>
+          ''
         ) : (
           <section className="flex justify-center items-center gap-2 text-[12px]">
             <button
