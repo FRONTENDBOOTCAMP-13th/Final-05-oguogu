@@ -40,8 +40,8 @@ export default async function MyGardenItemPage({ params }: ProductDetailPageProp
   const startDate = res.item.extra?.deadline ?? '2025-08-01';
 
   // INFO 종료 날짜 : 현재는 하드코딩된 데이터, dbinit 이후 실제 DB 반영 (아래 주석 사용)
-  // const endDate = res.item.extra?.harvestExpectedDate ?? '2025-11-01';
-  const endDate = '2025-11-01';
+  const endDate = res.item.extra?.harvestExpectedDate ?? '2025-11-01';
+  // const endDate = '2025-11-01';
 
   // 전체 날짜: 시작 날짜 ~ 종료 날짜
   const getDaysFromStartDateToEndDate = getDayFromToday(startDate!, endDate);
