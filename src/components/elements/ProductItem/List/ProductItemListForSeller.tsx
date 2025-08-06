@@ -22,7 +22,7 @@ export default function ProductItemListForSeller({ _id, category, title, price }
               className="flex-1 min-w-0 truncate text-oguogu-black hover:underline"
               aria-label="상품 상세 페이지 이동"
             >
-              {title}
+              <h2>{title}</h2>
             </Link>
             <div className="flex-shrink-0 w-[56px]">{price}</div>
           </>
