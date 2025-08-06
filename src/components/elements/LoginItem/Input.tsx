@@ -99,7 +99,7 @@ export default function Input({
             <span>{title}</span>
             {required && <sup className="text-[10px] px-[2px]">*</sup>}
           </label>
-          <div className="flex gap-5 items-center">
+          <div className="flex items-center gap-5">
             <div className="grow-1 flex gap-2 items-center text-[16px] text-oguogu-gray-4">
               <input
                 type="text"
@@ -153,7 +153,7 @@ export default function Input({
             <span>{title}</span>
             {required && <sup className="text-[10px] px-[2px]">*</sup>}
           </div>
-          <div className="flex items-center gap-2 w-full">
+          <div className="flex items-center w-full gap-2">
             {/* 파일명 표시 필드 */}
             <div className="flex-grow px-3 py-1 text-[12px] rounded-[8px] border border-gray-300 bg-gray-100 text-gray-400 truncate">
               {selectedFileName || '선택된 파일 없음'}
@@ -162,6 +162,7 @@ export default function Input({
             {/* 업로드 버튼 */}
             <button
               type="button"
+              aria-label="파일 업로드 버튼"
               onClick={handleFileButtonClick}
               className="px-3 py-1 text-[12px] rounded-[8px]  border border-oguogu-main-dark  "
             >
@@ -171,6 +172,7 @@ export default function Input({
             {/* 취소 버튼 */}
             <button
               type="button"
+              aria-label="파일 업로드 취소 버튼"
               onClick={handleCancel}
               className="px-3 py-1 text-[12px] rounded-[8px]  border border-gray-400  "
             >
@@ -190,7 +192,7 @@ export default function Input({
             <span>{title}</span>
             {required && <sup className="text-[10px] px-[2px]">*</sup>}
           </div>
-          <div className="flex items-center gap-2 w-full">
+          <div className="flex items-center w-full gap-2">
             {/* 파일명 표시 필드 */}
             <div className="flex-grow px-3 py-1 text-[12px] rounded-[8px] border border-gray-300 bg-gray-100 text-gray-400 truncate">
               {selectedFileName || '선택된 파일 없음'}
@@ -199,6 +201,7 @@ export default function Input({
             {/* 업로드 버튼 */}
             <button
               type="button"
+              aria-label="파일 업로드 버튼"
               onClick={handleFileButtonClick}
               className="px-3 py-1 text-[12px] rounded-[8px]  border border-oguogu-main-dark  "
             >
@@ -208,6 +211,7 @@ export default function Input({
             {/* 취소 버튼 */}
             <button
               type="button"
+              aria-label="파일 업로드 취소 버튼"
               onClick={handleCancel}
               className="px-3 py-1 text-[12px] rounded-[8px]  border border-gray-400  "
             >

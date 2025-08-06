@@ -345,6 +345,7 @@ export default function GardeningProductPostClientControl() {
       <button
         onClick={handlePost}
         type="button"
+        aria-label="상품 등록 버튼"
         className={` flex flex-1 items-center justify-center text-center 
                  bg-oguogu-main text-oguogu-white
                  px-[24px] py-[6px] rounded-[4px]`}
