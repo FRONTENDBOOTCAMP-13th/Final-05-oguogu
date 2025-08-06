@@ -10,7 +10,7 @@ import { getPosts } from '@/shared/data/functions/post';
 import { getProductSeller } from '@/shared/data/functions/product';
 import { useAuthStore } from '@/shared/store/authStore';
 import { useLoadingStore } from '@/shared/store/loadingStore';
-import { OrderListResponse } from '@/shared/types/order';
+import { Order, OrderListResponse } from '@/shared/types/order';
 import { responsePostReplies } from '@/shared/types/post';
 import { productsRes } from '@/shared/types/product';
 import Link from 'next/link';
@@ -21,7 +21,7 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
   const seller_id = useAuthStore(state => state.userInfo?._id);
 
   const [productRes, setProductRes] = useState<productsRes>();
-  const [orderRes, setOrderRes] = useState<OrderListResponse>();
+  const [orderRes, setOrderRes] = useState<Order[]>();
   const [qnaRes, setQnaRes] = useState<responsePostReplies>();
   const { isLoading, setLoading } = useLoadingStore();
 
@@ -36,8 +36,16 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
         const orderData: OrderListResponse = await getOrdersSeller(token);
         const qnaData: responsePostReplies = await getPosts('qna', token);
 
+        /* 환불 관련 상태인 데이터는 제외 */
+        const onPurchasingOrderData = orderData.item.filter(
+          item => item.state !== 'refundCompleted' && item.state !== 'refundInProgress',
+        );
+
+        console.log(orderData);
+        console.log(onPurchasingOrderData);
+
         setProductRes(data);
-        setOrderRes(orderData);
+        setOrderRes(onPurchasingOrderData);
         setQnaRes(qnaData);
       } catch (err) {
         console.log('에러 발생', err);
@@ -52,13 +60,13 @@ export default function BackOffcieSectionDependsOnLoginStatus() {
   const experiencepCnt = productRes?.item.filter(item => item.extra?.productType === 'experience').length;
   const gardeningCnt = productRes?.item.filter(item => item.extra?.productType === 'gardening').length;
 
-  const payedCnt = orderRes?.item.filter(item => item.state === 'OS020').length;
-  const preparingShipmentCnt = orderRes?.item.filter(item => item.state === 'preparingShipment').length;
-  const inTransitCnt = orderRes?.item.filter(item => item.state === 'inTransit').length;
-  const deliveredCnt = orderRes?.item.filter(item => item.state === 'delivered').length;
-  const purchaseCompletedCnt = orderRes?.item.filter(item => item.state === 'purchaseCompleted').length;
+  const payedCnt = orderRes?.filter(item => item.state === 'OS020').length;
+  const preparingShipmentCnt = orderRes?.filter(item => item.state === 'preparingShipment').length;
+  const inTransitCnt = orderRes?.filter(item => item.state === 'inTransit').length;
+  const deliveredCnt = orderRes?.filter(item => item.state === 'delivered').length;
+  const purchaseCompletedCnt = orderRes?.filter(item => item.state === 'purchaseCompleted').length;
 
-  const totalPrice = orderRes?.item.reduce((orderSum, order) => {
+  const totalPrice = orderRes?.reduce((orderSum, order) => {
     const productsSum = order.products.reduce((sum, prod) => {
       const price = prod.price;
       const quantity = prod.quantity;
