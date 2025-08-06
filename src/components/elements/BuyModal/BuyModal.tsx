@@ -64,11 +64,14 @@ export default function BuyModal({ onClose, type, res, onSuccess }: BuyModalProp
     console.log('전체 주문 목록', orderList);
 
     const unrefundOrderList = orderList.item.filter(
-      (item: Order) => item.state !== 'refundCompleted' && item.state !== 'refundInProgress',
+      (item: Order) =>
+        item.state !== 'refundCompleted' && item.state !== 'refundInProgress' && item.state !== 'purchaseCompleted',
     );
-    console.log(`\t전체 주문 목록 중 환불 상태가 아닌 목록`, unrefundOrderList);
+    console.log(`\t전체 주문 목록 중 환불 및 구매 완료 상태가 아닌 목록`, unrefundOrderList);
 
-    const isInOrderList = unrefundOrderList.filter((item: Order) => item.products[0]._id === product_id);
+    const isInOrderList = unrefundOrderList
+      .filter((item: Order) => item.products[0]._id === product_id)
+      .filter((item: Order) => item.products[0].extra.productType === 'gardening');
     console.log(`\t현재 상품이 주문 목록에 존재하면 데이터 추출`, isInOrderList);
 
     /* 전체 장바구니 목록에서 해당 상품을 확인 */
@@ -82,7 +85,7 @@ export default function BuyModal({ onClose, type, res, onSuccess }: BuyModalProp
 
     /* 주문 목록에 환불 상태가 아닌 상품이 있으면 장바구니 담지 않기 */
     if (isInOrderList.length) {
-      toast.error('동일한 텃밭 상품은 1회 이상 주문이 불가합니다.');
+      toast.error('동일한 텃밭 상품은 구매가 완료되어야 재주문이 가능합니다.');
       return;
     }
 
