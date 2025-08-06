@@ -14,9 +14,10 @@ export default function InteractionButton({
 }) {
   return (
     <>
-      <div className="w-full flex basis-full gap-2">
+      <div className="flex w-full gap-2 basis-full">
         <button
           onClick={togglebookmarked}
+          aria-label="찜하기 버튼"
           className="flex items-center justify-center border-1 rounded-[4px] border-oguogu-main bg-oguogu-white w-[30px] h-[22px] cursor-pointer"
         >
           {/* 해당 버튼이 클릭되었을 때, 즉 찜 버튼을 클릭했을 때 해당 상태를 기반으로 fill 값이 변경되는 로직 필요 */}

@@ -84,6 +84,7 @@ export default function ToggleOfficePageForSeller() {
           right: `${position.x}px`,
           bottom: `${position.y}px`,
         }} */
+          aria-label="판매자 관리 페이지로 이동"
         >
           {content}
         </Link>
