@@ -39,9 +39,7 @@ export default async function Home() {
 
   const randomSix = shuffleArray(reviewRes.item).slice(0, 6);
 
-  const ReviewList = randomSix.map(review => (
-    <ReviewItemCard key={review._id} name={review.user.name} email="abcd@gamil.com" res={review} />
-  ));
+  const ReviewList = randomSix.map(review => <ReviewItemCard key={review._id} name={review.user.name} res={review} />);
   return (
     <>
       {/* 헤더 */}

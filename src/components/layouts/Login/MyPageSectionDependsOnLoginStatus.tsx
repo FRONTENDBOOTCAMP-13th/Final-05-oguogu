@@ -184,6 +184,9 @@ export default function MyPageSectionDependsOnLoginStatus() {
           <Link href="/board/qna">
             <h3>자주 묻는 질문</h3>
           </Link>
+          <Link href="/board/info">
+            <h3>소개</h3>
+          </Link>
         </div>
       </section>
     </>

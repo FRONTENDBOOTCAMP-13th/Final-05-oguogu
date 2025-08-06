@@ -102,6 +102,11 @@ export default function Footer() {
           </div>
         </section>
       </div>
+
+      <div className="px-10 pb-4 text-xs text-center  text-oguogu-gray-3">
+        본 사이트는 멋쟁이사자처럼 프론트엔드 13기 교육 과정을 통해 제작된 포트폴리오용 프로젝트입니다. <br /> 실제
+        상품의 판매 및 결제는 이루어지지 않으며, 모든 콘텐츠는 학습을 위한 목적으로 제공됩니다.
+      </div>
       {/* 카피라이트 */}
       <div className="pt-4 pb-8 text-xs text-center border-t border-oguogu-gray-1 text-oguogu-gray-3">
         ⓒ 2025 OGUOGU. All rights reserved.
