@@ -7,7 +7,7 @@ export interface NoticeItemType {
   _id: number;
 }
 
-export default function NoticeItem({ type, title, date = '2025.08.02', _id }: NoticeItemType) {
+export default function NoticeItem({ type, title, date, _id }: NoticeItemType) {
   return (
     <>
       <div className="flex justify-between gap-2 text-[12px] text-oguogu-black">

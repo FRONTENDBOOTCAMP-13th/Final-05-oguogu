@@ -28,7 +28,7 @@ export default async function Notice() {
   const noticeRes: responsePostReplies = await getPosts('notice');
 
   const noticeList = noticeRes.item.map(item => {
-    return <NoticeItem key={item._id} type={item.tag} title={item.title} date={`2025.08.04`} _id={item._id} />;
+    return <NoticeItem key={item._id} type={item.tag} title={item.title} date={item.createdAt} _id={item._id} />;
   });
   return (
     <>
