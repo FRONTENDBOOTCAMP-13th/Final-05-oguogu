@@ -38,7 +38,6 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
 
   const { name, content } = productRes.item;
   const url = `https://final-05-oguogu.vercel.app/search/result/${_id}/review`;
-  const image_url = productRes.item.mainImages?.[0]?.path || '/images/default-og-image.png';
 
   return {
     title: `${name} 리뷰 | 오구텃밭`,
@@ -60,14 +59,6 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
         : `실제 구매자들의 ${name} 사용 후기와 평점을 확인하세요.`,
       url,
       type: 'article',
-      images: [
-        {
-          url: image_url,
-          width: 800,
-          height: 600,
-          alt: `${name} 대표 이미지`,
-        },
-      ],
     },
     twitter: {
       card: 'summary_large_image',
@@ -75,7 +66,6 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
       description: content
         ? `${name} 상품 리뷰를 확인해보세요.`
         : `${name}에 대해 고객들이 어떻게 평가했는지 확인해보세요.`,
-      images: [image_url],
     },
   };
 }

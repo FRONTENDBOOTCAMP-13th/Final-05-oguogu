@@ -47,20 +47,20 @@ export const metadata: Metadata = {
     siteName: '오구텃밭',
     locale: 'ko_KR',
     type: 'website',
-    /* images: [
+    images: [
       {
-        url: 'https://final-05-oguogu.vercel.app/images/main-og-image.png',
-        width: 1200,
-        height: 630,
+        url: '/metadata_og.png',
+        width: 1000,
+        height: 525,
         alt: '오구텃밭 대표 이미지',
       },
-    ], */
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: '오구텃밭 - 산지직송 농산물과 특별한 농촌 체험',
     description: '신선함과 즐거움이 가득한 오구텃밭. 지금 만나보세요!',
-    /*  images: ['https://final-05-oguogu.vercel.app/images/main-og-image.png'], */
+    images: ['/metadata_og.png'],
   },
 };
 
@@ -71,6 +71,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko-KR">
+      <head>
+        <link rel="icon" href="/images/meta/favicon.png" />
+      </head>
       <body>
         {/* 스크롤을 최상단으로 강제 이동하는 코드 */}
         <ScrollToTopOnRouteChange />
