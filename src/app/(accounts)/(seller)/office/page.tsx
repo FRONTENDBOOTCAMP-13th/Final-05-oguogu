@@ -28,11 +28,21 @@ export default function BackOffice() {
               나의 텃밭 생활
               <Image src="/svgs/pot.svg" alt="" aria-hidden="true" width={20} height={20}></Image>
             </h2>
-            <Link href="/office/orders">주문 관리</Link>
-            <Link href="/office/products">상품 관리</Link>
-            <Link href="/office/mygarden">텃밭 히스토리 관리</Link>
-            <Link href="/office/payments">정산</Link>
-            <Link href="/office/qnas">문의 내역</Link>
+            <Link href="/office/orders">
+              <h3>주문 관리</h3>
+            </Link>
+            <Link href="/office/products">
+              <h3>상품 관리</h3>
+            </Link>
+            <Link href="/office/mygarden">
+              <h3>텃밭 히스토리 관리</h3>
+            </Link>
+            <Link href="/office/payments">
+              <h3>정산</h3>
+            </Link>
+            <Link href="/office/qnas">
+              <h3>문의 내역</h3>
+            </Link>
           </div>
 
           <div className="flex flex-col gap-4">
@@ -40,8 +50,12 @@ export default function BackOffice() {
               고객센터
               <Image src="/svgs/notice.svg" alt="" aria-hidden="true" width={18} height={18}></Image>
             </h2>
-            <Link href="/board/notice">공지사항</Link>
-            <Link href="/board/qna">자주 묻는 질문</Link>
+            <Link href="/board/notice">
+              <h3>공지사항</h3>
+            </Link>
+            <Link href="/board/qna">
+              <h3>자주 묻는 질문</h3>
+            </Link>
           </div>
         </section>
       </main>

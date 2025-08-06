@@ -21,7 +21,7 @@ export default function ProductItemListForSeller({ _id, category, title, price }
               href={`/search/result/${_id}/detail`}
               className="truncate min-w-0 flex-1 text-oguogu-black hover:underline"
             >
-              {title}
+              <h2>{title}</h2>
             </Link>
             <div className="flex-shrink-0 w-[56px]">{price}</div>
           </>

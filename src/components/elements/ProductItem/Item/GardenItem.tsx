@@ -65,8 +65,9 @@ export default function GardenItem({
         </div>
 
         {/* 상품명 */}
+
         <Link href={`/search/result/${_id}/detail`} className="text-[14px] tracking-[-0.28px] leading-4">
-          {name}
+          <h3>{name}</h3>
         </Link>
 
         {/* 텃밭 상품 서브 텍스트 내용 */}
