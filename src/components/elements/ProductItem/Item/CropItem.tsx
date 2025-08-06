@@ -31,30 +31,30 @@ export default function CropItem({
   return (
     <div className="flex flex-col gap-4 min-w-[140px] max-w-[400px] w-full">
       {/* 상품 이미지 및 뱃지 영역 */}
-      <Link href={`/search/result/${_id}/detail`}>
-        <div className="relative">
-          {/* 대표 이미지 */}
-          {/* 이미지를 하드코딩 해둔 상태 추후 동적으로 관리해야 함 */}
 
-          <div
-            style={{
-              backgroundImage: `url(${mainImages[0].path})`,
-            }}
-            className="bg-center bg-cover rounded-lg aspect-[3/4] min-w-[140px] min-h-[186.67px]"
-          ></div>
+      {
+        <Link href={`/search/result/${_id}/detail`}>
+          <div className="relative">
+            {/* 대표 이미지 */}
+            <div className="relative rounded-lg aspect-[3/4] min-w-[140px] min-h-[186.67px] overflow-hidden">
+              <Image
+                src={mainImages[0].path}
+                alt="대표 이미지"
+                fill
+                className="object-cover"
+                sizes="(min-width: 768px) 140px, 100vw"
+              />
+            </div>
 
-          {/* <div
-            className={`bg-[url(${mainImages[0].path})] min-w-[140px] min-h-[186.67px] bg-center bg-cover aspect-[3/4] rounded-lg`}
-          ></div>
- */}
-          {/* 뱃지 (제철 상품, 인기 상품 등) */}
-          <div className="absolute top-0.5 left-1.5">
-            {badgeList.map((item, index) => (
-              <Badge key={index} type={item} size={10} />
-            ))}
+            {/* 뱃지 (제철 상품, 인기 상품 등) */}
+            <div className="absolute top-0.5 left-1.5">
+              {badgeList.map((item, index) => (
+                <Badge key={index} type={item} size={10} />
+              ))}
+            </div>
           </div>
-        </div>
-      </Link>
+        </Link>
+      }
 
       {/* 텍스트 정보 영역 */}
       <div className="flex flex-col gap-1">
@@ -69,7 +69,7 @@ export default function CropItem({
           href={`/search/result/${_id}/detail`}
           className="text-[14px] tracking-[-0.28px] leading-5 line-clamp-2 min-h-[40px]"
         >
-          {name}
+          <h3>{name}</h3>
         </Link>
 
         {/* 가격 정보 */}

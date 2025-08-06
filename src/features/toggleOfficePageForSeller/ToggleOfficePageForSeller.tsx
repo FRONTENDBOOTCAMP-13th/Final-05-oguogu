@@ -79,11 +79,12 @@ export default function ToggleOfficePageForSeller() {
           /* ref={dragRef} */
           /* onMouseDown={handleMouseDown} */
           /* onClick={handleClick} */
-          className="fixed w-20 h-20 bottom-18 right-6 border-3 border-oguogu-main rounded-[100px] bg-oguogu-white shadow-sm shadow-oguogu-gray-2 text-sm flex flex-col items-center justify-center"
+          className="fixed w-20 h-20 bottom-18 right-6 mobile-max:translate-x-[430%] mobile-max:right-1/2 border-3 border-oguogu-main rounded-[100px] bg-oguogu-white/50 shadow-sm shadow-oguogu-gray-2 text-sm flex flex-col items-center justify-center"
           /* style={{
           right: `${position.x}px`,
           bottom: `${position.y}px`,
         }} */
+          aria-label="판매자 관리 페이지로 이동"
         >
           {content}
         </Link>

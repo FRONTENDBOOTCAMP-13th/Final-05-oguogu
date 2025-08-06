@@ -25,6 +25,7 @@ export interface CartItem {
       sort: number;
       dcRate: number;
       productCnt: number;
+      productType: string;
     };
   };
 }

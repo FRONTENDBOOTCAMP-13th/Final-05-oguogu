@@ -27,6 +27,7 @@ export default function SellerProductEditOption({
           type="button"
           className="w-full relative px-4 py-1 text-[12px] border border-oguogu-gray-2 rounded-[4px] flex items-center justify-center"
           onClick={() => setOpen(prev => !prev)}
+          aria-label="카테고리 선택"
         >
           <span>{selected.label}</span>
           <span className="absolute right-4">
@@ -36,7 +37,7 @@ export default function SellerProductEditOption({
           </span>
         </button>
         {open && (
-          <ul className="absolute z-10 mt-1 w-full bg-white border border-gray-200 rounded-lg shadow-lg">
+          <ul className="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg">
             {orderOptions.map(option => (
               <li
                 key={option.value}

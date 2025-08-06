@@ -25,7 +25,6 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
   }
 
   const { name, content } = product.item;
-  const image_url = product.item.mainImages![0].path;
   const url = `https://final-05-oguogu.vercel.app/search/result/${_id}/detail`;
 
   return {
@@ -54,20 +53,11 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
       description: content || `${name} 상품의 자세한 정보를 확인해보세요.`,
       url,
       type: 'website',
-      images: [
-        {
-          url: image_url || '/images/default-og-image.png', // 이미지 경로 수정 필요
-          width: 800,
-          height: 600,
-          alt: `${name} 이미지`,
-        },
-      ],
     },
     twitter: {
       card: 'summary_large_image',
       title: `${name} | 오구텃밭`,
       description: content || `${name} 상품의 자세한 정보를 확인해보세요.`,
-      images: [image_url || '/images/default-og-image.png'], //이미지 경로 수정 필요
     },
   };
 }

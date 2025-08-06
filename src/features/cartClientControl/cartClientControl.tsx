@@ -67,7 +67,6 @@ export default function CartClientControl() {
       if (data.ok) {
         await deleteCart(item.cart_id, token);
         successCartIds.push(item.cart_id);
-        setIsSuccessOpen(true);
       } else {
         allSuccess = false;
         toast.error(`상품 ID ${item._id} 주문 실패: ${data.message}`);
@@ -83,6 +82,7 @@ export default function CartClientControl() {
 
     if (allSuccess && successCartIds.length > 0) {
       toast.success('주문이 완료되었습니다.');
+      setIsSuccessOpen(true);
     }
   };
 
@@ -206,6 +206,7 @@ export default function CartClientControl() {
           <button
             onClick={handleOrder}
             disabled={selectedItems.length === 0}
+            aria-label="주문하기 버튼"
             className={`flex flex-1 items-center justify-center text-center
                         text-[16px] h-[44px] px-[24px] py-[6px] rounded-[4px] w-[272px]
                           ${selectedItems.length === 0 ? 'bg-oguogu-gray-2 text-oguogu-black cursor-not-allowed' : 'bg-oguogu-main text-oguogu-white'}

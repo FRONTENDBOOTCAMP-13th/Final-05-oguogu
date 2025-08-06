@@ -2,7 +2,7 @@
 
 import CheckButton from '@/components/elements/CheckButton/CheckButton';
 import Filter from '@/components/elements/ProductItem/Filter/Filter';
-import { ProductSort, ReviewSort } from '@/components/elements/ProductItem/Sort/Sort';
+import { ProductSort } from '@/components/elements/ProductItem/Sort/Sort';
 import { QnaSortBarType, ReviewSortbarType } from '@/components/layouts/SortBar/Sortbar.type';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -44,7 +44,7 @@ export function ReviewSortbar({ reviewAvg }: ReviewSortbarType) {
           <span>{reviewAvg}</span>
         </div>
       </div>
-      <ReviewSort />
+      {/*  <ReviewSort /> */}
     </div>
   );
 }

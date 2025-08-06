@@ -2,7 +2,8 @@
 
 import SlideBannerItem from '@/components/elements/BannerItem/SlideBannerItem';
 import { SlideBannerItemType } from '@/components/elements/BannerItem/SlideBannerItem.type';
-import { useEffect, useState } from 'react';
+import { /* useEffect, */ useState } from 'react';
+import { useSwipeable } from 'react-swipeable';
 
 // CHECKLIST
 // [x] 1차 마크업
@@ -16,7 +17,7 @@ import { useEffect, useState } from 'react';
 
 export default function SlideBanner() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [autoSlide, setAutoSlide] = useState(true);
+  // const [autoSlide, setAutoSlide] = useState(true);
 
   const bannerItems: SlideBannerItemType[] = [
     {
@@ -65,30 +66,37 @@ export default function SlideBanner() {
   const prevIndex = (currentIndex - 1 + bannerItems.length) % bannerItems.length;
   const nextIndex = (currentIndex + 1) % bannerItems.length;
 
-  useEffect(() => {
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => setCurrentIndex(prev => (prev + 1) % bannerItems.length),
+    onSwipedRight: () => setCurrentIndex(prev => (prev - 1 + bannerItems.length) % bannerItems.length),
+    preventScrollOnSwipe: true,
+    trackMouse: true,
+  });
+
+  /* useEffect(() => {
     if (!autoSlide) return;
     const interval = setInterval(() => {
       setCurrentIndex(prev => (prev + 1) % bannerItems.length);
     }, 1000 * 4);
     return () => clearInterval(interval);
-  }, [autoSlide, bannerItems.length]);
+  }, [autoSlide, bannerItems.length]); */
 
   // 버튼 누르고 있을 때 해당 슬라이드로 이동 및 정지
 
   const handlePress = (index: number) => {
-    setAutoSlide(false);
+    // setAutoSlide(false);
     setCurrentIndex(index);
   };
 
   // 버튼 떼면 다시 자동 슬라이드 시작
   const handleRelease = () => {
-    setAutoSlide(true);
+    // setAutoSlide(true);
   };
 
   return (
-    <div className="flex flex-col items-center gap-3 overflow-hidden pt-2">
+    <div className="flex flex-col items-center gap-3 pt-2 overflow-hidden">
       <div className="relative w-full h-[300px] overflow-hidden">
-        <ul className="flex items-center justify-center transition-transform duration-500">
+        <ul {...swipeHandlers} className="flex items-center justify-center transition-transform duration-500">
           {/* 이전 슬라이드 */}
           <li className="w-[210px] shrink-0">
             <SlideBannerItem
@@ -119,11 +127,12 @@ export default function SlideBanner() {
         {bannerItems.map((_item, index) => (
           <button
             key={index}
+            aria-label="슬라이드 이동 버튼"
             onMouseDown={() => handlePress(index)}
             onMouseUp={handleRelease}
             onTouchEnd={handleRelease}
             onTouchStart={() => handlePress(index)}
-            className={`w-2 h-2 rounded-full border cursor-pointer ${
+            className={`w-4 h-4 rounded-full border cursor-pointer ${
               currentIndex === index
                 ? 'bg-oguogu-white border-[var(--color-oguogu-gray-3)]'
                 : 'bg-oguogu-gray-2 border-none'

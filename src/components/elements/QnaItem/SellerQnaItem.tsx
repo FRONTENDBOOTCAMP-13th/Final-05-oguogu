@@ -115,7 +115,7 @@ export default function SellerQnaItem({
         </div>
 
         <div>
-          <p className="text-[16px] text-oguogu-black">{itemRes.title}</p>
+          <h2 className="text-[16px] text-oguogu-black">{itemRes.title}</h2>
           <p className="text-[12px] text-oguogu-gray-4">{itemRes.content}</p>
         </div>
 

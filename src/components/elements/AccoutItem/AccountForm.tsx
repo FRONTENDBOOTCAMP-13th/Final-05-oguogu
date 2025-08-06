@@ -122,6 +122,7 @@ export default function AccountForm({ id, token, isEditing, onSubmit, onUpdateAc
         <section className="flex items-center justify-center gap-2">
           <button
             type="submit"
+            aria-label="정산 계좌 등록"
             className="w-full text-sm text-white rounded h-7 bg-oguogu-main hover:bg-oguogu-main-dark"
           >
             정산 계좌 등록
@@ -129,6 +130,7 @@ export default function AccountForm({ id, token, isEditing, onSubmit, onUpdateAc
           {onCancel && (
             <button
               type="button"
+              aria-label="정산 계좌 등록 취소"
               onClick={onCancel}
               className="w-full text-sm border rounded h-7 text-oguogu-black border-oguogu-gray-2 bg-oguogu-white hover:bg-oguogu-gray-1"
             >

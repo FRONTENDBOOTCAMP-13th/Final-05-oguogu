@@ -1,4 +1,5 @@
 import { Order } from '@/shared/types/order';
+import Image from 'next/image';
 
 export interface OrderItemForSellerType {
   orderState: string;
@@ -75,13 +76,15 @@ export default function OrderItemForSeller({ orderState, item, updateOrderStatus
       <section className="flex flex-col gap-2">
         {item.products.map(product => (
           <div key={product._id} className="flex gap-2">
-            {/* <div className="w-[48px] h-[48px] bg-cover bg-center bg-[url('/images/crop/crop-001.png')] bg-no-repeat rounded-[4px]" /> */}
-            <div
-              style={{
-                backgroundImage: `url(${item.products[0].image.path})`,
-              }}
-              className="w-[48px] h-[48px] bg-cover bg-center bg-[url('/images/crop/crop-001.png')] bg-no-repeat rounded-[4px]"
-            ></div>
+            <div className="w-[48px] h-[48px] relative rounded-[4px] overflow-hidden shrink-0">
+              <Image
+                src={product.image.path}
+                alt={product.name ?? '상품 이미지'}
+                fill
+                className="object-cover"
+                sizes="48px"
+              />
+            </div>
             <div className="w-[216px]">
               <div className="text-[12px] truncate">{product.name}</div>
               <div className="text-[12px] text-oguogu-gray-4">
@@ -98,7 +101,11 @@ export default function OrderItemForSeller({ orderState, item, updateOrderStatus
       orderState === 'refundInProgress' ? (
         <section className="flex justify-center items-center gap-2 text-[12px]">
           {/* <button className="w-full py-2 leading-none border border-oguogu-gray-2 rounded-[4px]">주문 정보 확인</button> */}
-          <button onClick={onClick} className="w-full py-2 leading-none border border-oguogu-main rounded-[4px]">
+          <button
+            onClick={onClick}
+            className="w-full py-2 leading-none border border-oguogu-main rounded-[4px]"
+            aria-label="주문 상태 변경"
+          >
             {nextText} 전환
           </button>
         </section>
