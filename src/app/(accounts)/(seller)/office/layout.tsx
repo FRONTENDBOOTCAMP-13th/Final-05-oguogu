@@ -11,7 +11,7 @@ const ClientRedirect = dynamic(() => import('@/features/redirectRouteToMypage/Re
 export default function OfficeRootLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
-      {/* 로컬 스토리지에서 데이터를 추출하는 함수 */}
+      {/* 로그인 상태 검증 후 위치를 강제로 이동 */}
       <ClientRedirect />
 
       {/* 스크롤을 최상단으로 강제 이동하는 코드 */}
