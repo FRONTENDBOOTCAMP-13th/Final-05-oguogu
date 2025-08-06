@@ -3,7 +3,11 @@
 import BuyBoxOption from '@/components/elements/BuyBoxForMobile/BuyBoxOption';
 import { BuyModalProps } from '@/components/elements/BuyModal/BuyModal.type';
 import { createCart } from '@/shared/data/actions/cart';
+import { getCart } from '@/shared/data/functions/cart';
+import { getOrders } from '@/shared/data/functions/order';
 import { useAuthStore } from '@/shared/store/authStore';
+import { CartItem } from '@/shared/types/cart';
+import { Order } from '@/shared/types/order';
 import { useEffect, useRef } from 'react';
 import toast from 'react-hot-toast';
 
@@ -22,7 +26,8 @@ import toast from 'react-hot-toast';
 
 export default function BuyModal({ onClose, type, res, onSuccess }: BuyModalProps) {
   const modalRef = useRef<HTMLDivElement>(null);
-  const isLoggedIn: boolean = useAuthStore(state => state.isLoggedIn); //전역 로그인 속성
+  const isLoggedIn: boolean = useAuthStore(state => state.isLoggedIn); // 전역 로그인 속성
+  const userId = useAuthStore(state => state.userInfo?._id);
   const token = useAuthStore(state => state.token);
 
   // 바깥 클릭 시 모달 닫기
@@ -48,9 +53,45 @@ export default function BuyModal({ onClose, type, res, onSuccess }: BuyModalProp
    * @param {string} token - 사용자 인증 토큰
    */
   const handleBuy = async (product_id: number, quantity: number) => {
-    if (!isLoggedIn || !token) {
+    if (!isLoggedIn || !token || !userId) {
       toast.error('로그인이 필요합니다!');
       onClose();
+      return;
+    }
+
+    /* 전체 주문 목록에서 환불 상태가 아닌 상품 중 해당 상품을 확인 */
+    const orderList = await getOrders(token);
+    console.log('전체 주문 목록', orderList);
+
+    const unrefundOrderList = orderList.item.filter(
+      (item: Order) =>
+        item.state !== 'refundCompleted' && item.state !== 'refundInProgress' && item.state !== 'purchaseCompleted',
+    );
+    console.log(`\t전체 주문 목록 중 환불 및 구매 완료 상태가 아닌 목록`, unrefundOrderList);
+
+    const isInOrderList = unrefundOrderList
+      .filter((item: Order) => item.products[0]._id === product_id)
+      .filter((item: Order) => item.products[0].extra.productType === 'gardening');
+    console.log(`\t현재 상품이 주문 목록에 존재하면 데이터 추출`, isInOrderList);
+
+    /* 전체 장바구니 목록에서 해당 상품을 확인 */
+    const cartList = await getCart(token);
+    console.log('전체 장바구니 목록', cartList);
+
+    const isInCartList = cartList.item
+      .filter((item: CartItem) => item.product_id === product_id)
+      .filter((item: CartItem) => item.product.extra.productType === 'gardening');
+    console.log(`\t현재 상품이 장바구니 목록에 존재하면 데이터 추출`, isInCartList);
+
+    /* 주문 목록에 환불 상태가 아닌 상품이 있으면 장바구니 담지 않기 */
+    if (isInOrderList.length) {
+      toast.error('동일한 텃밭 상품은 구매가 완료되어야 재주문이 가능합니다.');
+      return;
+    }
+
+    /* 장바구니 목록에 상품이 있으면 장바구니 담지 않기 */
+    if (isInCartList.length) {
+      toast.error('해당 텃밭 상품이 이미 장바구니에 존재합니다.');
       return;
     }
 

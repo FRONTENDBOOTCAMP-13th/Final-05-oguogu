@@ -42,6 +42,7 @@ export function TextCategoryItem({ type, _id, params, title, isClick = false }: 
     <Link
       href={`${type === 'search' ? '/search/result' : type === 'product' ? '/product' : ''}${_id ? '/' + _id : ''}/${params}`}
       className={`h-12 flex justify-center items-center border-b-2 ${borderColor} w-full`}
+      aria-label="카테고리 탐색 페이지 이동"
     >
       <h2>{title}</h2>
     </Link>
@@ -50,8 +51,12 @@ export function TextCategoryItem({ type, _id, params, title, isClick = false }: 
 
 export function SelectProductItem({ params, title }: SelectProductItemType) {
   return (
-    <div className="bg-oguogu-main-light w-full p-4 rounded-xl border border-oguogu-main">
-      <Link href={`/office/products/select/editor/${params}`} className="flex flex-col items-center gap-2">
+    <div className="w-full p-4 border bg-oguogu-main-light rounded-xl border-oguogu-main">
+      <Link
+        href={`/office/products/select/editor/${params}`}
+        className="flex flex-col items-center gap-2"
+        aria-label="상품 등록 또는 수정"
+      >
         <div className="w-[60px] h-[60px] flex items-center justify-center">
           {params === 'experience' ? (
             <Image
@@ -59,6 +64,7 @@ export function SelectProductItem({ params, title }: SelectProductItemType) {
               alt={`${params} 상품 등록 또는 수정`}
               width={44}
               height={44}
+              aria-label="체험 상품 등록 또는 수정"
             />
           ) : (
             <Image
@@ -66,6 +72,7 @@ export function SelectProductItem({ params, title }: SelectProductItemType) {
               alt={`${params} 상품 등록 또는 수정`}
               width={60}
               height={60}
+              aria-label="텃밭 상품 등록 또는 수정"
             />
           )}
         </div>

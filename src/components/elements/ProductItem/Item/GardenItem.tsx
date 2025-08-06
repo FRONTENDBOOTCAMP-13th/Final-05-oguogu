@@ -33,20 +33,15 @@ export default function GardenItem({
         {/* 대표 이미지 */}
         {/*이미지를 하드코딩 해둔 상태 추후 동적으로 관리해야 함*/}
         <div className="relative">
-          <div
-            style={{
-              backgroundImage: `url(${mainImages[0].path})`,
-            }}
-            className="bg-center bg-cover rounded-lg aspect-[3/4] min-w-[140px] min-h-[186.67px]"
-          ></div>
-          {/* <Image
-            src={`/images/garden/garden-001.png`}
-            alt=""
-            width={140}
-            height={186.67}
-            className="rounded-[8px] w-[140px] h-[186.67px] object-cover"
-          />
-          
+          <div className="relative rounded-lg aspect-[3/4] min-w-[140px] min-h-[186.67px] overflow-hidden">
+            <Image
+              src={mainImages[0].path}
+              alt="대표 이미지"
+              fill
+              className="object-cover"
+              sizes="(min-width: 768px) 140px, 100vw"
+            />
+          </div>
           {/* 뱃지 (제철 상품, 인기 상품 등) 우선 아이콘 빼고 진행 */}
           <div className="absolute top-0.5 left-1.5">
             {badgeList.map((item, index) => (
@@ -65,8 +60,9 @@ export default function GardenItem({
         </div>
 
         {/* 상품명 */}
+
         <Link href={`/search/result/${_id}/detail`} className="text-[14px] tracking-[-0.28px] leading-4">
-          {name}
+          <h3>{name}</h3>
         </Link>
 
         {/* 텃밭 상품 서브 텍스트 내용 */}

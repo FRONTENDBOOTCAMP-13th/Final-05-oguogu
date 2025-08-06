@@ -6,6 +6,7 @@ export default function DeleteButton({ deleteAll }: { deleteAll?: () => void }) 
       type="button"
       className="text-xs pl-3 pr-3.5 py-0.5 border border-oguogu-gray-2 rounded-sm peer-checked:border-oguogu-main-dark cursor-pointer flex items-center gap-1"
       onClick={deleteAll}
+      aria-label="장바구니 전체 삭제 버튼"
     >
       <svg width="10" height="10" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path

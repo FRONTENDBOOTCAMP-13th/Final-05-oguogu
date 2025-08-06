@@ -1,5 +1,6 @@
 import { OrderItemType } from '@/components/elements/OrderItem/OrderItem.type';
 import ReviewClientControl from '@/features/reviewClientControl/reviewClientControl';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -41,7 +42,7 @@ export default function OrderItem({ orderState, item, updateOrderStatus, handleS
 
   const requestRefund = () => updateOrderStatus(item._id, 'refundInProgress');
   const confirmPurchase = () => updateOrderStatus(item._id, 'purchaseCompleted');
-  const cancelRefundRequest = () => updateOrderStatus(item._id, 'preparingShipment');
+  // const cancelRefundRequest = () => updateOrderStatus(item._id, 'preparingShipment');
 
   return (
     <div className="flex flex-col gap-4 justify-between min-w-[288px] w-full">
@@ -65,13 +66,15 @@ export default function OrderItem({ orderState, item, updateOrderStatus, handleS
       <section className="flex flex-col gap-2">
         {item.products.map(product => (
           <Link href={`/search/result/${product._id}/detail`} key={product._id} className="flex gap-2">
-            {/* <div className="w-[48px] h-[48px] bg-cover bg-center bg-[url('/images/crop/crop-001.png')] bg-no-repeat rounded-sm" /> */}
-            <div
-              style={{
-                backgroundImage: `url(${item.products[0].image.path})`,
-              }}
-              className="w-[48px] h-[48px] bg-cover bg-center  bg-no-repeat rounded-sm"
-            ></div>
+            <div className="w-[48px] h-[48px] relative rounded-sm overflow-hidden shrink-0">
+              <Image
+                src={item.products[0].image.path}
+                alt={product.name ?? '상품 이미지'}
+                fill
+                className="object-cover"
+                sizes="48px"
+              />
+            </div>
             <div>
               <div className="text-[12px] clamp-1">{product.name}</div>
               <div className="text-[12px] text-oguogu-gray-4">
@@ -86,14 +89,7 @@ export default function OrderItem({ orderState, item, updateOrderStatus, handleS
       {orderState !== 'purchaseCompleted' &&
         orderState !== 'refundCompleted' &&
         (refundState ? (
-          <section>
-            <button
-              onClick={cancelRefundRequest}
-              className="text-[12px] w-full py-2 leading-none border border-oguogu-gray-2 rounded-[4px]"
-            >
-              환불 신청 취소
-            </button>
-          </section>
+          ''
         ) : (
           <section className="flex justify-center items-center gap-2 text-[12px]">
             <button

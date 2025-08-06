@@ -16,6 +16,7 @@ export default function OrderDropdown({ onChange, selected, setSelected, orderOp
     <div className="relative min-w-[288px] w-full">
       <button
         type="button"
+        aria-label="주문 상태 필터"
         className="w-full relative px-4 py-1 text-[12px] border border-oguogu-gray-2 rounded-[4px] flex items-center justify-center"
         onClick={() => setOpen(prev => !prev)}
       >
@@ -27,7 +28,7 @@ export default function OrderDropdown({ onChange, selected, setSelected, orderOp
         </span>
       </button>
       {open && (
-        <ul className="absolute z-10 mt-1 w-full bg-white border border-gray-200 rounded-lg shadow-lg">
+        <ul className="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg">
           {orderOptions.map(option => (
             <li
               key={option.value}
@@ -66,6 +67,7 @@ export function ProductDropdown({ onChange }: { onChange?: (value: string) => vo
     <div className="relative w-full">
       <button
         type="button"
+        aria-label="상품 필터"
         className="w-full relative px-4 py-1 text-[12px] border border-oguogu-gray-2 rounded-[4px] flex items-center justify-center"
         onClick={() => setOpen(prev => !prev)}
       >
@@ -77,7 +79,7 @@ export function ProductDropdown({ onChange }: { onChange?: (value: string) => vo
         </span>
       </button>
       {open && (
-        <ul className="absolute z-10 mt-1 w-full bg-white border border-gray-200 rounded-lg shadow-lg">
+        <ul className="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg">
           {productOptions.map(option => (
             <li
               key={option.value}
@@ -114,6 +116,7 @@ export function UploadDropdown({ onChange }: { onChange?: (value: string) => voi
     <div className="relative w-full">
       <button
         type="button"
+        aria-label="업로드 정렬 필터"
         className="w-full relative px-4 py-1 text-[12px] border border-oguogu-gray-2 rounded-[4px] flex items-center justify-center"
         onClick={() => setOpen(prev => !prev)}
       >
@@ -125,7 +128,7 @@ export function UploadDropdown({ onChange }: { onChange?: (value: string) => voi
         </span>
       </button>
       {open && (
-        <ul className="absolute z-10 mt-1 w-full bg-white border border-gray-200 rounded-lg shadow-lg">
+        <ul className="absolute z-10 w-full mt-1 bg-white border border-gray-200 rounded-lg shadow-lg">
           {uploadOptions.map(option => (
             <li
               key={option.value}

@@ -51,28 +51,26 @@ export default async function TopRatedItem() {
           })} */}
           {productList.map((item: Item, index: number) => {
             return (
-              <li
-                key={item._id}
-                className="flex w-full items-center gap-2 p-3 transition-all shadow-sm cursor-pointer bg-oguogu-white rounded-lg hover:bg-gray-50 hover:shadow-md"
-                role="listitem"
-                tabIndex={0}
-              >
-                <span className="font-medium text-base text-oguogu-main w-6 text-center leading-none">
-                  {index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : index + 1}
-                </span>
-                {/* 해당 아이템의 _id 와 매칭하는 판매자 채널로 경로 설정 */}
-                <div className="flex flex-col">
-                  <span className="w-10 text-oguogu-gray-4 text-xs">
-                    {item.extra?.productType === 'crop'
-                      ? '농산물'
-                      : item.extra?.productType === 'experience'
-                        ? '체험'
-                        : '텃밭'}
+              <li key={item._id} role="listitem" tabIndex={0}>
+                <Link
+                  href={`/search/result/${item._id}/detail`}
+                  className="flex w-full items-center gap-2 p-3 transition-all shadow-sm cursor-pointer bg-oguogu-white rounded-lg hover:bg-gray-50 hover:shadow-md"
+                >
+                  <span className="font-medium text-base text-oguogu-main w-6 text-center leading-none">
+                    {index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : index + 1}
                   </span>
-                  <Link href={`/search/result/${item._id}/detail`} className="line-clamp-1 text-base">
-                    {item.name ?? ''}
-                  </Link>
-                </div>
+                  {/* 해당 아이템의 _id 와 매칭하는 판매자 채널로 경로 설정 */}
+                  <div className="flex flex-col">
+                    <span className="w-10 text-oguogu-gray-4 text-xs">
+                      {item.extra?.productType === 'crop'
+                        ? '농산물'
+                        : item.extra?.productType === 'experience'
+                          ? '체험'
+                          : '텃밭'}
+                    </span>
+                    <span className="line-clamp-1 text-base">{item.name ?? ''}</span>
+                  </div>
+                </Link>
               </li>
             );
           })}

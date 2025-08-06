@@ -31,22 +31,18 @@ export default function ExperienceItem({
     <div className="min-w-[288px] flex flex-col gap-4">
       {/* 상품 이미지 및 뱃지 영역 */}
       <Link href={`/search/result/${_id}/detail`}>
-        {/* 대표 이미지 */}
-        {/*이미지를 하드코딩 해둔 상태 추후 동적으로 관리해야 함*/}
         <div className="relative">
-          <div
-            style={{
-              backgroundImage: `url(${mainImages[0].path})`,
-            }}
-            className="min-w-[288px] min-h-[216px] bg-center bg-cover aspect-[4/3] rounded-lg"
-          ></div>
-          {/* <Image
-            src={`/images/experience/experience-001.png`}
-            alt=""
-            width={288}
-            height={186.67}
-            className="rounded-[8px]"
-          /> */}
+          {/* 대표 이미지 */}
+          <div className="relative min-w-[288px] min-h-[216px] aspect-[4/3] rounded-lg overflow-hidden">
+            <Image
+              src={mainImages[0].path}
+              alt="대표 이미지"
+              fill
+              className="object-cover rounded-lg"
+              sizes="(min-width: 768px) 288px, 100vw"
+            />
+          </div>
+
           {/* 뱃지 (제철 상품, 인기 상품 등) */}
           <div className="absolute top-0.5 left-1.5">
             {badgeList.map((item, index) => (
@@ -65,8 +61,9 @@ export default function ExperienceItem({
         </div>
 
         {/* 상품명 */}
+
         <Link href={`/search/result/${_id}/detail`} className="text-[14px] tracking-[-0.28px] leading-4">
-          {name}
+          <h3>{name}</h3>
         </Link>
 
         {/* 추가 상품 내용 설명 */}

@@ -56,7 +56,7 @@ export default async function PeriodItem({ id, periodItemList }: { id: number; p
                     ''
                   )}
 
-                  <div className="flex flex-col text-xs w-full">
+                  <div className="flex flex-col gap-1 text-xs w-full">
                     <p className="text-base">{item.title ?? '제목 없음'}</p>
                     <p>{item.content}</p>
                   </div>
