@@ -3223,9 +3223,9 @@
           }
         ],
         "category": ["텃밭체험"],
-        "filter": ["상추", "잎채소", "건강채소"],
+        "filter": ["적상추", "잎채소", "건강채소"],
         "region": "경기도 여주시 가남읍 상활1길 68",
-        "deadline": "2025-08-10",
+        "deadline": "2025-08-06",
         "harvestExpectedDate": "2025-11-10",
         "harvestExpectedCnt": "1.5kg",
         "dcRate": 35,
@@ -3237,7 +3237,18 @@
           "isLowStock": false,
           "isSold": false
         },
-        "period": []
+        "period": [
+          {
+            "date": "2025-08-07",
+            "image": {
+              "imagePath": "/images/gardeningHistory/seeding-001.png",
+              "name": "image-1.jpg"
+            },
+            "status": "seeding",
+            "title": "적상추 텃밭 레츠기릿",
+            "content": "솔직히 저희 적상추, 진짜 맛있어요. 제대로 수확해서 맛있는 적상추 드시게 해드릴게요"
+          }
+        ]
       }
     },
     {
