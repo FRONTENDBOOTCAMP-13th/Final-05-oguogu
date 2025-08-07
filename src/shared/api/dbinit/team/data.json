@@ -91,7 +91,7 @@
     {
       "email": "user5@gmail.com",
       "password": "$2b$10$a0EEclFRysz.PjAiSSd8tO2CdhNYYG0fc.goo.zFilcTd5QpNTdrG",
-      "name": "5조유저",
+      "name": "김지연",
       "phone": "01012123434",
       "address": "서울 강서구 염창동 300",
       "type": "user",
@@ -333,16 +333,16 @@
     {
       "email": "seller1@gmail.com",
       "password": "$2b$10$Q72//b/39dX.GGa8HWlhk.XmY2HHqqFnjKdZClixNg5QUMwQc6oRu",
-      "name": "1번셀러",
+      "name": "최영준",
       "phone": "01044532341",
-      "address": "서울특별시 강남구 테헤란로 123",
+      "address": "인천 남동구 호구포로765번길",
       "type": "seller",
       "loginType": "email",
       "image": "uploadFiles/seller-3-profile.png",
       "extra": {
         "businessInfo": {
-          "companyName": "흥부네농산물",
-          "ownerName": "김흥부",
+          "companyName": "우리길용농산물",
+          "ownerName": "최영준",
           "businessTel": "010-1234-5678",
           "businessNumber": "02-891-0123"
         },
