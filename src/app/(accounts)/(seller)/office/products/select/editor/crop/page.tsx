@@ -1,6 +1,7 @@
 import LinkHeader from '@/components/layouts/Header/LinkHeader';
 import CropProductPostClientControl from '@/features/ProductPostClientControl/CropProductPostClientControl';
 import { Metadata } from 'next';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   title: '농산물 상품 등록/수정 | 판매자 센터 - 오구텃밭',
@@ -19,7 +20,9 @@ export default function CropProductEditor() {
     <>
       <LinkHeader title="농산물 상품 등록/수정" />
       <main className="p-4 flex flex-col gap-4">
-        <CropProductPostClientControl />
+        <Suspense>
+          <CropProductPostClientControl />
+        </Suspense>
       </main>
     </>
   );

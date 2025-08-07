@@ -1,6 +1,7 @@
 import LinkHeader from '@/components/layouts/Header/LinkHeader';
 import ExperienceProductPostClientControl from '@/features/ProductPostClientControl/ExperienceProductPostClientControl';
 import { Metadata } from 'next';
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   title: '체험 상품 등록/수정 | 판매자 센터 - 오구텃밭',
@@ -19,7 +20,9 @@ export default function ExperienceProductEditor() {
     <>
       <LinkHeader title="체험 상품 등록/수정" />
       <main className="p-4 flex flex-col gap-4">
-        <ExperienceProductPostClientControl />
+        <Suspense>
+          <ExperienceProductPostClientControl />
+        </Suspense>
       </main>
     </>
   );
