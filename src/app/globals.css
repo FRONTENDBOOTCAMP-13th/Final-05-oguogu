@@ -41,7 +41,7 @@
 
 @layer utilities {
   body {
-    @apply bg-oguogu-main font-baedal-Jua text-oguogu-black;
+    @apply bg-oguogu-gray-3 font-baedal-Jua text-oguogu-black;
   }
 
   .header {
