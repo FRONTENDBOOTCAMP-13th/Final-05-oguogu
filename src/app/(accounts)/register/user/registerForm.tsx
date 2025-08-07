@@ -26,11 +26,50 @@ export default function UserRegisterForm() {
 
   const router = useRouter();
 
+  const isValidAddress = (address: string): boolean => {
+    const trimmed = address.trim();
+
+    // 빈 문자열 또는 너무 짧은 경우
+    if (!trimmed || trimmed.length < 5) return false;
+
+    // 특수문자만 있는 경우
+    const onlySpecialChars = /^[^a-zA-Z0-9가-힣]+$/;
+    if (onlySpecialChars.test(trimmed)) return false;
+
+    return true;
+  };
+
   const isPasswordValid = (pwd: string) => {
     const hasLetter = /[a-zA-Z]/.test(pwd);
     const hasNumber = /\d/.test(pwd);
     const hasSpecial = /[^a-zA-Z0-9]/.test(pwd);
     return hasLetter && hasNumber && hasSpecial;
+  };
+
+  const isValidDate = (year: string, month: string, day: string) => {
+    if (year.length !== 4 || month.length !== 2 || day.length !== 2) return false;
+
+    const yyyy = parseInt(year, 10);
+    const mm = parseInt(month, 10);
+    const dd = parseInt(day, 10);
+
+    if (isNaN(yyyy) || isNaN(mm) || isNaN(dd)) return false;
+
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+
+    if (yyyy < 1900 || yyyy > currentYear + 1) return false;
+    if (mm < 1 || mm > 12) return false;
+
+    const daysInMonth = new Date(yyyy, mm, 0).getDate();
+    if (dd < 1 || dd > daysInMonth) return false;
+
+    const birthDate = new Date(yyyy, mm - 1, dd);
+    const today = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+
+    if (birthDate > today) return false;
+
+    return true;
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -40,6 +79,11 @@ export default function UserRegisterForm() {
     // 필수값 검증
     if (!email || !password || !confirmPassword || !name || !phoneNum || !address) {
       toast.error('입력하지 않은 부분이 있습니다 모두 입력해주세요');
+      return;
+    }
+
+    if (!isValidAddress(address)) {
+      toast.error('유효한 주소를 입력해주세요');
       return;
     }
 
@@ -57,6 +101,11 @@ export default function UserRegisterForm() {
     // 약관 체크
     if (!agreeTerms || !agreePrivacy || !isAdult) {
       toast.error('필수 약관에 모두 동의해주세요');
+      return;
+    }
+
+    if (!isValidDate(birth.slice(0, 4), birth.slice(4, 6), birth.slice(6, 8))) {
+      toast.error('유효하지 않은 생년월일입니다');
       return;
     }
 

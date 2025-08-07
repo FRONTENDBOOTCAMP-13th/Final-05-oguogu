@@ -2,13 +2,33 @@
 
 import { ProductItemListForSellerType } from '@/components/elements/ProductItem/List/ProductItemListForSeller.type';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 export default function ProductItemListForSeller({ _id, category, title, price }: ProductItemListForSellerType) {
   const [visible, setVisible] = useState(true);
+  const router = useRouter();
 
   const toggleVisible = () => {
     setVisible(!visible);
+  };
+
+  const getCategoryName = (categoryName: string) => {
+    switch (categoryName) {
+      case '농작물':
+        return 'crop';
+      case '체험':
+        return 'experience';
+      case '텃밭':
+        return 'gardening';
+      default:
+        return 'crop';
+    }
+  };
+
+  const handleEdit = () => {
+    const categoryEng = getCategoryName(category);
+    router.push(`/office/products/select/editor/${categoryEng}?_id=${_id}`);
   };
 
   return (
@@ -77,7 +97,8 @@ export default function ProductItemListForSeller({ _id, category, title, price }
 
           <button
             className="w-[16px] h-[16px] border border-oguogu-main rounded-[2px] flex items-center justify-center"
-            aria-label="상품 숨기기 아이콘"
+            aria-label="상품 게시물 수정 아이콘"
+            onClick={handleEdit}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -85,7 +106,7 @@ export default function ProductItemListForSeller({ _id, category, title, price }
               height="6"
               viewBox="0 0 6 6"
               fill="none"
-              aria-label="상품 숨기기 아이콘"
+              aria-label="상품 게시물 수정 아이콘"
             >
               <path
                 d="M2.85767 0.284651C3.0155 0.284651 3.14344 0.412594 3.14344 0.570419C3.14344 0.728244 3.0155 0.856186 2.85767 0.856186H0.857302C0.781512 0.856186 0.708848 0.886315 0.655256 0.939907C0.601664 0.993499 0.571535 1.06616 0.571535 1.14195V5.1427C0.571535 5.21849 0.601664 5.29115 0.655256 5.34474C0.708848 5.39834 0.781512 5.42846 0.857302 5.42846H4.85805C4.93384 5.42846 5.0065 5.39834 5.06009 5.34474C5.11368 5.29115 5.14381 5.21849 5.14381 5.1427V3.14233C5.14381 2.9845 5.27176 2.85656 5.42958 2.85656C5.58741 2.85656 5.71535 2.9845 5.71535 3.14233V5.1427C5.71535 5.37007 5.62496 5.58806 5.46419 5.74884C5.30341 5.90961 5.08542 6 4.85805 6H0.857302C0.629932 6 0.411938 5.90961 0.251163 5.74884C0.0903874 5.58806 0 5.37007 0 5.1427V1.14195C0 0.914583 0.0903874 0.696589 0.251163 0.535814C0.411938 0.375039 0.629932 0.284651 0.857302 0.284651H2.85767Z"

@@ -13,7 +13,7 @@ export default function LoginInput({
 }: LoginInputProps) {
   // CHECKLIST
   // [x] 빨간색 공통 색상 추가 필요 oguogu-red 또는 oguogu-error-message
-  // [ ] 생년월일 유효성 검사
+  // [x] 생년월일 유효성 검사
   // 로그인 폼에는 유효성 검사 아직 안넣었습니다. 폼 내 디폴트 벨류 제거할 때 최종 리팩토링하겠습니다.
 
   const [showPassword, setShowPassword] = useState(false);
@@ -45,6 +45,7 @@ export default function LoginInput({
   const [defaultError, setDefaultError] = useState('');
   const [businessNumError, setBusinessNumError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [birthError, setBirthError] = useState('');
 
   // 전화번호
   const validPrefixes = ['010', '011', '016', '017', '018', '019'];
@@ -83,6 +84,31 @@ export default function LoginInput({
     return isAllFilled && isValidPrefix;
   };
 
+  const isValidDate = (year: string, month: string, day: string) => {
+    if (year.length !== 4 || month.length !== 2 || day.length !== 2) return false;
+
+    const yyyy = parseInt(year, 10);
+    const mm = parseInt(month, 10);
+    const dd = parseInt(day, 10);
+
+    if (isNaN(yyyy) || isNaN(mm) || isNaN(dd)) return false;
+
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+
+    if (yyyy < 1900 || yyyy > currentYear + 1) return false;
+    if (mm < 1 || mm > 12) return false;
+
+    const daysInMonth = new Date(yyyy, mm, 0).getDate();
+    if (dd < 1 || dd > daysInMonth) return false;
+
+    const birthDate = new Date(yyyy, mm - 1, dd);
+    const today = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate());
+
+    if (birthDate > today) return false;
+
+    return true;
+  };
   // 사업자 등록 번호
   const validBusinessNumberLength = {
     part1: 3,
@@ -159,6 +185,18 @@ export default function LoginInput({
         setEmailIdError('');
       }
     }
+
+    if (type === 'birth') {
+      if (!isValidDate(birthParts.part1, birthParts.part2, birthParts.part3)) {
+        if (birthParts.part1.length === 4 && birthParts.part2.length === 2 && birthParts.part3.length === 2) {
+          setBirthError('유효하지 않은 생년월일입니다.');
+        } else {
+          setBirthError('생년월일을 모두 입력해주세요.');
+        }
+      } else {
+        setBirthError('');
+      }
+    }
   }, [triggerValidation]);
 
   // business , birth , phone , email, address , password , 기본 순
@@ -231,40 +269,55 @@ export default function LoginInput({
     const handleBirthChange = (key: 'part1' | 'part2' | 'part3', val: string) => {
       const updated = { ...birthParts, [key]: val };
       setBirthParts(updated);
-      onChange(`${updated.part1}${updated.part2}${updated.part3}`);
+
+      const isComplete = updated.part1.length === 4 && updated.part2.length === 2 && updated.part3.length === 2;
+
+      if (isComplete) {
+        if (!isValidDate(updated.part1, updated.part2, updated.part3)) {
+          setBirthError('유효하지 않은 생년월일입니다.');
+        } else {
+          setBirthError('');
+          onChange(`${updated.part1}${updated.part2}${updated.part3}`); // ✅ 유효할 때만 전달
+        }
+      } else {
+        setBirthError('생년월일을 모두 입력해주세요.');
+      }
     };
 
     return (
-      <div className="flex items-center gap-x-4 w-[288px] h-[36px] font-normal text-[12px] py-3 border-b-1 text-oguogu-black border-oguogu-gray-2 justify-center">
-        <input
-          type="text"
-          inputMode="numeric"
-          id={`${id}-birth-part1`}
-          value={birthParts.part1}
-          onChange={e => handleBirthChange('part1', e.target.value.slice(0, 4))}
-          placeholder="YYYY"
-          className="placeholder-oguogu-gray-2 w-[60px] text-center ml-1"
-        />
-        <span className="text-oguogu-black text-[16px]">/</span>
-        <input
-          type="text"
-          inputMode="numeric"
-          id={`${id}-birth-part2`}
-          value={birthParts.part2}
-          onChange={e => handleBirthChange('part2', e.target.value.slice(0, 2))}
-          placeholder="MM"
-          className="placeholder-oguogu-gray-2 w-[60px] text-center pl-2"
-        />
-        <span className="text-oguogu-black text-[16px]">/</span>
-        <input
-          type="text"
-          inputMode="numeric"
-          id={`${id}-birth-part3`}
-          value={birthParts.part3}
-          onChange={e => handleBirthChange('part3', e.target.value.slice(0, 2))}
-          placeholder="DD"
-          className="placeholder-oguogu-gray-2 w-[60px] text-center pl-5"
-        />
+      <div>
+        <div className="flex items-center gap-x-4 w-[288px] h-[36px] font-normal text-[12px] py-3 border-b-1 text-oguogu-black border-oguogu-gray-2 justify-center">
+          <input
+            type="text"
+            inputMode="numeric"
+            id={`${id}-birth-part1`}
+            value={birthParts.part1}
+            onChange={e => handleBirthChange('part1', e.target.value.replace(/\D/g, '').slice(0, 4))}
+            placeholder="YYYY"
+            className="placeholder-oguogu-gray-2 w-[60px] text-center ml-1"
+          />
+          <span className="text-oguogu-black text-[16px]">/</span>
+          <input
+            type="text"
+            inputMode="numeric"
+            id={`${id}-birth-part2`}
+            value={birthParts.part2}
+            onChange={e => handleBirthChange('part2', e.target.value.replace(/\D/g, '').slice(0, 2))}
+            placeholder="MM"
+            className="placeholder-oguogu-gray-2 w-[60px] text-center pl-2"
+          />
+          <span className="text-oguogu-black text-[16px]">/</span>
+          <input
+            type="text"
+            inputMode="numeric"
+            id={`${id}-birth-part3`}
+            value={birthParts.part3}
+            onChange={e => handleBirthChange('part3', e.target.value.replace(/\D/g, '').slice(0, 2))}
+            placeholder="DD"
+            className="placeholder-oguogu-gray-2 w-[60px] text-center pl-5"
+          />
+        </div>
+        {birthError && <p className="text-oguogu-red text-[12px] mt-1 px-1">{birthError}</p>}
       </div>
     );
   }

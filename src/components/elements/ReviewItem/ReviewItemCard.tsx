@@ -2,20 +2,12 @@ import { ReviewItemType } from '@/components/elements/ReviewItem/ReviewItem.type
 import StarRating from '@/components/elements/ReviewItem/StarRating';
 import Image from 'next/image';
 
-export default function ReviewItemCard({ name, email, res }: ReviewItemType) {
+export default function ReviewItemCard({ name, res }: ReviewItemType) {
   const maskName = (name: string): string => {
     if (!name) return '';
     if (name.length <= 2) return name;
+    if (name.length === 3) return name[0] + '*' + name[2];
     return name[0] + '*'.repeat(name.length - 2) + name[name.length - 1];
-  };
-
-  const maskEmail = (email: string): string => {
-    if (!email) return '';
-    const atIndex = email.indexOf('@');
-    const prefix = atIndex !== -1 ? email.slice(0, atIndex) : email;
-    const visible = prefix.slice(0, 3);
-    const hidden = '*'.repeat(Math.max(prefix.length - 3, 1));
-    return visible + hidden;
   };
 
   function isValidImagePath(path: string): boolean {
@@ -62,9 +54,7 @@ export default function ReviewItemCard({ name, email, res }: ReviewItemType) {
       <p className="text-[13px] text-oguogu-gray-5 leading-snug line-clamp-3">“{res.content}”</p>
 
       {/* 작성자 */}
-      <div className="text-[12px] text-oguogu-gray-4 mt-auto">
-        {maskName(name)} ({maskEmail(email)})
-      </div>
+      <div className="text-[12px] text-oguogu-gray-4 mt-auto">{maskName(name)} </div>
     </div>
   );
 }
