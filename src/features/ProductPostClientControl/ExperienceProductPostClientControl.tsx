@@ -2,11 +2,13 @@
 
 import Input from '@/components/elements/LoginItem/Input';
 import { uploadFile } from '@/shared/data/actions/file';
-import { createProduct } from '@/shared/data/actions/product';
+import { createProduct, updateProduct } from '@/shared/data/actions/product';
+import { getProduct } from '@/shared/data/functions/product';
 import { useAuthStore } from '@/shared/store/authStore';
 import { fileResponse } from '@/shared/types/file';
-import { useRouter } from 'next/navigation';
-import { useRef, useState } from 'react';
+import { productRes } from '@/shared/types/product';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 
 type ProductForm = {
@@ -31,6 +33,8 @@ type ProductForm = {
 };
 
 export default function ExperienceProductPostClientControl() {
+  const searchParams = useSearchParams();
+  const productId = Number(searchParams.get('_id'));
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const [selectedFileName, setSelectedFileName] = useState<string>('');
   const [imageFile, setImageFile] = useState<File | null>(null);
@@ -66,6 +70,46 @@ export default function ExperienceProductPostClientControl() {
 
   const token = useAuthStore(state => state.token);
   const router = useRouter();
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      if (!productId) return;
+
+      const res: productRes = await getProduct(productId);
+      if (!res.ok) {
+        toast.error('상품 정보를 불러오지 못했습니다.');
+        return;
+      }
+
+      const data = res.item;
+      setForm({
+        title: data.name,
+        content: data.content || '',
+        quantity: data.quantity!.toString(),
+        productCnt: data.extra.productCnt!.toString(),
+        price: data.price.toString(),
+        dcRate: data.extra.dcRate?.toString() || '',
+        shippingFees: data.shippingFees!.toString(),
+        mainImages: null,
+        detail: null,
+        startDate: data.extra.departureDate || '',
+        endDate: data.extra.returnDate || '',
+        experienceRegion: data.extra.region || '',
+        departRegion: data.extra.meetingPlace || '',
+        include: data.extra.includedItems?.join(',') || '',
+        uninclude: data.extra.unincludedItems?.join(',') || '',
+        guideName: data.extra.guideInfo?.name || '',
+        guidePhone: data.extra.guideInfo?.contact || '',
+        guideCompany: data.extra.guideInfo?.company || '',
+      });
+
+      setDetailText(data.extra.productDetailContent || '');
+      setSelectedFileName(data.mainImages[0]?.originalname || '');
+      setSelectedDetailFileName(data.extra.detailImages[0]?.originalname || '');
+    };
+
+    fetchProduct();
+  }, [productId]);
 
   const handleChange = (key: keyof ProductForm, value: string | File | null) => {
     if (numberFields.includes(key as string)) {
@@ -208,12 +252,15 @@ export default function ExperienceProductPostClientControl() {
       },
     };
 
-    const postData = await createProduct(productData, token);
-    if (postData.ok) {
-      toast.success('상품이 정상적으로 등록되었습니다.');
+    const response = productId
+      ? await updateProduct(productId, productData, token)
+      : await createProduct(productData, token);
+
+    if (response.ok) {
+      toast.success(`상품이 ${productId ? '수정' : '등록'}되었습니다.`);
       router.push('/office/products');
     } else {
-      toast.error('등록을 실패했습니다.');
+      toast.error(`${productId ? '수정' : '등록'}에 실패했습니다.`);
     }
   };
 
@@ -387,7 +434,7 @@ export default function ExperienceProductPostClientControl() {
                  bg-oguogu-main text-oguogu-white
                  px-[24px] py-[6px] rounded-[4px]`}
       >
-        상품 등록
+        {productId ? '상품 수정' : '상품 등록'}
       </button>
     </>
   );

@@ -1,4 +1,4 @@
-import { Extra, MainImage } from '@/shared/types/product';
+import { Extra, Item, MainImage } from '@/shared/types/product';
 
 const API_URL = 'https://fesp-api.koyeb.app/market';
 const CLIENT_ID = 'febc13-final05-emjf';
@@ -44,19 +44,7 @@ export async function createProduct(
 }
 
 //  2. 상품 수정 [일단 토큰은 하드코딩되어 있는 상태 추후 zustand store에서 관리해야 합니다.]
-export async function updateProduct(
-  _id: number,
-  update: Partial<{
-    price: number;
-    name: string;
-    content: string;
-    shippingFees: number;
-    mainImages: string[];
-    show: boolean;
-    extra: Extra;
-  }>,
-  token: string,
-) {
+export async function updateProduct(_id: number, update: Partial<Item>, token: string) {
   try {
     const res = await fetch(`${API_URL}/seller/products/${_id}`, {
       method: 'PATCH',
