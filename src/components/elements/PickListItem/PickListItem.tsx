@@ -3,6 +3,7 @@
 import { deleteBookmark } from '@/shared/data/actions/bookmarks';
 import { createCart } from '@/shared/data/actions/cart';
 import { BookmarkItem } from '@/shared/types/bookmarkt';
+import { productsRes } from '@/shared/types/product';
 import Image from 'next/image';
 import Link from 'next/link';
 import toast from 'react-hot-toast';
@@ -12,12 +13,18 @@ export default function PickListItem({
   item,
   token,
   onDeleted,
+  products,
 }: {
   item: BookmarkItem;
   token: string;
   onDeleted: (deletedId: number) => void;
+  products: productsRes;
 }) {
   // const router = useRouter();
+
+  const product_id = item.product._id;
+
+  const sellerName = products.item.find(product => product._id === product_id)?.seller?.extra.businessInfo?.companyName;
 
   /* 찜하기 제거하기 버튼 */
   const handleDeleteBookmark = async () => {
@@ -72,7 +79,7 @@ export default function PickListItem({
             <div className="flex flex-col gap-1">
               <div className="flex gap-1">
                 <Image src="/images/product-hatIcon.svg" alt="" aria-hidden="true" width={16} height={16} />
-                <span className="leading-tight line-clamp-1 text-xs">{item.product.seller?.name ?? '오구텃밭'}</span>
+                <span className="leading-tight line-clamp-1 text-xs">{sellerName ?? '오구텃밭'}</span>
               </div>
               <span className="leading-tight line-clamp-1">{item.product.name}</span>
             </div>
