@@ -28,7 +28,7 @@ export default function ProductItemListForSeller({ _id, category, title, price }
 
   const handleEdit = () => {
     const categoryEng = getCategoryName(category);
-    router.push(`/office/products/select/editor/${categoryEng}?id=${_id}`);
+    router.push(`/office/products/select/editor/${categoryEng}?_id=${_id}`);
   };
 
   return (
