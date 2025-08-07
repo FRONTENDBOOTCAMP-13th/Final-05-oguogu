@@ -10,12 +10,17 @@ import { BookmarkItem, BookmarkResponse } from '@/shared/types/bookmarkt';
 import { getBookmarks } from '@/shared/data/functions/bookmarks';
 import PickListItem from '@/components/elements/PickListItem/PickListItem';
 
+import { getProducts } from '@/shared/data/functions/product';
+import CuteLoading from '@/components/elements/CuteLoading/CuteLoading';
+
 export default function PickList() {
   const { fetchBookmarks } = useBookmarkStore();
   const token = useAuthStore(state => state.token);
   const userInfo = useAuthStore(state => state.userInfo);
   const [bookmarkItem, setBookmarkItem] = useState<BookmarkItem[] | null>(null);
   const [checkedType, setCheckedType] = useState<ProductType>('crop');
+
+  const [products, setProducts] = useState();
 
   useEffect(() => {
     fetchBookmarks();
@@ -30,6 +35,9 @@ export default function PickList() {
 
         setBookmarkItem(myBookmarks);
         console.log('현재 북마크 리스트 :', myBookmarks);
+
+        const productRes = await getProducts();
+        setProducts(productRes);
       } catch (err) {
         console.log('pickList 에서 에러 발생', err);
       }
@@ -42,6 +50,10 @@ export default function PickList() {
   const handleDeleteBookmark = (deletedId: number) => {
     setBookmarkItem(prev => (prev ? prev.filter(item => item._id !== deletedId) : prev));
   };
+
+  if (!products || !bookmarkItem) {
+    return <CuteLoading />; // 또는 스피너 컴포넌트
+  }
 
   return (
     <>
@@ -79,7 +91,13 @@ export default function PickList() {
                 {bookmarkItem
                   ?.filter((item: BookmarkItem) => item.product.extra?.productType === checkedType)
                   .map(item => (
-                    <PickListItem key={item.product._id} item={item} token={token!} onDeleted={handleDeleteBookmark} />
+                    <PickListItem
+                      key={item.product._id}
+                      item={item}
+                      token={token!}
+                      onDeleted={handleDeleteBookmark}
+                      products={products}
+                    />
                   ))}
               </div>
             ) : (
@@ -95,7 +113,13 @@ export default function PickList() {
                 {bookmarkItem
                   ?.filter(item => item.product.extra?.productType === checkedType)
                   .map(item => (
-                    <PickListItem key={item.product._id} item={item} token={token!} onDeleted={handleDeleteBookmark} />
+                    <PickListItem
+                      key={item.product._id}
+                      item={item}
+                      token={token!}
+                      onDeleted={handleDeleteBookmark}
+                      products={products}
+                    />
                   ))}
               </div>
             ) : (
@@ -111,7 +135,13 @@ export default function PickList() {
                 {bookmarkItem
                   ?.filter(item => item.product.extra?.productType === checkedType)
                   .map(item => (
-                    <PickListItem key={item.product._id} item={item} token={token!} onDeleted={handleDeleteBookmark} />
+                    <PickListItem
+                      key={item.product._id}
+                      item={item}
+                      token={token!}
+                      onDeleted={handleDeleteBookmark}
+                      products={products}
+                    />
                   ))}
               </div>
             ) : (
