@@ -38,7 +38,7 @@ export default function CropItem({
             {/* 대표 이미지 */}
             <div className="relative rounded-lg aspect-[3/4] min-w-[140px] min-h-[186.67px] overflow-hidden">
               <Image
-                src={mainImages[0].path}
+                src={mainImages?.[0]?.path ?? '/images/gardeningHistory/growing-001.png'}
                 alt="대표 이미지"
                 fill
                 className="object-cover"
