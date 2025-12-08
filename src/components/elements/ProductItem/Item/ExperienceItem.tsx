@@ -35,7 +35,7 @@ export default function ExperienceItem({
           {/* 대표 이미지 */}
           <div className="relative min-w-[288px] min-h-[216px] aspect-[4/3] rounded-lg overflow-hidden">
             <Image
-              src={mainImages[0].path}
+              src={mainImages?.[0]?.path ?? '/images/gardeningHistory/growing-001.png'}
               alt="대표 이미지"
               fill
               className="object-cover rounded-lg"

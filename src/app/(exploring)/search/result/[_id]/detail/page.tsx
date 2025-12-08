@@ -104,7 +104,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
       <TextCategoryForDetailPage _id={Number(_id)} reviewCnt={reviewCnt} qnaCnt={qnaCnt} />
       <Image
         className="w-full max-h-[480px] object-cover aspect-square"
-        src={res.item.mainImages[0].path}
+        src={res.item.mainImages?.[0]?.path ?? '/images/gardeningHistory/growing-001.png'}
         alt="상품명"
         width={320}
         height={320}
@@ -116,8 +116,8 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
       <Image
         className="w-full object-cover"
-        src={res.item.extra?.detailImages[0].path}
-        alt={res.item.extra.detailImages[0].name}
+        src={res.item.extra?.detailImages?.[0]?.path ?? '/images/default/detail-crop.png'}
+        alt={res.item.extra?.detailImages?.[0]?.name ?? '디폴트 이미지 입니다.'}
         width={320}
         height={1500}
       />
